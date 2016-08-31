@@ -1,45 +1,57 @@
 <html>
 	<head>
 		<title>
-		
+		My city
 		</title>
 		<style type="text/css">
-		.under {
-		position:absolute;
-		left:0px;
-		top:0px;
-		z-index:-1;
-		}
-		.over1 {
-		position:absolute;
-		left:0px;
-		top:0px;
-		z-index:1;
-		}
-		.over2 {
-		position:absolute;
-		left:0px;
-		top:0px;
-		z-index:2;
-		}
+			.under {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:-1;
+			}
+			.over1 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:1;
+			}
+			.over2 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:2;
+			}
+			.resources{
+				position: relative;
+				left:0px;
+			}
 		</style>
 	</head>
 	<body>
 		welcome to heroes' city
 		<br>
-		<span id="demo">01:10:00</span>
+		<p id="resources">
+		<span id="gold"  style="position:relative; left:35px">0</span>
 		<br>
+		<br>
+		<span id="pop"  style="position:relative; left:35px">0</span>
+		<img src="gold.png" class="over1" style="left:10px; top:40px">
+		<img src="pop.png" class="over1" style="left:10px; top:80px">
+		</p>
+		<p id="constuctions">
 		<img src="0.png" class="under">
 		<img src="1.png" class="over1" >
-		
+		</p>
 	
 	<script>
-	var myVar = setInterval(myTimer, 1000);
+	var gold = 0;
+	document.cookie = "gold="+gold;
+	setInterval(myTimer, 1000);
 	function myTimer() {
-		var d = new Date();
-		document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+		gold = gold + 1;
+		document.getElementById("gold").innerHTML = gold;
 	}
 	</script>
-	
 	</body>
 </html>
