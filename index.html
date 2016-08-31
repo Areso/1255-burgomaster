@@ -32,33 +32,37 @@
 		welcome to heroes' city
 		<br>
 		<p id="resources">
-		<span id="gold"  style="position:relative; left:35px">0</span>
-		<br>
-		<br>
-		<span id="pop"  style="position:relative; left:35px">0</span>
-		<br>
-		<span id="cook"  style="position:relative; left:35px">0</span>
-		<img src="gold.png" class="over1" style="left:10px; top:40px">
-		<img src="pop.png" class="over1" style="left:10px; top:80px">
+			<span id="gold"  style="position:relative; left:35px">0</span>
+			<br>
+			<br>
+			<span id="pop"  style="position:relative; left:35px">0</span>
+			<br>
+			<span id="cook"  style="position:relative; left:35px">0</span>
+			<img src="gold.png" class="over1" style="left:10px; top:40px">
+			<img src="pop.png" class="over1" style="left:10px; top:80px">
 		</p>
 		<p id="constuctions">
-		<img src="0.png" class="under">
-		<img src="1.png" class="over1" >
+			<img src="0.png" class="under">
+			<img src="1.png" class="over1" >
 		</p>
 	
 	<script>
 	var gold = 0;
+	var pop  = 0;
 	setInterval(myTimer, 1000);
 	function myTimer() {
 		gold = gold + 1;
 		document.getElementById("gold").innerHTML = gold;
 		
 		document.cookie = "gold="+gold;
-		gold2 = document.cookie;
-		//document.getElementById("cook").innerHTML = gold2;
+		gold2 = document.cookie.split(';');
+		gold2length = gold2[0].length;
+		
+		gold2 = gold2[0].slice(5,gold2length);
+		document.getElementById("cook").innerHTML = gold2;
 	}
 	function getCook() {
-	gold2 = document.cookie;
+		
 	}
 	</script>
 	</body>
