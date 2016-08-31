@@ -36,6 +36,8 @@
 		<br>
 		<br>
 		<span id="pop"  style="position:relative; left:35px">0</span>
+		<br>
+		<span id="cook"  style="position:relative; left:35px">0</span>
 		<img src="gold.png" class="over1" style="left:10px; top:40px">
 		<img src="pop.png" class="over1" style="left:10px; top:80px">
 		</p>
@@ -46,11 +48,17 @@
 	
 	<script>
 	var gold = 0;
-	document.cookie = "gold="+gold;
 	setInterval(myTimer, 1000);
 	function myTimer() {
 		gold = gold + 1;
 		document.getElementById("gold").innerHTML = gold;
+		
+		document.cookie = "gold="+gold;
+		gold2 = document.cookie;
+		//document.getElementById("cook").innerHTML = gold2;
+	}
+	function getCook() {
+	gold2 = document.cookie;
 	}
 	</script>
 	</body>
