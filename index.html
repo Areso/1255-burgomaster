@@ -38,14 +38,15 @@
 			<span id="pop"  style="position:relative; left:35px">0</span>
 			<br>
 			<span id="cook"  style="position:relative; left:35px">0</span>
-			<img src="gold.png" class="over1" style="left:10px; top:40px">
-			<img src="pop.png" class="over1" style="left:10px; top:80px">
+		<img src="gold.png" class="over1" style="left:10px; top:40px">
+		<img src="pop.png" class="over1" style="left:10px; top:80px">
 		</p>
-		<p id="constuctions">
+		<p id="constructions">
 			<img src="0.png" class="under">
-			<img src="1.png" class="over1" >
+			<img src="1.png" class="over1">
 		</p>
-	
+		<button onclick="Build()" class="over1" style="top:130">Build!</button>
+		
 	<script>
 	var gold = 0;
 	var pop  = 0;
@@ -63,6 +64,9 @@
 	}
 	function getCook() {
 		
+	}
+	function Build() {
+		document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+Date();
 	}
 	</script>
 	</body>
