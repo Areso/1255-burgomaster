@@ -48,12 +48,14 @@
 		<button id="defence" onclick="Build('Wall')" class="over1" style="top:130">Build walls: 2 gold</button>
 		
 	<script>
-	var gold        = 0;
-	var pop         = 0;
-	var buildLevelD = 0;
-	var costWall    = 2;
-	var costTower   = 4;
+	var gold          = 0;
+	var pop           = 0;
+	var buildLevelD   = 0;
+	var costWall      = 2;
+	var costTower     = 4;
+	var lotteryPrize  = 50;
 	setInterval(myTimer, 1000);
+	setInterval(randomEvents, 10000);
 	function myTimer() {
 		gold = gold + 1;
 		document.getElementById("gold").innerHTML = gold;
@@ -63,7 +65,51 @@
 		gold2length = gold2[0].length;
 		
 		gold2 = gold2[0].slice(5,gold2length);
-		//document.getElementById("cook").innerHTML = gold2;
+		document.getElementById("cook").innerHTML = gold2;
+	}
+	function randomEvents() {
+		rnd = Math.floor((Math.random() * 12) + 1);
+		switch (rnd) {
+			case 1:
+				alert('shit happens');
+				break;
+			case 2:
+				//
+				break;
+			case 3:
+				//
+				break;
+			case 4:
+				//
+				break;
+			case 5:
+				//
+				break;
+			case 6:
+				//
+				break;
+			case 7:
+				//
+				break;
+			case 8:
+				//
+				break;
+			case 9:
+				//
+				break;
+			case 10:
+				//
+				break;
+			case 11:
+				//
+				break;
+			case 12:
+				alert("You won a lottery with "+lotteryPrize+" gold prize");
+				gold = gold + lotteryPrize;
+				break;
+			default:
+				alert("error on switch/case function");
+		}
 	}
 	function getCook() {
 		
