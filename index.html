@@ -54,6 +54,7 @@
 	var costWall      = 2;
 	var costTower     = 4;
 	var lotteryPrize  = 50;
+	var fire = "<img src=\"fire1.gif\" class=\"over2\">";
 	setInterval(myTimer, 1000);
 	setInterval(randomEvents, 10000);
 	function myTimer() {
@@ -69,12 +70,31 @@
 	}
 	function randomEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
+		rnd = 2;
 		switch (rnd) {
 			case 1:
 				alert('shit happens');
 				break;
 			case 2:
-				//
+				alert('fire in the city!');
+				
+				var ceil = 0;
+				if (buildLevelD == 1) {
+					ceil = 1
+				}
+				if (buildLevelD == 2) {
+					ceil = 2
+				}
+				rnd = Math.floor((Math.random() * 2) + 0);
+				if (rnd == 0) {
+					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				}
+				if (rnd == 1) {
+					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				}
+				if (rnd == 0) {
+					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				}
 				break;
 			case 3:
 				//
