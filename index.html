@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>
-		My city
+			My city
 		</title>
 		<style type="text/css">
 			.under {
@@ -43,13 +43,14 @@
 		</p>
 		<p id="constructions">
 			<img src="0.png" class="under">
-			<img src="1.png" class="over1">
+			
 		</p>
-		<button onclick="Build()" class="over1" style="top:130">Build!</button>
+		<button onclick="Build()" class="over1" style="top:130">Build walls</button>
 		
 	<script>
-	var gold = 0;
-	var pop  = 0;
+	var gold       = 0;
+	var pop        = 0;
+	var buildLevel = 0;
 	setInterval(myTimer, 1000);
 	function myTimer() {
 		gold = gold + 1;
@@ -65,8 +66,15 @@
 	function getCook() {
 		
 	}
-	function Build() {
-		document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+Date();
+	function Build(Structure) {
+		if (gold >= 20 && buildLevel == 0) { 
+			var wall = "<img src=\"1.png\" class=\"over1\">";
+			buildLevel = buildLevel + 1;
+			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
+			gold = gold - 20;
+			document.getElementById("gold").innerHTML = gold;
+			document.cookie = "gold="+gold;
+		}
 	}
 	</script>
 	</body>
