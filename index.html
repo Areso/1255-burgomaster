@@ -68,13 +68,16 @@
 			
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:130">Build walls: 2 gold</button>
-		
+		<button id="homes"   onclick="Build('Home')" class="interface" style="top:150">Build home: 2 gold</button>
 	<script>
 	var gold          = 0;
 	var pop           = 0;
 	var buildLevelD   = 0;
+	var buildLevelH   = 0;
 	var costWall      = 2;
 	var costTower     = 4;
+	var costHome      = 2;
+	var costHouse     = 4;
 	var lotteryPrize  = 50;
 	var fire = "<img src=\"fire1.gif\" class=\"fire\">";
 	setInterval(myTimer, 1000);
@@ -157,31 +160,60 @@
 		
 	}
 	function Build(Structure) {
-		if (gold >= costWall && buildLevelD == 0) { 
-			var wall = "<img src=\"wallsr.png\" class=\"over1\">";
-			    wall = wall + "<img src=\"wallsf.png\" class=\"over3\">";
-			buildLevelD = buildLevelD + 1;
-			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
-			gold = gold - costWall;
-			document.getElementById("gold").innerHTML = gold;
-			document.cookie = "gold="+gold;
-			//update interface
-			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";
-			var tower = "Build("+"\'Tower\'"+")";
-			document.getElementById("defence").setAttribute("onclick", tower);
-			
-			return true;
+		if (Structure=="Wall" || Structure =="Tower") {
+			if (gold >= costWall && buildLevelD == 0) { 
+				var wall = "<img src=\"wallsr.png\" class=\"over1\">";
+					wall = wall + "<img src=\"wallsf.png\" class=\"over3\">";
+				buildLevelD = buildLevelD + 1;
+				document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
+				gold = gold - costWall;
+				document.getElementById("gold").innerHTML = gold;
+				document.cookie = "gold="+gold;
+				//update interface
+				document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";
+				var towerClick = "Build("+"\'Tower\'"+")";
+				document.getElementById("defence").setAttribute("onclick", towerClick);
+				
+				return true;
+			}
+			if (gold >= costTower && buildLevelD == 1) { 
+				var tower = "<img src=\"2.png\" class=\"over1\">";
+				buildLevelD = buildLevelD + 1;
+				document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+tower;
+				gold = gold - costTower;
+				document.getElementById("gold").innerHTML = gold;
+				document.cookie = "gold="+gold;
+				//finale this building path
+				document.getElementById("defence").setAttribute("style", "display:none");
+				return true;
+			}
 		}
-		if (gold >= costTower && buildLevelD == 1) { 
-			var tower = "<img src=\"2.png\" class=\"over1\">";
-			buildLevelD = buildLevelD + 1;
-			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+tower;
-			gold = gold - costTower;
-			document.getElementById("gold").innerHTML = gold;
-			document.cookie = "gold="+gold;
-			//finale this building path
-			document.getElementById("defence").setAttribute("style", "display:none");
-			return true;
+		if (Structure=="Home" || Structure =="House") {
+			if (gold >= costHome && buildLevelH == 0) { 
+				var home = "<img src=\"home.png\" class=\"over2\">";
+				buildLevelH = buildLevelH + 1;
+				document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+home;
+				gold = gold - costWall;
+				document.getElementById("gold").innerHTML = gold;
+				document.cookie = "gold="+gold;
+				//update interface
+				document.getElementById("homes").innerHTML="Build House: "+costHouse+" gold";
+				var homeClick = "Build("+"\'House\'"+")";
+				document.getElementById("homes").setAttribute("onclick", homeClick);
+				
+				return true;
+			}
+			/*if (gold >= costTower && buildLevelD == 1) { 
+				var tower = "<img src=\"2.png\" class=\"over1\">";
+				buildLevelD = buildLevelD + 1;
+				document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+tower;
+				gold = gold - costTower;
+				document.getElementById("gold").innerHTML = gold;
+				document.cookie = "gold="+gold;
+				//finale this building path
+				document.getElementById("defence").setAttribute("style", "display:none");
+				return true;
+			}*/
 		}
 	}
 	</script>
