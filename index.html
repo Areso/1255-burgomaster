@@ -4,23 +4,45 @@
 			My city
 		</title>
 		<style type="text/css">
-			.under {
+			.background {
 				position:absolute;
 				left:0px;
 				top:0px;
 				z-index:-1;
 			}
+			/*wall rear*/
 			.over1 {
 				position:absolute;
 				left:0px;
 				top:0px;
 				z-index:1;
 			}
+			/*buildings*/
 			.over2 {
 				position:absolute;
 				left:0px;
 				top:0px;
 				z-index:2;
+			}
+			/*wall front*/
+			.over3 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:3;
+			}
+			/*fire*/
+			.fire {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:4;
+			}
+			.interface {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:99;
 			}
 			.resources{
 				position: relative;
@@ -32,20 +54,20 @@
 		welcome to heroes' city
 		<br>
 		<p id="resources">
-			<span id="gold"  style="position:relative; left:35px">0</span>
+			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
 			<br>
 			<br>
-			<span id="pop"  style="position:relative; left:35px">0</span>
+			<span id="pop"  class="interface" style="position:relative; left:35px">0</span>
 			<br>
-			<span id="cook"  style="position:relative; left:35px">0</span>
-		<img src="gold.png" class="over1" style="left:10px; top:40px">
-		<img src="pop.png" class="over1" style="left:10px; top:80px">
+			<span id="cook" class="interface" style="position:relative; left:35px">0</span>
+		<img src="gold.png" class="interface" style="left:10px; top:40px">
+		<img src="pop.png"  class="interface" style="left:10px; top:80px">
 		</p>
 		<p id="constructions">
-			<img src="0.png" class="under">
+			<img src="background.png" class="background">
 			
 		</p>
-		<button id="defence" onclick="Build('Wall')" class="over1" style="top:130">Build walls: 2 gold</button>
+		<button id="defence" onclick="Build('Wall')" class="interface" style="top:130">Build walls: 2 gold</button>
 		
 	<script>
 	var gold          = 0;
@@ -54,7 +76,7 @@
 	var costWall      = 2;
 	var costTower     = 4;
 	var lotteryPrize  = 50;
-	var fire = "<img src=\"fire1.gif\" class=\"over2\">";
+	var fire = "<img src=\"fire1.gif\" class=\"fire\">";
 	setInterval(myTimer, 1000);
 	setInterval(randomEvents, 10000);
 	function myTimer() {
@@ -136,7 +158,8 @@
 	}
 	function Build(Structure) {
 		if (gold >= costWall && buildLevelD == 0) { 
-			var wall = "<img src=\"1.png\" class=\"over1\">";
+			var wall = "<img src=\"wallsr.png\" class=\"over1\">";
+			    wall = wall + "<img src=\"wallsf.png\" class=\"over3\">";
 			buildLevelD = buildLevelD + 1;
 			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
 			gold = gold - costWall;
