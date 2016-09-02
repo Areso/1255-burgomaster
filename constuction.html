@@ -52,26 +52,17 @@
 		</style>
 	</head>
 	<body>
-		welcome to heroes' city
 		<br>
 		<p id="resources">
 			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
-			<br>
-			<br>
-			<span id="pop"  class="interface" style="position:relative; left:35px">0</span>
-			<br>
-			<span id="cook" class="interface" style="position:relative; left:35px">0</span>
-		<img src="gold.png" class="interface" style="left:10px; top:40px">
-		<img src="pop.png"  class="interface" style="left:10px; top:80px">
+			<img src="gold.png" class="interface" style="left:10px; top:40px">
 		</p>
 		<p id="constructions">
-			<img src="background.png" class="background">
 			
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120">Build walls: 2 gold</button>
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
-		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260">Open construction menu</button>
-		<iframe id="constructionWindow" src="constuction.html" class="interface" style="left:600px" width="100" height="10"></iframe>
+		<button id="close"   onclick="minimizew('constuction') class="interface" style="top:190;left=100">X</button>
 	<script>
 	var gold          = 0;
 	var pop           = 0;
@@ -82,92 +73,15 @@
 	var costHome      = 2;
 	var costHouse     = 4;
 	var lotteryPrize  = 50;
-	var redraw        = 0;
 	var fire = "<img src=\"fire1.gif\" class=\"fire\">";
-	setInterval(myTimer, 2000);
-	setInterval(randomEvents, 100000);
+	setInterval(myTimer, 1000);
+	
 	function myTimer() {
-		gold = gold + 1;
-		document.getElementById("gold").innerHTML = gold;
-		
-		document.cookie = "gold="+gold;
-		document.cookie = "pop="+pop;
-		document.cookie = "buildLevelD="+buildLevelD;
-		document.cookie = "buildLevelH="+buildLevelH;
-		document.cookie = "redraw="+redraw;
-		
+	 
 		gold2 = document.cookie.split(';');
 		gold2length = gold2[0].length;
-		
-		gold2 = gold2[0].slice(5,gold2length);
-		document.getElementById("cook").innerHTML = gold2;
-		
-	}
-	function randomEvents() {
-		rnd = Math.floor((Math.random() * 12) + 1);
-		
-		switch (rnd) {
-			case 1:
-				alert('shit happens');
-				break;
-			case 2:
-				alert('fire in the city!');
-				
-				var ceil = 0;
-				if (buildLevelD == 1) {
-					ceil = 1
-				}
-				if (buildLevelD == 2) {
-					ceil = 2
-				}
-				rnd = Math.floor((Math.random() * 2) + 0);
-				if (rnd == 0) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd == 1) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd == 0) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				break;
-			case 3:
-				//
-				break;
-			case 4:
-				//
-				break;
-			case 5:
-				//
-				break;
-			case 6:
-				//
-				break;
-			case 7:
-				//
-				break;
-			case 8:
-				//
-				break;
-			case 9:
-				//
-				break;
-			case 10:
-				//
-				break;
-			case 11:
-				//
-				break;
-			case 12:
-				alert("You won a lottery with "+lotteryPrize+" gold prize");
-				gold = gold + lotteryPrize;
-				break;
-			default:
-				alert("error on switch/case function");
-		}
-	}
-	function getCook() {
-		
+		gold = gold2[0].slice(5,gold2length);
+		document.getElementById("gold").innerHTML = gold;
 	}
 	function Build(Structure) {
 		if (Structure=="Wall" || Structure =="Tower") {
@@ -225,12 +139,6 @@
 				return true;
 			}*/
 		}
-	}
-	function maximizew() {
-		var mxmw = document.getElementById("constructionWindow");
-		
-		document.getElementById("constructionWindow").setAttribute("width", 200);
-		document.getElementById("constructionWindow").setAttribute("height", 400);
 	}
 	</script>
 	</body>
