@@ -85,8 +85,21 @@
 	var redraw        = 0;
 	var fire = "<img src=\"fire1.gif\" class=\"fire\">";
 	setInterval(myTimer, 2000);
+	
 	setInterval(randomEvents, 100000);
+	function redrawTimer() {
+		cookies = document.cookie.split(';');
+		redraw2  = "";
+		redraw2  = cookies[4];
+		redraw2  = cookies[4].slice(8,9);
+		if (refraw2 == 1) {
+			
+		}
+		return;
+	}
 	function myTimer() {
+		setInterval(redrawTimer, 2000);
+		
 		gold = gold + 1;
 		document.getElementById("gold").innerHTML = gold;
 		

@@ -49,6 +49,7 @@
 				position: relative;
 				left:0px;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -62,7 +63,8 @@
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120">Build walls: 2 gold</button>
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
-		<button id="close"   onclick="minimizew('constuction') class="interface" style="top:190;left=100">X</button>
+		
+		<button id="close"   onclick="minimizew('constuction')" class="interface" style="left:180px">X</button>
 	<script>
 	var gold          = 0;
 	var pop           = 0;
@@ -81,6 +83,10 @@
 		gold2 = document.cookie.split(';');
 		gold2length = gold2[0].length;
 		gold = gold2[0].slice(5,gold2length);
+		if (gold == null || gold =="") {
+		gold = 0;
+		}
+		//alert(gold);
 		document.getElementById("gold").innerHTML = gold;
 	}
 	function Build(Structure) {
@@ -93,11 +99,7 @@
 				gold = gold - costWall;
 				document.getElementById("gold").innerHTML = gold;
 				document.cookie = "gold="+gold;
-				//update interface
-				document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";
-				var towerClick = "Build("+"\'Tower\'"+")";
-				document.getElementById("defence").setAttribute("onclick", towerClick);
-				
+				document.cookie = "buildLevelD="+"1";
 				return true;
 			}
 			if (gold >= costTower && buildLevelD == 1) { 
@@ -107,8 +109,8 @@
 				gold = gold - costTower;
 				document.getElementById("gold").innerHTML = gold;
 				document.cookie = "gold="+gold;
-				//finale this building path
-				document.getElementById("defence").setAttribute("style", "display:none");
+				document.cookie = "buildLevelD="+"2";
+				document.cookie = "redraw="+"1";
 				return true;
 			}
 		}
@@ -120,11 +122,8 @@
 				gold = gold - costWall;
 				document.getElementById("gold").innerHTML = gold;
 				document.cookie = "gold="+gold;
-				//update interface
-				document.getElementById("homes").innerHTML="Build House: "+costHouse+" gold";
-				var homeClick = "Build("+"\'House\'"+")";
-				document.getElementById("homes").setAttribute("onclick", homeClick);
-				
+				document.cookie = "buildLevelH="+"1";
+				document.cookie = "redraw="+"1";
 				return true;
 			}
 			/*if (gold >= costTower && buildLevelD == 1) { 
