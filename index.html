@@ -58,9 +58,9 @@
 			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
 			<br>
 			<br>
-			<span id="pop"  class="interface" style="position:relative; left:35px">0</span>
+			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
 			<br>
-			<span id="cook" class="interface" style="position:relative; left:35px">0</span>
+			
 		<img src="gold.png" class="interface" style="left:10px; top:40px">
 		<img src="pop.png"  class="interface" style="left:10px; top:80px">
 		</p>
@@ -70,12 +70,13 @@
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120">Build walls: 2 gold</button>
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
+		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="100" height="10"></iframe>
 		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260">Open construction menu</button>
-		<iframe id="constructionWindow" src="constuction.html" class="interface" style="left:600px" width="100" height="10"></iframe>
+		
 	<script>
 	//init variables
 	var gold          = 0;
-	var pop           = 0;
+	var pop           = 2;
 	var buildLevelD   = 0;
 	var buildLevelH   = 0;
 	var costWall      = 2;
@@ -93,39 +94,71 @@
 	var home   = "<img src=\"home.png\" class=\"over2\">";
 	var house  = "<img src=\"house.png\" class=\"over2\">";
 	//init timers
-	setInterval(myTimer, 2000);
-	setInterval(rndEvents, 100000);
-	setInterval(redrawTimer, 2000);
+	setInterval(myTimer, 10000);
+	//setInterval(rndEvents, 100000);
+	//setInterval(redrawTimer, 20);
 	updateCookies();
 	//functions
+	function readCookies(){
+		x = "cookie read, "+document.cookie;
+		alert(x);
+		cookies  = document.cookie.split(';');
+		cookieGL = cookies[0].length;
+		gold     = cookies[0].slice(5, cookieGL);
+		gold     = gold*1;
+		cookiePL = cookies[1].length;
+		pop      = cookies[1].slice(5, cookiePL);
+		pop      = pop*1;
+		/*
+		cookieBL = 13;
+		buildLevelD2      = cookies[2].slice(13, 14);
+		buildLevelD2      = buildLevelD*1;
+		buildLevelH      = cookies[3].slice(13, 14);
+		buildLevelH      = buildLevelH*1;
+		*/
+	}
 	function updateCookies() {
 		document.cookie = "gold="+gold;
 		document.cookie = "pop="+pop;
+		x = "updated cookie is "+document.cookie;
+		alert(x);
+		/*
 		document.cookie = "buildLevelD="+buildLevelD;
 		document.cookie = "buildLevelH="+buildLevelH;
 		document.cookie = "redraw="+redraw;
 		document.cookie = "what="+whatDraw;
+		*/
+		/*
+		document.cookie = " pop="+pop;
+		document.cookie = " buildLevelD="+buildLevelD;
+		document.cookie = " buildLevelH="+buildLevelH;
+		document.cookie = " redraw="+redraw;
+		document.cookie = " what="+whatDraw;
+		*/
+		alert("setted up next cookie"&&document.cookie);
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML = gold;
-		document.getElementById("cook").innerHTML = gold2;
+		document.getElementById("pop").innerHTML  = pop;
 	}
 	function Build(Structure) {
 		if (Structure=="Wall" || Structure =="Tower") {
 			if (gold >= costWall && buildLevelD == 0) { 
 				buildLevelD = buildLevelD + 1;
 				gold = gold - costWall;
+				redraw   = 1;
+				whatDraw = "Wall";
 				updateCookies();
 				updateResources();
-				Draw("Wall");
 				return true;
 			}
 			if (gold >= costTower && buildLevelD == 1) { 
 				buildLevelD = buildLevelD + 1;
 				gold = gold - costTower;
+				redraw   = 1;
+				whatDraw = "Tower";
 				updateCookies();
 				updateResources();
-				Draw("Tower");
 				return true;
 			}
 		}
@@ -133,6 +166,8 @@
 			if (gold >= costHome && buildLevelH == 0) { 
 				buildLevelH = buildLevelH + 1;
 				gold = gold - costWall;
+				redraw   = 1;
+				whatDraw = "Tower";
 				updateCookies();
 				updateResources();
 				Draw("Home");
@@ -176,9 +211,9 @@
 	}
 	function maximizew() {
 		var mxmw = document.getElementById("constructionWindow");
-		
-		document.getElementById("constructionWindow").setAttribute("width", 200);
+		document.getElementById("constructionWindow").setAttribute("width", 195);
 		document.getElementById("constructionWindow").setAttribute("height", 400);
+		
 	}
 	//timers
 	function redrawTimer() {
@@ -186,31 +221,24 @@
 		redraw  = "";
 		redraw  = cookies[4];
 		redraw  = cookies[4].slice(8,9);
+		redraw  = Math.floor(redraw);
 		if (redraw == 1) {
-			
+			whatDraw  = cookies[5];
+			whatDrawL = cookies[5].length;
+			whatDraw  = cookies[5].slice(6,whatDrawL);
+			Draw(whatDraw);
+			redraw = 0;
+			whatDraw  = "";
+			updateCookies();
 		}
 		return;
 	}
 	function myTimer() {
-		cookies  = document.cookie.split(';');
-		cookieGL = cookies[0].length;
-		gold     = cookies[0].slice(5, cookieGL);
-		//alert(cookies[0]);//DEBUG
-		//alert(cookieGL);//DEBUG
-		//alert(gold);//DEBUG
-		
-		//gold increment
-		gold     = gold*1+1;
-		//alert(gold);//DEBUG
-		//update cookies
+		readCookies();
+		gold     = gold*1+40;
+		pop      = pop*1+3;
 		updateCookies();
-		//read cookie gold
-		gold2 = document.cookie.split(';');
-		gold2length = gold2[0].length;
-		gold2 = gold2[0].slice(5,gold2length);
-		//redraw our resources
 		updateResources();
-		
 	}
 	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
@@ -276,6 +304,5 @@
 		}
 	}
 	</script>
-	<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter39413440 = new Ya.Metrika({ id:39413440, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/39413440" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 	</body>
 </html>

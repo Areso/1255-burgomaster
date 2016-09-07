@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<title>
+			My city
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			.background {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:-1;
+			}
+			/*wall rear*/
+			.over1 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:1;
+			}
+			/*buildings*/
+			.over2 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:2;
+			}
+			/*wall front*/
+			.over3 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:3;
+			}
+			/*fire*/
+			.fire {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:4;
+			}
+			.interface {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:99;
+			}
+			.resources{
+				position: relative;
+				left:0px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<br>
+		<p id="resources">
+			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
+			<span id="pop" class="interface" style="position:relative; left:35px">2</span>
+		</p>
+		
+	<script>
+	var gold          = 0;
+	var pop           = 2;
+	setInterval(myTimer, 2000);
+	function readCookies(){
+		x = "cookie read, "+document.cookie;
+		alert(x);
+		cookies  = document.cookie.split(';');
+		cookieGL = cookies[0].length;
+		gold     = cookies[0].slice(5, cookieGL);
+		gold     = gold*1;
+		cookiePL = cookies[1].length;
+		pop      = cookies[1].slice(5, cookiePL);
+		pop      = pop*1;
+	}
+	function updateCookies() {
+		document.cookie = "gold="+gold;
+		document.cookie = "pop="+pop;
+		x = "updated cookie is "+document.cookie;
+		alert(x);
+	}
+	function updateResources() {
+		document.getElementById("gold").innerHTML = gold;
+		document.getElementById("pop").innerHTML  = pop;
+	}
+	
+	function myTimer() {
+		readCookies();
+		gold     = gold*1+40;
+		pop      = pop*1+3;
+		updateCookies();
+		updateResources();
+	}
+	</script>
+	</body>
+</html>
