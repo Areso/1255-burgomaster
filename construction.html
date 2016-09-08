@@ -77,7 +77,7 @@
 	setInterval(myTimer, 2000);
 	function readCookies(){
 		x = "cookie read, "+document.cookie;
-		alert(x);
+		//alert(x);
 		cookies  = document.cookie.split(';');
 		cookieGL = cookies[0].length;
 		gold     = cookies[0].slice(5, cookieGL);
@@ -85,17 +85,16 @@
 		cookiePL = cookies[1].length;
 		pop      = cookies[1].slice(5, cookiePL);
 		pop      = pop*1;
-		/*
-		cookieBL = 13;
-		buildLevelD2      = cookies[2].slice(13, 14);
-		buildLevelD2      = buildLevelD*1;
+		buildLevelD2     = cookies[2].slice(13, 14);
+		buildLevelD2     = buildLevelD*1;
 		buildLevelH      = cookies[3].slice(13, 14);
 		buildLevelH      = buildLevelH*1;
-		*/
+		redraw  = Math.floor(cookies[4].slice(8,9));
+		//alert(redraw);
 	}
 	function updateCookies() {
 		document.cookie = "gold="+gold;
-		
+		document.cookie = "pop="+pop;
 		document.cookie = "buildLevelD="+buildLevelD;
 		document.cookie = "buildLevelH="+buildLevelH;
 		document.cookie = "redraw="+redraw;
@@ -130,29 +129,27 @@
 		if (Structure=="Home" || Structure =="House") {
 			if (gold >= costHome && buildLevelH == 0) { 
 				buildLevelH = buildLevelH + 1;
-				gold = gold - costWall;
+				gold = gold - costHome;
 				redraw   = 1;
-				whatDraw = "Tower";
+				whatDraw = "Home";
 				updateCookies();
 				updateResources();
-				Draw("Home");
 				return true;
 			}
 			if (gold >= costHouse && buildLevelH == 1) { 
 				buildLevelH = buildLevelH + 1;
 				gold = gold - costHouse;
+				redraw   = 1;
+				whatDraw = "House";
 				updateCookies();
 				updateResources();
-				Draw("House");
 				return true;
 			}
 		}
 	}
 	function myTimer() {
 		readCookies();
-		//cookies  = document.cookie.split(';');
-		//cookieGL = cookies[0].length;
-		gold     = cookies[0].slice(5, cookieGL);
+	
 		updateCookies();
 		updateResources();
 	}
