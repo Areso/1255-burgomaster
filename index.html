@@ -94,10 +94,13 @@
 	var home   = "<img src=\"home.png\" class=\"over2\">";
 	var house  = "<img src=\"house.png\" class=\"over2\">";
 	//init timers
+	//document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
 	setInterval(myTimer, 10000);
 	//setInterval(rndEvents, 100000);
 	setInterval(redrawTimer, 20);
-	updateCookies();
+	//readCookies();
+	//updateCookies();
+	updateResources();
 	//functions
 	function readCookies(){
 		x = "cookie read, "+document.cookie;
