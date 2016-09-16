@@ -63,6 +63,8 @@
 		
 		<button id="close"   onclick="minimizew('constuction')" class="interface" style="left:160px">X</button>
 	<script>
+	//init
+	
 	var gold          = 0;
 	var pop           = 2;
 	var buildLevelD   = 0;
@@ -74,7 +76,11 @@
 	var lotteryPrize  = 50;
 	var redraw        = 0;
 	var whatDraw      = "";
+	
+	
 	setInterval(myTimer, 200);
+	updateResources();
+	//functions
 	function readCookies(){
 		x = "cookie read, "+document.cookie;
 		//alert(x);
@@ -85,11 +91,12 @@
 		cookiePL = cookies[1].length;
 		pop      = cookies[1].slice(5, cookiePL);
 		pop      = pop*1;
-		buildLevelD2     = cookies[2].slice(13, 14);
-		buildLevelD2     = buildLevelD*1;
-		buildLevelH      = cookies[3].slice(13, 14);
-		buildLevelH      = buildLevelH*1;
+		buildLevelD2     = cookies[2].slice(13, 14)*1;
+		//buildLevelD2     = buildLevelD*1;
+		buildLevelH      = cookies[3].slice(13, 14)*1;
+		//buildLevelH      = buildLevelH*1;
 		redraw  = Math.floor(cookies[4].slice(8,9));
+		alert(gold);
 		//alert(redraw);
 	}
 	function updateCookies() {
@@ -147,6 +154,13 @@
 			}
 		}
 	}
+	function minimizew() {
+		var mxmw = document.getElementById("constructionWindow");
+		document.getElementById("constructionWindow").setAttribute("width", 195);
+		document.getElementById("constructionWindow").setAttribute("height", 400);
+		
+	}
+	//timers
 	function myTimer() {
 		readCookies();
 		updateCookies();
