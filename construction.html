@@ -74,8 +74,7 @@
 	var lotteryPrize  = 50;
 	var redraw        = 0;
 	var whatDraw      = "";
-	document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
-	setInterval(myTimer, 2000);
+	setInterval(myTimer, 200);
 	function readCookies(){
 		x = "cookie read, "+document.cookie;
 		//alert(x);
@@ -150,7 +149,6 @@
 	}
 	function myTimer() {
 		readCookies();
-	
 		updateCookies();
 		updateResources();
 	}
