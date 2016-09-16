@@ -62,6 +62,14 @@
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
 		
 		<button id="close"   onclick="minimizew('constuction')" class="interface" style="left:160px">X</button>
+		<p id="cookiesInit" class="interface" style="top:480">
+		</p>
+		<p id="cookiesRead" class="interface" style="top:500">
+		</p>
+		<p id="cookiesWrote" class="interface" style="top:520">
+		</p>
+		<p id="dbg" class="interface" style="top:540">
+		</p>
 	<script>
 	//init
 	
@@ -76,7 +84,7 @@
 	var lotteryPrize  = 50;
 	var redraw        = 0;
 	var whatDraw      = "";
-	
+	var minBL         = 0;
 	
 	setInterval(myTimer, 200);
 	updateResources();
@@ -96,7 +104,9 @@
 		buildLevelH      = cookies[3].slice(13, 14)*1;
 		//buildLevelH      = buildLevelH*1;
 		redraw  = Math.floor(cookies[4].slice(8,9));
-		//alert(gold);
+		minBL      = cookies[6].slice(5, 6)*1;
+		//document.getElementById('dbg').innerHTML = minBL*1;
+		//alert(minimizeBl);
 		//alert(redraw);
 	}
 	function updateCookies() {
@@ -106,8 +116,9 @@
 		document.cookie = "buildLevelH="+buildLevelH;
 		document.cookie = "redraw="+redraw;
 		document.cookie = "what="+whatDraw;
-		x = document.cookie.split(';')[0];
-		//alert("Cookie updated!"+x);
+		document.cookie = "min="+minBL;
+		//alert(document.cookie);
+		readCookies();
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML = gold;
@@ -155,10 +166,14 @@
 		}
 	}
 	function minimizew() {
-		var mxmw = document.getElementById("constructionWindow");
-		document.getElementById("constructionWindow").setAttribute("width", 195);
-		document.getElementById("constructionWindow").setAttribute("height", 400);
+		minBL = 1;
+		//document.cookie = "min="+1*1;
+		//document.cookie = "min="+minimizeBl;
+		//x = document.cookie.split(';')[6];
+		//x       = x.slice(6, 7)*1;
+		//alert("Cookie updated!"+x);
 		
+		updateCookies();
 	}
 	//timers
 	function myTimer() {
