@@ -1,0 +1,186 @@
+<html>
+	<head>
+		<title>
+			My city
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			.background {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:-1;
+			}
+			/*wall rear*/
+			.over1 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:1;
+			}
+			/*buildings*/
+			.over2 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:2;
+			}
+			/*wall front*/
+			.over3 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:3;
+			}
+			/*fire*/
+			.fire {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:4;
+			}
+			.interface {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:99;
+			}
+			.resources{
+				position: relative;
+				left:0px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<br>
+		<p id="resources">
+			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
+			<img src="gold.png" class="interface" style="left:10px; top:40px">
+		</p>
+		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120">Build walls: 2 gold</button>
+		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
+		
+		<button id="close"   onclick="minimizew('constuction')" class="interface" style="left:160px">X</button>
+		<p id="cookiesInit" class="interface" style="top:480">
+		</p>
+		<p id="cookiesRead" class="interface" style="top:500">
+		</p>
+		<p id="cookiesWrote" class="interface" style="top:520">
+		</p>
+		<p id="dbg" class="interface" style="top:540">
+		</p>
+	<script>
+	//init
+	
+	var gold          = 0;
+	var pop           = 2;
+	var buildLevelD   = 0;
+	var buildLevelH   = 0;
+	var costWall      = 2;
+	var costTower     = 4;
+	var costHome      = 2;
+	var costHouse     = 4;
+	var lotteryPrize  = 50;
+	var redraw        = 0;
+	var whatDraw      = "";
+	var minBL         = 0;
+	
+	setInterval(myTimer, 200);
+	updateResources();
+	//functions
+	function readCookies(){
+		x = "cookie read, "+document.cookie;
+		//alert(x);
+		cookies  = document.cookie.split(';');
+		cookieGL = cookies[0].length;
+		gold     = cookies[0].slice(5, cookieGL);
+		gold     = gold*1;
+		cookiePL = cookies[1].length;
+		pop      = cookies[1].slice(5, cookiePL);
+		pop      = pop*1;
+		buildLevelD2     = cookies[2].slice(13, 14)*1;
+		//buildLevelD2     = buildLevelD*1;
+		buildLevelH      = cookies[3].slice(13, 14)*1;
+		//buildLevelH      = buildLevelH*1;
+		redraw  = Math.floor(cookies[4].slice(8,9));
+		minBL      = cookies[6].slice(5, 6)*1;
+		//document.getElementById('dbg').innerHTML = minBL*1;
+		//alert(minimizeBl);
+		//alert(redraw);
+	}
+	function updateCookies() {
+		document.cookie = "gold="+gold;
+		document.cookie = "pop="+pop;
+		document.cookie = "buildLevelD="+buildLevelD;
+		document.cookie = "buildLevelH="+buildLevelH;
+		document.cookie = "redraw="+redraw;
+		document.cookie = "what="+whatDraw;
+		document.cookie = "min="+minBL;
+		//alert(document.cookie);
+		readCookies();
+	}
+	function updateResources() {
+		document.getElementById("gold").innerHTML = gold;
+	}
+	function Build(Structure) {
+		if (Structure=="Wall" || Structure =="Tower") {
+			if (gold >= costWall && buildLevelD == 0) { 
+				buildLevelD = buildLevelD + 1;
+				gold = gold - costWall;
+				redraw   = 1;
+				whatDraw = "Wall";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+			if (gold >= costTower && buildLevelD == 1) { 
+				buildLevelD = buildLevelD + 1;
+				gold = gold - costTower;
+				redraw   = 1;
+				whatDraw = "Tower";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+		}
+		if (Structure=="Home" || Structure =="House") {
+			if (gold >= costHome && buildLevelH == 0) { 
+				buildLevelH = buildLevelH + 1;
+				gold = gold - costHome;
+				redraw   = 1;
+				whatDraw = "Home";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+			if (gold >= costHouse && buildLevelH == 1) { 
+				buildLevelH = buildLevelH + 1;
+				gold = gold - costHouse;
+				redraw   = 1;
+				whatDraw = "House";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+		}
+	}
+	function minimizew() {
+		minBL = 1;
+		//document.cookie = "min="+1*1;
+		//document.cookie = "min="+minimizeBl;
+		//x = document.cookie.split(';')[6];
+		//x       = x.slice(6, 7)*1;
+		//alert("Cookie updated!"+x);
+		
+		updateCookies();
+	}
+	//timers
+	function myTimer() {
+		readCookies();
+		updateCookies();
+		updateResources();
+	}
+	</script>
+	</body>
+</html>

@@ -3,24 +3,47 @@
 		<title>
 			My city
 		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<style type="text/css">
-			.under {
+			.background {
 				position:absolute;
 				left:0px;
 				top:0px;
 				z-index:-1;
 			}
+			/*wall rear*/
 			.over1 {
 				position:absolute;
 				left:0px;
 				top:0px;
 				z-index:1;
 			}
+			/*buildings*/
 			.over2 {
 				position:absolute;
 				left:0px;
 				top:0px;
 				z-index:2;
+			}
+			/*wall front*/
+			.over3 {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:3;
+			}
+			/*fire*/
+			.fire {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:4;
+			}
+			.interface {
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:99;
 			}
 			.resources{
 				position: relative;
@@ -32,49 +55,273 @@
 		welcome to heroes' city
 		<br>
 		<p id="resources">
-			<span id="gold"  style="position:relative; left:35px">0</span>
+			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
 			<br>
 			<br>
-			<span id="pop"  style="position:relative; left:35px">0</span>
+			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
 			<br>
-			<span id="cook"  style="position:relative; left:35px">0</span>
-		<img src="gold.png" class="over1" style="left:10px; top:40px">
-		<img src="pop.png" class="over1" style="left:10px; top:80px">
+			
+		<img src="gold.png" class="interface" style="left:10px; top:40px">
+		<img src="pop.png"  class="interface" style="left:10px; top:80px">
 		</p>
 		<p id="constructions">
-			<img src="0.png" class="under">
-			
+			<img src="background.png" class="background">
+			<img src="sawmill.png" class="over2">
 		</p>
-		<button id="defence" onclick="Build('Wall')" class="over1" style="top:130">Build walls: 2 gold</button>
+		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120">Build walls: 2 gold</button>
+		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
+		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
+		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260">Open construction menu</button>
+		<p id="cookiesInit" class="interface" style="top:480">
+		</p>
+		<p id="cookiesRead" class="interface" style="top:500">
+		</p>
+		<p id="cookiesWrote" class="interface" style="top:520">
+		</p>
+		<p id="dbg" class="interface" style="top:540">
+		</p>
 		
 	<script>
-	var gold          = 0;
-	var pop           = 0;
+	//<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="100" height="10"></iframe>
+	//init variables
+	var gold          = 20;
+	var pop           = 2;
 	var buildLevelD   = 0;
+	var buildLevelH   = 0;
 	var costWall      = 2;
 	var costTower     = 4;
+	var costHome      = 2;
+	var costHouse     = 4;
 	var lotteryPrize  = 50;
-	setInterval(myTimer, 1000);
-	setInterval(randomEvents, 10000);
-	function myTimer() {
-		gold = gold + 1;
-		document.getElementById("gold").innerHTML = gold;
-		
-		document.cookie = "gold="+gold;
-		gold2 = document.cookie.split(';');
-		gold2length = gold2[0].length;
-		
-		gold2 = gold2[0].slice(5,gold2length);
-		document.getElementById("cook").innerHTML = gold2;
+	var redraw        = 0;
+	var whatDraw      = "";
+	var minBL         = 0;
+	//init pictures
+	var fire   = "<img src=\"fire1.gif\" class=\"fire\">";
+	var wall   = "<img src=\"wallsr.png\" class=\"over1\">";
+	    wall   = wall + "<img src=\"wallsf.png\" class=\"over3\">";
+	var tower  = "<img src=\"castle3.png\" class=\"over1\">";
+	var home   = "<img src=\"home.png\" class=\"over2\">";
+	var house  = "<img src=\"house.png\" class=\"over2\">";
+	//init timers
+	//document.cookie[0] = document.cookie[0] + '; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+	deleteAllCookies();
+	x = "init cookies is "+document.cookie;
+	document.getElementById('cookiesInit').innerHTML = x;
+	setInterval(myTimer, 10000);
+	//setInterval(rndEvents, 100000);
+	setInterval(redrawTimer, 20);
+	//readCookies();
+	updateCookies();
+	updateResources();
+	//functions
+	function clearCookie(name, domain, path){
+		var domain = domain || document.domain;
+		var path = path || "/";
+		document.cookie = name + "=; expires=" + +new Date + "; domain=" + domain + "; path=" + path;
+	};
+	function eraseCookie(name) {
+		createCookie(name,"",-1);
 	}
-	function randomEvents() {
+	function deleteAllCookies() {
+		var cookies = document.cookie.split(";");
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = cookies[i];
+			var eqPos = cookie.indexOf("=");
+			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+		}
+	}
+	function readCookies(){
+		x = "cookie read, "+document.cookie;
+		//alert(x);
+		document.getElementById('cookiesRead').innerHTML = x;
+		cookies  = document.cookie.split(';');
+		cookieGL = cookies[0].length;
+		//alert ("cookies 0 is "+cookies[0]);
+		gold     = cookies[0].slice(5, cookieGL);
+		gold     = gold*1;
+		//alert("gold is "+gold);
+		cookiePL = cookies[1].length;
+		pop      = cookies[1].slice(5, cookiePL);
+		pop      = pop*1;
+		buildLevelD2     = cookies[2].slice(13, 14);
+		buildLevelD2     = buildLevelD*1;
+		buildLevelH      = cookies[3].slice(13, 14);
+		buildLevelH      = buildLevelH*1;
+		redraw           = Math.floor(cookies[4].slice(8,9));
+		//alert(cookies[6]);
+		minBL            = cookies[6].slice(5, 6)*1;
+		
+		document.getElementById('dbg').innerHTML = minBL;
+		//alert(redraw);
+	}
+	function updateCookies() {
+		document.cookie = "gold="+gold;
+		document.cookie = "pop="+pop;
+		document.cookie = "buildLevelD="+buildLevelD;
+		document.cookie = "buildLevelH="+buildLevelH;
+		document.cookie = "redraw="+redraw;
+		document.cookie = "what="+whatDraw;
+		document.cookie = "min="+minBL;
+		
+		/*
+		document.cookie = " pop="+pop;
+		document.cookie = " buildLevelD="+buildLevelD;
+		document.cookie = " buildLevelH="+buildLevelH;
+		document.cookie = " redraw="+redraw;
+		document.cookie = " what="+whatDraw;
+		*/
+		x = "updated cookie is "+document.cookie;
+		document.getElementById('cookiesWrote').innerHTML = x;
+		//alert(x);
+		}
+	function updateResources() {
+		document.getElementById("gold").innerHTML = gold;
+		document.getElementById("pop").innerHTML  = pop;
+	}
+	function Build(Structure) {
+		if (Structure=="Wall" || Structure =="Tower") {
+			if (gold >= costWall && buildLevelD == 0) { 
+				buildLevelD = buildLevelD + 1;
+				gold = gold - costWall;
+				redraw   = 1;
+				whatDraw = "Wall";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+			if (gold >= costTower && buildLevelD == 1) { 
+				buildLevelD = buildLevelD + 1;
+				gold = gold - costTower;
+				redraw   = 1;
+				whatDraw = "Tower";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+		}
+		if (Structure=="Home" || Structure =="House") {
+			if (gold >= costHome && buildLevelH == 0) { 
+				buildLevelH = buildLevelH + 1;
+				gold = gold - costHome;
+				redraw   = 1;
+				whatDraw = "Home";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+			if (gold >= costHouse && buildLevelH == 1) { 
+				buildLevelH = buildLevelH + 1;
+				gold = gold - costHouse;
+				redraw   = 1;
+				whatDraw = "House";
+				updateCookies();
+				updateResources();
+				return true;
+			}
+		}
+	}
+	function Draw(Structure){
+		if (Structure == "Wall"){
+			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
+			//update interface
+			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";
+			var towerClick = "Build("+"\'Tower\'"+")";
+			document.getElementById("defence").setAttribute("onclick", towerClick);
+		}
+		if (Structure == "Tower"){
+			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+tower;
+			//update interface
+			document.getElementById("defence").setAttribute("style", "display:none");
+		}
+		if (Structure == "Home"){
+			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+home;
+			//update interface
+			document.getElementById("homes").innerHTML="Build House: "+costHouse+" gold";
+			var homeClick = "Build("+"\'House\'"+")";
+			document.getElementById("homes").setAttribute("onclick", homeClick);
+		}
+		if (Structure == "House"){
+			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+house;
+			//update interface
+			document.getElementById("homes").setAttribute("style", "display:none");
+		}
+	}
+	function maximizew() {
+		//var mxmw = document.getElementById("constructionWindow");
+		document.getElementById("constructionWindow").setAttribute("width", 195);
+		document.getElementById("constructionWindow").setAttribute("height", 400);
+		
+	}
+		function minimizew() {
+		//var mxmw = document.getElementById("constructionWindow");
+		document.getElementById("constructionWindow").setAttribute("width", 1);
+		document.getElementById("constructionWindow").setAttribute("height", 1);
+	}
+	//timers
+	function redrawTimer() {
+		cookies = document.cookie.split(';');
+		redraw  = cookies[4];
+		redraw  = cookies[4].slice(8,9);
+		redraw  = Math.floor(redraw);
+		minBL   = cookies[6].slice(5, 6)*1;
+		//document.getElementById('dbg').innerHTML = minimizeBl;
+		if (redraw == 1) {
+			readCookies();
+			//alert("redraw");
+			whatDraw  = cookies[5];
+			whatDrawL = cookies[5].length;
+			whatDraw  = cookies[5].slice(6,whatDrawL);
+			//alert(whatDraw);
+			Draw(whatDraw);
+			redraw = 0;
+			whatDraw  = "";
+			updateCookies();
+			updateResources();
+		}
+		if (minBL == 1) {
+			minimizew();
+			minBL=0;
+			updateCookies();
+		}
+		return;
+	}
+	function myTimer() {
+		readCookies();
+		gold     = gold*1+pop*2;
+		//gold     = gold*1+2;
+		pop      = pop*1+1;
+		updateCookies();
+		updateResources();
+	}
+	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
+		
 		switch (rnd) {
 			case 1:
 				alert('shit happens');
 				break;
 			case 2:
-				//
+				alert('fire in the city!');
+				
+				var ceil = 0;
+				if (buildLevelD == 1) {
+					ceil = 1
+				}
+				if (buildLevelD == 2) {
+					ceil = 2
+				}
+				rnd = Math.floor((Math.random() * 2) + 0);
+				if (rnd == 0) {
+					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				}
+				if (rnd == 1) {
+					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				}
+				if (rnd == 0) {
+					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				}
 				break;
 			case 3:
 				//
@@ -109,36 +356,6 @@
 				break;
 			default:
 				alert("error on switch/case function");
-		}
-	}
-	function getCook() {
-		
-	}
-	function Build(Structure) {
-		if (gold >= costWall && buildLevelD == 0) { 
-			var wall = "<img src=\"1.png\" class=\"over1\">";
-			buildLevelD = buildLevelD + 1;
-			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
-			gold = gold - costWall;
-			document.getElementById("gold").innerHTML = gold;
-			document.cookie = "gold="+gold;
-			//update interface
-			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";
-			var tower = "Build("+"\'Tower\'"+")";
-			document.getElementById("defence").setAttribute("onclick", tower);
-			
-			return true;
-		}
-		if (gold >= costTower && buildLevelD == 1) { 
-			var tower = "<img src=\"2.png\" class=\"over1\">";
-			buildLevelD = buildLevelD + 1;
-			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+tower;
-			gold = gold - costTower;
-			document.getElementById("gold").innerHTML = gold;
-			document.cookie = "gold="+gold;
-			//finale this building path
-			document.getElementById("defence").setAttribute("style", "display:none");
-			return true;
 		}
 	}
 	</script>
