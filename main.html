@@ -50,7 +50,7 @@
 				position: relative;
 				left:0px;
 			}
-			#defence, #homes {
+			#defence,#homes{
 				width: 150px;
 			}
 		</style>
@@ -59,31 +59,28 @@
 	<script>
 		var url = window.location.pathname;
 		var filename = url.substring(url.lastIndexOf('/')+1);
-		
-		if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
-			res_mod = "b";
-		}
+		if (filename = "" || filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") then
+			res_mod = "a";
 		else {
 			res_mod = "b";
 		}
-		//alert(res_mod);
+		alert(res_mod);
 		/*
-		function reload_res(this) {
+	function reload_res(this) {
 		this.src=str.replace(\"_a\", res_mod);
 		alert(this.src);
-		}
-		*/
+	}*/
 	</script>
 		welcome to heroes' city
 		<br>
 		<p id="resources">
-			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
+			<span id="gold" class="interface" onload="reload_res(this)" style="position:relative; left:35px">0</span>
 			<br>
 			<br>
 			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
 			<br>
 			
-		<img src="resources\\gold_a.png" class="interface" style="left:10px; top:40px">
+		<img src="resources\\gold_a.png" onload("this.src=str.replace(\"_a\", res_mod)"; class="interface" style="left:10px; top:40px">
 		<img src="resources\\pop_a.png"  class="interface" style="left:10px; top:80px">
 		</p>
 		<p id="constructions">
