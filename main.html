@@ -50,7 +50,7 @@
 				position: relative;
 				left:0px;
 			}
-			#defence,#homes{
+			#defence, #homes {
 				width: 150px;
 			}
 		</style>
@@ -59,28 +59,31 @@
 	<script>
 		var url = window.location.pathname;
 		var filename = url.substring(url.lastIndexOf('/')+1);
-		if (filename = "" || filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") then
-			res_mod = "a";
+		
+		if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
+			res_mod = "b";
+		}
 		else {
 			res_mod = "b";
 		}
-		alert(res_mod);
+		//alert(res_mod);
 		/*
-	function reload_res(this) {
+		function reload_res(this) {
 		this.src=str.replace(\"_a\", res_mod);
 		alert(this.src);
-	}*/
+		}
+		*/
 	</script>
 		welcome to heroes' city
 		<br>
 		<p id="resources">
-			<span id="gold" class="interface" onload="reload_res(this)" style="position:relative; left:35px">0</span>
+			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
 			<br>
 			<br>
 			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
 			<br>
 			
-		<img src="resources\\gold_a.png" onload("this.src=str.replace(\"_a\", res_mod)"; class="interface" style="left:10px; top:40px">
+		<img src="resources\\gold_a.png" class="interface" style="left:10px; top:40px">
 		<img src="resources\\pop_a.png"  class="interface" style="left:10px; top:80px">
 		</p>
 		<p id="constructions">
@@ -89,7 +92,7 @@
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120">Build walls: 2 gold</button>
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
-		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
+		<!--<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>-->
 		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260;visibility: hidden">Open construction menu</button>
 		<div id="dbg" style="visibility: hidden">
 		<p id="dbg" class="interface" style="top:480; visibility: hidden">
@@ -102,7 +105,6 @@
 		</p>
 		</div>
 	<script>
-	//<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="100" height="10"></iframe>
 	//init variables
 	var gold          = 20;
 	var pop           = 2;
@@ -123,79 +125,13 @@
 	var tower  = "<img src=\"resources\\castle_a.png\" class=\"over1\">";
 	var home   = "<img src=\"resources\\home_a.png\" class=\"over2\">";
 	var house  = "<img src=\"resources\\house_a.png\" class=\"over2\">";
+	updateResources();
 	//init timers
-	//document.cookie[0] = document.cookie[0] + '; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
-	deleteAllCookies();
-	x = "init cookies is "+document.cookie;
-	document.getElementById('cookiesInit').innerHTML = x;
 	setInterval(myTimer, 10000);
 	//setInterval(rndEvents, 100000);
 	setInterval(redrawTimer, 20);
-	//readCookies();
-	updateCookies();
-	updateResources();
+	
 	//functions
-	function clearCookie(name, domain, path){
-		var domain = domain || document.domain;
-		var path = path || "/";
-		document.cookie = name + "=; expires=" + +new Date + "; domain=" + domain + "; path=" + path;
-	};
-	function eraseCookie(name) {
-		createCookie(name,"",-1);
-	}
-	function deleteAllCookies() {
-		var cookies = document.cookie.split(";");
-		for (var i = 0; i < cookies.length; i++) {
-			var cookie = cookies[i];
-			var eqPos = cookie.indexOf("=");
-			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		}
-	}
-	function readCookies(){
-		x = "cookie read, "+document.cookie;
-		//alert(x);
-		document.getElementById('cookiesRead').innerHTML = x;
-		cookies  = document.cookie.split(';');
-		cookieGL = cookies[0].length;
-		//alert ("cookies 0 is "+cookies[0]);
-		gold     = cookies[0].slice(5, cookieGL);
-		gold     = gold*1;
-		//alert("gold is "+gold);
-		cookiePL = cookies[1].length;
-		pop      = cookies[1].slice(5, cookiePL);
-		pop      = pop*1;
-		buildLevelD2     = cookies[2].slice(13, 14);
-		buildLevelD2     = buildLevelD*1;
-		buildLevelH      = cookies[3].slice(13, 14);
-		buildLevelH      = buildLevelH*1;
-		redraw           = Math.floor(cookies[4].slice(8,9));
-		//alert(cookies[6]);
-		minBL            = cookies[6].slice(5, 6)*1;
-		
-		document.getElementById('dbg').innerHTML = minBL;
-		//alert(redraw);
-	}
-	function updateCookies() {
-		document.cookie = "gold="+gold;
-		document.cookie = "pop="+pop;
-		document.cookie = "buildLevelD="+buildLevelD;
-		document.cookie = "buildLevelH="+buildLevelH;
-		document.cookie = "redraw="+redraw;
-		document.cookie = "what="+whatDraw;
-		document.cookie = "min="+minBL;
-		
-		/*
-		document.cookie = " pop="+pop;
-		document.cookie = " buildLevelD="+buildLevelD;
-		document.cookie = " buildLevelH="+buildLevelH;
-		document.cookie = " redraw="+redraw;
-		document.cookie = " what="+whatDraw;
-		*/
-		x = "updated cookie is "+document.cookie;
-		document.getElementById('cookiesWrote').innerHTML = x;
-		//alert(x);
-		}
 	function updateResources() {
 		document.getElementById("gold").innerHTML = gold;
 		document.getElementById("pop").innerHTML  = pop;
@@ -207,7 +143,6 @@
 				gold = gold - costWall;
 				redraw   = 1;
 				whatDraw = "Wall";
-				updateCookies();
 				updateResources();
 				return true;
 			}
@@ -216,7 +151,6 @@
 				gold = gold - costTower;
 				redraw   = 1;
 				whatDraw = "Tower";
-				updateCookies();
 				updateResources();
 				return true;
 			}
@@ -227,7 +161,6 @@
 				gold = gold - costHome;
 				redraw   = 1;
 				whatDraw = "Home";
-				updateCookies();
 				updateResources();
 				return true;
 			}
@@ -236,7 +169,6 @@
 				gold = gold - costHouse;
 				redraw   = 1;
 				whatDraw = "House";
-				updateCookies();
 				updateResources();
 				return true;
 			}
@@ -281,38 +213,23 @@
 	}
 	//timers
 	function redrawTimer() {
-		cookies = document.cookie.split(';');
-		redraw  = cookies[4];
-		redraw  = cookies[4].slice(8,9);
-		redraw  = Math.floor(redraw);
-		minBL   = cookies[6].slice(5, 6)*1;
+		//cookies = document.cookie.split(';');
 		//document.getElementById('dbg').innerHTML = minimizeBl;
 		if (redraw == 1) {
-			readCookies();
-			//alert("redraw");
-			whatDraw  = cookies[5];
-			whatDrawL = cookies[5].length;
-			whatDraw  = cookies[5].slice(6,whatDrawL);
-			//alert(whatDraw);
 			Draw(whatDraw);
 			redraw = 0;
 			whatDraw  = "";
-			updateCookies();
-			updateResources();
 		}
 		if (minBL == 1) {
 			minimizew();
 			minBL=0;
-			updateCookies();
 		}
 		return;
 	}
 	function myTimer() {
-		readCookies();
 		gold     = gold*1+pop*2;
 		//gold     = gold*1+2;
 		pop      = pop*1+1;
-		updateCookies();
 		updateResources();
 	}
 	function rndEvents() {
