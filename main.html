@@ -53,6 +53,10 @@
 			#defence, #homes {
 				width: 180px;
 			}
+			#console_n_chat {
+				resize: none;
+				overflow: auto;
+			}
 		</style>
 	</head>
 	<body>
@@ -94,16 +98,6 @@
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:150px">Build home: 2 gold</button>
 		<!--<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>-->
 		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px;visibility: hidden">Open construction menu</button>
-		<div id="dbg" style="visibility: hidden">
-		<p id="dbg" class="interface" style="top:480px; visibility: hidden">
-			<p id="cookiesInit" class="interface" style="top:490px">
-			</p>
-			<p id="cookiesRead" class="interface" style="top:500px">
-			</p>
-			<p id="cookiesWrote" class="interface" style="top:520px">
-			</p>
-		</p>
-		</div>
 		<p id="console_n_chat_div" style="top:480px" class="interface">
 		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
@@ -140,6 +134,12 @@
 	    var hh = d.getHours();
 	    var mm = d.getMinutes();
 	    var ss = d.getSeconds();
+	    if (hh < 10) {
+	    	hh = "0"+hh;
+	    }
+	    if (mm < 10) {
+	    	mm = "0"+mm;
+	    }
 	    if (ss < 10) {
 	    	ss = "0"+ss;
 	    }
@@ -252,10 +252,22 @@
 		return;
 	}
 	function myTimer() {
+		pop_m    = 0;
 		gold     = gold*1+pop*1;
 		//gold     = gold*1+2;
-		pop      = pop*1+1;
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+"shit happens!";
+		if (pop < Math.pow((buildLevelH*1+2),2)) {
+			pop      = pop*1+1;
+			pop_m    = 1;
+		} else {
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+"your city is reached population limit. Build new houses or upgrade existing ones";	
+		}
+		if (pop_m == 0) {
+			msg   = "amount of money are increased!";
+		}
+		if (pop_m == 1) {
+			msg   = "population and amount of money are increased!";
+		}
+		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+msg;
 		scrollDown();
 		updateResources();
 	}
