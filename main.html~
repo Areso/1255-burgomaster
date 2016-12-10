@@ -151,8 +151,8 @@
 	    }
 	    return n;
 	}
-	function scrollDown(){
-   		var textarea = document.getElementById("console_n_chat");
+	function checkTextareaHeight(){
+   		var textarea = document.getElementById("yourTextArea");
 		    if(textarea.selectionStart == textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 	   		}
@@ -255,8 +255,7 @@
 		gold     = gold*1+pop*1;
 		//gold     = gold*1+2;
 		pop      = pop*1+1;
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+"shit happens!";
-		scrollDown();
+		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+"shit happens!";				
 		updateResources();
 	}
 	function rndEvents() {

@@ -51,7 +51,7 @@
 				left:0px;
 			}
 			#defence, #homes {
-				width: 180px;
+				width: 150px;
 			}
 		</style>
 	</head>
@@ -90,23 +90,20 @@
 			<img src="resources\\background_a.png" class="background">
 			<img src="resources\\sawmill_a.png" class="over2">
 		</p>
-		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120px">Build walls: 2 gold</button>
-		<button id="homes"   onclick="Build('Home')" class="interface" style="top:150px">Build home: 2 gold</button>
+		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120">Build walls: 2 gold</button>
+		<button id="homes"   onclick="Build('Home')" class="interface" style="top:140">Build home: 2 gold</button>
 		<!--<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>-->
-		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px;visibility: hidden">Open construction menu</button>
+		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260;visibility: hidden">Open construction menu</button>
 		<div id="dbg" style="visibility: hidden">
-		<p id="dbg" class="interface" style="top:480px; visibility: hidden">
-			<p id="cookiesInit" class="interface" style="top:490px">
+		<p id="dbg" class="interface" style="top:480; visibility: hidden">
+			<p id="cookiesInit" class="interface" style="top:490">
 			</p>
-			<p id="cookiesRead" class="interface" style="top:500px">
+			<p id="cookiesRead" class="interface" style="top:500">
 			</p>
-			<p id="cookiesWrote" class="interface" style="top:520px">
+			<p id="cookiesWrote" class="interface" style="top:520">
 			</p>
 		</p>
 		</div>
-		<p id="console_n_chat_div" style="top:480px" class="interface">
-		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
-		</p>
 	<script>
 	//init variables
 	var gold          = 20;
@@ -130,33 +127,11 @@
 	var house  = "<img src=\"resources\\house_a.png\" class=\"over2\">";
 	updateResources();
 	//init timers
-	setInterval(myTimer, 2000);
+	setInterval(myTimer, 10000);
 	//setInterval(rndEvents, 100000);
 	setInterval(redrawTimer, 20);
 	
 	//functions
-	function getTime(type) {
-	    var d = new Date();
-	    var hh = d.getHours();
-	    var mm = d.getMinutes();
-	    var ss = d.getSeconds();
-	    if (ss < 10) {
-	    	ss = "0"+ss;
-	    }
-	    if (type=="0") {
-	    	n = hh+":"+mm;	
-	    }
-	    if (type=="1") {
-	    	n = hh+":"+mm+":"+ss;	
-	    }
-	    return n;
-	}
-	function scrollDown(){
-   		var textarea = document.getElementById("console_n_chat");
-		    if(textarea.selectionStart == textarea.selectionEnd) {
-			textarea.scrollTop = textarea.scrollHeight;
-	   		}
-	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML = gold;
 		document.getElementById("pop").innerHTML  = pop;
@@ -252,11 +227,9 @@
 		return;
 	}
 	function myTimer() {
-		gold     = gold*1+pop*1;
+		gold     = gold*1+pop*2;
 		//gold     = gold*1+2;
 		pop      = pop*1+1;
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+"shit happens!";
-		scrollDown();
 		updateResources();
 	}
 	function rndEvents() {
@@ -264,7 +237,6 @@
 		
 		switch (rnd) {
 			case 1:
-				//document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"&#13;&#10;"+'shit happens!';				
 				alert('shit happens');
 				break;
 			case 2:
