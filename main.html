@@ -60,7 +60,48 @@
 		</style>
 	</head>
 	<body>
-	<script>
+		<canvas width="800" height="480" id="canvas" style="top:0px;left:0px;position:absolute;z-index:-1"></canvas>
+		<script>
+		var canvas = document.getElementById("canvas");
+		var ctx    = canvas.getContext("2d");
+		var img1   = loadImage('resources/background_a.png', main);
+		var img2   = loadImage('resources/sawmill_a.png', main);
+		var img3   = loadImage('resources/gold_a.png', main);
+		var img4   = loadImage('resources/pop_a.png', main);
+		//
+		
+		var img5_d = 0;
+		var imagesLoaded = 0;
+		
+		function main() {
+			imagesLoaded = imagesLoaded*1 + 1;
+			if (img5_d == 1) {
+				var img5   = loadImage('resources/home_a.png', main);
+			}
+			if (imagesLoaded > 1) {
+				// composite now
+				ctx.drawImage(img1, 0, 0);
+				//ctx.globalAlpha = 1.00;
+				ctx.drawImage(img2, 0, 0);
+				ctx.drawImage(img3, 10, 40);
+				ctx.drawImage(img4, 10, 80);
+				//ctx.globalAlpha = 1.00;
+				if (img5_d == 1) {
+					ctx.drawImage(img5, 0, 0);
+				}	
+			}
+		}
+		
+		function loadImage(src, onload) {
+			// http://www.thefutureoftheweb.com/blog/image-onload-isnt-being-called
+			var img = new Image();
+			img.onload = onload;
+			img.src = src;
+			return img;
+		}
+
+		</script>
+		<script>
 		var url = window.location.pathname;
 		var filename = url.substring(url.lastIndexOf('/')+1);
 		
@@ -77,7 +118,7 @@
 		alert(this.src);
 		}
 		*/
-	</script>
+		</script>
 		welcome to heroes' city
 		<br>
 		<p id="resources">
@@ -86,13 +127,16 @@
 			<br>
 			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
 			<br>
-			
+		<!--	
 		<img src="resources/gold_a.png" class="interface" style="left:10px; top:40px">
 		<img src="resources/pop_a.png"  class="interface" style="left:10px; top:80px">
+		-->
 		</p>
 		<p id="constructions">
+			<!--
 			<img src="resources/background_a.png" class="background">
 			<img src="resources/sawmill_a.png"    class="over2">
+		-->
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120px">Build walls: 2 gold</button>
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:150px">Build home: 2 gold</button>
@@ -143,6 +187,13 @@
 		pop  = localStorage.getItem('pop');
 		buildLevelD = localStorage.getItem('buildLevelD');
 		buildLevelH = localStorage.getItem('buildLevelH');
+		if (buildLevelH === 0) {
+			img5_d = 0;
+		} else
+		{
+			img5_d = 1;
+		}
+		main();
 		updateResources();
 		updateButtonCaptions();
 	}
@@ -246,12 +297,15 @@
 		}
 		if (Structure == "Home"){
 			if (buildLevelH == 1) {
-				document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+home;
+				//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+home;
+				img5_d = 1;
+				main();
 			}
 			//update interface
 			nextLvl      = buildLevelH*1+1;
 			nextLvlPrice = Math.pow(costHome,(buildLevelH*1+1));
 			document.getElementById("homes").innerHTML="Build home lvl"+nextLvl+"; "+nextLvlPrice+" gold";
+			
 			//var homeClick = "Build("+"\'House\'"+")";
 			//document.getElementById("homes").setAttribute("onclick", homeClick);
 		}
