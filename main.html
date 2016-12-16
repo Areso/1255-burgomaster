@@ -64,20 +64,29 @@
 		<script>
 		var canvas = document.getElementById("canvas");
 		var ctx    = canvas.getContext("2d");
+		/*
 		var img1   = loadImage('resources/background_a.png', main);
 		var img2   = loadImage('resources/sawmill_a.png', main);
 		var img3   = loadImage('resources/gold_a.png', main);
 		var img4   = loadImage('resources/pop_a.png', main);
+		var img5   = loadImage('resources/home_a.png', main);
+		*/
+		var img1   = loadImage('resources/background_a.png', composite);
+		var img2   = loadImage('resources/sawmill_a.png', composite);
+		var img3   = loadImage('resources/gold_a.png', composite);
+		var img4   = loadImage('resources/pop_a.png', composite);
+		var img5   = loadImage('resources/home_a.png', composite);
 		//
 		
 		var img5_d = 0;
 		var imagesLoaded = 0;
 		
-		function main() {
+		function composite() {
 			imagesLoaded = imagesLoaded*1 + 1;
-			if (img5_d == 1) {
-				var img5   = loadImage('resources/home_a.png', main);
-			}
+			/*if (img5_d == 1) {
+				//var img5   = loadImage('resources/home_a.png', main);
+				var img5   = loadImage('resources/home_a.png', composite);
+			}*/
 			if (imagesLoaded > 1) {
 				// composite now
 				ctx.drawImage(img1, 0, 0);
@@ -99,7 +108,7 @@
 			img.src = src;
 			return img;
 		}
-
+		//composite();
 		</script>
 		<script>
 		var url = window.location.pathname;
@@ -299,7 +308,8 @@
 			if (buildLevelH == 1) {
 				//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+home;
 				img5_d = 1;
-				main();
+				composite();
+				//main();
 			}
 			//update interface
 			nextLvl      = buildLevelH*1+1;
