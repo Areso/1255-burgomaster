@@ -62,47 +62,56 @@
 	<body>
 		<canvas width="800" height="480" id="canvas" style="top:0px;left:0px;position:absolute;z-index:-1"></canvas>
 		<script>
-		var canvas = document.getElementById("canvas");
-		var ctx    = canvas.getContext("2d");
-		/*
-		var img1   = loadImage('resources/background_a.png', main);
-		var img2   = loadImage('resources/sawmill_a.png', main);
-		var img3   = loadImage('resources/gold_a.png', main);
-		var img4   = loadImage('resources/pop_a.png', main);
-		var img5   = loadImage('resources/home_a.png', main);
-		*/
-		var img1   = loadImage('resources/background_a.png', composite);
-		var img2   = loadImage('resources/sawmill_a.png', composite);
-		var img3   = loadImage('resources/gold_a.png', composite);
-		var img4   = loadImage('resources/pop_a.png', composite);
-		var img5   = loadImage('resources/home_a.png', composite);
-		//
+		var canvas  = document.getElementById("canvas");
+		var ctx     = canvas.getContext("2d");
 		
-		var img5_d = 0;
+		var img1    = loadImage('resources/background_a.png', composite);
+		var img2    = loadImage('resources/sawmill_a.png', composite);
+		var img3    = loadImage('resources/gold_a.png', composite);
+		var img4    = loadImage('resources/pop_a.png', composite);
+		var img5    = loadImage('resources/home_a.png', composite);
+		var img6_1  = loadImage('resources/wallsr_a.png', composite);
+		var img6_2  = loadImage('resources/wallsf_a.png', composite);
+		var img7    = loadImage('resources/castle_a.png', composite);
+		
+		var msg_pop_limit_en     = "your city is reached population limit. Build new houses or upgrade existing ones";
+		var msg_pop_limit        = msg_pop_limit_en;
+		var msg_game_saved_en    = "game saved successfully";
+		var msg_game_saved       = msg_game_saved_en;
+		var msg_game_loaded_en   = "game loaded successfully";
+		var msg_game_loaded       = msg_game_loaded_en;
+
 		var imagesLoaded = 0;
 		
 		function composite() {
 			imagesLoaded = imagesLoaded*1 + 1;
-			/*if (img5_d == 1) {
-				//var img5   = loadImage('resources/home_a.png', main);
-				var img5   = loadImage('resources/home_a.png', composite);
-			}*/
 			if (imagesLoaded > 1) {
 				// composite now
-				ctx.drawImage(img1, 0, 0);
 				//ctx.globalAlpha = 1.00;
-				ctx.drawImage(img2, 0, 0);
-				ctx.drawImage(img3, 10, 40);
-				ctx.drawImage(img4, 10, 80);
-				//ctx.globalAlpha = 1.00;
-				if (img5_d == 1) {
+				ctx.drawImage(img1, 0, 0);   //draw background
+				ctx.drawImage(img2, 0, 0);   //draw sawmill
+				ctx.drawImage(img3, 10, 40); //draw gold icon
+				ctx.drawImage(img4, 10, 80); //draw pop  icon
+				if (buildLevelD > 0) {
+					// draw back piece of wall
+					ctx.drawImage(img6_1, 0, 0);
+				}
+				if (buildLevelH > 0) {
+					// draw houses
 					ctx.drawImage(img5, 0, 0);
+				}
+				if (buildLevelD > 1) {
+					// draw castle
+					ctx.drawImage(img7, 0, 0);
+				}
+				if (buildLevelD > 0) {
+					// draw front piece of wall
+					ctx.drawImage(img6_2, 0, 0);
 				}	
 			}
 		}
 		
 		function loadImage(src, onload) {
-			// http://www.thefutureoftheweb.com/blog/image-onload-isnt-being-called
 			var img = new Image();
 			img.onload = onload;
 			img.src = src;
@@ -136,23 +145,17 @@
 			<br>
 			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
 			<br>
-		<!--	
-		<img src="resources/gold_a.png" class="interface" style="left:10px; top:40px">
-		<img src="resources/pop_a.png"  class="interface" style="left:10px; top:80px">
-		-->
 		</p>
 		<p id="constructions">
-			<!--
-			<img src="resources/background_a.png" class="background">
-			<img src="resources/sawmill_a.png"    class="over2">
-		-->
+		
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120px">Build walls: 2 gold</button>
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:150px">Build home: 2 gold</button>
-		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:180px">Save game</button>
-		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:210px">Load game</button>
+		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:200px">Save game</button>
+		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:230px">Load game</button>		<!--
 		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
+		-->
 		<p id="console_n_chat_div" style="top:480px" class="interface">
 		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
@@ -171,13 +174,7 @@
 	var redraw        = 0;
 	var whatDraw      = "";
 	var minBL         = 0;
-	//init pictures
-	var fire   = "<img src=\"resources/fire_a.gif\" class=\"fire\">";
-	var wall   = "<img src=\"resources/wallsr_a.png\" class=\"over1\">";
-	    wall   = wall + "<img src=\"resources/wallsf_a.png\" class=\"over3\">";
-	var tower  = "<img src=\"resources/castle_a.png\" class=\"over1\">";
-	var home   = "<img src=\"resources/home_a.png\" class=\"over2\">";
-	var house  = "<img src=\"resources/house_a.png\" class=\"over2\">";
+
 	updateResources();
 	//init timers
 	setInterval(resourcesTimer, 2000);
@@ -190,24 +187,33 @@
 		localStorage.setItem('pop', pop);
 		localStorage.setItem('buildLevelD', buildLevelD);
 		localStorage.setItem('buildLevelH', buildLevelH);
+		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+msg_game_saved;
+		scrollDown();
 	}
 	function loadGame() {
 		gold = localStorage.getItem('gold');
 		pop  = localStorage.getItem('pop');
 		buildLevelD = localStorage.getItem('buildLevelD');
 		buildLevelH = localStorage.getItem('buildLevelH');
-		if (buildLevelH === 0) {
-			img5_d = 0;
-		} else
-		{
-			img5_d = 1;
-		}
-		main();
+		composite();
 		updateResources();
 		updateButtonCaptions();
+		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+msg_game_loaded;
+		scrollDown();
 	}
 	function updateButtonCaptions(){
+		nextLvl      = buildLevelH*1+1;
+		nextLvlPrice = Math.pow(costHome,(buildLevelH*1+1));
+		document.getElementById("homes").innerHTML="Build home lvl"+nextLvl+"; "+nextLvlPrice+" gold";
 
+		if (buildLevelD == 1) {
+			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
+			var towerClick = "Build("+"\'Tower\'"+")";
+			document.getElementById("defence").setAttribute("onclick", towerClick);
+		}
+		if (buildLevelD == 2) {
+			document.getElementById("defence").setAttribute("style", "display:none");
+		}
 	}
 	function getTime(type) {
 	    var d = new Date();
@@ -260,26 +266,6 @@
 				return true;
 			}
 		}
-		/*//obsolete
-		if (Structure=="Home" || Structure =="House") {
-			if (gold >= costHome && buildLevelH == 0) { 
-				buildLevelH = buildLevelH + 1;
-				gold = gold - costHome;
-				redraw   = 1;
-				whatDraw = "Home";
-				updateResources();
-				return true;
-			}
-			if (gold >= costHouse && buildLevelH == 1) { 
-				buildLevelH = buildLevelH + 1;
-				gold = gold - costHouse;
-				redraw   = 1;
-				whatDraw = "House";
-				updateResources();
-				return true;
-			}
-		}
-		*/
 		if (Structure=="Home") {
 			if (gold >= Math.pow(costHome,(buildLevelH*1 + 1))) {
 				gold = gold - Math.pow(costHome,(buildLevelH*1 + 1));
@@ -293,31 +279,18 @@
 	}
 	function Draw(Structure){
 		if (Structure == "Wall"){
-			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
-			//update interface
-			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";
-			var towerClick = "Build("+"\'Tower\'"+")";
-			document.getElementById("defence").setAttribute("onclick", towerClick);
+			composite();
+			updateButtonCaptions();
 		}
 		if (Structure == "Tower"){
-			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+tower;
-			//update interface
-			document.getElementById("defence").setAttribute("style", "display:none");
+			composite();
+			updateButtonCaptions();
 		}
 		if (Structure == "Home"){
 			if (buildLevelH == 1) {
-				//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+home;
-				img5_d = 1;
 				composite();
-				//main();
 			}
-			//update interface
-			nextLvl      = buildLevelH*1+1;
-			nextLvlPrice = Math.pow(costHome,(buildLevelH*1+1));
-			document.getElementById("homes").innerHTML="Build home lvl"+nextLvl+"; "+nextLvlPrice+" gold";
-			
-			//var homeClick = "Build("+"\'House\'"+")";
-			//document.getElementById("homes").setAttribute("onclick", homeClick);
+			updateButtonCaptions();
 		}
 		if (Structure == "House"){
 			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+house;
@@ -359,7 +332,7 @@
 			pop      = pop*1+1;
 			pop_m    = 1;
 		} else {
-			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+"your city is reached population limit. Build new houses or upgrade existing ones";	
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(1)+": "+msg_pop_limit;
 		}
 		if (pop_m == 0) {
 			msg   = "amount of money are increased!";
