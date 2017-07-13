@@ -70,9 +70,11 @@
 		var img3    = loadImage('resources/gold_a.png', composite);
 		var img4    = loadImage('resources/pop_a.png', composite);
 		var img5    = loadImage('resources/home_a.png', composite);
+		var img5_1  = loadImage('resources/house_a.png', composite);
 		var img6_1  = loadImage('resources/wallsr_a.png', composite);
 		var img6_2  = loadImage('resources/wallsf_a.png', composite);
 		var img7    = loadImage('resources/castle_a.png', composite);
+		var img8    = loadImage('resources/wishing_well_builded.png', composite);
 		
 		var msg_pop_limit_en     = "your city is reached population limit. Build new houses or upgrade existing ones";
 		var msg_pop_limit        = msg_pop_limit_en;
@@ -92,13 +94,18 @@
 				ctx.drawImage(img2, 0, 0);   //draw sawmill
 				ctx.drawImage(img3, 10, 40); //draw gold icon
 				ctx.drawImage(img4, 10, 80); //draw pop  icon
+				ctx.drawImage(img8, 0, 0); //draw wishing well
 				if (buildLevelD > 0) {
 					// draw back piece of wall
 					ctx.drawImage(img6_1, 0, 0);
 				}
-				if (buildLevelH > 0) {
+				if (buildLevelH > 0 && buildLevelH < 10) {
 					// draw houses
 					ctx.drawImage(img5, 0, 0);
+				}
+				if (buildLevelH > 10) {
+					// draw more houses
+					ctx.drawImage(img5_1, 0, 0);
 				}
 				if (buildLevelD > 1) {
 					// draw castle

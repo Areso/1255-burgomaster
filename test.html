@@ -1,0 +1,100 @@
+<html>
+<head>
+</head>
+<body>
+<canvas id="canvas" width=900 height=700></canvas>
+<script>
+//ummahusla is the author
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext('2d')
+
+var Tab = function(id, x, y, width, height, text, color) {
+
+    this.id = id;
+    
+    // defaults can be changed after object creation
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.color = color;
+    this.textColor = 'white'; // set default
+    this.lineWidth = 3;       // set dafault
+    
+    this.text = text;
+    this.font = '18px sans-serif';
+    
+    this.getPath = function(ctx) {
+        ctx.beginPath();
+        ctx.rect(this.x, this.y, this.width, this.height);
+    };
+
+    this.render = function(ctx) {
+
+        this.getPath(ctx);
+        ctx.fillStyle = this.color;
+        ctx.lineWidth = this.lineWidth;
+        ctx.fill();
+
+        //render text
+        if (this.text.length > 0) {
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = this.font;
+            ctx.fillStyle = this.textColor;
+            
+            var tx = this.x + this.width * 0.5,
+                ty = this.y + this.height * 0.5;
+            
+            ctx.fillText(this.text, tx, ty);
+        }
+    };
+}
+
+// define tabs
+var myTabs = [
+        new Tab('tab1', 0, 0, 100, 100, '1', 'blue'),
+        new Tab('tab2', 100, 0, 100, 100, '2', 'red'),
+        new Tab('tab3', 200, 0, 100, 100, '3', 'orange'),
+        new Tab('tab4', 300, 0, 100, 100, '4', 'yellow'),
+        new Tab('tab5', 400, 0, 100, 100, '5', 'grey'),
+        new Tab('tab6', 500, 0, 100, 100, '6', 'brown'),
+        new Tab('tab7', 600, 0, 100, 100, '7', 'white'),
+        new Tab('tab8', 700, 0, 100, 100, '8', 'purple'),
+        new Tab('tab9', 800, 0, 100, 100, '9', 'pink'),
+    ];
+
+// individual changes is possible
+myTabs[3].textColor = 'black';
+myTabs[6].textColor = 'black';
+
+for(var i = 0, tab; tab = myTabs[i++];)
+    tab.render(ctx);
+
+/// show first tab
+showContent(myTabs[0]);
+
+canvas.onclick = function(e) {
+    
+    var r = canvas.getBoundingClientRect(),
+        x = e.clientX - r.left,
+        y = e.clientY - r.top;
+
+    for(var i = 0, tab; tab = myTabs[i++];) {
+        tab.getPath(ctx);
+
+        if (ctx.isPointInPath(x, y)) {
+            // got a hit, update content
+            showContent(tab);
+            return;
+        }
+    }
+};
+
+function showContent(tab) {
+    ctx.fillStyle = tab.color;
+    ctx.fillRect(0, tab.height, ctx.canvas.width, 700);
+}
+</script>
+</body>
+</html>
