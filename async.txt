@@ -1,16 +1,16 @@
-<script async src="//www.site.ru/script.js" type="text/javascript"></script>
+п»ї<script async src="//www.site.ru/script.js" type="text/javascript"></script>
 <script defer src="//www.site.ru/script.js" type="text/javascript"></script>
 
-В том месте страницы, где нужно реально отобразить наш элемент создаем пустой div блок:
+Р’ С‚РѕРј РјРµСЃС‚Рµ СЃС‚СЂР°РЅРёС†С‹, РіРґРµ РЅСѓР¶РЅРѕ СЂРµР°Р»СЊРЅРѕ РѕС‚РѕР±СЂР°Р·РёС‚СЊ РЅР°С€ СЌР»РµРјРµРЅС‚ СЃРѕР·РґР°РµРј РїСѓСЃС‚РѕР№ div Р±Р»РѕРє:
 <div id="script_block" class="script_block"></div>
-В самом конце страницы перед </body> вставляем скрипт для асинхронной загрузки файлов:
+Р’ СЃР°РјРѕРј РєРѕРЅС†Рµ СЃС‚СЂР°РЅРёС†С‹ РїРµСЂРµРґ </body> РІСЃС‚Р°РІР»СЏРµРј СЃРєСЂРёРїС‚ РґР»СЏ Р°СЃРёРЅС…СЂРѕРЅРЅРѕР№ Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ:
 
 <div id="script_ad" class="script_ad" style="display:none;">
-Здесь любой файл или скрипт, который нужно загрузить.</div>
+Р—РґРµСЃСЊ Р»СЋР±РѕР№ С„Р°Р№Р» РёР»Рё СЃРєСЂРёРїС‚, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ.</div>
  
 <script type="text/javascript">
-   // переместить его в реальную позицию отображения
+   // РїРµСЂРµРјРµСЃС‚РёС‚СЊ РµРіРѕ РІ СЂРµР°Р»СЊРЅСѓСЋ РїРѕР·РёС†РёСЋ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
    document.getElementById('script_block').appendChild(document.getElementById('script_ad'));
-   // показать
+   // РїРѕРєР°Р·Р°С‚СЊ
    document.getElementById('script_ad').style.display = 'block';
 </script>
