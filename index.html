@@ -357,8 +357,9 @@
 		
 		switch (rnd) {
 			case 1:
-				//document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"&#13;&#10;"+'shit happens!';				
-				alert('shit happens');
+				msg = "shit happens";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				//alert("shit happens");
 				break;
 			case 2:
 				alert('fire in the city!');
@@ -409,7 +410,9 @@
 				//
 				break;
 			case 12:
-				alert("You won a lottery with "+lotteryPrize+" gold prize");
+				msg = "shit happens";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				//alert("You won a lottery with "+lotteryPrize+" gold prize");
 				gold = gold + lotteryPrize;
 				break;
 			default:
