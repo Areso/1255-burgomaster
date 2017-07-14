@@ -1,0 +1,16 @@
+<script async src="//www.site.ru/script.js" type="text/javascript"></script>
+<script defer src="//www.site.ru/script.js" type="text/javascript"></script>
+
+В том месте страницы, где нужно реально отобразить наш элемент создаем пустой div блок:
+<div id="script_block" class="script_block"></div>
+В самом конце страницы перед </body> вставляем скрипт для асинхронной загрузки файлов:
+
+<div id="script_ad" class="script_ad" style="display:none;">
+Здесь любой файл или скрипт, который нужно загрузить.</div>
+ 
+<script type="text/javascript">
+   // переместить его в реальную позицию отображения
+   document.getElementById('script_block').appendChild(document.getElementById('script_ad'));
+   // показать
+   document.getElementById('script_ad').style.display = 'block';
+</script>
