@@ -7,8 +7,8 @@
 		<style type="text/css">
 			/*canvas*/
 			.canvas {
-				/*left:20px;
-				top:20px;*/
+				left:0px;
+				top:-6px;
 				position:relative;
 			}
 			/*background*/
@@ -97,11 +97,11 @@
 			/* Style the tab content */
 			.tabcontent {
 				display: none;
-				padding: 6px 12px;
+				padding: 6px 0px;
 				border: 1px solid #ccc;
 				border-top: none;
-				height: 560px;
-				width: 776px;/*800-12*2*/
+				height: 470px;
+				width: 800px;/*800-12*2*/
 			}
 
 			/* Style the close button */
@@ -115,10 +115,9 @@
 		</style>
 	</head>
 	<body>
-	
-		
+		<!--<span id="gold" class="interface" style="position:absolute; top:0px; left:60px">0</span>
+		<span id="pop"  class="interface" style="position:absolute; top:0px; left:100px">2</span>-->
 		<script>
-		
 		var url = window.location.pathname;
 		var filename = url.substring(url.lastIndexOf('/')+1);
 		
@@ -142,28 +141,29 @@
 			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
 		</div>
 		<div id="Main" class="tabcontent">
-		<canvas width="800" height="480" id="canvas" style="top:0px;left:0px;position:absolute;z-index:-1"></canvas>
-					welcome to heroes' city
+		<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
+		<p style="position:absolute; top:60px; left: 20px">
+		welcome to heroes' city
+		</p>
 		<br>
 		<p id="resources">
-			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
+			<span id="gold" class="interface" style="position:absolute; top:100px; left:60px">0</span>
 			<br>
 			<br>
-			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
+			<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
 			<br>
 		</p>
 		<p id="constructions">
 		
 		</p>
-		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120px">Build walls: 2 gold</button>
-		<button id="homes"   onclick="Build('Home')" class="interface" style="top:150px">Build home: 2 gold</button>
-		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:200px">Save game</button>
-		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:230px">Load game</button>
+		<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
+		<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
+		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
+		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:290px; left: 20px">Load game</button>
 		<!--
 		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
 		-->
-		asd
 		</div>
 
 		<div id="Explore" class="tabcontent">
@@ -179,7 +179,7 @@
 			<p>Autosave</p>
 		</div>
 
-		<p id="console_n_chat_div" style="top:480px" class="interface">
+		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
 		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
 	<script>
@@ -442,8 +442,9 @@
 				//alert("shit happens");
 				break;
 			case 2:
-				alert('fire in the city!');
-				
+				msg = "fire in the city!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				//alert('fire in the city!');
 				var ceil = 0;
 				if (buildLevelD == 1) {
 					ceil = 1
