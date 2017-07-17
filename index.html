@@ -5,6 +5,12 @@
 		</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<style type="text/css">
+			/*canvas*/
+			.canvas {
+				left:0px;
+				top:-6px;
+				position:relative;
+			}
 			/*background*/
 			.background {
 				position:absolute;
@@ -57,11 +63,126 @@
 				resize: none;
 				overflow: auto;
 			}
+			/* Style the tab */
+			div.tab {
+				overflow: hidden;
+				border: 1px solid #ccc;
+				
+				width: 800px;
+			background-color: #f1f1f1;
+			}
+
+			/* Style the buttons inside the tab */
+			div.tab button {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 14px 16px;
+				transition: 0.3s;
+				font-size: 17px;
+			}
+
+			/* Change background color of buttons on hover */
+			div.tab button:hover {
+				background-color: #ddd;
+			}
+
+			/* Create an active/current tablink class */
+				div.tab button.active {
+				background-color: #ccc;
+			}
+
+			/* Style the tab content */
+			.tabcontent {
+				display: none;
+				padding: 6px 0px;
+				border: 1px solid #ccc;
+				border-top: none;
+				height: 470px;
+				width: 800px;/*800-12*2*/
+			}
+
+			/* Style the close button */
+			.topright {
+				float: right;
+				cursor: pointer;
+				font-size: 20px;
+			}
+
+			.topright:hover {color: red;}
 		</style>
 	</head>
 	<body>
-		<canvas width="800" height="480" id="canvas" style="top:0px;left:0px;position:absolute;z-index:-1"></canvas>
+		<!--<span id="gold" class="interface" style="position:absolute; top:0px; left:60px">0</span>
+		<span id="pop"  class="interface" style="position:absolute; top:0px; left:100px">2</span>-->
 		<script>
+		var url = window.location.pathname;
+		var filename = url.substring(url.lastIndexOf('/')+1);
+		
+		if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
+			res_mod = "b";
+		}
+		else {
+			res_mod = "b";
+		}
+		//alert(res_mod);
+		/*
+		function reload_res(this) {
+		this.src=str.replace(\"_a\", res_mod);
+		alert(this.src);
+		}
+		*/
+		</script>
+		<div class="tab">
+			<button class="tablinks" onclick="openCity(event, 'Main')" id="defaultOpen">Main</button>
+			<button class="tablinks" onclick="openCity(event, 'Explore')">Explore</button>
+			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
+		</div>
+		<div id="Main" class="tabcontent">
+		<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
+		<p style="position:absolute; top:60px; left: 20px">
+		welcome to heroes' city
+		</p>
+		<br>
+		<p id="resources">
+			<span id="gold" class="interface" style="position:absolute; top:100px; left:60px">0</span>
+			<br>
+			<br>
+			<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
+			<br>
+		</p>
+		<p id="constructions">
+		
+		</p>
+		<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
+		<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
+		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
+		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:290px; left: 20px">Load game</button>
+		<!--
+		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
+		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
+		-->
+		</div>
+
+		<div id="Explore" class="tabcontent">
+			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
+			<h3>Explore</h3>
+			<p>Global map</p> 
+		</div>
+
+		<div id="Settings" class="tabcontent">
+			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
+			<h3>Settings</h3>
+			<p>Alert / MSG to chat</p>
+			<p>Autosave</p>
+		</div>
+
+		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
+		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
+		</p>
+	<script>
 		var canvas  = document.getElementById("canvas");
 		var ctx     = canvas.getContext("2d");
 		
@@ -125,48 +246,7 @@
 			return img;
 		}
 		//composite();
-		</script>
-		<script>
-		var url = window.location.pathname;
-		var filename = url.substring(url.lastIndexOf('/')+1);
-		
-		if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
-			res_mod = "b";
-		}
-		else {
-			res_mod = "b";
-		}
-		//alert(res_mod);
-		/*
-		function reload_res(this) {
-		this.src=str.replace(\"_a\", res_mod);
-		alert(this.src);
-		}
-		*/
-		</script>
-		welcome to heroes' city
-		<br>
-		<p id="resources">
-			<span id="gold" class="interface" style="position:relative; left:35px">0</span>
-			<br>
-			<br>
-			<span id="pop"  class="interface" style="position:relative; left:35px">2</span>
-			<br>
-		</p>
-		<p id="constructions">
-		
-		</p>
-		<button id="defence" onclick="Build('Wall')" class="interface" style="top:120px">Build walls: 2 gold</button>
-		<button id="homes"   onclick="Build('Home')" class="interface" style="top:150px">Build home: 2 gold</button>
-		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:200px">Save game</button>
-		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:230px">Load game</button>
-		<!--
-		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
-		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
-		-->
-		<p id="console_n_chat_div" style="top:480px" class="interface">
-		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
-		</p>
+	</script>
 	<script>
 	//init variables
 	var gold          = 20;
@@ -362,8 +442,9 @@
 				//alert("shit happens");
 				break;
 			case 2:
-				alert('fire in the city!');
-				
+				msg = "fire in the city!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				//alert('fire in the city!');
 				var ceil = 0;
 				if (buildLevelD == 1) {
 					ceil = 1
@@ -419,6 +500,23 @@
 				alert("error on switch/case function");
 		}
 	}
+	</script>
+	<script>
+	function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
 	</script>
 	</body>
 </html>
