@@ -154,7 +154,7 @@
 			<br>
 		</p>
 		<p id="constructions">
-		
+		<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:200px; left:200px; z-index=98; display:none">
 		</p>
 		<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
 		<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
@@ -186,7 +186,7 @@
 		var canvas  = document.getElementById("canvas");
 		var ctx     = canvas.getContext("2d");
 		
-		var img1    = loadImage('resources/background_a.png', composite);
+		var img1    = loadImage('resources/background_a.png', composite);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows. 
 		var img2    = loadImage('resources/sawmill_a.png', composite);
 		var img3    = loadImage('resources/gold_a.png', composite);
 		var img4    = loadImage('resources/pop_a.png', composite);
@@ -397,6 +397,10 @@
 		document.getElementById("constructionWindow").setAttribute("width", 1);
 		document.getElementById("constructionWindow").setAttribute("height", 1);
 	}
+	function putOutFire () {
+		var answer = confirm("Call an fireman? It will cost you 20 gold!");
+		alert(answer);
+	}
 	//timers
 	function redrawTimer() {
 		//cookies = document.cookie.split(';');
@@ -433,8 +437,8 @@
 		updateResources();
 	}
 	function rndEvents() {
-		rnd = Math.floor((Math.random() * 12) + 1);
-		
+		//rnd = Math.floor((Math.random() * 12) + 1);
+		rnd = 2;
 		switch (rnd) {
 			case 1:
 				msg = "shit happens";
@@ -445,7 +449,10 @@
 				msg = "fire in the city!";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 				//alert('fire in the city!');
-				var ceil = 0;
+				document.getElementById("fire").setAttribute("style", "display:true");
+				var fire = 1;
+				//var fire_img = "<img src=\"1.png\" class=\"over1\">";
+				//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
 				if (buildLevelD == 1) {
 					ceil = 1
 				}
@@ -454,13 +461,13 @@
 				}
 				rnd = Math.floor((Math.random() * 2) + 0);
 				if (rnd == 0) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 				}
 				if (rnd == 1) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 				}
 				if (rnd == 0) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 				}
 				break;
 			case 3:
