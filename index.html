@@ -141,29 +141,29 @@
 			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
 		</div>
 		<div id="Main" class="tabcontent">
-		<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
-		<p style="position:absolute; top:60px; left: 20px">
+			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
+			<p style="position:absolute; top:60px; left: 20px">
 		welcome to heroes' city
 		</p>
-		<br>
-		<p id="resources">
+			<br>
+			<p id="resources">
 			<span id="gold" class="interface" style="position:absolute; top:100px; left:60px">0</span>
 			<br>
 			<br>
 			<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
 			<br>
 		</p>
-		<p id="constructions">
-		
-		</p>
-		<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
-		<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
-		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
-		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:290px; left: 20px">Load game</button>
-		<!--
-		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
-		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
-		-->
+			<p id="constructions">
+			<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:200px; left:200px; z-index=100; display:none">
+			</p>
+			<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
+			<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
+			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
+			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:290px; left: 20px">Load game</button>
+			<!--
+			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
+			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
+			-->
 		</div>
 
 		<div id="Explore" class="tabcontent">
@@ -186,7 +186,7 @@
 		var canvas  = document.getElementById("canvas");
 		var ctx     = canvas.getContext("2d");
 		
-		var img1    = loadImage('resources/background_a.png', composite);
+		var img1    = loadImage('resources/background_a.png', composite);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows. 
 		var img2    = loadImage('resources/sawmill_a.png', composite);
 		var img3    = loadImage('resources/gold_a.png', composite);
 		var img4    = loadImage('resources/pop_a.png', composite);
@@ -294,12 +294,12 @@
 		nextLvlPrice = Math.pow(costHome,(buildLevelH*1+1));
 		document.getElementById("homes").innerHTML="Build home lvl"+nextLvl+"; "+nextLvlPrice+" gold";
 
-		if (buildLevelD == 1) {
+		if (buildLevelD === 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
 			var towerClick = "Build("+"\'Tower\'"+")";
 			document.getElementById("defence").setAttribute("onclick", towerClick);
 		}
-		if (buildLevelD == 2) {
+		if (buildLevelD === 2) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
 	}
@@ -327,7 +327,7 @@
 	}
 	function scrollDown(){
    		var textarea = document.getElementById("console_n_chat");
-		    if(textarea.selectionStart == textarea.selectionEnd) {
+		    if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 	   		}
 	}
@@ -336,7 +336,7 @@
 		document.getElementById("pop").innerHTML  = pop;
 	}
 	function Build(Structure) {
-		if (Structure=="Wall" || Structure =="Tower") {
+		if (Structure==="Wall" || Structure ==="Tower") {
 			if (gold >= costWall && buildLevelD == 0) { 
 				buildLevelD = buildLevelD*1 + 1;
 				gold = gold - costWall;
@@ -354,7 +354,7 @@
 				return true;
 			}
 		}
-		if (Structure=="Home") {
+		if (Structure==="Home") {
 			if (gold >= Math.pow(costHome,(buildLevelH*1 + 1))) {
 				gold = gold - Math.pow(costHome,(buildLevelH*1 + 1));
 				redraw   = 1;
@@ -366,21 +366,21 @@
 		}
 	}
 	function Draw(Structure){
-		if (Structure == "Wall"){
+		if (Structure === "Wall"){
 			composite();
 			updateButtonCaptions();
 		}
-		if (Structure == "Tower"){
+		if (Structure === "Tower"){
 			composite();
 			updateButtonCaptions();
 		}
-		if (Structure == "Home"){
-			if (buildLevelH == 1) {
+		if (Structure === "Home"){
+			if (buildLevelH === 1) {
 				composite();
 			}
 			updateButtonCaptions();
 		}
-		if (Structure == "House"){
+		if (Structure === "House"){
 			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+house;
 			//update interface
 			document.getElementById("homes").setAttribute("style", "display:none");
@@ -397,16 +397,42 @@
 		document.getElementById("constructionWindow").setAttribute("width", 1);
 		document.getElementById("constructionWindow").setAttribute("height", 1);
 	}
+	function putOutFire () {
+		if (fire === 1){
+			var answer = confirm("Call an fireman? It will cost you 20 gold!");
+			if (answer === true) {
+				if (gold >= 20) {
+					fire = 0;
+					gold = gold - 20;
+					document.getElementById("fire").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+					msg = "Fireman put out a fire!";
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+					scrollDown();
+					updateResources();
+				}
+				else {
+					msg = "We need more gold to do that!";
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+					scrollDown();
+				}
+			}
+			else {
+				msg = "it will burn to ashes!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
+			}
+		}
+	}
 	//timers
 	function redrawTimer() {
 		//cookies = document.cookie.split(';');
 		//document.getElementById('dbg').innerHTML = minimizeBl;
-		if (redraw == 1) {
+		if (redraw === 1) {
 			Draw(whatDraw);
 			redraw = 0;
 			whatDraw  = "";
 		}
-		if (minBL == 1) {
+		if (minBL === 1) {
 			minimizew();
 			minBL=0;
 		}
@@ -421,11 +447,12 @@
 			pop_m    = 1;
 		} else {
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_pop_limit;
+			scrollDown();
 		}
-		if (pop_m == 0) {
+		if (pop_m === 0) {
 			msg   = "amount of money are increased!";
 		}
-		if (pop_m == 1) {
+		if (pop_m === 1) {
 			msg   = "population and amount of money are increased!";
 		}
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
@@ -434,18 +461,23 @@
 	}
 	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
-		
+		//rnd = 2;
 		switch (rnd) {
 			case 1:
 				msg = "shit happens";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
 				//alert("shit happens");
 				break;
 			case 2:
 				msg = "fire in the city!";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
 				//alert('fire in the city!');
-				var ceil = 0;
+				document.getElementById("fire").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
+				fire = 1;
+				//var fire_img = "<img src=\"1.png\" class=\"over1\">";
+				//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
 				if (buildLevelD == 1) {
 					ceil = 1
 				}
@@ -453,14 +485,14 @@
 					ceil = 2
 				}
 				rnd = Math.floor((Math.random() * 2) + 0);
-				if (rnd == 0) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				if (rnd === 0) {
+				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 				}
-				if (rnd == 1) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				if (rnd === 1) {
+				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 				}
-				if (rnd == 0) {
-					document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				if (rnd === 0) {
+				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 				}
 				break;
 			case 3:
@@ -493,8 +525,10 @@
 			case 12:
 				msg = "shit happens";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
 				//alert("You won a lottery with "+lotteryPrize+" gold prize");
 				gold = gold + lotteryPrize;
+				updateResources();
 				break;
 			default:
 				alert("error on switch/case function");
