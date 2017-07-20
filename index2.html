@@ -141,29 +141,29 @@
 			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
 		</div>
 		<div id="Main" class="tabcontent">
-		<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
-		<p style="position:absolute; top:60px; left: 20px">
+			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
+			<p style="position:absolute; top:60px; left: 20px">
 		welcome to heroes' city
 		</p>
-		<br>
-		<p id="resources">
+			<br>
+			<p id="resources">
 			<span id="gold" class="interface" style="position:absolute; top:100px; left:60px">0</span>
 			<br>
 			<br>
 			<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
 			<br>
 		</p>
-		<p id="constructions">
-		<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:200px; left:200px; z-index=98; display:none">
-		</p>
-		<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
-		<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
-		<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
-		<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:290px; left: 20px">Load game</button>
-		<!--
-		<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
-		<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
-		-->
+			<p id="constructions">
+			<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:200px; left:200px; z-index=100; display:none">
+			</p>
+			<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
+			<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
+			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
+			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:290px; left: 20px">Load game</button>
+			<!--
+			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
+			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
+			-->
 		</div>
 
 		<div id="Explore" class="tabcontent">
@@ -399,7 +399,26 @@
 	}
 	function putOutFire () {
 		var answer = confirm("Call an fireman? It will cost you 20 gold!");
-		alert(answer);
+		if (answer == True) {
+			if (gold >= 20) {
+				fire = 0;
+				gold = gold - 20;
+				msg = "Fireman put out a fire!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
+				updateResources();
+			}
+			else {
+				msg = "We need more gold to do that!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
+			}
+		}
+		else {
+			msg = "it will burn to ashes!";
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+			scrollDown();
+		}
 	}
 	//timers
 	function redrawTimer() {
@@ -425,6 +444,7 @@
 			pop_m    = 1;
 		} else {
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_pop_limit;
+			scrollDown();
 		}
 		if (pop_m == 0) {
 			msg   = "amount of money are increased!";
@@ -443,13 +463,15 @@
 			case 1:
 				msg = "shit happens";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
 				//alert("shit happens");
 				break;
 			case 2:
 				msg = "fire in the city!";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
 				//alert('fire in the city!');
-				document.getElementById("fire").setAttribute("style", "display:true");
+				document.getElementById("fire").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
 				var fire = 1;
 				//var fire_img = "<img src=\"1.png\" class=\"over1\">";
 				//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
@@ -500,8 +522,10 @@
 			case 12:
 				msg = "shit happens";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
 				//alert("You won a lottery with "+lotteryPrize+" gold prize");
 				gold = gold + lotteryPrize;
+				updateResources();
 				break;
 			default:
 				alert("error on switch/case function");
