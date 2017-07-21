@@ -154,8 +154,9 @@
 			<br>
 		</p>
 			<p id="constructions">
-			<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:200px; left:200px; z-index=100; display:none">
+			
 			</p>
+			<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">
 			<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
 			<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
@@ -262,6 +263,7 @@
 	var redraw        = 0;
 	var whatDraw      = "";
 	var minBL         = 0;
+	var fire          = 0;
 
 	updateResources();
 	//init timers
@@ -470,29 +472,31 @@
 				//alert("shit happens");
 				break;
 			case 2:
-				msg = "fire in the city!";
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
-				scrollDown();
-				//alert('fire in the city!');
-				document.getElementById("fire").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
-				fire = 1;
-				//var fire_img = "<img src=\"1.png\" class=\"over1\">";
-				//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
-				if (buildLevelD == 1) {
-					ceil = 1
-				}
-				if (buildLevelD == 2) {
-					ceil = 2
-				}
-				rnd = Math.floor((Math.random() * 2) + 0);
-				if (rnd === 0) {
-				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd === 1) {
-				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd === 0) {
-				//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+				if (fire === 0) {
+					msg = "fire in the city!";
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+					scrollDown();
+					//alert('fire in the city!');
+					document.getElementById("fire").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
+					fire = 1;
+					//var fire_img = "<img src=\"1.png\" class=\"over1\">";
+					//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
+					if (buildLevelD == 1) {
+						ceil = 1
+					}
+					if (buildLevelD == 2) {
+						ceil = 2
+					}
+					rnd = Math.floor((Math.random() * 2) + 0);
+					if (rnd === 0) {
+					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+					if (rnd === 1) {
+					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+					if (rnd === 0) {
+					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
 				}
 				break;
 			case 3:
