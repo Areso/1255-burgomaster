@@ -473,8 +473,11 @@
 		//rnd = 2;
 		switch (rnd) {
 			case 1:
-				msg = "shit happens";
+				goldLost = Math.floor((Math.random() * gold) + 1);
+				gold     = gold - goldLost
+				msg = "shit happens: thieves stole "+goldLost+" from your treasury";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				updateResources();
 				scrollDown();
 				//alert("shit happens");
 				break;
@@ -534,7 +537,7 @@
 				//
 				break;
 			case 12:
-				msg = "shit happens";
+				msg = "You won a lottery with "+lotteryPrize+" gold prize";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 				scrollDown();
 				//alert("You won a lottery with "+lotteryPrize+" gold prize");
