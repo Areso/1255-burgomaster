@@ -154,7 +154,7 @@
 		</p>
 			<br>
 			<p id="resources">
-			<span id="gold" class="interface" style="position:absolute; top:100px; left:60px">0</span>
+			<span id="gold" class="interface" onClick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
 			<br>
 			<br>
 			<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
@@ -266,11 +266,14 @@
 	var costTower     = 4;
 	var costHome      = 2;
 	var lotteryPrize  = 50;
+	var treasuryGuardPrice = 20;
 	//init service variables
 	var redraw        = 0;
 	var whatDraw      = "";
 	var minBL         = 0;
+	//SAVE THIS ALSO! TODO!!
 	var fire          = 0;
+	var guard         = 0;
 
 	updateResources();
 	//init timers
@@ -432,6 +435,25 @@
 			}
 		}
 	}
+	function hireTreasuryGuard() {
+		if (true) {//todo
+			var answer = confirm("Hire a guardman? It will cost you 20 gold per tick!");//treasuryGuardPrice
+			if (gold >= treasuryGuardPrice) {
+					guard = guard + 1;
+					gold = gold - treasuryGuardPrice;
+					//document.getElementById("guardmen").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
+					msg = "You are hired a guardman!";
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+					scrollDown();
+					updateResources();
+			}
+			else {
+				msg = "We need more gold to do that!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
+			}
+		}	
+	}
 	//timers
 	function redrawTimer() {
 		//cookies = document.cookie.split(';');
@@ -458,6 +480,19 @@
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_pop_limit;
 			scrollDown();
 		}
+		if (guard > 0) {
+			if (gold - guard * treasuryGuardPrice >= 0) {
+				gold = gold - guard * treasuryGuardPrice;
+			}
+			else {
+			//fire guards which we cannot afford
+			//for now fire all guards!
+				guard = 0;
+				msg   = "treasury guard(s) were fired because you are cannot pay to them!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
+			}
+		}
 		if (pop_m === 0) {
 			msg   = "amount of money are increased!";
 		}
@@ -473,13 +508,16 @@
 		//rnd = 2;
 		switch (rnd) {
 			case 1:
-				goldLost = Math.floor((Math.random() * gold) + 1);
-				gold     = gold - goldLost
-				msg = "shit happens: thieves stole "+goldLost+" from your treasury";
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
-				updateResources();
-				scrollDown();
-				//alert("shit happens");
+				rndThieves = Math.floor((Math.random() * guard) + 1); 
+				if (rndThieves === 1) {
+					goldLost = Math.floor((Math.random() * gold/5) + 1);//where is 5 is Stash Level //todo
+					gold     = gold - goldLost
+					msg = "shit happens: thieves stole "+goldLost+" from your treasury";
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+					updateResources();
+					scrollDown();
+					//alert("shit happens");
+				}
 				break;
 			case 2:
 				if (fire === 0) {
