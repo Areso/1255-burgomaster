@@ -146,6 +146,7 @@
 			<button class="tablinks" onclick="openCity(event, 'Main')" id="defaultOpen">Main</button>
 			<button class="tablinks" onclick="openCity(event, 'Explore')">Explore</button>
 			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
+			<button class="tablinks" onclick="openCity(event, 'Garrison')">Garrison</button>
 		</div>
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
@@ -185,6 +186,14 @@
 			<h3>Settings</h3>
 			<p>Alert / MSG to chat</p>
 			<p>Autosave</p>
+		</div>
+		
+		<div id="Garrison" class="tabcontent">
+			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
+			<h3>Garrison</h3>
+			<button id="defence" onClick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px; display:none">Fire</button>
+			<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
+			<button id="defence" onClick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px; width:80px">Hire</button>
 		</div>
 
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
@@ -266,14 +275,14 @@
 	var costTower     = 4;
 	var costHome      = 2;
 	var lotteryPrize  = 50;
-	var treasuryGuardPrice = 20;
+	var treasuryGuardPriceHire = 20;
+	var treasuryGuardPricePayroll = 20;
 	//init service variables
 	var redraw        = 0;
 	var whatDraw      = "";
 	var minBL         = 0;
-	//SAVE THIS ALSO! TODO!!
 	var fire          = 0;
-	var guard         = 0;
+	var guardTreasury = 0;
 
 	updateResources();
 	//init timers
@@ -287,14 +296,16 @@
 		localStorage.setItem('pop', pop);
 		localStorage.setItem('buildLevelD', buildLevelD);
 		localStorage.setItem('buildLevelH', buildLevelH);
+		localStorage.setItem('guardTreasury', guardTreasury);
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
 		scrollDown();
 	}
 	function loadGame() {
 		gold = localStorage.getItem('gold');
 		pop  = localStorage.getItem('pop');
-		buildLevelD = localStorage.getItem('buildLevelD');
-		buildLevelH = localStorage.getItem('buildLevelH');
+		buildLevelD   = localStorage.getItem('buildLevelD');
+		buildLevelH   = localStorage.getItem('buildLevelH');
+		guardTreasury = localStorage.getItem('guardTreasury');
 		composite();
 		updateResources();
 		updateButtonCaptions();
@@ -346,6 +357,7 @@
 	function updateResources() {
 		document.getElementById("gold").innerHTML = gold;
 		document.getElementById("pop").innerHTML  = pop;
+		document.getElementById("treasuryGuard").innerHTML = guardTreasury;
 	}
 	function Build(Structure) {
 		if (Structure==="Wall" || Structure ==="Tower") {
@@ -438,9 +450,9 @@
 	function hireTreasuryGuard() {
 		if (true) {//todo
 			var answer = confirm("Hire a guardman? It will cost you 20 gold per tick!");//treasuryGuardPrice
-			if (gold >= treasuryGuardPrice) {
-					guard = guard + 1;
-					gold = gold - treasuryGuardPrice;
+			if (gold >= treasuryGuardPriceHire) {
+					guardTreasury = guardTreasury + 1;
+					gold = gold - treasuryGuardPriceHire;
 					//document.getElementById("guardmen").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
 					msg = "You are hired a guardman!";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
@@ -480,14 +492,14 @@
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_pop_limit;
 			scrollDown();
 		}
-		if (guard > 0) {
-			if (gold - guard * treasuryGuardPrice >= 0) {
-				gold = gold - guard * treasuryGuardPrice;
+		if (guardTreasury > 0) {
+			if (gold - guardTreasury * treasuryGuardPricePayroll >= 0) {
+				gold = gold - guardTreasury * treasuryGuardPricePayroll;
 			}
 			else {
 			//fire guards which we cannot afford
 			//for now fire all guards!
-				guard = 0;
+				guardTreasury = 0;
 				msg   = "treasury guard(s) were fired because you are cannot pay to them!";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 				scrollDown();
@@ -508,9 +520,9 @@
 		//rnd = 2;
 		switch (rnd) {
 			case 1:
-				rndThieves = Math.floor((Math.random() * guard) + 1); 
+				rndThieves = Math.floor((Math.random() * guardTreasury) + 1); 
 				if (rndThieves === 1) {
-					goldLost = Math.floor((Math.random() * gold/2) + 1);//where is 2 is Stash Level //todo
+					goldLost = Math.floor((Math.random() * gold/5) + 1);//where is 5 is Stash Level //todo
 					gold     = gold - goldLost
 					msg = "shit happens: thieves stole "+goldLost+" from your treasury";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
