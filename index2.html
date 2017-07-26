@@ -450,7 +450,27 @@
 	function hireTreasuryGuard() {
 		if (true) {//todo
 			var answer = confirm("Hire a guardman? It will cost you 20 gold per tick!");//treasuryGuardPrice
+			//BUG IS HERE!
 			if (gold >= treasuryGuardPriceHire) {
+					guardTreasury = guardTreasury*1 + 1;
+					gold = gold - treasuryGuardPriceHire;
+					//document.getElementById("guardmen").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
+					msg = "You are hired a guardman!";
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+					scrollDown();
+					updateResources();
+			}
+			else {
+				msg = "We need more gold to do that!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
+			}
+		}	
+	}
+	function fireTreasuryGuard() {
+		if (guardTreasury > 0) {
+			var answer = confirm("Fire a guardman? It will cost you 20 gold per tick!");//treasuryGuardPrice
+			if (guardTreasury >= treasuryGuardPriceHire) {
 					guardTreasury = guardTreasury*1 + 1;
 					gold = gold - treasuryGuardPriceHire;
 					//document.getElementById("guardmen").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
