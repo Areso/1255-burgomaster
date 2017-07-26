@@ -147,6 +147,7 @@
 			<button class="tablinks" onclick="openCity(event, 'Explore')">Explore</button>
 			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
 			<button class="tablinks" onclick="openCity(event, 'Garrison')">Garrison</button>
+			<button class="tablinks" onclick="openCity(event, 'Building')">Building</button>
 		</div>
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
@@ -165,10 +166,9 @@
 			
 			</p>
 			<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">
-			<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
-			<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
-			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:260px; left: 20px">Save game</button>
-			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:290px; left: 20px">Load game</button>
+			
+			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
+			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:310px; left: 20px">Load game</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
@@ -186,14 +186,33 @@
 			<h3>Settings</h3>
 			<p>Alert / MSG to chat</p>
 			<p>Autosave</p>
+			<p style="display:none">
+			TODO</br>
+			make stash instead of lvl up of treasury</br>
+			make default prefecture</br>
+			make different buttons for walls and castle</br>
+			</p>
+			<p>version 1.0.64</p>
+			Added new tab "Building"</br>
+			All building buttons move to "Building" tab</br>
+			Added firing procedure for treasury guardsmen (not only hiring for now)</br>
+			Added treasury building. As for now it does nothing, but it exists now</br>
 		</div>
 		
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3>Garrison</h3>
-			<button id="defence" onClick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px; display:none">Fire</button>
+			<button id="fireGuard" onClick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px; display:none">Fire</button>
 			<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
-			<button id="defence" onClick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px; width:80px">Hire</button>
+			<button id="hireGuard" onClick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px; width:80px">Hire</button>
+		</div>
+		
+		<div id="Building" class="tabcontent">
+			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
+			<h3>Building</h3>
+			<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
+			<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
+			<button id="treasury" onclick="Build('Treasury')" class="interface" style="top:250px; left:20px">Build treasury: 20 gold</button>
 		</div>
 
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
@@ -213,6 +232,7 @@
 		var img6_2  = loadImage('resources/wallsf_a.png', composite);
 		var img7    = loadImage('resources/castle_a.png', composite);
 		var img8    = loadImage('resources/wishing_well_builded.png', composite);
+		var img9    = loadImage('resources/treasury.png', composite);
 		
 		var msg_pop_limit_en     = "your city is reached population limit. Build new houses or upgrade existing ones";
 		var msg_pop_limit        = msg_pop_limit_en;
@@ -252,7 +272,11 @@
 				if (buildLevelD > 0) {
 					// draw front piece of wall
 					ctx.drawImage(img6_2, 0, 0);
-				}	
+				}
+				if (buildLevelTreasury > 0) {
+					// draw treasury
+					ctx.drawImage(img9, 0, 0);
+				}
 			}
 		}
 		
@@ -270,10 +294,12 @@
 	var pop           = 2;
 	var buildLevelD   = 0;
 	var buildLevelH   = 0;
+	var buildLevelTreasury = 0; //TODO
 	//init const-variables
 	var costWall      = 2;
 	var costTower     = 4;
 	var costHome      = 2;
+	var costTreasury  = 20;
 	var lotteryPrize  = 50;
 	var treasuryGuardPriceHire = 20;
 	var treasuryGuardPricePayroll = 20;
@@ -297,6 +323,7 @@
 		localStorage.setItem('buildLevelD', buildLevelD);
 		localStorage.setItem('buildLevelH', buildLevelH);
 		localStorage.setItem('guardTreasury', guardTreasury);
+		localStorage.setItem('buildLevelTreasury', buildLevelTreasury);
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
 		scrollDown();
 	}
@@ -306,6 +333,7 @@
 		buildLevelD   = localStorage.getItem('buildLevelD');
 		buildLevelH   = localStorage.getItem('buildLevelH');
 		guardTreasury = localStorage.getItem('guardTreasury');
+		buildLevelTreasury = localStorage.getItem('buildLevelTreasury');
 		composite();
 		updateResources();
 		updateButtonCaptions();
@@ -313,10 +341,13 @@
 		scrollDown();
 	}
 	function updateButtonCaptions(){
-		nextLvl      = buildLevelH*1+1;
-		nextLvlPrice = Math.pow(costHome,(buildLevelH*1+1));
-		document.getElementById("homes").innerHTML="Build home lvl"+nextLvl+"; "+nextLvlPrice+" gold";
-
+		nextLvlHome      = buildLevelH*1+1;
+		nextLvlPriceHome = Math.pow(costHome,(buildLevelH*1+1));
+		document.getElementById("homes").innerHTML="Build home lvl"+nextLvlHome+"; "+nextLvlPriceHome+" gold";
+		nextLvlTreasury  = buildLevelTreasury*1+1;
+		nextLvlPriceTreasury = Math.pow(costTreasury,(buildLevelTreasury*1+1));
+		document.getElementById("treasury").innerHTML="Build treasury lvl"+nextLvlTreasury+"; "+nextLvlPriceTreasury+" gold";
+		//BUG HERE
 		if (buildLevelD === 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
 			var towerClick = "Build("+"\'Tower\'"+")";
@@ -388,6 +419,16 @@
 				return true;
 			}
 		}
+		if (Structure==="Treasury") {
+			if (gold >= Math.pow(costTreasury,(buildLevelTreasury*1 + 1))) {
+				gold = gold - Math.pow(costTreasury,(buildLevelTreasury*1 + 1));
+				redraw   = 1;
+				whatDraw = "Treasury";
+				buildLevelTreasury = buildLevelTreasury*1 + 1;
+				updateResources();
+				return true;
+			}
+		}
 	}
 	function Draw(Structure){
 		if (Structure === "Wall"){
@@ -408,6 +449,10 @@
 			document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+house;
 			//update interface
 			document.getElementById("homes").setAttribute("style", "display:none");
+		}
+		if (Structure === "Treasury"){
+			composite();
+			updateButtonCaptions();
 		}
 	}
 	function maximizew() {
@@ -449,22 +494,40 @@
 	}
 	function hireTreasuryGuard() {
 		if (true) {//todo
-			var answer = confirm("Hire a guardman? It will cost you 20 gold per tick!");//treasuryGuardPrice
-			if (gold >= treasuryGuardPriceHire) {
-					guardTreasury = guardTreasury*1 + 1;
+			var answer = confirm("Hire a guardman? It will cost you 20 gold per tick!");
+			if (answer === true) {
+				if (gold >= treasuryGuardPriceHire) {
+					treasuryGuard = treasuryGuard*1 + 1;
 					gold = gold - treasuryGuardPriceHire;
 					//document.getElementById("guardmen").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
 					msg = "You are hired a guardman!";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 					scrollDown();
 					updateResources();
-			}
-			else {
-				msg = "We need more gold to do that!";
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
-				scrollDown();
+				}
+				else {
+					msg = "We need more gold to do that!";
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+					scrollDown();
+				}
 			}
 		}	
+	}
+	function fireTreasuryGuard() {
+		if (treasuryGuard > 0) {
+			var answer = confirm("Fire a guardman?");
+			if (answer === true) {
+				treasuryGuard = treasuryGuard*1 - 1;
+				msg = "You are fired a guardman!";
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+				scrollDown();
+				updateResources();
+			}
+		} else {
+			msg = "You don't have any guardsmen!";
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
+			scrollDown();
+		}		
 	}
 	//timers
 	function redrawTimer() {
@@ -522,8 +585,8 @@
 			case 1:
 				rndThieves = Math.floor((Math.random() * guardTreasury) + 1); 
 				if (rndThieves === 1) {
-					goldLost = Math.floor((Math.random() * gold/5) + 1);//where is 5 is Stash Level //todo
-					gold     = gold - goldLost
+					goldLost = Math.floor((Math.random() * (gold/(1+buildLevelTreasury)) + 1);//where is 5 is Stash Level //todo
+					gold     = gold - goldLost;
 					msg = "shit happens: thieves stole "+goldLost+" from your treasury";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 					updateResources();
