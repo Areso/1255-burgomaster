@@ -322,7 +322,7 @@
 		localStorage.setItem('pop', pop);
 		localStorage.setItem('buildLevelD', buildLevelD);
 		localStorage.setItem('buildLevelH', buildLevelH);
-		localStorage.setItem('guardTreasury', guardTreasury);
+		localStorage.setItem('treasuryGuard', treasuryGuard);
 		localStorage.setItem('buildLevelTreasury', buildLevelTreasury);
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
 		scrollDown();
@@ -332,7 +332,7 @@
 		pop  = localStorage.getItem('pop');
 		buildLevelD   = localStorage.getItem('buildLevelD');
 		buildLevelH   = localStorage.getItem('buildLevelH');
-		guardTreasury = localStorage.getItem('guardTreasury');
+		treasuryGuard = localStorage.getItem('treasuryGuard');
 		buildLevelTreasury = localStorage.getItem('buildLevelTreasury');
 		composite();
 		updateResources();
@@ -388,7 +388,7 @@
 	function updateResources() {
 		document.getElementById("gold").innerHTML = gold;
 		document.getElementById("pop").innerHTML  = pop;
-		document.getElementById("treasuryGuard").innerHTML = guardTreasury;
+		document.getElementById("treasuryGuard").innerHTML = treasuryGuard;
 	}
 	function Build(Structure) {
 		if (Structure==="Wall" || Structure ==="Tower") {
@@ -585,7 +585,7 @@
 			case 1:
 				rndThieves = Math.floor((Math.random() * guardTreasury) + 1); 
 				if (rndThieves === 1) {
-					goldLost = Math.floor((Math.random() * (gold/(1+buildLevelTreasury)) + 1);//where is 5 is Stash Level //todo
+				    goldLost = Math.floor(Math.random() * (gold/(1+buildLevelTreasury))  + 1);//where is 5 is Stash Level //todo
 					gold     = gold - goldLost;
 					msg = "shit happens: thieves stole "+goldLost+" from your treasury";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
