@@ -192,6 +192,10 @@
 			make default prefecture</br>
 			make different buttons for walls and castle</br>
 			</p>
+			<p>version 1.0.68</p>
+			Bug fixes #37</br>
+			<p>version 1.0.67</p>
+			Bug fixes #35</br>
 			<p>version 1.0.66</p>
 			You now can fire guardsmen</br>
 			<p>version 1.0.65</p>
@@ -560,14 +564,14 @@
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_pop_limit;
 			scrollDown();
 		}
-		if (guardTreasury > 0) {
-			if (gold - guardTreasury * treasuryGuardPricePayroll >= 0) {
-				gold = gold - guardTreasury * treasuryGuardPricePayroll;
+		if (treasuryGuard > 0) {
+			if (gold - treasuryGuard * treasuryGuardPricePayroll >= 0) {
+				gold = gold - treasuryGuard * treasuryGuardPricePayroll;
 			}
 			else {
 			//fire guards which we cannot afford
 			//for now fire all guards!
-				guardTreasury = 0;
+				treasuryGuard = 0;
 				msg   = "treasury guard(s) were fired because you are cannot pay to them!";
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 				scrollDown();
@@ -588,7 +592,7 @@
 		//rnd = 2;
 		switch (rnd) {
 			case 1:
-				rndThieves = Math.floor((Math.random() * guardTreasury) + 1); 
+				rndThieves = Math.floor((Math.random() * treasuryGuard) + 1); 
 				if (rndThieves === 1) {
 				    goldLost = Math.floor(Math.random() * (gold/(1+buildLevelTreasury))  + 1);//where is 5 is Stash Level //todo
 					gold     = gold - goldLost;
