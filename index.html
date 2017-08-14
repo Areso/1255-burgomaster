@@ -192,20 +192,11 @@
 			make default prefecture</br>
 			make different buttons for walls and castle</br>
 			</p>
-			<p>version 1.0.68</p>
-			Bug fixes #37</br>
-			<p>version 1.0.67</p>
-			Bug fixes #35</br>
-			<p>version 1.0.66</p>
-			You now can fire guardsmen</br>
-			<p>version 1.0.65</p>
-			Bug fix #30</br>
-			You're need to hire your treasury guards, because save file is partially broken</br>
-			<p>version 1.0.64</p>
-			Added new tab "Building"</br>
-			All building buttons move to "Building" tab</br>
-			Added firing procedure for treasury guardsmen (not only hiring for now)</br>
-			Added treasury building. As for now it does nothing, but it exists now</br>
+			
+	
+			
+			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:200px; left:40px"></textarea>
+			
 		</div>
 		
 		<div id="Garrison" class="tabcontent">
@@ -320,12 +311,42 @@
 	var treasuryGuard = 0;
 
 	updateResources();
+	populatePatchnotes();
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
 	setInterval(redrawTimer, 20);
 	
 	//functions
+	function populatePatchnotes() {
+	msg = "version 1.0.69";
+	writeToTextArea(msg);
+	msg = "bugfix #43 (word 'gold' appears after variable, when thieves stole some gold. fix #40"
+	writeToTextArea(msg);
+	
+	msg = "version 1.0.68";
+	writeToTextArea(msg);
+	msg = "Bug fixes #35";
+	writeToTextArea(msg);
+	
+	msg = "version 1.0.66";
+	writeToTextArea(msg);
+	msg = "You now can fire guardsmen"
+	writeToTextArea(msg);
+	
+	msg = "version 1.0.65";
+	writeToTextArea(msg);
+	msg = "Bug fix #30. You're need to hire your treasury guards again, because save file is partially broken"
+	writeToTextArea(msg);
+	
+	msg = "version 1.0.64";
+	writeToTextArea(msg);
+	msg = "Added new tab 'Building'. All building buttons move to 'Building' tab. Added firing procedure for treasury guardsmen (not only hiring for now). Added treasury building. As for now it does nothing, but it exists now."
+	writeToTextArea(msg);
+	}
+	function writeToTextArea(msg) {
+	document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
+	}
 	function saveGame() {
 		localStorage.setItem('gold', gold);
 		localStorage.setItem('pop', pop);
@@ -596,7 +617,7 @@
 				if (rndThieves === 1) {
 				    goldLost = Math.floor(Math.random() * (gold/(1+buildLevelTreasury))  + 1);//where is 5 is Stash Level //todo
 					gold     = gold - goldLost;
-					msg = "shit happens: thieves stole "+goldLost+" from your treasury";
+					msg = "shit happens: thieves stole "+goldLost+" gold from your treasury";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 					updateResources();
 					scrollDown();
