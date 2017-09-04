@@ -319,6 +319,11 @@
 	
 	//functions
 	function populatePatchnotes() {
+	msg = "version 1.0.72";
+	writeToTextArea(msg);
+	msg = "bugfix #29, #47, #48. No defence button after load"
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.70";
 	writeToTextArea(msg);
 	msg = "bugfix #44. Now it indicates if gold increased, decreased or not changed"
@@ -382,7 +387,6 @@
 		nextLvlTreasury  = buildLevelTreasury*1+1;
 		nextLvlPriceTreasury = Math.pow(costTreasury,(buildLevelTreasury*1+1));
 		document.getElementById("treasury").innerHTML="Build treasury lvl"+nextLvlTreasury+"; "+nextLvlPriceTreasury+" gold";
-		//BUG HERE
 		if (buildLevelD == 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
 			var towerClick = "Build("+"\'Tower\'"+")";
