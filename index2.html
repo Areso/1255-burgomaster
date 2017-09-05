@@ -121,7 +121,7 @@
 		</script>
 	</head>
 	<body>
-		<a href="https://github.com/Areso/js-html5-mycity"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+		<a href="https://github.com/Areso/js-html-mycity"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 		<!--<span id="gold" class="interface" style="position:absolute; top:0px; left:60px">0</span>
 		<span id="pop"  class="interface" style="position:absolute; top:0px; left:100px">2</span>-->
 		<script>
@@ -152,8 +152,8 @@
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
-		welcome to heroes' city
-		</p>
+			welcome to heroes' city
+			</p>
 			<br>
 			<p id="resources">
 			<span id="gold" class="interface" onClick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
@@ -168,7 +168,7 @@
 			<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">
 			
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
-			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:310px; left: 20px">Load game</button>
+			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:350px; left: 20px">Load game</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
@@ -176,9 +176,10 @@
 		</div>
 
 		<div id="Explore" class="tabcontent">
-			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Explore</h3>
-			<p>Global map</p> 
+			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
+			<p style="position:absolute; top:60px; left: 20px">
+			GLOBALMAP
+			</p> 
 		</div>
 
 		<div id="Settings" class="tabcontent">
@@ -219,6 +220,7 @@
 		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
 	<script>
+	//TOWN
 		var canvas  = document.getElementById("canvas");
 		var ctx     = canvas.getContext("2d");
 		
@@ -240,7 +242,7 @@
 		var msg_game_saved       = msg_game_saved_en;
 		var msg_game_loaded_en   = "game loaded successfully";
 		var msg_game_loaded       = msg_game_loaded_en;
-
+		
 		var imagesLoaded = 0;
 		
 		function composite() {
@@ -288,6 +290,42 @@
 		}
 		//composite();
 	</script>
+	
+	<script>
+	
+	//GLOBALMAP
+		var canvas_map      = document.getElementById("canvasMap");
+		var ctx_map         = canvas_map.getContext("2d");
+		var tile_grass      = loadImage('tiles/grass.png', composite_gm);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows. 
+		var tile_sand       = loadImage('tiles/sand.png', composite_gm);
+		var tile_snow       = loadImage('tiles/snow.png', composite_gm);
+		var tile_water      = loadImage('tiles/water.png', composite_gm);
+		
+		var imagesLoadedMap = 0;
+		
+		function composite_gm() {
+			imagesLoadedMap = imagesLoadedMap*1 + 1;
+			if (imagesLoadedMap > 1) {
+				// composite now
+				//ctx.globalAlpha = 1.00;
+				for (i = 0; i < 4; i++) {
+					for (j = 0; j < 4; j++) {
+						globalMap[0][0] = 1;
+					}
+				}
+				ctx_map.drawImage(tile_grass, 0, 0);   //draw background
+				
+			}
+		}
+		/*
+		function loadImage(src, onload) {
+			var img = new Image();
+			img.onload = onload;
+			img.src = src;
+			return img;
+		}
+		*/
+	</script>
 	<script>
 	//init variables
 	var gold          = 20;
@@ -309,16 +347,54 @@
 	var minBL         = 0;
 	var fire          = 0;
 	var treasuryGuard = 0;
-
+	var mapCreated    = 0;
+	var globalMap = [[],[]];
+	
 	updateResources();
 	populatePatchnotes();
+	generateMap();
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
 	setInterval(redrawTimer, 20);
 	
 	//functions
+	
+	function generateMap() {
+		/*
+		var arr  = [];
+		
+		var arr1 = ['00','01'];
+		var arr2 = ['10','11'];
+		var arr3 = ['20','21'];
+		for (j = 0; j < 2; j++) {
+				arr1.push(Math.floor(Math.random()*10); 
+			} 
+		arr.push(arr1);
+		arr.push(arr2);
+		arr.push(arr3);
+		for (i = 0; i < 4; i++) {
+			for (j = 0; j < 4; j++) {
+				globalMap[0][0] = 1; 
+			}
+		}
+		*/
+		for (var a=[]; a.push([])<10;);
+		for (i = 0; i < 4; i++) {
+			for (j = 0; j < 4; j++) {
+				a[i][j] = Math.floor(Math.random()*10); 
+				console.log("i "+i+" and j is "+j+" value is "+a[i][j]);
+			}
+		}
+	mapCreated = 1;
+	}
+	
 	function populatePatchnotes() {
+	msg = "version 1.0.72";
+	writeToTextArea(msg);
+	msg = "bugfix #29, #47, #48. No defence button after load"
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.70";
 	writeToTextArea(msg);
 	msg = "bugfix #44. Now it indicates if gold increased, decreased or not changed"
@@ -382,13 +458,12 @@
 		nextLvlTreasury  = buildLevelTreasury*1+1;
 		nextLvlPriceTreasury = Math.pow(costTreasury,(buildLevelTreasury*1+1));
 		document.getElementById("treasury").innerHTML="Build treasury lvl"+nextLvlTreasury+"; "+nextLvlPriceTreasury+" gold";
-		//BUG HERE
-		if (buildLevelD === 1) {
+		if (buildLevelD == 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
 			var towerClick = "Build("+"\'Tower\'"+")";
 			document.getElementById("defence").setAttribute("onclick", towerClick);
 		}
-		if (buildLevelD === 2) {
+		if (buildLevelD == 2) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
 	}
