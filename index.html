@@ -152,8 +152,8 @@
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
-		welcome to heroes' city
-		</p>
+			welcome to heroes' city
+			</p>
 			<br>
 			<p id="resources">
 			<span id="gold" class="interface" onClick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
@@ -176,9 +176,10 @@
 		</div>
 
 		<div id="Explore" class="tabcontent">
-			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Explore</h3>
-			<p>Global map</p> 
+			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
+			<p style="position:absolute; top:60px; left: 20px">
+			GLOBALMAP
+			</p> 
 		</div>
 
 		<div id="Settings" class="tabcontent">
@@ -202,23 +203,75 @@
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3>Garrison</h3>
-			<button id="fireGuard" onClick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
-			<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
-			<button id="hireGuard" onClick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px; width:80px">Hire</button>
+			<div id="divtreasuryGuard">
+			<table border="1">
+				<tr>
+					<td>
+						<div align="center">
+							<img src="resources/knight6.png">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button id="fireGuard" onClick="fireTreasuryGuard()" style="width:80px">Fire</button>
+						<span id="treasuryGuard">0</span>
+						<button id="hireGuard" onClick="hireTreasuryGuard()" style="width:80px">Hire</button>
+						<!--<button id="fireGuard" onClick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
+						<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
+						<button id="hireGuard" onClick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
+					</td>
+				</tr>
+			</table>
+			</div>
 		</div>
 		
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3>Building</h3>
-			<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
-			<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
-			<button id="treasury" onclick="Build('Treasury')" class="interface" style="top:250px; left:20px">Build treasury: 20 gold</button>
+			<div>
+				<table border="1">
+				<tr>
+					<td>
+						<div align="center">
+							<img id="defencies_img" src="resources/wallsf_as2.png">
+						</div>
+					</td>
+					<td>
+						<div align="center">
+							<img src="resources/home_as.png">
+						</div>
+					</td>
+					<td>
+						<div align="center">
+							<img src="resources/treasury_as.png">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button id="defence" onclick="Build('Wall')">Build walls: 2 gold</button>
+					</td>
+					<td>
+						<button id="homes" onclick="Build('Home')">Build home: 2 gold</button>
+					</td>
+					<td>
+						<button id="treasury" onclick="Build('Treasury')">Build treasury: 20 gold</button>
+					</td>
+					<!--
+					<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
+					<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
+					<button id="treasury" onclick="Build('Treasury')" class="interface" style="top:250px; left:20px">Build treasury: 20 gold</button>-->
+				</tr>
+			</table>
+			</div>
 		</div>
 
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
 		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
 	<script>
+	//TOWN
 		var canvas  = document.getElementById("canvas");
 		var ctx     = canvas.getContext("2d");
 		
@@ -230,7 +283,7 @@
 		var img5_1  = loadImage('resources/house_a.png', composite);
 		var img6_1  = loadImage('resources/wallsr_a.png', composite);
 		var img6_2  = loadImage('resources/wallsf_a.png', composite);
-		var img7    = loadImage('resources/castle_a.png', composite);
+		var img7    = loadImage('resources/castle_as.png', composite);
 		var img8    = loadImage('resources/wishing_well_builded.png', composite);
 		var img9    = loadImage('resources/treasury.png', composite);
 		
@@ -240,7 +293,7 @@
 		var msg_game_saved       = msg_game_saved_en;
 		var msg_game_loaded_en   = "game loaded successfully";
 		var msg_game_loaded       = msg_game_loaded_en;
-
+		
 		var imagesLoaded = 0;
 		
 		function composite() {
@@ -267,7 +320,7 @@
 				}
 				if (buildLevelD > 1) {
 					// draw castle
-					ctx.drawImage(img7, 0, 0);
+					ctx.drawImage(img7, 300, 160);
 				}
 				if (buildLevelD > 0) {
 					// draw front piece of wall
@@ -288,13 +341,50 @@
 		}
 		//composite();
 	</script>
+	
+	<script>
+	
+	//GLOBALMAP
+		var canvas_map      = document.getElementById("canvasMap");
+		var ctx_map         = canvas_map.getContext("2d");
+		var tile_grass      = loadImage('tiles/grass.png', composite_gm);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows. 
+		var tile_sand       = loadImage('tiles/sand.png', composite_gm);
+		var tile_snow       = loadImage('tiles/snow.png', composite_gm);
+		var tile_water      = loadImage('tiles/water.png', composite_gm);
+		
+		var imagesLoadedMap = 0;
+		
+		function composite_gm() {
+			imagesLoadedMap = imagesLoadedMap*1 + 1;
+			if (imagesLoadedMap > 1) {
+				// composite now
+				//ctx.globalAlpha = 1.00;
+				for (i = 0; i < 4; i++) {
+					for (j = 0; j < 4; j++) {
+						globalMap[0][0] = 1;
+					}
+				}
+				ctx_map.drawImage(tile_grass, 0, 0);   //draw background
+				
+			}
+		}
+		/*
+		function loadImage(src, onload) {
+			var img = new Image();
+			img.onload = onload;
+			img.src = src;
+			return img;
+		}
+		*/
+	</script>
 	<script>
 	//init variables
 	var gold          = 20;
 	var pop           = 2;
 	var buildLevelD   = 0;
 	var buildLevelH   = 0;
-	var buildLevelTreasury = 0; //TODO
+	var buildLevelTreasury = 0;
+	var fire          = 0;
 	//init const-variables
 	var costWall      = 2;
 	var costTower     = 4;
@@ -309,16 +399,57 @@
 	var minBL         = 0;
 	var fire          = 0;
 	var treasuryGuard = 0;
-
+	var mapCreated    = 0;
+	var globalMap = [[],[]];
 	updateResources();
 	populatePatchnotes();
+	generateMap();
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
 	setInterval(redrawTimer, 20);
 	
 	//functions
+	
+	function generateMap() {
+		/*
+		var arr  = [];
+		
+		var arr1 = ['00','01'];
+		var arr2 = ['10','11'];
+		var arr3 = ['20','21'];
+		for (j = 0; j < 2; j++) {
+				arr1.push(Math.floor(Math.random()*10); 
+			} 
+		arr.push(arr1);
+		arr.push(arr2);
+		arr.push(arr3);
+		for (i = 0; i < 4; i++) {
+			for (j = 0; j < 4; j++) {
+				globalMap[0][0] = 1; 
+			}
+		}
+		*/
+		for (var a=[]; a.push([])<10;);
+		for (i = 0; i < 4; i++) {
+			for (j = 0; j < 4; j++) {
+				a[i][j] = Math.floor(Math.random()*10); 
+				console.log("i "+i+" and j is "+j+" value is "+a[i][j]);
+			}
+		}
+	mapCreated = 1;
+	}
+	
 	function populatePatchnotes() {
+	msg = "version 1.0.76";
+	writeToTextArea(msg);
+	msg = "bugfix #39 Save/Load doesn't apply on fire in the city"+"\n"+
+		"bugfix #42 Prevent load game if there no saves around"+"\n"+
+		"bugfix #51 Save and Load with confirmation"+"\n"+
+		"bugfix #54 Hiring treasury guards available only if treasury is built"+"\n"+
+		"close #55 Added image of treasury guard";
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.72";
 	writeToTextArea(msg);
 	msg = "bugfix #29, #47, #48. No defence button after load"
@@ -358,27 +489,39 @@
 	document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
 	function saveGame() {
-		localStorage.setItem('gold', gold);
-		localStorage.setItem('pop', pop);
-		localStorage.setItem('buildLevelD', buildLevelD);
-		localStorage.setItem('buildLevelH', buildLevelH);
-		localStorage.setItem('treasuryGuard', treasuryGuard);
-		localStorage.setItem('buildLevelTreasury', buildLevelTreasury);
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
-		scrollDown();
+		var answer = confirm("Save game? It will rewrite any save you already have!");
+		if (answer === true) {
+			localStorage.setItem('gold', gold);
+			localStorage.setItem('pop', pop);
+			localStorage.setItem('buildLevelD', buildLevelD);
+			localStorage.setItem('buildLevelH', buildLevelH);
+			localStorage.setItem('treasuryGuard', treasuryGuard);
+			localStorage.setItem('buildLevelTreasury', buildLevelTreasury);
+			localStorage.setItem('fire', fire);
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
+			scrollDown();
+		}
 	}
 	function loadGame() {
-		gold = localStorage.getItem('gold');
-		pop  = localStorage.getItem('pop');
-		buildLevelD   = localStorage.getItem('buildLevelD');
-		buildLevelH   = localStorage.getItem('buildLevelH');
-		treasuryGuard = localStorage.getItem('treasuryGuard');
-		buildLevelTreasury = localStorage.getItem('buildLevelTreasury');
-		composite();
-		updateResources();
-		updateButtonCaptions();
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
-		scrollDown();
+		var answer = confirm("Load game? It will lost any progress since last save!");
+		if (answer === true) {
+			if (localStorage.getItem('gold')!=null){
+				gold = localStorage.getItem('gold');
+				pop  = localStorage.getItem('pop');
+				buildLevelD   = localStorage.getItem('buildLevelD');
+				buildLevelH   = localStorage.getItem('buildLevelH');
+				treasuryGuard = localStorage.getItem('treasuryGuard');
+				buildLevelTreasury = localStorage.getItem('buildLevelTreasury');
+				fire          = localStorage.getItem('fire');
+				composite();
+				updateResources();
+				updateButtonCaptions();
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
+				scrollDown();
+			} else {
+				alert('Sorry! There are no save to load!');
+			}
+		}
 	}
 	function updateButtonCaptions(){
 		nextLvlHome      = buildLevelH*1+1;
@@ -397,32 +540,32 @@
 		}
 	}
 	function getTime(type) {
-	    var d = new Date();
-	    var hh = d.getHours();
-	    var mm = d.getMinutes();
-	    var ss = d.getSeconds();
-	    if (hh < 10) {
-	    	hh = "0"+hh;
-	    }
-	    if (mm < 10) {
-	    	mm = "0"+mm;
-	    }
-	    if (ss < 10) {
-	    	ss = "0"+ss;
-	    }
-	    if (type=="0") {
-	    	n = hh+":"+mm;	
-	    }
-	    if (type=="1") {
-	    	n = hh+":"+mm+":"+ss;	
-	    }
-	    return n;
+		var d = new Date();
+		var hh = d.getHours();
+		var mm = d.getMinutes();
+		var ss = d.getSeconds();
+		if (hh < 10) {
+			hh = "0"+hh;
+		}
+		if (mm < 10) {
+			mm = "0"+mm;
+		}
+		if (ss < 10) {
+			ss = "0"+ss;
+		}
+		if (type=="0") {
+			n = hh+":"+mm;	
+		}
+		if (type=="1") {
+			n = hh+":"+mm+":"+ss;	
+		}
+		return n;
 	}
 	function scrollDown(){
-   		var textarea = document.getElementById("console_n_chat");
-		    if(textarea.selectionStart === textarea.selectionEnd) {
+		var textarea = document.getElementById("console_n_chat");
+			if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
-	   		}
+			}
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML = gold;
@@ -532,7 +675,7 @@
 		}
 	}
 	function hireTreasuryGuard() {
-		if (true) {//todo
+		if (buildLevelTreasury >= 1) {
 			var answer = confirm("Hire a guardman? It will cost you 20 gold per tick!");
 			if (answer === true) {
 				if (gold >= treasuryGuardPriceHire) {
@@ -550,7 +693,9 @@
 					scrollDown();
 				}
 			}
-		}	
+		} else {
+			alert('You don\'t have a treasury to hire a treasury guard!');
+		}
 	}
 	function fireTreasuryGuard() {
 		if (treasuryGuard > 0) {
@@ -629,12 +774,12 @@
 	}
 	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
-		//rnd = 2;
+		//rnd = 1;//debug
 		switch (rnd) {
 			case 1:
 				rndThieves = Math.floor((Math.random() * treasuryGuard) + 1); 
 				if (rndThieves === 1) {
-				    goldLost = Math.floor(Math.random() * (gold/(1+buildLevelTreasury))  + 1);//where is 5 is Stash Level //todo
+					goldLost = Math.floor(Math.random() * (gold/(1+buildLevelTreasury))  + 1);//where is 5 is Stash Level //todo
 					gold     = gold - goldLost;
 					msg = "shit happens: thieves stole "+goldLost+" gold from your treasury";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
