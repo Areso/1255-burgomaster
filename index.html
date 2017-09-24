@@ -186,15 +186,11 @@
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3>Settings</h3>
 			<p>Alert / MSG to chat</p>
-			<p>Autosave</p>
-			<p style="display:none">
-			TODO</br>
-			make stash instead of lvl up of treasury</br>
-			make default prefecture</br>
-			make different buttons for walls and castle</br>
-			</p>
-			
-	
+			<table>
+			<tr>
+				<td>Autosave <img id="autosaveImg" onClick="changeAutosave()" src="resources/button_red.png"></td>
+				</tr>
+			</table>
 			
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:200px; left:40px"></textarea>
 			
@@ -385,6 +381,8 @@
 	var buildLevelH   = 0;
 	var buildLevelTreasury = 0;
 	var fire          = 0;
+	var autosave      = 0;//todo
+	var happyness     = 0;//todo
 	//init const-variables
 	var costWall      = 2;
 	var costTower     = 4;
@@ -397,17 +395,19 @@
 	var redraw        = 0;
 	var whatDraw      = "";
 	var minBL         = 0;
-	var fire          = 0;
 	var treasuryGuard = 0;
 	var mapCreated    = 0;
 	var globalMap = [[],[]];
 	updateResources();
 	populatePatchnotes();
 	generateMap();
+	var autosaveObject;
+	setupAutosave();
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
 	setInterval(redrawTimer, 20);
+	
 	
 	//functions
 	
@@ -441,6 +441,11 @@
 	}
 	
 	function populatePatchnotes() {
+	msg = "version 1.0.78";
+	writeToTextArea(msg);
+	msg = "bugfix #34 Autosave now implemented"+"\n"+
+		"bugfix #59 new variables don't brick old saves";
+	writeToTextArea(msg);
 	msg = "version 1.0.76";
 	writeToTextArea(msg);
 	msg = "bugfix #39 Save/Load doesn't apply on fire in the city"+"\n"+
@@ -486,11 +491,45 @@
 	writeToTextArea(msg);
 	}
 	function writeToTextArea(msg) {
-	document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
+		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
-	function saveGame() {
-		var answer = confirm("Save game? It will rewrite any save you already have!");
-		if (answer === true) {
+	function setupAutosave() {
+		if (autosave==0) {
+			if (typeof autosaveObject !== 'undefined') {
+			clearInterval(autosaveObject);
+			}
+			//alert("Autosave disabled");
+			document.getElementById("autosaveImg").setAttribute("src","resources/button_red.png");
+		} else {
+			autosaveObject = setInterval(autosaveGame, 40000);
+			//alert("Autosave enabled");
+			document.getElementById("autosaveImg").setAttribute("src","resources/button_green.png");
+		}
+	}
+	function changeAutosave() {
+		if (autosave==0) {
+			autosave = 1;
+			setupAutosave();
+		} else {
+			autosave = 0;
+			setupAutosave();
+		}
+	}
+	function autosaveGame() {
+		//alert("saved");
+		saveGame("silent");
+	}
+	function saveGame(saveConfirmation) {
+		if (saveConfirmation=="silent") { 
+			writeSave();
+		} else {
+			var answer = confirm("Save game? It will rewrite any save you already have!");
+			if (answer === true) {
+				writeSave();
+			}
+		}
+	}
+	function writeSave(){
 			localStorage.setItem('gold', gold);
 			localStorage.setItem('pop', pop);
 			localStorage.setItem('buildLevelD', buildLevelD);
@@ -498,9 +537,10 @@
 			localStorage.setItem('treasuryGuard', treasuryGuard);
 			localStorage.setItem('buildLevelTreasury', buildLevelTreasury);
 			localStorage.setItem('fire', fire);
+			localStorage.setItem('autosave', autosave);
+			localStorage.setItem('happyness', happyness);
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
 			scrollDown();
-		}
 	}
 	function loadGame() {
 		var answer = confirm("Load game? It will lost any progress since last save!");
@@ -508,11 +548,42 @@
 			if (localStorage.getItem('gold')!=null){
 				gold = localStorage.getItem('gold');
 				pop  = localStorage.getItem('pop');
-				buildLevelD   = localStorage.getItem('buildLevelD');
-				buildLevelH   = localStorage.getItem('buildLevelH');
-				treasuryGuard = localStorage.getItem('treasuryGuard');
-				buildLevelTreasury = localStorage.getItem('buildLevelTreasury');
-				fire          = localStorage.getItem('fire');
+				if (localStorage.getItem('buildLevelD')!=null){
+					buildLevelD   = localStorage.getItem('buildLevelD');
+				} else {
+					buildLevelD        = 0;
+				}
+				if (localStorage.getItem('buildLevelH')!=null){
+					buildLevelH   = localStorage.getItem('buildLevelH');
+				} else {
+					buildLevelH        = 0;
+				}
+				if (localStorage.getItem('treasuryGuard')!=null){
+					treasuryGuard   = localStorage.getItem('treasuryGuard');
+				} else {
+					treasuryGuard      = 0;
+				}
+				if (localStorage.getItem('buildLevelTreasury')!=null){
+					buildLevelTreasury   = localStorage.getItem('buildLevelTreasury');
+				} else {
+					buildLevelTreasury = 0;
+				}
+				if (localStorage.getItem('fire')!=null){
+					fire   = localStorage.getItem('fire');
+				} else {
+					fire = 0;
+				}
+				if (localStorage.getItem('autosave')!=null){
+					autosave   = localStorage.getItem('autosave');
+				} else {
+					autosave           = 0;
+				}
+				if (localStorage.getItem('happyness')!=null){
+					happyness   = localStorage.getItem('happyness');
+				} else {
+					happyness          = 80;
+				}
+				setupAutosave();
 				composite();
 				updateResources();
 				updateButtonCaptions();
