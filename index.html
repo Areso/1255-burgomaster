@@ -156,7 +156,7 @@
 			</p>
 			<br>
 			<p id="resources">
-			<span id="gold" class="interface" onClick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
+			<span id="gold" class="interface" onclick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
 			<br>
 			<br>
 			<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
@@ -169,6 +169,7 @@
 			
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
 			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:350px; left: 20px">Load game</button>
+			<button id="putOutFire"   onclick="putOutFire()" class="interface" style="top:390px; left: 20px; display:none">Put out fire</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
@@ -188,7 +189,7 @@
 			<p>Alert / MSG to chat</p>
 			<table>
 			<tr>
-				<td>Autosave <img id="autosaveImg" onClick="changeAutosave()" src="resources/button_red.png"></td>
+				<td>Autosave <img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
 				</tr>
 			</table>
 			
@@ -210,12 +211,12 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="fireGuard" onClick="fireTreasuryGuard()" style="width:80px">Fire</button>
+						<button id="fireGuard" onclick="fireTreasuryGuard()" style="width:80px">Fire</button>
 						<span id="treasuryGuard">0</span>
-						<button id="hireGuard" onClick="hireTreasuryGuard()" style="width:80px">Hire</button>
-						<!--<button id="fireGuard" onClick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
+						<button id="hireGuard" onclick="hireTreasuryGuard()" style="width:80px">Hire</button>
+						<!--<button id="fireGuard" onclick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
 						<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
-						<button id="hireGuard" onClick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
+						<button id="hireGuard" onclick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
 					</td>
 				</tr>
 			</table>
@@ -756,6 +757,7 @@
 					gold = gold - 20;
 					document.getElementById("fire").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
 					msg = "Fireman put out a fire!";
+					document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 					scrollDown();
 					updateResources();
@@ -893,6 +895,7 @@
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 					scrollDown();
 					//alert('fire in the city!');
+					document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
 					document.getElementById("fire").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
 					fire = 1;
 					//var fire_img = "<img src=\"1.png\" class=\"over1\">";
