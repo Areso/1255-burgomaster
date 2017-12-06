@@ -273,7 +273,7 @@
 					</td>
 					<td>
 						<div align="center">
-							<img src="resources/trapdoor.png">
+							<img src="resources/blank.png">
 						</div>
 					</td>
 				</tr>
@@ -311,14 +311,13 @@
 		var img7    = loadImage('resources/castle_as.png', composite);
 		var img8    = loadImage('resources/wishing_well_builded.png', composite);
 		var img9    = loadImage('resources/treasury.png', composite);
-		var img9    = loadImage('resources/trapdoor.png', composite);
 		
 		var msg_pop_limit_en     = "your city is reached population limit. Build new houses or upgrade existing ones";
 		var msg_pop_limit        = msg_pop_limit_en;
 		var msg_game_saved_en    = "game saved successfully";
 		var msg_game_saved       = msg_game_saved_en;
 		var msg_game_loaded_en   = "game loaded successfully";
-		var msg_game_loaded      = msg_game_loaded_en;
+		var msg_game_loaded       = msg_game_loaded_en;
 		
 		var imagesLoaded = 0;
 		
