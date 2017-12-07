@@ -56,7 +56,10 @@
 				position: relative;
 				left:0px;
 			}
-			#defence, #homes {
+			#defence, #homes, #treasury {
+				width: 180px;
+			}
+			#buttonBldGallows, #buttonBldFountain, #buttonBldStash {
 				width: 180px;
 			}
 			#console_n_chat {
@@ -671,9 +674,22 @@
 		nextLvlHome      = buildLevelH*1+1;
 		nextLvlPriceHome = Math.pow(costHome,(buildLevelH*1+1));
 		document.getElementById("homes").innerHTML="Build home lvl"+nextLvlHome+"; "+nextLvlPriceHome+" gold";
+		
 		nextLvlTreasury  = buildLevelTreasury*1+1;
 		nextLvlPriceTreasury = Math.pow(costTreasury,(buildLevelTreasury*1+1));
 		document.getElementById("treasury").innerHTML="Build treasury lvl"+nextLvlTreasury+"; "+nextLvlPriceTreasury+" gold";
+		
+		nextLvlGallows  = buildLevelGallows*1+1;
+		nextLvlPriceGallows = Math.pow(costGallows,(buildLevelGallows*1+1));
+		document.getElementById("buttonBldGallows").innerHTML="Build gallows lvl"+nextLvlGallows+"; "+nextLvlPriceGallows+" gold";
+		
+		nextLvlFountain  = buildLevelFountain*1+1;
+		nextLvlPriceFountain = Math.pow(costFountain,(buildLevelFountain*1+1));
+		document.getElementById("buttonBldFountain").innerHTML="Build fountain lvl"+nextLvlFountain+"; "+nextLvlPriceFountain+" gold";
+		
+		nextLvlStash  = buildLevelStash*1+1;
+		nextLvlPriceStash = Math.pow(costStash,(buildLevelStash*1+1));
+		document.getElementById("buttonBldStash").innerHTML="Build stash lvl"+nextLvlStash+"; "+nextLvlPriceStash+" gold";
 		if (buildLevelD == 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
 			var towerClick = "Build("+"\'Tower\'"+")";
@@ -867,9 +883,17 @@
 	}
 	//timers
 	function resourcesTimer() {
-		pop_m    = 0;
-		gold_was = gold;
-		gold     = gold*1+Math.round(pop*(1+buildLevelGallows*1/10),0);
+		pop_m         = 0;
+		gold_was      = gold;
+		gold_limit    = (buildLevelTreasury*1+1)^4*10000;
+		gold_possible = gold*1+Math.round(pop*(1+buildLevelGallows*1/10),0);
+		if (gold_possible > gold_limit) {
+			gold      = gold_possible;
+		} else {
+			gold      = gold_limit;
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+"build or update Treasury";
+			scrollDown();
+		}
 		//gold     = gold*1+2;
 		if (pop < 2*Math.pow((buildLevelH*1+3),2)) {
 			pop      = Math.round((pop*1+pop*1*20/1000)*(1+buildLevelFountain*1/10),0);
