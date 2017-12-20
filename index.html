@@ -173,6 +173,7 @@
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
 			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:350px; left: 20px">Load game</button>
 			<button id="putOutFire"   onclick="putOutFire()" class="interface" style="top:390px; left: 20px; display:none">Put out fire</button>
+			<button id="buttonDeathPenalty"   onclick="deathPenalty()" class="interface" style="top:430px; left: 20px; display:none">Death penalty</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
@@ -495,6 +496,18 @@
 	}
 	
 	function populatePatchnotes() {
+	msg = "version 1.0.89";
+	writeToTextArea(msg);
+	msg = "now with shiny messages in chat about execution";
+	writeToTextArea(msg);
+	msg = "version 1.0.88";
+	writeToTextArea(msg);
+	msg = "death penalty button";
+	writeToTextArea(msg); 
+	msg = "version 1.0.87";
+	writeToTextArea(msg);
+	msg = "set build buttons invisible for Gallows-Fountain when Fountain-Gallows is built";
+	writeToTextArea(msg); 
 	msg = "version 1.0.79";
 	writeToTextArea(msg);
 	msg = "gallows prevent building fountain, fountain prevent building gallows and stash requires treasury";
@@ -703,6 +716,7 @@
 		}
 		if (buildLevelGallows > 0) {
 			document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
+			document.getElementById("buttonDeathPenalty").setAttribute("style", "top:430px; left: 20px");
 		}
 	}
 	function getTime(type) {
@@ -824,6 +838,54 @@
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 				scrollDown();
 			}
+		}
+	}
+	function deathPenalty() {
+		if (buildLevelGallows > 0) {
+			if (pop > 2) {
+				pop = pop - 1;
+				gold_was      = gold;
+				gold_limit    = (buildLevelTreasury*1+1)^4*10000;
+				gold_possible = gold*1+Math.floor((Math.random() * gold)/10 + 1);
+				if (gold_possible > gold_limit) {
+					gold      = gold_limit;
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+"build or update Treasury";
+					scrollDown();
+				} else {
+					gold      = gold_possible;
+				}
+				gold_incr     = gold - gold_was;
+				rnd = Math.floor((Math.random() * 6) + 1);
+				//rnd = 1;//debug
+				switch (rnd) {
+					case 1:
+						reason = "treachery"; 
+						break;
+					case 2:
+						reason = "betroyal";
+						break;
+					case 3:
+						reason = "corruption";
+						break;
+					case 4:
+						reason = "bribery";
+						break;
+					case 5:
+						reason = "graft and theft";
+						break;
+					case 6:
+						reason = "embezzlement"
+						break;
+					case 7:
+					default:
+						alert("error on switch/case function");
+				}
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+"you executed a townperson for "+reason;
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+"your treasury funded on "+gold_incr+" as confiscated property";
+				//and sum to your treasury
+				scrollDown();
+			}
+			updateResources();
 		}
 	}
 	function hireTreasuryGuard() {
