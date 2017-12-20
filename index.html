@@ -698,6 +698,12 @@
 		if (buildLevelD == 2) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
+		if (buildLevelFountain > 0) {
+			document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
+		}
+		if (buildLevelGallows > 0) {
+			document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
+		}
 	}
 	function getTime(type) {
 		var d = new Date();
@@ -737,17 +743,13 @@
 			if (gold >= costWall && buildLevelD == 0) { 
 				buildLevelD = buildLevelD*1 + 1;
 				gold = gold - costWall;
-				updateResources();
-				composite();
-				updateButtonCaptions();
+				commonBuild();
 				return true;
 			}
 			if (gold >= costTower && buildLevelD == 1) { 
 				buildLevelD = buildLevelD*1 + 1;
 				gold = gold - costTower;
-				updateResources();
-				composite();
-				updateButtonCaptions();
+				commonBuild();
 				return true;
 			}
 		}
@@ -755,9 +757,7 @@
 			if (gold >= Math.pow(costHome,(buildLevelH*1 + 1))) {
 				gold = gold - Math.pow(costHome,(buildLevelH*1 + 1));
 				buildLevelH = buildLevelH*1 + 1;
-				updateResources();
-				composite();
-				updateButtonCaptions();
+				commonBuild();
 				return true;
 			}
 		}
@@ -765,9 +765,7 @@
 			if (gold >= Math.pow(costTreasury,(buildLevelTreasury*1 + 1))) {
 				gold = gold - Math.pow(costTreasury,(buildLevelTreasury*1 + 1));
 				buildLevelTreasury = buildLevelTreasury*1 + 1;
-				updateResources();
-				composite();
-				updateButtonCaptions();
+				commonBuild();
 				return true;
 			}
 		}
@@ -775,9 +773,7 @@
 			if (gold >= Math.pow(costGallows,(buildLevelGallows*1 + 1)) && buildLevelFountain == 0) {
 				gold = gold - Math.pow(costGallows,(buildLevelGallows*1 + 1));
 				buildLevelGallows = buildLevelGallows*1 + 1;
-				updateResources();
-				composite();
-				updateButtonCaptions();
+				commonBuild();
 				return true;
 			}
 		}
@@ -785,9 +781,7 @@
 			if (gold >= Math.pow(costFountain,(buildLevelFountain*1 + 1)) && buildLevelGallows == 0) {
 				gold = gold - Math.pow(costFountain,(buildLevelFountain*1 + 1));
 				buildLevelFountain = buildLevelFountain*1 + 1;
-				updateResources();
-				composite();
-				updateButtonCaptions();
+				commonBuild();
 				return true;
 			}
 		}
@@ -795,26 +789,16 @@
 			if (gold >= Math.pow(costStash,(buildLevelStash*1 + 1)) && buildLevelTreasury*1 > 0) {
 				gold = gold - Math.pow(costStash,(buildLevelStash*1 + 1));
 				buildLevelStash = buildLevelStash*1 + 1;
-				updateResources();
-				composite();
-				updateButtonCaptions();
+				commonBuild();
 				return true;
 			}
 		}
+		function commonBuild() {
+			updateResources();
+			composite();
+			updateButtonCaptions();
+		}
 	}
-	/*
-	function maximizew() {
-		//var mxmw = document.getElementById("constructionWindow");
-		document.getElementById("constructionWindow").setAttribute("width", 195);
-		document.getElementById("constructionWindow").setAttribute("height", 400);
-		
-	}
-	function minimizew() {
-		//var mxmw = document.getElementById("constructionWindow");
-		document.getElementById("constructionWindow").setAttribute("width", 1);
-		document.getElementById("constructionWindow").setAttribute("height", 1);
-	}
-	*/
 	function putOutFire () {
 		if (fire === 1){
 			var answer = confirm("Call an fireman? It will cost you 20 gold!");
