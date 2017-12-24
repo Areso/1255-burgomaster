@@ -159,21 +159,20 @@
 			</p>
 			<br>
 			<p id="resources">
-			<span id="gold" class="interface" onclick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
-			<br>
-			<br>
-			<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
-			<br>
-		</p>
-			<p id="constructions">
+				<span id="gold" class="interface" onclick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
+				<br>
+				<br>
+				<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
+				<br>
+			</p>
+			<p id="events_graphics">
 			
 			</p>
-			<img src="resources/fire_a.gif" id="fire" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">
-			
+			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
 			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:350px; left: 20px">Load game</button>
 			<button id="putOutFire"   onclick="putOutFire()" class="interface" style="top:390px; left: 20px; display:none">Put out fire</button>
-			<button id="buttonDeathPenalty"   onclick="deathPenalty()" class="interface" style="top:430px; left: 20px; display:none">Death penalty</button>
+			<button id="buttonDeathPenalty"   onclick="deathPenalty()" class="interface" style="top:430px; left: 20px; display:none">Execute smb</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
@@ -319,6 +318,23 @@
 		var img11   = loadImage('resources/fountain.png', composite);
 		var img12   = loadImage('resources/trapdoor.png', composite);
 		
+		
+		var Singleton = (function () {
+			var instance;
+			function createInstance() {
+				var object = loadImage('resources/fire_static.png', composite);
+				return object;
+			}
+			return {
+				getInstance: function () {
+					if (!instance) {
+						instance = createInstance();
+					}
+					return instance;
+					}
+			};
+		})();
+		
 		var msg_pop_limit_en     = "your city is reached population limit. Build new houses or upgrade existing ones";
 		var msg_pop_limit        = msg_pop_limit_en;
 		var msg_game_saved_en    = "game saved successfully";
@@ -374,6 +390,20 @@
 					// draw stash
 					//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
 					//ctx.drawImage(img12, 0, 0);
+				}
+				if (fire == 1 && document.getElementById("fire_graphics")==null) {
+					var img13 = Singleton.getInstance();
+					objFire_graphics         = new Image();
+					objFire_graphics.id      = "fire_graphics";
+					objFire_graphics.src     = 'resources/fire_a.gif';
+					objFire_graphics.style   = 'position:absolute; top:170px; left:0px; z-index=98; display:none'
+					//objFire_graphics.onclick = putOutFire();
+					document.getElementById("events_graphics").appendChild(objFire_graphics);
+					//originalDiv.parentNode.insertBefore(newVideo, originalDiv); 
+					//document.body.insertBefore(fire_graphics, pp);
+					document.getElementById("fire_graphics").setAttribute("onclick", "putOutFire()");
+					document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
+					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
 				}
 			}
 		}
@@ -496,27 +526,37 @@
 	}
 	
 	function populatePatchnotes() {
+	msg = "version 1.0.91";
+	writeToTextArea(msg);
+	msg = "compress resources close #73, tried singleton (hope it work), and fix #75";
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.89";
 	writeToTextArea(msg);
 	msg = "now with shiny messages in chat about execution";
 	writeToTextArea(msg);
+	
 	msg = "version 1.0.88";
 	writeToTextArea(msg);
 	msg = "death penalty button";
 	writeToTextArea(msg); 
+	
 	msg = "version 1.0.87";
 	writeToTextArea(msg);
 	msg = "set build buttons invisible for Gallows-Fountain when Fountain-Gallows is built";
 	writeToTextArea(msg); 
+	
 	msg = "version 1.0.79";
 	writeToTextArea(msg);
 	msg = "gallows prevent building fountain, fountain prevent building gallows and stash requires treasury";
 	writeToTextArea(msg);
+	
 	msg = "version 1.0.78";
 	writeToTextArea(msg);
 	msg = "bugfix #34 Autosave now implemented"+"\n"+
-		"bugfix #59 new variables don't brick old saves";
+	"bugfix #59 new variables don't brick old saves";
 	writeToTextArea(msg);
+	
 	msg = "version 1.0.76";
 	writeToTextArea(msg);
 	msg = "bugfix #39 Save/Load doesn't apply on fire in the city"+"\n"+
@@ -814,13 +854,13 @@
 		}
 	}
 	function putOutFire () {
-		if (fire === 1){
+		if (fire == 1){
 			var answer = confirm("Call an fireman? It will cost you 20 gold!");
 			if (answer === true) {
 				if (gold >= 20) {
 					fire = 0;
 					gold = gold - 20;
-					document.getElementById("fire").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
 					msg = "Fireman put out a fire!";
 					document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
@@ -987,7 +1027,7 @@
 	}
 	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
-		//rnd = 1;//debug
+		rnd = 2;//debug
 		switch (rnd) {
 			case 1:
 				rndThieves = Math.floor((Math.random() * treasuryGuard) + 1); 
@@ -1008,7 +1048,7 @@
 					scrollDown();
 					//alert('fire in the city!');
 					document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
-					document.getElementById("fire").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
+					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
 					fire = 1;
 					//var fire_img = "<img src=\"1.png\" class=\"over1\">";
 					//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
