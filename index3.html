@@ -1,0 +1,20 @@
+<!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>||Working with elements||</title>
+	
+</head>
+<body>
+  <div id="div1">The text above has been created dynamically.</div>
+</body>
+<script>
+	document.body.onload = addElement;
+	function addElement () { 
+		var myImage = new Image(100, 200);
+		myImage.src = 'https://www.google.kz/logos/doodles/2017/holidays-2017-day-2-5240850203279360-s.png';
+		document.body.appendChild(myImage);
+		}
+	</script>
+</html>
