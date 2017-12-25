@@ -526,6 +526,11 @@
 	}
 	
 	function populatePatchnotes() {
+	msg = "version 1.0.92";
+	writeToTextArea(msg);
+	msg = "another bug with fire in the city";
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.91";
 	writeToTextArea(msg);
 	msg = "compress resources close #73, tried singleton (hope it work), and fix #75";
@@ -1027,7 +1032,7 @@
 	}
 	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
-		rnd = 2;//debug
+		//rnd = 2;//debug
 		switch (rnd) {
 			case 1:
 				rndThieves = Math.floor((Math.random() * treasuryGuard) + 1); 
@@ -1047,9 +1052,10 @@
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
 					scrollDown();
 					//alert('fire in the city!');
-					document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
-					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
+					//document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
+					//document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
 					fire = 1;
+					composite();
 					//var fire_img = "<img src=\"1.png\" class=\"over1\">";
 					//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
 					if (buildLevelD == 1) {
