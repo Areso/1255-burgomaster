@@ -526,6 +526,11 @@
 	}
 	
 	function populatePatchnotes() {
+	msg = "version 1.0.93";
+	writeToTextArea(msg);
+	msg = "another bug with stash/treasury loading from save";
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.92";
 	writeToTextArea(msg);
 	msg = "another bug with fire in the city";
@@ -698,9 +703,9 @@
 					buildLevelFountain   = 0;
 				}
 				if (localStorage.getItem('buildLevelStash')!=null){
-					buildLevelTreasury   = localStorage.getItem('buildLevelStash');
+					buildLevelStash       = localStorage.getItem('buildLevelStash');
 				} else {
-					buildLevelTreasury   = 0;
+					buildLevelStash       = 0;
 				}
 				if (localStorage.getItem('fire')!=null){
 					fire   = localStorage.getItem('fire');
