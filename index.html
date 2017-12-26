@@ -495,6 +495,9 @@
 	
 	
 	//functions
+	const squareMe = x => Math.pow(x, 2);
+	const cubeMe   = x => Math.pow(x, 3);
+	const quadMe   = x => Math.pow(x, 4);
 	
 	function generateMap() {
 		/*
@@ -526,6 +529,11 @@
 	}
 	
 	function populatePatchnotes() {
+	msg = "version 1.0.94";
+	writeToTextArea(msg);
+	msg = "treasury limit now fixed from bug (close #80)";
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.93";
 	writeToTextArea(msg);
 	msg = "another bug with stash/treasury loading from save";
@@ -895,7 +903,7 @@
 			if (pop > 2) {
 				pop = pop - 1;
 				gold_was      = gold;
-				gold_limit    = (buildLevelTreasury*1+1)^4*10000;
+				gold_limit    = squareMe(buildLevelTreasury*1+2)*10000;
 				gold_possible = gold*1+Math.floor((Math.random() * gold)/10 + 1);
 				if (gold_possible > gold_limit) {
 					gold      = gold_limit;
@@ -981,7 +989,7 @@
 	function resourcesTimer() {
 		pop_m         = 0;
 		gold_was      = gold;
-		gold_limit    = (buildLevelTreasury*1+1)^4*10000;
+		gold_limit    = squareMe(buildLevelTreasury*1+2)*10000;
 		gold_possible = gold*1+Math.round(pop*(1+buildLevelGallows*1/10),0);
 		if (gold_possible > gold_limit) {
 			gold      = gold_limit;
