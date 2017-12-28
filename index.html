@@ -529,6 +529,11 @@
 	}
 	
 	function populatePatchnotes() {
+	msg = "version 1.0.95";
+	writeToTextArea(msg);
+	msg = "added Google analytics. Tuned gold limit";
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.94";
 	writeToTextArea(msg);
 	msg = "treasury limit now fixed from bug (close #80)";
@@ -903,7 +908,7 @@
 			if (pop > 2) {
 				pop = pop - 1;
 				gold_was      = gold;
-				gold_limit    = squareMe(buildLevelTreasury*1+2)*10000;
+				gold_limit    = cubeMe(buildLevelTreasury*1+1)*10000;
 				gold_possible = gold*1+Math.floor((Math.random() * gold)/10 + 1);
 				if (gold_possible > gold_limit) {
 					gold      = gold_limit;
@@ -989,7 +994,7 @@
 	function resourcesTimer() {
 		pop_m         = 0;
 		gold_was      = gold;
-		gold_limit    = squareMe(buildLevelTreasury*1+2)*10000;
+		gold_limit    = cubeMe(buildLevelTreasury*1+1)*10000;
 		gold_possible = gold*1+Math.round(pop*(1+buildLevelGallows*1/10),0);
 		if (gold_possible > gold_limit) {
 			gold      = gold_limit;
@@ -1145,6 +1150,14 @@
 	}
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
+	</script>
+	<!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
+	<script async>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-111661515-1');
 	</script>
 	</body>
 </html>
