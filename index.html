@@ -193,6 +193,8 @@
 			<table>
 			<tr>
 				<td>Autosave <img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
+				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
+				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
 				</tr>
 			</table>
 			
@@ -456,6 +458,7 @@
 	//init variables
 	var gold          = 20;
 	var pop           = 2;
+	var treasuryGuard = 0;
 	var buildLevelD   = 0;
 	var buildLevelH   = 0;
 	var buildLevelTreasury = 0;
@@ -477,10 +480,12 @@
 	var treasuryGuardPriceHire = 20;
 	var treasuryGuardPricePayroll = 20;
 	//init service variables
+	var saveTxt       = "savegame";
+	var csum          = 0;
+	var delimiter     = ";"
 	var redraw        = 0;
 	var whatDraw      = "";
 	var minBL         = 0;
-	var treasuryGuard = 0;
 	var mapCreated    = 0;
 	var globalMap = [[],[]];
 	updateResources();
@@ -491,9 +496,6 @@
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
-	
-	
-	
 	//functions
 	const squareMe = x => Math.pow(x, 2);
 	const cubeMe   = x => Math.pow(x, 3);
@@ -527,7 +529,6 @@
 		}
 	mapCreated = 1;
 	}
-	
 	function populatePatchnotes() {
 	msg = "version 1.0.95";
 	writeToTextArea(msg);
@@ -652,6 +653,74 @@
 	function autosaveGame() {
 		//alert("saved");
 		saveGame("silent");
+	}
+	function exportGame() {
+		//1  gold
+		//2  pop
+		//2.5 tGuards
+		//3  blD
+		//4  blH
+		//6  blT
+		//7  blG
+		//8  blF
+		//9  blS
+		//10 fire
+		//11 autosave
+		//12 happyness
+		//btoa() converts String to Base64
+		//atob() converts Base64 to String
+		arrayToSave = [];
+		arrayToSave[0] = 0;
+		arrayToSave[1] = gold*1;
+		arrayToSave[2] = pop*2;
+		arrayToSave[3] = treasuryGuard*3;
+		arrayToSave[4] = buildLevelD*4;
+		arrayToSave[5] = buildLevelH*5;
+		arrayToSave[6] = buildLevelTreasury*6;
+		arrayToSave[7] = buildLevelGallows*5;
+		arrayToSave[8] = buildLevelFountain*4;
+		arrayToSave[9] = buildLevelStash*3;
+		arrayToSave[10]= fire*1;
+		arrayToSave[11]= autosave*1;
+		arrayToSave[12]= happyness*3;
+		csum = 0;
+		for (i = 0; i < arrayToSave.length; i++) { 
+			csum = csum*1 + arrayToSave[i]*1;
+		}
+		//csum = gold*1+pop*2+treasuryGuard*3+
+		//	buildLevelD*4+buildLevelH*5+
+		//	buildLevelTreasury*6+buildLevelGallows*5+
+		//	buildLevelFountain*4+buildLevelStash*3+
+		//	fire*1+autosave*1+happyness*3;
+		saveString = saveTxt;
+		for (i = 1; i < arrayToSave.length; i++) { 
+			saveString = saveString + delimiter + arrayToSave[i];
+		}
+		saveString = saveString + delimiter + csum;
+		alert(btoa(saveString));
+	}
+	function importGame() {
+		save64 = prompt("Please enter save", "long string");
+		if (save64 != null) {
+			try {
+				saveLine  = atob(save64);
+				saveArray = saveLine.split(";");
+				csum = saveArray[1]*1+saveArray[2]*1+saveArray[3]*1+
+					saveArray[4]*1+saveArray[5]*1+
+					saveArray[6]*1+saveArray[7]*1+
+					saveArray[8]*1+saveArray[9]*1+
+					saveArray[10]*1+saveArray[11]*1+saveArray[12]*1;
+				csumFromSave = saveArray[13];
+				if (csum == csumFromSave) {
+					alert ("good to go");
+				} else {
+					alert ("save file was modified. Too bad");
+				}
+			}
+			catch(err) {
+				console.log(err);
+			}
+		}
 	}
 	function saveGame(saveConfirmation) {
 		if (saveConfirmation=="silent") { 
@@ -908,7 +977,7 @@
 			if (pop > 2) {
 				pop = pop - 1;
 				gold_was      = gold;
-				gold_limit    = cubeMe(buildLevelTreasury*1+1)*10000;
+				gold_limit    = goldLimit();
 				gold_possible = gold*1+Math.floor((Math.random() * gold)/10 + 1);
 				if (gold_possible > gold_limit) {
 					gold      = gold_limit;
@@ -990,11 +1059,14 @@
 			scrollDown();
 		}		
 	}
+	function goldLimit(){
+		quadMe(buildLevelTreasury*1+1)*10000;
+	}
 	//timers
 	function resourcesTimer() {
 		pop_m         = 0;
 		gold_was      = gold;
-		gold_limit    = cubeMe(buildLevelTreasury*1+1)*10000;
+		gold_limit    = goldLimit();
 		gold_possible = gold*1+Math.round(pop*(1+buildLevelGallows*1/10),0);
 		if (gold_possible > gold_limit) {
 			gold      = gold_limit;
