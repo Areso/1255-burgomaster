@@ -124,7 +124,8 @@
 		</script>
 	</head>
 	<body>
-		<a href="https://github.com/Areso/js-html-mycity"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+		<!--<a href="https://github.com/Areso/js-html-mycity"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+		-->
 		<!--<span id="gold" class="interface" style="position:absolute; top:0px; left:60px">0</span>
 		<span id="pop"  class="interface" style="position:absolute; top:0px; left:100px">2</span>-->
 		<script>
@@ -147,7 +148,7 @@
 		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openCity(event, 'Main')" id="defaultOpen">Main</button>
-			<button class="tablinks" onclick="openCity(event, 'Explore')">Explore</button>
+			<button class="tablinks" onclick="openCity(event, 'Explore')" style="display:none">Explore</button>
 			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
 			<button class="tablinks" onclick="openCity(event, 'Garrison')">Garrison</button>
 			<button class="tablinks" onclick="openCity(event, 'Building')">Building</button>
@@ -179,7 +180,7 @@
 			-->
 		</div>
 
-		<div id="Explore" class="tabcontent">
+		<div id="Explore" class="tabcontent" >
 			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
 			GLOBALMAP
@@ -364,7 +365,7 @@
 					// draw houses
 					ctx.drawImage(img5, 0, 0);
 				}
-				if (buildLevelH > 10) {
+				if (buildLevelH >= 10) {
 					// draw more houses
 					ctx.drawImage(img5_1, 0, 0);
 				}
@@ -480,7 +481,7 @@
 	var treasuryGuardPriceHire = 20;
 	var treasuryGuardPricePayroll = 20;
 	//init service variables
-	var saveTxt       = "savegame";
+	var saveTxt       = "saveV1.01";
 	var csum          = 0;
 	var delimiter     = ";"
 	var redraw        = 0;
@@ -530,6 +531,12 @@
 	mapCreated = 1;
 	}
 	function populatePatchnotes() {
+	msg = "version 1.0.99";
+	writeToTextArea(msg);
+	msg = "added Yandex Metrica"+"\n"+
+	"fix #105 close #103 #70 #102 #85 #101 ";
+	writeToTextArea(msg);
+	
 	msg = "version 1.0.95";
 	writeToTextArea(msg);
 	msg = "added Google analytics. Tuned gold limit";
@@ -655,20 +662,6 @@
 		saveGame("silent");
 	}
 	function exportGame() {
-		//1  gold
-		//2  pop
-		//2.5 tGuards
-		//3  blD
-		//4  blH
-		//6  blT
-		//7  blG
-		//8  blF
-		//9  blS
-		//10 fire
-		//11 autosave
-		//12 happyness
-		//btoa() converts String to Base64
-		//atob() converts Base64 to String
 		arrayToSave = [];
 		arrayToSave[0] = 0;
 		arrayToSave[1] = gold*1;
@@ -712,7 +705,40 @@
 					saveArray[10]*1+saveArray[11]*1+saveArray[12]*1;
 				csumFromSave = saveArray[13];
 				if (csum == csumFromSave) {
-					alert ("good to go");
+					//alert ("good to go");
+					/*
+					arrayToSave[1] = gold*1;
+					arrayToSave[2] = pop*2;
+					arrayToSave[3] = treasuryGuard*3;
+					arrayToSave[4] = buildLevelD*4;
+					arrayToSave[5] = buildLevelH*5;
+					arrayToSave[6] = buildLevelTreasury*6;
+					arrayToSave[7] = buildLevelGallows*5;
+					arrayToSave[8] = buildLevelFountain*4;
+					arrayToSave[9] = buildLevelStash*3;
+					arrayToSave[10]= fire*1;
+					arrayToSave[11]= autosave*1;
+					arrayToSave[12]= happyness*3;
+					*/
+					gold                 = saveArray[1]/1;
+					pop                  = saveArray[2]/2;
+					treasuryGuard        = saveArray[3]/3;
+					buildLevelD          = saveArray[4]/4;
+					buildLevelH          = saveArray[5]/5;
+					buildLevelTreasury   = saveArray[6]/6;
+					buildLevelGallows    = saveArray[7]/5;
+					buildLevelFountain   = saveArray[8]/4;
+					buildLevelStash      = saveArray[9]/3;
+					fire                 = saveArray[10]/1;
+					autosave             = saveArray[11]/1;
+					happyness            = saveArray[12]/3;
+					
+					setupAutosave();
+					composite();
+					updateResources();
+					updateButtonCaptions();
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
+					scrollDown();
 				} else {
 					alert ("save file was modified. Too bad");
 				}
@@ -1062,6 +1088,9 @@
 	function goldLimit(){
 		quadMe(buildLevelTreasury*1+1)*10000;
 	}
+	function updateImagesBuildingTab () {
+			//TODO
+	}
 	//timers
 	function resourcesTimer() {
 		pop_m         = 0;
@@ -1231,5 +1260,34 @@
 		gtag('js', new Date());
 		gtag('config', 'UA-111661515-1');
 	</script>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter47225574 = new Ya.Metrika({
+                    id:47225574,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+		</script>
+		<noscript><div><img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
 	</body>
 </html>
