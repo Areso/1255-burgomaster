@@ -1,8 +1,0 @@
-git checkout dmgr2      # gets you "on branch dmgr2"
-git fetch origin        # gets you up to date with origin
-git merge origin/master
-
-git checkout dmgr2
-git pull origin master
-
-<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="100" height="10"></iframe>
