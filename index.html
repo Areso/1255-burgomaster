@@ -311,10 +311,10 @@
 		
 		<div id="About" class="tabcontent">
 			<div id="lblAboutGame">
-			<h1>JS HTML-powered my city</h1><br>
+			<h1>1255 burgomaster</h1><br>
 			<h2>About the project</h2><br>
 			Hello there! My name is Gladyshev Anton and I'm an author of the project.<br>
-			Homepage of the project is <a href="https://github.com/Areso/js-html-mycity">https://github.com/Areso/js-html-mycity</a><br>
+			Homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/js-html-mycity</a><br>
 			This pet-project is dedicated to create a playable game, written in vanilla JavaScript, 
 			without using jQuery and modern whistlers and jugglers.<br>
 			The project oriented to be compact (in terms of source code and resources), 
@@ -324,7 +324,7 @@
 			<br>		
 			<h2>Minimum System Requirements</h2>
 			Browsers:<br> 
-			Internet Explorer 9, Internet Explorer Mobile 10<br>
+			Internet Explorer 10, Internet Explorer Mobile 10<br>
 			Mozilla Firefox 3.6, Firefox Android All<br>
 			Google Chrome 4, Chrome Android All<br>
 			Safari 4, iOS Safari 3.2<br>
@@ -355,12 +355,31 @@
 			 <li><div style="color:red">aggressive neighbors will attack your city,</div></li>
 			 <li><div style="color:red">flood and drought will kill your crops,</div></li>
 			 <li><div style="color:red">mouses and rats will devastate your barns,</div></li>
-			 <li>fires will destroy your buildings,</li>
+			 <li>fires will destroy your buildings*,</li>
 			 <li>and I will add more events</li>
 			</ul>
 			<br>
 			Colors meaning: red - not yet implemented, but planned to implement<br>
-			All suggestion and bug reports could be made via chat (if enabled) or via <a href="https://github.com/Areso/js-html-mycity/issues">GitHub Issues</a></br>
+			*Sadly, this event turned off due to instability of his work. I hope it temporary<br>
+			All suggestion and bug reports could be made via chat (if enabled) or via <a href="https://github.com/Areso/1255-burgomaster/issues">GitHub Issues</a></br>
+			<h2>How to play</h2>
+			This game has some tick under the hood. Each tick happens in 30 seconds.<br>
+			After each turn your poplulation paid taxes to you and growing.<br>
+			You need to build homes to continue growth your city population.<br>
+			Each lvl of houses allows you to have more population.<br>
+			You need to build walls and tower (keep) to keep your city safe against intruders.<br>
+			You need to build a treasury to store your gold.<br>
+			Each lvl of the treasury allows you to keep more gold.<br>
+			Also, Treasury allows you to hire treasury guads.<br>
+			Treasury guards signifant decreases chance of stealing gold from your treasury.<br>
+			Hiring the guard will cost you 20 gold.<br>
+			Each guard require regular payment (each tick), it also cost 20 gold.<br>
+			If you don't have enough money, they will leave their work permamently.<br>
+			You can build fountain OR gallows. You can't change your choice after building is done.<br>
+			Fountains will increase happiness and speed of growing population.<br>
+			Gallows will decrease population, increase taxes, and allow you to execute townsfolk.<br>
+			Executing any townperson will add his property as confiscated gold.<br>
+			Stash is required to lower your losses from stealing. You can't build stash without treasury.<br>
 		</div>
 		</div>
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
@@ -546,7 +565,7 @@
 	var treasuryGuardPriceHire = 20;
 	var treasuryGuardPricePayroll = 20;
 	//init service variables
-	var saveTxt       = "saveV1.01";
+	var saveVersion       = "saveV1001";
 	var csum          = 0;
 	var delimiter     = ";"
 	var redraw        = 0;
@@ -756,7 +775,7 @@
 		//	buildLevelTreasury*6+buildLevelGallows*5+
 		//	buildLevelFountain*4+buildLevelStash*3+
 		//	fire*1+autosave*1+happyness*3;
-		saveString = saveTxt;
+		saveString = saveVersion;
 		for (i = 1; i < arrayToSave.length; i++) { 
 			saveString = saveString + delimiter + arrayToSave[i];
 		}
@@ -842,6 +861,7 @@
 			localStorage.setItem('fire', fire);
 			localStorage.setItem('autosave', autosave);
 			localStorage.setItem('happyness', happyness);
+			localStorage.setItem('saveVersion', saveVersion);
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
 			scrollDown();
 	}
@@ -900,6 +920,11 @@
 					happyness   = localStorage.getItem('happyness');
 				} else {
 					happyness          = 80;
+				}
+				if (localStorage.getItem('saveVersion')!=null){
+					saveVersionFromCache   = localStorage.getItem('saveVersion');
+				} else {
+					saveVersionFromCache   = saveVersion;
 				}
 				setupAutosave();
 				composite();
@@ -1237,6 +1262,7 @@
 				}
 				break;
 			case 2:
+			/*
 				if (fire === 0) {
 					msg = "fire in the city!";
 					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
@@ -1265,6 +1291,7 @@
 					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 					}
 				}
+			*/
 				break;
 			case 3:
 				//
