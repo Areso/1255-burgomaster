@@ -442,39 +442,39 @@
 				ctx.drawImage(img3, 10, 40); //draw gold icon
 				ctx.drawImage(img4, 10, 80); //draw pop  icon
 				ctx.drawImage(img8, 0, 0); //draw wishing well
-				if (buildLevelD > 0) {
+				if (game.buildLevelD > 0) {
 					// draw back piece of wall
 					ctx.drawImage(img6_1, 0, 0);
 				}
-				if (buildLevelH > 0 && buildLevelH < 10) {
+				if (game.buildLevelH > 0 && game.buildLevelH < 10) {
 					// draw houses
 					ctx.drawImage(img5, 0, 0);
 				}
-				if (buildLevelH >= 10) {
+				if (game.buildLevelH >= 10) {
 					// draw more houses
 					ctx.drawImage(img5_1, 0, 0);
 				}
-				if (buildLevelD > 1) {
+				if (game.buildLevelD > 1) {
 					// draw castle
 					ctx.drawImage(img7, 300, 160);
 				}
-				if (buildLevelD > 0) {
+				if (game.buildLevelD > 0) {
 					// draw front piece of wall
 					ctx.drawImage(img6_2, 0, 0);
 				}
-				if (buildLevelTreasury > 0) {
+				if (game.buildLevelTreasury > 0) {
 					// draw treasury
 					ctx.drawImage(img9, 0, 0);
 				}
-				if (buildLevelGallows > 0) {
+				if (game.buildLevelGallows > 0) {
 					// draw gallows
 					ctx.drawImage(img10, 460, 270);
 				}
-				if (buildLevelFountain > 0) {
+				if (game.buildLevelFountain > 0) {
 					// draw fountain
 					ctx.drawImage(img11, 460, 270);
 				}
-				if (buildLevelStash > 0) {
+				if (game.buildLevelStash > 0) {
 					// draw stash
 					//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
 					//ctx.drawImage(img12, 0, 0);
@@ -528,7 +528,6 @@
 					}
 				}
 				ctx_map.drawImage(tile_grass, 0, 0);   //draw background
-				
 			}
 		}
 		/*
@@ -542,6 +541,34 @@
 	</script>
 	<script>
 	//init variables
+		var game = {
+		gold:20,
+		pop:2,
+		treasuryGuard:0,
+		buildLevelD:0,
+		buildLevelH:0,
+		buildLevelTreasury:0,
+		buildLevelGallows:0,
+		buildLevelFountain:0,
+		buildLevelStash:0,
+		fire:0,
+		happyness:0
+	};
+	var options = {
+		autosave:0
+	}
+	var config = {
+		costWall:2,
+		costTower:4,
+		costHome:2,
+		costTreasury:20,
+		costGallows:50,
+		costFountain:50,
+		costStash:50,
+		lotteryPrize:50,
+		treasuryGuardPriceHire:20,
+		treasuryGuardPricePayroll:20,
+	}
 	var gold          = 20;
 	var pop           = 2;
 	var treasuryGuard = 0;
@@ -581,7 +608,7 @@
 	setupAutosave();
 	//init timers
 	setInterval(resourcesTimer, 30000);
-	setInterval(rndEvents, 100000);
+	//setInterval(rndEvents, 100000);
 	//functions
 	const squareMe = x => Math.pow(x, 2);
 	const cubeMe   = x => Math.pow(x, 3);
@@ -939,37 +966,38 @@
 		}
 	}
 	function updateButtonCaptions(){
-		nextLvlHome      = buildLevelH*1+1;
-		nextLvlPriceHome = Math.pow(costHome,(buildLevelH*1+1));
+		nextLvlHome           = game.buildLevelH*1+1;
+		nextLvlPriceHome      = Math.pow(costHome,(game.buildLevelH*1+1));
 		document.getElementById("homes").innerHTML="Build home lvl"+nextLvlHome+"; "+nextLvlPriceHome+" gold";
 		
-		nextLvlTreasury  = buildLevelTreasury*1+1;
-		nextLvlPriceTreasury = Math.pow(costTreasury,(buildLevelTreasury*1+1));
+		nextLvlTreasury       = game.buildLevelTreasury*1+1;
+		nextLvlPriceTreasury  = Math.pow(costTreasury,(game.buildLevelTreasury*1+1));
 		document.getElementById("treasury").innerHTML="Build treasury lvl"+nextLvlTreasury+"; "+nextLvlPriceTreasury+" gold";
 		
-		nextLvlGallows  = buildLevelGallows*1+1;
-		nextLvlPriceGallows = Math.pow(costGallows,(buildLevelGallows*1+1));
+		nextLvlGallows        = game.buildLevelGallows*1+1;
+		nextLvlPriceGallows   = Math.pow(costGallows,(game.buildLevelGallows*1+1));
 		document.getElementById("buttonBldGallows").innerHTML="Build gallows lvl"+nextLvlGallows+"; "+nextLvlPriceGallows+" gold";
 		
-		nextLvlFountain  = buildLevelFountain*1+1;
-		nextLvlPriceFountain = Math.pow(costFountain,(buildLevelFountain*1+1));
+		nextLvlFountain       = game.buildLevelFountain*1+1;
+		nextLvlPriceFountain  = Math.pow(costFountain,(game.buildLevelFountain*1+1));
 		document.getElementById("buttonBldFountain").innerHTML="Build fountain lvl"+nextLvlFountain+"; "+nextLvlPriceFountain+" gold";
 		
-		nextLvlStash  = buildLevelStash*1+1;
-		nextLvlPriceStash = Math.pow(costStash,(buildLevelStash*1+1));
+		nextLvlStash          = game.buildLevelStash*1+1;
+		nextLvlPriceStash     = Math.pow(costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML="Build stash lvl"+nextLvlStash+"; "+nextLvlPriceStash+" gold";
-		if (buildLevelD == 1) {
+		
+		if (game.buildLevelD == 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
 			var towerClick = "Build("+"\'Tower\'"+")";
 			document.getElementById("defence").setAttribute("onclick", towerClick);
 		}
-		if (buildLevelD == 2) {
+		if (game.buildLevelD == 2) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
-		if (buildLevelFountain > 0) {
+		if (game.buildLevelFountain > 0) {
 			document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
 		}
-		if (buildLevelGallows > 0) {
+		if (game.buildLevelGallows > 0) {
 			document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
 			document.getElementById("buttonDeathPenalty").setAttribute("style", "top:430px; left: 20px");
 		}
@@ -1003,61 +1031,61 @@
 			}
 	}
 	function updateResources() {
-		document.getElementById("gold").innerHTML = gold;
-		document.getElementById("pop").innerHTML  = pop;
+		document.getElementById("gold").innerHTML          = game.gold;
+		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("treasuryGuard").innerHTML = treasuryGuard;
 	}
 	function Build(Structure) {
 		if (Structure==="Wall" || Structure ==="Tower") {
-			if (gold >= costWall && buildLevelD == 0) { 
-				buildLevelD = buildLevelD*1 + 1;
-				gold = gold - costWall;
+			if (game.gold >= costWall && game.buildLevelD == 0) { 
+				game.buildLevelD        = game.buildLevelD*1 + 1;
+				game.gold               = game.gold - costWall;
 				commonBuild();
 				return true;
 			}
-			if (gold >= costTower && buildLevelD == 1) { 
-				buildLevelD = buildLevelD*1 + 1;
-				gold = gold - costTower;
+			if (game.gold >= costTower && game.buildLevelD == 1) { 
+				game.buildLevelD        = game.buildLevelD*1 + 1;
+				game.gold               = game.gold - costTower;
 				commonBuild();
 				return true;
 			}
 		}
 		if (Structure==="Home") {
-			if (gold >= Math.pow(costHome,(buildLevelH*1 + 1))) {
-				gold = gold - Math.pow(costHome,(buildLevelH*1 + 1));
-				buildLevelH = buildLevelH*1 + 1;
+			if (game.gold >= Math.pow(costHome,(game.buildLevelH*1 + 1))) {
+				game.gold               = game.gold - Math.pow(costHome,(game.buildLevelH*1 + 1));
+				game.buildLevelH        = game.buildLevelH*1 + 1;
 				commonBuild();
 				return true;
 			}
 		}
 		if (Structure==="Treasury") {
-			if (gold >= Math.pow(costTreasury,(buildLevelTreasury*1 + 1))) {
-				gold = gold - Math.pow(costTreasury,(buildLevelTreasury*1 + 1));
-				buildLevelTreasury = buildLevelTreasury*1 + 1;
+			if (game.gold >= Math.pow(costTreasury,(game.buildLevelTreasury*1 + 1))) {
+				game.gold               = game.gold - Math.pow(costTreasury,(game.buildLevelTreasury*1 + 1));
+				game.buildLevelTreasury = game.buildLevelTreasury*1 + 1;
 				commonBuild();
 				return true;
 			}
 		}
 		if (Structure==="Gallows") {
-			if (gold >= Math.pow(costGallows,(buildLevelGallows*1 + 1)) && buildLevelFountain == 0) {
-				gold = gold - Math.pow(costGallows,(buildLevelGallows*1 + 1));
-				buildLevelGallows = buildLevelGallows*1 + 1;
+			if (game.gold >= Math.pow(costGallows,(game.buildLevelGallows*1 + 1)) && game.buildLevelFountain == 0) {
+				game.gold               = game.gold - Math.pow(costGallows,(game.buildLevelGallows*1 + 1));
+				game.buildLevelGallows  = game.buildLevelGallows*1 + 1;
 				commonBuild();
 				return true;
 			}
 		}
 		if (Structure==="Fountain") {
-			if (gold >= Math.pow(costFountain,(buildLevelFountain*1 + 1)) && buildLevelGallows == 0) {
-				gold = gold - Math.pow(costFountain,(buildLevelFountain*1 + 1));
-				buildLevelFountain = buildLevelFountain*1 + 1;
+			if (game.gold >= Math.pow(costFountain,(game.buildLevelFountain*1 + 1)) && game.buildLevelGallows == 0) {
+				game.gold               = gold - Math.pow(costFountain,(game.buildLevelFountain*1 + 1));
+				game.buildLevelFountain = game.buildLevelFountain*1 + 1;
 				commonBuild();
 				return true;
 			}
 		}
 		if (Structure==="Stash") {
-			if (gold >= Math.pow(costStash,(buildLevelStash*1 + 1)) && buildLevelTreasury*1 > 0) {
-				gold = gold - Math.pow(costStash,(buildLevelStash*1 + 1));
-				buildLevelStash = buildLevelStash*1 + 1;
+			if (game.gold >= Math.pow(costStash,(game.buildLevelStash*1 + 1)) && game.buildLevelTreasury*1 > 0) {
+				game.gold               = gold - Math.pow(costStash,(game.buildLevelStash*1 + 1));
+				game.buildLevelStash    = game.buildLevelStash*1 + 1;
 				commonBuild();
 				return true;
 			}
@@ -1191,23 +1219,23 @@
 	//timers
 	function resourcesTimer() {
 		pop_m         = 0;
-		gold_was      = gold;
+		gold_was      = game.gold;
 		gold_limit    = goldLimit();
-		gold_possible = gold*1+Math.round(pop*(1+buildLevelGallows*1/10),0);
+		gold_possible = game.gold*1+Math.round(pop*(1+buildLevelGallows*1/10),0);
 		if (gold_possible > gold_limit) {
-			gold      = gold_limit;
+			game.gold      = gold_limit;
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+"build or update Treasury";
 			scrollDown();
 		} else {
-			gold      = gold_possible;
+			game.gold      = gold_possible;
 		}
 		//gold     = gold*1+2;
-		if (pop < 2*Math.pow((buildLevelH*1+3),2)) {
+		if (game.pop < 2*Math.pow((buildLevelH*1+3),2)) {
 			pop_incr = Math.round((pop*20/1000)*(1+buildLevelFountain*1/10),0)
 			if (pop_incr == 0) {
-				pop = pop*1+1;
+				game.pop = game.pop*1+1;
 			} else {
-				pop = pop*1+pop_incr*1;
+				game.pop = game.pop*1+pop_incr*1;
 			}
 			pop_m    = 1;
 		} else {
@@ -1215,8 +1243,8 @@
 			scrollDown();
 		}
 		if (treasuryGuard > 0) {
-			if (gold - treasuryGuard * treasuryGuardPricePayroll >= 0) {
-				gold = gold - treasuryGuard * treasuryGuardPricePayroll;
+			if (game.gold - treasuryGuard * treasuryGuardPricePayroll >= 0) {
+				game.gold = game.gold - treasuryGuard * treasuryGuardPricePayroll;
 			}
 			else {
 			//fire guards which we cannot afford
@@ -1227,10 +1255,10 @@
 				scrollDown();
 			}
 		}
-		if (gold > gold_was) {
+		if (game.gold > gold_was) {
 			msg_gold = "increased";
 		} else {
-			if (gold === gold_was) {
+			if (game.gold === gold_was) {
 				msg_gold = "not changed"
 			} else {
 				msg_gold = "decreased"
@@ -1246,6 +1274,7 @@
 		scrollDown();
 		updateResources();
 	}
+	/*
 	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
 		//rnd = 2;//debug
@@ -1292,7 +1321,7 @@
 					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
 					}
 				}
-			*/
+			*//*
 				break;
 			case 3:
 				//
@@ -1332,7 +1361,7 @@
 			default:
 				alert("error on switch/case function");
 		}
-	}
+	}*/
 	</script>
 	<script>
 	function openCity(evt, cityName) {
