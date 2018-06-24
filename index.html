@@ -204,14 +204,17 @@
 			<h3>Settings</h3>
 			<p>Alert / MSG to chat</p>
 			<table>
-			<tr>
-				<td>Autosave <img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
-				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
-				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
+				<tr>
+					<td>Autosave <img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"><br></td>
+					<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
+					<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
+				</tr>
+				<tr>
+					<td>Savestring <input id="savestring" name="savestring" value="" style="width:600px"></input><br></td>
 				</tr>
 			</table>
 			
-			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:200px; left:40px"></textarea>
+			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:260px; left:40px"></textarea>
 			
 		</div>
 		
@@ -782,6 +785,7 @@
 		}
 		saveString = saveString + delimiter + csum;
 		alert(btoa(saveString));
+		document.getElementById("savestring").value = btoa(saveString);
 	}
 	function importGame() {
 		save64 = prompt("Please enter save", "long string");
