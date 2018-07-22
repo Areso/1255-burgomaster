@@ -734,7 +734,7 @@
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
 	function setupAutosave() {
-		if (game.autosave==0) {
+		if (game.o_autosave==0) {
 			if (typeof autosaveObject !== 'undefined') {
 			clearInterval(autosaveObject);
 			}
@@ -747,11 +747,11 @@
 		}
 	}
 	function changeAutosave() {
-		if (game.autosave==0) {
-			game.autosave = 1;
+		if (game.o_autosave==0) {
+			game.o_autosave = 1;
 			setupAutosave();
 		} else {
-			game.autosave = 0;
+			game.o_autosave = 0;
 			setupAutosave();
 		}
 	}
