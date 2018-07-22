@@ -128,7 +128,7 @@
 		</style>
 		<script id="chatBroEmbedCode">
 		/* Chatbro Widget Embed Code Start */
-		function ChatbroLoader(chats,async) {async=async!==false;var params={embedChatsParameters:chats instanceof Array?chats:[chats],needLoadCode:typeof Chatbro==='undefined'};var xhr=new XMLHttpRequest();xhr.withCredentials = true;xhr.onload=function(){eval(xhr.responseText)};xhr.onerror=function(){console.error('Chatbro loading error')};xhr.open('POST','//www.chatbro.com/embed_chats/',async);xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');xhr.send('parameters='+encodeURIComponent(JSON.stringify(params)))}
+		function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','//www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
 		/* Chatbro Widget Embed Code End */
 		ChatbroLoader({encodedChatId: '1Leg'});
 		</script>
@@ -139,22 +139,22 @@
 		<!--<span id="gold" class="interface" style="position:absolute; top:0px; left:60px">0</span>
 		<span id="pop"  class="interface" style="position:absolute; top:0px; left:100px">2</span>-->
 		<script>
-		var url = window.location.pathname;
-		var filename = url.substring(url.lastIndexOf('/')+1);
-		
-		if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
-			res_mod = "b";
-		}
-		else {
-			res_mod = "b";
-		}
-		//alert(res_mod);
-		/*
-		function reload_res(this) {
-		this.src=str.replace(\"_a\", res_mod);
-		alert(this.src);
-		}
-		*/
+			var url = window.location.pathname;
+			var filename = url.substring(url.lastIndexOf('/')+1);
+			
+			if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
+				res_mod = "b";
+			}
+			else {
+				res_mod = "b";
+			}
+			//alert(res_mod);
+			/*
+			function reload_res(this) {
+			this.src=str.replace(\"_a\", res_mod);
+			alert(this.src);
+			}
+			*/
 		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openCity(event, 'Main')" id="defaultOpen">Main</button>
@@ -315,7 +315,7 @@
 			<h1>1255 burgomaster</h1><br>
 			<h2>About the project</h2><br>
 			Hello there! My name is Gladyshev Anton and I'm the author of the project.<br>
-			Homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/js-html-mycity</a><br>
+			Homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a><br>
 			This pet-project is dedicated to create a playable game, written in vanilla JavaScript, 
 			without using jQuery and modern whistlers and jugglers.<br>
 			The project oriented to be compact (in terms of source code and resources), 
@@ -479,7 +479,7 @@
 					//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
 					//ctx.drawImage(img12, 0, 0);
 				}
-				if (fire == 1 && document.getElementById("fire_graphics")==null) {
+				if (game.fire == 1 && document.getElementById("fire_graphics")==null) {
 					var img13 = Singleton.getInstance();
 					objFire_graphics         = new Image();
 					objFire_graphics.id      = "fire_graphics";
@@ -569,29 +569,7 @@
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:20,
 	}
-	var gold          = 20;
-	var pop           = 2;
-	var treasuryGuard = 0;
-	var buildLevelD   = 0;
-	var buildLevelH   = 0;
-	var buildLevelTreasury = 0;
-	var buildLevelGallows  = 0;
-	var buildLevelFountain = 0;
-	var buildLevelStash    = 0;
-	var fire          = 0;
-	var autosave      = 0;
-	var happyness     = 0;
 	//init const-variables
-	var costWall      = 2;
-	var costTower     = 4;
-	var costHome      = 2;
-	var costTreasury  = 20;
-	var costGallows   = 50;
-	var costFountain  = 50;
-	var costStash     = 50;
-	var lotteryPrize  = 50;
-	var treasuryGuardPriceHire = 20;
-	var treasuryGuardPricePayroll = 20;
 	//init service variables
 	var saveVersion       = "saveV1001";
 	var csum          = 0;
@@ -605,7 +583,7 @@
 	populatePatchnotes();
 	generateMap();
 	var autosaveObject;
-	setupAutosave();
+	setupAutosave();//DEBUG
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	//setInterval(rndEvents, 100000);
@@ -643,118 +621,118 @@
 	mapCreated = 1;
 	}
 	function populatePatchnotes() {
-	msg = "version 1.0.102";
-	writeToTextArea(msg);
-	msg = "added tab About game"+"\n"+
-	"thus close #107";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.99";
-	writeToTextArea(msg);
-	msg = "added Yandex Metrica"+"\n"+
-	"fix #105 close #103 #70 #102 #85 #101 ";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.95";
-	writeToTextArea(msg);
-	msg = "added Google analytics. Tuned gold limit";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.94";
-	writeToTextArea(msg);
-	msg = "treasury limit now fixed from bug (close #80)";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.93";
-	writeToTextArea(msg);
-	msg = "another bug with stash/treasury loading from save";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.92";
-	writeToTextArea(msg);
-	msg = "another bug with fire in the city";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.91";
-	writeToTextArea(msg);
-	msg = "compress resources close #73, tried singleton (hope it work), and fix #75";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.89";
-	writeToTextArea(msg);
-	msg = "now with shiny messages in chat about execution";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.88";
-	writeToTextArea(msg);
-	msg = "death penalty button";
-	writeToTextArea(msg); 
-	
-	msg = "version 1.0.87";
-	writeToTextArea(msg);
-	msg = "set build buttons invisible for Gallows-Fountain when Fountain-Gallows is built";
-	writeToTextArea(msg); 
-	
-	msg = "version 1.0.79";
-	writeToTextArea(msg);
-	msg = "gallows prevent building fountain, fountain prevent building gallows and stash requires treasury";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.78";
-	writeToTextArea(msg);
-	msg = "bugfix #34 Autosave now implemented"+"\n"+
-	"bugfix #59 new variables don't brick old saves";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.76";
-	writeToTextArea(msg);
-	msg = "bugfix #39 Save/Load doesn't apply on fire in the city"+"\n"+
-		"bugfix #42 Prevent load game if there no saves around"+"\n"+
-		"bugfix #51 Save and Load with confirmation"+"\n"+
-		"bugfix #54 Hiring treasury guards available only if treasury is built"+"\n"+
-		"close #55 Added image of treasury guard";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.72";
-	writeToTextArea(msg);
-	msg = "bugfix #29, #47, #48. No defence button after load"
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.70";
-	writeToTextArea(msg);
-	msg = "bugfix #44. Now it indicates if gold increased, decreased or not changed"
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.69";
-	writeToTextArea(msg);
-	msg = "bugfix #43 (word 'gold' appears after variable, when thieves stole some gold. fix #40"
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.68";
-	writeToTextArea(msg);
-	msg = "Bug fixes #35";
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.66";
-	writeToTextArea(msg);
-	msg = "You now can fire guardsmen"
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.65";
-	writeToTextArea(msg);
-	msg = "Bug fix #30. You're need to hire your treasury guards again, because save file is partially broken"
-	writeToTextArea(msg);
-	
-	msg = "version 1.0.64";
-	writeToTextArea(msg);
-	msg = "Added new tab 'Building'. All building buttons move to 'Building' tab. Added firing procedure for treasury guardsmen (not only hiring for now). Added treasury building. As for now it does nothing, but it exists now."
-	writeToTextArea(msg);
+		msg = "version 1.0.102";
+		writeToTextArea(msg);
+		msg = "added tab About game"+"\n"+
+		"thus close #107";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.99";
+		writeToTextArea(msg);
+		msg = "added Yandex Metrica"+"\n"+
+		"fix #105 close #103 #70 #102 #85 #101 ";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.95";
+		writeToTextArea(msg);
+		msg = "added Google analytics. Tuned gold limit";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.94";
+		writeToTextArea(msg);
+		msg = "treasury limit now fixed from bug (close #80)";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.93";
+		writeToTextArea(msg);
+		msg = "another bug with stash/treasury loading from save";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.92";
+		writeToTextArea(msg);
+		msg = "another bug with fire in the city";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.91";
+		writeToTextArea(msg);
+		msg = "compress resources close #73, tried singleton (hope it work), and fix #75";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.89";
+		writeToTextArea(msg);
+		msg = "now with shiny messages in chat about execution";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.88";
+		writeToTextArea(msg);
+		msg = "death penalty button";
+		writeToTextArea(msg); 
+		
+		msg = "version 1.0.87";
+		writeToTextArea(msg);
+		msg = "set build buttons invisible for Gallows-Fountain when Fountain-Gallows is built";
+		writeToTextArea(msg); 
+		
+		msg = "version 1.0.79";
+		writeToTextArea(msg);
+		msg = "gallows prevent building fountain, fountain prevent building gallows and stash requires treasury";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.78";
+		writeToTextArea(msg);
+		msg = "bugfix #34 Autosave now implemented"+"\n"+
+		"bugfix #59 new variables don't brick old saves";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.76";
+		writeToTextArea(msg);
+		msg = "bugfix #39 Save/Load doesn't apply on fire in the city"+"\n"+
+			"bugfix #42 Prevent load game if there no saves around"+"\n"+
+			"bugfix #51 Save and Load with confirmation"+"\n"+
+			"bugfix #54 Hiring treasury guards available only if treasury is built"+"\n"+
+			"close #55 Added image of treasury guard";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.72";
+		writeToTextArea(msg);
+		msg = "bugfix #29, #47, #48. No defence button after load"
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.70";
+		writeToTextArea(msg);
+		msg = "bugfix #44. Now it indicates if gold increased, decreased or not changed"
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.69";
+		writeToTextArea(msg);
+		msg = "bugfix #43 (word 'gold' appears after variable, when thieves stole some gold. fix #40"
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.68";
+		writeToTextArea(msg);
+		msg = "Bug fixes #35";
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.66";
+		writeToTextArea(msg);
+		msg = "You now can fire guardsmen"
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.65";
+		writeToTextArea(msg);
+		msg = "Bug fix #30. You're need to hire your treasury guards again, because save file is partially broken"
+		writeToTextArea(msg);
+		
+		msg = "version 1.0.64";
+		writeToTextArea(msg);
+		msg = "Added new tab 'Building'. All building buttons move to 'Building' tab. Added firing procedure for treasury guardsmen (not only hiring for now). Added treasury building. As for now it does nothing, but it exists now."
+		writeToTextArea(msg);
 	}
 	function writeToTextArea(msg) {
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
 	function setupAutosave() {
-		if (autosave==0) {
+		if (options.autosave==0) {
 			if (typeof autosaveObject !== 'undefined') {
 			clearInterval(autosaveObject);
 			}
@@ -767,11 +745,11 @@
 		}
 	}
 	function changeAutosave() {
-		if (autosave==0) {
-			autosave = 1;
+		if (options.autosave==0) {
+			options.autosave = 1;
 			setupAutosave();
 		} else {
-			autosave = 0;
+			options.autosave = 0;
 			setupAutosave();
 		}
 	}
@@ -877,83 +855,17 @@
 		}
 	}
 	function writeSave(){
-			localStorage.setItem('gold', gold);
-			localStorage.setItem('pop', pop);
-			localStorage.setItem('buildLevelD', buildLevelD);
-			localStorage.setItem('buildLevelH', buildLevelH);
-			localStorage.setItem('treasuryGuard', treasuryGuard);
-			localStorage.setItem('buildLevelTreasury', buildLevelTreasury);
-			localStorage.setItem('buildLevelGallows', buildLevelGallows);
-			localStorage.setItem('buildLevelFountain', buildLevelFountain);
-			localStorage.setItem('buildLevelStash', buildLevelStash);
-			localStorage.setItem('fire', fire);
-			localStorage.setItem('autosave', autosave);
-			localStorage.setItem('happyness', happyness);
-			localStorage.setItem('saveVersion', saveVersion);
+		    localStorage.setItem('game', JSON.stringify(game));
+			localStorage.setItem('options', JSON.stringify(options));
 			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
 			scrollDown();
 	}
 	function loadGame() {
 		var answer = confirm("Load game? It will lost any progress since last save!");
 		if (answer === true) {
-			if (localStorage.getItem('gold')!=null){
-				gold = localStorage.getItem('gold');
-				pop  = localStorage.getItem('pop');
-				if (localStorage.getItem('buildLevelD')!=null){
-					buildLevelD          = localStorage.getItem('buildLevelD');
-				} else {
-					buildLevelD          = 0;
-				}
-				if (localStorage.getItem('buildLevelH')!=null){
-					buildLevelH          = localStorage.getItem('buildLevelH');
-				} else {
-					buildLevelH          = 0;
-				}
-				if (localStorage.getItem('treasuryGuard')!=null){
-					treasuryGuard        = localStorage.getItem('treasuryGuard');
-				} else {
-					treasuryGuard        = 0;
-				}
-				if (localStorage.getItem('buildLevelTreasury')!=null){
-					buildLevelTreasury   = localStorage.getItem('buildLevelTreasury');
-				} else {
-					buildLevelTreasury   = 0;
-				}
-				if (localStorage.getItem('buildLevelGallows')!=null){
-					buildLevelGallows    = localStorage.getItem('buildLevelGallows');
-				} else {
-					buildLevelGallows    = 0;
-				}
-				if (localStorage.getItem('buildLevelFountain')!=null){
-					buildLevelFountain   = localStorage.getItem('buildLevelFountain');
-				} else {
-					buildLevelFountain   = 0;
-				}
-				if (localStorage.getItem('buildLevelStash')!=null){
-					buildLevelStash       = localStorage.getItem('buildLevelStash');
-				} else {
-					buildLevelStash       = 0;
-				}
-				if (localStorage.getItem('fire')!=null){
-					fire   = localStorage.getItem('fire');
-				} else {
-					fire = 0;
-				}
-				if (localStorage.getItem('autosave')!=null){
-					autosave   = localStorage.getItem('autosave');
-				} else {
-					autosave           = 0;
-				}
-				if (localStorage.getItem('happyness')!=null){
-					happyness   = localStorage.getItem('happyness');
-				} else {
-					happyness          = 80;
-				}
-				if (localStorage.getItem('saveVersion')!=null){
-					saveVersionFromCache   = localStorage.getItem('saveVersion');
-				} else {
-					saveVersionFromCache   = saveVersion;
-				}
+			if (localStorage.getItem('game')!=null){
+				game     = JSON.parse(localStorage.getItem('game'));
+				options  = JSON.parse(localStorage.getItem('options'));
 				setupAutosave();
 				composite();
 				updateResources();
@@ -967,27 +879,27 @@
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
-		nextLvlPriceHome      = Math.pow(costHome,(game.buildLevelH*1+1));
+		nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));
 		document.getElementById("homes").innerHTML="Build home lvl"+nextLvlHome+"; "+nextLvlPriceHome+" gold";
 		
 		nextLvlTreasury       = game.buildLevelTreasury*1+1;
-		nextLvlPriceTreasury  = Math.pow(costTreasury,(game.buildLevelTreasury*1+1));
+		nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
 		document.getElementById("treasury").innerHTML="Build treasury lvl"+nextLvlTreasury+"; "+nextLvlPriceTreasury+" gold";
 		
 		nextLvlGallows        = game.buildLevelGallows*1+1;
-		nextLvlPriceGallows   = Math.pow(costGallows,(game.buildLevelGallows*1+1));
+		nextLvlPriceGallows   = Math.pow(config.costGallows,(game.buildLevelGallows*1+1));
 		document.getElementById("buttonBldGallows").innerHTML="Build gallows lvl"+nextLvlGallows+"; "+nextLvlPriceGallows+" gold";
 		
 		nextLvlFountain       = game.buildLevelFountain*1+1;
-		nextLvlPriceFountain  = Math.pow(costFountain,(game.buildLevelFountain*1+1));
+		nextLvlPriceFountain  = Math.pow(config.costFountain,(game.buildLevelFountain*1+1));
 		document.getElementById("buttonBldFountain").innerHTML="Build fountain lvl"+nextLvlFountain+"; "+nextLvlPriceFountain+" gold";
 		
 		nextLvlStash          = game.buildLevelStash*1+1;
-		nextLvlPriceStash     = Math.pow(costStash,(game.buildLevelStash*1+1));
+		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML="Build stash lvl"+nextLvlStash+"; "+nextLvlPriceStash+" gold";
 		
 		if (game.buildLevelD == 1) {
-			document.getElementById("defence").innerHTML="Build Tower: "+costTower+" gold";	
+			document.getElementById("defence").innerHTML="Build Tower: "+config.costTower+" gold";	
 			var towerClick = "Build("+"\'Tower\'"+")";
 			document.getElementById("defence").setAttribute("onclick", towerClick);
 		}
@@ -1230,7 +1142,7 @@
 			game.gold      = gold_possible;
 		}
 		//gold     = gold*1+2;
-		if (game.pop < 2*Math.pow((buildLevelH*1+3),2)) {
+		if (game.pop < 2*Math.pow((game.buildLevelH*1+3),2)) {
 			pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
 			if (pop_incr == 0) {
 				game.pop = game.pop*1+1;
