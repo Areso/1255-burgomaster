@@ -172,7 +172,7 @@
 			</p>
 			<br>
 			<p id="resources">
-				<span id="gold" class="interface" onclick="hireTreasuryGuard()" style="position:absolute; top:100px; left:60px">0</span>
+				<span id="gold" class="interface" onclick="game.add_money()" style="position:absolute; top:100px; left:60px">0</span>
 				<br>
 				<br>
 				<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
@@ -552,11 +552,13 @@
 		buildLevelFountain:0,
 		buildLevelStash:0,
 		fire:0,
-		happyness:0
+		happyness:0,
+		o_autosave:0,
+		add_money   : function() {
+			alert("hw");
+			this.money         = this.money+1;
+		}
 	};
-	var options = {
-		autosave:0
-	}
 	var config = {
 		costWall:2,
 		costTower:4,
@@ -571,7 +573,7 @@
 	}
 	//init const-variables
 	//init service variables
-	var saveVersion       = "saveV1001";
+	var saveVersion       = "saveV1002";
 	var csum          = 0;
 	var delimiter     = ";"
 	var redraw        = 0;
@@ -732,7 +734,7 @@
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
 	function setupAutosave() {
-		if (options.autosave==0) {
+		if (game.autosave==0) {
 			if (typeof autosaveObject !== 'undefined') {
 			clearInterval(autosaveObject);
 			}
@@ -745,11 +747,11 @@
 		}
 	}
 	function changeAutosave() {
-		if (options.autosave==0) {
-			options.autosave = 1;
+		if (game.autosave==0) {
+			game.autosave = 1;
 			setupAutosave();
 		} else {
-			options.autosave = 0;
+			game.autosave = 0;
 			setupAutosave();
 		}
 	}
@@ -864,8 +866,10 @@
 		var answer = confirm("Load game? It will lost any progress since last save!");
 		if (answer === true) {
 			if (localStorage.getItem('game')!=null){
-				game     = JSON.parse(localStorage.getItem('game'));
-				options  = JSON.parse(localStorage.getItem('options'));
+				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
+				gameTemp = JSON.parse(localStorage.getItem('game'));
+				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
+				//options  = JSON.parse(localStorage.getItem('options'));
 				setupAutosave();
 				composite();
 				updateResources();
