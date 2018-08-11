@@ -187,6 +187,7 @@
 			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:350px; left: 20px">Load game</button>
 			<button id="putOutFire"   onclick="game.putOutFire()" class="interface" style="top:390px; left: 20px; display:none">Put out fire</button>
 			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:430px; left: 20px; display:none">Execute smb</button>
+			<button id="putOutFire"   onclick="game.startFire()" class="interface" style="top:190px; left: 20px" style="display:none">X</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
@@ -481,7 +482,8 @@
 						//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
 						//ctx.drawImage(img12, 0, 0);
 					}
-					if (game.fire == 1 && document.getElementById("fire_graphics")==null) {
+					if (game.fire === 1) {
+						
 						var img13 = Singleton.getInstance();
 						objFire_graphics         = new Image();
 						objFire_graphics.id      = "fire_graphics";
@@ -491,7 +493,7 @@
 						document.getElementById("events_graphics").appendChild(objFire_graphics);
 						//originalDiv.parentNode.insertBefore(newVideo, originalDiv); 
 						//document.body.insertBefore(fire_graphics, pp);
-						document.getElementById("fire_graphics").setAttribute("onclick", "putOutFire()");
+						document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
 						document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
 						document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
 					}
@@ -763,15 +765,15 @@
 				}
 			},
 			putOutFire : function () {
-				if (fire == 1){
+				if (game.fire === 1){
 					var answer = confirm("Call an fireman? It will cost you 20 gold!");
 					if (answer === true) {
-						if (gold >= 20) {
-							fire = 0;
-							gold = gold - 20;
+						if (game.gold >= 20) {
+							game.fire = 0;
+							game.gold = game.gold - 20;
 							document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
-							msg = "Fireman put out a fire!";
 							document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
+							msg = "Fireman put out a fire!";
 							postEventLog(msg);
 							updateResources();
 						}
@@ -781,10 +783,50 @@
 						}
 					}
 					else {
-						msg = "it will burn to ashes!";
+						msg = "It will burn to ashes!";
 						postEventLog(msg);
 					}
 				}
+			},
+			theftFromTreasury : function () {
+				rndThieves = Math.floor((Math.random() * treasuryGuard) + 1); 
+				if (rndThieves === 1) {
+					goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))+1);
+					game.gold     = game.gold - goldLost;
+					msg = "shit happens: thieves stole "+goldLost+" gold from your treasury";
+					postEventLog(msg);
+					updateResources();
+				}
+			},
+			startFire : function () {
+				if (game.fire === 0) {
+						msg = "fire in the city!";
+						postEventLog(msg);
+						game.fire = 1;
+						composite();
+						if (game.buildLevelD == 1) {
+							ceil = 1
+						}
+						if (game.buildLevelD == 2) {
+							ceil = 2
+						}
+						rnd = Math.floor((Math.random() * 2) + 0);
+						if (rnd === 0) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
+						if (rnd === 1) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
+						if (rnd === 0) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
+				}
+			},
+			winLottery : function () {
+				msg = "You won a lottery with "+lotteryPrize+" gold prize";
+				postEventLog(msg);
+				game.gold = game.gold + config.lotteryPrize;
+				updateResources();
 			}
 		};
 		//init const-variables
@@ -1085,7 +1127,7 @@
 		}
 		function writeSave(){
 				localStorage.setItem('game', JSON.stringify(game));
-				localStorage.setItem('options', JSON.stringify(options));
+				localStorage.setItem('config', JSON.stringify(options));
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
 				scrollDown();
 		}
@@ -1170,7 +1212,7 @@
 		function scrollDown(){
 			var textarea = document.getElementById("console_n_chat");
 				if(textarea.selectionStart === textarea.selectionEnd) {
-				textarea.scrollTop = textarea.scrollHeight;
+					textarea.scrollTop = textarea.scrollHeight;
 				}
 		}
 		function updateResources() {
@@ -1190,47 +1232,10 @@
 			//rnd = 2;//debug
 			switch (rnd) {
 				case 1:
-					rndThieves = Math.floor((Math.random() * treasuryGuard) + 1); 
-					if (rndThieves === 1) {
-						goldLost = Math.floor(Math.random() * (gold/(1+buildLevelTreasury))  + 1);//where is 5 is Stash Level //todo
-						gold     = gold - goldLost;
-						msg = "shit happens: thieves stole "+goldLost+" gold from your treasury";
-						document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
-						updateResources();
-						scrollDown();
-						//alert("shit happens");
-					}
+					game.theftFromTreasury();
 					break;
 				case 2:
-				
-					if (fire === 0) {
-						msg = "fire in the city!";
-						document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
-						scrollDown();
-						//alert('fire in the city!');
-						//document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
-						//document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
-						fire = 1;
-						composite();
-						//var fire_img = "<img src=\"1.png\" class=\"over1\">";
-						//document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+wall;
-						if (buildLevelD == 1) {
-							ceil = 1
-						}
-						if (buildLevelD == 2) {
-							ceil = 2
-						}
-						rnd = Math.floor((Math.random() * 2) + 0);
-						if (rnd === 0) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-						}
-						if (rnd === 1) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-						}
-						if (rnd === 0) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-						}
-					}
+					game.startFire();
 					break;
 				case 3:
 					//
@@ -1260,12 +1265,7 @@
 					//
 					break;
 				case 12:
-					msg = "You won a lottery with "+lotteryPrize+" gold prize";
-					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg;
-					scrollDown();
-					//alert("You won a lottery with "+lotteryPrize+" gold prize");
-					gold = gold + lotteryPrize;
-					updateResources();
+					game.winLottery();
 					break;
 				default:
 					alert("error on switch/case function");
