@@ -210,10 +210,13 @@
 				<td>Autosave <img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
-				</tr>
-			</table>
+			</tr>
 			
-			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:200px; left:40px"></textarea>
+				
+				
+			</table>
+			Savestring <input id="savestring" name="savestring" value="" style="width:600px">
+			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 			
 		</div>
 		
@@ -1027,86 +1030,32 @@
 			saveGame("silent");
 		}
 		function exportGame() {
-			arrayToSave = [];
-			arrayToSave[0] = 0;
-			arrayToSave[1] = gold*1;
-			arrayToSave[2] = pop*2;
-			arrayToSave[3] = treasuryGuard*3;
-			arrayToSave[4] = buildLevelD*4;
-			arrayToSave[5] = buildLevelH*5;
-			arrayToSave[6] = buildLevelTreasury*6;
-			arrayToSave[7] = buildLevelGallows*5;
-			arrayToSave[8] = buildLevelFountain*4;
-			arrayToSave[9] = buildLevelStash*3;
-			arrayToSave[10]= fire*1;
-			arrayToSave[11]= autosave*1;
-			arrayToSave[12]= happyness*3;
-			csum = 0;
-			for (i = 0; i < arrayToSave.length; i++) { 
-				csum = csum*1 + arrayToSave[i]*1;
-			}
-			//csum = gold*1+pop*2+treasuryGuard*3+
-			//	buildLevelD*4+buildLevelH*5+
-			//	buildLevelTreasury*6+buildLevelGallows*5+
-			//	buildLevelFountain*4+buildLevelStash*3+
-			//	fire*1+autosave*1+happyness*3;
-			saveString = saveVersion;
-			for (i = 1; i < arrayToSave.length; i++) { 
-				saveString = saveString + delimiter + arrayToSave[i];
-			}
-			saveString = saveString + delimiter + csum;
-			alert(btoa(saveString));
+			stringSavegame = JSON.stringify(game);
+			stringSavegame = stringSavegame+delimiter+JSON.stringify(options);
+			//add csum (control sum of game)
+			document.getElementById("savestring").value = btoa(stringSavegame);
 		}
 		function importGame() {
 			save64 = prompt("Please enter save", "long string");
 			if (save64 != null) {
 				try {
 					saveLine  = atob(save64);
-					saveArray = saveLine.split(";");
-					csum = saveArray[1]*1+saveArray[2]*1+saveArray[3]*1+
-						saveArray[4]*1+saveArray[5]*1+
-						saveArray[6]*1+saveArray[7]*1+
-						saveArray[8]*1+saveArray[9]*1+
-						saveArray[10]*1+saveArray[11]*1+saveArray[12]*1;
-					csumFromSave = saveArray[13];
-					if (csum == csumFromSave) {
-						//alert ("good to go");
-						/*
-						arrayToSave[1] = gold*1;
-						arrayToSave[2] = pop*2;
-						arrayToSave[3] = treasuryGuard*3;
-						arrayToSave[4] = buildLevelD*4;
-						arrayToSave[5] = buildLevelH*5;
-						arrayToSave[6] = buildLevelTreasury*6;
-						arrayToSave[7] = buildLevelGallows*5;
-						arrayToSave[8] = buildLevelFountain*4;
-						arrayToSave[9] = buildLevelStash*3;
-						arrayToSave[10]= fire*1;
-						arrayToSave[11]= autosave*1;
-						arrayToSave[12]= happyness*3;
-						*/
-						gold                 = saveArray[1]/1;
-						pop                  = saveArray[2]/2;
-						treasuryGuard        = saveArray[3]/3;
-						buildLevelD          = saveArray[4]/4;
-						buildLevelH          = saveArray[5]/5;
-						buildLevelTreasury   = saveArray[6]/6;
-						buildLevelGallows    = saveArray[7]/5;
-						buildLevelFountain   = saveArray[8]/4;
-						buildLevelStash      = saveArray[9]/3;
-						fire                 = saveArray[10]/1;
-						autosave             = saveArray[11]/1;
-						happyness            = saveArray[12]/3;
-						
-						setupAutosave();
-						composite();
-						updateResources();
-						updateButtonCaptions();
-						document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
-						scrollDown();
-					} else {
-						alert ("save file was modified. Too bad");
-					}
+					saveArray = saveLine.split(delimiter);
+					
+					gameTemp  = JSON.parse(saveArray[0]);
+					for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
+					options   = JSON.parse(saveArray[1]);
+					setupAutosave();
+					composite();
+					updateResources();
+					updateButtonCaptions();
+					document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
+					scrollDown();
+					
+					//TODO
+					//} else {
+					//	alert ("save file was modified. Too bad");
+					//}
 				}
 				catch(err) {
 					console.log(err);
@@ -1138,7 +1087,7 @@
 					//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 					gameTemp = JSON.parse(localStorage.getItem('game'));
 					for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-					//options  = JSON.parse(localStorage.getItem('options'));
+					options  = JSON.parse(localStorage.getItem('options'));
 					setupAutosave();
 					composite();
 					updateResources();
