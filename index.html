@@ -201,7 +201,7 @@
 			</p> 
 		</div>
 
-		<div id="Settings" class="tabcontent">
+			<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3>Settings</h3>
 			<p>Alert / MSG to chat</p>
@@ -544,36 +544,7 @@
 				img.src = src;
 				return img;
 			}
-			*/
-		</script>
-		<script>
-		//init variables
-		var game = {
-			gold:20,
-			pop:2,
-			treasuryGuard:0,
-			buildLevelD:0,
-			buildLevelH:0,
-			buildLevelTreasury:0,
-			buildLevelGallows:0,
-			buildLevelFountain:0,
-			buildLevelStash:0,
-			fire:0,
-			happyness:0,
-			o_autosave:0,
-			saveVersion:"saveV1002",
-			goldLimit : function () {
-				return Math.pow((game.buildLevelTreasury*1+1),4)*10000;
-			},
-			calculateTurn : function() {
-				pop_m         = 0;
-				gold_was      = game.gold;
-				gold_limit    = game.goldLimit();
-				gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
-				if (gold_possible > gold_limit) {
-					game.gold      = gold_limit;
-					msg = "build or update Treasury"
-					postEventLog(msg);
+
 				} else {
 					game.gold      = gold_possible;
 				}
