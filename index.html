@@ -1031,7 +1031,7 @@
 		}
 		function exportGame() {
 			stringSavegame = JSON.stringify(game);
-			stringSavegame = stringSavegame+delimiter+JSON.stringify(options);
+			//stringSavegame = stringSavegame+delimiter+JSON.stringify(options);
 			//add csum (control sum of game)
 			document.getElementById("savestring").value = btoa(stringSavegame);
 		}
@@ -1044,7 +1044,7 @@
 					
 					gameTemp  = JSON.parse(saveArray[0]);
 					for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-					options   = JSON.parse(saveArray[1]);
+					//options   = JSON.parse(saveArray[1]);
 					setupAutosave();
 					composite();
 					updateResources();
