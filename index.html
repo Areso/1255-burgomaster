@@ -1,37 +1,3 @@
-
-Skip to content
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @Areso
-
-Your GitHub academic discount coupon has expired
-
-    If you’re still eligible, you may re-apply.
-    If you’re no longer eligible, you may either update your payment information to continue using private repositories, or downgrade your account.
-
-Your private repositories have been locked until you have resolved this. If you have any questions, please contact GitHub Education.
-
-1
-5
-
-    4
-
-Areso/1255-burgomaster
-Code
-Issues 74
-Pull requests 0
-Projects 1
-Wiki
-Insights
-Settings
-1255-burgomaster/index.html
-283c6f6 2 minutes ago
-@Areso Areso Merge branch 'master' into resources-to-object
-1257 lines (1198 sloc) 44 KB
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -227,13 +193,15 @@ Settings
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
 			-->
 		</div>
+
 		<div id="Explore" class="tabcontent" >
 			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
 			GLOBALMAP
 			</p> 
 		</div>
-			<div id="Settings" class="tabcontent">
+
+		<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3>Settings</h3>
 			<p>Alert / MSG to chat</p>
@@ -576,6 +544,36 @@ Settings
 				img.src = src;
 				return img;
 			}
+			*/
+		</script>
+		<script>
+		//init variables
+		var game = {
+			gold:20,
+			pop:2,
+			treasuryGuard:0,
+			buildLevelD:0,
+			buildLevelH:0,
+			buildLevelTreasury:0,
+			buildLevelGallows:0,
+			buildLevelFountain:0,
+			buildLevelStash:0,
+			fire:0,
+			happyness:0,
+			o_autosave:0,
+			saveVersion:"saveV1002",
+			goldLimit : function () {
+				return Math.pow((game.buildLevelTreasury*1+1),4)*10000;
+			},
+			calculateTurn : function() {
+				pop_m         = 0;
+				gold_was      = game.gold;
+				gold_limit    = game.goldLimit();
+				gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
+				if (gold_possible > gold_limit) {
+					game.gold      = gold_limit;
+					msg = "build or update Treasury"
+					postEventLog(msg);
 				} else {
 					game.gold      = gold_possible;
 				}
