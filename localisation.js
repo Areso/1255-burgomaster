@@ -43,7 +43,7 @@ function checkValue(value,arr){
 			var name = arr[i];
 			if(name == value){
 				status = 1;
-			break;
+				break;
 			}
 		}
 		return status;
@@ -74,6 +74,8 @@ function loadLocale(language){
 	file = language+'.js';
 	include(file,function(){
 		//document.getElementById('lblPlayGame').innerHTML=localeStrings[0];
+		console.log('we are in second level include');
+		localeCallback();
 	});
 	isLocalStorageSupport = checkLocalStorageSupport();
 	if (isLocalStorageSupport===true) { //for all modern browsers, including IE8 and newer

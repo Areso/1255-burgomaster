@@ -414,7 +414,6 @@
 	var img11   = loadImage('resources/fountain.png', composite);
 	var img12   = loadImage('resources/trapdoor.png', composite);
 
-
 	var Singleton = (function () {
 		var instance;
 		function createInstance() {
@@ -430,16 +429,7 @@
 			}
 		};
 	})();
-
-	var msg_pop_limit_en     = "your city is reached population limit. Build new houses or upgrade existing ones";
-	var msg_pop_limit        = msg_pop_limit_en;
-	var msg_game_saved_en    = "game saved successfully";
-	var msg_game_saved       = msg_game_saved_en;
-	var msg_game_loaded_en   = "game loaded successfully";
-	var msg_game_loaded      = msg_game_loaded_en;
-
 	var imagesLoaded = 0;
-
 	function composite() {
 		imagesLoaded = imagesLoaded*1 + 1;
 		if (imagesLoaded > 1) {
@@ -503,7 +493,6 @@
 			}
 		}
 	}
-
 	function loadImage(src, onload) {
 		var img = new Image();
 		img.onload = onload;
@@ -577,13 +566,14 @@
 		},
 		calculateTurn : function() {
 			pop_m         = 0;
+			pop_was       = game.pop;
 			game.period   = game.period + 1;
 			gold_was      = game.gold;
 			gold_limit    = game.goldLimit();
 			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
 			if (gold_possible > gold_limit) {
 				game.gold      = gold_limit;
-				msg = "build or update Treasury"
+				msg = localeStrings[3];
 				postEventLog(msg);
 			} else {
 				game.gold      = gold_possible;
@@ -598,7 +588,7 @@
 				}
 				pop_m    = 1;
 			} else {
-				postEventLog(msg_pop_limit);
+				postEventLog(localeStrings[10]);
 			}
 			if (game.treasuryGuard > 0) {
 				if (game.gold - game.treasuryGuard * config.treasuryGuardPricePayroll >= 0) {
@@ -612,23 +602,23 @@
 					postEventLog(msg);
 				}
 			}
-			if (game.gold > gold_was) {
-				msg_gold = "increased";
-			} else {
-				if (game.gold === gold_was) {
-					msg_gold = "not changed"
-				} else {
-					msg_gold = "decreased"
-				}
-			}
-			if (pop_m === 0) {
-				msg   = "amount of money are "+msg_gold;
-			}
-			if (pop_m === 1) {
-				msg   = "population increased and amount of money are "+msg_gold;
-			}
-			postEventLog(msg);
-			updateResources();
+			if (game.gold !== gold_was) {
+                if (game.gold > gold_was) {
+                    msg = localeStrings[4];
+                } else {
+                    msg = localeStrings[5];
+                }
+                postEventLog(msg);
+            };
+            if (game.pop !== pop_was) {
+                if (game.pop > pop_was) {
+                    msg = localeStrings[7];
+                } else {
+                    msg = localeStrings[8];
+                }
+                postEventLog(msg);
+            };
+    		updateResources();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -865,7 +855,6 @@
 	updateResources();
 	populatePatchnotes();
 	generateMap();
-	welcomeMsg();
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	//init timers
@@ -875,13 +864,18 @@
     include('localisation.js',function(){
         //document.getElementById('lblPlayGame').innerHTML=localeStrings[0];
         loadStartLocale();
+        //setTimeout(welcomeMsg, 500);
+        console.log('we are in first level include after loadStartLocale()');
     });
 
 	//functions
+    function localeCallback() {
+        welcomeMsg();
+    }
 	function welcomeMsg(){
-		postEventLog('Hello player in my incremental game!');
-		postEventLog('Your task is simple - manage the town as you are town\'s mayor!');
-		postEventLog('Citizen will pay taxes each season (30 secs or so) and population will grow each season');
+		postEventLog(localeStrings[0]);
+		postEventLog(localeStrings[1]);
+		postEventLog(localeStrings[2]);
 	}
 	function postEventLog(msgEventLog) {
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msgEventLog;
@@ -1101,7 +1095,7 @@
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {
-		save64 = prompt("Please enter save", "long string");
+		save64 = prompt(localeStrings[16],localeStrings[17]);
 		if (save64 != null) {
 			try {
 				saveLine  = atob(save64);
@@ -1114,7 +1108,7 @@
 				composite();
 				updateResources();
 				updateButtonCaptions();
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 
 				//TODO
@@ -1131,7 +1125,7 @@
 		if (saveConfirmation=="silent") {
 			writeSave();
 		} else {
-			question = "Save game? It will rewrite any save you already have!";
+			question = localeStrings[15];
 			var answer = askPlayer(question, 1);
 			if (answer === true) {
 				writeSave();
@@ -1141,11 +1135,11 @@
 	function writeSave(){
 		localStorage.setItem('game', JSON.stringify(game));
 		localStorage.setItem('config', JSON.stringify(options));
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
+		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
 		scrollDown();
 	}
 	function loadGame() {
-		question = "Load game? It will lost any unsaved progress!";
+		question = localeStrings[13];
 		var answer = askPlayer(question, 1);
 		if (answer === true) {
 			if (localStorage.getItem('game')!=null){
@@ -1157,10 +1151,11 @@
 				composite();
 				updateResources();
 				updateButtonCaptions();
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 			} else {
-				alert('Sorry! There are no save to load!');
+			    //TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
+				alert(localeStrings[14]);
 			}
 		}
 	}
