@@ -43,3 +43,70 @@ localeStrings.push("пожарные погасили огонь");//40
 localeStrings.push("будет гореть дотла!");
 localeStrings.push("фигня случается: воры украли %arg1 золота из вашей Сокровищницы");
 localeStrings.push("вы выиграли в лоттерею %arg1 золота");
+localeStrings.push("Сохранить игру");
+localeStrings.push("Загрузить игру");//45
+localeStrings.push("Город");
+localeStrings.push("Мир");
+localeStrings.push("Настройки");
+localeStrings.push("Гарнизон");
+localeStrings.push("Строительство");//50
+localeStrings.push("Как играть");
+localeStrings.push("Discord");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//55
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("Настройки");
+localeStrings.push("Экспорт сохранения");
+localeStrings.push("Импорт сохранения");
+localeStrings.push("Автосохранение");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("Гарнизон");
+localeStrings.push("Уволить");
+localeStrings.push("Нанять");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//105
+localeStrings.push("Строительство");
+localeStrings.push("Построить Дом ур%arg1; %arg2 злата");
+localeStrings.push("Построить Стену ур:%arg1; %arg2 gold");
+localeStrings.push("Построить Башню ур:%arg1; %arg2 gold");
+

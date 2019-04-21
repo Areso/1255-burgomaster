@@ -43,6 +43,69 @@ localeStrings.push("firemen put end to the fire!");//40
 localeStrings.push("it will burn to ashes!");
 localeStrings.push("shit happens: thieves stole %arg1 gold from your treasury");
 localeStrings.push("You won in a lottery %arg1 gold prize");
-
-
-
+localeStrings.push("Save game");
+localeStrings.push("Load game");//45
+localeStrings.push("City");
+localeStrings.push("Explore");
+localeStrings.push("Settings");
+localeStrings.push("Garrison");
+localeStrings.push("Building");//50
+localeStrings.push("How To Play");
+localeStrings.push("Discord");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//55
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("Settings");
+localeStrings.push("Export Game");
+localeStrings.push("Import Game");
+localeStrings.push("Autosave");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("Garrison");
+localeStrings.push("Fire");
+localeStrings.push("Hire");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//105
+localeStrings.push("Building");
+localeStrings.push("Build Home lvl%arg1; %arg2 gold");
+localeStrings.push("Build Wall: lvl1%arg1; %arg2 gold");
+localeStrings.push("Build Tower: lvl1%arg1; %arg2 gold");

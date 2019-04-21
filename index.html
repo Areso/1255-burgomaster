@@ -154,20 +154,17 @@
 			*/
 		</script>
 		<div class="tab">
-			<button class="tablinks" onclick="openTab(event, 'Main')" id="defaultOpen">Main</button>
-			<button class="tablinks" onclick="openTab(event, 'Explore')" style="display:none">Explore</button>
-			<button class="tablinks" onclick="openTab(event, 'Settings')">Settings</button>
-			<button class="tablinks" onclick="openTab(event, 'Garrison')">Garrison</button>
-			<button class="tablinks" onclick="openTab(event, 'Building')">Building</button>
-			<button class="tablinks" onclick="openTab(event, 'About')">How To Play</button>
-			<button class="tablinks" onclick="openTab(event, 'Discord')">Discord</button>
-			<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>
+			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
+			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
+			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
+			<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>
+			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
+			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
+			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
+			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
-			<p style="position:absolute; top:60px; left: 20px">
-			welcome to heroes' city
-			</p>
 			<br>
 			<p id="resources">
 				<span id="gold" class="interface" onclick="game.add_money()" style="position:absolute; top:100px; left:60px">0</span>
@@ -200,26 +197,25 @@
 
 		<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Settings</h3>
-			<p>Alert / MSG to chat</p>
+			<h3><div id="labelSettings">Settings</div></h3>
+			<!-- TODO make checkboxes with chat system messages -->
+            <!--<p>Alert / MSG to chat</p>-->
 			<table>
 			<tr>
-				<td>Autosave <img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
+                <!-- TODO make a message about turning on / off autosaves for color disabled people -->
+                <td><div id="labelAutosave">Autosave</div><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
 			</tr>
-
-
-
 			</table>
-			Savestring <input id="savestring" name="savestring" value="" style="width:600px">
+			<input id="savestring" name="savestring" value="" style="width:600px">
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 
 		</div>
 
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Garrison</h3>
+			<h3><div id="labelGarrison">Garrison</div></h3>
 			<div id="divtreasuryGuard">
 			<table border="1">
 				<tr>
@@ -231,9 +227,9 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="fireGuard" onclick="game.fireTreasuryGuard()" style="width:80px">Fire</button>
+						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:80px">Fire</button>
 						<span id="treasuryGuard">0</span>
-						<button id="hireGuard" onclick="game.hireTreasuryGuard()" style="width:80px">Hire</button>
+						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:80px">Hire</button>
 						<!--<button id="fireGuard" onclick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
 						<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
 						<button id="hireGuard" onclick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
@@ -245,7 +241,7 @@
 
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Building</h3>
+            <h3><div id="labelBuilding">Building</div></h3>
 			<div>
 				<table border="1">
 				<tr>
@@ -267,18 +263,14 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="defence" onclick="game.Build('Wall')">Build walls: 2 gold</button>
+						<button id="defence" onclick="game.Build('Wall')">Build walls</button>
 					</td>
 					<td>
-						<button id="homes" onclick="game.Build('Home')">Build home: 2 gold</button>
+						<button id="homes" onclick="game.Build('Home')">Build home</button>
 					</td>
 					<td>
-						<button id="treasury" onclick="game.Build('Treasury')">Build treasury: 20 gold</button>
+						<button id="treasury" onclick="game.Build('Treasury')">Build treasury</button>
 					</td>
-					<!--
-					<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
-					<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
-					<button id="treasury" onclick="Build('Treasury')" class="interface" style="top:250px; left:20px">Build treasury: 20 gold</button>-->
 				</tr>
 				<tr>
 					<td>
@@ -299,13 +291,13 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="buttonBldGallows" onclick="game.Build('Gallows')">Build gallows: 50 gold</button>
+						<button id="buttonBldGallows" onclick="game.Build('Gallows')">Build gallows</button>
 					</td>
 					<td>
-						<button id="buttonBldFountain" onclick="game.Build('Fountain')">Build fountain: 50 gold</button>
+						<button id="buttonBldFountain" onclick="game.Build('Fountain')">Build fountain</button>
 					</td>
 					<td>
-						<button id="buttonBldStash" onclick="game.Build('Stash')">Build stash: 50 gold</button>
+						<button id="buttonBldStash" onclick="game.Build('Stash')">Build stash</button>
 					</td>
 				</tr>
 			</table>
@@ -849,6 +841,7 @@
 	generateMap();
 	var autosaveObject;
 	setupAutosave();//DEBUG
+
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
@@ -862,7 +855,26 @@
 
 	//functions
     function localeCallback() {
+        document.getElementById("saveGameButton").innerText    = localeStrings[44];
+        document.getElementById("loadGameButton").innerText    = localeStrings[45];
+        document.getElementById("tabCity").innerText           = localeStrings[46];
+        document.getElementById("tabExplore").innerText        = localeStrings[47];
+        document.getElementById("tabSettings").innerText       = localeStrings[48];
+        document.getElementById("tabGarrison").innerText       = localeStrings[49];
+        document.getElementById("tabBuilding").innerText       = localeStrings[50];
+        document.getElementById("tabAbout").innerText          = localeStrings[51];
+        document.getElementById("tabDiscord").innerText        = localeStrings[52];
+        document.getElementById("labelSettings").innerText     = localeStrings[66];
+        document.getElementById("buttonExportGame").innerText  = localeStrings[67];
+        document.getElementById("buttonImportGame").innerText  = localeStrings[68];
+        document.getElementById("labelAutosave").innerText     = localeStrings[69];
+        document.getElementById("labelGarrison").innerText     = localeStrings[91];
+        document.getElementById("buttonFireGuard").innerText   = localeStrings[92];
+        document.getElementById("buttonHireGuard").innerText   = localeStrings[93];
+        document.getElementById("labelBuilding").innerText     = localeStrings[106];
+        //TODO check if this is first callback in the session or not
         welcomeMsg();
+        updateButtonCaptions();
     }
 	function welcomeMsg(){
 		postEventLog(localeStrings[0]);
@@ -902,6 +914,11 @@
 		mapCreated = 1;
 	}
 	function populatePatchnotes() {
+        msg = "version 1.0.187";
+        writeToTextArea(msg);
+        msg = "made Russian translation (sort of). Some parts still in progress";
+        writeToTextArea(msg);
+
 		msg = "version 1.0.180";
 		writeToTextArea(msg);
 		msg = "clean mess with version numeration. somewhat";
@@ -1151,7 +1168,7 @@
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
 		nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));
-		document.getElementById("homes").innerHTML="Build home lvl"+nextLvlHome+"; "+nextLvlPriceHome+" gold";
+		document.getElementById("homes").innerHTML=localeStrings[107].replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
 
 		nextLvlTreasury       = game.buildLevelTreasury*1+1;
 		nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
@@ -1169,6 +1186,11 @@
 		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML="Build stash lvl"+nextLvlStash+"; "+nextLvlPriceStash+" gold";
 
+        if (game.buildLevelD == 0) {
+            document.getElementById("defence").innerHTML="Build Wall: "+config.costWall+" gold";
+            var towerClick = "game.Build("+"\'Wall\'"+")";
+            document.getElementById("defence").setAttribute("onclick", towerClick);
+        }
 		if (game.buildLevelD == 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+config.costTower+" gold";
 			var towerClick = "game.Build("+"\'Tower\'"+")";
@@ -1291,7 +1313,7 @@
 		evt.currentTarget.className += " active";
 	}
 	// Get the element with id="defaultOpen" and click on it
-	document.getElementById("defaultOpen").click();
+	document.getElementById("tabCity").click();
 </script>
 <!--<script src="localisation.js"></script>-->
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
