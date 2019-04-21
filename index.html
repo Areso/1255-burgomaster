@@ -135,10 +135,6 @@
 </head>
 <body>
 <span id="html">
-		<!--<a href="https://github.com/Areso/js-html-mycity"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
-		-->
-	<!--<span id="gold" class="interface" style="position:absolute; top:0px; left:60px">0</span>
-    <span id="pop"  class="interface" style="position:absolute; top:0px; left:100px">2</span>-->
 		<script>
 			var url = window.location.pathname;
 			var filename = url.substring(url.lastIndexOf('/')+1);
@@ -158,19 +154,17 @@
 			*/
 		</script>
 		<div class="tab">
-			<button class="tablinks" onclick="openCity(event, 'Main')" id="defaultOpen">Main</button>
-			<button class="tablinks" onclick="openCity(event, 'Explore')" style="display:none">Explore</button>
-			<button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
-			<button class="tablinks" onclick="openCity(event, 'Garrison')">Garrison</button>
-			<button class="tablinks" onclick="openCity(event, 'Building')">Building</button>
-			<button class="tablinks" onclick="openCity(event, 'About')">How To Play</button>
-			<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>
+			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
+			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
+			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
+			<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>
+			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
+			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
+			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
+			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
-			<p style="position:absolute; top:60px; left: 20px">
-			welcome to heroes' city
-			</p>
 			<br>
 			<p id="resources">
 				<span id="gold" class="interface" onclick="game.add_money()" style="position:absolute; top:100px; left:60px">0</span>
@@ -203,26 +197,25 @@
 
 		<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Settings</h3>
-			<p>Alert / MSG to chat</p>
+			<h3><div id="labelSettings">Settings</div></h3>
+			<!-- TODO make checkboxes with chat system messages -->
+            <!--<p>Alert / MSG to chat</p>-->
 			<table>
 			<tr>
-				<td>Autosave <img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
+                <!-- TODO make a message about turning on / off autosaves for color disabled people -->
+                <td><div id="labelAutosave">Autosave</div><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
 			</tr>
-
-
-
 			</table>
-			Savestring <input id="savestring" name="savestring" value="" style="width:600px">
+			<input id="savestring" name="savestring" value="" style="width:600px">
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 
 		</div>
 
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Garrison</h3>
+			<h3><div id="labelGarrison">Garrison</div></h3>
 			<div id="divtreasuryGuard">
 			<table border="1">
 				<tr>
@@ -234,9 +227,9 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="fireGuard" onclick="game.fireTreasuryGuard()" style="width:80px">Fire</button>
+						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:80px">Fire</button>
 						<span id="treasuryGuard">0</span>
-						<button id="hireGuard" onclick="game.hireTreasuryGuard()" style="width:80px">Hire</button>
+						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:80px">Hire</button>
 						<!--<button id="fireGuard" onclick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
 						<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
 						<button id="hireGuard" onclick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
@@ -248,7 +241,7 @@
 
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3>Building</h3>
+            <h3><div id="labelBuilding">Building</div></h3>
 			<div>
 				<table border="1">
 				<tr>
@@ -270,18 +263,14 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="defence" onclick="game.Build('Wall')">Build walls: 2 gold</button>
+						<button id="defence" onclick="game.Build('Wall')">Build walls</button>
 					</td>
 					<td>
-						<button id="homes" onclick="game.Build('Home')">Build home: 2 gold</button>
+						<button id="homes" onclick="game.Build('Home')">Build home</button>
 					</td>
 					<td>
-						<button id="treasury" onclick="game.Build('Treasury')">Build treasury: 20 gold</button>
+						<button id="treasury" onclick="game.Build('Treasury')">Build treasury</button>
 					</td>
-					<!--
-					<button id="defence" onclick="Build('Wall')" class="interface" style="top:170px; left:20px">Build walls: 2 gold</button>
-					<button id="homes"   onclick="Build('Home')" class="interface" style="top:210px; left: 20px">Build home: 2 gold</button>
-					<button id="treasury" onclick="Build('Treasury')" class="interface" style="top:250px; left:20px">Build treasury: 20 gold</button>-->
 				</tr>
 				<tr>
 					<td>
@@ -302,13 +291,13 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="buttonBldGallows" onclick="game.Build('Gallows')">Build gallows: 50 gold</button>
+						<button id="buttonBldGallows" onclick="game.Build('Gallows')">Build gallows</button>
 					</td>
 					<td>
-						<button id="buttonBldFountain" onclick="game.Build('Fountain')">Build fountain: 50 gold</button>
+						<button id="buttonBldFountain" onclick="game.Build('Fountain')">Build fountain</button>
 					</td>
 					<td>
-						<button id="buttonBldStash" onclick="game.Build('Stash')">Build stash: 50 gold</button>
+						<button id="buttonBldStash" onclick="game.Build('Stash')">Build stash</button>
 					</td>
 				</tr>
 			</table>
@@ -389,6 +378,10 @@
 			All suggestion and bug reports could be made via chat (if enabled) or via <a href="https://github.com/Areso/1255-burgomaster/issues">GitHub Issues</a></br>
 		</div>
 		</div>
+
+		<div id="Discord" class="tabcontent">
+			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
+		</div>
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
 		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
@@ -413,7 +406,6 @@
 	var img11   = loadImage('resources/fountain.png', composite);
 	var img12   = loadImage('resources/trapdoor.png', composite);
 
-
 	var Singleton = (function () {
 		var instance;
 		function createInstance() {
@@ -429,16 +421,7 @@
 			}
 		};
 	})();
-
-	var msg_pop_limit_en     = "your city is reached population limit. Build new houses or upgrade existing ones";
-	var msg_pop_limit        = msg_pop_limit_en;
-	var msg_game_saved_en    = "game saved successfully";
-	var msg_game_saved       = msg_game_saved_en;
-	var msg_game_loaded_en   = "game loaded successfully";
-	var msg_game_loaded      = msg_game_loaded_en;
-
 	var imagesLoaded = 0;
-
 	function composite() {
 		imagesLoaded = imagesLoaded*1 + 1;
 		if (imagesLoaded > 1) {
@@ -487,7 +470,6 @@
 				//ctx.drawImage(img12, 0, 0);
 			}
 			if (game.fire === 1) {
-
 				var img13 = Singleton.getInstance();
 				objFire_graphics         = new Image();
 				objFire_graphics.id      = "fire_graphics";
@@ -503,7 +485,6 @@
 			}
 		}
 	}
-
 	function loadImage(src, onload) {
 		var img = new Image();
 		img.onload = onload;
@@ -547,10 +528,20 @@
     */
 </script>
 <script>
+    include = function (url, fn) {
+        var e = document.createElement("script");
+        e.onload = fn;
+        e.src = url;
+        e.async=true;
+        document.getElementsByTagName("head")[0].appendChild(e);
+    };
 	//init variables
 	var game = {
 		gold:20,
 		pop:2,
+		season:2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
+		year:1255,
+		food:20,
 		treasuryGuard:0,
 		buildLevelD:0,
 		buildLevelH:0,
@@ -559,20 +550,26 @@
 		buildLevelFountain:0,
 		buildLevelStash:0,
 		fire:0,
-		happyness:0,
+		happyness:80,
 		o_autosave:0,
-		saveVersion:"saveV1002",
+		saveVersion:"saveV1005",
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
 		calculateTurn : function() {
 			pop_m         = 0;
+			pop_was       = game.pop;
+			game.season   = game.season + 1;
+			if (game.season === 5) {
+			    game.season   = 1;
+			    game.year     = game.year+1;
+            }
 			gold_was      = game.gold;
 			gold_limit    = game.goldLimit();
 			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
 			if (gold_possible > gold_limit) {
 				game.gold      = gold_limit;
-				msg = "build or update Treasury"
+				msg = localeStrings[3];
 				postEventLog(msg);
 			} else {
 				game.gold      = gold_possible;
@@ -587,7 +584,7 @@
 				}
 				pop_m    = 1;
 			} else {
-				postEventLog(msg_pop_limit);
+				postEventLog(localeStrings[10]);
 			}
 			if (game.treasuryGuard > 0) {
 				if (game.gold - game.treasuryGuard * config.treasuryGuardPricePayroll >= 0) {
@@ -595,29 +592,30 @@
 				}
 				else {
 					//fire guards which we cannot afford
-					//for now fire all guards!//TODO fire only those who we cannot afford
+					//for now fire all guards!
+                    //TODO fire only those who we cannot afford
 					game.treasuryGuard = 0;
-					msg   = "treasury guard(s) were fired because you are cannot pay to them!";
+					msg   = localeStrings[37];
 					postEventLog(msg);
 				}
 			}
-			if (game.gold > gold_was) {
-				msg_gold = "increased";
-			} else {
-				if (game.gold === gold_was) {
-					msg_gold = "not changed"
-				} else {
-					msg_gold = "decreased"
-				}
-			}
-			if (pop_m === 0) {
-				msg   = "amount of money are "+msg_gold;
-			}
-			if (pop_m === 1) {
-				msg   = "population increased and amount of money are "+msg_gold;
-			}
-			postEventLog(msg);
-			updateResources();
+			if (game.gold !== gold_was) {
+                if (game.gold > gold_was) {
+                    msg = localeStrings[4];
+                } else {
+                    msg = localeStrings[5];
+                }
+                postEventLog(msg);
+            };
+            if (game.pop !== pop_was) {
+                if (game.pop > pop_was) {
+                    msg = localeStrings[7];
+                } else {
+                    msg = localeStrings[8];
+                }
+                postEventLog(msg);
+            };
+    		updateResources();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -682,38 +680,37 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
-				question = "Hire a guardman? It will cost you 20 gold per tick!";
+				question = localeStrings[18];
 				var answer = askPlayer(question, 1);
 				if (answer === true) {
 					if (game.gold >= config.treasuryGuardPriceHire) {
 						game.treasuryGuard = game.treasuryGuard*1 + 1;
 						game.gold          = game.gold - config.treasuryGuardPriceHire;
-						//document.getElementById("guardmen").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
-						msg = "You are hired a guardman!";
+						msg = localeStrings[19];
 						postEventLog(msg);
 						updateResources();
 					}
 					else {
-						msg = "We need more gold to do that!";
+						msg = localeStrings[20];
 						postEventLog(msg);
 					}
 				}
 			} else {
-				alert('You don\'t have a treasury to hire a treasury guard!');
+				alert(localeStrings[21]);
 			}
 		},
 		fireTreasuryGuard : function () {
 			if (game.treasuryGuard > 0) {
-				question = "Fire a guardman?";
+				question = localeStrings[22];
 				var answer = askPlayer(question, 1);
 				if (answer === true) {
 					game.treasuryGuard      = game.treasuryGuard*1 - 1;
-					msg = "You are fired a guardman!";
-					postEventLog(msg);
+					msg = localeStrings[23];
+                    postEventLog(msg);
 					updateResources();
 				}
 			} else {
-				msg = "You don't have any guardsmen!";
+				msg = localeStrings[23];
 				postEventLog(msg);
 			}
 		},
@@ -726,65 +723,46 @@
 					gold_possible = game.gold*1+Math.floor((Math.random() * game.gold)/10 + 1);
 					if (gold_possible > gold_limit) {
 						game.gold = gold_limit;
-						msg = "build or update Treasury";
+						msg = localeStrings[3];
 						postEventLog(msg);
 					} else {
 						game.gold = gold_possible;
 					}
 					gold_incr     = game.gold - gold_was;
 					rnd = Math.floor((Math.random() * 6) + 1);
-					//rnd = 1;//debug
-					switch (rnd) {
-						case 1:
-							reason = "treachery";
-							break;
-						case 2:
-							reason = "betroyal";
-							break;
-						case 3:
-							reason = "corruption";
-							break;
-						case 4:
-							reason = "bribery";
-							break;
-						case 5:
-							reason = "graft and theft";
-							break;
-						case 6:
-							reason = "embezzlement"
-							break;
-						default:
-							alert("error on switch/case function");
-					}
-					msg = "you executed a townperson for "+reason;
+                    reason = localeStrings[24+rnd]
+					msg = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
-					msg = "your treasury funded on "+gold_incr+" as confiscated property";
-					postEventLog(msg);
-				}
+                    msg = localeStrings[35].replace("%arg1", gold_incr);
+                    postEventLog(msg);
+				} else {
+				    msg = localeStrings[36];
+                    alert(msg);
+                }
 				updateResources();
 			}
 		},
 		putOutFire : function () {
 			if (game.fire === 1) {
-				question = "Call an fireman? It will cost you 20 gold!";
+				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
 				var answer = askPlayer(question, 1);
 				if (answer === true) {
-					if (game.gold >= 20) {
+					if (game.gold >= config.costPutOutFire) {
 						game.fire = 0;
-						game.gold = game.gold - 20;
+						game.gold = game.gold - config.costPutOutFire;
 						document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
 						document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-						msg = "Fireman put out a fire!";
+						msg = localeStrings[40];
 						postEventLog(msg);
 						updateResources();
 					}
 					else {
-						msg = "We need more gold to do that!";
+						msg = localeStrings[20];
 						postEventLog(msg);
 					}
 				}
 				else {
-					msg = "It will burn to ashes!";
+					msg = localeStrings[41];
 					postEventLog(msg);
 				}
 			}
@@ -794,37 +772,43 @@
 			if (rndThieves === 1) {
 				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))+1);
 				game.gold     = game.gold - goldLost;
-				msg = "shit happens: thieves stole "+goldLost+" gold from your treasury";
+				msg = localeStrings[42].replace("%arg1", goldLost);
 				postEventLog(msg);
 				updateResources();
 			}
 		},
 		startFire : function () {
 			if (game.fire === 0) {
-				msg = "fire in the city!";
-				postEventLog(msg);
-				game.fire = 1;
-				composite();
-				if (game.buildLevelD == 1) {
-					ceil = 1
-				}
-				if (game.buildLevelD == 2) {
-					ceil = 2
-				}
-				rnd = Math.floor((Math.random() * 2) + 0);
-				if (rnd === 0) {
-					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd === 1) {
-					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd === 0) {
-					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-			}
+                rnd = Math.floor((Math.random() * 3) + 1);
+                if (rnd === 1) {
+                    msg = localeStrings[38];
+                    postEventLog(msg);
+                    game.fire = 1;
+                    composite();
+                    //TODO make a certain building in fire, not just "city"
+                    if (game.buildLevelD == 1) {
+                        ceil = 1
+                    }
+                    if (game.buildLevelD == 2) {
+                        ceil = 2
+                    }
+                    rnd = Math.floor((Math.random() * 2) + 0);
+                    if (rnd === 0) {
+                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+                    }
+                    if (rnd === 1) {
+                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+                    }
+                    if (rnd === 0) {
+                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+                    }
+                }
+			} else {
+			    //you can't get another fire, while you do have previous still burning your city. For now.
+            }
 		},
 		winLottery : function () {
-			msg = "You won a lottery with "+lotteryPrize+" gold prize";
+            msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
 			game.gold = game.gold + config.lotteryPrize;
 			updateResources();
@@ -842,6 +826,7 @@
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:20,
+        costPutOutFire:20
 	}
 	//init service variables
 	var csum          = 0;
@@ -854,17 +839,47 @@
 	updateResources();
 	populatePatchnotes();
 	generateMap();
-	welcomeMsg();
 	var autosaveObject;
 	setupAutosave();//DEBUG
+
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
+
+    include('localisation.js',function(){
+        //document.getElementById('lblPlayGame').innerHTML=localeStrings[0];
+        loadStartLocale();
+        //setTimeout(welcomeMsg, 500);
+        console.log('we are in first level include after loadStartLocale()');
+    });
+
 	//functions
+    function localeCallback() {
+        document.getElementById("saveGameButton").innerText    = localeStrings[44];
+        document.getElementById("loadGameButton").innerText    = localeStrings[45];
+        document.getElementById("tabCity").innerText           = localeStrings[46];
+        document.getElementById("tabExplore").innerText        = localeStrings[47];
+        document.getElementById("tabSettings").innerText       = localeStrings[48];
+        document.getElementById("tabGarrison").innerText       = localeStrings[49];
+        document.getElementById("tabBuilding").innerText       = localeStrings[50];
+        document.getElementById("tabAbout").innerText          = localeStrings[51];
+        document.getElementById("tabDiscord").innerText        = localeStrings[52];
+        document.getElementById("labelSettings").innerText     = localeStrings[66];
+        document.getElementById("buttonExportGame").innerText  = localeStrings[67];
+        document.getElementById("buttonImportGame").innerText  = localeStrings[68];
+        document.getElementById("labelAutosave").innerText     = localeStrings[69];
+        document.getElementById("labelGarrison").innerText     = localeStrings[91];
+        document.getElementById("buttonFireGuard").innerText   = localeStrings[92];
+        document.getElementById("buttonHireGuard").innerText   = localeStrings[93];
+        document.getElementById("labelBuilding").innerText     = localeStrings[106];
+        //TODO check if this is first callback in the session or not
+        welcomeMsg();
+        updateButtonCaptions();
+    }
 	function welcomeMsg(){
-		postEventLog('Hello player in my incremental game!');
-		postEventLog('Your task is simple - manage the town as you are town\'s mayor!');
-		postEventLog('Citizen will pay taxes each season (30 secs or so) and population will grow each season');
+		postEventLog(localeStrings[0]);
+		postEventLog(localeStrings[1]);
+		postEventLog(localeStrings[2]);
 	}
 	function postEventLog(msgEventLog) {
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msgEventLog;
@@ -899,6 +914,36 @@
 		mapCreated = 1;
 	}
 	function populatePatchnotes() {
+        msg = "version 1.0.187";
+        writeToTextArea(msg);
+        msg = "made Russian translation (sort of). Some parts still in progress";
+        writeToTextArea(msg);
+
+		msg = "version 1.0.180";
+		writeToTextArea(msg);
+		msg = "clean mess with version numeration. somewhat";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.179";
+		writeToTextArea(msg);
+		msg = "fixed a bug with lottey. Added Discord widget. Added periods counter";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.178";
+		writeToTextArea(msg);
+		msg = "a few minor labels\' corrections";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.177";
+		writeToTextArea(msg);
+		msg = "fixed bug with About tab";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.176";
+		writeToTextArea(msg);
+		msg = "due to the author\'s error, the version now is 1.0.175. Do not git push with --force!";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.125";
 		writeToTextArea(msg);
 		msg = "fixed the bug, then player can't afford treasury upgrade and it's already full";
@@ -908,7 +953,7 @@
 
 		msg = "version 1.0.124";
 		writeToTextArea(msg);
-		msg = "finnaly, my game running by the object under the hood";
+		msg = "finnally, my game running by the object under the hood";
 		writeToTextArea(msg);
 
 		msg = "version 1.0.124";
@@ -1031,11 +1076,9 @@
 			if (typeof autosaveObject !== 'undefined') {
 				clearInterval(autosaveObject);
 			}
-			//alert("Autosave disabled");
 			document.getElementById("autosaveImg").setAttribute("src","resources/button_red.png");
 		} else {
 			autosaveObject = setInterval(autosaveGame, 40000);
-			//alert("Autosave enabled");
 			document.getElementById("autosaveImg").setAttribute("src","resources/button_green.png");
 		}
 	}
@@ -1049,7 +1092,6 @@
 		}
 	}
 	function autosaveGame() {
-		//alert("saved");
 		saveGame("silent");
 	}
 	function exportGame() {
@@ -1059,7 +1101,7 @@
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {
-		save64 = prompt("Please enter save", "long string");
+		save64 = prompt(localeStrings[16],localeStrings[17]);
 		if (save64 != null) {
 			try {
 				saveLine  = atob(save64);
@@ -1072,7 +1114,7 @@
 				composite();
 				updateResources();
 				updateButtonCaptions();
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 
 				//TODO
@@ -1089,7 +1131,7 @@
 		if (saveConfirmation=="silent") {
 			writeSave();
 		} else {
-			question = "Save game? It will rewrite any save you already have!";
+			question = localeStrings[15];
 			var answer = askPlayer(question, 1);
 			if (answer === true) {
 				writeSave();
@@ -1099,11 +1141,11 @@
 	function writeSave(){
 		localStorage.setItem('game', JSON.stringify(game));
 		localStorage.setItem('config', JSON.stringify(options));
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_saved;
+		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
 		scrollDown();
 	}
 	function loadGame() {
-		question = "Load game? It will lost any unsaved progress!";
+		question = localeStrings[13];
 		var answer = askPlayer(question, 1);
 		if (answer === true) {
 			if (localStorage.getItem('game')!=null){
@@ -1115,17 +1157,18 @@
 				composite();
 				updateResources();
 				updateButtonCaptions();
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msg_game_loaded;
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 			} else {
-				alert('Sorry! There are no save to load!');
+			    //TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
+				alert(localeStrings[14]);
 			}
 		}
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
 		nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));
-		document.getElementById("homes").innerHTML="Build home lvl"+nextLvlHome+"; "+nextLvlPriceHome+" gold";
+		document.getElementById("homes").innerHTML=localeStrings[107].replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
 
 		nextLvlTreasury       = game.buildLevelTreasury*1+1;
 		nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
@@ -1143,6 +1186,11 @@
 		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML="Build stash lvl"+nextLvlStash+"; "+nextLvlPriceStash+" gold";
 
+        if (game.buildLevelD == 0) {
+            document.getElementById("defence").innerHTML="Build Wall: "+config.costWall+" gold";
+            var towerClick = "game.Build("+"\'Wall\'"+")";
+            document.getElementById("defence").setAttribute("onclick", towerClick);
+        }
 		if (game.buildLevelD == 1) {
 			document.getElementById("defence").innerHTML="Build Tower: "+config.costTower+" gold";
 			var towerClick = "game.Build("+"\'Tower\'"+")";
@@ -1251,7 +1299,7 @@
 	}
 </script>
 <script>
-	function openCity(evt, cityName) {
+	function openTab(evt, tabName) {
 		var i, tabcontent, tablinks;
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
@@ -1261,12 +1309,13 @@
 		for (i = 0; i < tablinks.length; i++) {
 			tablinks[i].className = tablinks[i].className.replace(" active", "");
 		}
-		document.getElementById(cityName).style.display = "block";
+		document.getElementById(tabName).style.display = "block";
 		evt.currentTarget.className += " active";
 	}
 	// Get the element with id="defaultOpen" and click on it
-	document.getElementById("defaultOpen").click();
+	document.getElementById("tabCity").click();
 </script>
+<!--<script src="localisation.js"></script>-->
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
 <script async>

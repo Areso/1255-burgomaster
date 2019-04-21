@@ -1,6 +1,6 @@
 <html>
 	<body>
-		<h1>JS HTML-powered my city</h1><br>
+		<h1>1255 Burgomaster</h1><br>
 		<h2>About the project</h2><br>
 		Hello there! My name is Gladyshev Anton and I'm the author of the project.<br>
 		Homepage of the project is <a href="https://github.com/Areso/js-html-mycity">https://github.com/Areso/1255-burgomaster</a><br>
