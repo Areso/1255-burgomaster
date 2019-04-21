@@ -547,7 +547,7 @@
 	var game = {
 		gold:20,
 		pop:2,
-		period:2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
+		season:2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
 		year:1255,
 		food:20,
 		treasuryGuard:0,
@@ -560,14 +560,18 @@
 		fire:0,
 		happyness:80,
 		o_autosave:0,
-		saveVersion:"saveV1004",
+		saveVersion:"saveV1005",
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
 		calculateTurn : function() {
 			pop_m         = 0;
 			pop_was       = game.pop;
-			game.period   = game.period + 1;
+			game.season   = game.season + 1;
+			if (game.season === 5) {
+			    game.season   = 1;
+			    game.year     = game.year+1;
+            }
 			gold_was      = game.gold;
 			gold_limit    = game.goldLimit();
 			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
@@ -596,9 +600,10 @@
 				}
 				else {
 					//fire guards which we cannot afford
-					//for now fire all guards!//TODO fire only those who we cannot afford
+					//for now fire all guards!
+                    //TODO fire only those who we cannot afford
 					game.treasuryGuard = 0;
-					msg   = "treasury guard(s) were fired because you are cannot pay to them!";
+					msg   = localeStrings[37];
 					postEventLog(msg);
 				}
 			}
@@ -683,38 +688,37 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
-				question = "Hire a guardman? It will cost you 20 gold per tick!";
+				question = localeStrings[18];
 				var answer = askPlayer(question, 1);
 				if (answer === true) {
 					if (game.gold >= config.treasuryGuardPriceHire) {
 						game.treasuryGuard = game.treasuryGuard*1 + 1;
 						game.gold          = game.gold - config.treasuryGuardPriceHire;
-						//document.getElementById("guardmen").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:true");
-						msg = "You have hired a guardman!";
+						msg = localeStrings[19];
 						postEventLog(msg);
 						updateResources();
 					}
 					else {
-						msg = "We need more gold to do that!";
+						msg = localeStrings[20];
 						postEventLog(msg);
 					}
 				}
 			} else {
-				alert('You don\'t have a treasury to hire a treasury guard!');
+				alert(localeStrings[21]);
 			}
 		},
 		fireTreasuryGuard : function () {
 			if (game.treasuryGuard > 0) {
-				question = "Fire a guardman?";
+				question = localeStrings[22];
 				var answer = askPlayer(question, 1);
 				if (answer === true) {
 					game.treasuryGuard      = game.treasuryGuard*1 - 1;
-					msg = "You have fired a guardman!";
-					postEventLog(msg);
+					msg = localeStrings[23];
+                    postEventLog(msg);
 					updateResources();
 				}
 			} else {
-				msg = "You don't have any guardsmen!";
+				msg = localeStrings[23];
 				postEventLog(msg);
 			}
 		},
@@ -727,65 +731,46 @@
 					gold_possible = game.gold*1+Math.floor((Math.random() * game.gold)/10 + 1);
 					if (gold_possible > gold_limit) {
 						game.gold = gold_limit;
-						msg = "build or update Treasury";
+						msg = localeStrings[3];
 						postEventLog(msg);
 					} else {
 						game.gold = gold_possible;
 					}
 					gold_incr     = game.gold - gold_was;
 					rnd = Math.floor((Math.random() * 6) + 1);
-					//rnd = 1;//debug
-					switch (rnd) {
-						case 1:
-							reason = "treachery";
-							break;
-						case 2:
-							reason = "betroyal";
-							break;
-						case 3:
-							reason = "corruption";
-							break;
-						case 4:
-							reason = "bribery";
-							break;
-						case 5:
-							reason = "graft and theft";
-							break;
-						case 6:
-							reason = "embezzlement"
-							break;
-						default:
-							alert("error on switch/case function");
-					}
-					msg = "you executed a townperson for "+reason;
+                    reason = localeStrings[24+rnd]
+					msg = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
-					msg = "your treasury funded on "+gold_incr+" as confiscated property";
-					postEventLog(msg);
-				}
+                    msg = localeStrings[35].replace("%arg1", gold_incr);
+                    postEventLog(msg);
+				} else {
+				    msg = localeStrings[36];
+                    alert(msg);
+                }
 				updateResources();
 			}
 		},
 		putOutFire : function () {
 			if (game.fire === 1) {
-				question = "Call an fireman? It will cost you 20 gold!";
+				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
 				var answer = askPlayer(question, 1);
 				if (answer === true) {
-					if (game.gold >= 20) {
+					if (game.gold >= config.costPutOutFire) {
 						game.fire = 0;
-						game.gold = game.gold - 20;
+						game.gold = game.gold - config.costPutOutFire;
 						document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
 						document.getElementById("putOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-						msg = "Fireman put out a fire!";
+						msg = localeStrings[40];
 						postEventLog(msg);
 						updateResources();
 					}
 					else {
-						msg = "We need more gold to do that!";
+						msg = localeStrings[20];
 						postEventLog(msg);
 					}
 				}
 				else {
-					msg = "It will burn to ashes!";
+					msg = localeStrings[41];
 					postEventLog(msg);
 				}
 			}
@@ -795,37 +780,43 @@
 			if (rndThieves === 1) {
 				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))+1);
 				game.gold     = game.gold - goldLost;
-				msg = "shit happens: thieves stole "+goldLost+" gold from your treasury";
+				msg = localeStrings[42].replace("%arg1", goldLost);
 				postEventLog(msg);
 				updateResources();
 			}
 		},
 		startFire : function () {
 			if (game.fire === 0) {
-				msg = "fire in the city!";
-				postEventLog(msg);
-				game.fire = 1;
-				composite();
-				if (game.buildLevelD == 1) {
-					ceil = 1
-				}
-				if (game.buildLevelD == 2) {
-					ceil = 2
-				}
-				rnd = Math.floor((Math.random() * 2) + 0);
-				if (rnd === 0) {
-					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd === 1) {
-					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-				if (rnd === 0) {
-					//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-				}
-			}
+                rnd = Math.floor((Math.random() * 3) + 1);
+                if (rnd === 1) {
+                    msg = localeStrings[38];
+                    postEventLog(msg);
+                    game.fire = 1;
+                    composite();
+                    //TODO make a certain building in fire, not just "city"
+                    if (game.buildLevelD == 1) {
+                        ceil = 1
+                    }
+                    if (game.buildLevelD == 2) {
+                        ceil = 2
+                    }
+                    rnd = Math.floor((Math.random() * 2) + 0);
+                    if (rnd === 0) {
+                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+                    }
+                    if (rnd === 1) {
+                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+                    }
+                    if (rnd === 0) {
+                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+                    }
+                }
+			} else {
+			    //you can't get another fire, while you do have previous still burning your city. For now.
+            }
 		},
 		winLottery : function () {
-			msg = "You won a lottery with "+config.lotteryPrize+" gold prize";
+            msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
 			game.gold = game.gold + config.lotteryPrize;
 			updateResources();
@@ -843,6 +834,7 @@
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:20,
+        costPutOutFire:20
 	}
 	//init service variables
 	var csum          = 0;
@@ -1067,11 +1059,9 @@
 			if (typeof autosaveObject !== 'undefined') {
 				clearInterval(autosaveObject);
 			}
-			//alert("Autosave disabled");
 			document.getElementById("autosaveImg").setAttribute("src","resources/button_red.png");
 		} else {
 			autosaveObject = setInterval(autosaveGame, 40000);
-			//alert("Autosave enabled");
 			document.getElementById("autosaveImg").setAttribute("src","resources/button_green.png");
 		}
 	}
@@ -1085,7 +1075,6 @@
 		}
 	}
 	function autosaveGame() {
-		//alert("saved");
 		saveGame("silent");
 	}
 	function exportGame() {
