@@ -125,3 +125,27 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//125
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//130
+localeStrings.push("<h1>1255 Burgomaster</h1>" +
+    "<h2>How to play</h2>" +
+    "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
+    "After each clock turn your poplulation paid taxes to you and growing.<br>" +
+    "You need to build homes to continue growth your city population.<br>" +
+    "Each lvl of houses allows you to have more population.<br>" +
+    "You need to build walls and tower (keep) to keep your city safe against intruders.<br>" +
+    "You need to build a treasury to store your gold.<br>" +
+    "Each lvl of the treasury allows you to keep more gold.<br>" +
+    "Also, Treasury allows you to hire treasury guads.<br>" +
+    "Treasury guards signifant decreases chance of stealing gold from your treasury.<br>" +
+    "Hiring the guard will cost you %arg1 gold.<br>" +
+    "Each guard require regular payment (each tick), it also cost %arg2 gold.<br>" +
+    "If you don not have enough money, they will leave their work permanently.<br>" +
+    "You can build fountain OR gallows. You can not change your choice after building is done.<br>" +
+    "Fountains will increase happiness and speed of growing population.<br>" +
+    "Gallows will decrease population, increase taxes, and allow you to execute townsfolk.<br>" +
+    "Executing any townperson will add his property as confiscated gold.<br>" +
+    "Stash is required to lower your losses from stealing. You can not build stash without treasury.<br>");//131
