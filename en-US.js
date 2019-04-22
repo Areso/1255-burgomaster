@@ -52,8 +52,8 @@ localeStrings.push("Garrison");
 localeStrings.push("Building");//50
 localeStrings.push("How To Play");
 localeStrings.push("Discord");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Put out the fire");
+localeStrings.push("Execute somebody");
 localeStrings.push("placeholder");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -106,6 +106,22 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
 localeStrings.push("Building");
-localeStrings.push("Build Home lvl%arg1; %arg2 gold");
-localeStrings.push("Build Wall: lvl1%arg1; %arg2 gold");
-localeStrings.push("Build Tower: lvl1%arg1; %arg2 gold");
+localeStrings.push("Build Home<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Build Wall<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Build Tower<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Build Treasury<br/>lvl %arg1<br/>%arg2 gold");//110
+localeStrings.push("Build Gallows<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Build Fountain<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//120
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//125

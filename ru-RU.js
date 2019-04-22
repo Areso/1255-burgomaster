@@ -52,8 +52,8 @@ localeStrings.push("Гарнизон");
 localeStrings.push("Строительство");//50
 localeStrings.push("Как играть");
 localeStrings.push("Discord");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Потушить огонь");
+localeStrings.push("Казнить человека");
 localeStrings.push("placeholder");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -106,7 +106,23 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
 localeStrings.push("Строительство");
-localeStrings.push("Построить Дом ур%arg1; %arg2 злата");
-localeStrings.push("Построить Стену ур:%arg1; %arg2 gold");
-localeStrings.push("Построить Башню ур:%arg1; %arg2 gold");
+localeStrings.push("Построить Дом<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Стену<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Башню<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Сокровищницу<br/>ур. %arg1<br/>%arg2 золота");//110
+localeStrings.push("Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//120
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//125
 

@@ -179,9 +179,9 @@
 			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
 			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:350px; left: 20px">Load game</button>
-			<button id="putOutFire"   onclick="game.putOutFire()" class="interface" style="top:390px; left: 20px; display:none">Put out fire</button>
+			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:390px; left: 20px; display:none">Put out fire</button>
 			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:430px; left: 20px; display:none">Execute smb</button>
-			<button id="buttonDebug"   onclick="game.startFire()" class="interface" style="top:190px; left: 20px; display:none">X</button>
+			<button id="buttonDebug"   onclick="ym(47225574, 'reachGoal', 'min5'); return true;" class="interface" style="top:190px; left: 20px; display:none">X</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
@@ -615,7 +615,13 @@
                 }
                 postEventLog(msg);
             };
-    		updateResources();
+			cnt_cursession = cnt_cursession+1;
+			if (cnt_cursession===10) {
+				//ym(47225574, 'reachGoal', 'min5');
+				//return true;
+
+			}
+            updateResources();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -829,6 +835,7 @@
         costPutOutFire:20
 	}
 	//init service variables
+	var cnt_cursession= 0;
 	var csum          = 0;
 	var delimiter     = ";"
 	var redraw        = 0;
@@ -855,23 +862,25 @@
 
 	//functions
     function localeCallback() {
-        document.getElementById("saveGameButton").innerText    = localeStrings[44];
-        document.getElementById("loadGameButton").innerText    = localeStrings[45];
-        document.getElementById("tabCity").innerText           = localeStrings[46];
-        document.getElementById("tabExplore").innerText        = localeStrings[47];
-        document.getElementById("tabSettings").innerText       = localeStrings[48];
-        document.getElementById("tabGarrison").innerText       = localeStrings[49];
-        document.getElementById("tabBuilding").innerText       = localeStrings[50];
-        document.getElementById("tabAbout").innerText          = localeStrings[51];
-        document.getElementById("tabDiscord").innerText        = localeStrings[52];
-        document.getElementById("labelSettings").innerText     = localeStrings[66];
-        document.getElementById("buttonExportGame").innerText  = localeStrings[67];
-        document.getElementById("buttonImportGame").innerText  = localeStrings[68];
-        document.getElementById("labelAutosave").innerText     = localeStrings[69];
-        document.getElementById("labelGarrison").innerText     = localeStrings[91];
-        document.getElementById("buttonFireGuard").innerText   = localeStrings[92];
-        document.getElementById("buttonHireGuard").innerText   = localeStrings[93];
-        document.getElementById("labelBuilding").innerText     = localeStrings[106];
+		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
+		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
+        document.getElementById("saveGameButton").innerText      = localeStrings[44];
+        document.getElementById("loadGameButton").innerText      = localeStrings[45];
+        document.getElementById("tabCity").innerText             = localeStrings[46];
+        document.getElementById("tabExplore").innerText          = localeStrings[47];
+        document.getElementById("tabSettings").innerText         = localeStrings[48];
+        document.getElementById("tabGarrison").innerText         = localeStrings[49];
+        document.getElementById("tabBuilding").innerText         = localeStrings[50];
+        document.getElementById("tabAbout").innerText            = localeStrings[51];
+        document.getElementById("tabDiscord").innerText          = localeStrings[52];
+        document.getElementById("labelSettings").innerText       = localeStrings[66];
+        document.getElementById("buttonExportGame").innerText    = localeStrings[67];
+        document.getElementById("buttonImportGame").innerText    = localeStrings[68];
+        document.getElementById("labelAutosave").innerText       = localeStrings[69];
+        document.getElementById("labelGarrison").innerText       = localeStrings[91];
+        document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
+        document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
+        document.getElementById("labelBuilding").innerText       = localeStrings[106];
         //TODO check if this is first callback in the session or not
         welcomeMsg();
         updateButtonCaptions();
@@ -914,9 +923,9 @@
 		mapCreated = 1;
 	}
 	function populatePatchnotes() {
-        msg = "version 1.0.187";
+        msg = "version 1.0.185";
         writeToTextArea(msg);
-        msg = "made Russian translation (sort of). Some parts still in progress";
+        msg = "made Russian translation";
         writeToTextArea(msg);
 
 		msg = "version 1.0.180";
@@ -1172,27 +1181,27 @@
 
 		nextLvlTreasury       = game.buildLevelTreasury*1+1;
 		nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
-		document.getElementById("treasury").innerHTML="Build treasury lvl"+nextLvlTreasury+"; "+nextLvlPriceTreasury+" gold";
+		document.getElementById("treasury").innerHTML=localeStrings[110].replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
 
 		nextLvlGallows        = game.buildLevelGallows*1+1;
 		nextLvlPriceGallows   = Math.pow(config.costGallows,(game.buildLevelGallows*1+1));
-		document.getElementById("buttonBldGallows").innerHTML="Build gallows lvl"+nextLvlGallows+"; "+nextLvlPriceGallows+" gold";
+		document.getElementById("buttonBldGallows").innerHTML=localeStrings[111].replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
 
 		nextLvlFountain       = game.buildLevelFountain*1+1;
 		nextLvlPriceFountain  = Math.pow(config.costFountain,(game.buildLevelFountain*1+1));
-		document.getElementById("buttonBldFountain").innerHTML="Build fountain lvl"+nextLvlFountain+"; "+nextLvlPriceFountain+" gold";
+		document.getElementById("buttonBldFountain").innerHTML=localeStrings[112].replace("%arg1",nextLvlFountain).replace("%arg2",nextLvlPriceFountain);
 
 		nextLvlStash          = game.buildLevelStash*1+1;
 		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
-		document.getElementById("buttonBldStash").innerHTML="Build stash lvl"+nextLvlStash+"; "+nextLvlPriceStash+" gold";
+		document.getElementById("buttonBldStash").innerHTML=localeStrings[113].replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
 
         if (game.buildLevelD == 0) {
-            document.getElementById("defence").innerHTML="Build Wall: "+config.costWall+" gold";
-            var towerClick = "game.Build("+"\'Wall\'"+")";
+            document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
+			var towerClick = "game.Build("+"\'Wall\'"+")";
             document.getElementById("defence").setAttribute("onclick", towerClick);
         }
 		if (game.buildLevelD == 1) {
-			document.getElementById("defence").innerHTML="Build Tower: "+config.costTower+" gold";
+			document.getElementById("defence").innerHTML=localeStrings[109].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costTower);
 			var towerClick = "game.Build("+"\'Tower\'"+")";
 			document.getElementById("defence").setAttribute("onclick", towerClick);
 		}
