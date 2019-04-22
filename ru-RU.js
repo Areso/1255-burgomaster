@@ -52,8 +52,8 @@ localeStrings.push("Гарнизон");
 localeStrings.push("Строительство");//50
 localeStrings.push("Как играть");
 localeStrings.push("Discord");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Потушить огонь");
+localeStrings.push("Казнить человека");
 localeStrings.push("placeholder");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -106,7 +106,46 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
 localeStrings.push("Строительство");
-localeStrings.push("Построить Дом ур%arg1; %arg2 злата");
-localeStrings.push("Построить Стену ур:%arg1; %arg2 gold");
-localeStrings.push("Построить Башню ур:%arg1; %arg2 gold");
-
+localeStrings.push("Построить Дом<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Стену<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Башню<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Сокровищницу<br/>ур. %arg1<br/>%arg2 золота");//110
+localeStrings.push("Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 золота");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//120
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//125
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//130 //TODO change numbers to args!
+localeStrings.push("<h1>1255 Бургомастер</h1>" +
+    "<h2>Как играть</h2>" +
+    "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
+    "После каждого тика, население растет и платит налоги.<br>" +
+    "Вам нужно строить дома для поддержания роста населения.<br>" +
+    "Чем выше уровень домов, тем больше населения сможет жить в вашем городе.<br>" +
+    "Вам нужно строить стены и крепость, чтобы предотвратить разрушительные набеги.<br>" +
+    "Вам нужно построить сокровищницу для хранения золота.<br>" +
+    "Чем выше уровень сокровищницы, тем больше злата вы сможете хранить.<br>" +
+    "Также, сокровищница позволяет нанимать охранников.<br>" +
+    "Охрана существенно снижает шанс воровства из сокровищницы.<br>" +
+    "Найм охранника будет стоить %arg1 золотых.<br>" +
+    "Каждый тик охранники нуждаются в жаловании, которое составляет %arg2 золотых.<br>" +
+    "Если в Сокровищнице будет недостаточно денег на их оплату, они покинут вас.<br>" +
+    "Вы можете построить фонтан ИЛИ виселицу. Вы не можете изменить свой выбор, после того, как построили здание.<br>" +
+    "Фонтаны увеличивают счастье и скорость роста населения.<br>" +
+    "Виселица уменьшает счастье, скорость роста населения, увеличивает налоги и позволяет казнить горожан.<br>" +
+    "Казнь любого горожанина сопровождается конфискаецией его имущества<br>" +
+    "Тайник позволяет сократить потери от воровства. Тайник нельзя построить без сокровищницы.<br>");
