@@ -321,9 +321,12 @@
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
-		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
+			<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
-		</span>
+		<canvas id="myDCanvas" width="600" height="200" style="position: absolute; left: 20px; top: 100px; border:1px solid black; z-index: -2; visible:none">
+		Your browser does not support the HTML5 canvas tag.</canvas>
+
+</span>
 <script>
 	//TOWN
 	var canvas  = document.getElementById("canvas");
@@ -782,6 +785,7 @@
 	var minBL         = 0;
 	var mapCreated    = 0;
 	var globalMap = [[],[]];
+	var firstLoad     = true;
 	updateResources();
 	populatePatchnotes();
 	generateMap();
@@ -798,6 +802,7 @@
     });
 
 	//functions
+
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
 		var y = document.getElementById("selectLng").options;
@@ -832,7 +837,10 @@
         document.getElementById("labelBuilding").innerText       = localeStrings[106];
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
         //TODO check if this is first callback in the session or not
-        welcomeMsg();
+        if (firstLoad===true) {
+			welcomeMsg();
+			firstLoad = false;
+		}
 		updateButtonCaptions();
     }
 	function welcomeMsg(){
@@ -873,9 +881,14 @@
 		mapCreated = 1;
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.190";
+		writeToTextArea(msg);
+		msg = "imported dialogue.js";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.189";
 		writeToTextArea(msg);
-		msg = "made Russian translation";
+		msg = "made a language selector in Settings tab";
 		writeToTextArea(msg);
 
 		msg = "version 1.0.186";
@@ -1279,6 +1292,7 @@
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("tabCity").click();
 </script>
+<script async src="dialogue.js"></script>
 <!--<script src="localisation.js"></script>-->
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>

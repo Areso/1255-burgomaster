@@ -3,7 +3,7 @@
 		<h1>1255 Burgomaster</h1><br>
 		<h2>About the project</h2><br>
 		Hello there! My name is Gladyshev Anton and I'm the author of the project.<br>
-		Homepage of the project is <a href="https://github.com/Areso/js-html-mycity">https://github.com/Areso/1255-burgomaster</a><br>
+		Homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a><br>
 		This pet-project is dedicated to create a playable game, written in vanilla JavaScript, 
 		without using even jQuery and modern whistlers and jugglers, such as JS frameworks, TS->JS compilators and so on.<br>
 		The project oriented to be compact (in terms of the source code and the resources), 
