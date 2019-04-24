@@ -75,7 +75,7 @@ function loadLocale(language){
 	include(file,function(){
 		//document.getElementById('lblPlayGame').innerHTML=localeStrings[0];
 		console.log('we are in second level include');
-		localeCallback();
+		localeCallback(language);
 	});
 	isLocalStorageSupport = checkLocalStorageSupport();
 	if (isLocalStorageSupport===true) { //for all modern browsers, including IE8 and newer

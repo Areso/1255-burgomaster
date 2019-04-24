@@ -27,9 +27,10 @@
 		1MB of data plan to download game itself, analytics and chat. And some traffic will be used with ingame chat and usage statistics, though game will works perfectly even offline after download complete* (check options offline game)<br> 
 		<br>
 		<h2>About the game</h2>
+		Supported languages: English, Russian (Русский).
 		The game itself about building a city. You are starting with some amount of gold and a few citizens.<br>
 		This is an IDLE game, which means, every minute your citizens will spawn new citizens and pay taxes to you.<br>
-		You can constuct buildings, but upgrading existing ones will require each time more gold, because this game is an Incremental game.<br>
+		You can construct buildings, but upgrading existing ones will require each time more gold, because this game is an Incremental game.<br>
 		As for now, constructing building do not requires time, only resources.<br> 
 		Straight management, which means, you need place management by clicking here and there and you will get what you clicked.</br>
 		<div style="color:red">You will explore wild territories near your city.</div><br>
