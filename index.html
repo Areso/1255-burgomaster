@@ -209,6 +209,12 @@
 			</tr>
 			</table>
 			<input id="savestring" name="savestring" value="" style="width:600px">
+			<div style="position: absolute; top: 120px; left:500px">
+			<select id="selectLng" size="1" onchange="reloadLang()">
+    			<option id="optionLngEn" selected value="en-US">English</option>
+    			<option id="optionLngRu"          value="ru-RU">Русский</option>
+   			</select>
+			</div>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 
 		</div>
@@ -482,9 +488,10 @@
 		buildLevelFountain:0,
 		buildLevelStash:0,
 		fire:0,
+		hero:0,
 		happyness:80,
 		o_autosave:0,
-		saveVersion:"saveV1005",
+		saveVersion:"saveV1006",
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
@@ -786,14 +793,24 @@
 	setInterval(rndEvents, 100000);
 
     include('localisation.js',function(){
-        //document.getElementById('lblPlayGame').innerHTML=localeStrings[0];
         loadStartLocale();
-        //setTimeout(welcomeMsg, 500);
         console.log('we are in first level include after loadStartLocale()');
     });
 
 	//functions
-    function localeCallback() {
+	function reloadLang() {
+		var x = document.getElementById("selectLng").selectedIndex;
+		var y = document.getElementById("selectLng").options;
+		language = y[x].value; //y[x].id, text, index
+		loadLocale(language);
+	}
+    function localeCallback(returnLanguage) {
+		if (returnLanguage==='en-US') {
+			document.getElementById("selectLng").selectedIndex=0;
+		}
+		if (returnLanguage==='ru-RU') {
+			document.getElementById("selectLng").selectedIndex=1;
+		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
         document.getElementById("saveGameButton").innerText      = localeStrings[44];
@@ -856,7 +873,12 @@
 		mapCreated = 1;
 	}
 	function populatePatchnotes() {
-        msg = "version 1.0.186";
+		msg = "version 1.0.189";
+		writeToTextArea(msg);
+		msg = "made Russian translation";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.186";
         writeToTextArea(msg);
         msg = "made Russian translation";
         writeToTextArea(msg);
