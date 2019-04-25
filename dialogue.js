@@ -1,34 +1,45 @@
 var canvas = document.getElementById("myDCanvas");
-function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName) {
+var alphaValue = 0.9
+userAnswer = 0;
+
+function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName, thefunction) {
     var ctx = canvas.getContext("2d");
-    mystyle = 'position: absolute; left: 20px; top: 100px; border:1px solid black;';
-    document.getElementById("myDCanvas").style=mystyle+'z-index:99';
+    mystyle = 'position: absolute; left: 20px; top: 100px;';
+    document.getElementById("myDCanvas").style=mystyle+' border:1px solid black; z-index:99';
+    userAnswer    = 0;
     img1sizeX     = 0;
     img1sizeY     = 0;
     imageOffsetX  = 10;
     imageOffsetY  = 30;
+
+
     if (imageName !== '') {
         var src   = imageName;
         img1      = loadImage(src, composite);
     } else {
         ctx.fillStyle     = "rgb(255, 255, 255)"
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        ctx.globalAlpha   = 0.8;
+        ctx.globalAlpha   = alphaValue;
         ctx.fillStyle     = "white"
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         placeText();
     }
+    function returnAnswer() {
+        console.log(answer);
+        thefunction();
+    }
+
+    myCanvas.returnAnswer = returnAnswer;
     function composite() {
         ctx.fillStyle     = "rgb(255, 255, 255)"
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        ctx.globalAlpha   = 0.8;
+        ctx.globalAlpha   = alphaValue;
         ctx.fillStyle     = "white"
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha   = 1;
         ctx.drawImage(img1, imageOffsetX, imageOffsetY);
-        ctx.globalAlpha   = 0.8;
+        ctx.globalAlpha   = alphaValue;
         img1sizeX         = img1.width;
         img1sizeY         = img1.length;
         placeText();
@@ -58,7 +69,7 @@ function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName) {
         ctx.fillStyle     = '#bbc2c9';
         buttonOneOffsetX  = img1sizeX + imageOffsetX + 10;
         buttonTwoOffsetX  = buttonOneOffsetX+buttonOneLength + 50;
-        ctx.globalAlpha   = 0.8;
+        ctx.globalAlpha   = alphaValue;
         ctx.fillRect(buttonOneOffsetX, buttonsOffsetY, buttonOneLength, 20);
         ctx.fillRect(buttonTwoOffsetX, buttonsOffsetY, buttonTwoLength, 20);
         ctx.fillStyle     = 'black';
@@ -68,13 +79,13 @@ function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName) {
     }
     canvas.addEventListener("touchstart", tap);
     canvas.addEventListener("mousedown", tap);
-    count = 0;
 }
-
-window.onload = load;
-function load() {
+function clearCanvas(){
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle     = "rgb(255, 255, 255)"
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    myCanvas.returnAnswer();
 }
-
 function raiseQuestion() {
     myCanvas('Would you like to cruelly execute your fellow citizen in front of townsfolk,\n my lord?',
         'Yessss, in the most bloody way!','No', 'trapdoor.png');
@@ -83,7 +94,6 @@ function raiseQuestionImageless () {
     myCanvas('Would you like to cruelly execute your fellow citizen in front of townsfolk,\n my lord?',
         'Yessss, in the most bloody way!','No', '');
 }
-count = 0;
 answer = 0;
 function getElementPosition (element) {
     //thanks to William Alone
@@ -112,16 +122,19 @@ function tap (e) {
     if (loc.x >= buttonOneOffsetX && loc.x <= buttonOneOffsetX+buttonOneLength) {
         if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
             console.log("first button pressed");
-            document.getElementById("myDCanvas").style=mystyle+'z-index:-2';
-            userAnswer = 0;
+            document.getElementById("myDCanvas").style=mystyle+' border:0px; z-index:-2;  visible:none';
+            answer = 2;
+            clearCanvas();
+
         }
     }
     if (loc.x >= buttonTwoOffsetX && loc.x <= buttonTwoOffsetX+buttonTwoLength) {
         if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
             console.log("second button pressed");
             document.getElementById("myDCanvas").style=mystyle+'z-index:-2';
-            userAnswer = 1;
+            answer = 3;
+            clearCanvas();
+
         }
     }
-
 }

@@ -323,7 +323,7 @@
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
 			<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
 		</p>
-		<canvas id="myDCanvas" width="600" height="200" style="position: absolute; left: 20px; top: 100px; border:1px solid black; z-index: -2; visible:none">
+		<canvas id="myDCanvas" width="600" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 
 </span>
@@ -629,22 +629,26 @@
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
 				question = localeStrings[18];
-				var answer = askPlayer(question, 1);
-				if (answer === true) {
-					if (game.gold >= config.treasuryGuardPriceHire) {
-						game.treasuryGuard = game.treasuryGuard*1 + 1;
-						game.gold          = game.gold - config.treasuryGuardPriceHire;
-						msg = localeStrings[19];
-						postEventLog(msg);
-						updateResources();
-					}
-					else {
-						msg = localeStrings[20];
-						postEventLog(msg);
-					}
-				}
+				//var answer = askPlayer(question, 1);
+				myCanvas(localeStrings[18],'Yes','No', '', game.hireTreasuryGuardCallback);
 			} else {
 				alert(localeStrings[21]);
+			}
+		},
+		hireTreasuryGuardCallback : function () {
+			console.log("debug");
+			if (answer === 2) {
+				if (game.gold >= config.treasuryGuardPriceHire) {
+					game.treasuryGuard = game.treasuryGuard*1 + 1;
+					game.gold          = game.gold - config.treasuryGuardPriceHire;
+					msg = localeStrings[19];
+					postEventLog(msg);
+					updateResources();
+				}
+				else {
+					msg = localeStrings[20];
+					postEventLog(msg);
+				}
 			}
 		},
 		fireTreasuryGuard : function () {
@@ -881,6 +885,11 @@
 		mapCreated = 1;
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.191";
+		writeToTextArea(msg);
+		msg = "hiring guardsmen now done with dialogue.js";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.190";
 		writeToTextArea(msg);
 		msg = "imported dialogue.js";
