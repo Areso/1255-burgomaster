@@ -11,8 +11,6 @@ function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName, thefunction) 
     img1sizeY     = 0;
     imageOffsetX  = 10;
     imageOffsetY  = 30;
-
-
     if (imageName !== '') {
         var src   = imageName;
         img1      = loadImage(src, composite);
@@ -28,7 +26,6 @@ function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName, thefunction) 
         console.log(answer);
         thefunction();
     }
-
     myCanvas.returnAnswer = returnAnswer;
     function composite() {
         ctx.fillStyle     = "rgb(255, 255, 255)"
@@ -102,7 +99,6 @@ function getElementPosition (element) {
             x: element.offsetLeft,
             y: element.offsetTop
         };
-
     if (element.offsetParent) {
         parentOffset = getElementPosition(element.offsetParent);
         pos.x += parentOffset.x;
@@ -125,7 +121,6 @@ function tap (e) {
             document.getElementById("myDCanvas").style=mystyle+' border:0px; z-index:-2;  visible:none';
             answer = 2;
             clearCanvas();
-
         }
     }
     if (loc.x >= buttonTwoOffsetX && loc.x <= buttonTwoOffsetX+buttonTwoLength) {
@@ -134,7 +129,6 @@ function tap (e) {
             document.getElementById("myDCanvas").style=mystyle+'z-index:-2';
             answer = 3;
             clearCanvas();
-
         }
     }
 }

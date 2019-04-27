@@ -634,6 +634,23 @@
 			} else {
 				alert(localeStrings[21]);
 			}
+			function afterAnswer() {
+				console.log("debug");
+				if (answer === 2) {
+					if (game.gold >= config.treasuryGuardPriceHire) {
+						game.treasuryGuard = game.treasuryGuard*1 + 1;
+						game.gold          = game.gold - config.treasuryGuardPriceHire;
+						msg = localeStrings[19];
+						postEventLog(msg);
+						updateResources();
+					}
+					else {
+						msg = localeStrings[20];
+						postEventLog(msg);
+					}
+				}
+			}
+			game.hireTreasuryGuard.returnAnswer = afterAnswer;
 		},
 		hireTreasuryGuardCallback : function () {
 			console.log("debug");
@@ -662,7 +679,7 @@
 					updateResources();
 				}
 			} else {
-				msg = localeStrings[23];
+				msg = localeStrings[24];
 				postEventLog(msg);
 			}
 		},
@@ -771,13 +788,13 @@
 		costWall:2,
 		costTower:4,
 		costHome:2,
-		costTreasury:20,
+		costTreasury:2,//DEBUG. NORMALLY 20
 		costGallows:50,
 		costFountain:50,
 		costStash:50,
 		lotteryPrize:50,
-		treasuryGuardPriceHire:20,
-		treasuryGuardPricePayroll:20,
+		treasuryGuardPriceHire:2,//DEBUG. NORMALLY 20
+		treasuryGuardPricePayroll:2,//DEBUG. NORMALLY 20
         costPutOutFire:20
 	}
 	//init service variables
