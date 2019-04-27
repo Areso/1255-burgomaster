@@ -30,9 +30,9 @@ localeStrings.push("corruption");
 localeStrings.push("bribery");
 localeStrings.push("graft and theft");
 localeStrings.push("embezzlement");//30
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Yes, in the most bloody way!");
+localeStrings.push("Yes");
+localeStrings.push("No");
 localeStrings.push("you executed a citizen for %arg1");
 localeStrings.push("treasury funded on %arg1 with confiscated property of the executed citizen");//35
 localeStrings.push("too few citizens");

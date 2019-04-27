@@ -30,9 +30,9 @@ localeStrings.push("коррупцию");
 localeStrings.push("подкуп");
 localeStrings.push("казнокрадство");
 localeStrings.push("кражи");//30
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Да, и как можно кроважаднее!");
+localeStrings.push("Да");
+localeStrings.push("Нет");
 localeStrings.push("вы казнили горожанина за %arg1");//34
 localeStrings.push("казна пополниналась на %arg1 золотых после конфискации имущества");//35
 localeStrings.push("слишком мало жителей");

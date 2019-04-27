@@ -2,7 +2,7 @@ var canvas = document.getElementById("myDCanvas");
 var alphaValue = 0.9
 userAnswer = 0;
 
-function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName, thefunction) {
+function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo) {
     var ctx = canvas.getContext("2d");
     mystyle = 'position: absolute; left: 20px; top: 100px;';
     document.getElementById("myDCanvas").style=mystyle+' border:1px solid black; z-index:99';
@@ -61,8 +61,8 @@ function myCanvas(sceneText,answerTextOne,answerTextTwo,imageName, thefunction) 
             sceneLines    = sceneLines+1;
         }
         buttonsOffsetY    = sceneOffsetY + sceneLines*20 + 20;
-        buttonOneLength   = answerTextOne.length*6 + 20;
-        buttonTwoLength   = answerTextTwo.length*6 + 20;
+        buttonOneLength   = answerTextOne.length*6.5 + 20;
+        buttonTwoLength   = answerTextTwo.length*6.5 + 20;
         ctx.fillStyle     = '#bbc2c9';
         buttonOneOffsetX  = img1sizeX + imageOffsetX + 10;
         buttonTwoOffsetX  = buttonOneOffsetX+buttonOneLength + 50;

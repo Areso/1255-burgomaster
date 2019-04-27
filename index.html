@@ -628,9 +628,7 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
-				question = localeStrings[18];
-				//var answer = askPlayer(question, 1);
-				myCanvas(localeStrings[18],'Yes','No', '', game.hireTreasuryGuardCallback);
+				showModal(1, '', game.hireTreasuryGuardCallback, localeStrings[18],  localeStrings[31], localeStrings[33])
 			} else {
 				alert(localeStrings[21]);
 			}
@@ -1251,6 +1249,18 @@
 			playerDecision = confirm(question);
 		}
 		return playerDecision;
+	}
+	function showModal(typeofModal, dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo) {
+		if (typeofModal===0) {
+			//TODO ALERTS
+		}
+		if (typeofModal===1) {
+			//TODO CONFIFRMS
+			myCanvas(dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo);
+		}
+		if (typeofModal===2) {
+			//TODO PROMTS
+		}
 	}
 	//timers
 	function resourcesTimer() {
