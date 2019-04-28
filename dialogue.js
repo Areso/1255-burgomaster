@@ -30,7 +30,6 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
     function composite() {
         ctx.fillStyle     = "rgb(255, 255, 255)"
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         ctx.globalAlpha   = alphaValue;
         ctx.fillStyle     = "white"
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -68,7 +67,9 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
         buttonTwoOffsetX  = buttonOneOffsetX+buttonOneLength + 50;
         ctx.globalAlpha   = alphaValue;
         ctx.fillRect(buttonOneOffsetX, buttonsOffsetY, buttonOneLength, 20);
-        ctx.fillRect(buttonTwoOffsetX, buttonsOffsetY, buttonTwoLength, 20);
+        if (answerTextTwo!=='') {
+            ctx.fillRect(buttonTwoOffsetX, buttonsOffsetY, buttonTwoLength, 20);
+        }
         ctx.fillStyle     = 'black';
         ctx.globalAlpha   = 1;
         ctx.fillText(answerTextOne,buttonOneOffsetX+5,buttonsOffsetY+14);

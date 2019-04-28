@@ -138,7 +138,6 @@
 		<script>
 			var url = window.location.pathname;
 			var filename = url.substring(url.lastIndexOf('/')+1);
-
 			if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
 				res_mod = "b";
 			}
@@ -187,14 +186,12 @@
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
 			-->
 		</div>
-
 		<div id="Explore" class="tabcontent" >
 			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
 			GLOBALMAP
 			</p>
 		</div>
-
 		<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelSettings">Settings</div></h3>
@@ -216,9 +213,7 @@
 			</select>
 			</div>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
-
 		</div>
-
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelGarrison">Garrison</div></h3>
@@ -244,7 +239,6 @@
 			</table>
 			</div>
 		</div>
-
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelBuilding">Building</div></h3>
@@ -309,14 +303,12 @@
 			</table>
 			</div>
 		</div>
-
 		<div id="About" class="tabcontent">
 			<div id="lblAboutGame">
 			<h1>1255 Burgomaster</h1><br>
 			<h2>How to play</h2>
 			</div>
 		</div>
-
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -325,7 +317,6 @@
 		</p>
 		<canvas id="myDCanvas" width="600" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
-
 </span>
 <script>
 	//TOWN
@@ -508,7 +499,6 @@
 			} else {
 				game.gold      = gold_possible;
 			}
-			//gold     = gold*1+2;
 			if (game.pop < 2*Math.pow((game.buildLevelH*1+3),2)) {
 				pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
 				if (pop_incr == 0) {
@@ -620,9 +610,11 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
-				showModal(1, '', game.hireTreasuryGuardCallback, localeStrings[18],  localeStrings[32], localeStrings[33])
+				question = localeStrings[18];
+				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
-				alert(localeStrings[21]);
+				alertMsg = localeStrings[21];
+				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 			}
 			function afterAnswer() {
 				if (answer === 2) {
@@ -704,26 +696,28 @@
 		putOutFire : function () {
 			if (game.fire === 1) {
 				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
-				var answer = askPlayer(question, 1);
-				if (answer === true) {
-					if (game.gold >= config.costPutOutFire) {
-						game.fire = 0;
-						game.gold = game.gold - config.costPutOutFire;
-						document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
-						document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-						msg = localeStrings[40];
-						postEventLog(msg);
-						updateResources();
-					}
-					else {
-						msg = localeStrings[20];
-						postEventLog(msg);
-					}
+				showModal(1, '', game.putOutFireCallback, question,  localeStrings[32], localeStrings[33])
+				
+			}
+		},
+		putOutFireCallback : function () {
+			if (answer === 2) {
+				if (game.gold >= config.costPutOutFire) {
+					game.fire = 0;
+					game.gold = game.gold - config.costPutOutFire;
+					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+					document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
+					msg = localeStrings[40];
+					postEventLog(msg);
+					updateResources();
 				}
 				else {
-					msg = localeStrings[41];
+					msg = localeStrings[20];
 					postEventLog(msg);
 				}
+			} else {
+				msg = localeStrings[41];
+				postEventLog(msg);
 			}
 		},
 		theftFromTreasury : function () {
@@ -778,13 +772,13 @@
 		costWall:2,
 		costTower:4,
 		costHome:2,
-		costTreasury:2,//DEBUG. NORMALLY 20
+		costTreasury:20,
 		costGallows:50,
 		costFountain:50,
 		costStash:50,
 		lotteryPrize:50,
-		treasuryGuardPriceHire:2,//DEBUG. NORMALLY 20
-		treasuryGuardPricePayroll:2,//DEBUG. NORMALLY 20
+		treasuryGuardPriceHire:20,
+		treasuryGuardPricePayroll:20,
         costPutOutFire:20
 	}
 	//init service variables
@@ -813,14 +807,16 @@
     });
 
 	//functions
-
+	function getAck() {
+		//
+	}
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
 		var y = document.getElementById("selectLng").options;
 		language = y[x].value; //y[x].id, text, index
 		loadLocale(language);
 	}
-    function localeCallback(returnLanguage) {
+	function localeCallback(returnLanguage) {
 		if (returnLanguage==='en-US') {
 			document.getElementById("selectLng").selectedIndex=0;
 		}
@@ -829,31 +825,31 @@
 		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
-        document.getElementById("saveGameButton").innerText      = localeStrings[44];
-        document.getElementById("loadGameButton").innerText      = localeStrings[45];
-        document.getElementById("tabCity").innerText             = localeStrings[46];
-        document.getElementById("tabExplore").innerText          = localeStrings[47];
-        document.getElementById("tabSettings").innerText         = localeStrings[48];
-        document.getElementById("tabGarrison").innerText         = localeStrings[49];
-        document.getElementById("tabBuilding").innerText         = localeStrings[50];
-        document.getElementById("tabAbout").innerText            = localeStrings[51];
-        document.getElementById("tabDiscord").innerText          = localeStrings[52];
-        document.getElementById("labelSettings").innerText       = localeStrings[66];
-        document.getElementById("buttonExportGame").innerText    = localeStrings[67];
-        document.getElementById("buttonImportGame").innerText    = localeStrings[68];
-        document.getElementById("labelAutosave").innerText       = localeStrings[69];
-        document.getElementById("labelGarrison").innerText       = localeStrings[91];
-        document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
-        document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
-        document.getElementById("labelBuilding").innerText       = localeStrings[106];
+		document.getElementById("saveGameButton").innerText      = localeStrings[44];
+		document.getElementById("loadGameButton").innerText      = localeStrings[45];
+		document.getElementById("tabCity").innerText             = localeStrings[46];
+		document.getElementById("tabExplore").innerText          = localeStrings[47];
+		document.getElementById("tabSettings").innerText         = localeStrings[48];
+		document.getElementById("tabGarrison").innerText         = localeStrings[49];
+		document.getElementById("tabBuilding").innerText         = localeStrings[50];
+		document.getElementById("tabAbout").innerText            = localeStrings[51];
+		document.getElementById("tabDiscord").innerText          = localeStrings[52];
+		document.getElementById("labelSettings").innerText       = localeStrings[66];
+		document.getElementById("buttonExportGame").innerText    = localeStrings[67];
+		document.getElementById("buttonImportGame").innerText    = localeStrings[68];
+		document.getElementById("labelAutosave").innerText       = localeStrings[69];
+		document.getElementById("labelGarrison").innerText       = localeStrings[91];
+		document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
+		document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
+		document.getElementById("labelBuilding").innerText       = localeStrings[106];
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
-        //TODO check if this is first callback in the session or not
-        if (firstLoad===true) {
+		//TODO check if this is first callback in the session or not
+		//if (firstLoad===true) {
 			welcomeMsg();
-			firstLoad = false;
-		}
+		//	firstLoad = false;
+		//}
 		updateButtonCaptions();
-    }
+	}
 	function welcomeMsg(){
 		postEventLog(localeStrings[0]);
 		postEventLog(localeStrings[1]);
@@ -1089,8 +1085,6 @@
 	}
 	function exportGame() {
 		stringSavegame = JSON.stringify(game);
-		//stringSavegame = stringSavegame+delimiter+JSON.stringify(options);
-		//add csum (control sum of game)
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {
@@ -1099,7 +1093,6 @@
 			try {
 				saveLine  = atob(save64);
 				saveArray = saveLine.split(delimiter);
-
 				gameTemp  = JSON.parse(saveArray[0]);
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options   = JSON.parse(saveArray[1]);
@@ -1109,7 +1102,6 @@
 				updateButtonCaptions();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
-
 				//TODO
 				//} else {
 				//	alert ("save file was modified. Too bad");
@@ -1125,27 +1117,31 @@
 			writeSave();
 		} else {
 			question = localeStrings[15];
-			var answer = askPlayer(question, 1);
-			if (answer === true) {
-				writeSave();
-			}
+			showModal(1, '', saveGameCallback, question,  localeStrings[32], localeStrings[33])
+		}
+	}
+	function saveGameCallback() {
+		if (answer === 2) {
+			writeSave();
 		}
 	}
 	function writeSave(){
 		localStorage.setItem('game', JSON.stringify(game));
-		localStorage.setItem('config', JSON.stringify(options));
+		//localStorage.setItem('config', JSON.stringify(options));
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
 		scrollDown();
 	}
 	function loadGame() {
 		question = localeStrings[13];
-		var answer = askPlayer(question, 1);
-		if (answer === true) {
+		showModal(1, '', loadGameCallback, question,  localeStrings[32], localeStrings[33])
+	}
+	function loadGameCallback() {
+		if (answer === 2) {
 			if (localStorage.getItem('game')!=null){
 				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 				gameTemp = JSON.parse(localStorage.getItem('game'));
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-				options  = JSON.parse(localStorage.getItem('options'));
+				//options  = JSON.parse(localStorage.getItem('options'));
 				setupAutosave();
 				composite();
 				updateResources();
@@ -1153,7 +1149,7 @@
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 			} else {
-			    //TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
+				//TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
 				alert(localeStrings[14]);
 			}
 		}
@@ -1244,10 +1240,9 @@
 	}
 	function showModal(typeofModal, dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo) {
 		if (typeofModal===0) {
-			//TODO ALERTS
+			myCanvas(dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo);
 		}
 		if (typeofModal===1) {
-			//TODO CONFIFRMS
 			myCanvas(dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo);
 		}
 		if (typeofModal===2) {
@@ -1331,7 +1326,6 @@
 	gtag('config', 'UA-111661515-1');
 </script>
 <!-- Yandex.Metrika counter. The same -->
-
 <script type="text/javascript" >
 	(function (d, w, c) {
 		(w[c] = w[c] || []).push(function() {
@@ -1345,14 +1339,12 @@
 				});
 			} catch(e) { }
 		});
-
 		var n = d.getElementsByTagName("script")[0],
 				s = d.createElement("script"),
 				f = function () { n.parentNode.insertBefore(s, n); };
 		s.type = "text/javascript";
 		s.async = true;
 		s.src = "https://mc.yandex.ru/metrika/watch.js";
-
 		if (w.opera == "[object Opera]") {
 			d.addEventListener("DOMContentLoaded", f, false);
 		} else { f(); }
