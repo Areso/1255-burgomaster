@@ -199,11 +199,11 @@
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelSettings">Settings</div></h3>
 			<!-- TODO make checkboxes with chat system messages -->
-            <!--<p>Alert / MSG to chat</p>-->
+			<!--<p>Alert / MSG to chat</p>-->
 			<table>
 			<tr>
-                <!-- TODO make a message about turning on / off autosaves for color disabled people -->
-                <td><div id="labelAutosave">Autosave</div><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
+				<!-- TODO make a message about turning on / off autosaves for color disabled people -->
+				<td><div id="labelAutosave">Autosave</div><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
 			</tr>
@@ -211,9 +211,9 @@
 			<input id="savestring" name="savestring" value="" style="width:600px">
 			<div style="position: absolute; top: 120px; left:500px">
 			<select id="selectLng" size="1" onchange="reloadLang()">
-    			<option id="optionLngEn" selected value="en-US">English</option>
-    			<option id="optionLngRu"          value="ru-RU">Русский</option>
-   			</select>
+				<option id="optionLngEn" selected value="en-US">English</option>
+				<option id="optionLngRu"          value="ru-RU">Русский</option>
+			</select>
 			</div>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 
@@ -247,7 +247,7 @@
 
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-            <h3><div id="labelBuilding">Building</div></h3>
+			<h3><div id="labelBuilding">Building</div></h3>
 			<div>
 				<table border="1">
 				<tr>
@@ -459,23 +459,15 @@
 			ctx_map.drawImage(tile_grass, 0, 0);   //draw background
 		}
 	}
-	/*
-    function loadImage(src, onload) {
-        var img = new Image();
-        img.onload = onload;
-        img.src = src;
-        return img;
-    }
-    */
 </script>
 <script>
-    include = function (url, fn) {
-        var e = document.createElement("script");
-        e.onload = fn;
-        e.src = url;
-        e.async=true;
-        document.getElementsByTagName("head")[0].appendChild(e);
-    };
+	include = function (url, fn) {
+		var e = document.createElement("script");
+		e.onload = fn;
+		e.src = url;
+		e.async=true;
+		document.getElementsByTagName("head")[0].appendChild(e);
+	};
 	//init variables
 	var game = {
 		gold:20,
@@ -549,7 +541,7 @@
                 }
                 postEventLog(msg);
             };
-            if (game.pop !== pop_was) {
+			if (game.pop !== pop_was) {
                 if (game.pop > pop_was) {
                     msg = localeStrings[7];
                 } else {
@@ -563,7 +555,7 @@
 				//return true;
 
 			}
-            updateResources();
+			updateResources();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -628,12 +620,11 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
-				showModal(1, '', game.hireTreasuryGuardCallback, localeStrings[18],  localeStrings[31], localeStrings[33])
+				showModal(1, '', game.hireTreasuryGuardCallback, localeStrings[18],  localeStrings[32], localeStrings[33])
 			} else {
 				alert(localeStrings[21]);
 			}
 			function afterAnswer() {
-				console.log("debug");
 				if (answer === 2) {
 					if (game.gold >= config.treasuryGuardPriceHire) {
 						game.treasuryGuard = game.treasuryGuard*1 + 1;
@@ -668,17 +659,18 @@
 		},
 		fireTreasuryGuard : function () {
 			if (game.treasuryGuard > 0) {
-				question = localeStrings[22];
-				var answer = askPlayer(question, 1);
-				if (answer === true) {
-					game.treasuryGuard      = game.treasuryGuard*1 - 1;
-					msg = localeStrings[23];
-                    postEventLog(msg);
-					updateResources();
-				}
+				showModal(1, '', game.fireTreasuryGuardCallback, localeStrings[22],  localeStrings[32], localeStrings[33])
 			} else {
 				msg = localeStrings[24];
 				postEventLog(msg);
+			}
+		},
+		fireTreasuryGuardCallback : function () {
+			if (answer === 2) {
+				game.treasuryGuard      = game.treasuryGuard*1 - 1;
+				msg = localeStrings[23];
+				postEventLog(msg);
+				updateResources();
 			}
 		},
 		deathPenalty : function () {
@@ -815,7 +807,7 @@
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
 
-    include('localisation.js',function(){
+	include('localisation.js',function(){
         loadStartLocale();
         console.log('we are in first level include after loadStartLocale()');
     });
