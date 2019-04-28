@@ -1,23 +1,23 @@
 var localeStrings = [];
-localeStrings.push("Hello player in this incremental game!");
-localeStrings.push("Your task is simple - manage the city as mayor of the city!");
-localeStrings.push("Citizen will pay taxes each season (30 secs or so) and population will grow each season, too");
-localeStrings.push("build or upgrade your Treasury");
-localeStrings.push("amount of money is increased");
-localeStrings.push("amount of money is decreased");//5
-localeStrings.push("amount of money is not changed");
-localeStrings.push("population is increased");
-localeStrings.push("population is decreased");
-localeStrings.push("population is not changed");
-localeStrings.push("your city is reached population limit. Build new houses or upgrade existing ones");//10
-localeStrings.push("game saved successfully");
-localeStrings.push("game loaded successfully");
-localeStrings.push("Load game? You will lost any unsaved progress!");
-localeStrings.push("Sorry! There is no save to load from!");
-localeStrings.push("Save game? You will rewrite any save you already have!");//15
-localeStrings.push("Please insert save");
-localeStrings.push("very long string");
-localeStrings.push("Do you want to hire a guardsman? He will cost you 20 gold and then 20 gold per each season!");
+localeStrings.push("Hallo Spieler in diesem inkrementellen Spiel!");
+localeStrings.push("Ihre Aufgabe ist einfach - verwalten Sie die Stadt als Bürgermeister der Stadt!");
+localeStrings.push("Der Bürger zahlt jede Saison Steuern. Jede Saison dauert 30 Sekunden. Die Bevölkerung wird jede Saison wachsen.");
+localeStrings.push("Aufbau oder Verbesserung Ihrer Schatzkammer");
+localeStrings.push("der Geldbetrag wird erhöht");
+localeStrings.push("der Geldbetrag wird reduziert");//5
+localeStrings.push("Der Geldbetrag wird nicht geändert");
+localeStrings.push("die Bevölkerung wird vergrößert");
+localeStrings.push("die Bevölkerung wird reduziert");
+localeStrings.push("die Bevölkerung wird nicht geändert");
+localeStrings.push("Ihre Stadt ist an der Bevölkerungsgrenze. Neue Häuser bauen oder bestehende aufrüsten");//10
+localeStrings.push("Spiel erfolgreich gespeichert");
+localeStrings.push("Spiel erfolgreich geladen");
+localeStrings.push("Spiel laden? Du wirst jeden nicht gespeicherten Fortschritt verlieren!");
+localeStrings.push("Entschuldigung! Es gibt keinen Speicher zum Lesen!");
+localeStrings.push("Spiel speichern? Du wirst jeden Speicher, denn du bereits hast, neu schreiben!");//15
+localeStrings.push("Bitte geben Sie Save ein");
+localeStrings.push("sehr lange Zeichenkette");
+localeStrings.push("Do you want to Hire a guardsman? He will cost you 20 gold and then 20 gold per each season!");
 localeStrings.push("You hired a guardsman!");
 localeStrings.push("Not enough gold to do that!");//20
 localeStrings.push("Treasury is required to hiring a guardsman!");

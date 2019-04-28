@@ -29,7 +29,10 @@ function loadStartLocale(){
 		if (language.indexOf('ru')!==-1) {
 			language = 'ru-RU';
 		}
-		locales = ['en-US','ru-RU'];
+		if (language.indexOf('de')!==-1) {
+			language = 'de-DE';
+		}
+		locales = ['en-US','ru-RU','de-DE'];
 		default_locale = 'en-US';
 		if (checkValue(language, locales)===1) {
 			loadLocale(language);
@@ -38,8 +41,8 @@ function loadStartLocale(){
 		}
 	}
 function checkValue(value,arr){
-	    var status = -1;
-	    for(var i=0; i<arr.length; i++){
+		var status = -1;
+		for(var i=0; i<arr.length; i++){
 			var name = arr[i];
 			if(name == value){
 				status = 1;
@@ -61,8 +64,8 @@ function getBrowserLanguage() {
 		return language;
 	}
 function checkLocalStorageSupport() {
-	    var test = 'test';
-        try {
+		var test = 'test';
+		try {
 			localStorage.setItem(test, test);
 			localStorage.removeItem(test);
 			return true;
