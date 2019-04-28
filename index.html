@@ -210,6 +210,7 @@
 			<select id="selectLng" size="1" onchange="reloadLang()">
 				<option id="optionLngEn" selected value="en-US">English</option>
 				<option id="optionLngRu"          value="ru-RU">Русский</option>
+				<option id="optionLngGe"          value="de-DE">Deutsch</option>
 			</select>
 			</div>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
@@ -610,7 +611,7 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
-				question = localeStrings[18];
+				question = localeStrings[18].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);;
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
 				alertMsg = localeStrings[21];
@@ -778,7 +779,7 @@
 		costStash:50,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
-		treasuryGuardPricePayroll:20,
+		treasuryGuardPricePayroll:25,
         costPutOutFire:20
 	}
 	//init service variables
