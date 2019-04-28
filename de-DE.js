@@ -17,24 +17,24 @@ localeStrings.push("Entschuldigung! Es gibt keinen Speicher zum Lesen!");
 localeStrings.push("Spiel speichern? Du wirst jeden Speicher, denn du bereits hast, neu schreiben!");//15
 localeStrings.push("Bitte geben Sie Save ein");
 localeStrings.push("sehr lange Zeichenkette");
-localeStrings.push("Do you want to Hire a guardsman? He will cost you 20 gold and then 20 gold per each season!");
-localeStrings.push("You hired a guardsman!");
-localeStrings.push("Not enough gold to do that!");//20
-localeStrings.push("Treasury is required to hiring a guardsman!");
-localeStrings.push("Would you like to dismiss a guardsman?");
-localeStrings.push("You dismissed a guardsman!");
-localeStrings.push("You don't have any guardsmen!");
-localeStrings.push("treachery");//25
-localeStrings.push("betrayal");
-localeStrings.push("corruption");
-localeStrings.push("bribery");
-localeStrings.push("graft and theft");
-localeStrings.push("embezzlement");//30
-localeStrings.push("Yes, in the most bloody way!");
-localeStrings.push("Yes");
-localeStrings.push("No");
-localeStrings.push("you executed a citizen for %arg1");
-localeStrings.push("treasury funded on %arg1 with confiscated property of the executed citizen");//35
+localeStrings.push("Willst du einen Wachmann einstellen? Er wird dich %arg1 Gold und dann %arg2 Gold pro Saison kosten!");
+localeStrings.push("Du hast einen Wachmann angeheuert!");//Wächter Wärter Gardisten
+localeStrings.push("Nicht genug Gold, um das zu tun!");//20
+localeStrings.push("Für die mietenung eines Wachmann ist eine Schatzkammer erforderlich!");
+localeStrings.push("Möchten Sie einen Wachmann entlassen??");
+localeStrings.push("Du hast einen Wachmann entlassen!");
+localeStrings.push("Ihr habt keine Wachen!");
+localeStrings.push("Verrat");//25
+localeStrings.push("Betrug");
+localeStrings.push("Korruption");
+localeStrings.push("Bestechung");
+localeStrings.push("Diebstahl");
+localeStrings.push("Unterschlagung");//30
+localeStrings.push("Ja, auf die blutigeste Weise!");
+localeStrings.push("Ja");
+localeStrings.push("Nein");
+localeStrings.push("Du hast einen Bürger für %arg1 hingerichtet.");
+localeStrings.push("Schatzkammer finanziert %arg1 mit beschlagnahmtem Eigentum des hingerichteten Bürgers");//35
 localeStrings.push("too few citizens");
 localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
 localeStrings.push("fire in the city!");

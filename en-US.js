@@ -17,7 +17,7 @@ localeStrings.push("Sorry! There is no save to load from!");
 localeStrings.push("Save game? You will rewrite any save you already have!");//15
 localeStrings.push("Please insert save");
 localeStrings.push("very long string");
-localeStrings.push("Do you want to hire a guardsman? He will cost you 20 gold and then 20 gold per each season!");
+localeStrings.push("Do you want to hire a guardsman? He will cost you %arg1 gold and then %arg2 gold per each season!");
 localeStrings.push("You hired a guardsman!");
 localeStrings.push("Not enough gold to do that!");//20
 localeStrings.push("Treasury is required to hiring a guardsman!");
