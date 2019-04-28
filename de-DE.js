@@ -1,0 +1,150 @@
+var localeStrings = [];
+localeStrings.push("Hallo Spieler in diesem inkrementellen Spiel!");
+localeStrings.push("Ihre Aufgabe ist einfach - verwalten Sie die Stadt als Bürgermeister der Stadt!");
+localeStrings.push("Der Bürger zahlt jede Saison Steuern. Jede Saison dauert 30 Sekunden. Die Bevölkerung wird jede Saison wachsen.");
+localeStrings.push("Aufbau oder Verbesserung Ihrer Schatzkammer");
+localeStrings.push("der Geldbetrag wird erhöht");
+localeStrings.push("der Geldbetrag wird reduziert");//5
+localeStrings.push("Der Geldbetrag wird nicht geändert");
+localeStrings.push("die Bevölkerung wird vergrößert");
+localeStrings.push("die Bevölkerung wird reduziert");
+localeStrings.push("die Bevölkerung wird nicht geändert");
+localeStrings.push("Ihre Stadt ist an der Bevölkerungsgrenze. Neue Häuser bauen oder bestehende aufrüsten");//10
+localeStrings.push("Spiel erfolgreich gespeichert");
+localeStrings.push("Spiel erfolgreich geladen");
+localeStrings.push("Spiel lesen? Du wirst jeden nicht gespeicherten Fortschritt verlieren!");
+localeStrings.push("Entschuldigung! Es gibt keinen Speicher zum Lesen!");
+localeStrings.push("Spiel speichern? Du wirst jeden Speicher, denn du bereits hast, neu schreiben!");//15
+localeStrings.push("Bitte geben Sie Save ein");
+localeStrings.push("sehr lange Zeichenkette");
+localeStrings.push("Willst du einen Wachmann einstellen? Er wird dich %arg1 Gold und dann %arg2 Gold pro Saison kosten!");
+localeStrings.push("Du hast einen Wachmann angeheuert!");//Wächter Wärter Gardisten
+localeStrings.push("Nicht genug Gold, um das zu tun!");//20
+localeStrings.push("Für die mietenung eines Wachmann ist eine Schatzkammer erforderlich!");
+localeStrings.push("Möchten Sie einen Wachmann entlassen?");
+localeStrings.push("Du hast einen Wachmann entlassen!");
+localeStrings.push("Ihr habt keine die Wachen!");
+localeStrings.push("Verrat");//25
+localeStrings.push("Betrug");
+localeStrings.push("Korruption");
+localeStrings.push("Bestechung");
+localeStrings.push("Diebstahl");
+localeStrings.push("Unterschlagung");//30
+localeStrings.push("Ja, auf die blutigeste Weise!");
+localeStrings.push("Ja");
+localeStrings.push("Nein");
+localeStrings.push("Du hast einen Bürger für %arg1 hingerichtet.");
+localeStrings.push("Schatzkammer finanziert %arg1 mit beschlagnahmtem Eigentum des hingerichteten Bürgers");//35
+localeStrings.push("zu wenig Bürger");
+localeStrings.push("Die Wachen entlassen, weil du ihnen nicht bezahlen kannst!");
+localeStrings.push("Feuer in der Stadt!");
+localeStrings.push("Feuerwehrleute rufen? Es wird dich %arg1 Gold kosten!");
+localeStrings.push("Feuerwehrleute beenden das Feuer!");//40
+localeStrings.push("wird es zu Asche verbrennen!");
+localeStrings.push("Scheiße passiert: Diebe haben %arg1 Gold aus Ihrer Schatzkammer gestohlen");
+localeStrings.push("Du hast im Lotto %arg1 Gold gewonnen");
+localeStrings.push("Spiel speichern");
+localeStrings.push("Spiel lesen");//45
+localeStrings.push("Stadt");
+localeStrings.push("Erkunden");
+localeStrings.push("Einrichten");
+localeStrings.push("Garnison");
+localeStrings.push("Bauen");//50
+localeStrings.push("Wie man spielt");
+localeStrings.push("Discord");
+localeStrings.push("Löscht das feuer");
+localeStrings.push("Exekutieren Stadtperson");
+localeStrings.push("placeholder");//55
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Gut");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("Einrichten");
+localeStrings.push("Export-Spiel");
+localeStrings.push("Import-Spiel");
+localeStrings.push("Auto-Speichern-Spiel");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("Garnison");
+localeStrings.push("entlassen");
+localeStrings.push("einstellen");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//105
+localeStrings.push("Bauen");
+localeStrings.push("Haus aufbauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Mauer aufbauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Turm aufbauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Schatzkammer aufbauen<br/>lvl %arg1<br/>%arg2 gold");//110
+localeStrings.push("Galgen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("ein Brunnen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("ein Versteck aufbauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//120
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//125
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//130
+localeStrings.push("<h1>1255 Burgomaster</h1>" +
+    "<h2>Wie man spielt</h2>" +
+    "Dieses Spiel hat eine Uhr unter der Haube. Der Tick jeder Uhr geschieht in 30 Sekunden.<br>" +
+    "Nach jeder Runde zahlt deine Bevölkerung Steuern an dich und wächst.<br>" +
+    "Sie müssen Häuser bauen, um das Wachstum Ihrer Stadtbevölkerung fortzusetzen.<br>" +
+    "Jede Stufe von Häusern ermöglicht es dir, mehr Bevölkerung zu haben.<br>" +
+    "Du musst Mauern und Türme bauen, um deine Stadt vor Eindringlingen zu schützen.<br>" +
+    "Du musst eine Schatzkammer bauen, um dein Gold zu lagern.<br>" +
+    "Jede Stufe der Schatzkammer ermöglicht es dir, mehr Gold zu lagern.<br>" +
+    "Außerdem können Sie mit schatzkammer Wachmann einstellen.<br>" +
+    "Die Schatzkammer Wächter erheblich verringern  die Möglichkeit, dass Gold aus Ihrer Schatzkammer  gestohlen wird<br>" +
+    "Er wird dich %arg1 Gold und dann %arg2 Gold pro Saison kosten!<br>" +
+    "Wenn du nicht genug Geld hast, werden sie ihre Arbeit dauerhaft aufgeben.<br>" +
+    "Du kannst Brunnen oder Galgen bauen. Du kannst deine Wahl nicht mehr ändern, nachdem der Bau abgeschlossen ist.<br>" +
+    "die Brunnen werden das Glück und die Geschwindigkeit des Bevölkerung steigern.<br>" +
+    "Galgen werden die Bevölkerung verringern, die Steuern erhöhen und es dir ermöglichen, Stadtbewohner hinzurichten.<br>" +
+    "Die Hinrichtung einer Stadtbewohnerin wird ihr Eigentum als beschlagnahmtes Gold hinzufügen.<br>" +
+    "Versteck ist erforderlich, um deine Verluste durch Diebstahl zu verringern. Du kannst kein Versteck ohne Schatzkammer bauen.<br>");//131

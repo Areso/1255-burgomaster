@@ -138,7 +138,6 @@
 		<script>
 			var url = window.location.pathname;
 			var filename = url.substring(url.lastIndexOf('/')+1);
-
 			if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
 				res_mod = "b";
 			}
@@ -187,23 +186,21 @@
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
 			-->
 		</div>
-
 		<div id="Explore" class="tabcontent" >
 			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
 			GLOBALMAP
 			</p>
 		</div>
-
 		<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelSettings">Settings</div></h3>
 			<!-- TODO make checkboxes with chat system messages -->
-            <!--<p>Alert / MSG to chat</p>-->
+			<!--<p>Alert / MSG to chat</p>-->
 			<table>
 			<tr>
-                <!-- TODO make a message about turning on / off autosaves for color disabled people -->
-                <td><div id="labelAutosave">Autosave</div><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
+				<!-- TODO make a message about turning on / off autosaves for color disabled people -->
+				<td><div id="labelAutosave">Autosave</div><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
 			</tr>
@@ -211,14 +208,13 @@
 			<input id="savestring" name="savestring" value="" style="width:600px">
 			<div style="position: absolute; top: 120px; left:500px">
 			<select id="selectLng" size="1" onchange="reloadLang()">
-    			<option id="optionLngEn" selected value="en-US">English</option>
-    			<option id="optionLngRu"          value="ru-RU">Русский</option>
-   			</select>
+				<option id="optionLngEn" selected value="en-US">English</option>
+				<option id="optionLngRu"          value="ru-RU">Русский</option>
+				<option id="optionLngGe"          value="de-DE">Deutsch</option>
+			</select>
 			</div>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
-
 		</div>
-
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelGarrison">Garrison</div></h3>
@@ -244,10 +240,9 @@
 			</table>
 			</div>
 		</div>
-
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-            <h3><div id="labelBuilding">Building</div></h3>
+			<h3><div id="labelBuilding">Building</div></h3>
 			<div>
 				<table border="1">
 				<tr>
@@ -309,21 +304,21 @@
 			</table>
 			</div>
 		</div>
-
 		<div id="About" class="tabcontent">
 			<div id="lblAboutGame">
 			<h1>1255 Burgomaster</h1><br>
 			<h2>How to play</h2>
 			</div>
 		</div>
-
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
 		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
-		<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px"></textarea>
+			<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px"></textarea>
 		</p>
-		</span>
+		<canvas id="myDCanvas" width="600" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
+		Your browser does not support the HTML5 canvas tag.</canvas>
+</span>
 <script>
 	//TOWN
 	var canvas  = document.getElementById("canvas");
@@ -456,23 +451,15 @@
 			ctx_map.drawImage(tile_grass, 0, 0);   //draw background
 		}
 	}
-	/*
-    function loadImage(src, onload) {
-        var img = new Image();
-        img.onload = onload;
-        img.src = src;
-        return img;
-    }
-    */
 </script>
 <script>
-    include = function (url, fn) {
-        var e = document.createElement("script");
-        e.onload = fn;
-        e.src = url;
-        e.async=true;
-        document.getElementsByTagName("head")[0].appendChild(e);
-    };
+	include = function (url, fn) {
+		var e = document.createElement("script");
+		e.onload = fn;
+		e.src = url;
+		e.async=true;
+		document.getElementsByTagName("head")[0].appendChild(e);
+	};
 	//init variables
 	var game = {
 		gold:20,
@@ -513,7 +500,6 @@
 			} else {
 				game.gold      = gold_possible;
 			}
-			//gold     = gold*1+2;
 			if (game.pop < 2*Math.pow((game.buildLevelH*1+3),2)) {
 				pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
 				if (pop_incr == 0) {
@@ -546,7 +532,7 @@
                 }
                 postEventLog(msg);
             };
-            if (game.pop !== pop_was) {
+			if (game.pop !== pop_was) {
                 if (game.pop > pop_was) {
                     msg = localeStrings[7];
                 } else {
@@ -560,7 +546,7 @@
 				//return true;
 
 			}
-            updateResources();
+			updateResources();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -625,9 +611,14 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
-				question = localeStrings[18];
-				var answer = askPlayer(question, 1);
-				if (answer === true) {
+				question = localeStrings[18].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);;
+				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
+			} else {
+				alertMsg = localeStrings[21];
+				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+			}
+			function afterAnswer() {
+				if (answer === 2) {
 					if (game.gold >= config.treasuryGuardPriceHire) {
 						game.treasuryGuard = game.treasuryGuard*1 + 1;
 						game.gold          = game.gold - config.treasuryGuardPriceHire;
@@ -640,23 +631,39 @@
 						postEventLog(msg);
 					}
 				}
-			} else {
-				alert(localeStrings[21]);
+			}
+			game.hireTreasuryGuard.returnAnswer = afterAnswer;
+		},
+		hireTreasuryGuardCallback : function () {
+			console.log("debug");
+			if (answer === 2) {
+				if (game.gold >= config.treasuryGuardPriceHire) {
+					game.treasuryGuard = game.treasuryGuard*1 + 1;
+					game.gold          = game.gold - config.treasuryGuardPriceHire;
+					msg = localeStrings[19];
+					postEventLog(msg);
+					updateResources();
+				}
+				else {
+					msg = localeStrings[20];
+					postEventLog(msg);
+				}
 			}
 		},
 		fireTreasuryGuard : function () {
 			if (game.treasuryGuard > 0) {
-				question = localeStrings[22];
-				var answer = askPlayer(question, 1);
-				if (answer === true) {
-					game.treasuryGuard      = game.treasuryGuard*1 - 1;
-					msg = localeStrings[23];
-                    postEventLog(msg);
-					updateResources();
-				}
+				showModal(1, '', game.fireTreasuryGuardCallback, localeStrings[22],  localeStrings[32], localeStrings[33])
 			} else {
+				msg = localeStrings[24];
+				postEventLog(msg);
+			}
+		},
+		fireTreasuryGuardCallback : function () {
+			if (answer === 2) {
+				game.treasuryGuard      = game.treasuryGuard*1 - 1;
 				msg = localeStrings[23];
 				postEventLog(msg);
+				updateResources();
 			}
 		},
 		deathPenalty : function () {
@@ -690,26 +697,28 @@
 		putOutFire : function () {
 			if (game.fire === 1) {
 				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
-				var answer = askPlayer(question, 1);
-				if (answer === true) {
-					if (game.gold >= config.costPutOutFire) {
-						game.fire = 0;
-						game.gold = game.gold - config.costPutOutFire;
-						document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
-						document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-						msg = localeStrings[40];
-						postEventLog(msg);
-						updateResources();
-					}
-					else {
-						msg = localeStrings[20];
-						postEventLog(msg);
-					}
+				showModal(1, '', game.putOutFireCallback, question,  localeStrings[32], localeStrings[33])
+				
+			}
+		},
+		putOutFireCallback : function () {
+			if (answer === 2) {
+				if (game.gold >= config.costPutOutFire) {
+					game.fire = 0;
+					game.gold = game.gold - config.costPutOutFire;
+					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+					document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
+					msg = localeStrings[40];
+					postEventLog(msg);
+					updateResources();
 				}
 				else {
-					msg = localeStrings[41];
+					msg = localeStrings[20];
 					postEventLog(msg);
 				}
+			} else {
+				msg = localeStrings[41];
+				postEventLog(msg);
 			}
 		},
 		theftFromTreasury : function () {
@@ -770,7 +779,7 @@
 		costStash:50,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
-		treasuryGuardPricePayroll:20,
+		treasuryGuardPricePayroll:25,
         costPutOutFire:20
 	}
 	//init service variables
@@ -782,6 +791,7 @@
 	var minBL         = 0;
 	var mapCreated    = 0;
 	var globalMap = [[],[]];
+	var firstLoad     = true;
 	updateResources();
 	populatePatchnotes();
 	generateMap();
@@ -792,19 +802,22 @@
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
 
-    include('localisation.js',function(){
+	include('localisation.js',function(){
         loadStartLocale();
         console.log('we are in first level include after loadStartLocale()');
     });
 
 	//functions
+	function getAck() {
+		//
+	}
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
 		var y = document.getElementById("selectLng").options;
 		language = y[x].value; //y[x].id, text, index
 		loadLocale(language);
 	}
-    function localeCallback(returnLanguage) {
+	function localeCallback(returnLanguage) {
 		if (returnLanguage==='en-US') {
 			document.getElementById("selectLng").selectedIndex=0;
 		}
@@ -813,28 +826,31 @@
 		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
-        document.getElementById("saveGameButton").innerText      = localeStrings[44];
-        document.getElementById("loadGameButton").innerText      = localeStrings[45];
-        document.getElementById("tabCity").innerText             = localeStrings[46];
-        document.getElementById("tabExplore").innerText          = localeStrings[47];
-        document.getElementById("tabSettings").innerText         = localeStrings[48];
-        document.getElementById("tabGarrison").innerText         = localeStrings[49];
-        document.getElementById("tabBuilding").innerText         = localeStrings[50];
-        document.getElementById("tabAbout").innerText            = localeStrings[51];
-        document.getElementById("tabDiscord").innerText          = localeStrings[52];
-        document.getElementById("labelSettings").innerText       = localeStrings[66];
-        document.getElementById("buttonExportGame").innerText    = localeStrings[67];
-        document.getElementById("buttonImportGame").innerText    = localeStrings[68];
-        document.getElementById("labelAutosave").innerText       = localeStrings[69];
-        document.getElementById("labelGarrison").innerText       = localeStrings[91];
-        document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
-        document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
-        document.getElementById("labelBuilding").innerText       = localeStrings[106];
+		document.getElementById("saveGameButton").innerText      = localeStrings[44];
+		document.getElementById("loadGameButton").innerText      = localeStrings[45];
+		document.getElementById("tabCity").innerText             = localeStrings[46];
+		document.getElementById("tabExplore").innerText          = localeStrings[47];
+		document.getElementById("tabSettings").innerText         = localeStrings[48];
+		document.getElementById("tabGarrison").innerText         = localeStrings[49];
+		document.getElementById("tabBuilding").innerText         = localeStrings[50];
+		document.getElementById("tabAbout").innerText            = localeStrings[51];
+		document.getElementById("tabDiscord").innerText          = localeStrings[52];
+		document.getElementById("labelSettings").innerText       = localeStrings[66];
+		document.getElementById("buttonExportGame").innerText    = localeStrings[67];
+		document.getElementById("buttonImportGame").innerText    = localeStrings[68];
+		document.getElementById("labelAutosave").innerText       = localeStrings[69];
+		document.getElementById("labelGarrison").innerText       = localeStrings[91];
+		document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
+		document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
+		document.getElementById("labelBuilding").innerText       = localeStrings[106];
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
-        //TODO check if this is first callback in the session or not
-        welcomeMsg();
+		//TODO check if this is first callback in the session or not
+		//if (firstLoad===true) {
+			welcomeMsg();
+		//	firstLoad = false;
+		//}
 		updateButtonCaptions();
-    }
+	}
 	function welcomeMsg(){
 		postEventLog(localeStrings[0]);
 		postEventLog(localeStrings[1]);
@@ -873,9 +889,19 @@
 		mapCreated = 1;
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.191";
+		writeToTextArea(msg);
+		msg = "hiring guardsmen now done with dialogue.js";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.190";
+		writeToTextArea(msg);
+		msg = "imported dialogue.js";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.189";
 		writeToTextArea(msg);
-		msg = "made Russian translation";
+		msg = "made a language selector in Settings tab";
 		writeToTextArea(msg);
 
 		msg = "version 1.0.186";
@@ -1060,8 +1086,6 @@
 	}
 	function exportGame() {
 		stringSavegame = JSON.stringify(game);
-		//stringSavegame = stringSavegame+delimiter+JSON.stringify(options);
-		//add csum (control sum of game)
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {
@@ -1070,7 +1094,6 @@
 			try {
 				saveLine  = atob(save64);
 				saveArray = saveLine.split(delimiter);
-
 				gameTemp  = JSON.parse(saveArray[0]);
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options   = JSON.parse(saveArray[1]);
@@ -1080,7 +1103,6 @@
 				updateButtonCaptions();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
-
 				//TODO
 				//} else {
 				//	alert ("save file was modified. Too bad");
@@ -1096,27 +1118,31 @@
 			writeSave();
 		} else {
 			question = localeStrings[15];
-			var answer = askPlayer(question, 1);
-			if (answer === true) {
-				writeSave();
-			}
+			showModal(1, '', saveGameCallback, question,  localeStrings[32], localeStrings[33])
+		}
+	}
+	function saveGameCallback() {
+		if (answer === 2) {
+			writeSave();
 		}
 	}
 	function writeSave(){
 		localStorage.setItem('game', JSON.stringify(game));
-		localStorage.setItem('config', JSON.stringify(options));
+		//localStorage.setItem('config', JSON.stringify(options));
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
 		scrollDown();
 	}
 	function loadGame() {
 		question = localeStrings[13];
-		var answer = askPlayer(question, 1);
-		if (answer === true) {
+		showModal(1, '', loadGameCallback, question,  localeStrings[32], localeStrings[33])
+	}
+	function loadGameCallback() {
+		if (answer === 2) {
 			if (localStorage.getItem('game')!=null){
 				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 				gameTemp = JSON.parse(localStorage.getItem('game'));
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-				options  = JSON.parse(localStorage.getItem('options'));
+				//options  = JSON.parse(localStorage.getItem('options'));
 				setupAutosave();
 				composite();
 				updateResources();
@@ -1124,7 +1150,7 @@
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 			} else {
-			    //TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
+				//TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
 				alert(localeStrings[14]);
 			}
 		}
@@ -1213,6 +1239,17 @@
 		}
 		return playerDecision;
 	}
+	function showModal(typeofModal, dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo) {
+		if (typeofModal===0) {
+			myCanvas(dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo);
+		}
+		if (typeofModal===1) {
+			myCanvas(dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo);
+		}
+		if (typeofModal===2) {
+			//TODO PROMTS
+		}
+	}
 	//timers
 	function resourcesTimer() {
 		game.calculateTurn();
@@ -1279,6 +1316,7 @@
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("tabCity").click();
 </script>
+<script async src="dialogue.js"></script>
 <!--<script src="localisation.js"></script>-->
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
@@ -1289,7 +1327,6 @@
 	gtag('config', 'UA-111661515-1');
 </script>
 <!-- Yandex.Metrika counter. The same -->
-
 <script type="text/javascript" >
 	(function (d, w, c) {
 		(w[c] = w[c] || []).push(function() {
@@ -1303,14 +1340,12 @@
 				});
 			} catch(e) { }
 		});
-
 		var n = d.getElementsByTagName("script")[0],
 				s = d.createElement("script"),
 				f = function () { n.parentNode.insertBefore(s, n); };
 		s.type = "text/javascript";
 		s.async = true;
 		s.src = "https://mc.yandex.ru/metrika/watch.js";
-
 		if (w.opera == "[object Opera]") {
 			d.addEventListener("DOMContentLoaded", f, false);
 		} else { f(); }

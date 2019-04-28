@@ -1,8 +1,8 @@
 var localeStrings = [];
 localeStrings.push("Hello player in this incremental game!");
-localeStrings.push("Your task is simple - manage the town as you are town's mayor!");
+localeStrings.push("Your task is simple - manage the city as mayor of the city!");
 localeStrings.push("Citizen will pay taxes each season (30 secs or so) and population will grow each season, too");
-localeStrings.push("build or update your Treasury");
+localeStrings.push("build or upgrade your Treasury");
 localeStrings.push("amount of money is increased");
 localeStrings.push("amount of money is decreased");//5
 localeStrings.push("amount of money is not changed");
@@ -12,12 +12,12 @@ localeStrings.push("population is not changed");
 localeStrings.push("your city is reached population limit. Build new houses or upgrade existing ones");//10
 localeStrings.push("game saved successfully");
 localeStrings.push("game loaded successfully");
-localeStrings.push("Load game? It will lost any unsaved progress!");
+localeStrings.push("Load game? You will lost any unsaved progress!");
 localeStrings.push("Sorry! There is no save to load from!");
-localeStrings.push("Save game? It will rewrite any save you already have!");//15
+localeStrings.push("Save game? You will rewrite any save you already have!");//15
 localeStrings.push("Please insert save");
 localeStrings.push("very long string");
-localeStrings.push("Do you want to Hire a guardsman? It will cost you 20 gold and then 20 gold per each season!");
+localeStrings.push("Do you want to hire a guardsman? He will cost you %arg1 gold and then %arg2 gold per each season!");
 localeStrings.push("You hired a guardsman!");
 localeStrings.push("Not enough gold to do that!");//20
 localeStrings.push("Treasury is required to hiring a guardsman!");
@@ -30,9 +30,9 @@ localeStrings.push("corruption");
 localeStrings.push("bribery");
 localeStrings.push("graft and theft");
 localeStrings.push("embezzlement");//30
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Yes, in the most bloody way!");
+localeStrings.push("Yes");
+localeStrings.push("No");
 localeStrings.push("you executed a citizen for %arg1");
 localeStrings.push("treasury funded on %arg1 with confiscated property of the executed citizen");//35
 localeStrings.push("too few citizens");
@@ -59,7 +59,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//60
+localeStrings.push("Okay");//60
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

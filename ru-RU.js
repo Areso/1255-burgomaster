@@ -17,7 +17,7 @@ localeStrings.push("Извините, но сохраненных игр нет!
 localeStrings.push("Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть");//15
 localeStrings.push("Пожалуйста, вставьте сохранение");
 localeStrings.push("очень длинная строка");
-localeStrings.push("Вы хотите нанять охранника? Это будет стоить 20 золотых сразу и 20 золотых за каждый сезон");
+localeStrings.push("Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу и %arg2 золотых за каждый сезон");
 localeStrings.push("Вы наняли охранника");
 localeStrings.push("Недостаточно золота!");//20
 localeStrings.push("Для найма охранника необходима Сокровищница!");
@@ -30,9 +30,9 @@ localeStrings.push("коррупцию");
 localeStrings.push("подкуп");
 localeStrings.push("казнокрадство");
 localeStrings.push("кражи");//30
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Да, и как можно кроважаднее!");
+localeStrings.push("Да");
+localeStrings.push("Нет");
 localeStrings.push("вы казнили горожанина за %arg1");//34
 localeStrings.push("казна пополниналась на %arg1 золотых после конфискации имущества");//35
 localeStrings.push("слишком мало жителей");
@@ -59,7 +59,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//60
+localeStrings.push("Хорошо");//60
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
