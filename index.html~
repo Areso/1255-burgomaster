@@ -878,7 +878,7 @@
 		}
 		for (i = 0; i < 12; i++) {
 			for (j = 0; j < 12; j++) {
-				myMap[i][j] = 0; //Math.floor(Math.random()*10);
+				myMap[i][j] = Math.floor(Math.random()*10);
 			}
 		}
 		mapCreated = 1;
