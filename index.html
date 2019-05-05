@@ -154,7 +154,7 @@
 		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
+			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" >Explore</button><!--style="display:none"-->
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
 			<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>
 			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
@@ -436,19 +436,25 @@
 	var tile_snow       = loadImage('tiles/snow.png', composite_gm);
 	var tile_water      = loadImage('tiles/water.png', composite_gm);
 
+	var castle_tile      = loadImage('resources/castle.png', composite_gm);
+
 	var imagesLoadedMap = 0;
 
 	function composite_gm() {
 		imagesLoadedMap = imagesLoadedMap*1 + 1;
 		if (imagesLoadedMap > 1) {
-			// composite now
-			//ctx.globalAlpha = 1.00;
-			for (i = 0; i < 4; i++) {
-				for (j = 0; j < 4; j++) {
-					globalMap[0][0] = 1;
+			for (i = 0; i < config.sizeMapX; i++) {
+				for (j = 0; j < config.sizeMapY; j++) {
+					if (myMapLand[i][j]===0) {
+						ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
+					}
+					if (myMapObjects[i][j]===10) {
+						console.log("draw castle entrance");
+						ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw background
+					}
 				}
 			}
-			ctx_map.drawImage(tile_grass, 0, 0);   //draw background
+
 		}
 	}
 </script>
@@ -788,7 +794,7 @@
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
-	        costPutOutFire:20,
+		costPutOutFire:20,
 		sizeMapX:12,
 		sizeMapY:12
 	}
@@ -870,15 +876,69 @@
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msgEventLog;
 		scrollDown();
 	}
-	
+
 	function generateMap() {
-		myMap=[];	
-		for (i=0;i<12;i++) {
-			myMap.push([]);
+		//generate landscape
+		myMapLand=[];
+		for (i=0;i<config.sizeMapX;i++) {
+			myMapLand.push([]);
 		}
-		for (i = 0; i < 12; i++) {
-			for (j = 0; j < 12; j++) {
-				myMap[i][j] = 0; //Math.floor(Math.random()*10);
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				//for now, all map is just green grass
+				myMapLand[i][j] = 0; //Math.floor(Math.random()*10);
+			}
+		}
+		//place the castle
+		//castle on X axis has 3 points //144px
+		//minus one because of 0..11
+		//minus one for right part of the castle
+		//plus  one for left  part of the castle
+		//to both right and left parts could be draw on the map
+		castleX = Math.floor(Math.random()*(config.sizeMapX-2))+1
+		//castle on Y axis has 2 points // 96px
+		//minus one because of 0..11
+		//so  minus one for the roof of the castle
+		//and plus  one for the road to the casle
+		castleY = Math.floor(Math.random()*(config.sizeMapY-2))+1
+		console.log('castleX is '+castleX+' and castleY is '+castleY);
+
+		//castle(enter) = 10
+		//castle(other) = 11
+		//mountain      = 20
+		//forest        = 30
+		//player        = 40
+		//monster       = 50
+
+		myMapObjects=[];
+		for (i=0;i<config.sizeMapX;i++) {
+			myMapObjects.push([]);
+		}
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				//myMapObjects[i][j] = 0;
+				if (i===castleX && j===castleY) {
+					console.log('push castle');
+					myMapObjects[i][j]=10;
+				} else {
+					myMapObjects[i][j]=0;
+				}
+			}
+		}
+		//RemovableObjects
+		//The hero, first of all
+		myMapRemObjects=[];
+		for (i=0;i<config.sizeMapX;i++) {
+			myMapRemObjects.push([]);
+		}
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				if (i===castleX && j===castleY) {
+					console.log('push hero');
+					myMapRemObjects[i][j]=10;
+				} else {
+					myMapRemObjects[i][j]=0;
+				}
 			}
 		}
 		mapCreated = 1;
