@@ -436,7 +436,8 @@
 	var tile_snow       = loadImage('tiles/snow.png', composite_gm);
 	var tile_water      = loadImage('tiles/water.png', composite_gm);
 
-	var castle_tile      = loadImage('resources/castle.png', composite_gm);
+	var castle_tile     = loadImage('resources/castle.png', composite_gm);
+	var hero_tile       = loadImage('resources/someKnight3.png', composite_gm);
 
 	var imagesLoadedMap = 0;
 
@@ -450,7 +451,11 @@
 					}
 					if (myMapObjects[i][j]===10) {
 						console.log("draw castle entrance");
-						ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw background
+						ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw castle entrance
+					}
+					if (myMapRemObjects[i][j]===40) {
+						console.log("draw hero");
+						ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
 					}
 				}
 			}
@@ -907,7 +912,7 @@
 		//castle(other) = 11
 		//mountain      = 20
 		//forest        = 30
-		//player        = 40
+		//hero          = 40
 		//monster       = 50
 
 		myMapObjects=[];
@@ -918,7 +923,7 @@
 			for (j = 0; j < config.sizeMapY; j++) {
 				//myMapObjects[i][j] = 0;
 				if (i===castleX && j===castleY) {
-					console.log('push castle');
+					console.log('push castle at '+i+' '+j);
 					myMapObjects[i][j]=10;
 				} else {
 					myMapObjects[i][j]=0;
@@ -934,8 +939,9 @@
 		for (i = 0; i < config.sizeMapX; i++) {
 			for (j = 0; j < config.sizeMapY; j++) {
 				if (i===castleX && j===castleY) {
-					console.log('push hero');
-					myMapRemObjects[i][j]=10;
+					newj = j*1-1;//HELP NEEDED
+					console.log('push hero at '+i+' '+newj.toString());
+					myMapRemObjects[i][newj]=40;
 				} else {
 					myMapRemObjects[i][j]=0;
 				}
