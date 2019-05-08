@@ -113,7 +113,7 @@ localeStrings.push("Build Treasury<br/>lvl %arg1<br/>%arg2 gold");//110
 localeStrings.push("Build Gallows<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Fountain<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
+localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("placeholder");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

@@ -113,7 +113,7 @@ localeStrings.push("Schatzkammer aufbauen<br/>lvl %arg1<br/>%arg2 gold");//110
 localeStrings.push("Galgen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("ein Brunnen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("ein Versteck aufbauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
+localeStrings.push("Schenke<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("placeholder");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

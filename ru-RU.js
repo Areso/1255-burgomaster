@@ -113,7 +113,7 @@ localeStrings.push("Построить Сокровищницу<br/>ур. %arg1<
 localeStrings.push("Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("placeholder");
+localeStrings.push("Построить Таверну<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("placeholder");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

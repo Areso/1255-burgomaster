@@ -57,12 +57,13 @@
 			position: relative;
 			left:0px;
 		}
+		/*
 		#defence, #homes, #treasury {
 			width: 180px;
 		}
 		#buttonBldGallows, #buttonBldFountain, #buttonBldStash {
 			width: 180px;
-		}
+		}*/
 		#console_n_chat {
 			resize: none;
 			overflow: auto;
@@ -87,7 +88,12 @@
 			transition: 0.3s;
 			font-size: 17px;
 		}
-
+		td.building {
+			width:180px;
+		}
+		button.building {
+			width:180px;
+		}
 		/* Change background color of buttons on hover */
 		div.tab button:hover {
 			background-color: #ddd;
@@ -118,6 +124,16 @@
 		#lblAboutGame {
 			width: 795px;
 			height: 475px;
+			border: thin solid black;
+			overflow:scroll;
+			/*
+            overflow-x: hidden;
+            overflow-y: scroll;
+            */
+		}
+		#theBuildingDiv {
+			width: 795px;
+			height: 415px;
 			border: thin solid black;
 			overflow:scroll;
 			/*
@@ -243,65 +259,93 @@
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelBuilding">Building</div></h3>
-			<div>
+			<div id="theBuildingDiv">
 				<table border="1">
-				<tr>
-					<td>
-						<div align="center">
-							<img id="defencies_img" src="resources/wallsf_as2.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/home_as.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/treasury_as.png">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<button id="defence" onclick="game.Build('Wall')">Build walls</button>
-					</td>
-					<td>
-						<button id="homes" onclick="game.Build('Home')">Build home</button>
-					</td>
-					<td>
-						<button id="treasury" onclick="game.Build('Treasury')">Build treasury</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div align="center">
-							<img src="resources/gallows.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/fountain.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/trapdoor.png">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<button id="buttonBldGallows" onclick="game.Build('Gallows')">Build gallows</button>
-					</td>
-					<td>
-						<button id="buttonBldFountain" onclick="game.Build('Fountain')">Build fountain</button>
-					</td>
-					<td>
-						<button id="buttonBldStash" onclick="game.Build('Stash')">Build stash</button>
-					</td>
-				</tr>
-			</table>
+					<tr>
+						<td class="building">
+							<div align="center">
+								<img id="defencies_img" src="resources/wallsf_as2.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/home_as.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/treasury_as.png">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<button id="defence" onclick="game.Build('Wall')" class="building">Build walls</button>
+						</td>
+						<td class="building">
+							<button id="homes" onclick="game.Build('Home')" class="building">Build home</button>
+						</td>
+						<td class="building">
+							<button id="treasury" onclick="game.Build('Treasury')" class="building">Build treasury</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<div align="center">
+								<img src="resources/gallows.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/fountain.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/trapdoor.png">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<button id="buttonBldGallows" onclick="game.Build('Gallows')" class="building">Build gallows</button>
+						</td>
+						<td class="building">
+							<button id="buttonBldFountain" onclick="game.Build('Fountain')" class="building">Build fountain</button>
+						</td>
+						<td class="building">
+							<button id="buttonBldStash" onclick="game.Build('Stash')" class="building">Build stash</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<div align="center">
+								<img src="resources/inn.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<button id="buttonBldInn" onclick="game.Build('Inn')" class="building">Build Inn</button>
+						</td>
+						<td class="building">
+
+						</td>
+						<td class="building">
+
+						</td>
+					</tr>
+					</table>
 			</div>
 		</div>
 		<div id="About" class="tabcontent">
@@ -338,6 +382,9 @@
 	var img10   = loadImage('resources/gallows.png', composite);
 	var img11   = loadImage('resources/fountain.png', composite);
 	var img12   = loadImage('resources/trapdoor.png', composite);
+	//var img13 is already used in fire singleton
+	var img14   = loadImage('resources/inn.png', composite);
+
 
 	var Singleton = (function () {
 		var instance;
@@ -364,7 +411,7 @@
 			ctx.drawImage(img2, 0, 0);   //draw sawmill
 			ctx.drawImage(img3, 10, 40); //draw gold icon
 			ctx.drawImage(img4, 10, 80); //draw pop  icon
-			ctx.drawImage(img8, 0, 0); //draw wishing well
+			ctx.drawImage(img8, 230, 200); //draw wishing well
 			if (game.buildLevelD > 0) {
 				// draw back piece of wall
 				ctx.drawImage(img6_1, 0, 0);
@@ -401,6 +448,9 @@
 				// draw stash
 				//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
 				//ctx.drawImage(img12, 0, 0);
+			}
+			if (game.buildLevelInn > 0) {
+				ctx.drawImage(img14, 270, 90);
 			}
 			if (game.fire === 1) {
 				var img13 = Singleton.getInstance();
@@ -501,6 +551,7 @@
 		buildLevelGallows:0,
 		buildLevelFountain:0,
 		buildLevelStash:0,
+		buildLevelInn:0,
 		fire:0,
 		hero:0,
 		happyness:80,
@@ -639,6 +690,14 @@
 				if (game.gold >= Math.pow(config.costStash,(game.buildLevelStash*1 + 1)) && game.buildLevelTreasury*1 > 0) {
 					game.gold               = game.gold - Math.pow(config.costStash,(game.buildLevelStash*1 + 1));
 					game.buildLevelStash    = game.buildLevelStash*1 + 1;
+					commonBuild();
+					return true;
+				}
+			}
+			if (Structure==="Inn") {
+				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1))) {
+					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
+					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					commonBuild();
 					return true;
 				}
@@ -817,6 +876,7 @@
 		costGallows:50,
 		costFountain:50,
 		costStash:50,
+		costInn:20,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
@@ -1271,6 +1331,9 @@
 		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML=localeStrings[113].replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
 
+		nextLvlInn            = game.buildLevelInn*1+1;
+		nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
+		document.getElementById("buttonBldInn").innerHTML=localeStrings[114].replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
         if (game.buildLevelD == 0) {
             document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
 			var towerClick = "game.Build("+"\'Wall\'"+")";
