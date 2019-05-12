@@ -57,12 +57,13 @@
 			position: relative;
 			left:0px;
 		}
+		/*
 		#defence, #homes, #treasury {
 			width: 180px;
 		}
 		#buttonBldGallows, #buttonBldFountain, #buttonBldStash {
 			width: 180px;
-		}
+		}*/
 		#console_n_chat {
 			resize: none;
 			overflow: auto;
@@ -87,7 +88,12 @@
 			transition: 0.3s;
 			font-size: 17px;
 		}
-
+		td.building {
+			width:180px;
+		}
+		button.building {
+			width:180px;
+		}
 		/* Change background color of buttons on hover */
 		div.tab button:hover {
 			background-color: #ddd;
@@ -118,6 +124,16 @@
 		#lblAboutGame {
 			width: 795px;
 			height: 475px;
+			border: thin solid black;
+			overflow:scroll;
+			/*
+            overflow-x: hidden;
+            overflow-y: scroll;
+            */
+		}
+		#theBuildingDiv {
+			width: 795px;
+			height: 415px;
 			border: thin solid black;
 			overflow:scroll;
 			/*
@@ -163,7 +179,7 @@
 			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
 		<div id="Main" class="tabcontent">
-			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
+			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
 			<br>
 			<p id="resources">
 				<span id="gold" class="interface" onclick="game.add_money()" style="position:absolute; top:100px; left:60px">0</span>
@@ -172,8 +188,8 @@
 				<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
 				<br>
 			</p>
-			<p id="events_graphics">
-			
+			<p id="events_graphics" style="z-index: 8">
+
 			</p>
 			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
@@ -186,8 +202,8 @@
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
 			-->
 		</div>
-		<div id="Explore" class="tabcontent" >
-			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
+		<div id="Explore" class="tabcontent">
+			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
 			GLOBALMAP
 			</p>
@@ -243,65 +259,93 @@
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelBuilding">Building</div></h3>
-			<div>
+			<div id="theBuildingDiv">
 				<table border="1">
-				<tr>
-					<td>
-						<div align="center">
-							<img id="defencies_img" src="resources/wallsf_as2.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/home_as.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/treasury_as.png">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<button id="defence" onclick="game.Build('Wall')">Build walls</button>
-					</td>
-					<td>
-						<button id="homes" onclick="game.Build('Home')">Build home</button>
-					</td>
-					<td>
-						<button id="treasury" onclick="game.Build('Treasury')">Build treasury</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div align="center">
-							<img src="resources/gallows.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/fountain.png">
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<img src="resources/trapdoor.png">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<button id="buttonBldGallows" onclick="game.Build('Gallows')">Build gallows</button>
-					</td>
-					<td>
-						<button id="buttonBldFountain" onclick="game.Build('Fountain')">Build fountain</button>
-					</td>
-					<td>
-						<button id="buttonBldStash" onclick="game.Build('Stash')">Build stash</button>
-					</td>
-				</tr>
-			</table>
+					<tr>
+						<td class="building">
+							<div align="center">
+								<img id="defencies_img" src="resources/wallsf_as2.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/home_as.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/treasury_as.png">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<button id="defence" onclick="game.Build('Wall')" class="building">Build walls</button>
+						</td>
+						<td class="building">
+							<button id="homes" onclick="game.Build('Home')" class="building">Build home</button>
+						</td>
+						<td class="building">
+							<button id="treasury" onclick="game.Build('Treasury')" class="building">Build treasury</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<div align="center">
+								<img src="resources/gallows.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/fountain.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+								<img src="resources/trapdoor.png">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<button id="buttonBldGallows" onclick="game.Build('Gallows')" class="building">Build gallows</button>
+						</td>
+						<td class="building">
+							<button id="buttonBldFountain" onclick="game.Build('Fountain')" class="building">Build fountain</button>
+						</td>
+						<td class="building">
+							<button id="buttonBldStash" onclick="game.Build('Stash')" class="building">Build stash</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<div align="center">
+								<img src="resources/inn.png">
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+
+							</div>
+						</td>
+						<td class="building">
+							<div align="center">
+
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="building">
+							<button id="buttonBldInn" onclick="game.Build('Inn')" class="building">Build Inn</button>
+						</td>
+						<td class="building">
+
+						</td>
+						<td class="building">
+
+						</td>
+					</tr>
+					</table>
 			</div>
 		</div>
 		<div id="About" class="tabcontent">
@@ -321,28 +365,100 @@
 </span>
 <script>
 	//TOWN
-	var canvas  = document.getElementById("canvas");
+	canvas  = document.getElementById("canvas");
+	canvas.addEventListener("touchstart", tap);
+	canvas.addEventListener("mousedown", tap);
+	languageDefined = 0;
 	var ctx     = canvas.getContext("2d");
-
 	var img1    = loadImage('resources/background_a.png', composite);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 	var img2    = loadImage('resources/sawmill_a.png', composite);
+	var sawmillX     = 670;
+	var sawmillY	 = 65;
+	var sawmillW     = 110;
+	var sawmillH     = 56;
 	var img3    = loadImage('resources/gold_a.png', composite);
+	var goldX        = 10;
+	var goldY   	 = 40;
+	var goldW        = 28;
+	var goldH        = 22;
 	var img4    = loadImage('resources/pop_a.png', composite);
-	var img5    = loadImage('resources/home_a.png', composite);
-	var img5_1  = loadImage('resources/house_a.png', composite);
+	var popX         = 10;
+	var popY   	     = 80;
+	var popW         = 29;
+	var popH         = 22;
+	var img5    = loadImage('resources/home_as.png', composite);
+	var homeX        = 90;
+	var homeY   	 = 160;
+	var homeW        = 80;
+	var homeH        = 90;
+	var img5_1  = loadImage('resources/house_as.png', composite);
+	var houseX       = 90;
+	var houseY   	 = 160;
+	var houseW       = 113;
+	var houseH       = 125;
 	var img6_1  = loadImage('resources/wallsr_a.png', composite);
 	var img6_2  = loadImage('resources/wallsf_a.png', composite);
+	var wallX        = 330;
+	var wallY   	 = 400;
+	var wallW        = 110;
+	var wallH        = 65;
 	var img7    = loadImage('resources/castle_as.png', composite);
+	var castleX      = 300;
+	var castleY      = 160;
+	var castleW      = 180;
+	var castleH      = 160;
 	var img8    = loadImage('resources/wishing_well_builded.png', composite);
-	var img9    = loadImage('resources/treasury.png', composite);
+	var wellX        = 230;
+	var wellY      	 = 200;
+	var wellW        = 41;
+	var wellH        = 47;
+	var img9    = loadImage('resources/treasury_as.png', composite);
+	var treasuryX    = 200;
+	var treasuryY    = 270;
+	var treasuryW    = 125;
+	var treasuryH    = 120;
 	var img10   = loadImage('resources/gallows.png', composite);
+	var gallowsX     = 485;
+	var gallowsY   	 = 270;
+	var gallowsW     = 50;
+	var gallowsH     = 75;
 	var img11   = loadImage('resources/fountain.png', composite);
+	var fountainX    = 485;
+	var fountainY    = 290;
+	var fountainW    = 70;
+	var fountainH    = 55;
 	var img12   = loadImage('resources/trapdoor.png', composite);
-
+	//var img13 is already used in fire singleton
+	var img14   = loadImage('resources/inn.png', composite);
+	var innX = 270;
+	var innY = 80;
+	var innW = 87;
+	var innH = 79;
+	var img15   = loadImage('resources/fire_a.gif', composite);
+	img15.id      = "fire_graphics";
+	buildingsInTownB=[];
+	buildingsInTownX=[];
+	buildingsInTownY=[];
+	buildingsInTownW=[];
+	buildingsInTownH=[];
+	function deleteFromArray (arrayToMod, indexToDelete) {
+		arrayLenght                = arrayToMod.length;
+		tArrayBeforeDeletedElement = arrayToMod.slice(0,indexToDelete);
+		tArrayAfterDeletedElement  = arrayToMod.slice(indexToDelete+1,arrayToMod.length);
+		tResultArray               = tArrayBeforeDeletedElement.concat(tArrayAfterDeletedElement);
+		return tResultArray;
+	}
+	function removeFromArrays (elementIndex) {
+		buildingsInTownB = deleteFromArray(buildingsInTownB, elementIndex);
+		buildingsInTownX = deleteFromArray(buildingsInTownX, elementIndex);
+		buildingsInTownY = deleteFromArray(buildingsInTownY, elementIndex);
+		buildingsInTownW = deleteFromArray(buildingsInTownW, elementIndex);
+		buildingsInTownH = deleteFromArray(buildingsInTownH, elementIndex);
+	}
 	var Singleton = (function () {
 		var instance;
 		function createInstance() {
-			var object = loadImage('resources/fire_static.png', composite);
+			var object = loadImage('resources/fire_static.png');
 			return object;
 		}
 		return {
@@ -354,68 +470,94 @@
 			}
 		};
 	})();
-	var imagesLoaded = 0;
+	//var imagesLoaded = 0;
+	function pushBuilding(buildingName, buildingX, buildingY, buildingW, buildingH){
+		if (buildingsInTownB.indexOf(buildingName)==-1) {
+			if (buildingName==='house') {
+				removeIndex = buildingsInTownB.indexOf('home');
+				removeFromArrays(removeIndex);
+			}
+			if (buildingName==='swall') {
+				removeIndex = buildingsInTownB.indexOf('wall');
+				removeFromArrays(removeIndex);
+			}
+			if (buildingName==='scastle') {
+				removeIndex = buildingsInTownB.indexOf('scastle');
+				removeFromArrays(removeIndex);
+			}
+			buildingsInTownB.push(buildingName);
+			buildingsInTownX.push(buildingX);
+			buildingsInTownY.push(buildingY);
+			buildingsInTownW.push(buildingW);
+			buildingsInTownH.push(buildingH);
+		}
+	}
 	function composite() {
-		imagesLoaded = imagesLoaded*1 + 1;
-		if (imagesLoaded > 1) {
-			// composite now
-			//ctx.globalAlpha = 1.00;
-			ctx.drawImage(img1, 0, 0);   //draw background
-			ctx.drawImage(img2, 0, 0);   //draw sawmill
-			ctx.drawImage(img3, 10, 40); //draw gold icon
-			ctx.drawImage(img4, 10, 80); //draw pop  icon
-			ctx.drawImage(img8, 0, 0); //draw wishing well
-			if (game.buildLevelD > 0) {
-				// draw back piece of wall
-				ctx.drawImage(img6_1, 0, 0);
-			}
-			if (game.buildLevelH > 0 && game.buildLevelH < 10) {
-				// draw houses
-				ctx.drawImage(img5, 0, 0);
-			}
-			if (game.buildLevelH >= 10) {
-				// draw more houses
-				ctx.drawImage(img5_1, 0, 0);
-			}
-			if (game.buildLevelD > 1) {
-				// draw castle
-				ctx.drawImage(img7, 300, 160);
-			}
-			if (game.buildLevelD > 0) {
-				// draw front piece of wall
-				ctx.drawImage(img6_2, 0, 0);
-			}
-			if (game.buildLevelTreasury > 0) {
-				// draw treasury
-				ctx.drawImage(img9, 0, 0);
-			}
-			if (game.buildLevelGallows > 0) {
-				// draw gallows
-				ctx.drawImage(img10, 460, 270);
-			}
-			if (game.buildLevelFountain > 0) {
-				// draw fountain
-				ctx.drawImage(img11, 460, 270);
-			}
-			if (game.buildLevelStash > 0) {
-				// draw stash
-				//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
-				//ctx.drawImage(img12, 0, 0);
-			}
-			if (game.fire === 1) {
-				var img13 = Singleton.getInstance();
-				objFire_graphics         = new Image();
-				objFire_graphics.id      = "fire_graphics";
-				objFire_graphics.src     = 'resources/fire_a.gif';
-				objFire_graphics.style   = 'position:absolute; top:170px; left:0px; z-index=98; display:none'
-				//objFire_graphics.onclick = putOutFire();
-				document.getElementById("events_graphics").appendChild(objFire_graphics);
-				//originalDiv.parentNode.insertBefore(newVideo, originalDiv);
-				//document.body.insertBefore(fire_graphics, pp);
-				document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
-				document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
-				document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
-			}
+		ctx.drawImage(img1, 0, 0);   //draw background
+		ctx.drawImage(img2, sawmillX, sawmillY);//draw sawmill
+		pushBuilding('sawmill', sawmillX, sawmillY, sawmillW, sawmillH);
+		ctx.drawImage(img3, goldX, goldY); //draw gold icon
+		pushBuilding('gold', goldX, goldY, goldW, goldH);
+		ctx.drawImage(img4, popX, popY); //draw pop  icon
+		pushBuilding('pop', popX, popY, popW, popH);
+		ctx.drawImage(img8, wellX, wellY); //draw wishing well
+		pushBuilding('well', wellX, wellY, wellW, wellH);
+		if (game.buildLevelD > 0) {
+			// draw back piece of wall
+			ctx.drawImage(img6_1, 0, 0);
+		}
+		if (game.buildLevelH > 0 && game.buildLevelH < 10) {
+			// draw homes
+			ctx.drawImage(img5, homeX, homeY);
+			pushBuilding('home', homeX, homeY, homeW, homeH);
+		}
+		if (game.buildLevelH >= 10) {
+			// draw more houses
+			ctx.drawImage(img5_1, houseX, houseY);
+			pushBuilding('house', houseX, houseY, houseW, houseH);
+		}
+		if (game.buildLevelD > 1) {
+			// draw castle
+			ctx.drawImage(img7, castleX, castleY);
+			pushBuilding('castle', castleX, castleY, castleW, castleH);
+		}
+		if (game.buildLevelTreasury > 0) {
+			// draw treasury
+			ctx.drawImage(img9, treasuryX, treasuryY);
+			pushBuilding('treasury', treasuryX, treasuryY, treasuryW, treasuryH);
+		}
+		if (game.buildLevelGallows > 0) {
+			// draw gallows
+			ctx.drawImage(img10, gallowsX, gallowsY);
+			pushBuilding('gallows', gallowsX, gallowsY, gallowsW, gallowsH);
+		}
+		if (game.buildLevelFountain > 0) {
+			// draw fountain
+			ctx.drawImage(img11, fountainX, fountainY);
+			pushBuilding('fountain', fountainX, fountainY, fountainW, fountainH);
+		}
+		if (game.buildLevelStash > 0) {
+			// draw stash
+			//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
+			//ctx.drawImage(img12, 0, 0);
+		}
+		if (game.buildLevelInn > 0) {
+			ctx.drawImage(img14, innX, innY);
+			pushBuilding('inn', innX, innY, innW, innH);
+		}
+		if (game.buildLevelD > 0) {
+			// draw front piece of wall
+			ctx.drawImage(img6_2, 0, 0);
+			//pushing gatehouse of the wall
+			pushBuilding('wall', wallX, wallY, wallW, wallH);
+		}
+		if (game.fire === 1) {
+			img15.style   = 'position:absolute; top:370px; left:200px; z-index:8';
+			document.getElementById("events_graphics").appendChild(img15);
+			//img15.style   = 'position:absolute; top:170px; left:0px; z-index:8';
+			document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
+			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
+
 		}
 	}
 	function loadImage(src, onload) {
@@ -424,31 +566,129 @@
 		img.src = src;
 		return img;
 	}
+	function getElementPosition (element) {
+		//thanks to William Alone
+		var parentOffset,
+				pos = {
+					x: element.offsetLeft,
+					y: element.offsetTop
+				};
+		if (element.offsetParent) {
+			parentOffset = getElementPosition(element.offsetParent);
+			pos.x += parentOffset.x;
+			pos.y += parentOffset.y;
+		}
+		return pos;
+	}
+	function tap (e) {
+		pos = getElementPosition(canvas);
+		loc = {};
+		tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
+		tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
+		canvasScaleRatio = canvas.width / canvas.offsetWidth;
+		loc.x = (tapX - 9) * canvasScaleRatio;
+		loc.y = (tapY - 58) * canvasScaleRatio;
+		for (i=0;i<buildingsInTownB.length;i++){
+			if (loc.x >= buildingsInTownX[i] && loc.x <= buildingsInTownX[i]+buildingsInTownW[i]) {
+				if (loc.y >= buildingsInTownY[i] && loc.y <= buildingsInTownY[i]+buildingsInTownH[i]) {
+					console.log(buildingsInTownB[i]);
+					buildingClick(buildingsInTownB[i]);
+				}
+			}
+		}
+	}
+	function buildingClick(buildingName){
+		if (buildingName==='well') {
+			alertMsg = localeStrings[132];
+		}
+		if (buildingName==='gold') {
+			alertMsg = localeStrings[144];
+		}
+		if (buildingName==='pop') {
+			alertMsg = localeStrings[145];
+		}
+		if (buildingName==='sawmill') {
+			alertMsg = localeStrings[133];
+		}
+		if (buildingName==='wall') {
+			alertMsg = localeStrings[134];
+		}
+		if (buildingName==='swall') {
+			alertMsg = localeStrings[135];
+		}
+		if (buildingName==='home') {
+			alertMsg = localeStrings[138];
+		}
+		if (buildingName==='house') {
+			alertMsg = localeStrings[139];
+		}
+		if (buildingName==='castle') {
+			alertMsg = localeStrings[136];
+		}
+		if (buildingName==='scastle') {
+			alertMsg = localeStrings[137];
+		}
+		if (buildingName==='inn') {
+			alertMsg = localeStrings[140];
+		}
+		if (buildingName==='gallows') {
+			alertMsg = localeStrings[141];
+		}
+		if (buildingName==='fountain') {
+			alertMsg = localeStrings[142];
+		}
+		if (buildingName==='treasury') {
+			alertMsg = localeStrings[143];
+		}
+		showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+	}
 	//composite();
 </script>
 <script>
-
 	//GLOBALMAP
 	var canvas_map      = document.getElementById("canvasMap");
 	var ctx_map         = canvas_map.getContext("2d");
-	var tile_grass      = loadImage('tiles/grass.png', composite_gm);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
-	var tile_sand       = loadImage('tiles/sand.png', composite_gm);
-	var tile_snow       = loadImage('tiles/snow.png', composite_gm);
-	var tile_water      = loadImage('tiles/water.png', composite_gm);
-
-	var imagesLoadedMap = 0;
-
+	var tile_grass      = loadImage('tiles/grass.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
+	var tile_sand       = loadImage('tiles/sand.png');
+	var tile_snow       = loadImage('tiles/snow.png');
+	var tile_water      = loadImage('tiles/water.png');
+	var castle_tile     = loadImage('resources/castle_big.png');
+	var hero_tile       = loadImage('resources/someKnight3.png');
+	var tree_tile       = loadImage('resources/tree.png');
 	function composite_gm() {
-		imagesLoadedMap = imagesLoadedMap*1 + 1;
-		if (imagesLoadedMap > 1) {
-			// composite now
-			//ctx.globalAlpha = 1.00;
-			for (i = 0; i < 4; i++) {
-				for (j = 0; j < 4; j++) {
-					globalMap[0][0] = 1;
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				if (game.myMapLand[i][j]===0) {
+					ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
 				}
 			}
-			ctx_map.drawImage(tile_grass, 0, 0);   //draw background
+		}
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				if (game.myMapLand[i][j]===0) {
+					//ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
+				}
+				if (game.myMapObjects[i][j]===1) {
+					//console.log("draw tree");
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+				}
+				if (game.myMapObjects[i][j]===2) {
+					//console.log("draw tree");
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+				}
+				if (game.myMapObjects[i][j]===3) {
+					//console.log("draw tree");
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+				}
+				if (game.myMapObjects[i][j]===12) {
+					console.log("draw castle");
+					ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw castle entrance
+				}
+				if (game.myMapRemObjects[i][j]===40) {
+					console.log("draw hero");
+					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
+				}
+			}
 		}
 	}
 </script>
@@ -474,22 +714,36 @@
 		buildLevelGallows:0,
 		buildLevelFountain:0,
 		buildLevelStash:0,
+		buildLevelInn:0,
 		fire:0,
 		hero:0,
 		happyness:80,
 		o_autosave:0,
 		saveVersion:"saveV1006",
+		myGlobalMap: [],
+		myMapLand: [],
+		castleX: 1,
+		castleY: 1,
+		myMapObjects: [],
+		myMapRemObjects: [],
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
+		},
+		createTheGlobalMap : function () {
+			for (i = 0; i < 4; i++) {
+				for (j = 0; j < 4; j++) {
+					game.myGlobalMap[i][j] = 1;
+				}
+			}
 		},
 		calculateTurn : function() {
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
 			if (game.season === 5) {
-			    game.season   = 1;
-			    game.year     = game.year+1;
-            }
+				game.season   = 1;
+				game.year     = game.year+1;
+			}
 			gold_was      = game.gold;
 			gold_limit    = game.goldLimit();
 			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
@@ -518,28 +772,28 @@
 				else {
 					//fire guards which we cannot afford
 					//for now fire all guards!
-                    //TODO fire only those who we cannot afford
+					//TODO fire only those who we cannot afford
 					game.treasuryGuard = 0;
 					msg   = localeStrings[37];
 					postEventLog(msg);
 				}
 			}
 			if (game.gold !== gold_was) {
-                if (game.gold > gold_was) {
-                    msg = localeStrings[4];
-                } else {
-                    msg = localeStrings[5];
-                }
-                postEventLog(msg);
-            };
+				if (game.gold > gold_was) {
+					msg = localeStrings[4];
+				} else {
+					msg = localeStrings[5];
+				}
+				postEventLog(msg);
+			};
 			if (game.pop !== pop_was) {
-                if (game.pop > pop_was) {
-                    msg = localeStrings[7];
-                } else {
-                    msg = localeStrings[8];
-                }
-                postEventLog(msg);
-            };
+				if (game.pop > pop_was) {
+					msg = localeStrings[7];
+				} else {
+					msg = localeStrings[8];
+				}
+				postEventLog(msg);
+			};
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//ym(47225574, 'reachGoal', 'min5');
@@ -599,6 +853,14 @@
 				if (game.gold >= Math.pow(config.costStash,(game.buildLevelStash*1 + 1)) && game.buildLevelTreasury*1 > 0) {
 					game.gold               = game.gold - Math.pow(config.costStash,(game.buildLevelStash*1 + 1));
 					game.buildLevelStash    = game.buildLevelStash*1 + 1;
+					commonBuild();
+					return true;
+				}
+			}
+			if (Structure==="Inn") {
+				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1))) {
+					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
+					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					commonBuild();
 					return true;
 				}
@@ -682,15 +944,15 @@
 					}
 					gold_incr     = game.gold - gold_was;
 					rnd = Math.floor((Math.random() * 6) + 1);
-                    reason = localeStrings[24+rnd]
+					reason = localeStrings[24+rnd]
 					msg = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
-                    msg = localeStrings[35].replace("%arg1", gold_incr);
-                    postEventLog(msg);
+					msg = localeStrings[35].replace("%arg1", gold_incr);
+					postEventLog(msg);
 				} else {
-				    msg = localeStrings[36];
-                    alert(msg);
-                }
+					msg = localeStrings[36];
+					alert(msg);
+				}
 				updateResources();
 			}
 		},
@@ -698,7 +960,7 @@
 			if (game.fire === 1) {
 				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
 				showModal(1, '', game.putOutFireCallback, question,  localeStrings[32], localeStrings[33])
-				
+
 			}
 		},
 		putOutFireCallback : function () {
@@ -733,36 +995,36 @@
 		},
 		startFire : function () {
 			if (game.fire === 0) {
-                rnd = Math.floor((Math.random() * 3) + 1);
-                if (rnd === 1) {
-                    msg = localeStrings[38];
-                    postEventLog(msg);
-                    game.fire = 1;
-                    composite();
-                    //TODO make a certain building in fire, not just "city"
-                    if (game.buildLevelD == 1) {
-                        ceil = 1
-                    }
-                    if (game.buildLevelD == 2) {
-                        ceil = 2
-                    }
-                    rnd = Math.floor((Math.random() * 2) + 0);
-                    if (rnd === 0) {
-                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-                    }
-                    if (rnd === 1) {
-                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-                    }
-                    if (rnd === 0) {
-                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-                    }
-                }
+				rnd = Math.floor((Math.random() * 3) + 1);
+				if (rnd === 1) {
+					msg = localeStrings[38];
+					postEventLog(msg);
+					game.fire = 1;
+					composite();
+					//TODO make a certain building in fire, not just "city"
+					if (game.buildLevelD == 1) {
+						ceil = 1
+					}
+					if (game.buildLevelD == 2) {
+						ceil = 2
+					}
+					rnd = Math.floor((Math.random() * 2) + 0);
+					if (rnd === 0) {
+						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+					if (rnd === 1) {
+						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+					if (rnd === 0) {
+						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+				}
 			} else {
-			    //you can't get another fire, while you do have previous still burning your city. For now.
-            }
+				//you can't get another fire, while you do have previous still burning your city. For now.
+			}
 		},
 		winLottery : function () {
-            msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
+			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
 			game.gold = game.gold + config.lotteryPrize;
 			updateResources();
@@ -777,10 +1039,13 @@
 		costGallows:50,
 		costFountain:50,
 		costStash:50,
+		costInn:20,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
-        costPutOutFire:20
+		costPutOutFire:20,
+		sizeMapX:12,
+		sizeMapY:12
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -790,23 +1055,19 @@
 	var whatDraw      = "";
 	var minBL         = 0;
 	var mapCreated    = 0;
-	var globalMap = [[],[]];
-	var firstLoad     = true;
 	updateResources();
 	populatePatchnotes();
 	generateMap();
 	var autosaveObject;
 	setupAutosave();//DEBUG
-
+	composite();
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
-
 	include('localisation.js',function(){
-        loadStartLocale();
-        console.log('we are in first level include after loadStartLocale()');
-    });
-
+		loadStartLocale();
+		console.log('we are in first level include after loadStartLocale()');
+	});
 	//functions
 	function getAck() {
 		//
@@ -846,7 +1107,7 @@
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
 		//TODO check if this is first callback in the session or not
 		//if (firstLoad===true) {
-			welcomeMsg();
+		welcomeMsg();
 		//	firstLoad = false;
 		//}
 		updateButtonCaptions();
@@ -861,34 +1122,101 @@
 		scrollDown();
 	}
 	function generateMap() {
-		/*
-        var arr  = [];
-
-        var arr1 = ['00','01'];
-        var arr2 = ['10','11'];
-        var arr3 = ['20','21'];
-        for (j = 0; j < 2; j++) {
-                arr1.push(Math.floor(Math.random()*10);
-            }
-        arr.push(arr1);
-        arr.push(arr2);
-        arr.push(arr3);
-        for (i = 0; i < 4; i++) {
-            for (j = 0; j < 4; j++) {
-                globalMap[0][0] = 1;
-            }
-        }
-        */
-		for (var a=[]; a.push([])<10;);
-		for (i = 0; i < 4; i++) {
-			for (j = 0; j < 4; j++) {
-				a[i][j] = Math.floor(Math.random()*10);
-				//console.log("i "+i+" and j is "+j+" value is "+a[i][j]);
+		//generate landscape
+		game.myMapLand=[];
+		for (i=0;i<config.sizeMapX;i++) {
+			game.myMapLand.push([]);
+		}
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				//for now, all map is just green grass
+				game.myMapLand[i][j] = 0; //Math.floor(Math.random()*10);
 			}
 		}
+		//place the castle
+		//castle on X axis has 3 points //144px
+		//minus one because of 0..11
+		//minus one for right part of the castle
+		//plus  one for left  part of the castle
+		//to both right and left parts could be draw on the map
+		game.castleX = Math.floor(Math.random()*(config.sizeMapX-2))+1
+		//castle on Y axis has 2 points // 96px
+		//minus one because of 0..11
+		//so  minus one for the roof of the castle
+		//and plus  one for the road to the casle
+		game.castleY = Math.floor(Math.random()*(config.sizeMapY-2))+1
+		console.log('castleX is '+game.castleX+' and castleY is '+game.castleY);
+
+		//castle(enter) = 10
+		//castle(other) = 11
+		//castle(point) = 12 //from this point we draw a castle
+		//mountain      = 20
+		//forest        = 1..3
+		//hero          = 40
+		//monster       = 50
+
+		game.myMapObjects=[];
+		for (i=0;i<config.sizeMapX;i++) {
+			game.myMapObjects.push([]);
+		}
+
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				game.myMapObjects[i][j]=0;
+
+			}
+		}
+		game.myMapObjects[game.castleX][game.castleY]=10;
+		game.myMapObjects[game.castleX-1][game.castleY]=11;
+		game.myMapObjects[game.castleX+1][game.castleY]=11;
+
+		game.myMapObjects[game.castleX][game.castleY-1]=11;
+		game.myMapObjects[game.castleX-1][game.castleY-1]=12;
+		game.myMapObjects[game.castleX+1][game.castleY-1]=11;
+
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				if (game.myMapObjects[i][j]===0) {
+					rnd = Math.floor((Math.random() * 12) + 1);
+					if (rnd > 3) {
+						rnd = 0
+					}
+					game.myMapObjects[i][j]=rnd;
+				}
+			}
+		}
+		game.myMapObjects[game.castleX][game.castleY+1]=0;//just to be sure there are nothing to block path to a castle
+		//RemovableObjects
+		//The hero, first of all
+		game.myMapRemObjects=[];
+		for (i=0;i<config.sizeMapX;i++) {
+			game.myMapRemObjects.push([]);
+		}
+		for (i = 0; i < config.sizeMapX; i++) {
+			for (j = 0; j < config.sizeMapY; j++) {
+				game.myMapRemObjects[i][j]=0;
+			}
+		}
+		game.myMapRemObjects[game.castleX][game.castleY+1]=40;
 		mapCreated = 1;
+		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.205";
+		writeToTextArea(msg);
+		msg = "all objects on the city tab now is clickable";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.199";
+		writeToTextArea(msg);
+		msg = "now the game generate the adventure map";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.198";
+		writeToTextArea(msg);
+		msg = "done German translation";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.191";
 		writeToTextArea(msg);
 		msg = "hiring guardsmen now done with dialogue.js";
@@ -905,9 +1233,9 @@
 		writeToTextArea(msg);
 
 		msg = "version 1.0.186";
-        writeToTextArea(msg);
-        msg = "made Russian translation";
-        writeToTextArea(msg);
+		writeToTextArea(msg);
+		msg = "made Russian translation";
+		writeToTextArea(msg);
 
 		msg = "version 1.0.180";
 		writeToTextArea(msg);
@@ -1176,11 +1504,14 @@
 		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML=localeStrings[113].replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
 
-        if (game.buildLevelD == 0) {
-            document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
+		nextLvlInn            = game.buildLevelInn*1+1;
+		nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
+		document.getElementById("buttonBldInn").innerHTML=localeStrings[114].replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
+		if (game.buildLevelD == 0) {
+			document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
 			var towerClick = "game.Build("+"\'Wall\'"+")";
-            document.getElementById("defence").setAttribute("onclick", towerClick);
-        }
+			document.getElementById("defence").setAttribute("onclick", towerClick);
+		}
 		if (game.buildLevelD == 1) {
 			document.getElementById("defence").innerHTML=localeStrings[109].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costTower);
 			var towerClick = "game.Build("+"\'Tower\'"+")";

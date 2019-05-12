@@ -113,7 +113,7 @@ localeStrings.push("Build Treasury<br/>lvl %arg1<br/>%arg2 gold");//110
 localeStrings.push("Build Gallows<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Fountain<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
+localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("placeholder");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -149,3 +149,33 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "Gallows will decrease population, increase taxes, and allow you to execute townsfolk.<br>" +
     "Executing any townsperson will add his property as confiscated gold.<br>" +
     "Stash is required to lower your losses from stealing. You cannot build Stash without Treasury.<br>");//131
+localeStrings.push("wishing well");
+localeStrings.push("sawmill");
+localeStrings.push("wall");
+localeStrings.push("stone wall");//135
+localeStrings.push("tower");
+localeStrings.push("stone tower");
+localeStrings.push("home");
+localeStrings.push("homes");
+localeStrings.push("inn");//140
+localeStrings.push("gallows");
+localeStrings.push("fountain");
+localeStrings.push("treasury");
+localeStrings.push("gold");
+localeStrings.push("population");//145
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//150
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//155
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160
+

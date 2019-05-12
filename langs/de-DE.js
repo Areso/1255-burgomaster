@@ -113,7 +113,7 @@ localeStrings.push("Schatzkammer aufbauen<br/>lvl %arg1<br/>%arg2 gold");//110
 localeStrings.push("Galgen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("ein Brunnen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("ein Versteck aufbauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
+localeStrings.push("Schenke<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("placeholder");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -148,3 +148,33 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "Galgen werden die Bevölkerung verringern, die Steuern erhöhen und es dir ermöglichen, Stadtbewohner hinzurichten.<br>" +
     "Die Hinrichtung einer Stadtbewohnerin wird ihr Eigentum als beschlagnahmtes Gold hinzufügen.<br>" +
     "Versteck ist erforderlich, um deine Verluste durch Diebstahl zu verringern. Du kannst kein Versteck ohne Schatzkammer bauen.<br>");//131
+
+localeStrings.push("Wunschbrunnen");
+localeStrings.push("Sägewerk");
+localeStrings.push("Mauer");
+localeStrings.push("Steinmauer");//135
+localeStrings.push("Turm");
+localeStrings.push("Steinturm");
+localeStrings.push("Haus");
+localeStrings.push("Häuser");
+localeStrings.push("Schenke");//140
+localeStrings.push("Galgen");
+localeStrings.push("ein Brunnen");
+localeStrings.push("Schatzkammer");
+localeStrings.push("gold");
+localeStrings.push("population");//145
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//150
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//155
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160

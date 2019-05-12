@@ -113,7 +113,7 @@ localeStrings.push("Построить Сокровищницу<br/>ур. %arg1<
 localeStrings.push("Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("placeholder");
+localeStrings.push("Построить Таверну<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("placeholder");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -149,3 +149,32 @@ localeStrings.push("<h1>1255 Бургомастер</h1>" +
     "Виселица уменьшает счастье, скорость роста населения, увеличивает налоги и позволяет казнить горожан.<br>" +
     "Казнь любого горожанина сопровождается конфискацией его имущества<br>" +
     "Тайник позволяет сократить потери от воровства. Тайник нельзя построить без сокровищницы.<br>");
+localeStrings.push("колодец желаний");
+localeStrings.push("пилорама");
+localeStrings.push("стена");
+localeStrings.push("каменная стена");//135
+localeStrings.push("башня");
+localeStrings.push("каменная башня");
+localeStrings.push("дом");
+localeStrings.push("дома");
+localeStrings.push("таверна");//140
+localeStrings.push("виселица");
+localeStrings.push("фонтан");
+localeStrings.push("сокровищница");
+localeStrings.push("золото");
+localeStrings.push("население");//145
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//150
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//155
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160
