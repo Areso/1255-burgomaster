@@ -170,7 +170,7 @@
 		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" >Explore</button><!--style="display:none"-->
+			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
 			<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>
 			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
@@ -179,7 +179,7 @@
 			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
 		<div id="Main" class="tabcontent">
-			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:-1"></canvas>
+			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
 			<br>
 			<p id="resources">
 				<span id="gold" class="interface" onclick="game.add_money()" style="position:absolute; top:100px; left:60px">0</span>
@@ -188,8 +188,8 @@
 				<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
 				<br>
 			</p>
-			<p id="events_graphics">
-			
+			<p id="events_graphics" style="z-index: 8">
+
 			</p>
 			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
@@ -202,8 +202,8 @@
 			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
 			-->
 		</div>
-		<div id="Explore" class="tabcontent" >
-			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:-1"></canvas>
+		<div id="Explore" class="tabcontent">
+			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
 			<p style="position:absolute; top:60px; left: 20px">
 			GLOBALMAP
 			</p>
@@ -365,31 +365,100 @@
 </span>
 <script>
 	//TOWN
-	var canvas  = document.getElementById("canvas");
+	canvas  = document.getElementById("canvas");
+	canvas.addEventListener("touchstart", tap);
+	canvas.addEventListener("mousedown", tap);
+	languageDefined = 0;
 	var ctx     = canvas.getContext("2d");
-
 	var img1    = loadImage('resources/background_a.png', composite);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 	var img2    = loadImage('resources/sawmill_a.png', composite);
+	var sawmillX     = 670;
+	var sawmillY	 = 65;
+	var sawmillW     = 110;
+	var sawmillH     = 56;
 	var img3    = loadImage('resources/gold_a.png', composite);
+	var goldX        = 10;
+	var goldY   	 = 40;
+	var goldW        = 28;
+	var goldH        = 22;
 	var img4    = loadImage('resources/pop_a.png', composite);
-	var img5    = loadImage('resources/home_a.png', composite);
-	var img5_1  = loadImage('resources/house_a.png', composite);
+	var popX         = 10;
+	var popY   	     = 80;
+	var popW         = 29;
+	var popH         = 22;
+	var img5    = loadImage('resources/home_as.png', composite);
+	var homeX        = 90;
+	var homeY   	 = 160;
+	var homeW        = 80;
+	var homeH        = 90;
+	var img5_1  = loadImage('resources/house_as.png', composite);
+	var houseX       = 90;
+	var houseY   	 = 160;
+	var houseW       = 113;
+	var houseH       = 125;
 	var img6_1  = loadImage('resources/wallsr_a.png', composite);
 	var img6_2  = loadImage('resources/wallsf_a.png', composite);
+	var wallX        = 330;
+	var wallY   	 = 400;
+	var wallW        = 110;
+	var wallH        = 65;
 	var img7    = loadImage('resources/castle_as.png', composite);
+	var castleX      = 300;
+	var castleY      = 160;
+	var castleW      = 180;
+	var castleH      = 160;
 	var img8    = loadImage('resources/wishing_well_builded.png', composite);
-	var img9    = loadImage('resources/treasury.png', composite);
+	var wellX        = 230;
+	var wellY      	 = 200;
+	var wellW        = 41;
+	var wellH        = 47;
+	var img9    = loadImage('resources/treasury_as.png', composite);
+	var treasuryX    = 200;
+	var treasuryY    = 270;
+	var treasuryW    = 125;
+	var treasuryH    = 120;
 	var img10   = loadImage('resources/gallows.png', composite);
+	var gallowsX     = 485;
+	var gallowsY   	 = 270;
+	var gallowsW     = 50;
+	var gallowsH     = 75;
 	var img11   = loadImage('resources/fountain.png', composite);
+	var fountainX    = 485;
+	var fountainY    = 290;
+	var fountainW    = 70;
+	var fountainH    = 55;
 	var img12   = loadImage('resources/trapdoor.png', composite);
 	//var img13 is already used in fire singleton
 	var img14   = loadImage('resources/inn.png', composite);
-
-
+	var innX = 270;
+	var innY = 80;
+	var innW = 87;
+	var innH = 79;
+	var img15   = loadImage('resources/fire_a.gif', composite);
+	img15.id      = "fire_graphics";
+	buildingsInTownB=[];
+	buildingsInTownX=[];
+	buildingsInTownY=[];
+	buildingsInTownW=[];
+	buildingsInTownH=[];
+	function deleteFromArray (arrayToMod, indexToDelete) {
+		arrayLenght                = arrayToMod.length;
+		tArrayBeforeDeletedElement = arrayToMod.slice(0,indexToDelete);
+		tArrayAfterDeletedElement  = arrayToMod.slice(indexToDelete+1,arrayToMod.length);
+		tResultArray               = tArrayBeforeDeletedElement.concat(tArrayAfterDeletedElement);
+		return tResultArray;
+	}
+	function removeFromArrays (elementIndex) {
+		buildingsInTownB = deleteFromArray(buildingsInTownB, elementIndex);
+		buildingsInTownX = deleteFromArray(buildingsInTownX, elementIndex);
+		buildingsInTownY = deleteFromArray(buildingsInTownY, elementIndex);
+		buildingsInTownW = deleteFromArray(buildingsInTownW, elementIndex);
+		buildingsInTownH = deleteFromArray(buildingsInTownH, elementIndex);
+	}
 	var Singleton = (function () {
 		var instance;
 		function createInstance() {
-			var object = loadImage('resources/fire_static.png', composite);
+			var object = loadImage('resources/fire_static.png');
 			return object;
 		}
 		return {
@@ -401,71 +470,94 @@
 			}
 		};
 	})();
-	var imagesLoaded = 0;
+	//var imagesLoaded = 0;
+	function pushBuilding(buildingName, buildingX, buildingY, buildingW, buildingH){
+		if (buildingsInTownB.indexOf(buildingName)==-1) {
+			if (buildingName==='house') {
+				removeIndex = buildingsInTownB.indexOf('home');
+				removeFromArrays(removeIndex);
+			}
+			if (buildingName==='swall') {
+				removeIndex = buildingsInTownB.indexOf('wall');
+				removeFromArrays(removeIndex);
+			}
+			if (buildingName==='scastle') {
+				removeIndex = buildingsInTownB.indexOf('scastle');
+				removeFromArrays(removeIndex);
+			}
+			buildingsInTownB.push(buildingName);
+			buildingsInTownX.push(buildingX);
+			buildingsInTownY.push(buildingY);
+			buildingsInTownW.push(buildingW);
+			buildingsInTownH.push(buildingH);
+		}
+	}
 	function composite() {
-		imagesLoaded = imagesLoaded*1 + 1;
-		if (imagesLoaded > 1) {
-			// composite now
-			//ctx.globalAlpha = 1.00;
-			ctx.drawImage(img1, 0, 0);   //draw background
-			ctx.drawImage(img2, 0, 0);   //draw sawmill
-			ctx.drawImage(img3, 10, 40); //draw gold icon
-			ctx.drawImage(img4, 10, 80); //draw pop  icon
-			ctx.drawImage(img8, 230, 200); //draw wishing well
-			if (game.buildLevelD > 0) {
-				// draw back piece of wall
-				ctx.drawImage(img6_1, 0, 0);
-			}
-			if (game.buildLevelH > 0 && game.buildLevelH < 10) {
-				// draw houses
-				ctx.drawImage(img5, 0, 0);
-			}
-			if (game.buildLevelH >= 10) {
-				// draw more houses
-				ctx.drawImage(img5_1, 0, 0);
-			}
-			if (game.buildLevelD > 1) {
-				// draw castle
-				ctx.drawImage(img7, 300, 160);
-			}
-			if (game.buildLevelD > 0) {
-				// draw front piece of wall
-				ctx.drawImage(img6_2, 0, 0);
-			}
-			if (game.buildLevelTreasury > 0) {
-				// draw treasury
-				ctx.drawImage(img9, 0, 0);
-			}
-			if (game.buildLevelGallows > 0) {
-				// draw gallows
-				ctx.drawImage(img10, 460, 270);
-			}
-			if (game.buildLevelFountain > 0) {
-				// draw fountain
-				ctx.drawImage(img11, 460, 270);
-			}
-			if (game.buildLevelStash > 0) {
-				// draw stash
-				//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
-				//ctx.drawImage(img12, 0, 0);
-			}
-			if (game.buildLevelInn > 0) {
-				ctx.drawImage(img14, 270, 90);
-			}
-			if (game.fire === 1) {
-				var img13 = Singleton.getInstance();
-				objFire_graphics         = new Image();
-				objFire_graphics.id      = "fire_graphics";
-				objFire_graphics.src     = 'resources/fire_a.gif';
-				objFire_graphics.style   = 'position:absolute; top:170px; left:0px; z-index=98; display:none'
-				//objFire_graphics.onclick = putOutFire();
-				document.getElementById("events_graphics").appendChild(objFire_graphics);
-				//originalDiv.parentNode.insertBefore(newVideo, originalDiv);
-				//document.body.insertBefore(fire_graphics, pp);
-				document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
-				document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
-				document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:170px; left:0px; z-index=98; display:true");
-			}
+		ctx.drawImage(img1, 0, 0);   //draw background
+		ctx.drawImage(img2, sawmillX, sawmillY);//draw sawmill
+		pushBuilding('sawmill', sawmillX, sawmillY, sawmillW, sawmillH);
+		ctx.drawImage(img3, goldX, goldY); //draw gold icon
+		pushBuilding('gold', goldX, goldY, goldW, goldH);
+		ctx.drawImage(img4, popX, popY); //draw pop  icon
+		pushBuilding('pop', popX, popY, popW, popH);
+		ctx.drawImage(img8, wellX, wellY); //draw wishing well
+		pushBuilding('well', wellX, wellY, wellW, wellH);
+		if (game.buildLevelD > 0) {
+			// draw back piece of wall
+			ctx.drawImage(img6_1, 0, 0);
+		}
+		if (game.buildLevelH > 0 && game.buildLevelH < 10) {
+			// draw homes
+			ctx.drawImage(img5, homeX, homeY);
+			pushBuilding('home', homeX, homeY, homeW, homeH);
+		}
+		if (game.buildLevelH >= 10) {
+			// draw more houses
+			ctx.drawImage(img5_1, houseX, houseY);
+			pushBuilding('house', houseX, houseY, houseW, houseH);
+		}
+		if (game.buildLevelD > 1) {
+			// draw castle
+			ctx.drawImage(img7, castleX, castleY);
+			pushBuilding('castle', castleX, castleY, castleW, castleH);
+		}
+		if (game.buildLevelTreasury > 0) {
+			// draw treasury
+			ctx.drawImage(img9, treasuryX, treasuryY);
+			pushBuilding('treasury', treasuryX, treasuryY, treasuryW, treasuryH);
+		}
+		if (game.buildLevelGallows > 0) {
+			// draw gallows
+			ctx.drawImage(img10, gallowsX, gallowsY);
+			pushBuilding('gallows', gallowsX, gallowsY, gallowsW, gallowsH);
+		}
+		if (game.buildLevelFountain > 0) {
+			// draw fountain
+			ctx.drawImage(img11, fountainX, fountainY);
+			pushBuilding('fountain', fountainX, fountainY, fountainW, fountainH);
+		}
+		if (game.buildLevelStash > 0) {
+			// draw stash
+			//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
+			//ctx.drawImage(img12, 0, 0);
+		}
+		if (game.buildLevelInn > 0) {
+			ctx.drawImage(img14, innX, innY);
+			pushBuilding('inn', innX, innY, innW, innH);
+		}
+		if (game.buildLevelD > 0) {
+			// draw front piece of wall
+			ctx.drawImage(img6_2, 0, 0);
+			//pushing gatehouse of the wall
+			pushBuilding('wall', wallX, wallY, wallW, wallH);
+		}
+		if (game.fire === 1) {
+			img15.style   = 'position:absolute; top:370px; left:200px; z-index:8';
+			document.getElementById("events_graphics").appendChild(img15);
+			//img15.style   = 'position:absolute; top:170px; left:0px; z-index:8';
+			document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
+			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
+
 		}
 	}
 	function loadImage(src, onload) {
@@ -474,10 +566,85 @@
 		img.src = src;
 		return img;
 	}
+	function getElementPosition (element) {
+		//thanks to William Alone
+		var parentOffset,
+				pos = {
+					x: element.offsetLeft,
+					y: element.offsetTop
+				};
+		if (element.offsetParent) {
+			parentOffset = getElementPosition(element.offsetParent);
+			pos.x += parentOffset.x;
+			pos.y += parentOffset.y;
+		}
+		return pos;
+	}
+	function tap (e) {
+		pos = getElementPosition(canvas);
+		loc = {};
+		tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
+		tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
+		canvasScaleRatio = canvas.width / canvas.offsetWidth;
+		loc.x = (tapX - 9) * canvasScaleRatio;
+		loc.y = (tapY - 58) * canvasScaleRatio;
+		for (i=0;i<buildingsInTownB.length;i++){
+			if (loc.x >= buildingsInTownX[i] && loc.x <= buildingsInTownX[i]+buildingsInTownW[i]) {
+				if (loc.y >= buildingsInTownY[i] && loc.y <= buildingsInTownY[i]+buildingsInTownH[i]) {
+					console.log(buildingsInTownB[i]);
+					buildingClick(buildingsInTownB[i]);
+				}
+			}
+		}
+	}
+	function buildingClick(buildingName){
+		if (buildingName==='well') {
+			alertMsg = localeStrings[132];
+		}
+		if (buildingName==='gold') {
+			alertMsg = localeStrings[144];
+		}
+		if (buildingName==='pop') {
+			alertMsg = localeStrings[145];
+		}
+		if (buildingName==='sawmill') {
+			alertMsg = localeStrings[133];
+		}
+		if (buildingName==='wall') {
+			alertMsg = localeStrings[134];
+		}
+		if (buildingName==='swall') {
+			alertMsg = localeStrings[135];
+		}
+		if (buildingName==='home') {
+			alertMsg = localeStrings[138];
+		}
+		if (buildingName==='house') {
+			alertMsg = localeStrings[139];
+		}
+		if (buildingName==='castle') {
+			alertMsg = localeStrings[136];
+		}
+		if (buildingName==='scastle') {
+			alertMsg = localeStrings[137];
+		}
+		if (buildingName==='inn') {
+			alertMsg = localeStrings[140];
+		}
+		if (buildingName==='gallows') {
+			alertMsg = localeStrings[141];
+		}
+		if (buildingName==='fountain') {
+			alertMsg = localeStrings[142];
+		}
+		if (buildingName==='treasury') {
+			alertMsg = localeStrings[143];
+		}
+		showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+	}
 	//composite();
 </script>
 <script>
-
 	//GLOBALMAP
 	var canvas_map      = document.getElementById("canvasMap");
 	var ctx_map         = canvas_map.getContext("2d");
@@ -485,12 +652,9 @@
 	var tile_sand       = loadImage('tiles/sand.png');
 	var tile_snow       = loadImage('tiles/snow.png');
 	var tile_water      = loadImage('tiles/water.png');
-
 	var castle_tile     = loadImage('resources/castle_big.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var tree_tile       = loadImage('resources/tree.png');
-
-
 	function composite_gm() {
 		for (i = 0; i < config.sizeMapX; i++) {
 			for (j = 0; j < config.sizeMapY; j++) {
@@ -502,8 +666,8 @@
 		for (i = 0; i < config.sizeMapX; i++) {
 			for (j = 0; j < config.sizeMapY; j++) {
 				if (game.myMapLand[i][j]===0) {
-						//ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
-					}
+					//ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
+				}
 				if (game.myMapObjects[i][j]===1) {
 					//console.log("draw tree");
 					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
@@ -520,11 +684,10 @@
 					console.log("draw castle");
 					ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw castle entrance
 				}
-
 				if (game.myMapRemObjects[i][j]===40) {
-						console.log("draw hero");
-						ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
-					}
+					console.log("draw hero");
+					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
+				}
 			}
 		}
 	}
@@ -568,19 +731,19 @@
 		},
 		createTheGlobalMap : function () {
 			for (i = 0; i < 4; i++) {
-        		    for (j = 0; j < 4; j++) {
-		                game.myGlobalMap[i][j] = 1;
-		            }
-		        }
+				for (j = 0; j < 4; j++) {
+					game.myGlobalMap[i][j] = 1;
+				}
+			}
 		},
 		calculateTurn : function() {
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
 			if (game.season === 5) {
-			    game.season   = 1;
-			    game.year     = game.year+1;
-            		}
+				game.season   = 1;
+				game.year     = game.year+1;
+			}
 			gold_was      = game.gold;
 			gold_limit    = game.goldLimit();
 			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
@@ -609,28 +772,28 @@
 				else {
 					//fire guards which we cannot afford
 					//for now fire all guards!
-                    //TODO fire only those who we cannot afford
+					//TODO fire only those who we cannot afford
 					game.treasuryGuard = 0;
 					msg   = localeStrings[37];
 					postEventLog(msg);
 				}
 			}
 			if (game.gold !== gold_was) {
-                if (game.gold > gold_was) {
-                    msg = localeStrings[4];
-                } else {
-                    msg = localeStrings[5];
-                }
-                postEventLog(msg);
-            };
+				if (game.gold > gold_was) {
+					msg = localeStrings[4];
+				} else {
+					msg = localeStrings[5];
+				}
+				postEventLog(msg);
+			};
 			if (game.pop !== pop_was) {
-                if (game.pop > pop_was) {
-                    msg = localeStrings[7];
-                } else {
-                    msg = localeStrings[8];
-                }
-                postEventLog(msg);
-            };
+				if (game.pop > pop_was) {
+					msg = localeStrings[7];
+				} else {
+					msg = localeStrings[8];
+				}
+				postEventLog(msg);
+			};
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//ym(47225574, 'reachGoal', 'min5');
@@ -781,15 +944,15 @@
 					}
 					gold_incr     = game.gold - gold_was;
 					rnd = Math.floor((Math.random() * 6) + 1);
-                    reason = localeStrings[24+rnd]
+					reason = localeStrings[24+rnd]
 					msg = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
-                    msg = localeStrings[35].replace("%arg1", gold_incr);
-                    postEventLog(msg);
+					msg = localeStrings[35].replace("%arg1", gold_incr);
+					postEventLog(msg);
 				} else {
-				    msg = localeStrings[36];
-                    alert(msg);
-                }
+					msg = localeStrings[36];
+					alert(msg);
+				}
 				updateResources();
 			}
 		},
@@ -797,7 +960,7 @@
 			if (game.fire === 1) {
 				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
 				showModal(1, '', game.putOutFireCallback, question,  localeStrings[32], localeStrings[33])
-				
+
 			}
 		},
 		putOutFireCallback : function () {
@@ -832,36 +995,36 @@
 		},
 		startFire : function () {
 			if (game.fire === 0) {
-                rnd = Math.floor((Math.random() * 3) + 1);
-                if (rnd === 1) {
-                    msg = localeStrings[38];
-                    postEventLog(msg);
-                    game.fire = 1;
-                    composite();
-                    //TODO make a certain building in fire, not just "city"
-                    if (game.buildLevelD == 1) {
-                        ceil = 1
-                    }
-                    if (game.buildLevelD == 2) {
-                        ceil = 2
-                    }
-                    rnd = Math.floor((Math.random() * 2) + 0);
-                    if (rnd === 0) {
-                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-                    }
-                    if (rnd === 1) {
-                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-                    }
-                    if (rnd === 0) {
-                        //	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-                    }
-                }
+				rnd = Math.floor((Math.random() * 3) + 1);
+				if (rnd === 1) {
+					msg = localeStrings[38];
+					postEventLog(msg);
+					game.fire = 1;
+					composite();
+					//TODO make a certain building in fire, not just "city"
+					if (game.buildLevelD == 1) {
+						ceil = 1
+					}
+					if (game.buildLevelD == 2) {
+						ceil = 2
+					}
+					rnd = Math.floor((Math.random() * 2) + 0);
+					if (rnd === 0) {
+						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+					if (rnd === 1) {
+						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+					if (rnd === 0) {
+						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+					}
+				}
 			} else {
-			    //you can't get another fire, while you do have previous still burning your city. For now.
-            }
+				//you can't get another fire, while you do have previous still burning your city. For now.
+			}
 		},
 		winLottery : function () {
-            msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
+			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
 			game.gold = game.gold + config.lotteryPrize;
 			updateResources();
@@ -892,23 +1055,19 @@
 	var whatDraw      = "";
 	var minBL         = 0;
 	var mapCreated    = 0;
-	var globalMap = [[],[]];
-	var firstLoad     = true;
 	updateResources();
 	populatePatchnotes();
 	generateMap();
 	var autosaveObject;
 	setupAutosave();//DEBUG
-
+	composite();
 	//init timers
 	setInterval(resourcesTimer, 30000);
 	setInterval(rndEvents, 100000);
-
 	include('localisation.js',function(){
-        loadStartLocale();
-        console.log('we are in first level include after loadStartLocale()');
-    });
-
+		loadStartLocale();
+		console.log('we are in first level include after loadStartLocale()');
+	});
 	//functions
 	function getAck() {
 		//
@@ -948,7 +1107,7 @@
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
 		//TODO check if this is first callback in the session or not
 		//if (firstLoad===true) {
-			welcomeMsg();
+		welcomeMsg();
 		//	firstLoad = false;
 		//}
 		updateButtonCaptions();
@@ -962,7 +1121,6 @@
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msgEventLog;
 		scrollDown();
 	}
-
 	function generateMap() {
 		//generate landscape
 		game.myMapLand=[];
@@ -1044,6 +1202,21 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.205";
+		writeToTextArea(msg);
+		msg = "all objects on the city tab now is clickable";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.199";
+		writeToTextArea(msg);
+		msg = "now the game generate the adventure map";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.198";
+		writeToTextArea(msg);
+		msg = "done German translation";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.191";
 		writeToTextArea(msg);
 		msg = "hiring guardsmen now done with dialogue.js";
@@ -1060,9 +1233,9 @@
 		writeToTextArea(msg);
 
 		msg = "version 1.0.186";
-        writeToTextArea(msg);
-        msg = "made Russian translation";
-        writeToTextArea(msg);
+		writeToTextArea(msg);
+		msg = "made Russian translation";
+		writeToTextArea(msg);
 
 		msg = "version 1.0.180";
 		writeToTextArea(msg);
@@ -1334,11 +1507,11 @@
 		nextLvlInn            = game.buildLevelInn*1+1;
 		nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
 		document.getElementById("buttonBldInn").innerHTML=localeStrings[114].replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
-        if (game.buildLevelD == 0) {
-            document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
+		if (game.buildLevelD == 0) {
+			document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
 			var towerClick = "game.Build("+"\'Wall\'"+")";
-            document.getElementById("defence").setAttribute("onclick", towerClick);
-        }
+			document.getElementById("defence").setAttribute("onclick", towerClick);
+		}
 		if (game.buildLevelD == 1) {
 			document.getElementById("defence").innerHTML=localeStrings[109].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costTower);
 			var towerClick = "game.Build("+"\'Tower\'"+")";
