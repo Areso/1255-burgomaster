@@ -726,6 +726,9 @@
 		castleY: 1,
 		myMapObjects: [],
 		myMapRemObjects: [],
+		years: [],
+		pops: [],
+		budgets: [],
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
@@ -736,7 +739,13 @@
 				}
 			}
 		},
+		recordStats : function() {
+			game.years.push(game.year+" "+game.season);
+			game.budgets.push(game.gold);
+			game.pops.push(game.pop);
+		},
 		calculateTurn : function() {
+			game.recordStats();
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
