@@ -185,7 +185,7 @@
 				<span id="gold" class="interface" onclick="game.add_money()" style="position:absolute; top:100px; left:60px">0</span>
 				<br>
 				<br>
-				<span id="pop"  class="interface" style="position:absolute; top:140px; left:60px">2</span>
+				<span id="pop"  class="interface" onclick="checkPop()" style="position:absolute; top:140px; left:60px">2</span>
 				<br>
 			</p>
 			<p id="events_graphics" style="z-index: 8">
@@ -353,6 +353,15 @@
 			<h1>1255 Burgomaster</h1><br>
 			<h2>How to play</h2>
 			</div>
+		</div>
+		<div id="tabPopulation" class="tabcontent">
+			<div id="popStat">
+			
+			</div>
+			<button id="btnPopAtStart"  onclick="PopAtStart()" style="width:80px"><<</button>
+			<button id="btnPopPrev"     onclick="PopPrev()" style="width:80px"><</button>
+			<button id="btnPopNext"     onclick="PopNext()" style="width:80px">></button>
+			<button id="btnPopAtEnd"    onclick="PopAtEnd()" style="width:80px">>></button>
 		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
@@ -598,6 +607,7 @@
 		}
 	}
 	function buildingClick(buildingName){
+		var showAlert = true;
 		if (buildingName==='well') {
 			alertMsg = localeStrings[132];
 		}
@@ -605,7 +615,9 @@
 			alertMsg = localeStrings[144];
 		}
 		if (buildingName==='pop') {
-			alertMsg = localeStrings[145];
+			//alertMsg = localeStrings[145];
+			showAlert = false;
+			checkPop();
 		}
 		if (buildingName==='sawmill') {
 			alertMsg = localeStrings[133];
@@ -640,7 +652,9 @@
 		if (buildingName==='treasury') {
 			alertMsg = localeStrings[143];
 		}
-		showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+		if (showAlert === true) {
+			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+		}
 	}
 	//composite();
 </script>
@@ -1078,6 +1092,30 @@
 		console.log('we are in first level include after loadStartLocale()');
 	});
 	//functions
+	function checkPop() {
+		//TODO populate the tab!!!;
+		if (game.years.length > 10) {
+			//select the latest 10
+			for (i=0;i<10;i++) {
+				//TODO
+				
+				var year = document.createElement('div');
+				year.innerHTML    = game.years[game.years.length-10+i]+" | ";
+				document.getElementById("popStat").appendChild(year);
+				year.id = 'period'+i;
+				//document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
+				console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
+			}
+		} else {
+			if (game.years.length > 0) 
+			{
+				//TODO
+			} else {
+				// nothing to show
+			}
+		}
+		openTab(null, 'tabPopulation');
+	}
 	function getAck() {
 		//
 	}
@@ -1651,7 +1689,9 @@
 			tablinks[i].className = tablinks[i].className.replace(" active", "");
 		}
 		document.getElementById(tabName).style.display = "block";
-		evt.currentTarget.className += " active";
+		if (evt !== null) {
+			evt.currentTarget.className += " active";
+		}
 	}
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("tabCity").click();
