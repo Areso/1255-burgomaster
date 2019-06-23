@@ -355,7 +355,10 @@
 			</div>
 		</div>
 		<div id="tabPopulation" class="tabcontent">
-			<div id="popStat">
+			<div id="popStatK">
+			
+			</div>
+			<div id="popStatV">
 			
 			</div>
 			<button id="btnPopAtStart"  onclick="PopAtStart()" style="width:80px"><<</button>
@@ -1097,13 +1100,11 @@
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				//TODO
-				
-				var year = document.createElement('div');
-				year.innerHTML    = game.years[game.years.length-10+i]+" | ";
-				document.getElementById("popStat").appendChild(year);
-				year.id = 'period'+i;
-				//document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
+				var year = document.getElementById("popStatK");
+				year.innerHTML = year.innerHTML +' '+ game.years[game.years.length-10+i];
+				var pop = document.getElementById("popStatV");
+				//TODO ADD FIXED LENGTH
+				pop.innerHTML  = pop.innerHTML  +' '+ game.pops[game.years.length-10+i];
 				console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
 			}
 		} else {
