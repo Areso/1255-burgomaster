@@ -1102,25 +1102,32 @@
 	//functions
 	function checkPop() {
 		//TODO populate the tab!!!;
+		var year = document.getElementById("popStatK");
+		var pop  = document.getElementById("popStatV");
+		year.innerHTML = "";
+		pop.innerHTML  = "";
 		if (game.years.length > 10) {
 			//select the latest 10
-			var year = document.getElementById("popStatK");
-			var pop  = document.getElementById("popStatV");
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-10+i] +'</td>';
-				console.log(year.innerHTML);
-			    pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
+				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
 				console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
-			}		
+			}
+			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
 			{
-				//TODO
+				for (i=0;i<game.years.length;i++) {
+					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
+					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
+					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+				}
+				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
 			}
 		}
-		openTab(null, 'tabPopulation');
+		
 	}
 	function getAck() {
 		//
