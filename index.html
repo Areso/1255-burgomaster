@@ -355,12 +355,17 @@
 			</div>
 		</div>
 		<div id="tabPopulation" class="tabcontent">
-			<div id="popStatK">
+			<!-- TODO make style!!! -->
+			<table border="1">
+			<tbody>
+			<tr id="popStatK">
 			
-			</div>
-			<div id="popStatV">
+			</tr>
+			<tr id="popStatV">
 			
-			</div>
+			</tr>
+			</tbody>
+			</table>
 			<button id="btnPopAtStart"  onclick="PopAtStart()" style="width:80px"><<</button>
 			<button id="btnPopPrev"     onclick="PopPrev()" style="width:80px"><</button>
 			<button id="btnPopNext"     onclick="PopNext()" style="width:80px">></button>
@@ -1099,14 +1104,14 @@
 		//TODO populate the tab!!!;
 		if (game.years.length > 10) {
 			//select the latest 10
+			var year = document.getElementById("popStatK");
+			var pop  = document.getElementById("popStatV");
 			for (i=0;i<10;i++) {
-				var year = document.getElementById("popStatK");
-				year.innerHTML = year.innerHTML +' '+ game.years[game.years.length-10+i];
-				var pop = document.getElementById("popStatV");
-				//TODO ADD FIXED LENGTH
-				pop.innerHTML  = pop.innerHTML  +' '+ game.pops[game.years.length-10+i];
+				year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-10+i] +'</td>';
+				console.log(year.innerHTML);
+			    pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
 				console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
-			}
+			}		
 		} else {
 			if (game.years.length > 0) 
 			{
