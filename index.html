@@ -76,6 +76,9 @@
 			width: 800px;
 			background-color: #f1f1f1;
 		}
+		div {
+			color: #2f3236;
+		}
 
 		/* Style the buttons inside the tab */
 		div.tab button {
@@ -182,10 +185,10 @@
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
 			<br>
 			<p id="resources">
-				<span id="gold" class="interface" onclick="game.add_money()" style="position:absolute; top:100px; left:60px">0</span>
+				<span id="gold" class="interface" onclick="checkGold()" style="position:absolute; top:100px; left:60px">0</span>
 				<br>
 				<br>
-				<span id="pop"  class="interface" onclick="checkPop()" style="position:absolute; top:140px; left:60px">2</span>
+				<span id="pop"  class="interface" onclick="checkPop()"  style="position:absolute; top:140px; left:60px">2</span>
 				<br>
 			</p>
 			<p id="events_graphics" style="z-index: 8">
@@ -229,6 +232,8 @@
 				<option id="optionLngGe"          value="de-DE">Deutsch</option>
 			</select>
 			</div>
+			<br>
+			<button onclick="changeColorMode()">ChangeColorMode</button>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 		</div>
 		<div id="Garrison" class="tabcontent">
@@ -370,6 +375,23 @@
 			<button id="btnPopPrev"     onclick="popPrev()" style="width:80px"><</button>
 			<button id="btnPopNext"     onclick="popNext()" style="width:80px">></button>
 			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:80px">>></button>
+		</div>
+		<div id="tabGold" class="tabcontent">
+			<!-- TODO make style!!! -->
+			<table border="1">
+			<tbody>
+			<tr id="goldStatK">
+			
+			</tr>
+			<tr id="goldStatV">
+			
+			</tr>
+			</tbody>
+			</table>
+			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:80px"><<</button>
+			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:80px"><</button>
+			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">></button>
+			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">>></button>
 		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
@@ -620,7 +642,9 @@
 			alertMsg = localeStrings[132];
 		}
 		if (buildingName==='gold') {
-			alertMsg = localeStrings[144];
+			//alertMsg = localeStrings[144];
+			showAlert = false;
+			checkGold();
 		}
 		if (buildingName==='pop') {
 			//alertMsg = localeStrings[145];
@@ -1086,6 +1110,7 @@
 	var whatDraw      = "";
 	var minBL         = 0;
 	var mapCreated    = 0;
+	var nightMode     = 0;
 	updateResources();
 	populatePatchnotes();
 	generateMap();
@@ -1223,6 +1248,173 @@
 	}
 	function popAtEnd() {
 		checkPop();
+	}
+	
+	goldPage = 0;
+	function checkGold() {
+		var year = document.getElementById("goldStatK");
+		var gold = document.getElementById("goldStatV");
+		year.innerHTML = "";
+		gold.innerHTML  = "";
+		goldPage = Math.round(game.years.length)/10;
+		if (game.years.length > 10) {
+			//select the latest 10
+			for (i=0;i<10;i++) {
+				year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-10+i]    +'</td>';
+				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-10+i]  +'</td>';
+				console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
+			}
+			openTab(null, 'tabGold');
+		} else {
+			if (game.years.length > 0) 
+			{
+				for (i=0;i<game.years.length;i++) {
+					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
+					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
+					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
+				}
+				openTab(null, 'tabGold');
+			} else {
+				// nothing to show
+			}
+		}		
+	}
+	function goldAtStart() { 
+		var year = document.getElementById("goldStatK");
+		var gold = document.getElementById("goldStatV");
+		year.innerHTML = "";
+		gold.innerHTML  = "";
+		goldPage  = 0;
+		if (game.years.length > 10) {
+			//select the latest 10
+			for (i=0;i<10;i++) {
+				year.innerHTML = year.innerHTML +'<td>'+ game.years[i]    +'</td>';
+				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
+				console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
+			}
+			openTab(null, 'tabGold');
+		} else {
+			if (game.years.length > 0) 
+			{
+				for (i=0;i<game.years.length;i++) {
+					year.innerHTML = year.innerHTML +'<td>'+ game.years[i]    +'</td>';
+					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
+					console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
+				}
+				openTab(null, 'tabGold');
+			} else {
+				// nothing to show
+			}
+		}
+	}
+	function goldPrev() {
+		var year = document.getElementById("goldStatK");
+		var gold = document.getElementById("goldStatV");
+		year.innerHTML = "";
+		gold.innerHTML  = "";
+		if (goldPage - 1 > 0) {
+			goldPage  = goldPage-1;
+		}
+		goldPage  = Math.round(goldPage*10)/10;
+		console.log(goldPage);
+		if (game.years.length > 10) {
+			//select the latest 10
+			for (i=0;i<10;i++) {
+				year.innerHTML = year.innerHTML +'<td>'+ game.years[goldPage*10+i]    +'</td>';
+				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
+				console.log('period is '+game.years[goldPage*10+i]+' and gold is '+game.budgets[goldPage*10+i]);
+			}
+			openTab(null, 'tabGold');
+		} else {
+			if (game.years.length > 0) 
+			{
+				for (i=0;i<game.years.length;i++) {
+					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
+					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
+					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+				}
+				openTab(null, 'tabPopulation');
+			} else {
+				// nothing to show
+			}
+		}
+	}
+	function goldNext() {
+		var year = document.getElementById("popStatK");
+		var pop  = document.getElementById("popStatV");
+		year.innerHTML = "";
+		pop.innerHTML  = "";
+		if (popPage + 1 < Math.round(game.years.length)/10-1 ) {
+			popPage  = popPage+1;
+		}
+		popPage  = Math.round(popPage*10)/10;
+		console.log(popPage);
+		if (game.years.length > 10) {
+			//select the latest 10
+			for (i=0;i<10;i++) {
+				year.innerHTML = year.innerHTML +'<td>'+ game.years[popPage*10+i] +'</td>';
+				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
+				console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
+			}
+			openTab(null, 'tabPopulation');
+		} else {
+			if (game.years.length > 0) 
+			{
+				for (i=0;i<game.years.length;i++) {
+					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
+					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
+					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+				}
+				openTab(null, 'tabPopulation');
+			} else {
+				// nothing to show
+			}
+		}
+	}
+	function goldAtEnd() {
+		checkGold();
+	}
+	
+	function changeColorMode() {
+		if (nightMode === 0) {
+			//oldStyle= document.getElementsByTagName('body').style;
+			var b = document.getElementsByTagName("body");
+			//b[0].setAttribute("style",oldStyle+"background-color:black");
+			b[0].style.backgroundColor = "black";
+			var divs = document.getElementsByTagName("div");
+			for (var i = 0; i < divs.length; i++){
+				divs[i].style.сolor = "white";
+			}
+			var textAreas = document.getElementsByTagName("textarea");
+			for (var i = 0; i < textAreas.length; i++){
+				//textAreas[i].style.сolor = "white";
+				textAreas[i].style.backgroundColor = "black";
+			}
+			var buttons = document.getElementsByTagName("button");
+			for (var i = 0; i < buttons.length; i++){
+				buttons[i].style.color = "white";
+				buttons[i].style.backgroundColor = "#353940";
+			}
+			nightMode = 1;
+		} else {
+			var b = document.getElementsByTagName("body");
+			b[0].style.backgroundColor = "white";
+			var divs = document.getElementsByTagName("div");
+			for (var i = 0; i < divs.length; i++){
+				divs[i].style.сolor = "black";
+			}
+			var textAreas = document.getElementsByTagName("textarea");
+			for (var i = 0; i < textAreas.length; i++){
+				//textAreas[i].style.сolor = "black";
+				textAreas[i].style.backgroundColor = "white";
+			}
+			var buttons = document.getElementsByTagName("button");
+			for (var i = 0; i < buttons.length; i++){
+				buttons[i].style.color = "black";
+				buttons[i].style.backgroundColor = "#CFDFE3";
+			}
+			nightMode = 0;
+		}
 	}
 	function getAck() {
 		//
