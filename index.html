@@ -229,6 +229,8 @@
 				<option id="optionLngGe"          value="de-DE">Deutsch</option>
 			</select>
 			</div>
+			<br>
+			<button onclick="changeColorMode()">ChangeColorMode</button>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 		</div>
 		<div id="Garrison" class="tabcontent">
@@ -1105,6 +1107,7 @@
 	var whatDraw      = "";
 	var minBL         = 0;
 	var mapCreated    = 0;
+	var nightMode     = 0;
 	updateResources();
 	populatePatchnotes();
 	generateMap();
@@ -1369,7 +1372,27 @@
 		checkGold();
 	}
 	
-	
+	function changeColorMode() {
+		if (nightMode === 0) {
+			//oldStyle= document.getElementsByTagName('body').style;
+			b = document.getElementsByTagName("body"),
+			//b[0].setAttribute("style",oldStyle+"background-color:black");
+			b[0].style.backgroundColor = "black";
+			divs = document.getElementsByTagName("div");
+			for (var i = 0; i < divs.length; i++){
+				divs[i].style.сolor = "white";
+			}
+			nightMode = 1;
+		} else {
+			b = document.getElementsByTagName("body"),
+			b[0].style.backgroundColor = "white";
+			divs = document.getElementsByTagName("div");
+			for (var i = 0; i < divs.length; i++){
+				divs[i].style.сolor = "black";
+			}
+			nightMode = 0;
+		}
+	}
 	function getAck() {
 		//
 	}
