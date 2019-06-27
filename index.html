@@ -1383,18 +1383,26 @@
 			b[0].style.backgroundColor = "black";
 			var divs = document.getElementsByTagName("div");
 			for (var i = 0; i < divs.length; i++){
-				divs[i].style.color = "white";
+				divs[i].style.color = "#404040";
 			}
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
-				//textAreas[i].style.color = "white";
+				textAreas[i].style.color = "#404040";
 				textAreas[i].style.backgroundColor = "black";
 			}
 			var buttons = document.getElementsByTagName("button");
 			for (var i = 0; i < buttons.length; i++){
-				buttons[i].style.color = "white";
-				buttons[i].style.backgroundColor = "#353940";
+				buttons[i].style.color = "#606060";
+				buttons[i].style.backgroundColor = "#202020";
 			}
+			var tab = document.getElementsByClassName("tab");
+			tab[0].style.backgroundColor = "#202020";
+			var inputs = document.getElementsByTagName("input");
+			for (var i = 0; i < inputs.length; i++){
+				inputs[i].style.color = "#606060";
+				inputs[i].style.backgroundColor = "#202020";
+			}
+			
 			nightMode = 1;
 		} else {
 			var b = document.getElementsByTagName("body");
@@ -1405,14 +1413,22 @@
 			}
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
-				//textAreas[i].style.color = "black";
+				textAreas[i].style.color = "black";
 				textAreas[i].style.backgroundColor = "white";
 			}
 			var buttons = document.getElementsByTagName("button");
 			for (var i = 0; i < buttons.length; i++){
 				buttons[i].style.color = "black";
-				buttons[i].style.backgroundColor = "#CFDFE3";
+				buttons[i].style.backgroundColor = "#f1f1f1";
 			}
+			var tab = document.getElementsByClassName("tab");
+			tab[0].style.backgroundColor = "#f1f1f1";
+			var inputs = document.getElementsByTagName("input");
+			for (var i = 0; i < inputs.length; i++){
+				inputs[i].style.color = "black";
+				inputs[i].style.backgroundColor = "white";
+			}
+			
 			nightMode = 0;
 		}
 	}
