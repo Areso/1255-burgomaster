@@ -780,6 +780,9 @@
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
+		popLimit : function () {
+			return 2*Math.pow((game.buildLevelH*1+3),2);
+		}
 		createTheGlobalMap : function () {
 			for (i = 0; i < 4; i++) {
 				for (j = 0; j < 4; j++) {
@@ -811,7 +814,8 @@
 			} else {
 				game.gold      = gold_possible;
 			}
-			if (game.pop < 2*Math.pow((game.buildLevelH*1+3),2)) {
+			pop_limit = game.popLimit();
+			if (game.pop < pop_limit) {
 				pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
 				if (pop_incr == 0) {
 					game.pop = game.pop*1+1;
@@ -988,10 +992,12 @@
 		deathPenalty : function () {
 			if (game.buildLevelGallows > 0) {
 				if (game.pop > 2) {
-					game.pop      = game.pop - 1;
-					gold_was      = game.gold;
-					gold_limit    = game.goldLimit();
-					gold_possible = game.gold*1+Math.floor((Math.random() * game.gold)/10 + 1);
+					game.pop          = game.pop - 1;
+					gold_was          = game.gold;
+					gold_limit        = game.goldLimit();
+					pop_limit         = game.popLimit();
+					var gold_change   = Math.floor((Math.random() * game.gold)/10 * game.pop / pop_limit + 1);
+					gold_possible = game.gold*1+gold_change;
 					if (gold_possible > gold_limit) {
 						game.gold = gold_limit;
 						msg = localeStrings[3];
@@ -1007,8 +1013,8 @@
 					msg = localeStrings[35].replace("%arg1", gold_incr);
 					postEventLog(msg);
 				} else {
-					msg = localeStrings[36];
-					alert(msg);
+					alertMsg = localeStrings[36];
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 				}
 				updateResources();
 			}
