@@ -69,7 +69,7 @@ localeStrings.push("Settings");
 localeStrings.push("Export Game");
 localeStrings.push("Import Game");
 localeStrings.push("Autosave");
-localeStrings.push("placeholder");//70
+localeStrings.push("Change color mode");//70
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -134,6 +134,8 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>How to play</h2>" +
     "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
     "After each clock turn your population is paying taxes to you and growing.<br>" +
+    "Normally, each citizen brings one gold piece per tick.<br>" +
+    "This behavior could be changed by player decisions.<br>" +
     "You need to build Homes to continue growth of your city population.<br>" +
     "Each lvl of Houses allows you to have more population.<br>" +
     "You need to build Walls and Tower (Keep) to keep your city safe against intruders.<br>" +
@@ -178,4 +180,23 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
-
+localeStrings.push("Population history tab");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//165
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//170
+localeStrings.push("Gold history tab");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//175
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//180

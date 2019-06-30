@@ -69,7 +69,7 @@ localeStrings.push("Einrichten");
 localeStrings.push("Export-Spiel");
 localeStrings.push("Import-Spiel");
 localeStrings.push("Auto-Speichern-Spiel");
-localeStrings.push("placeholder");//70
+localeStrings.push("Farbmodus ändern");//70
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -134,6 +134,8 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>Wie man spielt</h2>" +
     "Dieses Spiel hat eine Uhr unter der Haube. Der Tick jeder Uhr geschieht in 30 Sekunden.<br>" +
     "Nach jeder Runde zahlt deine Bevölkerung Steuern an dich und wächst.<br>" +
+    "Normalerweise bringt jeder Bürger ein Goldstück pro Tick mit. <br>" +
+    "Dieses Verhalten kann durch Spielerentscheidungen geändert werden. <br>" +
     "Sie müssen Häuser bauen, um das Wachstum Ihrer Stadtbevölkerung fortzusetzen.<br>" +
     "Jede Stufe von Häusern ermöglicht es dir, mehr Bevölkerung zu haben.<br>" +
     "Du musst Mauern und Türme bauen, um deine Stadt vor Eindringlingen zu schützen.<br>" +
@@ -178,3 +180,23 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
+localeStrings.push("Registerkarte Bevölkerung");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//165
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//170
+localeStrings.push("Registerkarte Gold");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//175
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//180

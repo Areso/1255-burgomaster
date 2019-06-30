@@ -69,7 +69,7 @@ localeStrings.push("Настройки");
 localeStrings.push("Экспорт сохранения");
 localeStrings.push("Импорт сохранения");
 localeStrings.push("Автосохранение");
-localeStrings.push("placeholder");//70
+localeStrings.push("Сменить цветовой режим");//70
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -134,6 +134,8 @@ localeStrings.push("<h1>1255 Бургомастер</h1>" +
     "<h2>Как играть</h2>" +
     "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
     "После каждого тика, население растет и платит налоги.<br>" +
+    "Обычно, каждый горожанин приносит один золотой за тик.<br>" +
+    "Однако, принимаемые игроком решения влияют на это значения.<br>" +
     "Вам нужно строить дома для поддержания роста населения.<br>" +
     "Чем выше уровень домов, тем больше населения сможет жить в вашем городе.<br>" +
     "Вам нужно строить стены и крепость, чтобы предотвратить разрушительные набеги.<br>" +
@@ -178,3 +180,23 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
+localeStrings.push("Данные о населении по периодам");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//165
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//170
+localeStrings.push("Данные о казне по периодам");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//175
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//180

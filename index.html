@@ -233,7 +233,7 @@
 			</select>
 			</div>
 			<br>
-			<button onclick="changeColorMode()">ChangeColorMode</button>
+			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 		</div>
 		<div id="Garrison" class="tabcontent">
@@ -361,6 +361,7 @@
 		</div>
 		<div id="tabPopulation" class="tabcontent">
 			<!-- TODO make style!!! -->
+			<div id="lblTabPop">Population history tab</div>
 			<table border="1">
 			<tbody>
 			<tr id="popStatK">
@@ -378,6 +379,7 @@
 		</div>
 		<div id="tabGold" class="tabcontent">
 			<!-- TODO make style!!! -->
+			<div id="lblTabGold">Gold history tab</div>
 			<table border="1">
 			<tbody>
 			<tr id="goldStatK">
@@ -778,6 +780,9 @@
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
+		popLimit : function () {
+			return 2*Math.pow((game.buildLevelH*1+3),2);
+		},
 		createTheGlobalMap : function () {
 			for (i = 0; i < 4; i++) {
 				for (j = 0; j < 4; j++) {
@@ -809,7 +814,8 @@
 			} else {
 				game.gold      = gold_possible;
 			}
-			if (game.pop < 2*Math.pow((game.buildLevelH*1+3),2)) {
+			pop_limit = game.popLimit();
+			if (game.pop < pop_limit) {
 				pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
 				if (pop_incr == 0) {
 					game.pop = game.pop*1+1;
@@ -986,10 +992,12 @@
 		deathPenalty : function () {
 			if (game.buildLevelGallows > 0) {
 				if (game.pop > 2) {
-					game.pop      = game.pop - 1;
-					gold_was      = game.gold;
-					gold_limit    = game.goldLimit();
-					gold_possible = game.gold*1+Math.floor((Math.random() * game.gold)/10 + 1);
+					game.pop          = game.pop - 1;
+					gold_was          = game.gold;
+					gold_limit        = game.goldLimit();
+					pop_limit         = game.popLimit();
+					var gold_change   = Math.floor((Math.random() * game.gold)/10 * game.pop / pop_limit + 1);
+					gold_possible = game.gold*1+gold_change;
 					if (gold_possible > gold_limit) {
 						game.gold = gold_limit;
 						msg = localeStrings[3];
@@ -1005,8 +1013,8 @@
 					msg = localeStrings[35].replace("%arg1", gold_incr);
 					postEventLog(msg);
 				} else {
-					msg = localeStrings[36];
-					alert(msg);
+					alertMsg = localeStrings[36];
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 				}
 				updateResources();
 			}
@@ -1329,43 +1337,43 @@
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
-					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
+					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
+					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				openTab(null, 'tabPopulation');
+				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
 			}
 		}
 	}
 	function goldNext() {
-		var year = document.getElementById("popStatK");
-		var pop  = document.getElementById("popStatV");
+		var year = document.getElementById("goldStatK");
+		var gold  = document.getElementById("goldStatV");
 		year.innerHTML = "";
-		pop.innerHTML  = "";
-		if (popPage + 1 < Math.round(game.years.length)/10-1 ) {
-			popPage  = popPage+1;
+		gold.innerHTML  = "";
+		if (goldPage + 1 < Math.round(game.years.length)/10-1 ) {
+			goldPage  = goldPage+1;
 		}
-		popPage  = Math.round(popPage*10)/10;
-		console.log(popPage);
+		goldPage  = Math.round(goldPage*10)/10;
+		console.log(goldPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[popPage*10+i] +'</td>';
-				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
-				console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
+				year.innerHTML = year.innerHTML +'<td>'+ game.years[goldPage*10+i]    +'</td>';
+				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
+				console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.budgets[goldPage*10+i]);
 			}
-			openTab(null, 'tabPopulation');
+			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
-					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
+					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
+					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				openTab(null, 'tabPopulation');
+				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
 			}
@@ -1460,6 +1468,7 @@
 		document.getElementById("tabAbout").innerText            = localeStrings[51];
 		document.getElementById("tabDiscord").innerText          = localeStrings[52];
 		document.getElementById("labelSettings").innerText       = localeStrings[66];
+		document.getElementById("labelSettings").innerText       = localeStrings[66];
 		document.getElementById("buttonExportGame").innerText    = localeStrings[67];
 		document.getElementById("buttonImportGame").innerText    = localeStrings[68];
 		document.getElementById("labelAutosave").innerText       = localeStrings[69];
@@ -1468,6 +1477,9 @@
 		document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
 		document.getElementById("labelBuilding").innerText       = localeStrings[106];
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
+		document.getElementById("lblTabPop").innerText           = localeStrings[161];
+		document.getElementById("lblTabGold").innerText          = localeStrings[171];
+		document.getElementById("btnColorMode").innerText        = localeStrings[70];
 		//TODO check if this is first callback in the session or not
 		//if (firstLoad===true) {
 		welcomeMsg();
@@ -1565,6 +1577,36 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.219";
+		writeToTextArea(msg);
+		msg = "fixed imbalance of execution citizens";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.217";
+		writeToTextArea(msg);
+		msg = "now added a screen for viewing gold statistics";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.214";
+		writeToTextArea(msg);
+		msg = "added night mode in the game";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.211";
+		writeToTextArea(msg);
+		msg = "now added a screen for viewing pop statistics";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.207";
+		writeToTextArea(msg);
+		msg = "now population and gold statistics are recorded";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.206";
+		writeToTextArea(msg);
+		msg = "now population and gold statistics are recorded";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.205";
 		writeToTextArea(msg);
 		msg = "all objects on the city tab now is clickable";
