@@ -1140,12 +1140,13 @@
 		year.innerHTML = "";
 		pop.innerHTML  = "";
 		popPage  = Math.round(game.years.length)/10;
+		//console.log('checkPop '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-10+i] +'</td>';
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
-				console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
+				//console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
 			}
 			openTab(null, 'tabPopulation');
 		} else {
@@ -1154,7 +1155,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
 				openTab(null, 'tabPopulation');
 			} else {
@@ -1168,12 +1169,13 @@
 		year.innerHTML = "";
 		pop.innerHTML  = "";
 		popPage  = 0;
+		//console.log('popStart '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[i] +'</td>';
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
-				console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
+				//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 			}
 			openTab(null, 'tabPopulation');
 		} else {
@@ -1182,7 +1184,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[i] +'</td>';
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
-					console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
+					//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 				}
 				openTab(null, 'tabPopulation');
 			} else {
@@ -1197,15 +1199,17 @@
 		pop.innerHTML  = "";
 		if (popPage - 1 > 0) {
 			popPage  = popPage-1;
+		} else {
+			popPage = 0;
 		}
 		popPage  = Math.round(popPage*10)/10;
-		console.log(popPage);
+		//console.log('popPrev is '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[popPage*10+i] +'</td>';
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
-				console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
+				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
 			openTab(null, 'tabPopulation');
 		} else {
@@ -1214,7 +1218,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
 				openTab(null, 'tabPopulation');
 			} else {
@@ -1229,15 +1233,17 @@
 		pop.innerHTML  = "";
 		if (popPage + 1 < Math.round(game.years.length)/10-1 ) {
 			popPage  = popPage+1;
+		} else {
+			popPage  = Math.round(game.years.length)/10-1;
 		}
 		popPage  = Math.round(popPage*10)/10;
-		console.log(popPage);
+		//console.log('popNext is '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[popPage*10+i] +'</td>';
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
-				console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
+				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
 			openTab(null, 'tabPopulation');
 		} else {
@@ -1246,7 +1252,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
 				openTab(null, 'tabPopulation');
 			} else {
@@ -1270,7 +1276,7 @@
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-10+i]    +'</td>';
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-10+i]  +'</td>';
-				console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
+				//console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
 			}
 			openTab(null, 'tabGold');
 		} else {
@@ -1279,7 +1285,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
+					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
 				openTab(null, 'tabGold');
 			} else {
@@ -1298,7 +1304,7 @@
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[i]    +'</td>';
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
-				console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
+				//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 			}
 			openTab(null, 'tabGold');
 		} else {
@@ -1307,7 +1313,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[i]    +'</td>';
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
-					console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
+					//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 				}
 				openTab(null, 'tabGold');
 			} else {
@@ -1322,15 +1328,17 @@
 		gold.innerHTML  = "";
 		if (goldPage - 1 > 0) {
 			goldPage  = goldPage-1;
+		} else {
+			goldPage  = 0;
 		}
 		goldPage  = Math.round(goldPage*10)/10;
-		console.log(goldPage);
+		//console.log(goldPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[goldPage*10+i]    +'</td>';
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
-				console.log('period is '+game.years[goldPage*10+i]+' and gold is '+game.budgets[goldPage*10+i]);
+				//console.log('period is '+game.years[goldPage*10+i]+' and gold is '+game.budgets[goldPage*10+i]);
 			}
 			openTab(null, 'tabGold');
 		} else {
@@ -1339,7 +1347,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
+					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
 				openTab(null, 'tabGold');
 			} else {
@@ -1354,15 +1362,17 @@
 		gold.innerHTML  = "";
 		if (goldPage + 1 < Math.round(game.years.length)/10-1 ) {
 			goldPage  = goldPage+1;
+		} else {
+			goldPage  = Math.round(game.years.length)/10-1;
 		}
 		goldPage  = Math.round(goldPage*10)/10;
-		console.log(goldPage);
+		//console.log(goldPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
 				year.innerHTML = year.innerHTML +'<td>'+ game.years[goldPage*10+i]    +'</td>';
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
-				console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.budgets[goldPage*10+i]);
+				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.budgets[goldPage*10+i]);
 			}
 			openTab(null, 'tabGold');
 		} else {
@@ -1371,7 +1381,7 @@
 				for (i=0;i<game.years.length;i++) {
 					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
-					console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.budgets[game.years.length-game.years.length+i]);
+					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.budgets[game.years.length-game.years.length+i]);
 				}
 				openTab(null, 'tabGold');
 			} else {
@@ -1577,6 +1587,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.222";
+		writeToTextArea(msg);
+		msg = "fixed bugs on stats screens";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.219";
 		writeToTextArea(msg);
 		msg = "fixed imbalance of execution citizens";
