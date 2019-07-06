@@ -15,7 +15,7 @@ localeStrings.push("game loaded successfully");
 localeStrings.push("Load game? You will lost any unsaved progress!");
 localeStrings.push("Sorry! There is no save to load from!");
 localeStrings.push("Save game? You will rewrite any save you already have!");//15
-localeStrings.push("Please insert save");
+localeStrings.push("Please insert save string");
 localeStrings.push("very long string");
 localeStrings.push("Do you want to hire a guardsman? He will cost you %arg1 gold and then %arg2 gold per each season!");
 localeStrings.push("You hired a guardsman!");
@@ -54,7 +54,7 @@ localeStrings.push("How To Play");
 localeStrings.push("Discord");
 localeStrings.push("Put out the fire");
 localeStrings.push("Execute somebody");
-localeStrings.push("placeholder");//55
+localeStrings.push("shit happens: the plague killed %arg1 citizens");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -150,7 +150,17 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "Fountains will increase happiness and speed of population growth<br>" +
     "Gallows will decrease population, increase taxes, and allow you to execute townsfolk.<br>" +
     "Executing any townsperson will add his property as confiscated gold.<br>" +
-    "Stash is required to lower your losses from stealing. You cannot build Stash without Treasury.<br>");//131
+    "Stash is required to lower your losses from stealing. You cannot build Stash without Treasury.<br>"+
+    "This is a single-player game.<br>"+
+    "<br>" +
+    "Supported Languages(SL): English, Russian (Русский).<br>"+
+    "Community Supported Languages(CSL): German (Deutsch).<br>"+
+    "CSL means that the author doesn't provide any help or answers asked in the CSL,<br>"+
+    "though parts of the game or game in whole could be provided in the CSL.<br>"+
+    "Also, any CSL translation could have mistakes or untranslated parts<br>"+
+    "or parts of translation which are partly outdated.<br>"+
+    "You could help with translations for the game here:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
 localeStrings.push("wishing well");
 localeStrings.push("sawmill");
 localeStrings.push("wall");

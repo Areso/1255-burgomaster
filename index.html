@@ -179,6 +179,7 @@
 			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
 			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
 			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
+			<div id="dcounter">30</div>
 			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
 		<div id="Main" class="tabcontent">
@@ -196,9 +197,9 @@
 			</p>
 			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
-			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:350px; left: 20px">Load game</button>
-			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:390px; left: 20px; display:none">Put out fire</button>
-			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:430px; left: 20px; display:none">Execute smb</button>
+			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:360px; left: 20px; visibility:hidden">Load game</button>
+			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:400px; left: 20px; display:none">Put out fire</button>
+			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:440px; left: 20px; display:none">Execute smb</button>
 			<button id="buttonDebug"   onclick="ym(47225574, 'reachGoal', 'min5'); return true;" class="interface" style="top:190px; left: 20px; display:none">X</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
@@ -765,7 +766,7 @@
 		buildLevelInn:0,
 		fire:0,
 		hero:0,
-		happyness:80,
+		happiness:80,
 		o_autosave:0,
 		saveVersion:"saveV1006",
 		myGlobalMap: [],
@@ -1091,6 +1092,18 @@
 			postEventLog(msg);
 			game.gold = game.gold + config.lotteryPrize;
 			updateResources();
+		},
+		startPlague : function () {
+			rnd = Math.floor((Math.random() * 5) + 1);
+			if (rnd === 1) {
+				if (game.pop > 2) {
+					numberOfDied = Math.floor((Math.random() * (game.pop-2)) + 1);
+					game.pop     = game.pop - numberOfDied;
+					msg = localeStrings[55].replace("%arg1", numberOfDied);
+					postEventLog(msg);
+					updateResources();
+				}
+			}
 		}
 	};
 	//init const-variables
@@ -1119,14 +1132,17 @@
 	var minBL         = 0;
 	var mapCreated    = 0;
 	var nightMode     = 0;
+	var dcounter_def  = 30;
+	var dcounter      = dcounter_def;
 	updateResources();
 	populatePatchnotes();
 	generateMap();
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	composite();
+	checkSaves();
 	//init timers
-	setInterval(resourcesTimer, 30000);
+	setInterval(endOfTurnTimer, 1000);
 	setInterval(rndEvents, 100000);
 	include('localisation.js',function(){
 		loadStartLocale();
@@ -1392,7 +1408,11 @@
 	function goldAtEnd() {
 		checkGold();
 	}
-	
+	function checkSaves() {
+		if (localStorage.getItem('game')!==null) {
+			document.getElementById("loadGameButton").style.visibility = "visible";
+		}
+	}
 	function changeColorMode() {
 		if (nightMode === 0) {
 			//oldStyle= document.getElementsByTagName('body').style;
@@ -1587,6 +1607,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.223";
+		writeToTextArea(msg);
+		msg = "fixed bugs on stats screens";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.222";
 		writeToTextArea(msg);
 		msg = "fixed bugs on stats screens";
@@ -1865,8 +1890,12 @@
 		if (saveConfirmation=="silent") {
 			writeSave();
 		} else {
-			question = localeStrings[15];
-			showModal(1, '', saveGameCallback, question,  localeStrings[32], localeStrings[33])
+			if (localStorage.getItem('game')!==null) {
+				question = localeStrings[15];
+				showModal(1, '', saveGameCallback, question, localeStrings[32], localeStrings[33])
+			} else {
+				writeSave();
+			}
 		}
 	}
 	function saveGameCallback() {
@@ -1875,6 +1904,7 @@
 		}
 	}
 	function writeSave(){
+		document.getElementById("loadGameButton").style.visibility = "visible";
 		localStorage.setItem('game', JSON.stringify(game));
 		//localStorage.setItem('config', JSON.stringify(options));
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
@@ -1886,7 +1916,7 @@
 	}
 	function loadGameCallback() {
 		if (answer === 2) {
-			if (localStorage.getItem('game')!=null){
+			if (localStorage.getItem('game')!==null){
 				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 				gameTemp = JSON.parse(localStorage.getItem('game'));
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
@@ -2002,9 +2032,6 @@
 		}
 	}
 	//timers
-	function resourcesTimer() {
-		game.calculateTurn();
-	}
 	function rndEvents() {
 		rnd = Math.floor((Math.random() * 12) + 1);
 		//rnd = 2;//debug
@@ -2016,7 +2043,7 @@
 				game.startFire();
 				break;
 			case 3:
-				//
+				game.startPlague();
 				break;
 			case 4:
 				//
@@ -2048,6 +2075,15 @@
 			default:
 				alert("error on switch/case function");
 		}
+	}
+	function endOfTurnTimer() {
+		if (dcounter - 1 === 0) {
+			dcounter = dcounter_def;
+			game.calculateTurn();
+		} else {
+			dcounter = dcounter - 1;
+		}
+		document.getElementById('dcounter').innerText = dcounter;
 	}
 </script>
 <script>

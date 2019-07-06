@@ -27,14 +27,21 @@
 		1MB of data plan to download game itself, analytics and chat. And some traffic will be used with ingame chat and usage statistics, though game will works perfectly even offline after download complete* (check options offline game)<br> 
 		<br>
 		<h2>About the game</h2>
-		Supported languages: English, Russian (Русский).<br>
+		Supported Languages(SL): English, Russian (Русский).<br>
+		Community Supported Languages(CSL): German (Deutsch).<br>
+		CSL means that the author doesn't provide any help or answers asked in the CSL,<br>
+		though parts of the game or game in whole could be provided in the CSL.<br>
+		Also, any CSL translation could have mistakes or untranslated parts or parts of translation which are partly outdated.<br>
+		You could help with translations for the game here:<br> 
+		<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>
+		This is a single-player game. There is built-in chat, so, you could ask a question to another players.<br> 
 		The game itself about building a city. You are starting with some amount of gold and a few citizens.<br>
 		This is an IDLE game, which means, every minute your citizens will spawn new citizens and pay taxes to you.<br>
 		You can construct buildings, but upgrading existing ones will require each time more gold, because this game is an Incremental game.<br>
 		As for now, constructing building do not requires time, only resources.<br> 
 		Straight management, which means, you need place management by clicking here and there and you will get what you clicked.</br>
 		<div style="color:red">You will explore wild territories near your city.</div><br>
-		Regarding you choices, you could get boost in taxes or birthrate, happynness and so on.<br>
+		Regarding you choices, you could get boost in taxes or birthrate, happinness and so on.<br>
 		Game could become to a Clicker game in case you build Gallows and like to execute you citizens.<br>
 		This game created and new features right now in development inspiring by Travian, Townsmen, Stronghold and Stronghold Crusaders, HoMM (Heroes of Might and Magic), Lord of Realm, Anno series.<br> 
 		You can export and import game to transfer your progress between different browsers and PCs.<br>

@@ -5,7 +5,7 @@ localeStrings.push("Der Bürger zahlt jede Saison Steuern. Jede Saison dauert 30
 localeStrings.push("Aufbau oder Verbesserung Ihrer Schatzkammer");
 localeStrings.push("der Geldbetrag wird erhöht");
 localeStrings.push("der Geldbetrag wird reduziert");//5
-localeStrings.push("Der Geldbetrag wird nicht geändert");
+localeStrings.push("der Geldbetrag wird nicht geändert");
 localeStrings.push("die Bevölkerung wird vergrößert");
 localeStrings.push("die Bevölkerung wird reduziert");
 localeStrings.push("die Bevölkerung wird nicht geändert");
@@ -23,7 +23,7 @@ localeStrings.push("Nicht genug Gold, um das zu tun!");//20
 localeStrings.push("Für die mietenung eines Wachmann ist eine Schatzkammer erforderlich!");
 localeStrings.push("Möchten Sie einen Wachmann entlassen?");
 localeStrings.push("Du hast einen Wachmann entlassen!");
-localeStrings.push("Ihr habt keine die Wachen!");
+localeStrings.push("Ihr habt keine die Wachmann!");
 localeStrings.push("Verrat");//25
 localeStrings.push("Betrug");
 localeStrings.push("Korruption");
@@ -54,7 +54,7 @@ localeStrings.push("Wie man spielt");
 localeStrings.push("Discord");
 localeStrings.push("Löscht das feuer");
 localeStrings.push("Exekutieren Stadtperson");
-localeStrings.push("placeholder");//55
+localeStrings.push("Scheiße passiert: Die Pest tötete %arg1 Bürger");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -113,7 +113,7 @@ localeStrings.push("Schatzkammer aufbauen<br/>lvl %arg1<br/>%arg2 gold");//110
 localeStrings.push("Galgen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("ein Brunnen aufbauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("ein Versteck aufbauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Schenke<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Schenke aufbauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("placeholder");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -134,8 +134,8 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>Wie man spielt</h2>" +
     "Dieses Spiel hat eine Uhr unter der Haube. Der Tick jeder Uhr geschieht in 30 Sekunden.<br>" +
     "Nach jeder Runde zahlt deine Bevölkerung Steuern an dich und wächst.<br>" +
-    "Normalerweise bringt jeder Bürger ein Goldstück pro Tick mit. <br>" +
-    "Dieses Verhalten kann durch Spielerentscheidungen geändert werden. <br>" +
+    "Normalerweise bringt jeder Bürger ein Goldstück pro Tick mit.<br>" +
+    "Dieses Verhalten kann durch Spielerentscheidungen geändert werden.<br>" +
     "Sie müssen Häuser bauen, um das Wachstum Ihrer Stadtbevölkerung fortzusetzen.<br>" +
     "Jede Stufe von Häusern ermöglicht es dir, mehr Bevölkerung zu haben.<br>" +
     "Du musst Mauern und Türme bauen, um deine Stadt vor Eindringlingen zu schützen.<br>" +
@@ -149,7 +149,17 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "die Brunnen werden das Glück und die Geschwindigkeit des Bevölkerung steigern.<br>" +
     "Galgen werden die Bevölkerung verringern, die Steuern erhöhen und es dir ermöglichen, Stadtbewohner hinzurichten.<br>" +
     "Die Hinrichtung einer Stadtbewohnerin wird ihr Eigentum als beschlagnahmtes Gold hinzufügen.<br>" +
-    "Versteck ist erforderlich, um deine Verluste durch Diebstahl zu verringern. Du kannst kein Versteck ohne Schatzkammer bauen.<br>");//131
+    "Versteck ist erforderlich, um deine Verluste durch Diebstahl zu verringern. Du kannst kein Versteck ohne Schatzkammer bauen.<br>"+
+    "Spiel ist Einzelspieler<br>"+
+    "<br>" +
+    "Unterstützte Sprachen (UL): Englisch, Russisch.<br>" +
+    "Von der Community unterstützte Sprachen (CUL): Deutsch<br>" +
+    "CSL bedeutet, dass der Autor keine Hilfe oder Antworten gibt, die in der CSL gefragt werden,<br>"+
+    "obwohl Teile des Spiels oder des Spiels insgesamt in der CSL zur Verfügung gestellt werden können."+
+    "Außerdem könnte jede CSL-Übersetzung Fehler oder unübersetzte Teile haben<br>"+
+    "oder Teile der Übersetzung, die teilweise veraltet sind.<br>"+
+    "Du könntest bei den Übersetzungen für das Spiel hier helfen:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
 
 localeStrings.push("Wunschbrunnen");
 localeStrings.push("Sägewerk");
