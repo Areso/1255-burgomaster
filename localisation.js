@@ -32,7 +32,7 @@ function loadStartLocale(){
 		if (language.indexOf('de')!==-1) {
 			language = 'de-DE';
 		}
-		locales = ['en-US','ru-RU','de-DE'];
+		locales = ['en-US','ru-RU','de-DE','eo'];
 		default_locale = 'en-US';
 		if (checkValue(language, locales)===1) {
 			loadLocale(language);
