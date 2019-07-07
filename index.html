@@ -196,10 +196,10 @@
 
 			</p>
 			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
-			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:290px; left: 20px">Save game</button>
-			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:360px; left: 20px; visibility:hidden">Load game</button>
-			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:400px; left: 20px; display:none">Put out fire</button>
-			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:440px; left: 20px; display:none">Execute smb</button>
+			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:250px; left: 20px">Save game</button>
+			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:310px; left: 20px; visibility:hidden">Load game</button>
+			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:370px; left: 20px; display:none">Put out fire</button>
+			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:460px; left: 20px; display:none">Execute smb</button>
 			<button id="buttonDebug"   onclick="ym(47225574, 'reachGoal', 'min5'); return true;" class="interface" style="top:190px; left: 20px; display:none">X</button>
 			<!--
 			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
@@ -226,11 +226,12 @@
 			</tr>
 			</table>
 			<input id="savestring" name="savestring" value="" style="width:600px">
-			<div style="position: absolute; top: 120px; left:500px">
+			<div style="position: absolute; top: 90px; left:500px">
 			<select id="selectLng" size="1" onchange="reloadLang()">
 				<option id="optionLngEn" selected value="en-US">English</option>
 				<option id="optionLngRu"          value="ru-RU">Русский</option>
 				<option id="optionLngGe"          value="de-DE">Deutsch</option>
+				<option id="optionLngEo"          value="eo">Esperanto</option>
 			</select>
 			</div>
 			<br>

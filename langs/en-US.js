@@ -12,7 +12,7 @@ localeStrings.push("population is not changed");
 localeStrings.push("your city is reached population limit. Build new houses or upgrade existing ones");//10
 localeStrings.push("game saved successfully");
 localeStrings.push("game loaded successfully");
-localeStrings.push("Load game? You will lost any unsaved progress!");
+localeStrings.push("Load game? You will lose any unsaved progress!");
 localeStrings.push("Sorry! There is no save to load from!");
 localeStrings.push("Save game? You will rewrite any save you already have!");//15
 localeStrings.push("Please insert save string");
@@ -134,7 +134,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>How to play</h2>" +
     "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
     "After each clock turn your population is paying taxes to you and growing.<br>" +
-    "Normally, each citizen brings one gold piece per tick.<br>" +
+    "Normally, each citizen pays to you one gold piece per tick.<br>" +
     "This behavior could be changed by player decisions.<br>" +
     "You need to build Homes to continue growth of your city population.<br>" +
     "Each lvl of Houses allows you to have more population.<br>" +
