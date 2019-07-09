@@ -2,7 +2,7 @@ var localeStrings = [];
 localeStrings.push("Saluton ludanto en ĉi tiu pliiga ludo!");
 localeStrings.push("Via tasko estas simpla - administru la urbon kiel urbestro de la urbo!");
 localeStrings.push("Civitanoj pagos impostojn ĉiun sezonon (proksimume 30 sekojn) kaj populacio kreskos ĉiun sezonon ankaŭ");
-localeStrings.push("konstruu aŭ plibonigu vian trezoron");
+localeStrings.push("konstruu aŭ plibonigu vian trezorejon");
 localeStrings.push("kvanto da mono pliiĝas");
 localeStrings.push("kvanto da mono malpliiĝas");//5
 localeStrings.push("kvanto da mono ne ŝanĝiĝis");
@@ -20,7 +20,7 @@ localeStrings.push("tre longa ĉenon");
 localeStrings.push("Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!");
 localeStrings.push("Vi dungis gardiston!");
 localeStrings.push("Ne sufiĉe da oro por fari tion!");//20
-localeStrings.push("Trezoro necesas por dungi gardiston!");
+localeStrings.push("Trezorejo necesas por dungi gardiston!");
 localeStrings.push("Ĉu vi volas forĵeti gardiston?");
 localeStrings.push("Vi forĵetis gardiston!");
 localeStrings.push("Vi ne havas gardistojn!");
@@ -34,14 +34,14 @@ localeStrings.push("Jes, plej sange!");
 localeStrings.push("Jes");
 localeStrings.push("No");
 localeStrings.push("vi ekzekutis civitanon pro %arg1");
-localeStrings.push("trezoro financita per %arg1 oro kun konfiskitaj posedaĵoj de la ekzekutita civitano");//35
+localeStrings.push("trezorejo financita per %arg1 oro kun konfiskitaj posedaĵoj de la ekzekutita civitano");//35
 localeStrings.push("tre malmultaj civitanoj");
-localeStrings.push("trezora gardisto(j) forsendis ĉar vi ne povas pagi al ili!");
+localeStrings.push("trezoreja gardisto(j) forsendis ĉar vi ne povas pagi al ili!");
 localeStrings.push("fajro en la urbo!");
 localeStrings.push("Voku fajrestingistojn? Tio kostus vin %arg1 oron!");
 localeStrings.push("fajrobrigadistoj metis finon al la fajro!");//40
 localeStrings.push("ĝi brulos al cindrojn!");
-localeStrings.push("merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezoro");
+localeStrings.push("merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezorejo");
 localeStrings.push("Vi gajnis per loterio %arg1 oro premio﻿");
 localeStrings.push("Konservi ludon");
 localeStrings.push("Ŝarĝi ludon");//45
@@ -151,30 +151,30 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "Pendumilon povas malpliigi feliĉon kaj loĝantaran kreskon, pliigi impostojn kaj permesi ke vi ekzekutis civitanoоn.<br>" +
     "Ekzekuti iun civitanon konfiskos siajn posedaĵojn kaj aldonos ĝin al via trezoroĵo.<br>" +
     "Kaŝejon bezonas pro redukti viajn perdojn pro ŝtelado. Vi ne povas konstrui kaŝejon sen trezoroĵo.<br>"+
-    "This is a single-player game.<br>"+
+    "Tios estas unu-ludanta ludo.<br>"+
     "<br>" +
-    "Supported Languages(SL): English, Russian (Русский).<br>"+
-    "Community Supported Languages(CSL): German (Deutsch).<br>"+
-    "CSL means that the author doesn't provide any help or answers asked in the CSL,<br>"+
-    "though parts of the game or game in whole could be provided in the CSL.<br>"+
-    "Also, any CSL translation could have mistakes or untranslated parts<br>"+
-    "or parts of translation which are partly outdated.<br>"+
-    "You could help with translations for the game here:<br>"+
+    "Apogita Lingvoj (AL): Angla, Rusa.<br>"+
+    "Komunumaj Apogita Lingvoj (KAL): Germana, Esperanto<br>"+
+    "KAL signifas, ke la aŭtoro ne provizas helpon aŭ respondojn en la KAL,<br>"+
+    "kvankam partoj de la ludo aŭ ludo entute povus esti disponigitaj en la KAL.<br>"+
+    "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn<br>"+
+    "aŭ partoj de traduko, kiuj estas parte malaktualaj.<br>"+
+    "Vi povus helpi per tradukoj por la ludo ĉi tie:<br>"+
     "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("wishing well");
-localeStrings.push("sawmill");
-localeStrings.push("wall");
-localeStrings.push("stone wall");//135
-localeStrings.push("tower");
-localeStrings.push("stone tower");
-localeStrings.push("home");
-localeStrings.push("homes");
-localeStrings.push("inn");//140
-localeStrings.push("gallows");
-localeStrings.push("fountain");
-localeStrings.push("treasury");
-localeStrings.push("gold");
-localeStrings.push("population");//145
+localeStrings.push("dezirante puto");
+localeStrings.push("segejo");
+localeStrings.push("muro");
+localeStrings.push("ŝtona muro");//135
+localeStrings.push("turo");
+localeStrings.push("ŝtona turo");
+localeStrings.push("domo");
+localeStrings.push("domoj");
+localeStrings.push("gatejo");//140
+localeStrings.push("pendumilo");
+localeStrings.push("fonto");
+localeStrings.push("trezorejo");
+localeStrings.push("oro");
+localeStrings.push("langeto");//145
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
