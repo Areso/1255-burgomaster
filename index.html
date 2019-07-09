@@ -779,6 +779,8 @@
 		years: [],
 		pops: [],
 		budgets: [],
+		userPopAck: 0,
+		userGoldAck: 0,
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
@@ -811,22 +813,32 @@
 			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
 			if (gold_possible > gold_limit) {
 				game.gold      = gold_limit;
-				msg = localeStrings[3];
-				postEventLog(msg);
+				if (game.userGoldAck === 0) {
+					msg = localeStrings[3];
+					postEventLog(msg);
+					game.userGoldAck = 1;
+				}
 			} else {
 				game.gold      = gold_possible;
+				game.userGoldAck = 0;
 			}
 			pop_limit = game.popLimit();
-			if (game.pop < pop_limit) {
-				pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
-				if (pop_incr == 0) {
-					game.pop = game.pop*1+1;
+			if (game.fire ===0) {
+				if (game.pop < pop_limit) {
+					pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
+					if (pop_incr == 0) {
+						game.pop = game.pop*1+1;
+					} else {
+						game.pop = game.pop*1+pop_incr*1;
+					}
+					pop_m    = 1;
+					game.userPopAck = 0;
 				} else {
-					game.pop = game.pop*1+pop_incr*1;
+					if (game.userPopAck === 0) {
+						postEventLog(localeStrings[10]);
+						game.userPopAck = 1;
+					}
 				}
-				pop_m    = 1;
-			} else {
-				postEventLog(localeStrings[10]);
 			}
 			if (game.treasuryGuard > 0) {
 				if (game.gold - game.treasuryGuard * config.treasuryGuardPricePayroll >= 0) {
@@ -861,7 +873,6 @@
 			if (cnt_cursession===10) {
 				//ym(47225574, 'reachGoal', 'min5');
 				//return true;
-
 			}
 			updateResources();
 		},
@@ -1608,6 +1619,16 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.225";
+		writeToTextArea(msg);
+		msg = "when city on fire, there are no newborns. Also, deleted annoying cap messages";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.224";
+		writeToTextArea(msg);
+		msg = "added Esperanto language (draft)";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.223";
 		writeToTextArea(msg);
 		msg = "fixed bugs on stats screens";

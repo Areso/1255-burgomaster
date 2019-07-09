@@ -154,7 +154,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "This is a single-player game.<br>"+
     "<br>" +
     "Supported Languages(SL): English, Russian (Русский).<br>"+
-    "Community Supported Languages(CSL): German (Deutsch).<br>"+
+    "Community Supported Languages(CSL): German (Deutsch), Esperanto.<br>"+
     "CSL means that the author doesn't provide any help or answers asked in the CSL,<br>"+
     "though parts of the game or game in whole could be provided in the CSL.<br>"+
     "Also, any CSL translation could have mistakes or untranslated parts<br>"+

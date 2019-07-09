@@ -28,7 +28,7 @@
 		<br>
 		<h2>About the game</h2>
 		Supported Languages(SL): English, Russian (Русский).<br>
-		Community Supported Languages(CSL): German (Deutsch).<br>
+		Community Supported Languages(CSL): German (Deutsch), Esperanto<br>
 		CSL means that the author doesn't provide any help or answers asked in the CSL,<br>
 		though parts of the game or game in whole could be provided in the CSL.<br>
 		Also, any CSL translation could have mistakes or untranslated parts or parts of translation which are partly outdated.<br>
