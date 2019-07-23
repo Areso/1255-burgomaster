@@ -397,6 +397,15 @@
 			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">></button>
 			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">>></button>
 		</div>
+		<div id="tabInn" class="tabcontent">
+			<div id="lblTabInn">Welcome to Inn!</div>
+			<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
+				<option id="optionKnight" selected value="knight">Knight</option>
+				<option id="optionMonk"            value="monk"  >Monk</option>
+				<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
+			</select>
+			<button id="btnHireHero"    onclick="game.heroHire()" style="width:80px">Hire hero %arg1 level</button>
+		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -677,7 +686,9 @@
 			alertMsg = localeStrings[137];
 		}
 		if (buildingName==='inn') {
-			alertMsg = localeStrings[140];
+			//alertMsg = localeStrings[140];
+			showAlert = false;
+			openTab(null, 'tabInn');
 		}
 		if (buildingName==='gallows') {
 			alertMsg = localeStrings[141];
@@ -781,6 +792,25 @@
 		budgets: [],
 		userPopAck: 0,
 		userGoldAck: 0,
+		isHero: 0,//do I need this?
+		cityWarehouse: {}, //or just make a list?
+		myhero: {},
+		heroHire: function () {
+			//Object.keys(game.myhero).length===0 && game.myhero.constructor === Object
+			//DRAFT
+			game.myhero.level     = 1;
+			game.myhero.class     = 'monk';
+			game.myhero.inventory = {};//or just make a list?
+		},
+		heroLvlUp: function () {
+
+		},
+		heroDie: function () {
+			//hero died
+			game.myhero = {};
+			//and now we overwrite our save, because the mechanics is RogueLike.
+			writeSave();
+		},
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
@@ -1161,6 +1191,9 @@
 		console.log('we are in first level include after loadStartLocale()');
 	});
 	//functions
+	function reloadHeroClassImg() {
+		//just a placeholder. TODO it
+	}
 	popPage = 0;
 	function checkPop() {
 		var year = document.getElementById("popStatK");
@@ -1321,7 +1354,7 @@
 			}
 		}		
 	}
-	function goldAtStart() { 
+	function goldAtStart() {
 		var year = document.getElementById("goldStatK");
 		var gold = document.getElementById("goldStatV");
 		year.innerHTML = "";
