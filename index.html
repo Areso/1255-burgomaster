@@ -640,11 +640,11 @@
 		canvasScaleRatio = canvas.width / canvas.offsetWidth;
 		loc.x = (tapX - 9) * canvasScaleRatio;
 		loc.y = (tapY - 58) * canvasScaleRatio;
-		for (i=0;i<buildingsInTownB.length;i++){
-			if (loc.x >= buildingsInTownX[i] && loc.x <= buildingsInTownX[i]+buildingsInTownW[i]) {
-				if (loc.y >= buildingsInTownY[i] && loc.y <= buildingsInTownY[i]+buildingsInTownH[i]) {
-					console.log(buildingsInTownB[i]);
-					buildingClick(buildingsInTownB[i]);
+		for (bi=0;bi<buildingsInTownB.length;bi++){
+			if (loc.x >= buildingsInTownX[bi] && loc.x <= buildingsInTownX[bi]+buildingsInTownW[bi]) {
+				if (loc.y >= buildingsInTownY[bi] && loc.y <= buildingsInTownY[bi]+buildingsInTownH[bi]) {
+					console.log(buildingsInTownB[bi]);
+					buildingClick(buildingsInTownB[bi]);
 				}
 			}
 		}
@@ -793,14 +793,29 @@
 		userPopAck: 0,
 		userGoldAck: 0,
 		isHero: 0,//do I need this?
-		cityWarehouse: {}, //or just make a list?
+		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
 		heroHire: function () {
 			//Object.keys(game.myhero).length===0 && game.myhero.constructor === Object
 			//DRAFT
-			game.myhero.level     = 1;
-			game.myhero.class     = 'monk';
-			game.myhero.inventory = {};//or just make a list?
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists === false) {
+				if (game.gold > 20) {
+					console.log('hero hired');
+					game.gold = game.gold - 20;
+					game.myhero.level = game.buildLevelInn;
+					game.myhero.exp = game.myhero.level * 5 ^ 2;
+					var x = document.getElementById("selectHeroClass").selectedIndex;
+					var y = document.getElementById("selectHeroClass").options;
+					var heroclass = y[x].value; //y[x].id, text, index
+					game.myhero.class = heroclass;
+					game.myhero.inventory = [];//should the list contain objects?
+				} else {
+					//alert!
+				}
+			} else {
+				//alert!
+			}
 		},
 		heroLvlUp: function () {
 
