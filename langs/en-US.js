@@ -210,3 +210,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
+localeStrings.push("Welcome to Inn!");
+localeStrings.push("Hire hero<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Knight");
+localeStrings.push("Monk");
+localeStrings.push("placeholder");//185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");

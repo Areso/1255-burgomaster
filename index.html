@@ -4,7 +4,6 @@
 	<title>
 		1255 Burgomaster
 	</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<style type="text/css">
 		/*canvas*/
 		.canvas {
@@ -399,12 +398,21 @@
 		</div>
 		<div id="tabInn" class="tabcontent">
 			<div id="lblTabInn">Welcome to Inn!</div>
+			<br>
+			<br>
 			<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
 				<option id="optionKnight" selected value="knight">Knight</option>
 				<option id="optionMonk"            value="monk"  >Monk</option>
 				<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
 			</select>
-			<button id="btnHireHero"    onclick="game.heroHire()" style="width:80px">Hire hero %arg1 level</button>
+			<br>
+			<br>
+			<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px">Hire hero %arg1 level</button>
+			<br>
+			<br>
+			<div id="heroStats">
+
+			</div>
 		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
@@ -780,7 +788,7 @@
 		hero:0,
 		happiness:80,
 		o_autosave:0,
-		saveVersion:"saveV1006",
+		saveVersion:"saveV1007",
 		myGlobalMap: [],
 		myMapLand: [],
 		castleX: 1,
@@ -795,21 +803,36 @@
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
+		heroUpdStatus: function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			console.log('heroExists value is '+heroExists.toString());
+			if (heroExists === true) {
+				console.log('print status');
+
+				var heroStatuses = ['eating', 'drinking','gambling','training','fistfighting'];
+				var rnd = Math.floor((Math.random() * heroStatuses.length) + 1);
+				console.log('hero status is '+heroStatuses[rnd]);
+				var heroStatus = JSON.stringify(game.myhero, null, 2).replace("intown",heroStatuses[rnd]);
+				document.getElementById("heroStats").innerHTML = heroStatus;
+			} else {
+				document.getElementById("heroStats").innerHTML = "";
+			}
+		},
 		heroHire: function () {
-			//Object.keys(game.myhero).length===0 && game.myhero.constructor === Object
-			//DRAFT
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists === false) {
-				if (game.gold > 20) {
+				if (game.gold > config.costHero) {
 					console.log('hero hired');
-					game.gold = game.gold - 20;
-					game.myhero.level = game.buildLevelInn;
-					game.myhero.exp = game.myhero.level * 5 ^ 2;
+					game.gold             = game.gold - config.costHero;
+					game.myhero.level     = game.buildLevelInn;
+					game.myhero.exp       = game.myhero.level * config.heroExpK ^ 2;
 					var x = document.getElementById("selectHeroClass").selectedIndex;
 					var y = document.getElementById("selectHeroClass").options;
-					var heroclass = y[x].value; //y[x].id, text, index
-					game.myhero.class = heroclass;
+					var heroclass         = y[x].value; //y[x].id, text, index
+					game.myhero.class     = heroclass;
 					game.myhero.inventory = [];//should the list contain objects?
+					game.myhero.status    = 'intown';
+					game.heroUpdStatus();
 				} else {
 					//alert!
 				}
@@ -823,6 +846,7 @@
 		heroDie: function () {
 			//hero died
 			game.myhero = {};
+			game.heroUpdStatus();
 			//and now we overwrite our save, because the mechanics is RogueLike.
 			writeSave();
 		},
@@ -920,6 +944,7 @@
 				//return true;
 			}
 			updateResources();
+			heroUpdStatus();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -1178,7 +1203,9 @@
 		treasuryGuardPricePayroll:25,
 		costPutOutFire:20,
 		sizeMapX:12,
-		sizeMapY:12
+		sizeMapY:12,
+		costHero:20,
+		heroExpK:5
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -1546,6 +1573,12 @@
 		if (returnLanguage==='ru-RU') {
 			document.getElementById("selectLng").selectedIndex=1;
 		}
+		if (returnLanguage==='de-DE') {
+			document.getElementById("selectLng").selectedIndex=2;
+		}
+		if (returnLanguage==='eo') {
+			document.getElementById("selectLng").selectedIndex=3;
+		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
 		document.getElementById("saveGameButton").innerText      = localeStrings[44];
@@ -1570,11 +1603,10 @@
 		document.getElementById("lblTabPop").innerText           = localeStrings[161];
 		document.getElementById("lblTabGold").innerText          = localeStrings[171];
 		document.getElementById("btnColorMode").innerText        = localeStrings[70];
-		//TODO check if this is first callback in the session or not
-		//if (firstLoad===true) {
+		document.getElementById("lblTabInn").innerText           = localeStrings[181];
+		document.getElementById("selectHeroClass")[0].text       = localeStrings[183];
+		document.getElementById("selectHeroClass")[1].text       = localeStrings[184];
 		welcomeMsg();
-		//	firstLoad = false;
-		//}
 		updateButtonCaptions();
 	}
 	function welcomeMsg(){
@@ -2047,6 +2079,8 @@
 			document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
 			document.getElementById("buttonDeathPenalty").setAttribute("style", "top:430px; left: 20px");
 		}
+
+		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 	}
 	function getTime(type) {
 		var d = new Date();
