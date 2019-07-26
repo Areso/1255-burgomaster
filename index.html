@@ -800,6 +800,7 @@
 		budgets: [],
 		userPopAck: 0,
 		userGoldAck: 0,
+		userASaveAck: 0,
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
@@ -808,12 +809,13 @@
 			console.log('heroExists value is '+heroExists.toString());
 			if (heroExists === true) {
 				console.log('print status');
-
 				var heroStatuses = ['eating', 'drinking','gambling','training','fistfighting'];
-				var rnd = Math.floor((Math.random() * heroStatuses.length) + 1);
+				var rnd = Math.floor(Math.random() * heroStatuses.length);
 				console.log('hero status is '+heroStatuses[rnd]);
 				var heroStatus = JSON.stringify(game.myhero, null, 2).replace("intown",heroStatuses[rnd]);
 				document.getElementById("heroStats").innerHTML = heroStatus;
+				//var HTMLofHeroStats = "";
+				//var HTMLofHeroStats =
 			} else {
 				document.getElementById("heroStats").innerHTML = "";
 			}
@@ -823,21 +825,40 @@
 			if (heroExists === false) {
 				if (game.gold > config.costHero) {
 					console.log('hero hired');
-					game.gold             = game.gold - config.costHero;
-					game.myhero.level     = game.buildLevelInn;
-					game.myhero.exp       = game.myhero.level * config.heroExpK ^ 2;
+					game.gold                 = game.gold - config.costHero;
+					game.myhero.level         = game.buildLevelInn;
+					game.myhero.exp           = Math.pow(game.myhero.level * config.heroExpK,2);
 					var x = document.getElementById("selectHeroClass").selectedIndex;
 					var y = document.getElementById("selectHeroClass").options;
-					var heroclass         = y[x].value; //y[x].id, text, index
-					game.myhero.class     = heroclass;
+					var heroclass             = y[x].value; //y[x].id, text, index
+					game.myhero.class         = heroclass;
+
+					if (game.myhero.class==='knight'){
+						game.myhero.atk       = 2;
+						game.myhero.def       = 2;
+						game.myhero.mpow      = 0;
+						game.myhero.mana      = 0;
+						game.myhero.lawful    = 80;
+						game.myhero.kindness  = 50;
+					}
+					if (game.myhero.class==='monk'){
+						game.myhero.atk       = 0;
+						game.myhero.def       = 0;
+						game.myhero.mpow      = 2;
+						game.myhero.mana      = 2;
+						game.myhero.lawful    = 80;
+						game.myhero.kindness  = 70;
+					}
 					game.myhero.inventory = [];//should the list contain objects?
 					game.myhero.status    = 'intown';
 					game.heroUpdStatus();
 				} else {
-					//alert!
+					alertMsg = localeStrings[20];
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 				}
 			} else {
-				//alert!
+				alertMsg = localeStrings[61];
+				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
 		heroLvlUp: function () {
@@ -940,11 +961,12 @@
 			};
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
+				//TODO
 				//ym(47225574, 'reachGoal', 'min5');
 				//return true;
 			}
 			updateResources();
-			heroUpdStatus();
+			game.heroUpdStatus();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -1699,6 +1721,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.229";
+		writeToTextArea(msg);
+		msg = "Made Inn tab. Hero could be hired. Added alignment. Fix annoying autosave messages";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.225";
 		writeToTextArea(msg);
 		msg = "when city on fire, there are no newborns. Also, deleted annoying cap messages";
@@ -1937,6 +1964,7 @@
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
 	function setupAutosave() {
+		game.userASaveAck = 0;
 		if (game.o_autosave==0) {
 			if (typeof autosaveObject !== 'undefined') {
 				clearInterval(autosaveObject);
@@ -1950,9 +1978,11 @@
 	function changeAutosave() {
 		if (game.o_autosave==0) {
 			game.o_autosave = 1;
+			postEventLog(localeStrings[62]);
 			setupAutosave();
 		} else {
 			game.o_autosave = 0;
+			postEventLog(localeStrings[63]);
 			setupAutosave();
 		}
 	}
@@ -1990,7 +2020,7 @@
 	}
 	function saveGame(saveConfirmation) {
 		if (saveConfirmation=="silent") {
-			writeSave();
+			writeSave("silent");
 		} else {
 			if (localStorage.getItem('game')!==null) {
 				question = localeStrings[15];
@@ -2005,12 +2035,19 @@
 			writeSave();
 		}
 	}
-	function writeSave(){
+	function writeSave(SaveType){
 		document.getElementById("loadGameButton").style.visibility = "visible";
 		localStorage.setItem('game', JSON.stringify(game));
-		//localStorage.setItem('config', JSON.stringify(options));
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
-		scrollDown();
+		if (SaveType === "silent") {
+			if (game.userASaveAck === 0) {
+				game.userASaveAck = 1;
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+				scrollDown();
+			}
+		} else {
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+			scrollDown();
+		}
 	}
 	function loadGame() {
 		question = localeStrings[13];

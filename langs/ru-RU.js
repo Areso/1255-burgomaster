@@ -60,9 +60,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Хорошо");//60
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("У вас уже есть герой");
+localeStrings.push("Автосохранение включено");
+localeStrings.push("Автосохранение выключено");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//65
 localeStrings.push("Настройки");

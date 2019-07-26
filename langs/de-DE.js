@@ -60,9 +60,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Gut");//60
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Ihr habt schon einen Helden");
+localeStrings.push("Automatisches Speichern ist eingeschaltet");
+localeStrings.push("Automatisches Speichern ist ausgeschaltet");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//65
 localeStrings.push("Einrichten");
