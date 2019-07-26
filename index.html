@@ -4,7 +4,6 @@
 	<title>
 		1255 Burgomaster
 	</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<style type="text/css">
 		/*canvas*/
 		.canvas {
@@ -397,6 +396,24 @@
 			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">></button>
 			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">>></button>
 		</div>
+		<div id="tabInn" class="tabcontent">
+			<div id="lblTabInn">Welcome to Inn!</div>
+			<br>
+			<br>
+			<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
+				<option id="optionKnight" selected value="knight">Knight</option>
+				<option id="optionMonk"            value="monk"  >Monk</option>
+				<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
+			</select>
+			<br>
+			<br>
+			<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px">Hire hero %arg1 level</button>
+			<br>
+			<br>
+			<div id="heroStats">
+
+			</div>
+		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -631,11 +648,11 @@
 		canvasScaleRatio = canvas.width / canvas.offsetWidth;
 		loc.x = (tapX - 9) * canvasScaleRatio;
 		loc.y = (tapY - 58) * canvasScaleRatio;
-		for (i=0;i<buildingsInTownB.length;i++){
-			if (loc.x >= buildingsInTownX[i] && loc.x <= buildingsInTownX[i]+buildingsInTownW[i]) {
-				if (loc.y >= buildingsInTownY[i] && loc.y <= buildingsInTownY[i]+buildingsInTownH[i]) {
-					console.log(buildingsInTownB[i]);
-					buildingClick(buildingsInTownB[i]);
+		for (bi=0;bi<buildingsInTownB.length;bi++){
+			if (loc.x >= buildingsInTownX[bi] && loc.x <= buildingsInTownX[bi]+buildingsInTownW[bi]) {
+				if (loc.y >= buildingsInTownY[bi] && loc.y <= buildingsInTownY[bi]+buildingsInTownH[bi]) {
+					console.log(buildingsInTownB[bi]);
+					buildingClick(buildingsInTownB[bi]);
 				}
 			}
 		}
@@ -677,7 +694,9 @@
 			alertMsg = localeStrings[137];
 		}
 		if (buildingName==='inn') {
-			alertMsg = localeStrings[140];
+			//alertMsg = localeStrings[140];
+			showAlert = false;
+			openTab(null, 'tabInn');
 		}
 		if (buildingName==='gallows') {
 			alertMsg = localeStrings[141];
@@ -769,7 +788,7 @@
 		hero:0,
 		happiness:80,
 		o_autosave:0,
-		saveVersion:"saveV1006",
+		saveVersion:"saveV1007",
 		myGlobalMap: [],
 		myMapLand: [],
 		castleX: 1,
@@ -781,6 +800,77 @@
 		budgets: [],
 		userPopAck: 0,
 		userGoldAck: 0,
+		userASaveAck: 0,
+		isHero: 0,//do I need this?
+		cityWarehouse: [], //should the list contain objects?
+		myhero: {},
+		heroUpdStatus: function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			console.log('heroExists value is '+heroExists.toString());
+			if (heroExists === true) {
+				console.log('print status');
+				var heroStatuses = ['eating', 'drinking','gambling','training','fistfighting'];
+				var rnd = Math.floor(Math.random() * heroStatuses.length);
+				console.log('hero status is '+heroStatuses[rnd]);
+				var heroStatus = JSON.stringify(game.myhero, null, 2).replace("intown",heroStatuses[rnd]);
+				document.getElementById("heroStats").innerHTML = heroStatus;
+				//var HTMLofHeroStats = "";
+				//var HTMLofHeroStats =
+			} else {
+				document.getElementById("heroStats").innerHTML = "";
+			}
+		},
+		heroHire: function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists === false) {
+				if (game.gold > config.costHero) {
+					console.log('hero hired');
+					game.gold                 = game.gold - config.costHero;
+					game.myhero.level         = game.buildLevelInn;
+					game.myhero.exp           = Math.pow(game.myhero.level * config.heroExpK,2);
+					var x = document.getElementById("selectHeroClass").selectedIndex;
+					var y = document.getElementById("selectHeroClass").options;
+					var heroclass             = y[x].value; //y[x].id, text, index
+					game.myhero.class         = heroclass;
+
+					if (game.myhero.class==='knight'){
+						game.myhero.atk       = 2;
+						game.myhero.def       = 2;
+						game.myhero.mpow      = 0;
+						game.myhero.mana      = 0;
+						game.myhero.lawful    = 80;
+						game.myhero.kindness  = 50;
+					}
+					if (game.myhero.class==='monk'){
+						game.myhero.atk       = 0;
+						game.myhero.def       = 0;
+						game.myhero.mpow      = 2;
+						game.myhero.mana      = 2;
+						game.myhero.lawful    = 80;
+						game.myhero.kindness  = 70;
+					}
+					game.myhero.inventory = [];//should the list contain objects?
+					game.myhero.status    = 'intown';
+					game.heroUpdStatus();
+				} else {
+					alertMsg = localeStrings[20];
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				}
+			} else {
+				alertMsg = localeStrings[61];
+				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+			}
+		},
+		heroLvlUp: function () {
+
+		},
+		heroDie: function () {
+			//hero died
+			game.myhero = {};
+			game.heroUpdStatus();
+			//and now we overwrite our save, because the mechanics is RogueLike.
+			writeSave();
+		},
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
@@ -871,10 +961,12 @@
 			};
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
+				//TODO
 				//ym(47225574, 'reachGoal', 'min5');
 				//return true;
 			}
 			updateResources();
+			game.heroUpdStatus();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -1133,7 +1225,9 @@
 		treasuryGuardPricePayroll:25,
 		costPutOutFire:20,
 		sizeMapX:12,
-		sizeMapY:12
+		sizeMapY:12,
+		costHero:20,
+		heroExpK:5
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -1161,6 +1255,9 @@
 		console.log('we are in first level include after loadStartLocale()');
 	});
 	//functions
+	function reloadHeroClassImg() {
+		//just a placeholder. TODO it
+	}
 	popPage = 0;
 	function checkPop() {
 		var year = document.getElementById("popStatK");
@@ -1321,7 +1418,7 @@
 			}
 		}		
 	}
-	function goldAtStart() { 
+	function goldAtStart() {
 		var year = document.getElementById("goldStatK");
 		var gold = document.getElementById("goldStatV");
 		year.innerHTML = "";
@@ -1498,6 +1595,12 @@
 		if (returnLanguage==='ru-RU') {
 			document.getElementById("selectLng").selectedIndex=1;
 		}
+		if (returnLanguage==='de-DE') {
+			document.getElementById("selectLng").selectedIndex=2;
+		}
+		if (returnLanguage==='eo') {
+			document.getElementById("selectLng").selectedIndex=3;
+		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
 		document.getElementById("saveGameButton").innerText      = localeStrings[44];
@@ -1522,11 +1625,10 @@
 		document.getElementById("lblTabPop").innerText           = localeStrings[161];
 		document.getElementById("lblTabGold").innerText          = localeStrings[171];
 		document.getElementById("btnColorMode").innerText        = localeStrings[70];
-		//TODO check if this is first callback in the session or not
-		//if (firstLoad===true) {
+		document.getElementById("lblTabInn").innerText           = localeStrings[181];
+		document.getElementById("selectHeroClass")[0].text       = localeStrings[183];
+		document.getElementById("selectHeroClass")[1].text       = localeStrings[184];
 		welcomeMsg();
-		//	firstLoad = false;
-		//}
 		updateButtonCaptions();
 	}
 	function welcomeMsg(){
@@ -1619,6 +1721,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.229";
+		writeToTextArea(msg);
+		msg = "Made Inn tab. Hero could be hired. Added alignment. Fix annoying autosave messages";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.225";
 		writeToTextArea(msg);
 		msg = "when city on fire, there are no newborns. Also, deleted annoying cap messages";
@@ -1857,6 +1964,7 @@
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
 	function setupAutosave() {
+		game.userASaveAck = 0;
 		if (game.o_autosave==0) {
 			if (typeof autosaveObject !== 'undefined') {
 				clearInterval(autosaveObject);
@@ -1870,9 +1978,11 @@
 	function changeAutosave() {
 		if (game.o_autosave==0) {
 			game.o_autosave = 1;
+			postEventLog(localeStrings[62]);
 			setupAutosave();
 		} else {
 			game.o_autosave = 0;
+			postEventLog(localeStrings[63]);
 			setupAutosave();
 		}
 	}
@@ -1910,7 +2020,7 @@
 	}
 	function saveGame(saveConfirmation) {
 		if (saveConfirmation=="silent") {
-			writeSave();
+			writeSave("silent");
 		} else {
 			if (localStorage.getItem('game')!==null) {
 				question = localeStrings[15];
@@ -1925,12 +2035,19 @@
 			writeSave();
 		}
 	}
-	function writeSave(){
+	function writeSave(SaveType){
 		document.getElementById("loadGameButton").style.visibility = "visible";
 		localStorage.setItem('game', JSON.stringify(game));
-		//localStorage.setItem('config', JSON.stringify(options));
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
-		scrollDown();
+		if (SaveType === "silent") {
+			if (game.userASaveAck === 0) {
+				game.userASaveAck = 1;
+				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+				scrollDown();
+			}
+		} else {
+			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+			scrollDown();
+		}
 	}
 	function loadGame() {
 		question = localeStrings[13];
@@ -1999,6 +2116,8 @@
 			document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
 			document.getElementById("buttonDeathPenalty").setAttribute("style", "top:430px; left: 20px");
 		}
+
+		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 	}
 	function getTime(type) {
 		var d = new Date();

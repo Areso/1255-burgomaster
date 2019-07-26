@@ -60,9 +60,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Gut");//60
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Ihr habt schon einen Helden");
+localeStrings.push("Automatisches Speichern ist eingeschaltet");
+localeStrings.push("Automatisches Speichern ist ausgeschaltet");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//65
 localeStrings.push("Einrichten");
@@ -210,3 +210,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
+localeStrings.push("Willkommen im Schenke");
+localeStrings.push("Vermietung Held<br/>Stufe %arg1<br/>%arg2 Gold");
+localeStrings.push("Ritter");
+localeStrings.push("Mönch");
+localeStrings.push("placeholder");//185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");

@@ -60,9 +60,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("OK");//60
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Vi jam havas heroon!");
+localeStrings.push("aŭtomate konservi ŝaltita");
+localeStrings.push("aŭtomate konservi malŝaltita");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//65
 localeStrings.push("Preferoj");
@@ -210,3 +210,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
+localeStrings.push("Bonvenon al Gastejo");
+localeStrings.push("dungi heroon<br/>nivelo %arg1<br/>%arg2 oro");
+localeStrings.push("Kavaliro");
+localeStrings.push("Monako");
+localeStrings.push("placeholder");//185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");

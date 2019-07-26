@@ -60,9 +60,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Хорошо");//60
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("У вас уже есть герой");
+localeStrings.push("Автосохранение включено");
+localeStrings.push("Автосохранение выключено");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//65
 localeStrings.push("Настройки");
@@ -210,3 +210,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
+localeStrings.push("Вы в Таверне");
+localeStrings.push("Нанять героя<br/>уровень %arg1<br/>%arg2 золота");
+localeStrings.push("Рыцарь");
+localeStrings.push("Монах");
+localeStrings.push("placeholder");//185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
