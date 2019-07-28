@@ -64,7 +64,7 @@
 			width: 180px;
 		}*/
 		#console_n_chat {
-			resize: none;
+			/*resize: none;*/
 			overflow: auto;
 		}
 		/* Style the tab */
@@ -78,7 +78,6 @@
 		div {
 			color: #2f3236;
 		}
-
 		/* Style the buttons inside the tab */
 		div.tab button {
 			background-color: inherit;
@@ -115,7 +114,6 @@
 			height: 470px;
 			width: 800px;/*800-12*2*/
 		}
-
 		/* Style the close button */
 		.topright {
 			float: right;
@@ -132,6 +130,9 @@
             overflow-x: hidden;
             overflow-y: scroll;
             */
+		}
+		#htmlGame {
+			margin: auto;
 		}
 		#theBuildingDiv {
 			width: 795px;
@@ -152,7 +153,7 @@
 	</script>
 </head>
 <body>
-<span id="html">
+<div id="htmlGame">
 		<script>
 			var url = window.location.pathname;
 			var filename = url.substring(url.lastIndexOf('/')+1);
@@ -170,6 +171,7 @@
 			}
 			*/
 		</script>
+
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
 			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
@@ -401,8 +403,8 @@
 			<br>
 			<br>
 			<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
-				<option id="optionKnight" selected value="knight">Knight</option>
-				<option id="optionMonk"            value="monk"  >Monk</option>
+				<option id="optionKnight" selected value="0">Knight</option>
+				<option id="optionMonk"            value="1"  >Monk</option>
 				<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
 			</select>
 			<br>
@@ -422,7 +424,7 @@
 		</p>
 		<canvas id="myDCanvas" width="600" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
-</span>
+</div>
 <script>
 	//TOWN
 	canvas  = document.getElementById("canvas");
@@ -812,13 +814,62 @@
 				var heroStatuses = ['eating', 'drinking','gambling','training','fistfighting'];
 				var rnd = Math.floor(Math.random() * heroStatuses.length);
 				console.log('hero status is '+heroStatuses[rnd]);
-				var heroStatus = JSON.stringify(game.myhero, null, 2).replace("intown",heroStatuses[rnd]);
-				document.getElementById("heroStats").innerHTML = heroStatus;
-				//var HTMLofHeroStats = "";
-				//var HTMLofHeroStats =
+				//var heroStatus = JSON.stringify(game.myhero, null, 2).replace("intown",heroStatuses[rnd]);
+				//document.getElementById("heroStats").innerHTML = heroStatus;
+				var lblHeroClass    = localeStrings[204][game.myhero.class];
+				var lblAlignment    = game.heroAlignment("text");
+				var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
+				if (game.myhero.class==="knight"){
+					game.myhero.class = 0;
+				}
+				if (game.myhero.class==="monk"){
+					game.myhero.class = 1;
+				}
+				if (game.myhero.cmana === undefined){
+					game.myhero.cmana = game.myhero.mana;
+				}
+				HTMLofHeroStats    += localeStrings[189]+": "+game.myhero.level+"<br>";
+				HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
+				HTMLofHeroStats    += localeStrings[195]+": "+game.myhero.exp+" | ";
+				HTMLofHeroStats    += localeStrings[196]+": "+game.heroNextLvlExpLimit()+"<br>";
+				HTMLofHeroStats    += localeStrings[190]+": "+game.myhero.atk+" | ";
+				HTMLofHeroStats    += localeStrings[191]+": "+game.myhero.def+"<br>";
+				HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
+				HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
+				document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
 			} else {
 				document.getElementById("heroStats").innerHTML = "";
 			}
+		},
+		heroAlignment(returnFormat) {
+			console.log("we are entered to function heroAlignment");
+			if (returnFormat==="text") {
+				console.log("we are succesfully passed trough first branching");
+				var heroAlignment = "";
+				if (game.myhero.lawful < 40) {
+					heroAlignment += "Chaotic";
+				}
+				if (game.myhero.lawful >= 40 && game.myhero.lawful <60) {
+					heroAlignment += "Neutral";
+				}
+				if (game.myhero.lawful >= 60) {
+					heroAlignment += "Lawful";
+				}
+				if (game.myhero.kindness < 40) {
+					heroAlignment += " "+"Evil";
+				}
+				if (game.myhero.kindness >= 40 && game.myhero.kindness <60) {
+					heroAlignment += " "+"Neutral";
+				}
+				if (game.myhero.kindness >= 60) {
+					heroAlignment += " "+"Good";
+				}
+				heroAlignment += " ("+game.myhero.lawful+"; "+game.myhero.kindness+")";
+			}
+			return heroAlignment;
+		},
+		heroNextLvlExpLimit () {
+			return Math.pow((game.myhero.level+1) * config.heroExpK,2);
 		},
 		heroHire: function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
@@ -831,21 +882,22 @@
 					var x = document.getElementById("selectHeroClass").selectedIndex;
 					var y = document.getElementById("selectHeroClass").options;
 					var heroclass             = y[x].value; //y[x].id, text, index
-					game.myhero.class         = heroclass;
-
-					if (game.myhero.class==='knight'){
+					game.myhero.class         = parseInt(heroclass);
+					if (game.myhero.class===0){
 						game.myhero.atk       = 2;
 						game.myhero.def       = 2;
 						game.myhero.mpow      = 0;
 						game.myhero.mana      = 0;
+						game.myhero.cmana     = 0;
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 50;
 					}
-					if (game.myhero.class==='monk'){
+					if (game.myhero.class===1){
 						game.myhero.atk       = 0;
 						game.myhero.def       = 0;
 						game.myhero.mpow      = 2;
-						game.myhero.mana      = 2;
+						game.myhero.mana      = 20;
+						game.myhero.cmana     = 20;
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 70;
 					}
@@ -1388,7 +1440,6 @@
 	function popAtEnd() {
 		checkPop();
 	}
-	
 	goldPage = 0;
 	function checkGold() {
 		var year = document.getElementById("goldStatK");
@@ -1626,10 +1677,11 @@
 		document.getElementById("lblTabGold").innerText          = localeStrings[171];
 		document.getElementById("btnColorMode").innerText        = localeStrings[70];
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
-		document.getElementById("selectHeroClass")[0].text       = localeStrings[183];
-		document.getElementById("selectHeroClass")[1].text       = localeStrings[184];
+		document.getElementById("selectHeroClass")[0].text       = localeStrings[204][0];
+		document.getElementById("selectHeroClass")[1].text       = localeStrings[204][1];
 		welcomeMsg();
 		updateButtonCaptions();
+		game.heroUpdStatus();
 	}
 	function welcomeMsg(){
 		postEventLog(localeStrings[0]);
@@ -1721,6 +1773,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.230";
+		writeToTextArea(msg);
+		msg = "Now hero stats shows as text, not as JSON. Made eventlog resizeable";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.229";
 		writeToTextArea(msg);
 		msg = "Made Inn tab. Hero could be hired. Added alignment. Fix annoying autosave messages";
@@ -2063,6 +2120,7 @@
 				setupAutosave();
 				composite();
 				updateResources();
+				game.heroUpdStatus();
 				updateButtonCaptions();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
@@ -2120,10 +2178,11 @@
 		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 	}
 	function getTime(type) {
-		var d = new Date();
+		var d  = new Date();
 		var hh = d.getHours();
 		var mm = d.getMinutes();
 		var ss = d.getSeconds();
+		var n  = "";
 		if (hh < 10) {
 			hh = "0"+hh;
 		}

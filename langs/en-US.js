@@ -212,8 +212,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Welcome to Inn!");
 localeStrings.push("Hire hero<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Knight");
-localeStrings.push("Monk");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -221,14 +221,17 @@ localeStrings.push("placeholder");
 localeStrings.push("Level");
 localeStrings.push("Attack");//190
 localeStrings.push("Defense");
-localeStrings.push("Spellpower");
 localeStrings.push("Manapoints");
+localeStrings.push("Spellpower");
 localeStrings.push("Experience");
-localeStrings.push("Alignment");//195
+localeStrings.push("Current experience");//195
+localeStrings.push("Experience required for next level");
+localeStrings.push("Alignment");
 localeStrings.push("Lawful");
 localeStrings.push("Neutral");
-localeStrings.push("Chaotic");
+localeStrings.push("Chaotic");//200
 localeStrings.push("Good");
-localeStrings.push("Neutral");//200
+localeStrings.push("Neutral");
 localeStrings.push("Evil");
-
+localeStrings.push(["Knight", "Monk"]);
+localeStrings.push("Class");//205

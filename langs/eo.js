@@ -212,8 +212,25 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Bonvenon al Gastejo");
 localeStrings.push("dungi heroon<br/>nivelo %arg1<br/>%arg2 oro");
-localeStrings.push("Kavaliro");
-localeStrings.push("Monako");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
+localeStrings.push("Nivelo");
+localeStrings.push("Atako");//190
+localeStrings.push("Defendo");
+localeStrings.push("Magiaj punktoj");
+localeStrings.push("Magia potenco");
+localeStrings.push("Sperto");
+localeStrings.push("Nuna sperto");//195
+localeStrings.push("Sperto bezonata por sekva nivelo");
+localeStrings.push("Aliĝo");
+localeStrings.push("Laŭleĝa");
+localeStrings.push("Neŭtrala");
+localeStrings.push("Kaosa");//200
+localeStrings.push("Bono");
+localeStrings.push("Neŭtralo");
+localeStrings.push("Malbono");
+localeStrings.push(["Kavaliro", "Monako"]);
+localeStrings.push("Klaso");//205

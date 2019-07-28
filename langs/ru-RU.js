@@ -212,8 +212,26 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Вы в Таверне");
 localeStrings.push("Нанять героя<br/>уровень %arg1<br/>%arg2 золота");
-localeStrings.push("Рыцарь");
-localeStrings.push("Монах");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Уровень");
+localeStrings.push("Атака");//190
+localeStrings.push("Защита");
+localeStrings.push("Сила магии");
+localeStrings.push("Мана");
+localeStrings.push("Опыт");
+localeStrings.push("Опыт");//195
+localeStrings.push("Опыт, необходимый для следующего уровня");
+localeStrings.push("Убеждение");
+localeStrings.push("Добропорядочный");
+localeStrings.push("Нейтральный");
+localeStrings.push("Разрушительный");//200
+localeStrings.push("Добряк");
+localeStrings.push("Пофигист");
+localeStrings.push("Злыдень");
+localeStrings.push(["Рыцарь", "Монах"]);
+localeStrings.push("Класс");//205
