@@ -419,9 +419,7 @@
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
-		<p id="console_n_chat_div" style="top:530px; left:10px" class="interface">
-			<textarea id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px"></textarea>
-		</p>
+		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 540px; left: 10px"></div>
 		<canvas id="myDCanvas" width="600" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
@@ -956,7 +954,8 @@
 			if (gold_possible > gold_limit) {
 				game.gold      = gold_limit;
 				if (game.userGoldAck === 0) {
-					msg = localeStrings[3];
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[3]);
 					postEventLog(msg);
 					game.userGoldAck = 1;
 				}
@@ -977,7 +976,9 @@
 					game.userPopAck = 0;
 				} else {
 					if (game.userPopAck === 0) {
-						postEventLog(localeStrings[10]);
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1",localeStrings[10]);
+						postEventLog(msg);
 						game.userPopAck = 1;
 					}
 				}
@@ -1107,7 +1108,8 @@
 						updateResources();
 					}
 					else {
-						msg = localeStrings[20];
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1",localeStrings[20]);
 						postEventLog(msg);
 					}
 				}
@@ -1125,6 +1127,7 @@
 					updateResources();
 				}
 				else {
+
 					msg = localeStrings[20];
 					postEventLog(msg);
 				}
@@ -1217,7 +1220,8 @@
 			if (game.fire === 0) {
 				rnd = Math.floor((Math.random() * 3) + 1);
 				if (rnd === 1) {
-					msg = localeStrings[38];
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[38]);
 					postEventLog(msg);
 					game.fire = 1;
 					composite();
@@ -1689,7 +1693,7 @@
 		postEventLog(localeStrings[2]);
 	}
 	function postEventLog(msgEventLog) {
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+msgEventLog;
+		document.getElementById("console_n_chat").innerHTML = document.getElementById("console_n_chat").innerHTML+"<br>"+getTime(0)+": "+msgEventLog;
 		scrollDown();
 	}
 	function generateMap() {
@@ -1773,6 +1777,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.231";
+		writeToTextArea(msg);
+		msg = "action required messages shown in bold font";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.230";
 		writeToTextArea(msg);
 		msg = "Now hero stats shows as text, not as JSON. Made eventlog resizeable";
