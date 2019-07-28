@@ -63,7 +63,7 @@ localeStrings.push("Хорошо");//60
 localeStrings.push("У вас уже есть герой");
 localeStrings.push("Автосохранение включено");
 localeStrings.push("Автосохранение выключено");
-localeStrings.push("placeholder");
+localeStrings.push("Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?");
 localeStrings.push("placeholder");//65
 localeStrings.push("Настройки");
 localeStrings.push("Экспорт сохранения");

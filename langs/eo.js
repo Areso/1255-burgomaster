@@ -63,7 +63,7 @@ localeStrings.push("OK");//60
 localeStrings.push("Vi jam havas heroon!");
 localeStrings.push("aŭtomate konservi ŝaltita");
 localeStrings.push("aŭtomate konservi malŝaltita");
-localeStrings.push("placeholder");
+localeStrings.push("Vi estas konstruonta %arg1.\n Se la objekto estas konstruita, vi ne rajtus konstrui %arg2.\n Ĉu vi certas en via elekto?");
 localeStrings.push("placeholder");//65
 localeStrings.push("Preferoj");
 localeStrings.push("eksporti konserva dosieron");

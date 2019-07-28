@@ -63,7 +63,7 @@ localeStrings.push("Gut");//60
 localeStrings.push("Ihr habt schon einen Helden");
 localeStrings.push("Automatisches Speichern ist eingeschaltet");
 localeStrings.push("Automatisches Speichern ist ausgeschaltet");
-localeStrings.push("placeholder");
+localeStrings.push("Ihr sind im Begriff, nach %arg1 zu bauen.\nWenn das Objekt gebaut wird, können Ihr keine %arg2 bauen.\nBist du dir bei deiner Wahl sicher?");
 localeStrings.push("placeholder");//65
 localeStrings.push("Einrichten");
 localeStrings.push("Export-Spiel");

@@ -316,10 +316,10 @@
 					</tr>
 					<tr>
 						<td class="building">
-							<button id="buttonBldGallows" onclick="game.Build('Gallows')" class="building">Build gallows</button>
+							<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building">Build gallows</button>
 						</td>
 						<td class="building">
-							<button id="buttonBldFountain" onclick="game.Build('Fountain')" class="building">Build fountain</button>
+							<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building">Build fountain</button>
 						</td>
 						<td class="building">
 							<button id="buttonBldStash" onclick="game.Build('Stash')" class="building">Build stash</button>
@@ -804,41 +804,6 @@
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
-		heroUpdStatus: function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			console.log('heroExists value is '+heroExists.toString());
-			if (heroExists === true) {
-				console.log('print status');
-				var heroStatuses = ['eating', 'drinking','gambling','training','fistfighting'];
-				var rnd = Math.floor(Math.random() * heroStatuses.length);
-				console.log('hero status is '+heroStatuses[rnd]);
-				//var heroStatus = JSON.stringify(game.myhero, null, 2).replace("intown",heroStatuses[rnd]);
-				//document.getElementById("heroStats").innerHTML = heroStatus;
-				var lblHeroClass    = localeStrings[204][game.myhero.class];
-				var lblAlignment    = game.heroAlignment("text");
-				var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
-				if (game.myhero.class==="knight"){
-					game.myhero.class = 0;
-				}
-				if (game.myhero.class==="monk"){
-					game.myhero.class = 1;
-				}
-				if (game.myhero.cmana === undefined){
-					game.myhero.cmana = game.myhero.mana;
-				}
-				HTMLofHeroStats    += localeStrings[189]+": "+game.myhero.level+"<br>";
-				HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
-				HTMLofHeroStats    += localeStrings[195]+": "+game.myhero.exp+" | ";
-				HTMLofHeroStats    += localeStrings[196]+": "+game.heroNextLvlExpLimit()+"<br>";
-				HTMLofHeroStats    += localeStrings[190]+": "+game.myhero.atk+" | ";
-				HTMLofHeroStats    += localeStrings[191]+": "+game.myhero.def+"<br>";
-				HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
-				HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
-				document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
-			} else {
-				document.getElementById("heroStats").innerHTML = "";
-			}
-		},
 		heroAlignment(returnFormat) {
 			console.log("we are entered to function heroAlignment");
 			if (returnFormat==="text") {
@@ -901,10 +866,11 @@
 					}
 					game.myhero.inventory = [];//should the list contain objects?
 					game.myhero.status    = 'intown';
-					game.heroUpdStatus();
+					heroUpdStatus();
 				} else {
-					alertMsg = localeStrings[20];
-					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 			} else {
 				alertMsg = localeStrings[61];
@@ -917,7 +883,7 @@
 		heroDie: function () {
 			//hero died
 			game.myhero = {};
-			game.heroUpdStatus();
+			heroUpdStatus();
 			//and now we overwrite our save, because the mechanics is RogueLike.
 			writeSave();
 		},
@@ -1019,7 +985,7 @@
 				//return true;
 			}
 			updateResources();
-			game.heroUpdStatus();
+			heroUpdStatus();
 		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
@@ -1028,12 +994,20 @@
 					game.gold               = game.gold - config.costWall;
 					commonBuild();
 					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 				if (game.gold >= config.costTower && game.buildLevelD == 1) {
 					game.buildLevelD        = game.buildLevelD*1 + 1;
 					game.gold               = game.gold - config.costTower;
 					commonBuild();
 					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 			}
 			if (Structure==="Home") {
@@ -1042,6 +1016,10 @@
 					game.buildLevelH        = game.buildLevelH*1 + 1;
 					commonBuild();
 					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 			}
 			if (Structure==="Treasury") {
@@ -1050,6 +1028,10 @@
 					game.buildLevelTreasury = game.buildLevelTreasury*1 + 1;
 					commonBuild();
 					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 			}
 			if (Structure==="Gallows") {
@@ -1058,6 +1040,10 @@
 					game.buildLevelGallows  = game.buildLevelGallows*1 + 1;
 					commonBuild();
 					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 			}
 			if (Structure==="Fountain") {
@@ -1074,6 +1060,10 @@
 					game.buildLevelStash    = game.buildLevelStash*1 + 1;
 					commonBuild();
 					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 			}
 			if (Structure==="Inn") {
@@ -1082,12 +1072,44 @@
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					commonBuild();
 					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
 				}
 			}
 			function commonBuild() {
 				updateResources();
 				composite();
 				updateButtonCaptions();
+			}
+		},
+		buildGallowsOrFountain(objectToBuild) {
+			var costOfBuilding = 0;
+			if (objectToBuild==="Fountain") {
+				costOfBuilding = config.costFountain;
+				question = localeStrings[64].replace("%arg1",localeStrings[142]).replace("%arg2",localeStrings[141]);
+			}
+			if (objectToBuild==="Gallows") {
+				costOfBuilding = config.costGallows;
+				question = localeStrings[64].replace("%arg1",localeStrings[141]).replace("%arg2",localeStrings[142]);
+			}
+			if (game.gold > costOfBuilding) {
+				if (game.buildLevelFountain === 0 && game.buildLevelGallows === 0) {
+					the_objectToBuild = objectToBuild;
+					showModal(1, '', game.buildGallowsOrFountainCallback, question, localeStrings[32], localeStrings[33])
+				} else {
+					game.Build(objectToBuild);
+				}
+			} else {
+				msg = "<b>%arg1</b>";
+				msg = msg.replace("%arg1",localeStrings[20]);
+				postEventLog(msg);
+			}
+		},
+		buildGallowsOrFountainCallback() {
+			if (answer === 2) {
+				game.Build(the_objectToBuild);
 			}
 		},
 		hireTreasuryGuard : function () {
@@ -1098,26 +1120,9 @@
 				alertMsg = localeStrings[21];
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 			}
-			function afterAnswer() {
-				if (answer === 2) {
-					if (game.gold >= config.treasuryGuardPriceHire) {
-						game.treasuryGuard = game.treasuryGuard*1 + 1;
-						game.gold          = game.gold - config.treasuryGuardPriceHire;
-						msg = localeStrings[19];
-						postEventLog(msg);
-						updateResources();
-					}
-					else {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[20]);
-						postEventLog(msg);
-					}
-				}
-			}
 			game.hireTreasuryGuard.returnAnswer = afterAnswer;
 		},
 		hireTreasuryGuardCallback : function () {
-			console.log("debug");
 			if (answer === 2) {
 				if (game.gold >= config.treasuryGuardPriceHire) {
 					game.treasuryGuard = game.treasuryGuard*1 + 1;
@@ -1125,10 +1130,9 @@
 					msg = localeStrings[19];
 					postEventLog(msg);
 					updateResources();
-				}
-				else {
-
-					msg = localeStrings[20];
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
 					postEventLog(msg);
 				}
 			}
@@ -1685,7 +1689,7 @@
 		document.getElementById("selectHeroClass")[1].text       = localeStrings[204][1];
 		welcomeMsg();
 		updateButtonCaptions();
-		game.heroUpdStatus();
+		heroUpdStatus();
 	}
 	function welcomeMsg(){
 		postEventLog(localeStrings[0]);
@@ -1777,6 +1781,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.232";
+		writeToTextArea(msg);
+		msg = "There is a confirmation dialog now, when the player is about to choose kind or cruel path.";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.231";
 		writeToTextArea(msg);
 		msg = "action required messages shown in bold font";
@@ -2129,7 +2138,7 @@
 				setupAutosave();
 				composite();
 				updateResources();
-				game.heroUpdStatus();
+				heroUpdStatus();
 				updateButtonCaptions();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
@@ -2185,6 +2194,41 @@
 		}
 
 		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
+	}
+	function heroUpdStatus() {
+		var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+		//console.log('heroExists value is '+heroExists.toString());
+		if (heroExists === true) {
+			//console.log('print status');
+			var heroStatuses = ['eating', 'drinking','gambling','training','fistfighting'];
+			var rnd = Math.floor(Math.random() * heroStatuses.length);
+			//console.log('hero status is '+heroStatuses[rnd]);
+			//var heroStatus = JSON.stringify(game.myhero, null, 2).replace("intown",heroStatuses[rnd]);
+			//document.getElementById("heroStats").innerHTML = heroStatus;
+			var lblHeroClass    = localeStrings[204][game.myhero.class];
+			var lblAlignment    = game.heroAlignment("text");
+			var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
+			if (game.myhero.class==="knight"){
+				game.myhero.class = 0;
+			}
+			if (game.myhero.class==="monk"){
+				game.myhero.class = 1;
+			}
+			if (game.myhero.cmana === undefined){
+				game.myhero.cmana = game.myhero.mana;
+			}
+			HTMLofHeroStats    += localeStrings[189]+": "+game.myhero.level+"<br>";
+			HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
+			HTMLofHeroStats    += localeStrings[195]+": "+game.myhero.exp+" | ";
+			HTMLofHeroStats    += localeStrings[196]+": "+game.heroNextLvlExpLimit()+"<br>";
+			HTMLofHeroStats    += localeStrings[190]+": "+game.myhero.atk+" | ";
+			HTMLofHeroStats    += localeStrings[191]+": "+game.myhero.def+"<br>";
+			HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
+			HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
+			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
+		} else {
+			document.getElementById("heroStats").innerHTML = "";
+		}
 	}
 	function getTime(type) {
 		var d  = new Date();
