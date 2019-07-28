@@ -212,8 +212,26 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Willkommen im Schenke");
 localeStrings.push("Vermietung Held<br/>Stufe %arg1<br/>%arg2 Gold");
-localeStrings.push("Ritter");
-localeStrings.push("Mönch");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Stufe");
+localeStrings.push("Attack");//190
+localeStrings.push("Defense");
+localeStrings.push("Zauberpunkte");
+localeStrings.push("Zauberkraft");
+localeStrings.push("Erfahrung");
+localeStrings.push("Aktuelle Erfahrung");//195
+localeStrings.push("Erfahrung für das nächste Level erforderlich");
+localeStrings.push("Alignment");
+localeStrings.push("Rechtmäßig");
+localeStrings.push("Neutral");
+localeStrings.push("Chaotisch");//200
+localeStrings.push("Gut");
+localeStrings.push("Neutral");
+localeStrings.push("Evil");
+localeStrings.push(["Ritter", "Mönch"]);
+localeStrings.push("Klasse");//205
