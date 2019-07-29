@@ -55,10 +55,10 @@ localeStrings.push("Discord");
 localeStrings.push("Löscht das feuer");
 localeStrings.push("Exekutieren Stadtperson");
 localeStrings.push("Scheiße passiert: Die Pest tötete %arg1 Bürger");//55
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Möchten Ihr ein Festival veranstalten?\nDas würde Sie% arg1 Gold kosten!\n");
+localeStrings.push("Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n");
+localeStrings.push("Placeholder");
+localeStrings.push(["Ihr Gewinn wegen des Festivals ist% arg1", "Ihr Verlust wegen des Festivals ist% arg1"]);
 localeStrings.push("Gut");//60
 localeStrings.push("Ihr habt schon einen Helden");
 localeStrings.push("Automatisches Speichern ist eingeschaltet");
