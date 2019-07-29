@@ -55,10 +55,10 @@ localeStrings.push("Discord");
 localeStrings.push("Потушить огонь");
 localeStrings.push("Казнить человека");
 localeStrings.push("фигня случается: чума унесла жизни %arg1 жителей");//55
+localeStrings.push("Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n");
+localeStrings.push("Фестиваль был проведен не так давно.\nЭффект от фестиваля будет ослаблен.\n");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push(["Ваша прибыль от фестиваля %arg1","Ваш убыток от фестиваля %arg1"]);
 localeStrings.push("Хорошо");//60
 localeStrings.push("У вас уже есть герой");
 localeStrings.push("Автосохранение включено");

@@ -171,7 +171,6 @@
 			}
 			*/
 		</script>
-
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
 			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
@@ -617,7 +616,6 @@
 			//img15.style   = 'position:absolute; top:170px; left:0px; z-index:8';
 			document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
 			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
-
 		}
 	}
 	function loadImage(src, onload) {
@@ -702,7 +700,8 @@
 			alertMsg = localeStrings[141];
 		}
 		if (buildingName==='fountain') {
-			alertMsg = localeStrings[142];
+			showAlert = false;
+			game.makeFestival();
 		}
 		if (buildingName==='treasury') {
 			alertMsg = localeStrings[143];
@@ -804,10 +803,9 @@
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
+		festival_cooldown: 0,
 		heroAlignment(returnFormat) {
-			console.log("we are entered to function heroAlignment");
 			if (returnFormat==="text") {
-				console.log("we are succesfully passed trough first branching");
 				var heroAlignment = "";
 				if (game.myhero.lawful < 40) {
 					heroAlignment += "Chaotic";
@@ -987,6 +985,44 @@
 			updateResources();
 			heroUpdStatus();
 		},
+		makeFestival : function() {
+			var festivalPrice = game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
+			question      = localeStrings[56].replace("%arg1", festivalPrice);
+			if (game.festival_cooldown !==0) {
+				question += localeStrings[57];
+			}
+			showModal(1, '', game.makeFestivalCallback, question, localeStrings[32], localeStrings[33])
+		},
+		makeFestivalCallback : function() {
+			var festivalPrice = game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
+			if (answer === 2) {
+				if (game.gold>=festivalPrice) {
+					var gold_diff = 0-festivalPrice+Math.floor(festivalPrice*(30-game.festival_cooldown)/30*1.05+2*(game.buildLevelFountain+1));
+					if (gold_diff >=0) {
+						if (game.gold + gold_diff > game.goldLimit()) {
+							game.gold = game.goldLimit();
+							msg = "<b>%arg1</b>";
+							msg = msg.replace("%arg1",localeStrings[3]);
+							postEventLog(msg);
+						} else {
+							game.gold += gold_diff;
+						}
+						msg = localeStrings[59][0].replace("%arg1",gold_diff);
+						postEventLog(msg);
+					} else {
+						game.gold += gold_diff;
+						msg = localeStrings[59][1].replace("%arg1",gold_diff);
+						postEventLog(msg);
+					}
+					game.festival_cooldown  = 30;
+					updateResources();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
+				}
+			}
+		},
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower") {
 				if (game.gold >= config.costWall && game.buildLevelD == 0) {
@@ -1164,7 +1200,8 @@
 					gold_possible = game.gold*1+gold_change;
 					if (gold_possible > gold_limit) {
 						game.gold = gold_limit;
-						msg = localeStrings[3];
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1",localeStrings[3]);
 						postEventLog(msg);
 					} else {
 						game.gold = gold_possible;
@@ -1287,7 +1324,8 @@
 		sizeMapX:12,
 		sizeMapY:12,
 		costHero:20,
-		heroExpK:5
+		heroExpK:5,
+		festPrice:2,
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -1308,6 +1346,7 @@
 	composite();
 	checkSaves();
 	//init timers
+	setInterval(cooldown, 1000);
 	setInterval(endOfTurnTimer, 1000);
 	setInterval(rndEvents, 100000);
 	include('localisation.js',function(){
@@ -1781,6 +1820,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.233";
+		writeToTextArea(msg);
+		msg = "Now kind ruler could place festivals!";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.232";
 		writeToTextArea(msg);
 		msg = "There is a confirmation dialog now, when the player is about to choose kind or cruel path.";
@@ -2337,6 +2381,13 @@
 			dcounter = dcounter - 1;
 		}
 		document.getElementById('dcounter').innerText = dcounter;
+	}
+	function cooldown() {
+		if (game.festival_cooldown-1>=0) {
+			game.festival_cooldown = game.festival_cooldown-1;
+		} else {
+			game.festival_cooldown = 0;
+		}
 	}
 </script>
 <script>
