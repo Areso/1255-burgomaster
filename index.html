@@ -658,7 +658,7 @@
 	function buildingClick(buildingName){
 		var showAlert = true;
 		if (buildingName==='well') {
-			alertMsg = localeStrings[132];
+			//TODO make a dialog with lootboxes
 		}
 		if (buildingName==='gold') {
 			//alertMsg = localeStrings[144];
@@ -671,7 +671,7 @@
 			checkPop();
 		}
 		if (buildingName==='sawmill') {
-			alertMsg = localeStrings[133];
+			//alertMsg = localeStrings[133];
 		}
 		if (buildingName==='wall') {
 			alertMsg = localeStrings[134];
@@ -680,10 +680,12 @@
 			alertMsg = localeStrings[135];
 		}
 		if (buildingName==='home') {
-			alertMsg = localeStrings[138];
+			showAlert = false;
+			checkPop();
 		}
 		if (buildingName==='house') {
-			alertMsg = localeStrings[139];
+			showAlert = false;
+			checkPop();
 		}
 		if (buildingName==='castle') {
 			alertMsg = localeStrings[136];
@@ -1014,7 +1016,7 @@
 						msg = localeStrings[59][1].replace("%arg1",gold_diff);
 						postEventLog(msg);
 					}
-					game.festival_cooldown  = 30;
+					game.festival_cooldown  = config.festCooldown;
 					updateResources();
 				} else {
 					msg = "<b>%arg1</b>";
@@ -1332,6 +1334,7 @@
 		costHero:20,
 		heroExpK:5,
 		festPrice:2,
+		festCooldown:30,
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -1389,7 +1392,7 @@
 				}
 				openTab(null, 'tabPopulation');
 			} else {
-				// nothing to show
+				// TODO show something!
 			}
 		}		
 	}
@@ -1418,7 +1421,7 @@
 				}
 				openTab(null, 'tabPopulation');
 			} else {
-				// nothing to show
+				// TODO show something!
 			}
 		}
 	}
