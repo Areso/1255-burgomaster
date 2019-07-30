@@ -1248,13 +1248,19 @@
 			}
 		},
 		theftFromTreasury : function () {
-			rndThieves = Math.floor((Math.random() * treasuryGuard) + 1);
+			rndThieves = Math.floor(Math.random()*(game.treasuryGuard+2)+1);
+			console.log(rndThieves);
 			if (rndThieves === 1) {
 				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))+1);
+				if (goldLost > game.gold) {
+					goldLost = game.gold;
+				}
 				game.gold     = game.gold - goldLost;
 				msg = localeStrings[42].replace("%arg1", goldLost);
 				postEventLog(msg);
 				updateResources();
+			} else {
+				//TODO make a message about failed robbery
 			}
 		},
 		startFire : function () {
@@ -1820,6 +1826,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.234";
+		writeToTextArea(msg);
+		msg = "Update German translation; enabled 'thieves' feature. They are now in the game!";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.233";
 		writeToTextArea(msg);
 		msg = "Now kind ruler could place festivals!";

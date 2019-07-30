@@ -1,7 +1,7 @@
 var localeStrings = [];
 localeStrings.push("Hello player in this incremental game!");
 localeStrings.push("Your task is simple - manage the city as mayor of the city!");
-localeStrings.push("Citizen will pay taxes each season (30 secs or so) and population will grow each season, too");
+localeStrings.push("Citizen will pay taxes each season (30 secs) and population will grow each season");
 localeStrings.push("build or upgrade your Treasury");
 localeStrings.push("amount of money is increased");
 localeStrings.push("amount of money is decreased");//5
