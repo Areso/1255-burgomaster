@@ -1,7 +1,7 @@
 var localeStrings = [];
 localeStrings.push("Saluton ludanto en ĉi tiu pliiga ludo!");
 localeStrings.push("Via tasko estas simpla - administru la urbon kiel urbestro de la urbo!");
-localeStrings.push("Civitanoj pagos impostojn ĉiun sezonon (proksimume 30 sekojn) kaj populacio kreskos ĉiun sezonon ankaŭ");
+localeStrings.push("Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj populacio kreskos ĉiun sezonon ankaŭ");
 localeStrings.push("konstruu aŭ plibonigu vian trezorejon");
 localeStrings.push("kvanto da mono pliiĝas");
 localeStrings.push("kvanto da mono malpliiĝas");//5

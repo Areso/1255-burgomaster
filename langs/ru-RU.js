@@ -1,7 +1,7 @@
 var localeStrings = [];
 localeStrings.push("Приветствую вас!");
 localeStrings.push("Ваша задача проста - вам нужно управлять городом");
-localeStrings.push("Горожане будут платить налоги и размножаться каждый сезон (около 30 секунд)");
+localeStrings.push("Горожане будут платить налоги и размножаться каждый сезон (30 секунд)");
 localeStrings.push("постройте или улучшите вашу Сокровищницу");
 localeStrings.push("казна пополняется, милорд!");
 localeStrings.push("казна пустеет, милорд");//5
@@ -170,7 +170,7 @@ localeStrings.push("каменная башня");
 localeStrings.push("дом");
 localeStrings.push("дома");
 localeStrings.push("таверна");//140
-localeStrings.push("виселица");
+localeStrings.push("виселица");//TODO ["виселица","виселицу"]
 localeStrings.push("фонтан");
 localeStrings.push("сокровищница");
 localeStrings.push("золото");
