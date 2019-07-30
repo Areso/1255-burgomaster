@@ -22,7 +22,9 @@
 		1MB of data plan to download game itself, analytics and chat. And some traffic will be used with ingame chat and usage statistics, though game will works perfectly even offline after download complete* (check options offline game)<br> 
 		<br>
 		<h2>About the game</h2>
-		![Screenshots](game-preview-slides.gif)
+		<br>
+		<img src="game-preview-slides.gif" alt="Screenshots">
+		<br>
 		Supported Languages(SL): English, Russian (Русский).<br>
 		Community Supported Languages(CSL): German (Deutsch), Esperanto<br>
 		CSL means that the author doesn't provide any help or answers asked in the CSL,<br>
