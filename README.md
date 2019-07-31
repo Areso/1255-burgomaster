@@ -2,14 +2,9 @@
 	<body>
 		<h1>1255 Burgomaster</h1><br>
 		<h2>About the project</h2><br>
-		Hello there! My name is Gladyshev Anton and I'm the author of the project.<br>
-		Homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a><br>
-		This pet-project is dedicated to create a playable game, written in vanilla JavaScript, 
-		without using even jQuery and modern whistlers and jugglers, such as JS frameworks, TS->JS compilators and so on.<br>
-		The project oriented to be compact (in terms of the source code and the resources), 
-		blazing fast to download, fast enough to run even on aging devices with limited horsepower under the hood.<br>
-		It runs well even on low-powered tablets and phones, let alone old PCs and laptops<br>
-		It heavily uses JS technologies as HTML5.Canvas, EcmaScript5 localStorage, <span style="color:red"><font color="red">JSON.parse()</font></span>, and so on.   
+		Hello there! My name is Gladyshev Anton and I'm the author of the project. Homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a>. This pet-project is dedicated to create a playable game, written in vanilla JavaScript, without using even jQuery and modern whistlers and jugglers, such as JS frameworks, TS->JS compilators and so on. The project oriented to be compact (in terms of the source code and the resources), blazing fast to download, fast enough to run even on aging devices with limited horsepower under the hood.<br>
+		It runs well even on low-powered tablets and phones, let alone old PCs and laptops.<br>
+		It heavily uses JS technologies as HTML5.Canvas, EcmaScript5 localStorage, <span style="color:red"><font color="red">JSON.parse()</font></span>, and so on. So it requires somewhat modern browser, with ES5/ES6 standarts support.   
 		<br>				
 		<h2>Minimum System Requirements</h2>
 		Browsers:<br> 
@@ -27,6 +22,9 @@
 		1MB of data plan to download game itself, analytics and chat. And some traffic will be used with ingame chat and usage statistics, though game will works perfectly even offline after download complete* (check options offline game)<br> 
 		<br>
 		<h2>About the game</h2>
+		<br>
+		<img src="game-preview-slides.gif" alt="Screenshots">
+		<br>
 		Supported Languages(SL): English, Russian (Русский).<br>
 		Community Supported Languages(CSL): German (Deutsch), Esperanto<br>
 		CSL means that the author doesn't provide any help or answers asked in the CSL,<br>
