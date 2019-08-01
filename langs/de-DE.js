@@ -235,3 +235,36 @@ localeStrings.push("Neutral");
 localeStrings.push("Evil");
 localeStrings.push(["Ritter", "Mönch"]);
 localeStrings.push("Klasse");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//210
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen."); // 230
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Ihr Bevölkerungslimit zu erhöhen.");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geldlimit zu erhöhen. <br> In diesem Gebäude können Sie Schatzmeister einstellen. <br> Sie werden benötigt, um die Wahrscheinlichkeit zu minimieren, dass Sie ausgeraubt werden.");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Hinrichtung Ihrer Bürger erforderlich. <br> Es erhöht auch die Steuern und senkt die Geburtenrate und das Glück. <br> Wenn Sie dieses Gebäude bauen, können Sie den Brunnen nicht bauen!");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Ausrichtung von Festivals erforderlich. Es erhöht außerdem die Geburtenrate und das Glück und senkt die Steuern. <br> Wenn Sie dieses Gebäude bauen, können Sie die Galgen nicht bauen!");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geld vor Dieben zu retten, falls die Diebe Ihre Schatzkammer ausrauben. <br> Je höher Ihr Stash-Level ist, desto mehr könnten Sie sich im Stash verstecken.");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Helden einzustellen. <br> Je höher Ihr Inn-Level ist, desto erfahrener können Sie dort Helden einstellen.");

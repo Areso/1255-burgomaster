@@ -217,6 +217,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Nivelo");
 localeStrings.push("Atako");//190
 localeStrings.push("Defendo");
@@ -234,3 +235,36 @@ localeStrings.push("Neŭtralo");
 localeStrings.push("Malbono");
 localeStrings.push(["Kavaliro", "Monako"]);
 localeStrings.push("Klaso");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//210
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj."); // 230
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj bezonas por altigi vian loĝantar limon.");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj estas bezonataj por pliigi vian monan limon. <br> Ĉi tiu konstruaĵo permesas dungi kasistojn. <br> Ili necesas por minimumigi viajn ŝancojn esti ŝtelitaj.");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ekzekuti viajn civitanojn. <br> Ĝi ankaŭ pliigas impostojn kaj malpliigas naskiĝotempon kaj feliĉon. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la Fontanon!");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por aranĝi festivalojn. <br> Ĝi ankaŭ pliigas naskiĝtempon kaj feliĉon kaj malpliigas impostojn. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la forkojn!");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ŝpari vian monon de ŝtelistoj, se la ŝtelistoj ŝtelas vian trezorejon. La pli alta nivelo de Stash vi havas, des pli vi povus kaŝi en la Stash.") ;
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie.");

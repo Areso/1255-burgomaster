@@ -267,92 +267,103 @@
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelBuilding">Building</div></h3>
 			<div id="theBuildingDiv">
-				<table border="1">
+				<table>
 					<tr>
-						<td class="building">
-							<div align="center">
-								<img id="defencies_img" src="resources/wallsf_as2.png">
-							</div>
+						<td>
+							<table border="1">
+								<tr>
+									<td class="building">
+										<div align="center">
+											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+									<td class="building">
+										<div align="center">
+											<img id="home_img" src="resources/home_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+									<td class="building">
+										<div align="center">
+											<img id="treasury_img" src="resources/treasury_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="building">
+										<button id="defence" onclick="game.Build('Wall')" class="building">Build walls</button>
+									</td>
+									<td class="building">
+										<button id="homes" onclick="game.Build('Home')" class="building">Build home</button>
+									</td>
+									<td class="building">
+										<button id="treasury" onclick="game.Build('Treasury')" class="building">Build treasury</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="building">
+										<div align="center">
+											<img id="gallows_img" src="resources/gallows.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+									<td class="building">
+										<div align="center">
+											<img id="fountain_img" src="resources/fountain.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+									<td class="building">
+										<div align="center">
+											<img id="moneystash_img" src="resources/trapdoor.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="building">
+										<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building">Build gallows</button>
+									</td>
+									<td class="building">
+										<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building">Build fountain</button>
+									</td>
+									<td class="building">
+										<button id="buttonBldStash" onclick="game.Build('Stash')" class="building">Build stash</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="building">
+										<div align="center">
+											<img id="inn_img" src="resources/inn.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+									<td class="building">
+										<div align="center">
+
+										</div>
+									</td>
+									<td class="building">
+										<div align="center">
+
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="building">
+										<button id="buttonBldInn" onclick="game.Build('Inn')" class="building">Build Inn</button>
+									</td>
+									<td class="building">
+
+									</td>
+									<td class="building">
+
+									</td>
+								</tr>
+							</table>
 						</td>
-						<td class="building">
-							<div align="center">
-								<img src="resources/home_as.png">
-							</div>
-						</td>
-						<td class="building">
-							<div align="center">
-								<img src="resources/treasury_as.png">
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="building">
-							<button id="defence" onclick="game.Build('Wall')" class="building">Build walls</button>
-						</td>
-						<td class="building">
-							<button id="homes" onclick="game.Build('Home')" class="building">Build home</button>
-						</td>
-						<td class="building">
-							<button id="treasury" onclick="game.Build('Treasury')" class="building">Build treasury</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="building">
-							<div align="center">
-								<img src="resources/gallows.png">
-							</div>
-						</td>
-						<td class="building">
-							<div align="center">
-								<img src="resources/fountain.png">
-							</div>
-						</td>
-						<td class="building">
-							<div align="center">
-								<img src="resources/trapdoor.png">
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="building">
-							<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building">Build gallows</button>
-						</td>
-						<td class="building">
-							<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building">Build fountain</button>
-						</td>
-						<td class="building">
-							<button id="buttonBldStash" onclick="game.Build('Stash')" class="building">Build stash</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="building">
-							<div align="center">
-								<img src="resources/inn.png">
-							</div>
-						</td>
-						<td class="building">
-							<div align="center">
+						<td>
+							<div id="lblBuildHelp">
 
 							</div>
 						</td>
-						<td class="building">
-							<div align="center">
-
-							</div>
-						</td>
 					</tr>
-					<tr>
-						<td class="building">
-							<button id="buttonBldInn" onclick="game.Build('Inn')" class="building">Build Inn</button>
-						</td>
-						<td class="building">
-
-						</td>
-						<td class="building">
-
-						</td>
-					</tr>
-					</table>
+				</table>
 			</div>
 		</div>
 		<div id="About" class="tabcontent">
@@ -806,6 +817,30 @@
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
 		festival_cooldown: 0,
+		help(myobject) {
+			console.log(myobject.id);
+			if (myobject.id==="defencies_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[230];
+			}
+			if (myobject.id==="home_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[233];
+			}
+			if (myobject.id==="treasury_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[234];
+			}
+			if (myobject.id==="gallows_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[235];
+			}
+			if (myobject.id==="fountain_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[236];
+			}
+			if (myobject.id==="moneystash_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[237];
+			}
+			if (myobject.id==="inn_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[238];
+			}
+		},
 		heroAlignment(returnFormat) {
 			if (returnFormat==="text") {
 				var heroAlignment = "";
@@ -1829,6 +1864,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.238";
+		writeToTextArea(msg);
+		msg = "Made onhover, onclick tips in the Buildings tab";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.234";
 		writeToTextArea(msg);
 		msg = "Update German translation; enabled 'thieves' feature. They are now in the game!";

@@ -235,3 +235,36 @@ localeStrings.push("Пофигист");
 localeStrings.push("Злыдень");
 localeStrings.push(["Рыцарь", "Монах"]);
 localeStrings.push("Класс");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//210
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Это здание нужно для защиты города от захватчиков.");//230
+localeStrings.push("placeholder");//tower
+localeStrings.push("placeholder");//stone tower
+localeStrings.push("Это здание и его улучшения нужны, чтобы поднять лимит населения.");
+localeStrings.push("Это здание и его улучшения нужны, чтобы поднять лимит золота.<br>Это здание позволит вам нанять охранников.<br>Они нужны, чтобы уменьшить шансы быть обкраденным.");
+localeStrings.push("Это здание и его улучшения нужны, чтобы можно было казнить горожан.<br>Также повышает налоговые поступления, и уменьшает рождаемость и счастье горожан.<br>Если вы построите это здание, вы не сможете построить фонтан!");
+localeStrings.push("Это здание и его улучшения нужны, чтобы проводить фестивали.<br>Также повышает рождаемость и счастье горожан, и уменьшает налоговые поступления.<br>Если вы построите это здание, вы не сможете построить виселицу!");
+localeStrings.push("Это здание и его улучшения нужны, чтобы сохранить ваши деньги от воров, в случае если они ограбят сокровищницу.<br>Более высокий уровень тайника позволяет спрятать больше денег.");
+localeStrings.push("Это здание и его улучшения нужны, чтобы нанимать героев.<br>Более высокий уровень таверны позволит нанимать вам более опытных героев.");

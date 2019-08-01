@@ -32,7 +32,7 @@
 		Also, any CSL translation could have mistakes or untranslated parts or parts of translation which are partly outdated.<br>
 		You could help with translations for the game here:<br> 
 		<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>
-		This is a single-player game. There is built-in chat, so, you could ask a question to another players.<br> 
+		This is a single-player game. There is built-in chat, so, you could ask a question to other players.<br> 
 		The game itself about building a city. You are starting with some amount of gold and a few citizens.<br>
 		This is an IDLE game, which means, every minute your citizens will spawn new citizens and pay taxes to you.<br>
 		You can construct buildings, but upgrading existing ones will require each time more gold, because this game is an Incremental game.<br>
