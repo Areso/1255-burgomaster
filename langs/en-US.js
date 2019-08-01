@@ -235,3 +235,36 @@ localeStrings.push("Neutral");
 localeStrings.push("Evil");
 localeStrings.push(["Knight", "Monk"]);
 localeStrings.push("Class");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//210
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("This building is needed for defending the city from intruders.");//230
+localeStrings.push("placeholder");//tower
+localeStrings.push("placeholder");//stone tower
+localeStrings.push("This building and its improvements is needed to raise your population limit.");
+localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
+localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");
+localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
+localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The highier level of Stash do you have, the more you could hide in the Stash.");
+localeStrings.push("This building and its improvements is needed to hire heroes.<br>The highier level of Inn do you have, the more experienced hero you could hire there.");
