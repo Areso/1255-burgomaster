@@ -79,9 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//80
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Текущий лимит населения %arg1");//80
+localeStrings.push("Текущий лимит золота %arg1");localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//85
