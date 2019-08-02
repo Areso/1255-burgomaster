@@ -668,11 +668,14 @@
 	}
 	function buildingClick(buildingName){
 		var showAlert = true;
+		alertMsg = "";
 		if (buildingName==='well') {
+			showAlert = false;
 			//TODO make a dialog with lootboxes
 		}
 		if (buildingName==='gold') {
-			//alertMsg = localeStrings[144];
+			//
+			alertMsg = "";= localeStrings[144];
 			showAlert = false;
 			checkGold();
 		}
@@ -682,6 +685,7 @@
 			checkPop();
 		}
 		if (buildingName==='sawmill') {
+			showAlert = false;
 			//alertMsg = localeStrings[133];
 		}
 		if (buildingName==='wall') {
