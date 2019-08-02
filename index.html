@@ -723,7 +723,7 @@
 		if (buildingName==='treasury') {
 			alertMsg = localeStrings[143];
 		}
-		if (showAlert === true) {
+		if (showAlert === true &&  alertMsg !=="" ) {
 			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 		}
 	}
