@@ -375,38 +375,44 @@
 		<div id="tabPopulation" class="tabcontent">
 			<!-- TODO make style!!! -->
 			<div id="lblTabPop">Population history tab</div>
+			<br>
 			<table border="1">
 			<tbody>
 			<tr id="popStatK">
-			
 			</tr>
 			<tr id="popStatV">
-			
 			</tr>
 			</tbody>
 			</table>
+			<br>
 			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:80px"><<</button>
 			<button id="btnPopPrev"     onclick="popPrev()" style="width:80px"><</button>
 			<button id="btnPopNext"     onclick="popNext()" style="width:80px">></button>
 			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:80px">>></button>
+			<br>
+			<br>
+			<div id="lblCurrentPopLimit"></div>
 		</div>
 		<div id="tabGold" class="tabcontent">
 			<!-- TODO make style!!! -->
 			<div id="lblTabGold">Gold history tab</div>
+			<br>
 			<table border="1">
 			<tbody>
 			<tr id="goldStatK">
-			
 			</tr>
 			<tr id="goldStatV">
-			
 			</tr>
 			</tbody>
 			</table>
+			<br>
 			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:80px"><<</button>
 			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:80px"><</button>
 			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">></button>
 			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">>></button>
+			<br>
+			<br>
+			<div id="lblCurrentGoldLimit"></div>
 		</div>
 		<div id="tabInn" class="tabcontent">
 			<div id="lblTabInn">Welcome to Inn!</div>
@@ -1418,6 +1424,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
 				//console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
 			}
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -1427,6 +1434,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// TODO show something!
@@ -1447,6 +1455,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
 				//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 			}
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -1456,6 +1465,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
 					//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 				}
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// TODO show something!
@@ -1481,6 +1491,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -1490,6 +1501,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -1515,6 +1527,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -1524,6 +1537,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -1547,6 +1561,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-10+i]  +'</td>';
 				//console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
 			}
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -1556,6 +1571,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -1575,6 +1591,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
 				//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 			}
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -1584,6 +1601,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
 					//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 				}
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -1609,6 +1627,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[goldPage*10+i]+' and gold is '+game.budgets[goldPage*10+i]);
 			}
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -1618,6 +1637,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -1643,6 +1663,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.budgets[goldPage*10+i]);
 			}
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -1652,6 +1673,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.budgets[game.years.length-game.years.length+i]);
 				}
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -1693,7 +1715,6 @@
 				inputs[i].style.color = "#606060";
 				inputs[i].style.backgroundColor = "#202020";
 			}
-			
 			nightMode = 1;
 		} else {
 			var b = document.getElementsByTagName("body");
@@ -1810,7 +1831,6 @@
 		//and plus  one for the road to the casle
 		game.castleY = Math.floor(Math.random()*(config.sizeMapY-2))+1
 		console.log('castleX is '+game.castleX+' and castleY is '+game.castleY);
-
 		//castle(enter) = 10
 		//castle(other) = 11
 		//castle(point) = 12 //from this point we draw a castle
@@ -1818,12 +1838,10 @@
 		//forest        = 1..3
 		//hero          = 40
 		//monster       = 50
-
 		game.myMapObjects=[];
 		for (i=0;i<config.sizeMapX;i++) {
 			game.myMapObjects.push([]);
 		}
-
 		for (i = 0; i < config.sizeMapX; i++) {
 			for (j = 0; j < config.sizeMapY; j++) {
 				game.myMapObjects[i][j]=0;
@@ -1866,6 +1884,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.243";
+		writeToTextArea(msg);
+		msg = "Made labels with current population and gold limits";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.238";
 		writeToTextArea(msg);
 		msg = "Made onhover, onclick tips in the Buildings tab";

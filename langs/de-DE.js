@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//80
-localeStrings.push("placeholder");
+localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");// 80
+localeStrings.push("Aktuelle Goldgrenze ist %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
