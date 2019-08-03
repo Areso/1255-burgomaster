@@ -154,7 +154,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "This is a single-player game.<br>"+
     "<br>" +
     "Supported Languages(SL): English, Russian (Русский).<br>"+
-    "Community Supported Languages(CSL): German (Deutsch), Esperanto.<br>"+
+    "Community Supported Languages(CSL): German (Deutsch), Esperanto, French (le français).<br>"+
     "CSL means that the author doesn't provide any help or answers asked in the CSL,<br>"+
     "though parts of the game or game in whole could be provided in the CSL.<br>"+
     "Also, any CSL translation could have mistakes or untranslated parts<br>"+
@@ -266,5 +266,5 @@ localeStrings.push("This building and its improvements is needed to raise your p
 localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
 localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235
 localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
-localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The highier level of Stash do you have, the more you could hide in the Stash.");
-localeStrings.push("This building and its improvements is needed to hire heroes.<br>The highier level of Inn do you have, the more experienced hero you could hire there.");
+localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash do you have, the more you could hide in the Stash.");
+localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
