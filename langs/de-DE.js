@@ -154,7 +154,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "Dieses Spiel ist für einen Einzelspieler.<br>"+
     "<br>" +
     "Unterstützte Sprachen (SL, supported languages): Englisch (English), Russisch (Русский).<br>" +
-    "Von der Community unterstützte Sprachen (CSL, community supported languages): Deutsch<br>" +
+    "Von der Community unterstützte Sprachen (CSL, community supported languages): Deutsch, Esperanto, French (le français)<br>" +
     "Der Autor kann keine Hilfe oder Antworten zu in einer CSL gestellten Fragen geben,<br>"+
     "obwohl das Spiel (oder Teile davon) in der CSL zur Verfügung gestellt werden."+
     "Außerdem könnten Übersetzungen in eine CSL Fehler ebenso wie unübersetzte<br>"+

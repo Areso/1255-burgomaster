@@ -154,7 +154,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "Tios estas unu-ludanta ludo.<br>"+
     "<br>" +
     "Apogita Lingvoj (AL): Angla, Rusa.<br>"+
-    "Komunumaj Apogita Lingvoj (KAL): Germana, Esperanto<br>"+
+    "Komunumaj Apogita Lingvoj (KAL): Germana, Esperanto, Franka<br>"+
     "KAL signifas, ke la aŭtoro ne provizas helpon aŭ respondojn en la KAL,<br>"+
     "kvankam partoj de la ludo aŭ ludo entute povus esti disponigitaj en la KAL.<br>"+
     "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn<br>"+

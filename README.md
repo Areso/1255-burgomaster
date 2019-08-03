@@ -26,7 +26,7 @@
 		<img src="game-preview-slides.gif" alt="Screenshots">
 		<br>
 		Supported Languages(SL): English, Russian (Русский).<br>
-		Community Supported Languages(CSL): German (Deutsch), Esperanto<br>
+		Community Supported Languages(CSL): German (Deutsch), Esperanto, French (le français)<br>
 		CSL means that the author doesn't provide any help or answers asked in the CSL,<br>
 		though parts of the game or game in whole could be provided in the CSL.<br>
 		Also, any CSL translation could have mistakes or untranslated parts or parts of translation which are partly outdated.<br>

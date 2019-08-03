@@ -232,6 +232,7 @@
 				<option id="optionLngRu"          value="ru-RU">Русский</option>
 				<option id="optionLngGe"          value="de-DE">Deutsch</option>
 				<option id="optionLngEo"          value="eo">Esperanto</option>
+				<option id="optionLngFr"          value="fr-FR">français</option>
 			</select>
 			</div>
 			<br>
@@ -1766,6 +1767,9 @@
 		if (returnLanguage==='eo') {
 			document.getElementById("selectLng").selectedIndex=3;
 		}
+		if (returnLanguage==='fr-FR') {
+			document.getElementById("selectLng").selectedIndex=4;
+		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
 		document.getElementById("saveGameButton").innerText      = localeStrings[44];
@@ -1884,6 +1888,11 @@
 		composite_gm();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.244";
+		writeToTextArea(msg);
+		msg = "Added French translation";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.243";
 		writeToTextArea(msg);
 		msg = "Made labels with current population and gold limits";
