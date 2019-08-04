@@ -235,13 +235,13 @@ localeStrings.push("Neutral");
 localeStrings.push("Evil");
 localeStrings.push(["Knight", "Monk"]);
 localeStrings.push("Class");//205
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//210
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Hero now is ");
+localeStrings.push(" in town");
+localeStrings.push(" in autocampaign");
+localeStrings.push(" in manualcampaign");
+localeStrings.push(["eating", "drinking","gambling","training","fistfighting","resting"]);//210
+localeStrings.push(["marching back","marching","killing pagans", "converting pagans","making a camp","looting dead pagans"]);
+localeStrings.push(["marching", "making a camp","looting"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//215

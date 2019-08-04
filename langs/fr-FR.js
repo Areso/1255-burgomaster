@@ -235,13 +235,13 @@ localeStrings.push("Neutre");
 localeStrings.push("Mal");
 localeStrings.push(["Chevalier", "Moine"]);
 localeStrings.push("Classe");//205
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//210
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Le héros ");
+localeStrings.push(" en ville");
+localeStrings.push(" in autocampaign");
+localeStrings.push(" dans la campagne");
+localeStrings.push(["manger", "boire", "jouer", "dresser", "combats au poil", "se reposer"]); // 210
+localeStrings.push(["marchant en arrière", "marchant", "tuant des païens", "convertissant des païens", "faisant un camp", "pillant des païens morts"]);
+localeStrings.push(["marching", "faire un camp", "piller"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//215
