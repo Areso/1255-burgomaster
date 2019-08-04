@@ -235,13 +235,13 @@ localeStrings.push("Neŭtralo");
 localeStrings.push("Malbono");
 localeStrings.push(["Kavaliro", "Monako"]);
 localeStrings.push("Klaso");//205
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//210
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Heroo nun estas");
+localeStrings.push(" en la urbo");
+localeStrings.push(" en aŭtokombina");
+localeStrings.push(" en mana komparado");
+localeStrings.push(["manĝi", "trinki", "vetludi", "trejni", "pugni", "ripozi"]); // 210
+localeStrings.push(["marŝi reen", "marŝi", "mortigi paganojn", "konverti paganojn", "fari tendaron", "prirabi mortintajn paganojn"]);
+localeStrings.push(["marŝi", "fari tendaron", "rabado"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//215

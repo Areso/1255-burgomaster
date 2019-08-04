@@ -235,13 +235,13 @@ localeStrings.push("Neutral");
 localeStrings.push("Evil");
 localeStrings.push(["Ritter", "Mönch"]);
 localeStrings.push("Klasse");//205
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//210
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Hero now is");
+localeStrings.push(" in der Stadt");
+localeStrings.push(" in autocompaign");
+localeStrings.push(" in manualcompaign");
+localeStrings.push(["Essen", "Trinken", "Spielen", "Training", "Faustkampf", "Ruhen"]); // 210
+localeStrings.push(["zurückmarschieren", "marschieren", "Heiden töten", "Heiden bekehren", "ein Lager errichten", "tote Heiden plündern"]);
+localeStrings.push(["marschieren", "ein Lager aufschlagen", "plündern"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//215

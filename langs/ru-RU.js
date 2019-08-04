@@ -234,13 +234,13 @@ localeStrings.push("Пофигист");
 localeStrings.push("Злыдень");
 localeStrings.push(["Рыцарь", "Монах"]);
 localeStrings.push("Класс");//205
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//210
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Герой сейчас ");
+localeStrings.push(" где-то в городе");
+localeStrings.push(" в автокампании");
+localeStrings.push(" в кампании");
+localeStrings.push(["ест", "пьет","играет в карты","тренируется","дерется","отдыхает"]);//210
+localeStrings.push(["возвращается в город, будучи","на марше","убивает язычников", "обращает язычников","строит лагерь","собирает трофеи"]);
+localeStrings.push(["на марше", "строит лагерь","собирает трофеи"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//215
