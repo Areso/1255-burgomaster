@@ -56,9 +56,9 @@ localeStrings.push("Eteindre le feu");
 localeStrings.push("Exécuter quelqu'un");
 localeStrings.push("Un événement fâcheux vient de se produire : la peste a tué %arg1 citoyens.");//55
 localeStrings.push("Voulez-vous organiser un festival?\nCela vous coûterait %arg1 or.\n");
-localeStrings.push("Festival a été placé il n'y a pas si longtemps.\nL'effet du festival serait affaibli.\n");
+localeStrings.push("Un Festival a été organisé il n'y a pas si longtemps.\nL'effet du festival serait affaibli.\n");
 localeStrings.push("placeholder");
-localeStrings.push(["Votre gain à cause du festival est de %arg1 or.","Votre gain à perte du festival est de %arg1 or."]);
+localeStrings.push([["Votre gain grâce au festival est de %arg1 or.","Votre perte dû au festival est de %arg1 or."]]);
 localeStrings.push("OK");//60
 localeStrings.push("Vous avez déjà un héros !");
 localeStrings.push("La sauvegarde automatique est activée.");
@@ -220,7 +220,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Niveau");
 localeStrings.push("Attaque");//190
-localeStrings.push("La défense");
+localeStrings.push("Défense");
 localeStrings.push("Points magiques");
 localeStrings.push("Puissance des sorts");
 localeStrings.push("Expérience");
@@ -237,10 +237,10 @@ localeStrings.push(["Chevalier", "Moine"]);
 localeStrings.push("Classe");//205
 localeStrings.push("Le héros ");
 localeStrings.push(" en ville");
-localeStrings.push(" in autocampaign");
-localeStrings.push(" dans la campagne");
-localeStrings.push(["manger", "boire", "jouer", "dresser", "combats au poil", "se reposer"]); // 210
-localeStrings.push(["marchant en arrière", "marchant", "tuant des païens", "convertissant des païens", "faisant un camp", "pillant des païens morts"]);
+localeStrings.push(" en campagne automatique");
+localeStrings.push(" en campagne");
+localeStrings.push(["manger", "boit", "joue", "s'entraine", "se bat", "se repose"]); // 210
+localeStrings.push(["sur le trajet retour", "marchant", "tuant des païens", "convertissant des païens", "faisant un camp", "pillant des païens morts"]);
 localeStrings.push(["marching", "faire un camp", "piller"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -264,7 +264,7 @@ localeStrings.push("placeholder");//tower
 localeStrings.push("placeholder");//stone tower
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de population.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de dépenses. <br> Ce bâtiment vous permet d'engager des gardes du trésor. <br> Ils sont nécessaires pour réduire vos risques de vol.");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour exécuter vos citoyens. <br> C'est aussi augmenter les impôts et diminuer le taux de natalité et le bonheur. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la fontaine!");//235
+localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour exécuter vos citoyens. <br> Il permet aussi d'augmenter les impôts et de diminuer le taux de natalité et le bonheur. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la fontaine!");//235
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour organiser des festivals. <br> C'est également augmenter le taux de natalité et le bonheur et réduire les impôts. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la potence!");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour économiser votre argent des voleurs, au cas où les voleurs dévaliseraient votre trésorerie. <br> Plus le niveau de Stash est élevé, plus vous pourrez vous cacher dans le Stash.");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros expérimenté pourra être recruté sur place.");
+localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour protéger votre argent des voleurs, au cas où les voleurs dévaliseraient votre trésorerie. <br> Plus le niveau de Planque est élevé, plus vous pourrez vous cacher d'or dans la Planque.");
+localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté.");
