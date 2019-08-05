@@ -58,7 +58,7 @@ localeStrings.push("Un événement fâcheux vient de se produire : la peste a tu
 localeStrings.push("Voulez-vous organiser un festival?\nCela vous coûterait %arg1 or.\n");
 localeStrings.push("Un Festival a été organisé il n'y a pas si longtemps.\nL'effet du festival serait affaibli.\n");
 localeStrings.push("placeholder");
-localeStrings.push([["Votre gain grâce au festival est de %arg1 or.","Votre perte dû au festival est de %arg1 or."]]);
+localeStrings.push(["Votre gain grâce au festival est de %arg1 or.","Votre perte dû au festival est de %arg1 or."]);
 localeStrings.push("OK");//60
 localeStrings.push("Vous avez déjà un héros !");
 localeStrings.push("La sauvegarde automatique est activée.");
