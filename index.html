@@ -2340,6 +2340,7 @@
 			var lblHeroClass    = localeStrings[204][game.myhero.class];
 			var lblAlignment    = game.heroAlignment("text");
 			var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
+			var heroStatusNeedsUpdate = true;
 			if (game.myhero.class==="knight"){
 				game.myhero.class = 0;
 			}
@@ -2353,6 +2354,7 @@
 				var rnd = Math.floor(Math.random() * localeStrings[210].length);
 				console.log("in town, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[210][rnd]+localeStrings[207];
+				heroStatusNeedsUpdate = false;
 			}
 			if (game.myhero.status===1){
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
@@ -2361,11 +2363,16 @@
 				}
 				console.log("in autocampaign, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[211][rnd]+localeStrings[208];
+				heroStatusNeedsUpdate = false;
 			}
 			if (game.myhero.status===2){
 				var rnd = Math.floor(Math.random() * localeStrings[212].length);
 				console.log("in manual ampaign, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[212][rnd]+localeStrings[209];
+				heroStatusNeedsUpdate = false;
+			}
+			if (heroStatusNeedsUpdate === true) {
+				game.myhero.status = 0;
 			}
 			HTMLofHeroStats    += localeStrings[189]+": "+game.myhero.level+"<br>";
 			HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
