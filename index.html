@@ -433,6 +433,67 @@
 
 			</div>
 		</div>
+		<div id="tabTroopsHiring" class="tabcontent">
+			Hiring troops
+			<table border="1px">
+				<tr>
+					<td>
+					placeholder
+					</td>
+					<td>
+						images
+					</td>
+					<td>
+						images
+					</td>
+					<td>
+						images
+					</td>
+				</tr>
+				<tr>
+					<td>
+						placeholder
+					</td>
+					<td>
+						<button id="btnHireSergeant" onclick="game.hireTroopSergeant()" style="width:80px">Hire sergeant</button>
+					</td>
+					<td>
+						<button id="btnHireTurkopol" onclick="game.hireTroopTurkopol()" style="width:80px">Hire turkopol</button>
+					</td>
+					<td>
+						<button id="btnHireKnight" onclick="game.hireTroopKnight()" style="width:80px">Hire knight</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						castellan
+					</td>
+					<td>
+						sergeants: 0<button id="btnMoveSergeantToHero">↓</button>
+					</td>
+					<td>
+						turkopols: 0<button id="btnMoveTurkopolToHero">↓</button>
+					</td>
+					<td>
+						knights: 0<button id="btnMoveKnightToHero">↓</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						hero
+					</td>
+					<td>
+						sergeants: 0<button id="btnMoveSergeantToGarrison">↑</button>
+					</td>
+					<td>
+						turkopols: 0<button id="btnMoveTurkopolToGarrison">↑</button>
+					</td>
+					<td>
+						knights: 0<button id="btnMoveKnightToGarrison">↑</button>
+					</td>
+				</tr>
+			</table>
+		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -739,6 +800,10 @@
 		if (buildingName==='treasury') {
 			alertMsg = localeStrings[143];
 		}
+		if (buildingName==='stable') {
+			showAlert = false;
+			openTab(null, 'tabTroopsHiring');
+		}
 		if (showAlert === true &&  alertMsg !=="" ) {
 			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 		}
@@ -838,6 +903,9 @@
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
 		festival_cooldown: 0,
+		turkopols: 0,
+		sergeants: 0,
+		knights: 0,
 		help(myobject) {
 			console.log(myobject.id);
 			if (myobject.id==="defencies_img") {
@@ -860,6 +928,9 @@
 			}
 			if (myobject.id==="inn_img") {
 				document.getElementById("lblBuildHelp").innerHTML=localeStrings[238];
+			}
+			if (myobject.id==="stable_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[239];
 			}
 		},
 		heroAlignment(returnFormat) {
