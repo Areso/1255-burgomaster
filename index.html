@@ -336,7 +336,7 @@
 									</td>
 									<td class="building">
 										<div align="center">
-
+											<img id="stable_img" src="resources/stable.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
@@ -350,7 +350,7 @@
 										<button id="buttonBldInn" onclick="game.Build('Inn')" class="building">Build Inn</button>
 									</td>
 									<td class="building">
-
+										<button id="buttonBldStable" onclick="game.Build('Stable')" class="building">Build Stable</button>
 									</td>
 									<td class="building">
 
@@ -513,6 +513,11 @@
 	var innH = 79;
 	var img15   = loadImage('resources/fire_a.gif', composite);
 	img15.id      = "fire_graphics";
+	var img16   = loadImage('resources/stable.png', composite);
+	var stableX = 480;
+	var stableY = 100;
+	var stableW = 160;
+	var stableH = 120;
 	buildingsInTownB=[];
 	buildingsInTownX=[];
 	buildingsInTownY=[];
@@ -627,6 +632,12 @@
 			ctx.drawImage(img6_2, 0, 0);
 			//pushing gatehouse of the wall
 			pushBuilding('wall', wallX, wallY, wallW, wallH);
+		}
+		if (game.buildLevelStable > 0) {
+			// draw front piece of wall
+			ctx.drawImage(img16, stableX, stableY);
+			//pushing gatehouse of the wall
+			pushBuilding('stable', stableX, stableY, stableW, stableH);
 		}
 		if (game.fire === 1) {
 			img15.style   = 'position:absolute; top:370px; left:200px; z-index:8';
@@ -805,6 +816,7 @@
 		buildLevelFountain:0,
 		buildLevelStash:0,
 		buildLevelInn:0,
+		buildLevelStable:0,
 		fire:0,
 		hero:0,
 		happiness:80,
@@ -1160,6 +1172,18 @@
 					postEventLog(msg);
 				}
 			}
+			if (Structure==="Stable") {
+				if (game.gold >= Math.pow(config.costStable,(game.buildLevelStable*1 + 1))) {
+					game.gold               = game.gold - Math.pow(config.costStable,(game.buildLevelStable*1 + 1));
+					game.buildLevelStable   = game.buildLevelStable*1 + 1;
+					commonBuild();
+					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
+				}
+			}
 			function commonBuild() {
 				updateResources();
 				composite();
@@ -1369,6 +1393,8 @@
 		costFountain:50,
 		costStash:50,
 		costInn:20,
+		costStable:50,
+		costSmith:50,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
@@ -1379,6 +1405,7 @@
 		heroExpK:5,
 		festPrice:2,
 		festCooldown:30,
+
 	}
 	//init service variables
 	var cnt_cursession= 0;
