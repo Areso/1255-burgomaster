@@ -114,7 +114,7 @@ localeStrings.push("Galgen bauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Brunnen bauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Versteck bauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Schenke bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");//115
+localeStrings.push("Stall bauen<br/>lvl %arg1<br/>%arg2 gold");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

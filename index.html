@@ -2336,6 +2336,10 @@
 		nextLvlInn            = game.buildLevelInn*1+1;
 		nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
 		document.getElementById("buttonBldInn").innerHTML=localeStrings[114].replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
+
+		nextLvlStable         = game.buildLevelStable*1+1;
+		nextLvlPriceStable    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
+		document.getElementById("buttonBldStable").innerHTML=localeStrings[115].replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
 		if (game.buildLevelD == 0) {
 			document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
 			var towerClick = "game.Build("+"\'Wall\'"+")";

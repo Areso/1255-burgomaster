@@ -114,7 +114,7 @@ localeStrings.push("Konstrui Pendumilon<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Fonton<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Kaŝejon<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Gatejon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("placeholder");//115
+localeStrings.push("Konstrui Ĉevalejo<br/>lvl %arg1<br/>%arg2 gold");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
