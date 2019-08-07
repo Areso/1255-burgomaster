@@ -455,13 +455,13 @@
 						placeholder
 					</td>
 					<td>
-						<button id="btnHireSergeant" onclick="game.hireTroopSergeant()" style="width:80px">Hire sergeant</button>
+						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" style="width:80px">Hire sergeant</button>
 					</td>
 					<td>
-						<button id="btnHireTurkopol" onclick="game.hireTroopTurkopol()" style="width:80px">Hire turkopol</button>
+						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" style="width:80px">Hire turkopol</button>
 					</td>
 					<td>
-						<button id="btnHireKnight" onclick="game.hireTroopKnight()" style="width:80px">Hire knight</button>
+						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" style="width:80px">Hire knight</button>
 					</td>
 				</tr>
 				<tr>
@@ -469,13 +469,13 @@
 						castellan
 					</td>
 					<td>
-						sergeants: 0<button id="btnMoveSergeantToHero">↓</button>
+						sergeants: <div id="lblGarnisonSergeants">0</div><button id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()">↓</button>
 					</td>
 					<td>
-						turkopols: 0<button id="btnMoveTurkopolToHero">↓</button>
+						turkopols: <div id="lblGarnisonTurkopols">0</div><button id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()">↓</button>
 					</td>
 					<td>
-						knights: 0<button id="btnMoveKnightToHero">↓</button>
+						knights: <div id="lblGarnisonKnights">0</div><button id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()">↓</button>
 					</td>
 				</tr>
 				<tr>
@@ -483,13 +483,13 @@
 						hero
 					</td>
 					<td>
-						sergeants: 0<button id="btnMoveSergeantToGarrison">↑</button>
+						sergeants: <div id="lblHeroSergeants">0</div><button id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()">↑</button>
 					</td>
 					<td>
-						turkopols: 0<button id="btnMoveTurkopolToGarrison">↑</button>
+						turkopols: <div id="lblHeroTurkopols">0</div><button id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()">↑</button>
 					</td>
 					<td>
-						knights: 0<button id="btnMoveKnightToGarrison">↑</button>
+						knights: <div id="lblHeroKnights">0</div><button id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()">↑</button>
 					</td>
 				</tr>
 			</table>
@@ -882,11 +882,13 @@
 		buildLevelStash:0,
 		buildLevelInn:0,
 		buildLevelStable:0,
+		buildLevelArchery:0,
+		buildLevelSmith:0,
 		fire:0,
 		hero:0,
 		happiness:80,
 		o_autosave:0,
-		saveVersion:"saveV1007",
+		saveVersion:"saveV1008",
 		myGlobalMap: [],
 		myMapLand: [],
 		castleX: 1,
@@ -903,8 +905,8 @@
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
 		festival_cooldown: 0,
-		turkopols: 0,
 		sergeants: 0,
+		turkopols: 0,
 		knights: 0,
 		help(myobject) {
 			console.log(myobject.id);
@@ -991,6 +993,9 @@
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 70;
 					}
+					game.myhero.sergeants = 0;
+					game.myhero.turkopols = 0;
+					game.myhero.knights   = 0;
 					game.myhero.inventory = [];//should the list contain objects?
 					game.myhero.status    = 0;
 					updateHeroStatus();
@@ -1013,6 +1018,69 @@
 			updateHeroStatus();
 			//and now we overwrite our save, because the mechanics is RogueLike.
 			writeSave();
+		},
+		hireTroopsSergeant : function () {
+			if (game.gold > 20 && game.buildLevelStable>=1) {
+				game.sergeants += 1;
+				game.gold      -= 20;
+				updateTroopsNumbers();
+			}
+		},
+		hireTroopsTurkopol : function () {
+			if (game.gold > 20 && game.buildLevelStable>=1 && game.buildLevelArchery>=1) {
+				game.turkopols += 1;
+				game.gold      -= 20;
+				updateTroopsNumbers();
+			}
+		},
+		hireTroopsKnight : function () {
+			if (game.gold > 40 && game.buildLevelStable>=2) {
+				game.knights   += 1;
+				game.gold      -= 40;
+				updateTroopsNumbers();
+			}
+		},
+		moveSergeantsToHero : function () {
+			if (game.myhero.status===0&&game.sergeants>0){
+				game.sergeants        -= 1;
+				game.myhero.sergeants += 1;
+				updateTroopsNumbers();
+			}
+		},
+		moveTurkopolsToHero : function () {
+			if (game.myhero.status===0&&game.turkopols>0){
+				game.turkopols        -= 1;
+				game.myhero.turkopols += 1;
+				updateTroopsNumbers();
+			}
+		},
+		moveKnightsToHero : function () {
+			if (game.myhero.status===0&&game.knights>0){
+				game.knights          -= 1;
+				game.myhero.knights   += 1;
+				updateTroopsNumbers();
+			}
+		},
+		moveSergeantsToGarnison : function () {
+			if (game.myhero.status===0&&game.myhero.sergeants>0){
+				game.sergeants        += 1;
+				game.myhero.sergeants -= 1;
+				updateTroopsNumbers();
+			}
+		},
+		moveTurkopolsToGarnison : function () {
+			if (game.myhero.status===0&&game.myhero.turkopols>0){
+				game.turkopols        += 1;
+				game.myhero.turkopols -= 1;
+				updateTroopsNumbers();
+			}
+		},
+		moveKnightsToGarnison : function () {
+			if (game.myhero.status===0&&game.myhero.knights>0){
+				game.knights          += 1;
+				game.myhero.knights   -= 1;
+				updateTroopsNumbers();
+			}
 		},
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
@@ -2452,6 +2520,15 @@
 			if (game.myhero.cmana === undefined){
 				game.myhero.cmana = game.myhero.mana;
 			}
+			if (game.myhero.sergeants === undefined){
+				game.myhero.sergeants = 0;
+			}
+			if (game.myhero.turkopols === undefined){
+				game.myhero.turkopols = 0;
+			}
+			if (game.myhero.knights === undefined){
+				game.myhero.knights = 0;
+			}
 			if (game.myhero.status===0){
 				var rnd = Math.floor(Math.random() * localeStrings[210].length);
 				console.log("in town, activity is "+rnd);
@@ -2489,6 +2566,14 @@
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
 		}
+	}
+	function updateTroopsNumbers() {
+		document.getElementById("lblGarnisonSergeants").innerHTML  = game.sergeants;
+		document.getElementById("lblGarnisonTurkopols").innerHTML  = game.turkopols;
+		document.getElementById("lblGarnisonKnights").innerHTML    = game.knights;
+		document.getElementById("lblHeroSergeants").innerHTML      = game.myhero.sergeants;
+		document.getElementById("lblHeroTurkopols").innerHTML      = game.myhero.turkopols;
+		document.getElementById("lblHeroKnights").innerHTML        = game.myhero.knights;
 	}
 	function getTime(type) {
 		var d  = new Date();
