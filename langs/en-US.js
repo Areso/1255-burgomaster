@@ -114,7 +114,7 @@ localeStrings.push("Build Gallows<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Fountain<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");//115
+localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -268,3 +268,4 @@ localeStrings.push("This building and its improvements is needed to execute your
 localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
 localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash do you have, the more you could hide in the Stash.");
 localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
+localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable do you have, the more experienced troops you could hire there.");
