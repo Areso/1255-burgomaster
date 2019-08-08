@@ -913,7 +913,7 @@
 		autocampaign : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true){
-				if (game.myhero.status===0) {
+				if (game.myhero.status===0) {//TODO check hero troops sum is above zero before sending hero to autocampaign
 					var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
 					showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
 				} else {
