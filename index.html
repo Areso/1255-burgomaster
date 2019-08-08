@@ -432,6 +432,8 @@
 			<div id="heroStats">
 
 			</div>
+			<br>
+			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px">Launch autocampaign!</button>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
 			Hiring troops
@@ -908,6 +910,38 @@
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
+		autocampaign : function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists===true){
+				if (game.myhero.status===0) {
+					var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
+					showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
+				} else {
+					if (game.myhero.status===1) {
+						var question      = "Do you want withdraw your hero?";
+						showModal(1, '', game.autocampaignWithdrawCallback, question, "Yes",  "No");
+					}
+				}
+			} else {
+				//show message there is no here to do that
+			}
+		},
+		autocampaignLaunchCallback : function () {
+			if (answer === 2) {
+				game.myhero.stance = 0;
+			}
+			if (answer === 3) {
+				game.myhero.stance = 1;
+			}
+			game.myhero.status = 1;
+			updateUI();
+		},
+		autocampaignWithdrawCallback : function () {
+			if (answer === 2) {
+				game.myhero.status = 0;
+				updateUI();
+			}
+		},
 		help(myobject) {
 			console.log(myobject.id);
 			if (myobject.id==="defencies_img") {
@@ -963,7 +997,7 @@
 		heroNextLvlExpLimit () {
 			return Math.pow((game.myhero.level+1) * config.heroExpK,2);
 		},
-		heroHire: function () {
+		heroHire : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists === false) {
 				if (game.gold > config.costHero) {
@@ -998,6 +1032,7 @@
 					game.myhero.knights   = 0;
 					game.myhero.inventory = [];//should the list contain objects?
 					game.myhero.status    = 0;
+					game.myhero.gold      = 0;
 					updateHeroStatus();
 				} else {
 					msg = "<b>%arg1</b>";
@@ -1009,10 +1044,10 @@
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
-		heroLvlUp: function () {
+		heroLvlUp : function () {
 
 		},
-		heroDie: function () {
+		heroDie : function () {
 			//hero died
 			game.myhero = {};
 			updateHeroStatus();
@@ -2383,6 +2418,7 @@
 				setupAutosave();
 				composite();
 				updateResources();
+				updateTroopsNumbers();
 				updateButtonCaptions();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
@@ -2442,6 +2478,7 @@
 				composite();
 				updateResources();
 				updateHeroStatus();
+				updateTroopsNumbers();
 				updateButtonCaptions();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
@@ -2450,6 +2487,12 @@
 				alert(localeStrings[14]);
 			}
 		}
+	}
+	function updateUI() {
+		updateResources();
+		updateTroopsNumbers();
+		updateButtonCaptions();
+		updateHeroStatus();
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
@@ -2534,6 +2577,8 @@
 				console.log("in town, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[210][rnd]+localeStrings[207];
 				heroStatusNeedsUpdate = false;
+				document.getElementById("btnAutocampaign").innerText="Launch Autocampaign!";
+				document.getElementById("btnAutocampaign").style.visibility="visible";
 			}
 			if (game.myhero.status===1){
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
@@ -2543,12 +2588,15 @@
 				console.log("in autocampaign, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[211][rnd]+localeStrings[208];
 				heroStatusNeedsUpdate = false;
+				document.getElementById("btnAutocampaign").innerText="Withdraw a hero";
+				document.getElementById("btnAutocampaign").style.visibility="visible";
 			}
 			if (game.myhero.status===2){
 				var rnd = Math.floor(Math.random() * localeStrings[212].length);
 				console.log("in manual ampaign, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[212][rnd]+localeStrings[209];
 				heroStatusNeedsUpdate = false;
+				document.getElementById("btnAutocampaign").style.visibility="hidden";
 			}
 			if (heroStatusNeedsUpdate === true) {
 				game.myhero.status = 0;
@@ -2574,6 +2622,11 @@
 		document.getElementById("lblHeroSergeants").innerHTML      = game.myhero.sergeants;
 		document.getElementById("lblHeroTurkopols").innerHTML      = game.myhero.turkopols;
 		document.getElementById("lblHeroKnights").innerHTML        = game.myhero.knights;
+	}
+	function updateResources() {
+		document.getElementById("gold").innerHTML          = game.gold;
+		document.getElementById("pop").innerHTML           = game.pop;
+		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
 	function getTime(type) {
 		var d  = new Date();
@@ -2603,11 +2656,6 @@
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 		}
-	}
-	function updateResources() {
-		document.getElementById("gold").innerHTML          = game.gold;
-		document.getElementById("pop").innerHTML           = game.pop;
-		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
 	function updateImagesBuildingTab () {
 		//TODO
