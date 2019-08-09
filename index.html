@@ -433,7 +433,7 @@
 
 			</div>
 			<br>
-			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px">Launch autocampaign!</button>
+			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
 			Hiring troops
@@ -1044,6 +1044,10 @@
 					game.myhero.inventory = [];//should the list contain objects?
 					game.myhero.status    = 0;
 					game.myhero.gold      = 0;
+					game.myhero.aCampaign          =0;
+					game.myhero.aCampaignLong      =0;
+					game.myhero.aCampaignForward   =0;
+					game.myhero.aCampaignBackward  =0;
 					updateHeroStatus();
 				} else {
 					msg = "<b>%arg1</b>";
