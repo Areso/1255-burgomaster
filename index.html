@@ -910,6 +910,17 @@
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
+		isHeroHaveTroops: function () {
+			var heroTroopsFlag = false;
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists === true) {
+				var totalCount = game.myhero.sergeants*1+game.myhero.turkopols*1+game.myhero.knights*1;
+				if (totalCount>0) {
+					heroTroopsFlag = true;
+				}
+			}
+			return heroTroopsFlag;
+		},
 		autocampaign : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true){
