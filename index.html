@@ -1563,7 +1563,10 @@
 			rnd = Math.floor((Math.random() * 5) + 1);
 			if (rnd === 1) {
 				if (game.pop > 2) {
-					numberOfDied = Math.floor((Math.random() * (game.pop-2)) + 1);
+					numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
+					if (numberOfDied>game.pop-2){
+						numberOfDied = game.pop-2;
+					}
 					game.pop     = game.pop - numberOfDied;
 					msg = localeStrings[55].replace("%arg1", numberOfDied);
 					postEventLog(msg);
