@@ -433,7 +433,7 @@
 
 			</div>
 			<br>
-			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px">Launch autocampaign!</button>
+			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
 			Hiring troops
@@ -910,10 +910,21 @@
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
+		isHeroHaveTroops: function () {
+			var heroTroopsFlag = false;
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists === true) {
+				var totalCount = game.myhero.sergeants*1+game.myhero.turkopols*1+game.myhero.knights*1;
+				if (totalCount>0) {
+					heroTroopsFlag = true;
+				}
+			}
+			return heroTroopsFlag;
+		},
 		autocampaign : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true){
-				if (game.myhero.status===0) {
+				if (game.myhero.status===0) {//TODO check hero troops sum is above zero before sending hero to autocampaign
 					var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
 					showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
 				} else {
@@ -1033,6 +1044,10 @@
 					game.myhero.inventory = [];//should the list contain objects?
 					game.myhero.status    = 0;
 					game.myhero.gold      = 0;
+					game.myhero.aCampaign          =0;
+					game.myhero.aCampaignLong      =0;
+					game.myhero.aCampaignForward   =0;
+					game.myhero.aCampaignBackward  =0;
 					updateHeroStatus();
 				} else {
 					msg = "<b>%arg1</b>";
@@ -1548,7 +1563,10 @@
 			rnd = Math.floor((Math.random() * 5) + 1);
 			if (rnd === 1) {
 				if (game.pop > 2) {
-					numberOfDied = Math.floor((Math.random() * (game.pop-2)) + 1);
+					numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
+					if (numberOfDied>game.pop-2){
+						numberOfDied = game.pop-2;
+					}
 					game.pop     = game.pop - numberOfDied;
 					msg = localeStrings[55].replace("%arg1", numberOfDied);
 					postEventLog(msg);
