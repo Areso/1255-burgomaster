@@ -63,7 +63,7 @@
 		#buttonBldGallows, #buttonBldFountain, #buttonBldStash {
 			width: 180px;
 		}*/
-		#console_n_chat {
+		#console_n_chat, #lblAutocampaignJournal {
 			/*resize: none;*/
 			overflow: auto;
 		}
@@ -440,7 +440,7 @@
 			<button id="btnLeaveCity"    onclick="game.leaveCity()" style="width:160px; visibility: hidden">Go to exploring!</button>
 		</div>
 		<div id="tabAutocampaignJournal" class="tabcontent">
-			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:150px; top: 240px; left: 10px"></div>
+			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:470px; top: 60px; left: 10px"></div>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
 			Hiring troops
@@ -927,8 +927,8 @@
 				if (game.myhero.stance === 0) {//aggressive stance
 					if (rnd===1) {
 						//you got killed
+						postJournalLog("the hero and all troops met their death in the glory combat");
 						game.heroDie();
-						postJournalLog("the hero and all troops meet their death in glory combat");
 					}
 					if (rnd>1 && rnd<=12) {
 						game.myhero.gold += Math.floor(heroTroopsPrice*1.05+1);
@@ -2773,6 +2773,10 @@
 	}
 	function scrollDown(){
 		var textarea = document.getElementById("console_n_chat");
+		if(textarea.selectionStart === textarea.selectionEnd) {
+			textarea.scrollTop = textarea.scrollHeight;
+		}
+		var textarea = document.getElementById("lblAutocampaignJournal");
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 		}
