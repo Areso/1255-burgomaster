@@ -60,8 +60,8 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
             sceneLines    = sceneLines+1;
         }
         buttonsOffsetY    = sceneOffsetY + sceneLines*20 + 20;
-        buttonOneLength   = answerTextOne.length*6.5 + 20;
-        buttonTwoLength   = answerTextTwo.length*6.5 + 20;
+        buttonOneLength   = answerTextOne.length*7.5 + 20;
+        buttonTwoLength   = answerTextTwo.length*7.5 + 20;
         ctx.fillStyle     = '#bbc2c9';
         buttonOneOffsetX  = img1sizeX + imageOffsetX + 10;
         buttonTwoOffsetX  = buttonOneOffsetX+buttonOneLength + 50;
