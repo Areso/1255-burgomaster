@@ -944,6 +944,9 @@
 				console.log("random stuff on the way forward");
 				var heroTroopsPrice = game.heroTroopsPrice();
 				var rnd = Math.floor((Math.random() * 24) + 1);
+				if (game.myhero.aCampaignLong===0){
+					postJournalLog("------------------------");
+				}
 				if (game.myhero.stance === 0) {//aggressive stance
 					if (rnd===1) {
 						//you got killed
