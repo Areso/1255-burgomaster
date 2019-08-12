@@ -435,6 +435,7 @@
 			<br>
 			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
 			<button id="btnAutocampaignJournal"    onclick="openTab(null, 'tabAutocampaignJournal')" style="width:160px; visibility: hidden">Open journal</button>
+			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
 			<br>
 			<br>
 			<button id="btnLeaveCity"    onclick="game.leaveCity()" style="width:160px; visibility: hidden">Go to exploring!</button>
@@ -917,6 +918,25 @@
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
+		heroDismiss: function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists===true){
+				if (game.isHeroHaveTroops()) {
+					var question      = "Do you want to dismiss hero with all troops?";
+					showModal(1, '', game.heroDismissCallback, question, "Yes, I would like to",  "Nope. I will move all units from the hero.");
+				} else {
+					game.heroDie();
+				}
+			} else {
+				alertMsg = "You need a hero to do that!";
+				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+			}
+		},
+		heroDismissCallback: function () {
+			if (answer === 2){
+				game.heroDie();
+			}
+		},
 		calculateAutocampaign: function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
@@ -949,6 +969,7 @@
 						postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
 					}
 				}
+				game.heroLvlUp();
 			}
 			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
@@ -963,6 +984,7 @@
 					game.gold                     += game.myhero.gold;
 					game.myhero.gold               = 0;
 				}
+				game.heroLvlUp();
 			}
 		},
 		isHeroHaveTroops : function () {
@@ -986,7 +1008,7 @@
 		autocampaign : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true){
-				if (game.myhero.status===0) {//TODO check hero troops sum is above zero before sending hero to autocampaign
+				if (game.myhero.status===0) {
 					if (game.isHeroHaveTroops()) {
 						var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
 						showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
@@ -1138,13 +1160,17 @@
 			}
 		},
 		heroLvlUp : function () {
-
+			console.log("check hero exp for level up");
+			console.log("current hero exp is "+game.myhero.exp);
+			console.log("current hero next lvl is "+game.heroNextLvlExpLimit());
+			if (game.myhero.exp > game.heroNextLvlExpLimit()){
+				game.myhero.level +=1;
+				postJournalLog("Your hero got promoted to the next level!");
+			}
 		},
 		heroDie : function () {
-			//hero died
 			game.myhero = {};
 			updateHeroStatus();
-			//and now we overwrite our save, because the mechanics is RogueLike.
 			writeSave();
 		},
 		hireTroopsSergeant : function () {
@@ -2521,14 +2547,22 @@
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {
-		save64 = prompt(localeStrings[16],localeStrings[17]);
+		save64 = document.getElementById("savestring").value;
 		if (save64 != null) {
 			try {
+				console.log("we try to load the imported save");
 				saveLine  = atob(save64);
 				saveArray = saveLine.split(delimiter);
 				gameTemp  = JSON.parse(saveArray[0]);
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options   = JSON.parse(saveArray[1]);
+				var incr   = 1;
+				while (game.gold === null) {
+					console.log("we overwrite our gold value");
+					var len    = game.budgets.length;
+					game.gold  = game.budgets[len-incr];
+					incr      += 1;
+				}
 				setupAutosave();
 				composite();
 				updateResources();
