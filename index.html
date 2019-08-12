@@ -969,6 +969,7 @@
 						postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
 					}
 				}
+				game.heroLvlUp();
 			}
 			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
@@ -983,6 +984,7 @@
 					game.gold                     += game.myhero.gold;
 					game.myhero.gold               = 0;
 				}
+				game.heroLvlUp();
 			}
 		},
 		isHeroHaveTroops : function () {
@@ -1158,7 +1160,13 @@
 			}
 		},
 		heroLvlUp : function () {
-
+			console.log("check hero exp for level up");
+			console.log("current hero exp is "+game.myhero.exp);
+			console.log("current hero next lvl is "+game.heroNextLvlExpLimit());
+			if (game.myhero.exp > game.heroNextLvlExpLimit()){
+				game.myhero.level +=1;
+				postJournalLog("Your hero got promoted to the next level!");
+			}
 		},
 		heroDie : function () {
 			game.myhero = {};
@@ -2539,14 +2547,22 @@
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {
-		save64 = prompt(localeStrings[16],localeStrings[17]);
+		save64 = document.getElementById("savestring").value;
 		if (save64 != null) {
 			try {
+				console.log("we try to load the imported save");
 				saveLine  = atob(save64);
 				saveArray = saveLine.split(delimiter);
 				gameTemp  = JSON.parse(saveArray[0]);
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options   = JSON.parse(saveArray[1]);
+				var incr   = 1;
+				while (game.gold === null) {
+					console.log("we overwrite our gold value");
+					var len    = game.budgets.length;
+					game.gold  = game.budgets[len-incr];
+					incr      += 1;
+				}
 				setupAutosave();
 				composite();
 				updateResources();
