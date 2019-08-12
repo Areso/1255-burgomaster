@@ -488,7 +488,7 @@
 						knights: <div id="lblGarnisonKnights" style="display: inline">0</div><button id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()">↓</button>
 					</td>
 				</tr>
-				<tr>
+				<tr id="trHeroHiringTroops" style="visibility: collapse">
 					<td>
 						hero
 					</td>
@@ -812,6 +812,7 @@
 		}
 		if (buildingName==='stable') {
 			showAlert = false;
+			updateUI();
 			openTab(null, 'tabTroopsHiring');
 		}
 		if (showAlert === true &&  alertMsg !=="" ) {
@@ -2731,6 +2732,7 @@
 				document.getElementById("btnAutocampaign").innerText="Launch Autocampaign!";
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
+				document.getElementById("trHeroHiringTroops").style.visibility="visible";
 			}
 			if (game.myhero.status===1){
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
@@ -2743,6 +2745,8 @@
 				document.getElementById("btnAutocampaign").innerText="Withdraw a hero";
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
+				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
+
 			}
 			if (game.myhero.status===2){
 				var rnd = Math.floor(Math.random() * localeStrings[212].length);
@@ -2751,6 +2755,7 @@
 				heroStatusNeedsUpdate = false;
 				document.getElementById("btnAutocampaign").style.visibility="hidden";
 				document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
+				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 			}
 			if (heroStatusNeedsUpdate === true) {
 				game.myhero.status = 0;
@@ -2770,15 +2775,19 @@
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
+			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 		}
 	}
 	function updateTroopsNumbers() {
 		document.getElementById("lblGarnisonSergeants").innerHTML  = game.sergeants;
 		document.getElementById("lblGarnisonTurkopols").innerHTML  = game.turkopols;
 		document.getElementById("lblGarnisonKnights").innerHTML    = game.knights;
-		document.getElementById("lblHeroSergeants").innerHTML      = game.myhero.sergeants;
-		document.getElementById("lblHeroTurkopols").innerHTML      = game.myhero.turkopols;
-		document.getElementById("lblHeroKnights").innerHTML        = game.myhero.knights;
+		var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+		if (heroExists === true) {
+			document.getElementById("lblHeroSergeants").innerHTML = game.myhero.sergeants;
+			document.getElementById("lblHeroTurkopols").innerHTML = game.myhero.turkopols;
+			document.getElementById("lblHeroKnights").innerHTML = game.myhero.knights;
+		}
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML          = game.gold;
