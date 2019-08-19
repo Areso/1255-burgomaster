@@ -923,29 +923,42 @@
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
-		tryLeft : function () {
-			game.myMapRemObjects[game.heroX][game.heroY]=0;
-			game.heroX  -= 1;
-			game.myMapRemObjects[game.heroX][game.heroY]=40;
-			composite_gm();
+		checkCollisionWithBordersOfMap : function (changeX, changeY) {
+			if (game.heroX+changeX<0){
+				return true;
+			}
+			if (game.heroY+changeY<0){
+				return true;
+			}
+			if (game.heroX+changeX>config.sizeMapX-1){
+				return true;
+			}
+			if (game.heroY+changeY>config.sizeMapY-1){
+				return true;
+			}
+			return false;
 		},
-		tryRight : function () {
-			game.myMapRemObjects[game.heroX][game.heroY]=0;
-			game.heroX  += 1;
-			game.myMapRemObjects[game.heroX][game.heroY]=40;
-			composite_gm();
+		checkCollisionWithNonRemovableObstacles : function (changeX, changeY) {
+			if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===0) {
+				return false;
+			} else {
+				return true;
+			}
 		},
-		tryUp : function () {
-			game.myMapRemObjects[game.heroX][game.heroY]=0;
-			game.heroY  -= 1;
-			game.myMapRemObjects[game.heroX][game.heroY]=40;
-			composite_gm();
+		checkColissionWithRemovableObstacles : function () {
+
 		},
-		tryDown : function () {
-			game.myMapRemObjects[game.heroX][game.heroY]=0;
-			game.heroY  += 1;
-			game.myMapRemObjects[game.heroX][game.heroY]=40;
-			composite_gm();
+		tryHeroMovement : function (changeX, changeY) {
+			console.log("we are here!");
+			if (game.checkCollisionWithBordersOfMap(changeX, changeY)===false) {
+				if (game.checkCollisionWithNonRemovableObstacles(changeX, changeY)===false) {
+					game.myMapRemObjects[game.heroX][game.heroY] = 0;
+					game.heroX = game.heroX + changeX;
+					game.heroY = game.heroY + changeY;
+					game.myMapRemObjects[game.heroX][game.heroY] = 40;
+					composite_gm();
+				}
+			}
 		},
 		cityLeave : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
@@ -2892,16 +2905,16 @@
 	}
 	document.onkeyup = function(e) {
 		if(e.keyCode === 38 || e.keyCode === 87) {
-			game.tryUp();
+			game.tryHeroMovement(0,-1);//UP
 		}
 		if(e.keyCode === 37 || e.keyCode === 65) {
-			game.tryLeft();
+			game.tryHeroMovement(-1,0);
 		}
 		if(e.keyCode === 40 || e.keyCode === 83) {
-			game.tryDown();
+			game.tryHeroMovement(0,1);//DOWN
 		}
 		if(e.keyCode === 68 || e.keyCode === 39) {
-			game.tryRight();
+			game.tryHeroMovement(+1,0);//DOWN
 		}
 	}
 	//timers
