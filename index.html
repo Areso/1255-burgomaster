@@ -863,6 +863,8 @@
 				}
 				if (game.myMapRemObjects[i][j]===40) {
 					console.log("draw hero");
+					game.heroX = i;
+					game.heroY = j;
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
 				}
 			}
@@ -904,6 +906,8 @@
 		myMapLand: [],
 		castleX: 1,
 		castleY: 1,
+		heroX: 1,
+		heroY: 1,
 		myMapObjects: [],
 		myMapRemObjects: [],
 		years: [],
@@ -919,6 +923,45 @@
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
+		tryLeft : function () {
+			game.myMapRemObjects[game.heroX][game.heroY]=0;
+			game.heroX  -= 1;
+			game.myMapRemObjects[game.heroX][game.heroY]=40;
+			composite_gm();
+		},
+		tryRight : function () {
+			game.myMapRemObjects[game.heroX][game.heroY]=0;
+			game.heroX  += 1;
+			game.myMapRemObjects[game.heroX][game.heroY]=40;
+			composite_gm();
+		},
+		tryUp : function () {
+			game.myMapRemObjects[game.heroX][game.heroY]=0;
+			game.heroY  -= 1;
+			game.myMapRemObjects[game.heroX][game.heroY]=40;
+			composite_gm();
+		},
+		tryDown : function () {
+			game.myMapRemObjects[game.heroX][game.heroY]=0;
+			game.heroY  += 1;
+			game.myMapRemObjects[game.heroX][game.heroY]=40;
+			composite_gm();
+		},
+		cityLeave : function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists===true && game.myhero.status === 0) {
+				game.myhero.status = 2;
+				openTab(null, 'Explore');
+				updateUI();
+			}
+		},
+		cityEnter : function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists===true && game.myhero.status === 2) {
+				game.myhero.status = 0;
+				updateUI();
+			}
+		},
 		heroDismiss: function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true){
@@ -933,12 +976,12 @@
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
-		heroDismissCallback: function () {
+		heroDismissCallback : function () {
 			if (answer === 2){
 				game.heroDie();
 			}
 		},
-		calculateAutocampaign: function () {
+		calculateAutocampaign : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
@@ -1351,8 +1394,7 @@
 				//ym(47225574, 'reachGoal', 'min5');
 				//return true;
 			}
-			updateResources();
-			updateHeroStatus();
+			updateUI();
 		},
 		makeFestival : function() {
 			var festivalPrice = game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
@@ -1475,6 +1517,9 @@
 				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1))) {
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
+					if (game.buildLevelInn===1) {
+						generateMap();
+					}
 					commonBuild();
 					return true;
 				} else {
@@ -1713,8 +1758,8 @@
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
 		costPutOutFire:20,
-		sizeMapX:12,
-		sizeMapY:12,
+		sizeMapX:9,
+		sizeMapY:9,
 		costHero:20,
 		heroExpK:5,
 		festPrice:2,
@@ -1734,7 +1779,7 @@
 	var dcounter      = dcounter_def;
 	updateResources();
 	populatePatchnotes();
-	generateMap();
+
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	composite();
@@ -2569,9 +2614,7 @@
 				}
 				setupAutosave();
 				composite();
-				updateResources();
-				updateTroopsNumbers();
-				updateButtonCaptions();
+				composite_gm();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 				//TODO
@@ -2628,10 +2671,8 @@
 				//options  = JSON.parse(localStorage.getItem('options'));
 				setupAutosave();
 				composite();
-				updateResources();
-				updateHeroStatus();
-				updateTroopsNumbers();
-				updateButtonCaptions();
+				composite_gm();
+				updateUI();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 			} else {
@@ -2733,6 +2774,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
+				document.getElementById("tabExplore").style.display="inline";
 			}
 			if (game.myhero.status===1){
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
@@ -2746,7 +2788,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
-
+				document.getElementById("tabExplore").style.display="none";
 			}
 			if (game.myhero.status===2){
 				var rnd = Math.floor(Math.random() * localeStrings[212].length);
@@ -2756,6 +2798,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="hidden";
 				document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
+				document.getElementById("tabExplore").style.display="inline";
 			}
 			if (heroStatusNeedsUpdate === true) {
 				game.myhero.status = 0;
@@ -2845,6 +2888,20 @@
 		}
 		if (typeofModal===2) {
 			//TODO PROMTS
+		}
+	}
+	document.onkeyup = function(e) {
+		if(e.keyCode === 38 || e.keyCode === 87) {
+			game.tryUp();
+		}
+		if(e.keyCode === 37 || e.keyCode === 65) {
+			game.tryLeft();
+		}
+		if(e.keyCode === 40 || e.keyCode === 83) {
+			game.tryDown();
+		}
+		if(e.keyCode === 68 || e.keyCode === 39) {
+			game.tryRight();
 		}
 	}
 	//timers
