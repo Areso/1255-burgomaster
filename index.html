@@ -646,6 +646,7 @@
 		}
 	}
 	function composite() {
+		ctx.clearRect(0, 0, 800, 480);
 		ctx.drawImage(img1, 0, 0);   //draw background
 		ctx.drawImage(img2, sawmillX, sawmillY);//draw sawmill
 		pushBuilding('sawmill', sawmillX, sawmillY, sawmillW, sawmillH);
@@ -833,38 +834,111 @@
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var tree_tile       = loadImage('resources/tree.png');
 	function composite_gm() {
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				if (game.myMapLand[i][j]===0) {
+		ctx_map.clearRect(0, 0, 800, 480);
+		// try place hero at center of screen
+		camXL = game.heroX - Math.floor(config.sizeScrX/2);
+		camXH = camXL + config.sizeScrX;
+		//console.log('game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
+		if (camXL < 0) {
+			camXL = 0;
+			camXH = config.sizeMapX-config.sizeScrX;
+			//console.log('override XL<0! game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
+		}
+		if (camXH > config.sizeMapX) {
+			camXL = config.sizeMapX-config.sizeScrX;
+			camXH = config.sizeMapX;
+			//console.log('override XH>SizeMapX! game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
+		}
+
+		camYL = game.heroY - Math.floor(config.sizeScrY/2);
+		camYH = camYL + config.sizeScrY;
+		if (camYL < 0) {
+			camYL = 0;
+			camYH = config.sizeMapY-config.sizeScrY;
+		}
+		if (camYH > config.sizeMapY) {
+			camYL = config.sizeMapY-config.sizeScrY;
+			camYH = config.sizeMapY;
+		}
+		console.log('camYL, camYH are '+camYL+', '+camYH);
+		for (i = 0; i < config.sizeScrX; i++) {
+			for (j = 0; j < config.sizeScrY; j++) {
+				if (game.myMapLand[i+camXL][j+camYL]===0) {
 					ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
 				}
 			}
 		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				if (game.myMapLand[i][j]===0) {
+		already_draw = false;
+		for (i = 0; i < config.sizeScrX; i++) {
+			for (j = 0; j < config.sizeScrY; j++) {
+
+				if (game.myMapLand[i+camXL][j+camYL]===0) {
 					//ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
 				}
-				if (game.myMapObjects[i][j]===1) {
+				if (game.myMapObjects[i+camXL][j+camYL]===1) {
 					//console.log("draw tree");
 					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
 				}
-				if (game.myMapObjects[i][j]===2) {
+				if (game.myMapObjects[i+camXL][j+camYL]===2) {
 					//console.log("draw tree");
 					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
 				}
-				if (game.myMapObjects[i][j]===3) {
+				if (game.myMapObjects[i+camXL][j+camYL]===3) {
 					//console.log("draw tree");
 					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
 				}
-				if (game.myMapObjects[i][j]===12) {
-					console.log("draw castle");
+				if (game.myMapObjects[i+camXL][j+camYL]===12) {
+					//console.log("draw castle");
 					ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw castle entrance
+					already_draw = true;
+				} else {
+					if (already_draw === false){
+						if (j+camYL-1>0){
+							if (game.myMapObjects[i + camXL][j + camYL -1] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, i * 48, (j-1) * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (j+camYL+1<config.sizeMapY) {
+							if (game.myMapObjects[i + camXL][j + camYL + 1] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, i * 48, (j + 1) * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL-1>0) {
+							if (game.myMapObjects[i + camXL - 1][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i - 1) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL+1<config.sizeMapX) {
+							if (game.myMapObjects[i + camXL + 1][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i + 1) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL-2>0) {
+							if (game.myMapObjects[i + camXL - 2][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i - 2) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL+2<config.sizeMapX) {
+							if (game.myMapObjects[i + camXL + 2][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i + 2) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+					}
 				}
-				if (game.myMapRemObjects[i][j]===40) {
-					console.log("draw hero");
-					game.heroX = i;
-					game.heroY = j;
+				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
+					//console.log("draw hero");
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
 				}
 			}
@@ -901,6 +975,7 @@
 		hero:0,
 		happiness:80,
 		o_autosave:0,
+		newSaveVersion: 8,
 		saveVersion:"saveV1008",
 		myGlobalMap: [],
 		myMapLand: [],
@@ -949,7 +1024,6 @@
 
 		},
 		tryHeroMovement : function (changeX, changeY) {
-			console.log("we are here!");
 			if (game.checkCollisionWithBordersOfMap(changeX, changeY)===false) {
 				if (game.checkCollisionWithNonRemovableObstacles(changeX, changeY)===false) {
 					game.myMapRemObjects[game.heroX][game.heroY] = 0;
@@ -1771,13 +1845,15 @@
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
 		costPutOutFire:20,
-		sizeMapX:9,
-		sizeMapY:9,
+		sizeMapX:10,//18
+		sizeScrX:5,//16
+		sizeMapY:10,//18
+		sizeScrY:5,//10
 		costHero:20,
 		heroExpK:5,
 		festPrice:2,
 		festCooldown:30,
-
+		glSaveVersion: 9,
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -2287,6 +2363,8 @@
 			}
 		}
 		game.myMapRemObjects[game.castleX][game.castleY+1]=40;
+		game.heroX = game.castleX;
+		game.heroY = game.castleY+1;
 		mapCreated = 1;
 		composite_gm();
 	}
