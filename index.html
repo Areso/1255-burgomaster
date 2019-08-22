@@ -1242,12 +1242,13 @@
 		heroNextLvlExpLimit () {
 			return Math.pow((game.myhero.level+1) * config.heroExpK,2);
 		},
-		heroHire : function () {
+		heroHire : function (silent) {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists === false) {
-				if (game.gold > config.costHero) {
-					console.log('hero hired');
-					game.gold                 = game.gold - config.costHero;
+				if (game.gold > config.costHero || silent===true) {
+					if (silent === false) {
+						game.gold                 = game.gold - config.costHero;
+					}
 					game.myhero.level         = game.buildLevelInn;
 					game.myhero.exp           = Math.pow(game.myhero.level * config.heroExpK,2);
 					var x = document.getElementById("selectHeroClass").selectedIndex;
@@ -2694,6 +2695,12 @@
 				saveLine  = atob(save64);
 				saveArray = saveLine.split(delimiter);
 				gameTemp  = JSON.parse(saveArray[0]);
+				var heroExistsInTheGame = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+				var heroExistsInTheSave = (Object.keys(gameTemp.myhero).length===0 && gameTemp.myhero.constructor === Object) ? false : true;
+				if (heroExistsInTheSave === true && heroExistsInTheGame === false) {
+					game.heroHire(true);
+					console.log("initiated a new hero to allow overriding from a save");
+				}
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options   = JSON.parse(saveArray[1]);
 				var incr   = 1;
@@ -2758,6 +2765,12 @@
 			if (localStorage.getItem('game')!==null){
 				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 				gameTemp = JSON.parse(localStorage.getItem('game'));
+				var heroExistsInTheGame = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+				var heroExistsInTheSave = (Object.keys(gameTemp.myhero).length===0 && gameTemp.myhero.constructor === Object) ? false : true;
+				if (heroExistsInTheSave === true && heroExistsInTheGame === false) {
+					game.heroHire(true);
+					console.log("initiated a new hero to allow overriding from a save");
+				}
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options  = JSON.parse(localStorage.getItem('options'));
 				setupAutosave();
