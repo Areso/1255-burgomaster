@@ -173,7 +173,7 @@
 		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
+			<!--<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>-->
 			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
 			<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
@@ -438,7 +438,8 @@
 			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
 			<br>
 			<br>
-			<button id="btnLeaveCity"    onclick="game.leaveCity()" style="width:160px; visibility: hidden">Go to exploring!</button>
+			<button id="btnLeaveCity"    onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
+			<button id="btnGenerateMap"    onclick="game.generateMap()" style="width:160px">Regenerate map</button>
 		</div>
 		<div id="tabAutocampaignJournal" class="tabcontent">
 			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:470px; top: 60px; left: 10px"></div>
@@ -871,7 +872,6 @@
 		already_draw = false;
 		for (i = 0; i < config.sizeScrX; i++) {
 			for (j = 0; j < config.sizeScrY; j++) {
-
 				if (game.myMapLand[i+camXL][j+camYL]===0) {
 					//ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
 				}
@@ -938,7 +938,7 @@
 					}
 				}
 				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
-					//console.log("draw hero");
+					console.log("draw hero");
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
 				}
 			}
@@ -977,12 +977,12 @@
 		o_autosave:0,
 		newSaveVersion: 8,
 		saveVersion:"saveV1008",
-		myGlobalMap: [],
-		myMapLand: [],
 		castleX: 1,
 		castleY: 1,
 		heroX: 1,
 		heroY: 1,
+		mapCreated: 0,
+		myMapLand: [],
 		myMapObjects: [],
 		myMapRemObjects: [],
 		years: [],
@@ -994,10 +994,122 @@
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
+		castellan: {},
 		festival_cooldown: 0,
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
+		active_tab: '',
+		prestige: 0,
+		presitge_time: [],
+		generateMap: function () {
+			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
+			if (game.heroExists()===true) {
+				if (game.myhero.status !== 2) {
+					var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
+					var question      = question.replace("%arg1", genMapPriceFinal);
+					showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
+				} else {
+					alertMsg = "You couldn't do it while your hero on the map!";
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				}
+			} else {
+				var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
+				var question      = question.replace("%arg1", genMapPriceFinal);
+				showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
+			}
+		},
+		generateMapCallback : function (silent) {
+			//generate landscape
+			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
+			if (silent===true) {
+				genMap(0);
+			} else {
+				if (game.gold >= genMapPriceFinal) {
+					genMap(genMapPriceFinal);
+				} else {
+					alertMsg = "You need more gold to do that!";
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				}
+			}
+			function genMap(priceOfMapGen){
+				game.gold = game.gold - priceOfMapGen;
+				game.myMapLand=[];
+				for (i=0;i<config.sizeMapX;i++) {
+					game.myMapLand.push([]);
+				}
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						//for now, all map is just green grass
+						game.myMapLand[i][j] = 0; //Math.floor(Math.random()*10);
+					}
+				}
+				//place the castle
+				//castle on X axis has 3 points //144px
+				//minus one because of 0..11
+				//minus one for right part of the castle
+				//plus  one for left  part of the castle
+				//to both right and left parts could be draw on the map
+				game.castleX = Math.floor(Math.random()*(config.sizeMapX-2))+1
+				//castle on Y axis has 2 points // 96px
+				//minus one because of 0..11
+				//so  minus one for the roof of the castle
+				//and plus  one for the road to the casle
+				game.castleY = Math.floor(Math.random()*(config.sizeMapY-2))+1
+				console.log('castleX is '+game.castleX+' and castleY is '+game.castleY);
+				//castle(enter) = 10
+				//castle(other) = 11
+				//castle(point) = 12 //from this point we draw a castle
+				//mountain      = 20
+				//forest        = 1..3
+				//hero          = 40
+				//monster       = 50
+				game.myMapObjects=[];
+				for (i=0;i<config.sizeMapX;i++) {
+					game.myMapObjects.push([]);
+				}
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						game.myMapObjects[i][j]=0;
+
+					}
+				}
+				game.myMapObjects[game.castleX][game.castleY]=10;
+				game.myMapObjects[game.castleX-1][game.castleY]=11;
+				game.myMapObjects[game.castleX+1][game.castleY]=11;
+				game.myMapObjects[game.castleX][game.castleY-1]=11;
+				game.myMapObjects[game.castleX-1][game.castleY-1]=12;
+				game.myMapObjects[game.castleX+1][game.castleY-1]=11;
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						if (game.myMapObjects[i][j]===0) {
+							rnd = Math.floor((Math.random() * 12) + 1);
+							if (rnd > 3) {
+								rnd = 0
+							}
+							game.myMapObjects[i][j]=rnd;
+						}
+					}
+				}
+				game.myMapObjects[game.castleX][game.castleY+1]=0;//just to be sure there are nothing to block path to a castle
+				//RemovableObjects
+				//The hero, first of all
+				game.myMapRemObjects=[];
+				for (i=0;i<config.sizeMapX;i++) {
+					game.myMapRemObjects.push([]);
+				}
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						game.myMapRemObjects[i][j]=0;
+					}
+				}
+				game.myMapRemObjects[game.castleX][game.castleY+1]=40;
+				game.heroX = game.castleX;
+				game.heroY = game.castleY+1;
+				game.mapCreated = 1;
+				composite_gm();
+			}
+		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
 				return true;
@@ -1017,7 +1129,11 @@
 			if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===0) {
 				return false;
 			} else {
-				return true;
+				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===10){
+					return false;//we can enter the castle!
+				} else {
+					return true;
+				}
 			}
 		},
 		checkColissionWithRemovableObstacles : function () {
@@ -1030,22 +1146,43 @@
 					game.heroX = game.heroX + changeX;
 					game.heroY = game.heroY + changeY;
 					game.myMapRemObjects[game.heroX][game.heroY] = 40;
+					if (game.heroX===game.castleX && game.heroY===game.castleY) {
+						game.cityEnter();
+					}
 					composite_gm();
 				}
 			}
+		},
+		heroExists: function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			return heroExists;
 		},
 		cityLeave : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true && game.myhero.status === 0) {
 				game.myhero.status = 2;
+				game.myMapRemObjects[game.heroX][game.heroY] = 0;
+				game.heroX = game.castleX;
+				game.heroY = game.castleY+1;
+				game.myMapRemObjects[game.heroX][game.heroY] = 40;
+				console.log("we are are leaving the castle");
 				openTab(null, 'Explore');
 				updateUI();
+				composite_gm();
+			} else {
+				if (heroExists===true && game.myhero.status === 2) {
+					console.log("just open the adv map, please!");
+					openTab(null, 'Explore');
+					updateUI();
+					composite_gm();
+				}
 			}
 		},
 		cityEnter : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true && game.myhero.status === 2) {
 				game.myhero.status = 0;
+				openTab(null, 'Main');
 				updateUI();
 			}
 		},
@@ -1377,13 +1514,6 @@
 		popLimit : function () {
 			return 2*Math.pow((game.buildLevelH*1+3),2);
 		},
-		createTheGlobalMap : function () {
-			for (i = 0; i < 4; i++) {
-				for (j = 0; j < 4; j++) {
-					game.myGlobalMap[i][j] = 1;
-				}
-			}
-		},
 		recordStats : function() {
 			game.years.push(game.year+" "+game.season);
 			game.budgets.push(game.gold);
@@ -1606,7 +1736,7 @@
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					if (game.buildLevelInn===1) {
-						generateMap();
+						game.generateMapCallback(true);
 					}
 					commonBuild();
 					return true;
@@ -1855,6 +1985,7 @@
 		festPrice:2,
 		festCooldown:30,
 		glSaveVersion: 9,
+		genMapCostBasic: 50,
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -1863,7 +1994,6 @@
 	var redraw        = 0;
 	var whatDraw      = "";
 	var minBL         = 0;
-	var mapCreated    = 0;
 	var nightMode     = 0;
 	var dcounter_def  = 30;
 	var dcounter      = dcounter_def;
@@ -2251,7 +2381,7 @@
 		document.getElementById("saveGameButton").innerText      = localeStrings[44];
 		document.getElementById("loadGameButton").innerText      = localeStrings[45];
 		document.getElementById("tabCity").innerText             = localeStrings[46];
-		document.getElementById("tabExplore").innerText          = localeStrings[47];
+		//document.getElementById("tabExplore").innerText          = localeStrings[47];
 		document.getElementById("tabSettings").innerText         = localeStrings[48];
 		document.getElementById("tabGarrison").innerText         = localeStrings[49];
 		document.getElementById("tabBuilding").innerText         = localeStrings[50];
@@ -2289,85 +2419,6 @@
 	function postJournalLog(msgEventLog) {
 		document.getElementById("lblAutocampaignJournal").innerHTML = document.getElementById("lblAutocampaignJournal").innerHTML+"<br>"+"Day "+game.myhero.aCampaignLong+": "+msgEventLog;
 		scrollDown();
-	}
-	function generateMap() {
-		//generate landscape
-		game.myMapLand=[];
-		for (i=0;i<config.sizeMapX;i++) {
-			game.myMapLand.push([]);
-		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				//for now, all map is just green grass
-				game.myMapLand[i][j] = 0; //Math.floor(Math.random()*10);
-			}
-		}
-		//place the castle
-		//castle on X axis has 3 points //144px
-		//minus one because of 0..11
-		//minus one for right part of the castle
-		//plus  one for left  part of the castle
-		//to both right and left parts could be draw on the map
-		game.castleX = Math.floor(Math.random()*(config.sizeMapX-2))+1
-		//castle on Y axis has 2 points // 96px
-		//minus one because of 0..11
-		//so  minus one for the roof of the castle
-		//and plus  one for the road to the casle
-		game.castleY = Math.floor(Math.random()*(config.sizeMapY-2))+1
-		console.log('castleX is '+game.castleX+' and castleY is '+game.castleY);
-		//castle(enter) = 10
-		//castle(other) = 11
-		//castle(point) = 12 //from this point we draw a castle
-		//mountain      = 20
-		//forest        = 1..3
-		//hero          = 40
-		//monster       = 50
-		game.myMapObjects=[];
-		for (i=0;i<config.sizeMapX;i++) {
-			game.myMapObjects.push([]);
-		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				game.myMapObjects[i][j]=0;
-
-			}
-		}
-		game.myMapObjects[game.castleX][game.castleY]=10;
-		game.myMapObjects[game.castleX-1][game.castleY]=11;
-		game.myMapObjects[game.castleX+1][game.castleY]=11;
-
-		game.myMapObjects[game.castleX][game.castleY-1]=11;
-		game.myMapObjects[game.castleX-1][game.castleY-1]=12;
-		game.myMapObjects[game.castleX+1][game.castleY-1]=11;
-
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				if (game.myMapObjects[i][j]===0) {
-					rnd = Math.floor((Math.random() * 12) + 1);
-					if (rnd > 3) {
-						rnd = 0
-					}
-					game.myMapObjects[i][j]=rnd;
-				}
-			}
-		}
-		game.myMapObjects[game.castleX][game.castleY+1]=0;//just to be sure there are nothing to block path to a castle
-		//RemovableObjects
-		//The hero, first of all
-		game.myMapRemObjects=[];
-		for (i=0;i<config.sizeMapX;i++) {
-			game.myMapRemObjects.push([]);
-		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				game.myMapRemObjects[i][j]=0;
-			}
-		}
-		game.myMapRemObjects[game.castleX][game.castleY+1]=40;
-		game.heroX = game.castleX;
-		game.heroY = game.castleY+1;
-		mapCreated = 1;
-		composite_gm();
 	}
 	function populatePatchnotes() {
 		msg = "version 1.0.245";
@@ -2710,6 +2761,7 @@
 					game.gold  = game.budgets[len-incr];
 					incr      += 1;
 				}
+				game.active_tab="";
 				setupAutosave();
 				composite();
 				composite_gm();
@@ -2773,6 +2825,7 @@
 				}
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options  = JSON.parse(localStorage.getItem('options'));
+				game.active_tab="";
 				setupAutosave();
 				composite();
 				composite_gm();
@@ -2790,6 +2843,7 @@
 		updateTroopsNumbers();
 		updateButtonCaptions();
 		updateHeroStatus();
+		composite_gm();
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
@@ -2878,7 +2932,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
-				document.getElementById("tabExplore").style.display="inline";
+				document.getElementById("btnLeaveCity").style.visibility="visible";
 			}
 			if (game.myhero.status===1){
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
@@ -2892,7 +2946,8 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
-				document.getElementById("tabExplore").style.display="none";
+				document.getElementById("btnLeaveCity").style.visibility="hidden";
+
 			}
 			if (game.myhero.status===2){
 				var rnd = Math.floor(Math.random() * localeStrings[212].length);
@@ -2902,7 +2957,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="hidden";
 				document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
-				document.getElementById("tabExplore").style.display="inline";
+				document.getElementById("btnLeaveCity").style.visibility="visible";
 			}
 			if (heroStatusNeedsUpdate === true) {
 				game.myhero.status = 0;
@@ -2995,17 +3050,19 @@
 		}
 	}
 	document.onkeyup = function(e) {
-		if(e.keyCode === 38 || e.keyCode === 87) {
-			game.tryHeroMovement(0,-1);//UP
-		}
-		if(e.keyCode === 37 || e.keyCode === 65) {
-			game.tryHeroMovement(-1,0);
-		}
-		if(e.keyCode === 40 || e.keyCode === 83) {
-			game.tryHeroMovement(0,1);//DOWN
-		}
-		if(e.keyCode === 68 || e.keyCode === 39) {
-			game.tryHeroMovement(+1,0);//DOWN
+		if (game.active_tab="explore"){
+			if(e.keyCode === 38 || e.keyCode === 87) {
+				game.tryHeroMovement(0,-1);//UP
+			}
+			if(e.keyCode === 37 || e.keyCode === 65) {
+				game.tryHeroMovement(-1,0);
+			}
+			if(e.keyCode === 40 || e.keyCode === 83) {
+				game.tryHeroMovement(0,1);//DOWN
+			}
+			if(e.keyCode === 68 || e.keyCode === 39) {
+				game.tryHeroMovement(+1,0);//DOWN
+			}
 		}
 	}
 	//timers
@@ -3073,6 +3130,13 @@
 <script>
 	function openTab(evt, tabName) {
 		var i, tabcontent, tablinks;
+		if (tabName==="Explore"){
+			game.active_tab="Explore";
+			console.log('open Explore tab');
+		} else {
+			game.active_tab="";
+			console.log('close Explore tab');
+		}
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
