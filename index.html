@@ -1160,15 +1160,20 @@
 		cityLeave : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true && game.myhero.status === 0) {
-				game.myhero.status = 2;
-				game.myMapRemObjects[game.heroX][game.heroY] = 0;
-				game.heroX = game.castleX;
-				game.heroY = game.castleY+1;
-				game.myMapRemObjects[game.heroX][game.heroY] = 40;
-				console.log("we are are leaving the castle");
-				openTab(null, 'Explore');
-				updateUI();
-				composite_gm();
+				if (game.isHeroHaveTroops()===true) {
+					game.myhero.status = 2;
+					game.myMapRemObjects[game.heroX][game.heroY] = 0;
+					game.heroX = game.castleX;
+					game.heroY = game.castleY + 1;
+					game.myMapRemObjects[game.heroX][game.heroY] = 40;
+					console.log("we are are leaving the castle");
+					openTab(null, 'Explore');
+					updateUI();
+					composite_gm();
+				} else {
+					alertMsg = "You need to add some troops to hero's squad first!";
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				}
 			} else {
 				if (heroExists===true && game.myhero.status === 2) {
 					console.log("just open the adv map, please!");
@@ -1284,7 +1289,7 @@
 						var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
 						showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
 					} else {
-						alertMsg = "You need to add some troops to hero's squed first!";
+						alertMsg = "You need to add some troops to hero's squad first!";
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				} else {
