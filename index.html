@@ -832,6 +832,7 @@
 	var tile_snow       = loadImage('tiles/snow.png');
 	var tile_water      = loadImage('tiles/water.png');
 	var castle_tile     = loadImage('resources/castle_big.png');
+	var blackmarket_tile= loadImage('resources/black_market.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var tree_tile       = loadImage('resources/tree.png');
 	function composite_gm() {
@@ -877,15 +878,19 @@
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===1) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===2) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===3) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);
+				}
+				if (game.myMapObjects[i+camXL][j+camYL]===4) {
+					//console.log("draw blackmarket");
+					ctx_map.drawImage(blackmarket_tile, i * 48, j * 48);
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===12) {
 					//console.log("draw castle");
@@ -1071,7 +1076,6 @@
 				for (i = 0; i < config.sizeMapX; i++) {
 					for (j = 0; j < config.sizeMapY; j++) {
 						game.myMapObjects[i][j]=0;
-
 					}
 				}
 				game.myMapObjects[game.castleX][game.castleY]=10;
@@ -1080,12 +1084,23 @@
 				game.myMapObjects[game.castleX][game.castleY-1]=11;
 				game.myMapObjects[game.castleX-1][game.castleY-1]=12;
 				game.myMapObjects[game.castleX+1][game.castleY-1]=11;
+				var blackmarket_flag = false;
 				for (i = 0; i < config.sizeMapX; i++) {
 					for (j = 0; j < config.sizeMapY; j++) {
 						if (game.myMapObjects[i][j]===0) {
 							rnd = Math.floor((Math.random() * 12) + 1);
-							if (rnd > 3) {
+							if (rnd > 4) {
 								rnd = 0
+							}
+							if (rnd===4) {
+								if (blackmarket_flag===false){
+									blackmarket_flag = true;
+								} else {
+									rnd = 0;
+								}
+							}
+							if (i===config.sizeMapX-1 && j===config.sizeMapY-1 && blackmarket_flag===false){
+								rnd = 4;
 							}
 							game.myMapObjects[i][j]=rnd;
 						}
