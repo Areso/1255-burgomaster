@@ -173,7 +173,7 @@
 		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-			<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>
+			<!--<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>-->
 			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
 			<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
@@ -438,7 +438,8 @@
 			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
 			<br>
 			<br>
-			<button id="btnLeaveCity"    onclick="game.leaveCity()" style="width:160px; visibility: hidden">Go to exploring!</button>
+			<button id="btnLeaveCity"    onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
+			<button id="btnGenerateMap"    onclick="game.generateMap()" style="width:160px">Regenerate map</button>
 		</div>
 		<div id="tabAutocampaignJournal" class="tabcontent">
 			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:470px; top: 60px; left: 10px"></div>
@@ -503,6 +504,10 @@
 					</td>
 				</tr>
 			</table>
+		</div>
+	    <div id="tabBlackmarket" class="tabcontent">
+			The tab is in development ATM!<br>
+			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px">Go to exploring!</button>
 		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
@@ -646,6 +651,7 @@
 		}
 	}
 	function composite() {
+		ctx.clearRect(0, 0, 800, 480);
 		ctx.drawImage(img1, 0, 0);   //draw background
 		ctx.drawImage(img2, sawmillX, sawmillY);//draw sawmill
 		pushBuilding('sawmill', sawmillX, sawmillY, sawmillW, sawmillH);
@@ -830,38 +836,117 @@
 	var tile_snow       = loadImage('tiles/snow.png');
 	var tile_water      = loadImage('tiles/water.png');
 	var castle_tile     = loadImage('resources/castle_big.png');
+	var blackmarket_tile= loadImage('resources/black_market.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var tree_tile       = loadImage('resources/tree.png');
 	function composite_gm() {
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				if (game.myMapLand[i][j]===0) {
+		ctx_map.clearRect(0, 0, 800, 480);
+		// try place hero at center of screen
+		camXL = game.heroX - Math.floor(config.sizeScrX/2);
+		camXH = camXL + config.sizeScrX;
+		//console.log('game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
+		if (camXL < 0) {
+			camXL = 0;
+			camXH = config.sizeMapX-config.sizeScrX;
+			//console.log('override XL<0! game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
+		}
+		if (camXH > config.sizeMapX) {
+			camXL = config.sizeMapX-config.sizeScrX;
+			camXH = config.sizeMapX;
+			//console.log('override XH>SizeMapX! game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
+		}
+
+		camYL = game.heroY - Math.floor(config.sizeScrY/2);
+		camYH = camYL + config.sizeScrY;
+		if (camYL < 0) {
+			camYL = 0;
+			camYH = config.sizeMapY-config.sizeScrY;
+		}
+		if (camYH > config.sizeMapY) {
+			camYL = config.sizeMapY-config.sizeScrY;
+			camYH = config.sizeMapY;
+		}
+		console.log('camYL, camYH are '+camYL+', '+camYH);
+		for (i = 0; i < config.sizeScrX; i++) {
+			for (j = 0; j < config.sizeScrY; j++) {
+				if (game.myMapLand[i+camXL][j+camYL]===0) {
 					ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
 				}
 			}
 		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				if (game.myMapLand[i][j]===0) {
+		already_draw = false;
+		for (i = 0; i < config.sizeScrX; i++) {
+			for (j = 0; j < config.sizeScrY; j++) {
+				if (game.myMapLand[i+camXL][j+camYL]===0) {
 					//ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
 				}
-				if (game.myMapObjects[i][j]===1) {
+				if (game.myMapObjects[i+camXL][j+camYL]===1) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);
 				}
-				if (game.myMapObjects[i][j]===2) {
+				if (game.myMapObjects[i+camXL][j+camYL]===2) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);
 				}
-				if (game.myMapObjects[i][j]===3) {
+				if (game.myMapObjects[i+camXL][j+camYL]===3) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);   //draw castle entrance
+					ctx_map.drawImage(tree_tile, i * 48, j * 48);
 				}
-				if (game.myMapObjects[i][j]===12) {
-					console.log("draw castle");
+				if (game.myMapObjects[i+camXL][j+camYL]===4) {
+					//console.log("draw blackmarket");
+					ctx_map.drawImage(blackmarket_tile, i * 48, j * 48);
+				}
+				if (game.myMapObjects[i+camXL][j+camYL]===12) {
+					//console.log("draw castle");
 					ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw castle entrance
+					already_draw = true;
+				} else {
+					if (already_draw === false){
+						if (j+camYL-1>0){
+							if (game.myMapObjects[i + camXL][j + camYL -1] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, i * 48, (j-1) * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (j+camYL+1<config.sizeMapY) {
+							if (game.myMapObjects[i + camXL][j + camYL + 1] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, i * 48, (j + 1) * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL-1>0) {
+							if (game.myMapObjects[i + camXL - 1][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i - 1) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL+1<config.sizeMapX) {
+							if (game.myMapObjects[i + camXL + 1][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i + 1) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL-2>0) {
+							if (game.myMapObjects[i + camXL - 2][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i - 2) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+						if (i+camXL+2<config.sizeMapX) {
+							if (game.myMapObjects[i + camXL + 2][j + camYL] === 12) {
+								//console.log("draw castle");
+								ctx_map.drawImage(castle_tile, (i + 2) * 48, j * 48);   //draw castle entrance
+								already_draw = true;
+							}
+						}
+					}
 				}
-				if (game.myMapRemObjects[i][j]===40) {
+				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
 					console.log("draw hero");
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
 				}
@@ -899,11 +984,14 @@
 		hero:0,
 		happiness:80,
 		o_autosave:0,
+		newSaveVersion: 8,
 		saveVersion:"saveV1008",
-		myGlobalMap: [],
-		myMapLand: [],
 		castleX: 1,
 		castleY: 1,
+		heroX: 1,
+		heroY: 1,
+		mapCreated: 0,
+		myMapLand: [],
 		myMapObjects: [],
 		myMapRemObjects: [],
 		years: [],
@@ -915,10 +1003,239 @@
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
+		castellan: {},
 		festival_cooldown: 0,
 		sergeants: 0,
 		turkopols: 0,
 		knights: 0,
+		active_tab: '',
+		prestige: 0,
+		presitge_time: [],
+		generateMap: function () {
+			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
+			if (game.heroExists()===true) {
+				if (game.myhero.status !== 2) {
+					var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
+					var question      = question.replace("%arg1", genMapPriceFinal);
+					showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
+				} else {
+					alertMsg = "You couldn't do it while your hero on the map!";
+					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				}
+			} else {
+				var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
+				var question      = question.replace("%arg1", genMapPriceFinal);
+				showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
+			}
+		},
+		generateMapCallback : function (silent) {
+			//generate landscape
+			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
+			if (silent===true) {
+				genMap(0);
+			} else {
+				if (answer === 2) {
+					if (game.gold >= genMapPriceFinal) {
+						genMap(genMapPriceFinal);
+					} else {
+						alertMsg = "You need more gold to do that!";
+						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+					}
+				}
+			}
+			function genMap(priceOfMapGen){
+				console.log("new map is generated");
+				game.gold = game.gold - priceOfMapGen;
+				game.myMapLand=[];
+				for (i=0;i<config.sizeMapX;i++) {
+					game.myMapLand.push([]);
+				}
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						//for now, all map is just green grass
+						game.myMapLand[i][j] = 0; //Math.floor(Math.random()*10);
+					}
+				}
+				//place the castle
+				//castle on X axis has 3 points //144px
+				//minus one because of 0..11
+				//minus one for right part of the castle
+				//plus  one for left  part of the castle
+				//to both right and left parts could be draw on the map
+				game.castleX = Math.floor(Math.random()*(config.sizeMapX-2))+1
+				//castle on Y axis has 2 points // 96px
+				//minus one because of 0..11
+				//so  minus one for the roof of the castle
+				//and plus  one for the road to the casle
+				game.castleY = Math.floor(Math.random()*(config.sizeMapY-2))+1
+				console.log('castleX is '+game.castleX+' and castleY is '+game.castleY);
+				//castle(enter) = 10
+				//castle(other) = 11
+				//castle(point) = 12 //from this point we draw a castle
+				//mountain      = 20
+				//forest        = 1..3
+				//hero          = 40
+				//monster       = 50
+				game.myMapObjects=[];
+				for (i=0;i<config.sizeMapX;i++) {
+					game.myMapObjects.push([]);
+				}
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						game.myMapObjects[i][j]=0;
+					}
+				}
+				game.myMapObjects[game.castleX][game.castleY]=10;
+				game.myMapObjects[game.castleX-1][game.castleY]=11;
+				game.myMapObjects[game.castleX+1][game.castleY]=11;
+				game.myMapObjects[game.castleX][game.castleY-1]=11;
+				game.myMapObjects[game.castleX-1][game.castleY-1]=12;
+				game.myMapObjects[game.castleX+1][game.castleY-1]=11;
+				var blackmarket_flag = false;
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						if (game.myMapObjects[i][j]===0) {
+							rnd = Math.floor((Math.random() * 12) + 1);
+							if (rnd > 4) {
+								rnd = 0
+							}
+							if (rnd===4) {
+								if (blackmarket_flag===false){
+									blackmarket_flag = true;
+								} else {
+									rnd = 0;
+								}
+							}
+							if (i===config.sizeMapX-1 && j===config.sizeMapY-1 && blackmarket_flag===false){
+								rnd = 4;
+							}
+							game.myMapObjects[i][j]=rnd;
+						}
+					}
+				}
+				game.myMapObjects[game.castleX][game.castleY+1]=0;//just to be sure there are nothing to block path to a castle
+				//RemovableObjects
+				//The hero, first of all
+				game.myMapRemObjects=[];
+				for (i=0;i<config.sizeMapX;i++) {
+					game.myMapRemObjects.push([]);
+				}
+				for (i = 0; i < config.sizeMapX; i++) {
+					for (j = 0; j < config.sizeMapY; j++) {
+						game.myMapRemObjects[i][j]=0;
+					}
+				}
+				game.myMapRemObjects[game.castleX][game.castleY+1]=40;
+				game.heroX = game.castleX;
+				game.heroY = game.castleY+1;
+				game.mapCreated = 1;
+				composite_gm();
+			}
+		},
+		checkCollisionWithBordersOfMap : function (changeX, changeY) {
+			if (game.heroX+changeX<0){
+				return true;
+			}
+			if (game.heroY+changeY<0){
+				return true;
+			}
+			if (game.heroX+changeX>config.sizeMapX-1){
+				return true;
+			}
+			if (game.heroY+changeY>config.sizeMapY-1){
+				return true;
+			}
+			return false;
+		},
+		checkCollisionWithNonRemovableObstacles : function (changeX, changeY) {
+			if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===0) {
+				return false;
+			} else {
+				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===10){
+					return false;//we can enter the castle!
+				}
+				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===4){
+					return false;//we can enter the blackmarket!
+				}
+				return true;
+			}
+		},
+		checkColissionWithRemovableObstacles : function () {
+
+		},
+		tryHeroMovement : function (changeX, changeY) {
+			if (game.checkCollisionWithBordersOfMap(changeX, changeY)===false) {
+				if (game.checkCollisionWithNonRemovableObstacles(changeX, changeY)===false) {
+					game.myMapRemObjects[game.heroX][game.heroY] = 0;
+					game.heroX = game.heroX + changeX;
+					game.heroY = game.heroY + changeY;
+					game.myMapRemObjects[game.heroX][game.heroY] = 40;
+					if (game.heroX===game.castleX && game.heroY===game.castleY) {
+						game.cityEnter();
+					}
+					if (game.myMapObjects[game.heroX][game.heroY]===4) {
+						openTab(null, 'tabBlackmarket');
+					}
+					composite_gm();
+				}
+			}
+		},
+		heroExists: function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			return heroExists;
+		},
+		cityLeave : function () {
+			if (game.myMapLand.length===config.sizeMapX) {
+				cityLeaveSmall();
+			} else {
+				game.generateMapCallback(true);
+				cityLeaveSmall();
+			}
+			function cityLeaveSmall() {
+				var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+				if (heroExists === true && game.myhero.status === 0) {
+					if (game.isHeroHaveTroops() === true) {
+						var question = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
+						showModal(1, '', game.cityLeaveCallback, question, "Aggressive! Wanna blood and money!", "Cautious. What good of gold if you are dead?");
+					} else {
+						alertMsg = "You need to add some troops to hero's squad first!";
+						showModal(0, '', getAck, alertMsg, localeStrings[60], '');
+					}
+				} else {
+					if (heroExists === true && game.myhero.status === 2) {
+						console.log("just open the adv map, please!");
+						openTab(null, 'Explore');
+						updateUI();
+						composite_gm();
+					}
+				}
+			}
+		},
+		cityLeaveCallback : function () {
+			if (answer === 2) {
+				game.myhero.stance = 0;
+			}
+			if (answer === 3) {
+				game.myhero.stance = 1;
+			}
+			game.myhero.status = 2;
+			game.myMapRemObjects[game.heroX][game.heroY] = 0;
+			game.heroX = game.castleX;
+			game.heroY = game.castleY + 1;
+			game.myMapRemObjects[game.heroX][game.heroY] = 40;
+			console.log("we are are leaving the castle");
+			openTab(null, 'Explore');
+			updateUI();
+			composite_gm();
+		},
+		cityEnter : function () {
+			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+			if (heroExists===true && game.myhero.status === 2) {
+				game.myhero.status = 0;
+				openTab(null, 'Main');
+				updateUI();
+			}
+		},
 		heroDismiss: function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists===true){
@@ -933,12 +1250,12 @@
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
-		heroDismissCallback: function () {
+		heroDismissCallback : function () {
 			if (answer === 2){
 				game.heroDie();
 			}
 		},
-		calculateAutocampaign: function () {
+		calculateAutocampaign : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
@@ -1017,7 +1334,7 @@
 						var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
 						showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
 					} else {
-						alertMsg = "You need to add some troops to hero's squed first!";
+						alertMsg = "You need to add some troops to hero's squad first!";
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				} else {
@@ -1112,12 +1429,13 @@
 		heroNextLvlExpLimit () {
 			return Math.pow((game.myhero.level+1) * config.heroExpK,2);
 		},
-		heroHire : function () {
+		heroHire : function (silent) {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
 			if (heroExists === false) {
-				if (game.gold > config.costHero) {
-					console.log('hero hired');
-					game.gold                 = game.gold - config.costHero;
+				if (game.gold > config.costHero || silent===true) {
+					if (silent === false) {
+						game.gold                 = game.gold - config.costHero;
+					}
 					game.myhero.level         = game.buildLevelInn;
 					game.myhero.exp           = Math.pow(game.myhero.level * config.heroExpK,2);
 					var x = document.getElementById("selectHeroClass").selectedIndex;
@@ -1246,13 +1564,6 @@
 		popLimit : function () {
 			return 2*Math.pow((game.buildLevelH*1+3),2);
 		},
-		createTheGlobalMap : function () {
-			for (i = 0; i < 4; i++) {
-				for (j = 0; j < 4; j++) {
-					game.myGlobalMap[i][j] = 1;
-				}
-			}
-		},
 		recordStats : function() {
 			game.years.push(game.year+" "+game.season);
 			game.budgets.push(game.gold);
@@ -1351,8 +1662,7 @@
 				//ym(47225574, 'reachGoal', 'min5');
 				//return true;
 			}
-			updateResources();
-			updateHeroStatus();
+			updateUI();
 		},
 		makeFestival : function() {
 			var festivalPrice = game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
@@ -1475,6 +1785,9 @@
 				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1))) {
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
+					if (game.buildLevelInn===1) {
+						game.generateMapCallback(true);
+					}
 					commonBuild();
 					return true;
 				} else {
@@ -1713,28 +2026,28 @@
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
 		costPutOutFire:20,
-		sizeMapX:12,
-		sizeMapY:12,
+		sizeMapX:18,//18
+		sizeScrX:16,//16
+		sizeMapY:18,//18
+		sizeScrY:10,//10
 		costHero:20,
 		heroExpK:5,
 		festPrice:2,
 		festCooldown:30,
+		glSaveVersion: 9,
+		genMapCostBasic: 50,
+	}
+	var artefacts = {
 
 	}
 	//init service variables
 	var cnt_cursession= 0;
-	var csum          = 0;
 	var delimiter     = ";"
-	var redraw        = 0;
-	var whatDraw      = "";
-	var minBL         = 0;
-	var mapCreated    = 0;
 	var nightMode     = 0;
 	var dcounter_def  = 30;
 	var dcounter      = dcounter_def;
 	updateResources();
 	populatePatchnotes();
-	generateMap();
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	composite();
@@ -2116,7 +2429,7 @@
 		document.getElementById("saveGameButton").innerText      = localeStrings[44];
 		document.getElementById("loadGameButton").innerText      = localeStrings[45];
 		document.getElementById("tabCity").innerText             = localeStrings[46];
-		document.getElementById("tabExplore").innerText          = localeStrings[47];
+		//document.getElementById("tabExplore").innerText          = localeStrings[47];
 		document.getElementById("tabSettings").innerText         = localeStrings[48];
 		document.getElementById("tabGarrison").innerText         = localeStrings[49];
 		document.getElementById("tabBuilding").innerText         = localeStrings[50];
@@ -2154,83 +2467,6 @@
 	function postJournalLog(msgEventLog) {
 		document.getElementById("lblAutocampaignJournal").innerHTML = document.getElementById("lblAutocampaignJournal").innerHTML+"<br>"+"Day "+game.myhero.aCampaignLong+": "+msgEventLog;
 		scrollDown();
-	}
-	function generateMap() {
-		//generate landscape
-		game.myMapLand=[];
-		for (i=0;i<config.sizeMapX;i++) {
-			game.myMapLand.push([]);
-		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				//for now, all map is just green grass
-				game.myMapLand[i][j] = 0; //Math.floor(Math.random()*10);
-			}
-		}
-		//place the castle
-		//castle on X axis has 3 points //144px
-		//minus one because of 0..11
-		//minus one for right part of the castle
-		//plus  one for left  part of the castle
-		//to both right and left parts could be draw on the map
-		game.castleX = Math.floor(Math.random()*(config.sizeMapX-2))+1
-		//castle on Y axis has 2 points // 96px
-		//minus one because of 0..11
-		//so  minus one for the roof of the castle
-		//and plus  one for the road to the casle
-		game.castleY = Math.floor(Math.random()*(config.sizeMapY-2))+1
-		console.log('castleX is '+game.castleX+' and castleY is '+game.castleY);
-		//castle(enter) = 10
-		//castle(other) = 11
-		//castle(point) = 12 //from this point we draw a castle
-		//mountain      = 20
-		//forest        = 1..3
-		//hero          = 40
-		//monster       = 50
-		game.myMapObjects=[];
-		for (i=0;i<config.sizeMapX;i++) {
-			game.myMapObjects.push([]);
-		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				game.myMapObjects[i][j]=0;
-
-			}
-		}
-		game.myMapObjects[game.castleX][game.castleY]=10;
-		game.myMapObjects[game.castleX-1][game.castleY]=11;
-		game.myMapObjects[game.castleX+1][game.castleY]=11;
-
-		game.myMapObjects[game.castleX][game.castleY-1]=11;
-		game.myMapObjects[game.castleX-1][game.castleY-1]=12;
-		game.myMapObjects[game.castleX+1][game.castleY-1]=11;
-
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				if (game.myMapObjects[i][j]===0) {
-					rnd = Math.floor((Math.random() * 12) + 1);
-					if (rnd > 3) {
-						rnd = 0
-					}
-					game.myMapObjects[i][j]=rnd;
-				}
-			}
-		}
-		game.myMapObjects[game.castleX][game.castleY+1]=0;//just to be sure there are nothing to block path to a castle
-		//RemovableObjects
-		//The hero, first of all
-		game.myMapRemObjects=[];
-		for (i=0;i<config.sizeMapX;i++) {
-			game.myMapRemObjects.push([]);
-		}
-		for (i = 0; i < config.sizeMapX; i++) {
-			for (j = 0; j < config.sizeMapY; j++) {
-				game.myMapRemObjects[i][j]=0;
-			}
-		}
-		game.myMapRemObjects[game.castleX][game.castleY+1]=40;
-		mapCreated = 1;
-		composite_gm();
 	}
 	function populatePatchnotes() {
 		msg = "version 1.0.245";
@@ -2558,6 +2794,12 @@
 				saveLine  = atob(save64);
 				saveArray = saveLine.split(delimiter);
 				gameTemp  = JSON.parse(saveArray[0]);
+				var heroExistsInTheGame = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+				var heroExistsInTheSave = (Object.keys(gameTemp.myhero).length===0 && gameTemp.myhero.constructor === Object) ? false : true;
+				if (heroExistsInTheSave === true && heroExistsInTheGame === false) {
+					game.heroHire(true);
+					console.log("initiated a new hero to allow overriding from a save");
+				}
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options   = JSON.parse(saveArray[1]);
 				var incr   = 1;
@@ -2567,11 +2809,10 @@
 					game.gold  = game.budgets[len-incr];
 					incr      += 1;
 				}
+				game.active_tab="";
 				setupAutosave();
 				composite();
-				updateResources();
-				updateTroopsNumbers();
-				updateButtonCaptions();
+				updateUI();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 				//TODO
@@ -2624,14 +2865,18 @@
 			if (localStorage.getItem('game')!==null){
 				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 				gameTemp = JSON.parse(localStorage.getItem('game'));
+				var heroExistsInTheGame = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+				var heroExistsInTheSave = (Object.keys(gameTemp.myhero).length===0 && gameTemp.myhero.constructor === Object) ? false : true;
+				if (heroExistsInTheSave === true && heroExistsInTheGame === false) {
+					game.heroHire(true);
+					console.log("initiated a new hero to allow overriding from a save");
+				}
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options  = JSON.parse(localStorage.getItem('options'));
+				game.active_tab="";
 				setupAutosave();
 				composite();
-				updateResources();
-				updateHeroStatus();
-				updateTroopsNumbers();
-				updateButtonCaptions();
+				updateUI();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 			} else {
@@ -2733,6 +2978,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
+				document.getElementById("btnLeaveCity").style.visibility="visible";
 			}
 			if (game.myhero.status===1){
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
@@ -2746,6 +2992,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
+				document.getElementById("btnLeaveCity").style.visibility="hidden";
 
 			}
 			if (game.myhero.status===2){
@@ -2756,6 +3003,7 @@
 				document.getElementById("btnAutocampaign").style.visibility="hidden";
 				document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
+				document.getElementById("btnLeaveCity").style.visibility="visible";
 			}
 			if (heroStatusNeedsUpdate === true) {
 				game.myhero.status = 0;
@@ -2847,6 +3095,22 @@
 			//TODO PROMTS
 		}
 	}
+	document.onkeyup = function(e) {
+		if (game.active_tab==="Explore"){
+			if(e.keyCode === 38 || e.keyCode === 87) {
+				game.tryHeroMovement(0,-1);//UP
+			}
+			if(e.keyCode === 37 || e.keyCode === 65) {
+				game.tryHeroMovement(-1,0);
+			}
+			if(e.keyCode === 40 || e.keyCode === 83) {
+				game.tryHeroMovement(0,1);//DOWN
+			}
+			if(e.keyCode === 68 || e.keyCode === 39) {
+				game.tryHeroMovement(+1,0);//DOWN
+			}
+		}
+	}
 	//timers
 	function rndEvents() {
 		var rnd = Math.floor((Math.random() * 12) + 1);
@@ -2912,6 +3176,13 @@
 <script>
 	function openTab(evt, tabName) {
 		var i, tabcontent, tablinks;
+		if (tabName==="Explore"){
+			game.active_tab="Explore";
+			console.log('open Explore tab');
+		} else {
+			game.active_tab="";
+			console.log('close Explore tab');
+		}
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";

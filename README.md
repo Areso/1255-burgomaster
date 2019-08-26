@@ -41,7 +41,7 @@
 		<div style="color:red">You will explore wild territories near your city.</div><br>
 		Regarding you choices, you could get boost in taxes or birthrate, happinness and so on.<br>
 		Game could become to a Clicker game in case you build Gallows and like to execute you citizens.<br>
-		This game created and new features right now in development inspiring by Travian, Townsmen, Stronghold and Stronghold Crusaders, HoMM (Heroes of Might and Magic), Lord of Realm, Anno series.<br> 
+		This game created and new features right now in development inspired by Travian, Townsmen, Stronghold and Stronghold Crusaders, HoMM (Heroes of Might and Magic), Lord of Realm, Anno series.<br> 
 		You can export and import game to transfer your progress between different browsers and PCs.<br>
 		For keeping you tuned, you will get handful of unfortunate or, on the contrary, fortunate events:<br>
 		<ul> 
