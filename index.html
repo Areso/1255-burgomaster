@@ -505,6 +505,10 @@
 				</tr>
 			</table>
 		</div>
+	    <div id="tabBlackmarket" class="tabcontent">
+			The tab is in development ATM!<br>
+			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px">Go to exploring!</button>
+		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -1030,14 +1034,17 @@
 			if (silent===true) {
 				genMap(0);
 			} else {
-				if (game.gold >= genMapPriceFinal) {
-					genMap(genMapPriceFinal);
-				} else {
-					alertMsg = "You need more gold to do that!";
-					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				if (answer === 2) {
+					if (game.gold >= genMapPriceFinal) {
+						genMap(genMapPriceFinal);
+					} else {
+						alertMsg = "You need more gold to do that!";
+						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+					}
 				}
 			}
 			function genMap(priceOfMapGen){
+				console.log("new map is generated");
 				game.gold = game.gold - priceOfMapGen;
 				game.myMapLand=[];
 				for (i=0;i<config.sizeMapX;i++) {
@@ -1146,9 +1153,11 @@
 			} else {
 				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===10){
 					return false;//we can enter the castle!
-				} else {
-					return true;
 				}
+				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===4){
+					return false;//we can enter the blackmarket!
+				}
+				return true;
 			}
 		},
 		checkColissionWithRemovableObstacles : function () {
@@ -1164,6 +1173,9 @@
 					if (game.heroX===game.castleX && game.heroY===game.castleY) {
 						game.cityEnter();
 					}
+					if (game.myMapObjects[game.heroX][game.heroY]===4) {
+						openTab(null, 'tabBlackmarket');
+					}
 					composite_gm();
 				}
 			}
@@ -1173,30 +1185,48 @@
 			return heroExists;
 		},
 		cityLeave : function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists===true && game.myhero.status === 0) {
-				if (game.isHeroHaveTroops()===true) {
-					game.myhero.status = 2;
-					game.myMapRemObjects[game.heroX][game.heroY] = 0;
-					game.heroX = game.castleX;
-					game.heroY = game.castleY + 1;
-					game.myMapRemObjects[game.heroX][game.heroY] = 40;
-					console.log("we are are leaving the castle");
-					openTab(null, 'Explore');
-					updateUI();
-					composite_gm();
-				} else {
-					alertMsg = "You need to add some troops to hero's squad first!";
-					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
-				}
+			if (game.myMapLand.length===config.sizeMapX) {
+				cityLeaveSmall();
 			} else {
-				if (heroExists===true && game.myhero.status === 2) {
-					console.log("just open the adv map, please!");
-					openTab(null, 'Explore');
-					updateUI();
-					composite_gm();
+				game.generateMapCallback(true);
+				cityLeaveSmall();
+			}
+			function cityLeaveSmall() {
+				var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
+				if (heroExists === true && game.myhero.status === 0) {
+					if (game.isHeroHaveTroops() === true) {
+						var question = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
+						showModal(1, '', game.cityLeaveCallback, question, "Aggressive! Wanna blood and money!", "Cautious. What good of gold if you are dead?");
+					} else {
+						alertMsg = "You need to add some troops to hero's squad first!";
+						showModal(0, '', getAck, alertMsg, localeStrings[60], '');
+					}
+				} else {
+					if (heroExists === true && game.myhero.status === 2) {
+						console.log("just open the adv map, please!");
+						openTab(null, 'Explore');
+						updateUI();
+						composite_gm();
+					}
 				}
 			}
+		},
+		cityLeaveCallback : function () {
+			if (answer === 2) {
+				game.myhero.stance = 0;
+			}
+			if (answer === 3) {
+				game.myhero.stance = 1;
+			}
+			game.myhero.status = 2;
+			game.myMapRemObjects[game.heroX][game.heroY] = 0;
+			game.heroX = game.castleX;
+			game.heroY = game.castleY + 1;
+			game.myMapRemObjects[game.heroX][game.heroY] = 40;
+			console.log("we are are leaving the castle");
+			openTab(null, 'Explore');
+			updateUI();
+			composite_gm();
 		},
 		cityEnter : function () {
 			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
@@ -1996,16 +2026,19 @@
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
 		costPutOutFire:20,
-		sizeMapX:10,//18
-		sizeScrX:5,//16
-		sizeMapY:10,//18
-		sizeScrY:5,//10
+		sizeMapX:18,//18
+		sizeScrX:16,//16
+		sizeMapY:18,//18
+		sizeScrY:10,//10
 		costHero:20,
 		heroExpK:5,
 		festPrice:2,
 		festCooldown:30,
 		glSaveVersion: 9,
 		genMapCostBasic: 50,
+	}
+	var artefacts = {
+
 	}
 	//init service variables
 	var cnt_cursession= 0;
@@ -2015,7 +2048,6 @@
 	var dcounter      = dcounter_def;
 	updateResources();
 	populatePatchnotes();
-
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	composite();
@@ -2780,7 +2812,7 @@
 				game.active_tab="";
 				setupAutosave();
 				composite();
-				composite_gm();
+				updateUI();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
 				//TODO
@@ -2844,7 +2876,6 @@
 				game.active_tab="";
 				setupAutosave();
 				composite();
-				composite_gm();
 				updateUI();
 				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 				scrollDown();
@@ -2859,7 +2890,6 @@
 		updateTroopsNumbers();
 		updateButtonCaptions();
 		updateHeroStatus();
-		composite_gm();
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
@@ -3066,7 +3096,7 @@
 		}
 	}
 	document.onkeyup = function(e) {
-		if (game.active_tab="explore"){
+		if (game.active_tab==="Explore"){
 			if(e.keyCode === 38 || e.keyCode === 87) {
 				game.tryHeroMovement(0,-1);//UP
 			}
