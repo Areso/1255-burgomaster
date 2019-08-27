@@ -341,7 +341,7 @@
 									</td>
 									<td class="building">
 										<div align="center">
-
+											<img id="archery_img" src="resources/archery_range.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 								</tr>
@@ -353,7 +353,7 @@
 										<button id="buttonBldStable" onclick="game.Build('Stable')" class="building">Build Stable</button>
 									</td>
 									<td class="building">
-
+										<button id="buttonBldArchery" onclick="game.Build('Archery')" class="building">Build Archery range</button>
 									</td>
 								</tr>
 							</table>
@@ -594,6 +594,12 @@
 	var stableY = 100;
 	var stableW = 160;
 	var stableH = 120;
+	var img17   = loadImage('resources/archery_range.png', composite);
+	var archeryX = 390;
+	var archeryY = 90;
+	var archeryW = 80;
+	var archeryH = 80;
+
 	buildingsInTownB=[];
 	buildingsInTownX=[];
 	buildingsInTownY=[];
@@ -715,6 +721,12 @@
 			ctx.drawImage(img16, stableX, stableY);
 			//pushing gatehouse of the wall
 			pushBuilding('stable', stableX, stableY, stableW, stableH);
+		}
+		if (game.buildLevelArchery > 0) {
+			// draw front piece of wall
+			ctx.drawImage(img17, archeryX, archeryY);
+			//pushing gatehouse of the wall
+			pushBuilding('archery', archeryX, archeryY, archeryW, archeryH);
 		}
 		if (game.fire === 1) {
 			img15.style   = 'position:absolute; top:370px; left:200px; z-index:8';
@@ -1421,6 +1433,9 @@
 			if (myobject.id==="stable_img") {
 				document.getElementById("lblBuildHelp").innerHTML=localeStrings[239];
 			}
+			if (myobject.id==="archery_img") {
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[240];
+			}
 		},
 		heroAlignment(returnFormat) {
 			if (returnFormat==="text") {
@@ -1829,6 +1844,18 @@
 					postEventLog(msg);
 				}
 			}
+			if (Structure==="Archery") {
+				if (game.gold >= Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1))) {
+					game.gold                = game.gold - Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1));
+					game.buildLevelArchery   = game.buildLevelArchery*1 + 1;
+					commonBuild();
+					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
+				}
+			}
 			function commonBuild() {
 				updateResources();
 				composite();
@@ -2043,6 +2070,7 @@
 		costInn:20,
 		costStable:50,
 		costSmith:50,
+		costArchery:50,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:25,
@@ -3007,6 +3035,10 @@
 		nextLvlStable         = game.buildLevelStable*1+1;
 		nextLvlPriceStable    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
 		document.getElementById("buttonBldStable").innerHTML=localeStrings[115].replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
+
+		nextLvlArchery         = game.buildLevelArchery*1+1;
+		nextLvlPriceArchery    = Math.pow(config.costArchery,(game.buildLevelArchery*1+1));
+		document.getElementById("buttonBldArchery").innerHTML=localeStrings[116].replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
 		if (game.buildLevelD == 0) {
 			document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
 			var towerClick = "game.Build("+"\'Wall\'"+")";

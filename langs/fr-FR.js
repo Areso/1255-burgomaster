@@ -115,6 +115,7 @@ localeStrings.push("Construire une Fontaine<br/>niveau %arg1<br/>%arg2 or");
 localeStrings.push("Construire une Planque<br/>niveau %arg1<br/>%arg2 or");
 localeStrings.push("Construire une Auberge<br/>niveau %arg1<br/>%arg2 or");
 localeStrings.push("Construire une Écuries<br/>niveau %arg1<br/>%arg2 or");//115
+localeStrings.push("Construire Camp de tir à l'arc<br/>niveau %arg1<br/>%arg2 or");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -268,3 +269,5 @@ localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour ex
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour organiser des festivals. <br> C'est également augmenter le taux de natalité et le bonheur et réduire les impôts. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la potence!");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour protéger votre argent des voleurs, au cas où les voleurs dévaliseraient votre trésorerie. <br> Plus le niveau de Planque est élevé, plus vous pourrez vous cacher d'or dans la Planque.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté.");
+localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de cavalerie. <br> Plus le niveau d'écurie est élevé, plus vous pourrez engager des troupes expérimentées là-bas.");
+localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone.");
