@@ -115,7 +115,7 @@ localeStrings.push("Konstrui Fonton<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Kaŝejon<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Gatejon<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Ĉevalejo<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("placeholder");
+localeStrings.push("Konstrui Pafado<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -268,3 +268,5 @@ localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ekzekut
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por aranĝi festivalojn. <br> Ĝi ankaŭ pliigas naskiĝtempon kaj feliĉon kaj malpliigas impostojn. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la forkojn!");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ŝpari vian monon de ŝtelistoj, se la ŝtelistoj ŝtelas vian trezorejon. La pli alta nivelo de Stash vi havas, des pli vi povus kaŝi en la Stash.") ;
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie.");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi kavaleriajn unuojn. La pli alta Ĉevalejo nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");

@@ -115,7 +115,7 @@ localeStrings.push("Brunnen bauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Versteck bauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Schenke bauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Stall bauen<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("placeholder");
+localeStrings.push("Schießstand bauen<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -267,4 +267,6 @@ localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, u
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Hinrichtung Ihrer Bürger erforderlich. <br> Es erhöht auch die Steuern und senkt die Geburtenrate und das Glück. <br> Wenn Sie dieses Gebäude bauen, können Sie den Brunnen nicht bauen!");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Ausrichtung von Festivals erforderlich. Es erhöht außerdem die Geburtenrate und das Glück und senkt die Steuern. <br> Wenn Sie dieses Gebäude bauen, können Sie die Galgen nicht bauen!");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geld vor Dieben zu retten, falls die Diebe Ihre Schatzkammer ausrauben. <br> Je höher Ihr Stash-Level ist, desto mehr könnten Sie sich im Stash verstecken.");
-localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Helden einzustellen. <br> Je höher Ihr Inn-Level ist, desto erfahrener können Sie dort Helden einstellen.");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Helden einzustellen.<br> Je höher Ihr Inn-Level ist, desto erfahrener können Sie dort Helden einstellen.");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Kavallerien einzustellen.<br> Je höher Ihr Stall Level ist, desto erfahrener können Sie dort Kavallerien einstellen.");
+localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Bogenschützen einzustellen.<br> Je höher Ihre Schießstand Level ist, desto erfahrener können Sie dort Truppen anheuern.");
