@@ -3092,6 +3092,7 @@
 					incr      += 1;
 				}
 				game.active_tab="";
+				setupAudioUI();
 				setupAutosave();
 				composite();
 				updateUI();
@@ -3156,6 +3157,7 @@
 				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
 				//options  = JSON.parse(localStorage.getItem('options'));
 				game.active_tab="";
+				setupAudioUI();
 				setupAutosave();
 				composite();
 				updateUI();
