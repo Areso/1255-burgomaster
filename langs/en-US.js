@@ -175,7 +175,7 @@ localeStrings.push("fountain");
 localeStrings.push("treasury");
 localeStrings.push("gold");
 localeStrings.push("population");//145
-localeStrings.push("placeholder");
+localeStrings.push("archery range");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

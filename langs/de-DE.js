@@ -175,7 +175,7 @@ localeStrings.push("ein Brunnen");
 localeStrings.push("Schatzkammer");
 localeStrings.push("gold");
 localeStrings.push("Bevölkerung");//145
-localeStrings.push("placeholder");
+localeStrings.push("Schießstand");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

@@ -174,7 +174,7 @@ localeStrings.push("фонтан");
 localeStrings.push("сокровищница");
 localeStrings.push("золото");
 localeStrings.push("население");//145
-localeStrings.push("placeholder");
+localeStrings.push("стрельбище");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

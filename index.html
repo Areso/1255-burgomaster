@@ -581,6 +581,29 @@
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
+		<div id="audio" class="tabcontent">
+			<audio id="fireAudio0">
+				<source src="sounds/sfx/3_sound_of_fire_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="stableAudio0">
+				<source src="sounds/sfx/16_sound_of_horse_neighing_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="stableAudio1">
+				<source src="sounds/sfx/16_sound_of_horse_neighing_1.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="stableAudio2">
+				<source src="sounds/sfx/16_sound_of_horse_neighing_2.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="trasuryAudio0">
+				<source src="sounds/sfx/10_sound_of_treasury_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="trasuryAudio1">
+				<source src="sounds/sfx/10_sound_of_treasury_1.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="trasuryAudio2">
+				<source src="sounds/sfx/10_sound_of_treasury_2.mp3" type="audio/mpeg">
+			</audio>
+		</div>
 		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 540px; left: 10px"></div>
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
@@ -896,11 +919,30 @@
 		}
 		if (buildingName==='treasury') {
 			alertMsg = localeStrings[143];
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var treasuryAudio = 'treasuryAudio'+arnd;
+				document.getElementById(stableAudio).play();
+			}
 		}
 		if (buildingName==='stable') {
 			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var stableAudio = 'stableAudio'+arnd;
+				document.getElementById(stableAudio).play();
+			}
 			updateUI();
 			openTab(null, 'tabTroopsHiring');
+		}
+		if (buildingName==='archery') {
+			showAlert = false;
+			alertMsg = localeStrings[146];
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var archeryAudio = 'archeryAudio'+arnd;
+				document.getElementById(archeryAudio).play();
+			}
 		}
 		if (showAlert === true &&  alertMsg !=="" ) {
 			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
@@ -1100,12 +1142,53 @@
 		sfx_events: 0,
 		sfx_actions: 0,
 		music_all: 0,
-		music_script: 0,
+		music_scripts: 0,
 		artefact_wear : function (artefact, target) {
 
 		},
 		artefact_remove : function (artefact, target) {
 
+		},
+		checkAudio : function (typeAudio, target) {
+			if (typeAudio==='sfx'){
+				if (target==='all'){
+					if (game.sfx_all===1){
+						return true;
+					} else {
+						return false;
+					}
+				}
+				if (target==='events'){
+					if (game.sfx_events===1){
+						return true;
+					} else {
+						return false;
+					}
+				}
+				if (target==='actions'){
+					if (game.sfx_actions===1){
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+			if (typeAudio==='music'){
+				if (target==='all'){
+					if (game.music_all===1){
+						return true;
+					} else {
+						return false;
+					}
+				}
+				if (target==='scripts'){
+					if (game.music_scripts===1){
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
 		},
 		setupAudio : function (typeAudio, target, dvalue) {
 			if (typeAudio==='sfx') {
@@ -2142,6 +2225,9 @@
 					msg = msg.replace("%arg1",localeStrings[38]);
 					postEventLog(msg);
 					game.fire = 1;
+					if (game.checkAudio('sfx', 'all')===true) {
+						document.getElementById('fireAudio0').play();
+					}
 					composite();
 					//TODO make a certain building in fire, not just "city"
 					if (game.buildLevelD == 1) {
@@ -2163,6 +2249,13 @@
 				}
 			} else {
 				//you can't get another fire, while you do have previous still burning your city. For now.
+			}
+		},
+		testSound : function () {
+			if (game.checkAudio('sfx', 'all')===true) {
+				arnd = Math.floor(Math.random() * 1);
+				fireAudio = 'fireAudio'+arnd;
+				document.getElementById(fireAudio).play();
 			}
 		},
 		winLottery : function () {
