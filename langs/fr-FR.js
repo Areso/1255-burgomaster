@@ -176,7 +176,7 @@ localeStrings.push("fontaine");
 localeStrings.push("trésorerie");
 localeStrings.push("or");
 localeStrings.push("population");//145
-localeStrings.push("placeholder");
+localeStrings.push("camp de tir à l'arc");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

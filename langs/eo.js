@@ -175,7 +175,7 @@ localeStrings.push("fonto");
 localeStrings.push("trezorejo");
 localeStrings.push("oro");
 localeStrings.push("langeto");//145
-localeStrings.push("placeholder");
+localeStrings.push("pafado");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
