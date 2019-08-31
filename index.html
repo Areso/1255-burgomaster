@@ -594,14 +594,47 @@
 			<audio id="stableAudio2">
 				<source src="sounds/sfx/16_sound_of_horse_neighing_2.mp3" type="audio/mpeg">
 			</audio>
-			<audio id="trasuryAudio0">
+			<audio id="treasuryAudio0">
 				<source src="sounds/sfx/10_sound_of_treasury_0.mp3" type="audio/mpeg">
 			</audio>
-			<audio id="trasuryAudio1">
+			<audio id="treasuryAudio1">
 				<source src="sounds/sfx/10_sound_of_treasury_1.mp3" type="audio/mpeg">
 			</audio>
-			<audio id="trasuryAudio2">
+			<audio id="treasuryAudio2">
 				<source src="sounds/sfx/10_sound_of_treasury_2.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="archeryAudio0">
+				<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="archeryAudio1">
+				<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_1.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="archeryAudio2">
+				<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_2.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="fountainAudio0">
+				<source src="sounds/sfx/1_sound_of_fountain_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="innAudio0">
+				<source src="sounds/sfx/9_sound_of_inn_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="gallowsAudio0">
+				<source src="sounds/sfx/2_sound_of_gallows_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="sawmillAudio0">
+				<source src="sounds/sfx/11_sawmill_sound_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="sawmillAudio1">
+				<source src="sounds/sfx/11_sawmill_sound_1.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="sawmillAudio2">
+				<source src="sounds/sfx/11_sawmill_sound_2.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="plagueAudio0">
+				<source src="sounds/sfx/7_sound_of_dying_people_0.mp3" type="audio/mpeg">
+			</audio>
+			<audio id="stealingAudio0">
+				<source src="sounds/sfx/6_sound_of_stealing_gold_0.mp3" type="audio/mpeg">
 			</audio>
 		</div>
 		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 540px; left: 10px"></div>
@@ -883,6 +916,11 @@
 		}
 		if (buildingName==='sawmill') {
 			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var Audio = 'sawmillAudio'+arnd;
+				document.getElementById(Audio).play();
+			}
 			//alertMsg = localeStrings[133];
 		}
 		if (buildingName==='wall') {
@@ -908,29 +946,37 @@
 		if (buildingName==='inn') {
 			//alertMsg = localeStrings[140];
 			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				document.getElementById('innAudio0').play();
+			}
 			openTab(null, 'tabInn');
 		}
 		if (buildingName==='gallows') {
-			alertMsg = localeStrings[141];
+			//alertMsg = localeStrings[141];
+			showAlert = false;
+			game.deathPenalty();
 		}
 		if (buildingName==='fountain') {
 			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				document.getElementById('fountainAudio0').play();
+			}
 			game.makeFestival();
 		}
 		if (buildingName==='treasury') {
 			alertMsg = localeStrings[143];
 			if (game.checkAudio('sfx', 'all')===true) {
 				var arnd = Math.floor(Math.random() * 3);
-				var treasuryAudio = 'treasuryAudio'+arnd;
-				document.getElementById(stableAudio).play();
+				var Audio = 'treasuryAudio'+arnd;
+				document.getElementById(Audio).play();
 			}
 		}
 		if (buildingName==='stable') {
 			showAlert = false;
 			if (game.checkAudio('sfx', 'all')===true) {
 				var arnd = Math.floor(Math.random() * 3);
-				var stableAudio = 'stableAudio'+arnd;
-				document.getElementById(stableAudio).play();
+				var Audio = 'stableAudio'+arnd;
+				document.getElementById(Audio).play();
 			}
 			updateUI();
 			openTab(null, 'tabTroopsHiring');
@@ -940,8 +986,8 @@
 			alertMsg = localeStrings[146];
 			if (game.checkAudio('sfx', 'all')===true) {
 				var arnd = Math.floor(Math.random() * 3);
-				var archeryAudio = 'archeryAudio'+arnd;
-				document.getElementById(archeryAudio).play();
+				var Audio = 'archeryAudio'+arnd;
+				document.getElementById(Audio).play();
 			}
 		}
 		if (showAlert === true &&  alertMsg !=="" ) {
@@ -2146,6 +2192,9 @@
 		deathPenalty : function () {
 			if (game.buildLevelGallows > 0) {
 				if (game.pop > 2) {
+					if (game.checkAudio('sfx', 'all')===true) {
+						document.getElementById('gallowsAudio0').play();
+					}
 					game.pop          = game.pop - 1;
 					gold_was          = game.gold;
 					gold_limit        = game.goldLimit();
@@ -2209,6 +2258,9 @@
 				if (goldLost > game.gold) {
 					goldLost = game.gold;
 				}
+				if (game.checkAudio('sfx', 'events')===true) {
+					document.getElementById('stealingAudio0').play();
+				}
 				game.gold     = game.gold - goldLost;
 				msg = localeStrings[42].replace("%arg1", goldLost);
 				postEventLog(msg);
@@ -2225,7 +2277,7 @@
 					msg = msg.replace("%arg1",localeStrings[38]);
 					postEventLog(msg);
 					game.fire = 1;
-					if (game.checkAudio('sfx', 'all')===true) {
+					if (game.checkAudio('sfx', 'actions')===true) {
 						document.getElementById('fireAudio0').play();
 					}
 					composite();
@@ -2251,13 +2303,6 @@
 				//you can't get another fire, while you do have previous still burning your city. For now.
 			}
 		},
-		testSound : function () {
-			if (game.checkAudio('sfx', 'all')===true) {
-				arnd = Math.floor(Math.random() * 1);
-				fireAudio = 'fireAudio'+arnd;
-				document.getElementById(fireAudio).play();
-			}
-		},
 		winLottery : function () {
 			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
@@ -2274,6 +2319,9 @@
 					}
 					game.pop     = game.pop - numberOfDied;
 					msg = localeStrings[55].replace("%arg1", numberOfDied);
+					if (game.checkAudio('sfx', 'events')===true) {
+						document.getElementById('plagueAudio0').play();
+					}
 					postEventLog(msg);
 					updateResources();
 				}
