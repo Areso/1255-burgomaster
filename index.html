@@ -243,70 +243,91 @@
 		<div id="tabSettingsSound" class="tabcontent">
 			Sound effects and music<br>
 			<!--Note, those above overwrite those below-->
-			Option | ON | OFF<br>
-			All sound effects
-			<input type = "radio"
-				   name = "sfx"
-				   id = "sfx_on"
-				   value = "on"
-				   onchange="game.setupAudio('sfx','all',1)"/>
-			<input type = "radio"
-				   name = "sfx"
-				   id = "sfx_off"
-				   value = "off"
-				   onchange="game.setupAudio('sfx','all',0)"
-				   checked = "checked" /><br>
-			Effects on all events
-			<input type = "radio"
-				   name = "sfx_events"
-				   id = "sfx_events_on"
-				   value = "on"
-				   onchange="game.setupAudio('sfx','events',1)"/>
-			<input type = "radio"
-				   name = "sfx_events"
-				   id = "sfx_events_off"
-				   value = "off"
-				   onchange="game.setupAudio('sfx','events',0)"
-				   checked = "checked" /><br>
-			Effects on action required events
-			<input type = "radio"
-				   name = "sfx_actions"
-				   id = "sfx_actions_on"
-				   value = "on"
-				   onchange="game.setupAudio('sfx','actions',1)"/>
-			<input type = "radio"
-				   name = "sfx_actions"
-				   id = "sfx_actions_off"
-				   value = "off"
-				   onchange="game.setupAudio('sfx','actions',0)"
-				   checked = "checked" /><br>
+			<table border="0" width="100%">
+				<tr>
+					<td width="60%">Option</td>
+					<td width="20%">On</td>
+					<td width="20%">Off</td>
+				</tr>
+				<tr>
+					<td width="60%">All sound effects</td>
+					<td width="20%"><input type = "radio"
+										   name = "sfx"
+										   id = "sfx_on"
+										   value = "on"
+										   onchange="game.setupAudio('sfx','all',1)"/></td>
+					<td width="20%"><input type = "radio"
+										   name = "sfx"
+										   id = "sfx_off"
+										   value = "off"
+										   onchange="game.setupAudio('sfx','all',0)"
+										   checked = "checked" /></td>
+				</tr>
+				<tr>
+					<td width="60%">Effects on all events</td>
+					<td width="20%"><input type = "radio"
+										   name = "sfx_events"
+										   id = "sfx_events_on"
+										   value = "on"
+										   onchange="game.setupAudio('sfx','events',1)"/></td>
+					<td width="20%"><input type = "radio"
+										   name = "sfx_events"
+										   id = "sfx_events_off"
+										   value = "off"
+										   onchange="game.setupAudio('sfx','events',0)"
+										   checked = "checked" /></td>
+				</tr>
+				<tr>
+					<td width="60%">Effects on action required events</td>
+					<td width="20%"><input type = "radio"
+										   name = "sfx_actions"
+										   id = "sfx_actions_on"
+										   value = "on"
+										   onchange="game.setupAudio('sfx','actions',1)"/></td>
+					<td width="20%"><input type = "radio"
+										   name = "sfx_actions"
+										   id = "sfx_actions_off"
+										   value = "off"
+										   onchange="game.setupAudio('sfx','actions',0)"
+										   checked = "checked" /></td>
+				</tr>
+				<tr>
+					<td width="60%">-----</td>
+					<td width="20%">-----</td>
+					<td width="20%">-----</td>
+				</tr>
+				<tr>
+					<td width="60%">Music all</td>
+					<td width="20%"><input type = "radio"
+										   name = "music_all"
+										   id = "music_on"
+										   value = "on"
+										   onchange="game.setupAudio('music','all',1)"/></td>
+					<td width="20%"><input type = "radio"
+										   name = "music_all"
+										   id = "music_off"
+										   value = "off"
+										   onchange="game.setupAudio('music','all',0)"
+										   checked = "checked" /></td>
+				</tr>
+				<tr>
+					<td width="60%">Lore and scenary music</td>
+					<td width="20%"><input type = "radio"
+										   name = "music_script"
+										   id = "music_scripts_on"
+										   onchange="game.setupAudio('music','scripts',1)"
+										   value = "on" /></td>
+					<td width="20%"><input type = "radio"
+										   name = "music_script"
+										   id = "music_scripts_off"
+										   value = "off"
+										   onchange="game.setupAudio('music','scripts',0)"
+										   checked = "checked" /></td>
+				</tr>
+			</table>
+			<br>
 			<hr>
-			Music all
-			<input type = "radio"
-				   name = "music_all"
-				   id = "music_on"
-				   value = "on"
-				   onchange="game.setupAudio('music','all',1)"/>
-			<input type = "radio"
-				   name = "music_all"
-				   id = "music_off"
-				   value = "off"
-				   onchange="game.setupAudio('music','all',0)"
-				   checked = "checked" /><br>
-			Lore and scenary music
-			<input type = "radio"
-				   name = "music_script"
-				   id = "music_scripts_on"
-				   onchange="game.setupAudio('music','scripts',1)"
-				   value = "on" />
-			<input type = "radio"
-				   name = "music_script"
-				   id = "music_scripts_off"
-				   value = "off"
-				   onchange="game.setupAudio('music','scripts',0)"
-				   checked = "checked" /><br>
-			<hr>
-			<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Save and return to Settings</button>
+			<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Return to Settings</button>
 		</div>
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
