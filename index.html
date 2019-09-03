@@ -1,9 +1,14 @@
 <html>
 <head>
+	<link rel="shortcut icon" id="gameIcon" type="image/x-icon" href="resources/favicon-normal.png">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<title>
 		1255 Burgomaster
 	</title>
+	<div id="test">
+
+	</div>
+	<!--href="resources/favicon-flame.png"-->
 	<style type="text/css">
 		/*canvas*/
 		.canvas {
@@ -2252,33 +2257,6 @@
 				updateResources();
 			}
 		},
-		putOutFire : function () {
-			if (game.fire === 1) {
-				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
-				showModal(1, '', game.putOutFireCallback, question,  localeStrings[32], localeStrings[33])
-
-			}
-		},
-		putOutFireCallback : function () {
-			if (answer === 2) {
-				if (game.gold >= config.costPutOutFire) {
-					game.fire = 0;
-					game.gold = game.gold - config.costPutOutFire;
-					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
-					document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-					msg = localeStrings[40];
-					postEventLog(msg);
-					updateResources();
-				}
-				else {
-					msg = localeStrings[20];
-					postEventLog(msg);
-				}
-			} else {
-				msg = localeStrings[41];
-				postEventLog(msg);
-			}
-		},
 		theftFromTreasury : function () {
 			rndThieves = Math.floor(Math.random()*(game.treasuryGuard+2)+1);
 			console.log(rndThieves);
@@ -2310,6 +2288,7 @@
 						document.getElementById('fireAudio0').play();
 					}
 					composite();
+					document.getElementById("gameIcon").href="resources/favicon-flame.png";
 					//TODO make a certain building in fire, not just "city"
 					if (game.buildLevelD == 1) {
 						ceil = 1
@@ -2330,6 +2309,34 @@
 				}
 			} else {
 				//you can't get another fire, while you do have previous still burning your city. For now.
+			}
+		},
+		putOutFire : function () {
+			if (game.fire === 1) {
+				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
+				showModal(1, '', game.putOutFireCallback, question,  localeStrings[32], localeStrings[33])
+
+			}
+		},
+		putOutFireCallback : function () {
+			if (answer === 2) {
+				if (game.gold >= config.costPutOutFire) {
+					game.fire = 0;
+					game.gold = game.gold - config.costPutOutFire;
+					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+					document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
+					msg = localeStrings[40];
+					document.getElementById("gameIcon").href="resources/favicon-normal.png";
+					postEventLog(msg);
+					updateResources();
+				}
+				else {
+					msg = localeStrings[20];
+					postEventLog(msg);
+				}
+			} else {
+				msg = localeStrings[41];
+				postEventLog(msg);
 			}
 		},
 		winLottery : function () {
