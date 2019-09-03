@@ -1211,7 +1211,11 @@
 		music_all: 0,
 		music_scripts: 0,
 		artefact_wear : function (artefact, target) {
+			if (target==="hero") {
+				game.myhero.inventory.push(artefact.id)
+				//artefacts[game.myhero.inventory]
 
+			}
 		},
 		artefact_remove : function (artefact, target) {
 
@@ -1778,9 +1782,13 @@
 					game.myhero.sergeants = 0;
 					game.myhero.turkopols = 0;
 					game.myhero.knights   = 0;
-					game.myhero.inventory = [];//should the list contain objects?
+					game.myhero.inventory  = [];//should the list contain objects?
+					game.myhero.oinventory = {};//should the list contain objects?
 					game.myhero.status    = 0;
 					game.myhero.gold      = 0;
+					game.myhero.luck          = 0;
+					game.myhero.superstition  = 0;
+					game.myhero.morale        = 0;
 					game.myhero.aCampaign          =0;
 					game.myhero.aCampaignLong      =0;
 					game.myhero.aCampaignForward   =0;
@@ -2379,6 +2387,7 @@
 	}
 	var artefacts = {
 		artid01: {
+			id: "artid01",
 			name: "Four-Leaf Clover",
 			attr: ["luck","superstition"],
 			change: [1,1],
@@ -2438,6 +2447,14 @@
 			name: "Gambler's Lucky Coin",
 			attr: ["luck","superstition"],
 			change: [1,1],
+			priceSell: 1000000,
+			priceBuy: 500000,
+			chance: 1,
+		},
+		artid09: {
+			name: "Unlucky hourglass",
+			attr: ["luck"],
+			change: [0],
 			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
