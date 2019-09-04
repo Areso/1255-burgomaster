@@ -1215,14 +1215,29 @@
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
-		artefact_wear : function (artefact, target) {
+		artefact_gain : function (artefact, target) {
 			if (target==="hero") {
-				game.myhero.inventory.push(artefact.id)
-				//artefacts[game.myhero.inventory]
+				game.myhero.inventory.push(artefact.id);
+				game.myhero.inventoryWorn.push(0);
 			}
 		},
-		artefact_remove : function (artefact, target) {
-
+		artefact_equip : function (invid, target) {
+			if (target==="hero") {
+				for (var i=0;i<artefacts[game.myhero.inventory[invid]].attr.length;i++){
+					game.myhero[artefacts[game.myhero.inventory[invid]].attr[i]]+=artefacts[game.myhero.inventory[0]].change[i];
+					game.myhero.inventoryWorn[invid]=1;
+					console.log(artefacts[game.myhero.inventory[invid]].attr[i]);
+				}
+			}
+		},
+		artefact_unequip : function (invid, target) {
+			if (target==="hero") {
+				for (var i = 0; i < artefacts[game.myhero.inventory[invid]].attr.length; i++) {
+					game.myhero[artefacts[game.myhero.inventory[invid]].attr[i]] -= artefacts[game.myhero.inventory[0]].change[i];
+					game.myhero.inventoryWorn[invid] = 0;
+					console.log(artefacts[game.myhero.inventory[invid]].attr[i]);
+				}
+			}
 		},
 		checkAudio : function (typeAudio, target) {
 			if (typeAudio==='sfx'){
@@ -1786,8 +1801,9 @@
 					game.myhero.sergeants  = 0;
 					game.myhero.turkopols  = 0;
 					game.myhero.knights    = 0;
-					game.myhero.inventory  = [];//should the list contain objects?
-					game.myhero.oinventory = {};//should the list contain objects?
+					game.myhero.inventory    = [];//should the list contain objects?
+					game.myhero.oinventory   = {};//should the list contain objects?
+					game.myhero.inventoryWorn= [];//should the list contain objects?
 					game.myhero.status     = 0;
 					game.myhero.gold       = 0;
 					game.myhero.luck          = 0;
@@ -2200,7 +2216,6 @@
 				alertMsg = localeStrings[21];
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 			}
-			game.hireTreasuryGuard.returnAnswer = afterAnswer;
 		},
 		hireTreasuryGuardCallback : function () {
 			if (answer === 2) {
@@ -2411,6 +2426,7 @@
 			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			artefactsWorn: 1,
 		},
 		artid02: {
 			name: "Medal of Valor",
