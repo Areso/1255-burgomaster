@@ -1214,7 +1214,6 @@
 			if (target==="hero") {
 				game.myhero.inventory.push(artefact.id)
 				//artefacts[game.myhero.inventory]
-
 			}
 		},
 		artefact_remove : function (artefact, target) {
@@ -1779,16 +1778,27 @@
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 70;
 					}
-					game.myhero.sergeants = 0;
-					game.myhero.turkopols = 0;
-					game.myhero.knights   = 0;
+					game.myhero.sergeants  = 0;
+					game.myhero.turkopols  = 0;
+					game.myhero.knights    = 0;
 					game.myhero.inventory  = [];//should the list contain objects?
 					game.myhero.oinventory = {};//should the list contain objects?
-					game.myhero.status    = 0;
-					game.myhero.gold      = 0;
+					game.myhero.status     = 0;
+					game.myhero.gold       = 0;
 					game.myhero.luck          = 0;
 					game.myhero.superstition  = 0;
 					game.myhero.morale        = 0;
+					game.myhero.inv.rigtharm      = 0;
+					game.myhero.inv.leftarm       = 0;
+					game.myhero.inv.helmet        = 0;
+					game.myhero.inv.boots         = 0;
+					game.myhero.inv.cloak         = 0;
+					game.myhero.inv.rightring     = 0;
+					game.myhero.inv.leftring      = 0;
+					game.myhero.inv.necklace      = 0;
+					game.myhero.inv.body          = 0;
+					game.myhero.inv.artefactsWorn = 0;//5
+					game.myhero.inv.range         = 0;
 					game.myhero.aCampaign          =0;
 					game.myhero.aCampaignLong      =0;
 					game.myhero.aCampaignForward   =0;
