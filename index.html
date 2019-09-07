@@ -601,7 +601,16 @@
 			</table>
 		</div>
 	    <div id="tabBlackmarket" class="tabcontent">
-			The tab is in development ATM!<br>
+			This black market offers these goods for sale!<br>
+			<select id="selectGoodsForHero" size="1">
+
+			</select>
+			<button id="btnBuyArtefact">Buy selected</button>
+			This black could buy your goods!<br>
+			<select id="selectGoodsFromHero" size="1">
+
+			</select>
+			<button id="btnSellArtefact">Sell selected</button>
 			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px">Go to exploring!</button>
 		</div>
 		<div id="Discord" class="tabcontent">
@@ -1199,6 +1208,7 @@
 		userPopAck: 0,
 		userGoldAck: 0,
 		userASaveAck: 0,
+		blackMarketGoods: [],
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
@@ -1335,6 +1345,14 @@
 			}
 			setupAudioUI();
 		},
+		genBlackMarketGoods : function () {
+			var rnd = Math.floor((Math.random() * 8) + 1);
+			if (length(rnd)<2) {
+				rnd = "0"+rnd;
+			}
+			game.blackMarketGoods.push("artid01");
+			game.blackMarketGoods.push("artid"+rnd);
+		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
 			if (game.heroExists()===true) {
@@ -1369,6 +1387,7 @@
 			}
 			function genMap(priceOfMapGen){
 				console.log("new map is generated");
+				game.genBlackMarketGoods();
 				game.gold = game.gold - priceOfMapGen;
 				game.myMapLand=[];
 				for (i=0;i<config.sizeMapX;i++) {
@@ -1509,6 +1528,7 @@
 						game.cityEnter();
 					}
 					if (game.myMapObjects[game.heroX][game.heroY]===4) {
+						updateUI();
 						openTab(null, 'tabBlackmarket');
 					}
 					composite_gm();
@@ -2418,79 +2438,115 @@
 		genMapCostBasic: 50,
 	}
 	var artefacts = {
+		artid00: {
+			id: "artid00",
+			name: "Towngate scroll",
+			attr: [],
+			change: [],
+			priceBuy: 5000,
+			chance: 1,
+			type: "scrolls",
+		},
 		artid01: {
 			id: "artid01",
 			name: "Four-Leaf Clover",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
 			artefactsWorn: 1,
 		},
 		artid02: {
+			id: "artid02",
 			name: "Medal of Valor",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid03: {
+			id: "artid03",
 			name: "Medal of Courage",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid04: {
+			id: "artid04",
 			name: "Medal of Honor",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid05: {
+			id: "artid05",
 			name: "Medal of Distinction",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid06: {
+			id: "artid06",
 			name: "Rabbit's Foot",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid07: {
+			id: "artid07",
 			name: "Golden Horseshoe",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid08: {
+			id: "artid08",
 			name: "Gambler's Lucky Coin",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid09: {
+			id: "artid09",
 			name: "Unlucky hourglass",
 			attr: ["luck"],
 			change: [0],
-			priceSell: 1000000,
 			priceBuy: 500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
+		},
+		artid10: {
+			id: "artid10",
+			name: "Glass globe",
+			desc: "alows your hero to guess next battle result",//almost all times. 70% I guess, would be enough for start
+			attr: ["luck"],
+			change: [0],
+			priceBuy: 500000,
+			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 	}
 	/*
@@ -3386,6 +3442,7 @@
 		updateTroopsNumbers();
 		updateButtonCaptions();
 		updateHeroStatus();
+		updateBlackMarket();
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
@@ -3541,6 +3598,18 @@
 		document.getElementById("gold").innerHTML          = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
+	}
+	function updateBlackMarket() {
+		var list = document.getElementById("selectGoodsForHero");
+		//select.options[i].remove();
+		list.length = 0;
+		for(var j in game.blackMarketGoods)
+		{
+			list.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
+			//"text-test", "value-test"));
+
+		}
+		console.log(j)
 	}
 	function getTime(type) {
 		var d  = new Date();
