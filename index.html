@@ -5,10 +5,6 @@
 	<title>
 		1255 Burgomaster
 	</title>
-	<div id="test">
-
-	</div>
-	<!--href="resources/favicon-flame.png"-->
 	<style type="text/css">
 		/*canvas*/
 		.canvas {
@@ -481,10 +477,10 @@
 			</tbody>
 			</table>
 			<br>
-			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:80px"><<</button>
-			<button id="btnPopPrev"     onclick="popPrev()" style="width:80px"><</button>
-			<button id="btnPopNext"     onclick="popNext()" style="width:80px">></button>
-			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:80px">>></button>
+			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:80px">To the beginning</button>
+			<button id="btnPopPrev"     onclick="popPrev()" style="width:80px">Earlier</button>
+			<button id="btnPopNext"     onclick="popNext()" style="width:80px">Later</button>
+			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:80px">To the end</button>
 			<br>
 			<br>
 			<div id="lblCurrentPopLimit"></div>
@@ -502,10 +498,10 @@
 			</tbody>
 			</table>
 			<br>
-			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:80px"><<</button>
-			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:80px"><</button>
-			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">></button>
-			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">>></button>
+			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:80px">To the beginning</button>
+			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:80px">Earlier</button>
+			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">Later</button>
+			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">To the end</button>
 			<br>
 			<br>
 			<div id="lblCurrentGoldLimit"></div>
@@ -601,7 +597,24 @@
 			</table>
 		</div>
 	    <div id="tabBlackmarket" class="tabcontent">
-			The tab is in development ATM!<br>
+			<div>
+				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div><br>
+				<select id="selectGoodsForHero" size="1" onchange="updateBlackMarket()">
+				</select>
+				<div id="lblArtefactBuyPrice" style="display: inline">price </div><div id="lblArtefactBuyPriceValue" style="display: inline">0</div>
+				<button id="btnBuyArtefact" onclick="game.artefact_buy()">Buy selected</button><br>
+			</div>
+			<br>
+			<!--
+			<div>
+				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div><br>
+				<select id="selectGoodsFromHero" size="1" onchange="updateBlackMarket()">
+				</select>
+				<div id="lblArtefactSalePrice" style="display: inline">price </div><div id="lblArtefactSellPriceValue" style="display: inline">0</div>
+				<button id="btnSellArtefact">Sell selected</button><br>
+			</div>
+			-->
+			<br>
 			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px">Go to exploring!</button>
 		</div>
 		<div id="Discord" class="tabcontent">
@@ -1199,6 +1212,7 @@
 		userPopAck: 0,
 		userGoldAck: 0,
 		userASaveAck: 0,
+		blackMarketGoods: [],
 		isHero: 0,//do I need this?
 		cityWarehouse: [], //should the list contain objects?
 		myhero: {},
@@ -1215,14 +1229,51 @@
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
-		artefact_wear : function (artefact, target) {
-			if (target==="hero") {
-				game.myhero.inventory.push(artefact.id)
-				//artefacts[game.myhero.inventory]
+		artefact_buy : function () {
+			var x = document.getElementById("selectGoodsForHero").selectedIndex;
+			var y = document.getElementById("selectGoodsForHero").options;
+			var the_buying_artefact      = y[x].value; //y[x].id, text, index
+			var the_buying_artefactIndex = y[x].index; //y[x].id, text, index
+			if (game.gold>=artefacts[the_buying_artefact].priceBuy){
+				game.gold = game.gold - artefacts[the_buying_artefact].priceBuy;
+				game.artefact_gain(artefacts[the_buying_artefact], "hero");
+				if (artefacts[the_buying_artefact].id !== "artid00"){
+					game.blackMarketGoods = deleteFromArray(game.blackMarketGoods, the_buying_artefactIndex);
+					updateBlackMarket(the_buying_artefactIndex,null);
+				} else {
+					updateBlackMarket(null,null);
+				}
+				msg = "Congratulations with your purchase! you made good choice!";
+				postEventLog(msg);
+			} else {
+				msg = "<b>%arg1</b>";
+				msg = msg.replace("%arg1",localeStrings[20]);
+				postEventLog(msg);
 			}
 		},
-		artefact_remove : function (artefact, target) {
-
+		artefact_gain : function (artefact, target) {
+			if (target==="hero") {
+				game.myhero.inventory.push(artefact.id);
+				game.myhero.inventoryWorn.push(0);
+			}
+		},
+		artefact_equip : function (invid, target) {
+			if (target==="hero") {
+				for (var i=0;i<artefacts[game.myhero.inventory[invid]].attr.length;i++){
+					game.myhero[artefacts[game.myhero.inventory[invid]].attr[i]]+=artefacts[game.myhero.inventory[0]].change[i];
+					game.myhero.inventoryWorn[invid]=1;
+					console.log(artefacts[game.myhero.inventory[invid]].attr[i]);
+				}
+			}
+		},
+		artefact_unequip : function (invid, target) {
+			if (target==="hero") {
+				for (var i = 0; i < artefacts[game.myhero.inventory[invid]].attr.length; i++) {
+					game.myhero[artefacts[game.myhero.inventory[invid]].attr[i]] -= artefacts[game.myhero.inventory[0]].change[i];
+					game.myhero.inventoryWorn[invid] = 0;
+					console.log(artefacts[game.myhero.inventory[invid]].attr[i]);
+				}
+			}
 		},
 		checkAudio : function (typeAudio, target) {
 			if (typeAudio==='sfx'){
@@ -1320,6 +1371,14 @@
 			}
 			setupAudioUI();
 		},
+		genBlackMarketGoods : function () {
+			var rnd = Math.floor((Math.random() * 8) + 1);
+			if (rnd.toString().length<2) {
+				rnd = "0"+rnd;
+			}
+			game.blackMarketGoods.push("artid00");
+			game.blackMarketGoods.push("artid"+rnd);
+		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
 			if (game.heroExists()===true) {
@@ -1354,6 +1413,7 @@
 			}
 			function genMap(priceOfMapGen){
 				console.log("new map is generated");
+				game.genBlackMarketGoods();
 				game.gold = game.gold - priceOfMapGen;
 				game.myMapLand=[];
 				for (i=0;i<config.sizeMapX;i++) {
@@ -1494,6 +1554,7 @@
 						game.cityEnter();
 					}
 					if (game.myMapObjects[game.heroX][game.heroY]===4) {
+						updateUI();
 						openTab(null, 'tabBlackmarket');
 					}
 					composite_gm();
@@ -1786,8 +1847,9 @@
 					game.myhero.sergeants  = 0;
 					game.myhero.turkopols  = 0;
 					game.myhero.knights    = 0;
-					game.myhero.inventory  = [];//should the list contain objects?
-					game.myhero.oinventory = {};//should the list contain objects?
+					game.myhero.inventory    = [];//should the list contain objects?
+					game.myhero.oinventory   = {};//should the list contain objects?
+					game.myhero.inventoryWorn= [];//should the list contain objects?
 					game.myhero.status     = 0;
 					game.myhero.gold       = 0;
 					game.myhero.luck          = 0;
@@ -2200,7 +2262,6 @@
 				alertMsg = localeStrings[21];
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 			}
-			game.hireTreasuryGuard.returnAnswer = afterAnswer;
 		},
 		hireTreasuryGuardCallback : function () {
 			if (answer === 2) {
@@ -2403,78 +2464,115 @@
 		genMapCostBasic: 50,
 	}
 	var artefacts = {
+		artid00: {
+			id: "artid00",
+			name: "Towngate scroll",
+			attr: [],
+			change: [],
+			priceBuy: 5000,
+			chance: 1,
+			type: "scrolls",
+		},
 		artid01: {
 			id: "artid01",
 			name: "Four-Leaf Clover",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid02: {
+			id: "artid02",
 			name: "Medal of Valor",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid03: {
+			id: "artid03",
 			name: "Medal of Courage",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid04: {
+			id: "artid04",
 			name: "Medal of Honor",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid05: {
+			id: "artid05",
 			name: "Medal of Distinction",
 			attr: ["moral"],
 			change: [1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid06: {
+			id: "artid06",
 			name: "Rabbit's Foot",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid07: {
+			id: "artid07",
 			name: "Golden Horseshoe",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid08: {
+			id: "artid08",
 			name: "Gambler's Lucky Coin",
 			attr: ["luck","superstition"],
 			change: [1,1],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 		artid09: {
+			id: "artid09",
 			name: "Unlucky hourglass",
 			attr: ["luck"],
 			change: [0],
-			priceSell: 1000000,
-			priceBuy: 500000,
+			priceBuy: 1500000,
 			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
+		},
+		artid10: {
+			id: "artid10",
+			name: "Glass globe",
+			desc: "alows your hero to guess next battle result",//almost all times. 70% I guess, would be enough for start
+			attr: ["luck"],
+			change: [0],
+			priceBuy: 5000000,
+			chance: 1,
+			type: "artefactsWorn",
+			artefactsWorn: 1,
 		},
 	}
 	/*
@@ -3370,6 +3468,7 @@
 		updateTroopsNumbers();
 		updateButtonCaptions();
 		updateHeroStatus();
+		updateBlackMarket();
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
@@ -3525,6 +3624,27 @@
 		document.getElementById("gold").innerHTML          = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
+	}
+	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
+		var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
+		if (changeSaleOffer!==null) {
+			if (changeSaleOffer!==undefined){
+				selectGoodsForBuying.options[changeSaleOffer].remove();
+			}
+		}
+		var selectedItemIndex = selectGoodsForBuying.selectedIndex;
+		selectGoodsForBuying.length = 0;
+		for(var j in game.blackMarketGoods)	{
+			selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
+		}
+		if (selectedItemIndex!==-1) {
+			selectGoodsForBuying.selectedIndex=selectedItemIndex;
+		}
+		if (game.blackMarketGoods.length!==0){
+			if (selectedItemIndex !== -1){
+				document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
+			}
+		}
 	}
 	function getTime(type) {
 		var d  = new Date();
