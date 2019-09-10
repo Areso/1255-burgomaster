@@ -1254,6 +1254,9 @@
 		artefact_gain : function (artefact, target) {
 			if (target==="hero") {
 				game.myhero.inventory.push(artefact.id);
+				if (game.myhero.inventoryWorn===undefined){
+					game.myhero.inventoryWorn=[];
+				}
 				game.myhero.inventoryWorn.push(0);
 			}
 		},
