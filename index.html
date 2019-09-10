@@ -1851,28 +1851,27 @@
 					game.myhero.turkopols  = 0;
 					game.myhero.knights    = 0;
 					game.myhero.inventory    = [];//should the list contain objects?
-					game.myhero.oinventory   = {};//should the list contain objects?
 					game.myhero.inventoryWorn= [];//should the list contain objects?
 					game.myhero.status     = 0;
 					game.myhero.gold       = 0;
-					game.myhero.luck          = 0;
-					game.myhero.superstition  = 0;
-					game.myhero.morale        = 0;
-					game.myhero.rigtharm      = 0;
-					game.myhero.leftarm       = 0;
-					game.myhero.helmet        = 0;
-					game.myhero.boots         = 0;
-					game.myhero.cloak         = 0;
-					game.myhero.rightring     = 0;
-					game.myhero.leftring      = 0;
-					game.myhero.necklace      = 0;
-					game.myhero.body          = 0;
-					game.myhero.artefactsWorn = 0;//5
-					game.myhero.range         = 0;
-					game.myhero.aCampaign          =0;
-					game.myhero.aCampaignLong      =0;
-					game.myhero.aCampaignForward   =0;
-					game.myhero.aCampaignBackward  =0;
+					game.myhero.statLuck           = 0;
+					game.myhero.statSuperstition   = 0;
+					game.myhero.statMorale         = 0;
+					game.myhero.eqRigtharm         = 0;
+					game.myhero.eqLeftarm          = 0;
+					game.myhero.eqHelmet           = 0;
+					game.myhero.eqBoots            = 0;
+					game.myhero.eqCloak            = 0;
+					game.myhero.eqRightring        = 0;
+					game.myhero.eqLeftring         = 0;
+					game.myhero.eqNecklace         = 0;
+					game.myhero.eqBody             = 0;
+					game.myhero.eqRange            = 0;
+					game.myhero.artefactsWorn      = 0;//5
+					game.myhero.aCampaign          = 0;
+					game.myhero.aCampaignLong      = 0;
+					game.myhero.aCampaignForward   = 0;
+					game.myhero.aCampaignBackward  = 0;
 					updateHeroStatus();
 				} else {
 					msg = "<b>%arg1</b>";
@@ -3373,32 +3372,7 @@
 				saveLine  = atob(save64);
 				saveArray = saveLine.split(delimiter);
 				gameTemp  = JSON.parse(saveArray[0]);
-				var heroExistsInTheGame = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-				var heroExistsInTheSave = (Object.keys(gameTemp.myhero).length===0 && gameTemp.myhero.constructor === Object) ? false : true;
-				if (heroExistsInTheSave === true && heroExistsInTheGame === false) {
-					game.heroHire(true);
-					console.log("initiated a new hero to allow overriding from a save");
-				}
-				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-				//options   = JSON.parse(saveArray[1]);
-				var incr   = 1;
-				while (game.gold === null) {
-					console.log("we overwrite our gold value");
-					var len    = game.budgets.length;
-					game.gold  = game.budgets[len-incr];
-					incr      += 1;
-				}
-				game.active_tab="";
-				setupAudioUI();
-				setupAutosave();
-				composite();
-				updateUI();
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
-				scrollDown();
-				//TODO
-				//} else {
-				//	alert ("save file was modified. Too bad");
-				//}
+				overrideGame(gameTemp);
 			}
 			catch(err) {
 				console.log(err);
@@ -3445,26 +3419,34 @@
 			if (localStorage.getItem('game')!==null){
 				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 				gameTemp = JSON.parse(localStorage.getItem('game'));
-				var heroExistsInTheGame = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-				var heroExistsInTheSave = (Object.keys(gameTemp.myhero).length===0 && gameTemp.myhero.constructor === Object) ? false : true;
-				if (heroExistsInTheSave === true && heroExistsInTheGame === false) {
-					game.heroHire(true);
-					console.log("initiated a new hero to allow overriding from a save");
-				}
-				for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-				//options  = JSON.parse(localStorage.getItem('options'));
-				game.active_tab="";
-				setupAudioUI();
-				setupAutosave();
-				composite();
-				updateUI();
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
-				scrollDown();
+				overrideGame(gameTemp);
 			} else {
 				//TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
 				alert(localeStrings[14]);
 			}
 		}
+	}
+	function overrideGame(gameTemp){
+		game.myhero = {};
+		game.heroHire(true);
+		tmpHero = game.myhero;
+		for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
+		for (var propertyName in tmpHero) {
+			if (game.myhero[propertyName]===undefined){
+				game.myhero[propertyName] = tmpHero[propertyName];
+			}
+		}
+		while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
+			game.myhero.inventoryWorn.push(0);
+		}
+		//options  = JSON.parse(localStorage.getItem('options'));
+		game.active_tab="";
+		setupAudioUI();
+		setupAutosave();
+		composite();
+		updateUI();
+		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
+		scrollDown();
 	}
 	function updateUI() {
 		updateResources();
