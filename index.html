@@ -524,9 +524,11 @@
 
 			</div>
 			<br>
+			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
+			<br>
 			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
 			<button id="btnAutocampaignJournal"    onclick="openTab(null, 'tabAutocampaignJournal')" style="width:160px; visibility: hidden">Open journal</button>
-			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
+			<button id="btnTowngate" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
 			<br>
 			<br>
 			<button id="btnLeaveCity"    onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
@@ -1230,6 +1232,22 @@
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
+		towngate : function () {
+			if (game.myhero.aCampaignBackward===1){
+				var theTowngateIndex = game.myhero.indexOf("artid00");
+				if (theTowngateIndex!==-1){
+					game.artefact_loss(null, "hero", theTowngateIndex);
+					game.myhero.aCampaignLong = 1;
+					updateUI();
+				} else {
+					msg = "You don't have a Towngate scroll!";
+					postEventLog(msg);
+				}
+			} else {
+				msg = "First, head the hero to the town!";
+				postEventLog(msg);
+			}
+		},
 		artefact_sell : function () {
 			var x = document.getElementById("selectGoodsFromHero").selectedIndex;
 			var y = document.getElementById("selectGoodsFromHero").options;
@@ -1283,7 +1301,6 @@
 				game.myhero.inventory     = deleteFromArray(game.myhero.inventory, posInInventory);
 				game.myhero.inventoryWorn = deleteFromArray(game.myhero.inventoryWorn, posInInventory);
 			}
-
 		},
 		artefact_equip : function (invid, target) {
 			if (target==="hero") {
@@ -3373,7 +3390,7 @@
 		}
 	}
 	function changeAutosave() {
-		if (game.o_autosave==0) {
+		if (game.o_autosave===0) {
 			game.o_autosave = 1;
 			postEventLog(localeStrings[62]);
 			setupAutosave();
@@ -3615,6 +3632,7 @@
 			HTMLofHeroStats    += "Forward: "+game.myhero.aCampaignForward+" | Backward: "+game.myhero.aCampaignBackward+"<br>";
 			HTMLofHeroStats    += "Gold in hero's purse"+": "+game.myhero.gold+"<br>";
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
+
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
 			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
