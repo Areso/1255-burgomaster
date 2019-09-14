@@ -3590,6 +3590,7 @@
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
 				document.getElementById("btnLeaveCity").style.visibility="visible";
+				document.getElementById("btnTowngate").style.visibility="hidden";
 			}
 			if (game.myhero.status===1){
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
@@ -3604,7 +3605,7 @@
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 				document.getElementById("btnLeaveCity").style.visibility="hidden";
-
+				document.getElementById("btnTowngate").style.visibility="visible";
 			}
 			if (game.myhero.status===2){
 				var rnd = Math.floor(Math.random() * localeStrings[212].length);
@@ -3615,6 +3616,7 @@
 				document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 				document.getElementById("btnLeaveCity").style.visibility="visible";
+				document.getElementById("btnTowngate").style.visibility="hidden";
 			}
 			if (heroStatusNeedsUpdate === true) {
 				game.myhero.status = 0;
