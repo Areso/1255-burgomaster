@@ -525,7 +525,6 @@
 			</div>
 			<br>
 			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
-			<br>
 			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
 			<button id="btnAutocampaignJournal"    onclick="openTab(null, 'tabAutocampaignJournal')" style="width:160px; visibility: hidden">Open journal</button>
 			<button id="btnTowngate" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
@@ -1234,17 +1233,22 @@
 		music_scripts: 0,
 		towngate : function () {
 			if (game.myhero.aCampaignBackward===1){
-				var theTowngateIndex = game.myhero.indexOf("artid00");
+				var theTowngateIndex = game.myhero.inventory.indexOf("artid00");
 				if (theTowngateIndex!==-1){
 					game.artefact_loss(null, "hero", theTowngateIndex);
 					game.myhero.aCampaignLong = 1;
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1","The hero is just behind the city now!");
+					postEventLog(msg);
 					updateUI();
 				} else {
-					msg = "You don't have a Towngate scroll!";
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1","You don't have a Towngate scroll!");
 					postEventLog(msg);
 				}
 			} else {
-				msg = "First, head the hero to the town!";
+				msg = "<b>%arg1</b>";
+				msg = msg.replace("%arg1","First, head the hero to the town!");
 				postEventLog(msg);
 			}
 		},
