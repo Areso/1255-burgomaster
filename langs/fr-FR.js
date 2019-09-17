@@ -119,7 +119,6 @@ localeStrings.push("Construire Camp de tir à l'arc<br/>niveau %arg1<br/>%arg2 o
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
