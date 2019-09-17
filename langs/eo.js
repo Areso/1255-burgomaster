@@ -212,9 +212,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Bonvenon al Gastejo");
 localeStrings.push("dungi heroon<br/>nivelo %arg1<br/>%arg2 oro");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//185
+localeStrings.push("bonŝanco");
+localeStrings.push("superstiĉo");
+localeStrings.push("moralo"); // 185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -242,17 +242,17 @@ localeStrings.push(" en mana komparado");
 localeStrings.push(["manĝi", "trinki", "vetludi", "trejni", "pugni", "ripozi"]); // 210
 localeStrings.push(["marŝi reen", "marŝi", "mortigi paganojn", "konverti paganojn", "fari tendaron", "prirabi mortintajn paganojn"]);
 localeStrings.push(["marŝi", "fari tendaron", "rabado"]);
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//215
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//220
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Tagoj el la urbo");
+localeStrings.push("El la urbo");
+localeStrings.push("Al la urbo"); // 215
+localeStrings.push("Ora en monujo de heroo");
+localeStrings.push("Malakcepti heroon");
+localeStrings.push("Sendu heroon al aŭtokampanjo");
+localeStrings.push("Forigu la heroon");
+localeStrings.push("Malferma taglibro"); // 220
+localeStrings.push("Uzu ruleton de urbeto");
+localeStrings.push("Iru al aventura mapo");
+localeStrings.push("Regeneri mapon");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//225
 localeStrings.push("placeholder");

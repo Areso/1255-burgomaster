@@ -515,9 +515,7 @@
 				<option id="optionMonk"            value="1"  >Monk</option>
 				<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
 			</select>
-			<br>
-			<br>
-			<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px">Hire hero %arg1 level</button>
+			<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
 			<br>
 			<br>
 			<div id="heroStats">
@@ -1904,6 +1902,8 @@
 					game.myhero.statLuck           = 0;
 					game.myhero.statSuperstition   = 0;
 					game.myhero.statMorale         = 0;
+					game.myhero.pskillCharisma     = 0;
+					game.myhero.pskillLeadership   = 0;
 					game.myhero.eqRigtharm         = 0;
 					game.myhero.eqLeftarm          = 0;
 					game.myhero.eqHelmet           = 0;
@@ -3039,6 +3039,13 @@
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
 		document.getElementById("selectHeroClass")[0].text       = localeStrings[204][0];
 		document.getElementById("selectHeroClass")[1].text       = localeStrings[204][1];
+		document.getElementById("btnColorMode").innerText        = localeStrings[70];
+		document.getElementById("btnDismissHero").innerText      = localeStrings[217];
+		//document.getElementById("btnAutocampaign").innerText     = localeStrings[218];
+		document.getElementById("btnAutocampaignJournal").innerText  = localeStrings[220];
+		document.getElementById("btnTowngate").innerText         = localeStrings[221];
+		document.getElementById("btnLeaveCity").innerText        = localeStrings[222];
+		document.getElementById("btnGenerateMap").innerText      = localeStrings[223];
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();
@@ -3558,10 +3565,7 @@
 		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 	}
 	function updateHeroStatus() {
-		var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-		//console.log('heroExists value is '+heroExists.toString());
-		if (heroExists === true) {
-			//console.log('print status');
+		if ( game.heroExists() === true) {
 			var lblHeroClass    = localeStrings[204][game.myhero.class];
 			var lblAlignment    = game.heroAlignment("text");
 			var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
@@ -3589,7 +3593,7 @@
 				console.log("in town, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[210][rnd]+localeStrings[207];
 				heroStatusNeedsUpdate = false;
-				document.getElementById("btnAutocampaign").innerText="Launch Autocampaign!";
+				document.getElementById("btnAutocampaign").innerText=localeStrings[218];
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
@@ -3604,7 +3608,7 @@
 				console.log("in autocampaign, activity is "+rnd);
 				var heroActivity = localeStrings[206]+localeStrings[211][rnd]+localeStrings[208];
 				heroStatusNeedsUpdate = false;
-				document.getElementById("btnAutocampaign").innerText="Withdraw a hero";
+				document.getElementById("btnAutocampaign").innerText=localeStrings[219];
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
@@ -3634,11 +3638,10 @@
 			HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
 			HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
 			HTMLofHeroStats    += heroActivity+"<br>";
-			HTMLofHeroStats    += "Campaign days long: "+game.myhero.aCampaignLong+"<br>";
-			HTMLofHeroStats    += "Forward: "+game.myhero.aCampaignForward+" | Backward: "+game.myhero.aCampaignBackward+"<br>";
-			HTMLofHeroStats    += "Gold in hero's purse"+": "+game.myhero.gold+"<br>";
+			HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";
+			HTMLofHeroStats    += localeStrings[214]+": "+game.myhero.aCampaignForward+" | "+localeStrings[215]+": "+game.myhero.aCampaignBackward+"<br>";
+			HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
-
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
 			document.getElementById("trHeroHiringTroops").style.visibility="collapse";

@@ -211,9 +211,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Вы в Таверне");
 localeStrings.push("Нанять героя<br/>уровень %arg1<br/>%arg2 золота");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//185
+localeStrings.push("удача");
+localeStrings.push("суеверность");
+localeStrings.push("мораль");//185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -241,17 +241,17 @@ localeStrings.push(" в кампании");
 localeStrings.push(["ест", "пьет","играет в карты","тренируется","дерется","отдыхает"]);//210
 localeStrings.push(["возвращается в город, будучи","на марше","убивает язычников", "обращает язычников","строит лагерь","собирает трофеи"]);
 localeStrings.push(["на марше", "строит лагерь","собирает трофеи"]);
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//215
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//220
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Дней от города");
+localeStrings.push("От города");
+localeStrings.push("К городу");//215
+localeStrings.push("Злата в кошеле героя");
+localeStrings.push("Уволить героя");
+localeStrings.push("Отправить в поход");
+localeStrings.push("Вернуть из похода");
+localeStrings.push("Открыть журнал");//220
+localeStrings.push("Свиток городских врат");
+localeStrings.push("На карту приключений");
+localeStrings.push("Пересоздать карту");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//225
 localeStrings.push("placeholder");
