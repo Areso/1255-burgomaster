@@ -37,7 +37,7 @@ localeStrings.push("Vous avez exécuté un citoyen pour %arg1.");
 localeStrings.push("Voter Trésorerie s'est remplie de %arg1 or provenant de la confiscation des biens du citoyen exécuté.");//35
 localeStrings.push("Vous avez trop peu de citoyens.");
 localeStrings.push("Des gardes ont démissioné car vous ne pouvez pas les payer !");
-localeStrings.push("Un incendie dans la ville!");
+localeStrings.push("Un incendie dans la cité!");
 localeStrings.push("Doit-on appeler les pompiers ? Il vous en coutera %arg1 or.");
 localeStrings.push("Vos pompiers ont éteint le feu.");//40
 localeStrings.push("Tout va partir en fumée !");
@@ -213,9 +213,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Bienvenue à l'auberge!");
 localeStrings.push("Embaucher un héros<br>de niveau %arg1<br>pour %arg2 pièces d'or");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//185
+localeStrings.push("chance");
+localeStrings.push("superstition");
+localeStrings.push("morale"); // 185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -237,30 +237,30 @@ localeStrings.push("Mal");
 localeStrings.push(["Chevalier", "Moine"]);
 localeStrings.push("Classe");//205
 localeStrings.push("Le héros ");
-localeStrings.push(" en ville");
+localeStrings.push(" en cité");
 localeStrings.push(" en campagne automatique");
 localeStrings.push(" en campagne");
 localeStrings.push(["manger", "boit", "joue", "s'entraine", "se bat", "se repose"]); // 210
 localeStrings.push(["sur le trajet retour", "marchant", "tuant des païens", "convertissant des païens", "faisant un camp", "pillant des païens morts"]);
 localeStrings.push(["marching", "faire un camp", "piller"]);
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//215
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//220
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Jours de la cité");
+localeStrings.push("De la cité");
+localeStrings.push("Vers la cité"); // 215
+localeStrings.push("L'or dans le sac du héros");
+localeStrings.push("Rejeter le héros");
+localeStrings.push("Envoyer le héros à autocampaign");
+localeStrings.push("Retirer le héros");
+localeStrings.push("Journal ouvert"); // 220
+localeStrings.push("Utiliser porte de la cité");
+localeStrings.push("Aller à la carte d'aventure");
+localeStrings.push("Régénérer la carte");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//225
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Ce bâtiment est nécessaire pour protéger la ville des intrus.");//230
+localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");//230
 localeStrings.push("placeholder");//tower
 localeStrings.push("placeholder");//stone tower
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de population.");

@@ -212,9 +212,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Willkommen im Schenke");
 localeStrings.push("Vermietung Held<br/>Stufe %arg1<br/>%arg2 Gold");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//185
+localeStrings.push("Glück");
+localeStrings.push("Aberglaube");
+localeStrings.push("Moral"); // 185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -242,17 +242,17 @@ localeStrings.push(" in manualcompaign");
 localeStrings.push(["Essen", "Trinken", "Spielen", "Training", "Faustkampf", "Ruhen"]); // 210
 localeStrings.push(["zurückmarschieren", "marschieren", "Heiden töten", "Heiden bekehren", "ein Lager errichten", "tote Heiden plündern"]);
 localeStrings.push(["marschieren", "ein Lager aufschlagen", "plündern"]);
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//215
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//220
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Tage aus der Stadt");
+localeStrings.push("Aus der Stadt");
+localeStrings.push("In die Stadt"); // 215
+localeStrings.push("Gold im Geldbeutel des Helden");
+localeStrings.push("Held entlassen");
+localeStrings.push("Held an Autokampagne senden");
+localeStrings.push("Den Helden zurückziehen");
+localeStrings.push("Tagebuch öffnen"); // 220
+localeStrings.push("Towngate-Scroll verwenden");
+localeStrings.push("Gehe zur Abenteuerkarte");
+localeStrings.push("Karte neu generieren");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//225
 localeStrings.push("placeholder");

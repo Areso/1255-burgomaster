@@ -212,9 +212,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//180
 localeStrings.push("Welcome to Inn!");
 localeStrings.push("Hire hero<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//185
+localeStrings.push("luck");
+localeStrings.push("superstition");
+localeStrings.push("morale");//185
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -242,17 +242,17 @@ localeStrings.push(" in manualcampaign");
 localeStrings.push(["eating", "drinking","gambling","training","fistfighting","resting"]);//210
 localeStrings.push(["marching back","marching","killing pagans", "converting pagans","making a camp","looting dead pagans"]);
 localeStrings.push(["marching", "making a camp","looting"]);
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//215
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//220
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Days from the city");
+localeStrings.push("From the city");
+localeStrings.push("To the city");//215
+localeStrings.push("Gold in hero's purse");
+localeStrings.push("Dismiss hero");
+localeStrings.push("Send hero to autocampaign");
+localeStrings.push("Withdraw the hero");
+localeStrings.push("Open journal");//220
+localeStrings.push("Use towngate scroll");
+localeStrings.push("Go to adventure map");
+localeStrings.push("Regenerate map");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//225
 localeStrings.push("placeholder");
