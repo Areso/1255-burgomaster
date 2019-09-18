@@ -1931,9 +1931,6 @@
 			}
 		},
 		heroLvlUp : function () {
-			console.log("check hero exp for level up");
-			console.log("current hero exp is "+game.myhero.exp);
-			console.log("current hero next lvl is "+game.heroNextLvlExpLimit());
 			if (game.myhero.exp > game.heroNextLvlExpLimit()){
 				game.myhero.level +=1;
 				postJournalLog("Your hero got promoted to the next level!");

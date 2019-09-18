@@ -269,4 +269,4 @@ localeStrings.push("This building and its improvements is needed to place festiv
 localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash do you have, the more you could hide in the Stash.");
 localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable do you have, the more experienced troops you could hire there.");
-localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");
+localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");//240
