@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");// 80
-localeStrings.push("Aktuelle Goldgrenze ist %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Bevölkerungshistorie-Tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");
+localeStrings.push("Aktuelle Goldgrenze ist %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -253,10 +253,10 @@ localeStrings.push("Tagebuch öffnen"); // 220
 localeStrings.push("Towngate-Scroll verwenden");
 localeStrings.push("Gehe zur Abenteuerkarte");
 localeStrings.push("Karte neu generieren");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Dein Held wurde zum nächsten Level befördert!");
+localeStrings.push("Wollen Sie eine aggressive Haltung (höhere Belohnung, höheres Risiko) oder eine vorsichtige?");//225
+localeStrings.push("Aggressiv! Willst du Blut und Geld!");
+localeStrings.push("Vorsichtig. Was nützt Gold, wenn dein Held tot ist?");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen."); // 230

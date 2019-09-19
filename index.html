@@ -1755,12 +1755,11 @@
 			return price;
 		},
 		autocampaign : function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists===true){
+			if (game.heroExists()===true){
 				if (game.myhero.status===0) {
 					if (game.isHeroHaveTroops()) {
-						var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
-						showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
+						var question      = localeStrings[225];
+						showModal(1, '', game.autocampaignLaunchCallback, question, localeStrings[226], localeStrings[227]);
 					} else {
 						alertMsg = "You need to add some troops to hero's squad first!";
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
@@ -1933,7 +1932,7 @@
 		heroLvlUp : function () {
 			if (game.myhero.exp > game.heroNextLvlExpLimit()){
 				game.myhero.level +=1;
-				postJournalLog("Your hero got promoted to the next level!");
+				postJournalLog(localeStrings[224]);
 			}
 		},
 		heroDie : function () {
@@ -2664,7 +2663,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
 				//console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2801,7 +2800,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-10+i]  +'</td>';
 				//console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 

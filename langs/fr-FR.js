@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("La population actuelle est limitée à %arg1");//80
-localeStrings.push("La limite d'or actuelle est de %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Onglet Historique de la population");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("La population actuelle est limitée à %arg1");
+localeStrings.push("La limite d'or actuelle est de %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -253,10 +253,10 @@ localeStrings.push("Journal ouvert"); // 220
 localeStrings.push("Utiliser porte de la cité");
 localeStrings.push("Aller à la carte d'aventure");
 localeStrings.push("Régénérer la carte");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Votre héros a été promu au niveau suivant!");
+localeStrings.push("Voulez-vous une attitude agressive (récompense plus élevée, risque plus élevé) ou une position de prudence?");//225
+localeStrings.push("Agressif! Vouloir du sang et de l'or!");
+localeStrings.push("Prudent. A quoi bon d'or si votre héros est mort?");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");//230

@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Current population limit is %arg1");//80
-localeStrings.push("Current gold limit is %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Population history tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Current population limit is %arg1");
+localeStrings.push("Current gold limit is %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -253,10 +253,10 @@ localeStrings.push("Open journal");//220
 localeStrings.push("Use towngate scroll");
 localeStrings.push("Go to adventure map");
 localeStrings.push("Regenerate map");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Your hero got promoted to the next level!");
+localeStrings.push("Do you want aggressive stance (higher reward, higher risk) or cautious one?");//225
+localeStrings.push("Aggressive! Want blood and money!");
+localeStrings.push("Cautious. What good of gold if your hero is dead?");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("This building is needed for defending the city from intruders.");//230

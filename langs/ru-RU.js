@@ -79,8 +79,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Текущий лимит населения %arg1");//80
-localeStrings.push("Текущий лимит золота %arg1");localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//85
@@ -190,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Данные о населении по периодам");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Текущий лимит населения %arg1");
+localeStrings.push("Текущий лимит золота %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -252,10 +253,10 @@ localeStrings.push("Открыть журнал");//220
 localeStrings.push("Свиток городских врат");
 localeStrings.push("На карту приключений");
 localeStrings.push("Пересоздать карту");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Ваш герой достиг следующего уровня!");
+localeStrings.push("Выберите поведение героя: агрессивное (выше награда и риск) или осторожное?");//225
+localeStrings.push("Агрессивное. Хочу крови и денег!");
+localeStrings.push("Осторожное. Какой толк от денег, если ваш герой мертв?");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Это здание нужно для защиты города от захватчиков.");//230

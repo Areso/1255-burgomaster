@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Nuna populacio limo estas %arg1"); // 80
-localeStrings.push("Nuna ora limo estas %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("langeto pri civitanaj historio");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Nuna populacio limo estas %arg1");
+localeStrings.push("Nuna ora limo estas %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -253,10 +253,10 @@ localeStrings.push("Malferma taglibro"); // 220
 localeStrings.push("Uzu ruleton de urbeto");
 localeStrings.push("Iru al aventura mapo");
 localeStrings.push("Regeneri mapon");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Via heroo promociiĝis al la sekva nivelo!");
+localeStrings.push("Ĉu vi volas agresa sinteno (pli alta rekompenco, pli alta risko) aŭ singarda?");//225
+localeStrings.push("Agresa! Volu sangon kaj monon!");
+localeStrings.push("Zorgema. Ĉu bona el oro se via heroo mortis?");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj."); // 230
