@@ -257,8 +257,8 @@ localeStrings.push("Votre héros a été promu au niveau suivant!");
 localeStrings.push("Voulez-vous une attitude agressive (récompense plus élevée, risque plus élevé) ou une position de prudence?");//225
 localeStrings.push("Agressif! Vouloir du sang et de l'or!");
 localeStrings.push("Prudent. A quoi bon d'or si votre héros est mort?");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Vous devez d'abord ajouter des troupes à l'équipe de héros!");
+localeStrings.push("Vous avez besoin d'un héros pour faire ça!");
 localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");//230
 localeStrings.push("placeholder");//tower
 localeStrings.push("placeholder");//stone tower

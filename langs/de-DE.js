@@ -257,8 +257,8 @@ localeStrings.push("Dein Held wurde zum nächsten Level befördert!");
 localeStrings.push("Wollen Sie eine aggressive Haltung (höhere Belohnung, höheres Risiko) oder eine vorsichtige?");//225
 localeStrings.push("Aggressiv! Willst du Blut und Geld!");
 localeStrings.push("Vorsichtig. Was nützt Gold, wenn dein Held tot ist?");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Sie müssen zuerst einige Truppen in den Kader des Helden aufnehmen!");
+localeStrings.push("Dafür brauchst du einen Helden!");
 localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen."); // 230
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

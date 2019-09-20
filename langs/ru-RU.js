@@ -257,8 +257,8 @@ localeStrings.push("Ваш герой достиг следующего уров
 localeStrings.push("Выберите поведение героя: агрессивное (выше награда и риск) или осторожное?");//225
 localeStrings.push("Агрессивное. Хочу крови и денег!");
 localeStrings.push("Осторожное. Какой толк от денег, если ваш герой мертв?");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Сначала добавьте войск герою");
+localeStrings.push("Для этого нужен герой!");
 localeStrings.push("Это здание нужно для защиты города от захватчиков.");//230
 localeStrings.push("placeholder");//tower
 localeStrings.push("placeholder");//stone tower

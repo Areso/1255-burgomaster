@@ -257,8 +257,8 @@ localeStrings.push("Via heroo promociiĝis al la sekva nivelo!");
 localeStrings.push("Ĉu vi volas agresa sinteno (pli alta rekompenco, pli alta risko) aŭ singarda?");//225
 localeStrings.push("Agresa! Volu sangon kaj monon!");
 localeStrings.push("Zorgema. Ĉu bona el oro se via heroo mortis?");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Vi devas unue aldoni iujn trupojn al la taĉmento de herooj!");
+localeStrings.push("Vi bezonas heroon por fari tion!");
 localeStrings.push("Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj."); // 230
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

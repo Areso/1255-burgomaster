@@ -257,8 +257,8 @@ localeStrings.push("Your hero got promoted to the next level!");
 localeStrings.push("Do you want aggressive stance (higher reward, higher risk) or cautious one?");//225
 localeStrings.push("Aggressive! Want blood and money!");
 localeStrings.push("Cautious. What good of gold if your hero is dead?");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("You need to add some troops to hero's squad first!");
+localeStrings.push("You need a hero to do that!");
 localeStrings.push("This building is needed for defending the city from intruders.");//230
 localeStrings.push("placeholder");//tower
 localeStrings.push("placeholder");//stone tower

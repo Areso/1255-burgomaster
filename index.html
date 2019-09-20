@@ -1684,8 +1684,7 @@
 			}
 		},
 		calculateAutocampaign : function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
+			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
 				console.log("random stuff on the way forward");
 				var heroTroopsPrice = game.heroTroopsPrice();
@@ -1720,7 +1719,7 @@
 				}
 				game.heroLvlUp();
 			}
-			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
+			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
 					game.myhero.aCampaignLong     -= 1;
 					postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
@@ -1738,9 +1737,8 @@
 		},
 		isHeroHaveTroops : function () {
 			var heroTroopsFlag = false;
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists === true) {
-				var totalCount = game.myhero.sergeants*1+game.myhero.turkopols*1+game.myhero.knights*1;
+			if (game.heroExists() === true) {
+				var totalCount = game.myhero.sergeants+game.myhero.turkopols+game.myhero.knights;
 				if (totalCount>0) {
 					heroTroopsFlag = true;
 				}
@@ -1761,7 +1759,7 @@
 						var question      = localeStrings[225];
 						showModal(1, '', game.autocampaignLaunchCallback, question, localeStrings[226], localeStrings[227]);
 					} else {
-						alertMsg = "You need to add some troops to hero's squad first!";
+						alertMsg = localeStrings[228];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				} else {
@@ -1774,7 +1772,7 @@
 					}
 				}
 			} else {
-				alertMsg = "You need a hero to do that!";
+				alertMsg = localeStrings[229];
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
@@ -1861,12 +1859,12 @@
 			return Math.pow((game.myhero.level+1) * config.heroExpK,2);
 		},
 		heroHire : function (silent) {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists === false) {
+			if (game.heroExists() === false) {
 				if (game.gold > config.costHero || silent===true) {
 					if (silent === false) {
 						game.gold                 = game.gold - config.costHero;
 					}
+					clearJournalLog();
 					game.myhero.level         = game.buildLevelInn;
 					game.myhero.exp           = Math.pow(game.myhero.level * config.heroExpK,2);
 					var x = document.getElementById("selectHeroClass").selectedIndex;
@@ -3054,6 +3052,9 @@
 	function postEventLog(msgEventLog) {
 		document.getElementById("console_n_chat").innerHTML = document.getElementById("console_n_chat").innerHTML+"<br>"+getTime(0)+": "+msgEventLog;
 		scrollDown();
+	}
+	function clearJournalLog() {
+		document.getElementById("lblAutocampaignJournal").innerHTML = "";
 	}
 	function postJournalLog(msgEventLog) {
 		document.getElementById("lblAutocampaignJournal").innerHTML = document.getElementById("lblAutocampaignJournal").innerHTML+"<br>"+"Day "+game.myhero.aCampaignLong+": "+msgEventLog;
