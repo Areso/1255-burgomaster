@@ -259,9 +259,9 @@ localeStrings.push("Aggressive! Want blood and money!");
 localeStrings.push("Cautious. What good of gold if your hero is dead?");
 localeStrings.push("You need to add some troops to hero's squad first!");
 localeStrings.push("You need a hero to do that!");
-localeStrings.push("This building is needed for defending the city from intruders.");//230
-localeStrings.push("placeholder");//tower
-localeStrings.push("placeholder");//stone tower
+localeStrings.push("placeholder");//230
+localeStrings.push("placeholder");
+localeStrings.push("This building is needed for defending the city from intruders.");
 localeStrings.push("This building and its improvements is needed to raise your population limit.");
 localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
 localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235

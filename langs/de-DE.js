@@ -259,9 +259,9 @@ localeStrings.push("Aggressiv! Willst du Blut und Geld!");
 localeStrings.push("Vorsichtig. Was nützt Gold, wenn dein Held tot ist?");
 localeStrings.push("Sie müssen zuerst einige Truppen in den Kader des Helden aufnehmen!");
 localeStrings.push("Dafür brauchst du einen Helden!");
-localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen."); // 230
+localeStrings.push("placeholder");//230
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Ihr Bevölkerungslimit zu erhöhen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geldlimit zu erhöhen. <br> In diesem Gebäude können Sie Schatzmeister einstellen. <br> Sie werden benötigt, um die Wahrscheinlichkeit zu minimieren, dass Sie ausgeraubt werden.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Hinrichtung Ihrer Bürger erforderlich. <br> Es erhöht auch die Steuern und senkt die Geburtenrate und das Glück. <br> Wenn Sie dieses Gebäude bauen, können Sie den Brunnen nicht bauen!");

@@ -1686,7 +1686,6 @@
 		calculateAutocampaign : function () {
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
-				console.log("random stuff on the way forward");
 				var heroTroopsPrice = game.heroTroopsPrice();
 				var rnd = Math.floor((Math.random() * 24) + 1);
 				if (game.myhero.aCampaignLong===0){
@@ -1803,7 +1802,7 @@
 		help(myobject) {
 			console.log(myobject.id);
 			if (myobject.id==="defencies_img") {
-				document.getElementById("lblBuildHelp").innerHTML=localeStrings[230];
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[232];
 			}
 			if (myobject.id==="home_img") {
 				document.getElementById("lblBuildHelp").innerHTML=localeStrings[233];

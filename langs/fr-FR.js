@@ -259,9 +259,9 @@ localeStrings.push("Agressif! Vouloir du sang et de l'or!");
 localeStrings.push("Prudent. A quoi bon d'or si votre héros est mort?");
 localeStrings.push("Vous devez d'abord ajouter des troupes à l'équipe de héros!");
 localeStrings.push("Vous avez besoin d'un héros pour faire ça!");
-localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");//230
-localeStrings.push("placeholder");//tower
-localeStrings.push("placeholder");//stone tower
+localeStrings.push("placeholder");//230
+localeStrings.push("placeholder");
+localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de population.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de dépenses. <br> Ce bâtiment vous permet d'engager des gardes du trésor. <br> Ils sont nécessaires pour réduire vos risques de vol.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour exécuter vos citoyens. <br> Il permet aussi d'augmenter les impôts et de diminuer le taux de natalité et le bonheur. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la fontaine!");//235
