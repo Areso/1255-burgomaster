@@ -1430,16 +1430,16 @@
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
-					var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
-					var question      = question.replace("%arg1", genMapPriceFinal);
+					var question      = localeStrings[179];
+					question          = question.replace("%arg1", genMapPriceFinal);
 					showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
 				} else {
-					alertMsg = "You couldn't do it while your hero on the map!";
+					alertMsg = localeStrings[180];
 					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 				}
 			} else {
-				var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
-				var question      = question.replace("%arg1", genMapPriceFinal);
+				var question      = localeStrings[179];
+				question          = question.replace("%arg1", genMapPriceFinal);
 				showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
 			}
 		},
@@ -1453,7 +1453,7 @@
 					if (game.gold >= genMapPriceFinal) {
 						genMap(genMapPriceFinal);
 					} else {
-						alertMsg = "You need more gold to do that!";
+						alertMsg = localeStrings[20];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				}
@@ -1620,8 +1620,7 @@
 				cityLeaveSmall();
 			}
 			function cityLeaveSmall() {
-				var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-				if (heroExists === true && game.myhero.status === 0) {
+				if (game.heroExists()===true && game.myhero.status === 0) {
 					if (game.isHeroHaveTroops() === true) {
 						var question = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
 						showModal(1, '', game.cityLeaveCallback, question, "Aggressive! Wanna blood and money!", "Cautious. What good of gold if you are dead?");
@@ -1651,30 +1650,27 @@
 			game.heroX = game.castleX;
 			game.heroY = game.castleY + 1;
 			game.myMapRemObjects[game.heroX][game.heroY] = 40;
-			console.log("we are are leaving the castle");
 			openTab(null, 'Explore');
 			updateUI();
 			composite_gm();
 		},
 		cityEnter : function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists===true && game.myhero.status === 2) {
+			if (game.heroExists()===true && game.myhero.status === 2) {
 				game.myhero.status = 0;
 				openTab(null, 'Main');
 				updateUI();
 			}
 		},
 		heroDismiss: function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists===true){
+			if (game.heroExists()===true){
 				if (game.isHeroHaveTroops()) {
-					var question      = "Do you want to dismiss hero with all troops?";
-					showModal(1, '', game.heroDismissCallback, question, "Yes, I would like to",  "Nope. I will move all units from the hero.");
+					var question      = localeStrings[177];
+					showModal(1, '', game.heroDismissCallback, question, localeStrings[32],  localeStrings[178]);
 				} else {
 					game.heroDie();
 				}
 			} else {
-				alertMsg = "You need a hero to do that!";
+				alertMsg = localeStrings[229];
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
@@ -1684,10 +1680,8 @@
 			}
 		},
 		calculateAutocampaign : function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
+			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
-				console.log("random stuff on the way forward");
 				var heroTroopsPrice = game.heroTroopsPrice();
 				var rnd = Math.floor((Math.random() * 24) + 1);
 				if (game.myhero.aCampaignLong===0){
@@ -1696,40 +1690,40 @@
 				if (game.myhero.stance === 0) {//aggressive stance
 					if (rnd===1) {
 						//you got killed
-						postJournalLog("the hero and all troops met their death in the glory combat");
+						postJournalLog(localeStrings[172]);
 						game.heroDie();
 					}
 					if (rnd>1 && rnd<=12) {
 						game.myhero.gold += Math.floor(heroTroopsPrice*1.05+1);
 						game.myhero.exp  += Math.floor(heroTroopsPrice*1.05+1);
-						postJournalLog("the hero has met great number of enemies and crash them. The battle brings to the hero money and experience!");
+						postJournalLog(localeStrings[173]);
 					}
 					if (rnd>12 && rnd<25) {
-						postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
+						postJournalLog(localeStrings[175]);
 					}
 				}
 				if (game.myhero.stance === 1) {//cautious stance
 					if (rnd>1 && rnd<=12) {
 						game.myhero.gold += Math.floor(heroTroopsPrice*0.35+1);
 						game.myhero.exp  += Math.floor(heroTroopsPrice*0.35+1);
-						postJournalLog("the hero has met small number of enemies and crash them. The battle brings to the hero money and experience!");
+						postJournalLog(localeStrings[174]);
 					}
 					if (rnd>12 && rnd<25) {
-						postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
+						postJournalLog(localeStrings[173]);
 					}
 				}
 				game.heroLvlUp();
 			}
-			if (heroExists === true && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
+			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
 					game.myhero.aCampaignLong     -= 1;
-					postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
+					postJournalLog(localeStrings[173]);
 				} else {
 					game.myhero.aCampaignLong      = 0;
 					game.myhero.status             = 0;
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
-					postEventLog("the hero brings to you this lot of gold from adventure: "+game.myhero.gold);
+					postEventLog(localeStrings[176]+game.myhero.gold);
 					game.gold                     += game.myhero.gold;
 					game.myhero.gold               = 0;
 				}
@@ -1738,9 +1732,8 @@
 		},
 		isHeroHaveTroops : function () {
 			var heroTroopsFlag = false;
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists === true) {
-				var totalCount = game.myhero.sergeants*1+game.myhero.turkopols*1+game.myhero.knights*1;
+			if (game.heroExists() === true) {
+				var totalCount = game.myhero.sergeants+game.myhero.turkopols+game.myhero.knights;
 				if (totalCount>0) {
 					heroTroopsFlag = true;
 				}
@@ -1755,14 +1748,13 @@
 			return price;
 		},
 		autocampaign : function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists===true){
+			if (game.heroExists()===true){
 				if (game.myhero.status===0) {
 					if (game.isHeroHaveTroops()) {
-						var question      = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
-						showModal(1, '', game.autocampaignLaunchCallback, question, "Aggressive! Wanna blood and money!",  "Cautious. What good of gold if you are dead?");
+						var question      = localeStrings[225];
+						showModal(1, '', game.autocampaignLaunchCallback, question, localeStrings[226], localeStrings[227]);
 					} else {
-						alertMsg = "You need to add some troops to hero's squad first!";
+						alertMsg = localeStrings[228];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				} else {
@@ -1775,7 +1767,7 @@
 					}
 				}
 			} else {
-				alertMsg = "You need a hero to do that!";
+				alertMsg = localeStrings[229];
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
@@ -1806,7 +1798,7 @@
 		help(myobject) {
 			console.log(myobject.id);
 			if (myobject.id==="defencies_img") {
-				document.getElementById("lblBuildHelp").innerHTML=localeStrings[230];
+				document.getElementById("lblBuildHelp").innerHTML=localeStrings[232];
 			}
 			if (myobject.id==="home_img") {
 				document.getElementById("lblBuildHelp").innerHTML=localeStrings[233];
@@ -1862,12 +1854,12 @@
 			return Math.pow((game.myhero.level+1) * config.heroExpK,2);
 		},
 		heroHire : function (silent) {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists === false) {
+			if (game.heroExists() === false) {
 				if (game.gold > config.costHero || silent===true) {
 					if (silent === false) {
 						game.gold                 = game.gold - config.costHero;
 					}
+					clearJournalLog();
 					game.myhero.level         = game.buildLevelInn;
 					game.myhero.exp           = Math.pow(game.myhero.level * config.heroExpK,2);
 					var x = document.getElementById("selectHeroClass").selectedIndex;
@@ -1931,12 +1923,9 @@
 			}
 		},
 		heroLvlUp : function () {
-			console.log("check hero exp for level up");
-			console.log("current hero exp is "+game.myhero.exp);
-			console.log("current hero next lvl is "+game.heroNextLvlExpLimit());
 			if (game.myhero.exp > game.heroNextLvlExpLimit()){
 				game.myhero.level +=1;
-				postJournalLog("Your hero got promoted to the next level!");
+				postJournalLog(localeStrings[224]);
 			}
 		},
 		heroDie : function () {
@@ -2667,7 +2656,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
 				//console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2804,7 +2793,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-10+i]  +'</td>';
 				//console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -3058,6 +3047,9 @@
 	function postEventLog(msgEventLog) {
 		document.getElementById("console_n_chat").innerHTML = document.getElementById("console_n_chat").innerHTML+"<br>"+getTime(0)+": "+msgEventLog;
 		scrollDown();
+	}
+	function clearJournalLog() {
+		document.getElementById("lblAutocampaignJournal").innerHTML = "";
 	}
 	function postJournalLog(msgEventLog) {
 		document.getElementById("lblAutocampaignJournal").innerHTML = document.getElementById("lblAutocampaignJournal").innerHTML+"<br>"+"Day "+game.myhero.aCampaignLong+": "+msgEventLog;

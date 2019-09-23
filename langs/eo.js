@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Nuna populacio limo estas %arg1"); // 80
-localeStrings.push("Nuna ora limo estas %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("langeto pri civitanaj historio");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Nuna populacio limo estas %arg1");
+localeStrings.push("Nuna ora limo estas %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("langeto pri mono historio");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("la heroo kaj ĉiuj trupoj renkontis sian morton en la glor-batalo");
+localeStrings.push("la heroo renkontis grandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
+localeStrings.push("la heroo renkontis malgrandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
+localeStrings.push("la tago estis tre enuiga. Nur unu pagano estis mortigita (ĉasisto prenis paganon kiel predon. Do malĝoja!)");//175
+localeStrings.push("Forigitaj trofeoj de la kampanjo: ");
+localeStrings.push("Ĉu vi volas eksigi heroon kun ĉiuj trupoj?");
+localeStrings.push("Ne. Unue, mi translokigos ĉiujn ekzemplerojn de la heroo");
+localeStrings.push("Ĉu vi volas generi novan mapon? Kostus al vi %arg1 mono!");
+localeStrings.push("Vi ne povis fari ĝin dum via heroo sur la mapo!");//180
 localeStrings.push("Bonvenon al Gastejo");
 localeStrings.push("dungi heroon<br/>nivelo %arg1<br/>%arg2 oro");
 localeStrings.push("bonŝanco");
@@ -253,15 +253,15 @@ localeStrings.push("Malferma taglibro"); // 220
 localeStrings.push("Uzu ruleton de urbeto");
 localeStrings.push("Iru al aventura mapo");
 localeStrings.push("Regeneri mapon");
+localeStrings.push("Via heroo promociiĝis al la sekva nivelo!");
+localeStrings.push("Ĉu vi volas agresa sinteno (pli alta rekompenco, pli alta risko) aŭ singarda?");//225
+localeStrings.push("Agresa! Volu sangon kaj monon!");
+localeStrings.push("Zorgema. Ĉu bona el oro se via heroo mortis?");
+localeStrings.push("Vi devas unue aldoni iujn trupojn al la taĉmento de herooj!");
+localeStrings.push("Vi bezonas heroon por fari tion!");
+localeStrings.push("placeholder");//230
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj."); // 230
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj bezonas por altigi vian loĝantar limon.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj estas bezonataj por pliigi vian monan limon. <br> Ĉi tiu konstruaĵo permesas dungi kasistojn. <br> Ili necesas por minimumigi viajn ŝancojn esti ŝtelitaj.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ekzekuti viajn civitanojn. <br> Ĝi ankaŭ pliigas impostojn kaj malpliigas naskiĝotempon kaj feliĉon. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la Fontanon!");

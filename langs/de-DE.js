@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");// 80
-localeStrings.push("Aktuelle Goldgrenze ist %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Bevölkerungshistorie-Tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");
+localeStrings.push("Aktuelle Goldgrenze ist %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Goldhistorie-Tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("Der Held und alle Truppen sind im Ruhmkampf ums Leben gekommen");
+localeStrings.push("Der Held hat eine große Anzahl von Feinden getroffen und sie zerschlagen. Der Kampf bringt dem Helden Geld und Erfahrung!");
+localeStrings.push("Der Held hat eine kleine Anzahl von Feinden getroffen und sie zerschlagen. Der Kampf bringt dem Helden Geld und Erfahrung!");
+localeStrings.push("Der Tag war sehr langweilig. Nur ein Heide wurde getötet (ein Jäger nahm einen Heiden als Beute. So traurig!)");//175
+localeStrings.push("Geplünderte Trophäen aus der Kampagne: ");
+localeStrings.push("Möchtest du den Helden mit allen Truppen entlassen?");
+localeStrings.push("Nicht. Ich werde zuerst alle Einheiten des Helden bewegen");
+localeStrings.push("Möchten Sie eine neue Karte erstellen? Es würde %arg1 Geld kosten!");
+localeStrings.push("Du konntest es nicht tun, während dein Held auf der Karte ist!");//180
 localeStrings.push("Willkommen im Schenke");
 localeStrings.push("Vermietung Held<br/>Stufe %arg1<br/>%arg2 Gold");
 localeStrings.push("Glück");
@@ -253,15 +253,15 @@ localeStrings.push("Tagebuch öffnen"); // 220
 localeStrings.push("Towngate-Scroll verwenden");
 localeStrings.push("Gehe zur Abenteuerkarte");
 localeStrings.push("Karte neu generieren");
+localeStrings.push("Dein Held wurde zum nächsten Level befördert!");
+localeStrings.push("Wollen Sie eine aggressive Haltung (höhere Belohnung, höheres Risiko) oder eine vorsichtige?");//225
+localeStrings.push("Aggressiv! Willst du Blut und Geld!");
+localeStrings.push("Vorsichtig. Was nützt Gold, wenn dein Held tot ist?");
+localeStrings.push("Sie müssen zuerst einige Truppen in den Kader des Helden aufnehmen!");
+localeStrings.push("Dafür brauchst du einen Helden!");
+localeStrings.push("placeholder");//230
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen."); // 230
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Ihr Bevölkerungslimit zu erhöhen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geldlimit zu erhöhen. <br> In diesem Gebäude können Sie Schatzmeister einstellen. <br> Sie werden benötigt, um die Wahrscheinlichkeit zu minimieren, dass Sie ausgeraubt werden.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Hinrichtung Ihrer Bürger erforderlich. <br> Es erhöht auch die Steuern und senkt die Geburtenrate und das Glück. <br> Wenn Sie dieses Gebäude bauen, können Sie den Brunnen nicht bauen!");

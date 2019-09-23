@@ -79,8 +79,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Текущий лимит населения %arg1");//80
-localeStrings.push("Текущий лимит золота %arg1");localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//85
@@ -190,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Данные о населении по периодам");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Текущий лимит населения %arg1");
+localeStrings.push("Текущий лимит золота %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -200,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Данные о казне по периодам");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("герой и все его войска встретили свою смерть на поле брани.");
+localeStrings.push("герой встретил превосходящего по численности врага и одолел его. Опыт и деньги стали наградой!");
+localeStrings.push("герой встретил малочисленного врага и одолел его. Опыт и деньги стали наградой!");
+localeStrings.push("день прошел скучно. Один язычник был убит (охотник принял его в лесу за дикого зверя. Бывает)");//175
+localeStrings.push("Добытые трофеи из похода: ");
+localeStrings.push("Вы хотите уволить героя со всеми войсками?");
+localeStrings.push("Нет. Сперва надо забрать войска");
+localeStrings.push("Вы хотите создать карту заново? Это будет стоить %arg1 золота");
+localeStrings.push("Нельзя это сделать, пока герой на карте");//180
 localeStrings.push("Вы в Таверне");
 localeStrings.push("Нанять героя<br/>уровень %arg1<br/>%arg2 золота");
 localeStrings.push("удача");
@@ -223,7 +224,7 @@ localeStrings.push("Защита");
 localeStrings.push("Сила магии");
 localeStrings.push("Мана");
 localeStrings.push("Опыт");
-localeStrings.push("Опыт");//195
+localeStrings.push("Текущий опыт");//195
 localeStrings.push("Опыт, необходимый для следующего уровня");
 localeStrings.push("Убеждение");
 localeStrings.push("Добропорядочный");
@@ -252,15 +253,15 @@ localeStrings.push("Открыть журнал");//220
 localeStrings.push("Свиток городских врат");
 localeStrings.push("На карту приключений");
 localeStrings.push("Пересоздать карту");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Ваш герой достиг следующего уровня!");
+localeStrings.push("Выберите поведение героя: агрессивное (выше награда и риск) или осторожное?");//225
+localeStrings.push("Агрессивное. Хочу крови и денег!");
+localeStrings.push("Осторожное. Какой толк от денег, если ваш герой мертв?");
+localeStrings.push("Сначала добавьте войск герою");
+localeStrings.push("Для этого нужен герой!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Это здание нужно для защиты города от захватчиков.");//230
-localeStrings.push("placeholder");//tower
-localeStrings.push("placeholder");//stone tower
 localeStrings.push("Это здание и его улучшения нужны, чтобы поднять лимит населения.");
 localeStrings.push("Это здание и его улучшения нужны, чтобы поднять лимит золота.<br>Это здание позволит вам нанять охранников.<br>Они нужны, чтобы уменьшить шансы быть обкраденным.");
 localeStrings.push("Это здание и его улучшения нужны, чтобы можно было казнить горожан.<br>Также повышает налоговые поступления, и уменьшает рождаемость и счастье горожан.<br>Если вы построите это здание, вы не сможете построить фонтан!");

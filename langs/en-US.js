@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Current population limit is %arg1");//80
-localeStrings.push("Current gold limit is %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Population history tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Current population limit is %arg1");
+localeStrings.push("Current gold limit is %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Gold history tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("the hero and all troops met their death in the glory combat");
+localeStrings.push("the hero has met great number of enemies and crash them. The battle brings to the hero money and experience!");
+localeStrings.push("the hero has met small number of enemies and crash them. The battle brings to the hero money and experience!");
+localeStrings.push("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");//175
+localeStrings.push("looted trophies from the campaign: ");
+localeStrings.push("Do you want to dismiss hero with all troops?");
+localeStrings.push("Nope. I will move all units from the hero first");
+localeStrings.push("Do you want to generate a new map? It would cost %arg1 gold to you!");
+localeStrings.push("You couldn't do it while your hero on the map!");//180
 localeStrings.push("Welcome to Inn!");
 localeStrings.push("Hire hero<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("luck");
@@ -253,15 +253,15 @@ localeStrings.push("Open journal");//220
 localeStrings.push("Use towngate scroll");
 localeStrings.push("Go to adventure map");
 localeStrings.push("Regenerate map");
+localeStrings.push("Your hero got promoted to the next level!");
+localeStrings.push("Do you want aggressive stance (higher reward, higher risk) or cautious one?");//225
+localeStrings.push("Aggressive! Want blood and money!");
+localeStrings.push("Cautious. What good of gold if your hero is dead?");
+localeStrings.push("You need to add some troops to hero's squad first!");
+localeStrings.push("You need a hero to do that!");
+localeStrings.push("placeholder");//230
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("This building is needed for defending the city from intruders.");//230
-localeStrings.push("placeholder");//tower
-localeStrings.push("placeholder");//stone tower
+localeStrings.push("This building is needed for defending the city from intruders.");
 localeStrings.push("This building and its improvements is needed to raise your population limit.");
 localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
 localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235
@@ -269,4 +269,4 @@ localeStrings.push("This building and its improvements is needed to place festiv
 localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash do you have, the more you could hide in the Stash.");
 localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable do you have, the more experienced troops you could hire there.");
-localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");
+localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");//240

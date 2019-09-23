@@ -79,8 +79,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("La population actuelle est limitée à %arg1");//80
-localeStrings.push("La limite d'or actuelle est de %arg1");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,8 +191,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
 localeStrings.push("Onglet Historique de la population");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("La population actuelle est limitée à %arg1");
+localeStrings.push("La limite d'or actuelle est de %arg1");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Onglet Historique de l'or");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("e héros et toutes les troupes ont rencontré leur mort dans le combat de gloire");
+localeStrings.push("le héros a rencontré un grand nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");
+localeStrings.push("le héros a rencontré un petit nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");
+localeStrings.push("la journée était très ennuyeuse. Un seul païen a été tué (un chasseur a pris un païen comme proie. Si triste!)");//175
+localeStrings.push("Trophées pillés de la campagne: ");
+localeStrings.push("Voulez-vous renvoyer le héros avec toutes les troupes?");
+localeStrings.push("Nan. Tout d'abord, je déplacerai toutes les unités du héros");
+localeStrings.push("Voulez-vous générer une nouvelle carte? Il vous en coûterait %arg1 pièces d'or!");
+localeStrings.push("Vous ne pouvez pas le faire tant que votre héros est sur la carte!");//180
 localeStrings.push("Bienvenue à l'auberge!");
 localeStrings.push("Embaucher un héros<br>de niveau %arg1<br>pour %arg2 pièces d'or");
 localeStrings.push("chance");
@@ -253,15 +253,15 @@ localeStrings.push("Journal ouvert"); // 220
 localeStrings.push("Utiliser porte de la cité");
 localeStrings.push("Aller à la carte d'aventure");
 localeStrings.push("Régénérer la carte");
+localeStrings.push("Votre héros a été promu au niveau suivant!");
+localeStrings.push("Voulez-vous une attitude agressive (récompense plus élevée, risque plus élevé) ou une position de prudence?");//225
+localeStrings.push("Agressif! Vouloir du sang et de l'or!");
+localeStrings.push("Prudent. A quoi bon d'or si votre héros est mort?");
+localeStrings.push("Vous devez d'abord ajouter des troupes à l'équipe de héros!");
+localeStrings.push("Vous avez besoin d'un héros pour faire ça!");
+localeStrings.push("placeholder");//230
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//225
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");//230
-localeStrings.push("placeholder");//tower
-localeStrings.push("placeholder");//stone tower
+localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de population.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de dépenses. <br> Ce bâtiment vous permet d'engager des gardes du trésor. <br> Ils sont nécessaires pour réduire vos risques de vol.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour exécuter vos citoyens. <br> Il permet aussi d'augmenter les impôts et de diminuer le taux de natalité et le bonheur. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la fontaine!");//235
@@ -269,4 +269,4 @@ localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour or
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour protéger votre argent des voleurs, au cas où les voleurs dévaliseraient votre trésorerie. <br> Plus le niveau de Planque est élevé, plus vous pourrez vous cacher d'or dans la Planque.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de cavalerie. <br> Plus le niveau d'écurie est élevé, plus vous pourrez engager des troupes expérimentées là-bas.");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone.");
+localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone.");//240
