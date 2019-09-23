@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Gold history tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("the hero and all troops met their death in the glory combat");
+localeStrings.push("the hero has met great number of enemies and crash them. The battle brings to the hero money and experience!");
+localeStrings.push("the hero has met small number of enemies and crash them. The battle brings to the hero money and experience!");
+localeStrings.push("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");//175
+localeStrings.push("looted trophies from the campaign: ");
+localeStrings.push("Do you want to dismiss hero with all troops?");
+localeStrings.push("Nope. I will move all units from the hero first");
+localeStrings.push("Do you want to generate a new map? It would cost %arg1 gold to you!");
+localeStrings.push("You couldn't do it while your hero on the map!");//180
 localeStrings.push("Welcome to Inn!");
 localeStrings.push("Hire hero<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("luck");

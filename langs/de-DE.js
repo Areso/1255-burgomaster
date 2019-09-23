@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Goldhistorie-Tab");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("Der Held und alle Truppen sind im Ruhmkampf ums Leben gekommen");
+localeStrings.push("Der Held hat eine große Anzahl von Feinden getroffen und sie zerschlagen. Der Kampf bringt dem Helden Geld und Erfahrung!");
+localeStrings.push("Der Held hat eine kleine Anzahl von Feinden getroffen und sie zerschlagen. Der Kampf bringt dem Helden Geld und Erfahrung!");
+localeStrings.push("Der Tag war sehr langweilig. Nur ein Heide wurde getötet (ein Jäger nahm einen Heiden als Beute. So traurig!)");//175
+localeStrings.push("Geplünderte Trophäen aus der Kampagne: ");
+localeStrings.push("Möchtest du den Helden mit allen Truppen entlassen?");
+localeStrings.push("Nicht. Ich werde zuerst alle Einheiten des Helden bewegen");
+localeStrings.push("Möchten Sie eine neue Karte erstellen? Es würde %arg1 Geld kosten!");
+localeStrings.push("Du konntest es nicht tun, während dein Held auf der Karte ist!");//180
 localeStrings.push("Willkommen im Schenke");
 localeStrings.push("Vermietung Held<br/>Stufe %arg1<br/>%arg2 Gold");
 localeStrings.push("Glück");

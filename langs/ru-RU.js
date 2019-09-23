@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Данные о казне по периодам");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("герой и все его войска встретили свою смерть на поле брани.");
+localeStrings.push("герой встретил превосходящего по численности врага и одолел его. Опыт и деньги стали наградой!");
+localeStrings.push("герой встретил малочисленного врага и одолел его. Опыт и деньги стали наградой!");
+localeStrings.push("день прошел скучно. Один язычник был убит (охотник принял его в лесу за дикого зверя. Бывает)");//175
+localeStrings.push("Добытые трофеи из похода: ");
+localeStrings.push("Вы хотите уволить героя со всеми войсками?");
+localeStrings.push("Нет. Сперва надо забрать войска");
+localeStrings.push("Вы хотите создать карту заново? Это будет стоить %arg1 золота");
+localeStrings.push("Нельзя это сделать, пока герой на карте");//180
 localeStrings.push("Вы в Таверне");
 localeStrings.push("Нанять героя<br/>уровень %arg1<br/>%arg2 золота");
 localeStrings.push("удача");
@@ -224,7 +224,7 @@ localeStrings.push("Защита");
 localeStrings.push("Сила магии");
 localeStrings.push("Мана");
 localeStrings.push("Опыт");
-localeStrings.push("Опыт");//195
+localeStrings.push("Текущий опыт");//195
 localeStrings.push("Опыт, необходимый для следующего уровня");
 localeStrings.push("Убеждение");
 localeStrings.push("Добропорядочный");

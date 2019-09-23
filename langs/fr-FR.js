@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("Onglet Historique de l'or");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("e héros et toutes les troupes ont rencontré leur mort dans le combat de gloire");
+localeStrings.push("le héros a rencontré un grand nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");
+localeStrings.push("le héros a rencontré un petit nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");
+localeStrings.push("la journée était très ennuyeuse. Un seul païen a été tué (un chasseur a pris un païen comme proie. Si triste!)");//175
+localeStrings.push("Trophées pillés de la campagne: ");
+localeStrings.push("Voulez-vous renvoyer le héros avec toutes les troupes?");
+localeStrings.push("Nan. Tout d'abord, je déplacerai toutes les unités du héros");
+localeStrings.push("Voulez-vous générer une nouvelle carte? Il vous en coûterait %arg1 pièces d'or!");
+localeStrings.push("Vous ne pouvez pas le faire tant que votre héros est sur la carte!");//180
 localeStrings.push("Bienvenue à l'auberge!");
 localeStrings.push("Embaucher un héros<br>de niveau %arg1<br>pour %arg2 pièces d'or");
 localeStrings.push("chance");

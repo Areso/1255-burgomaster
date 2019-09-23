@@ -201,15 +201,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//170
 localeStrings.push("langeto pri mono historio");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//175
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//180
+localeStrings.push("la heroo kaj ĉiuj trupoj renkontis sian morton en la glor-batalo");
+localeStrings.push("la heroo renkontis grandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
+localeStrings.push("la heroo renkontis malgrandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
+localeStrings.push("la tago estis tre enuiga. Nur unu pagano estis mortigita (ĉasisto prenis paganon kiel predon. Do malĝoja!)");//175
+localeStrings.push("Forigitaj trofeoj de la kampanjo: ");
+localeStrings.push("Ĉu vi volas eksigi heroon kun ĉiuj trupoj?");
+localeStrings.push("Ne. Unue, mi translokigos ĉiujn ekzemplerojn de la heroo");
+localeStrings.push("Ĉu vi volas generi novan mapon? Kostus al vi %arg1 mono!");
+localeStrings.push("Vi ne povis fari ĝin dum via heroo sur la mapo!");//180
 localeStrings.push("Bonvenon al Gastejo");
 localeStrings.push("dungi heroon<br/>nivelo %arg1<br/>%arg2 oro");
 localeStrings.push("bonŝanco");

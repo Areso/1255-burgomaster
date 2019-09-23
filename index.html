@@ -1430,16 +1430,16 @@
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
-					var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
-					var question      = question.replace("%arg1", genMapPriceFinal);
+					var question      = localeStrings[179];
+					question          = question.replace("%arg1", genMapPriceFinal);
 					showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
 				} else {
-					alertMsg = "You couldn't do it while your hero on the map!";
+					alertMsg = localeStrings[180];
 					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 				}
 			} else {
-				var question      = "Do you want to generate a new map? It would cost %arg1 to you!";
-				var question      = question.replace("%arg1", genMapPriceFinal);
+				var question      = localeStrings[179];
+				question          = question.replace("%arg1", genMapPriceFinal);
 				showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
 			}
 		},
@@ -1453,7 +1453,7 @@
 					if (game.gold >= genMapPriceFinal) {
 						genMap(genMapPriceFinal);
 					} else {
-						alertMsg = "You need more gold to do that!";
+						alertMsg = localeStrings[20];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				}
@@ -1620,8 +1620,7 @@
 				cityLeaveSmall();
 			}
 			function cityLeaveSmall() {
-				var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-				if (heroExists === true && game.myhero.status === 0) {
+				if (game.heroExists()===true && game.myhero.status === 0) {
 					if (game.isHeroHaveTroops() === true) {
 						var question = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
 						showModal(1, '', game.cityLeaveCallback, question, "Aggressive! Wanna blood and money!", "Cautious. What good of gold if you are dead?");
@@ -1651,30 +1650,27 @@
 			game.heroX = game.castleX;
 			game.heroY = game.castleY + 1;
 			game.myMapRemObjects[game.heroX][game.heroY] = 40;
-			console.log("we are are leaving the castle");
 			openTab(null, 'Explore');
 			updateUI();
 			composite_gm();
 		},
 		cityEnter : function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists===true && game.myhero.status === 2) {
+			if (game.heroExists()===true && game.myhero.status === 2) {
 				game.myhero.status = 0;
 				openTab(null, 'Main');
 				updateUI();
 			}
 		},
 		heroDismiss: function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			if (heroExists===true){
+			if (game.heroExists()===true){
 				if (game.isHeroHaveTroops()) {
-					var question      = "Do you want to dismiss hero with all troops?";
-					showModal(1, '', game.heroDismissCallback, question, "Yes, I would like to",  "Nope. I will move all units from the hero.");
+					var question      = localeStrings[177];
+					showModal(1, '', game.heroDismissCallback, question, localeStrings[32],  localeStrings[178]);
 				} else {
 					game.heroDie();
 				}
 			} else {
-				alertMsg = "You need a hero to do that!";
+				alertMsg = localeStrings[229];
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 			}
 		},
@@ -1694,26 +1690,26 @@
 				if (game.myhero.stance === 0) {//aggressive stance
 					if (rnd===1) {
 						//you got killed
-						postJournalLog("the hero and all troops met their death in the glory combat");
+						postJournalLog(localeStrings[172]);
 						game.heroDie();
 					}
 					if (rnd>1 && rnd<=12) {
 						game.myhero.gold += Math.floor(heroTroopsPrice*1.05+1);
 						game.myhero.exp  += Math.floor(heroTroopsPrice*1.05+1);
-						postJournalLog("the hero has met great number of enemies and crash them. The battle brings to the hero money and experience!");
+						postJournalLog(localeStrings[173]);
 					}
 					if (rnd>12 && rnd<25) {
-						postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
+						postJournalLog(localeStrings[175]);
 					}
 				}
 				if (game.myhero.stance === 1) {//cautious stance
 					if (rnd>1 && rnd<=12) {
 						game.myhero.gold += Math.floor(heroTroopsPrice*0.35+1);
 						game.myhero.exp  += Math.floor(heroTroopsPrice*0.35+1);
-						postJournalLog("the hero has met small number of enemies and crash them. The battle brings to the hero money and experience!");
+						postJournalLog(localeStrings[174]);
 					}
 					if (rnd>12 && rnd<25) {
-						postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
+						postJournalLog(localeStrings[173]);
 					}
 				}
 				game.heroLvlUp();
@@ -1721,13 +1717,13 @@
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
 					game.myhero.aCampaignLong     -= 1;
-					postJournalLog("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");
+					postJournalLog(localeStrings[173]);
 				} else {
 					game.myhero.aCampaignLong      = 0;
 					game.myhero.status             = 0;
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
-					postEventLog("the hero brings to you this lot of gold from adventure: "+game.myhero.gold);
+					postEventLog(localeStrings[176]+game.myhero.gold);
 					game.gold                     += game.myhero.gold;
 					game.myhero.gold               = 0;
 				}
