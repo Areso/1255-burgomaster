@@ -215,7 +215,7 @@ localeStrings.push("Embaucher un héros<br>de niveau %arg1<br>pour %arg2 pièces
 localeStrings.push("chance");
 localeStrings.push("superstition");
 localeStrings.push("morale"); // 185
-localeStrings.push("placeholder");
+localeStrings.push("le héros a trouvé de l'or: ");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Niveau");
@@ -259,8 +259,8 @@ localeStrings.push("Agressif! Vouloir du sang et de l'or!");
 localeStrings.push("Prudent. A quoi bon d'or si votre héros est mort?");
 localeStrings.push("Vous devez d'abord ajouter des troupes à l'équipe de héros!");
 localeStrings.push("Vous avez besoin d'un héros pour faire ça!");
-localeStrings.push("placeholder");//230
-localeStrings.push("placeholder");
+localeStrings.push("C'est un plaisir d'avoir une entreprise avec vous. Je te reverrai");//230
+localeStrings.push("Félicitations pour votre achat! Vous avez fait le bon choix!");
 localeStrings.push("Ce bâtiment est nécessaire pour protéger la cité des intrus.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de population.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de dépenses. <br> Ce bâtiment vous permet d'engager des gardes du trésor. <br> Ils sont nécessaires pour réduire vos risques de vol.");
@@ -270,3 +270,18 @@ localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour pr
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de cavalerie. <br> Plus le niveau d'écurie est élevé, plus vous pourrez engager des troupes expérimentées là-bas.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone.");//240
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//245
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//250
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//255

@@ -215,7 +215,7 @@ localeStrings.push("dungi heroon<br/>nivelo %arg1<br/>%arg2 oro");
 localeStrings.push("bonŝanco");
 localeStrings.push("superstiĉo");
 localeStrings.push("moralo"); // 185
-localeStrings.push("placeholder");
+localeStrings.push("la heroo trovis iom da mono: ");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Nivelo");
@@ -259,8 +259,8 @@ localeStrings.push("Agresa! Volu sangon kaj monon!");
 localeStrings.push("Zorgema. Ĉu bona el oro se via heroo mortis?");
 localeStrings.push("Vi devas unue aldoni iujn trupojn al la taĉmento de herooj!");
 localeStrings.push("Vi bezonas heroon por fari tion!");
-localeStrings.push("placeholder");//230
-localeStrings.push("placeholder");
+localeStrings.push("Estas plezuro havi komercon kun vi. Mi revidos vin");//230
+localeStrings.push("Gratulojn pro via aĉeto! Vi faris bonan elekton!");
 localeStrings.push("Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj bezonas por altigi vian loĝantar limon.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj estas bezonataj por pliigi vian monan limon. <br> Ĉi tiu konstruaĵo permesas dungi kasistojn. <br> Ili necesas por minimumigi viajn ŝancojn esti ŝtelitaj.");
@@ -269,4 +269,19 @@ localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por aranĝi
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ŝpari vian monon de ŝtelistoj, se la ŝtelistoj ŝtelas vian trezorejon. La pli alta nivelo de Stash vi havas, des pli vi povus kaŝi en la Stash.") ;
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi kavaleriajn unuojn. La pli alta Ĉevalejo nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");
-localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");
+localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");//240
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//245
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//250
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//255

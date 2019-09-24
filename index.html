@@ -1177,6 +1177,7 @@
 	//init variables
 	var game = {
 		gold:20,
+		gens:0,
 		pop:2,
 		season:2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
 		year:1255,
@@ -1262,7 +1263,7 @@
 					game.blackMarketGoods.push(artefacts[the_selling_artefact].id);
 				}
 				updateBlackMarket(null,the_selling_artefactIndex);
-				msg = "It is a pleasure to have a business with you. I will see you again";
+				msg = localeStrings[230];
 				postEventLog(msg);
 			}
 		},
@@ -1280,7 +1281,7 @@
 				} else {
 					updateBlackMarket(null,null);
 				}
-				msg = "Congratulations with your purchase! you made good choice!";
+				msg = localeStrings[231];
 				postEventLog(msg);
 			} else {
 				msg = "<b>%arg1</b>";
@@ -1585,7 +1586,7 @@
 		checkColissionWithRemovableObstacles : function () {
 			if (game.myMapRemObjects[game.heroX][game.heroY]===1) {
 				var money_found = 25;
-				postEventLog("the hero found some money: "+money_found);
+				postEventLog(localeStrings[186]+money_found);
 				game.gold = game.gold + money_found;
 			}
 		},
@@ -1609,8 +1610,7 @@
 			}
 		},
 		heroExists: function () {
-			var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-			return heroExists;
+			return (Object.keys(game.myhero).length === 0 && game.myhero.constructor === Object) ? false : true;
 		},
 		cityLeave : function () {
 			if (game.myMapLand.length===config.sizeMapX) {
@@ -1622,10 +1622,10 @@
 			function cityLeaveSmall() {
 				if (game.heroExists()===true && game.myhero.status === 0) {
 					if (game.isHeroHaveTroops() === true) {
-						var question = "Do you want aggressive stance (higher reward, higher risk) or cautious one?";
-						showModal(1, '', game.cityLeaveCallback, question, "Aggressive! Wanna blood and money!", "Cautious. What good of gold if you are dead?");
+						var question = localeStrings[225];
+						showModal(1, '', game.cityLeaveCallback, question, localeStrings[226], localeStrings[227]);
 					} else {
-						alertMsg = "You need to add some troops to hero's squad first!";
+						alertMsg = localeStrings[228];
 						showModal(0, '', getAck, alertMsg, localeStrings[60], '');
 					}
 				} else {

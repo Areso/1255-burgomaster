@@ -215,7 +215,7 @@ localeStrings.push("Hire hero<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("luck");
 localeStrings.push("superstition");
 localeStrings.push("morale");//185
-localeStrings.push("placeholder");
+localeStrings.push("the hero found some money: ");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Level");
@@ -259,8 +259,8 @@ localeStrings.push("Aggressive! Want blood and money!");
 localeStrings.push("Cautious. What good of gold if your hero is dead?");
 localeStrings.push("You need to add some troops to hero's squad first!");
 localeStrings.push("You need a hero to do that!");
-localeStrings.push("placeholder");//230
-localeStrings.push("placeholder");
+localeStrings.push("It is a pleasure to have a business with you. I will see you again");//230
+localeStrings.push("Congratulations with your purchase! you made good choice!");
 localeStrings.push("This building is needed for defending the city from intruders.");
 localeStrings.push("This building and its improvements is needed to raise your population limit.");
 localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
@@ -270,3 +270,18 @@ localeStrings.push("This building and its improvements is needed to save your mo
 localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable do you have, the more experienced troops you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");//240
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//245
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//250
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//255
