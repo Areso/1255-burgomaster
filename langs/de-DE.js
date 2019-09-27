@@ -215,7 +215,7 @@ localeStrings.push("Vermietung Held<br/>Stufe %arg1<br/>%arg2 Gold");
 localeStrings.push("Glück");
 localeStrings.push("Aberglaube");
 localeStrings.push("Moral"); // 185
-localeStrings.push("placeholder");
+localeStrings.push("Der Held hat etwas Geld gefunden: ");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Stufe");
@@ -259,8 +259,8 @@ localeStrings.push("Aggressiv! Willst du Blut und Geld!");
 localeStrings.push("Vorsichtig. Was nützt Gold, wenn dein Held tot ist?");
 localeStrings.push("Sie müssen zuerst einige Truppen in den Kader des Helden aufnehmen!");
 localeStrings.push("Dafür brauchst du einen Helden!");
-localeStrings.push("placeholder");//230
-localeStrings.push("placeholder");
+localeStrings.push("Es ist eine Freude, mit Ihnen Geschäfte zu machen. Ich werde dich wiedersehen");//230
+localeStrings.push("Herzlichen Glückwunsch zum Kauf! Sie haben eine gute Wahl getroffen!");
 localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Ihr Bevölkerungslimit zu erhöhen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geldlimit zu erhöhen. <br> In diesem Gebäude können Sie Schatzmeister einstellen. <br> Sie werden benötigt, um die Wahrscheinlichkeit zu minimieren, dass Sie ausgeraubt werden.");
@@ -270,3 +270,18 @@ localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, u
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Helden einzustellen.<br> Je höher Ihr Inn-Level ist, desto erfahrener können Sie dort Helden einstellen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Kavallerien einzustellen.<br> Je höher Ihr Stall Level ist, desto erfahrener können Sie dort Kavallerien einstellen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Bogenschützen einzustellen.<br> Je höher Ihre Schießstand Level ist, desto erfahrener können Sie dort Truppen anheuern.");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//245
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//250
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//255
