@@ -242,16 +242,16 @@
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
-			Sound effects and music<br>
+			<label id="lblSoundMenu">Sound effects and music</label><br>
 			<!--Note, those above overwrite those below-->
 			<table border="0" width="100%">
 				<tr>
-					<td width="60%">Option</td>
-					<td width="20%">On</td>
-					<td width="20%">Off</td>
+					<td width="60%"><label id="lblOption">Option</label></td>
+					<td width="20%"><label id="lblOn">On</label></td>
+					<td width="20%"><label id="lblOff">Off</label></td>
 				</tr>
 				<tr>
-					<td width="60%">All sound effects</td>
+					<td width="60%"><label id="lblSfxAll">All sound effects</label></td>
 					<td width="20%"><input type = "radio"
 										   name = "sfx"
 										   id = "sfx_on"
@@ -265,7 +265,7 @@
 										   checked = "checked" /></td>
 				</tr>
 				<tr>
-					<td width="60%">Effects on all events</td>
+					<td width="60%"><label id="lblSfxEvt">Effects on all events</label></td>
 					<td width="20%"><input type = "radio"
 										   name = "sfx_events"
 										   id = "sfx_events_on"
@@ -279,7 +279,7 @@
 										   checked = "checked" /></td>
 				</tr>
 				<tr>
-					<td width="60%">Effects on action required events</td>
+					<td width="60%"><label id="lblSfxEvtAR">Effects on action required events</label></td>
 					<td width="20%"><input type = "radio"
 										   name = "sfx_actions"
 										   id = "sfx_actions_on"
@@ -298,7 +298,7 @@
 					<td width="20%">-----</td>
 				</tr>
 				<tr>
-					<td width="60%">Music all</td>
+					<td width="60%"><label id="lblMscAll">Music all</label></td>
 					<td width="20%"><input type = "radio"
 										   name = "music_all"
 										   id = "music_on"
@@ -312,7 +312,7 @@
 										   checked = "checked" /></td>
 				</tr>
 				<tr>
-					<td width="60%">Lore and scenary music</td>
+					<td width="60%"><label id="lblMscScr">Lore and scenery music</label></td>
 					<td width="20%"><input type = "radio"
 										   name = "music_script"
 										   id = "music_scripts_on"
@@ -1237,17 +1237,17 @@
 					game.artefact_loss(null, "hero", theTowngateIndex);
 					game.myhero.aCampaignLong = 1;
 					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1","The hero is just behind the city now!");
+					msg = msg.replace("%arg1",localeStrings[255]);
 					postEventLog(msg);
 					updateUI();
 				} else {
 					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1","You don't have a Towngate scroll!");
+					msg = msg.replace("%arg1",localeStrings[256]);
 					postEventLog(msg);
 				}
 			} else {
 				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1","First, head the hero to the town!");
+				msg = msg.replace("%arg1",localeStrings[257]);
 				postEventLog(msg);
 			}
 		},
@@ -2500,7 +2500,7 @@
 		festCooldown:30,
 		glSaveVersion: 9,
 		genMapCostBasic: 50,
-	}
+	};
 	var artefacts = {
 		artid00: {
 			id: "artid00",
@@ -3035,6 +3035,17 @@
 		document.getElementById("btnTowngate").innerText         = localeStrings[221];
 		document.getElementById("btnLeaveCity").innerText        = localeStrings[222];
 		document.getElementById("btnGenerateMap").innerText      = localeStrings[223];
+		document.getElementById("lblOption").innerText           = localeStrings[71];
+		document.getElementById("lblOn").innerText               = localeStrings[72];
+		document.getElementById("lblOff").innerText              = localeStrings[73];
+		document.getElementById("lblSfxAll").innerText           = localeStrings[74];
+		document.getElementById("lblSfxEvt").innerText           = localeStrings[75];
+		document.getElementById("lblSfxEvtAR").innerText         = localeStrings[76];
+		document.getElementById("lblMscAll").innerText           = localeStrings[77];
+		document.getElementById("lblMscScr").innerText           = localeStrings[78];
+		document.getElementById("btnToGeneralSettings").innerText= localeStrings[79];
+		document.getElementById("lblSoundMenu").innerText        = localeStrings[80];
+		document.getElementById("btnSoundSettings").innerText    = localeStrings[81];
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();

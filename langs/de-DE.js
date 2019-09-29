@@ -70,17 +70,17 @@ localeStrings.push("Spielstand exportieren");
 localeStrings.push("Spielstand importieren");
 localeStrings.push("Automatisches Speichern");
 localeStrings.push("Farbmodus ändern");//70
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//75
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//80
-localeStrings.push("placeholder");
+localeStrings.push("Möglichkeit");
+localeStrings.push("Auf");
+localeStrings.push("Aus");
+localeStrings.push("Alle Soundeffekte");
+localeStrings.push("Auswirkungen auf alle Ereignisse");//75
+localeStrings.push("Auswirkungen auf die erforderlichen Ereignisse");
+localeStrings.push("Musik alles");
+localeStrings.push("Überlieferungs- und Bühnenmusik");
+localeStrings.push("Zurück");
+localeStrings.push("Einstellungen von Soundeffekten und Musik");//80
+localeStrings.push("Klangeinstellungen öffnen");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -270,18 +270,28 @@ localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, u
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Helden einzustellen.<br> Je höher Ihr Inn-Level ist, desto erfahrener können Sie dort Helden einstellen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Kavallerien einzustellen.<br> Je höher Ihr Stall Level ist, desto erfahrener können Sie dort Kavallerien einstellen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Bogenschützen einzustellen.<br> Je höher Ihre Schießstand Level ist, desto erfahrener können Sie dort Truppen anheuern.");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//245
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//250
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//255
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//245
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//250
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Der Held ist gerade hinter der Stadt!");//255
+localeStrings.push("Sie haben keine Towngate-Schriftrolle!");
+localeStrings.push("Begib dich zuerst mit dem Helden in die Stadt!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//270

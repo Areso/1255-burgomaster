@@ -70,17 +70,17 @@ localeStrings.push("eksporti konserva dosieron");
 localeStrings.push("importi konserva dosieron");
 localeStrings.push("aŭtomate konservi");
 localeStrings.push("Ŝanĝi koloran reĝimon");//70
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//75
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//80
-localeStrings.push("placeholder");
+localeStrings.push("Prefero");
+localeStrings.push("On");
+localeStrings.push("Malŝaltita");
+localeStrings.push("Ĉiuj sonefektoj");
+localeStrings.push("Efikoj al ĉiuj eventoj");//75
+localeStrings.push("Efikoj sur agado postulis eventojn");
+localeStrings.push("Muziko ĉio");
+localeStrings.push("Lore kaj scenomuziko");
+localeStrings.push("Reen");
+localeStrings.push("Preferoj de sonefektoj kaj muziko");//80
+localeStrings.push("Malfermu sonajn preferojn");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -270,18 +270,28 @@ localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ŝpari 
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi kavaleriajn unuojn. La pli alta Ĉevalejo nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");//240
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//245
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//250
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//255
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//245
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//250
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("La heroo estas malantaŭ la urbo nun!");//255
+localeStrings.push("Vi ne havas Towngate-movon!");
+localeStrings.push("Unue, direktu la heroon al la urbo!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//270
