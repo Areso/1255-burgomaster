@@ -70,17 +70,17 @@ localeStrings.push("Экспорт сохранения");
 localeStrings.push("Импорт сохранения");
 localeStrings.push("Автосохранение");
 localeStrings.push("Сменить цветовой режим");//70
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//75
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//80
-localeStrings.push("placeholder");
+localeStrings.push("Опция");
+localeStrings.push("Включено");
+localeStrings.push("Выключено");
+localeStrings.push("Все звуковые эффекты");
+localeStrings.push("Эффекты всех событий");//75
+localeStrings.push("Эффекты событий, где нужна ваша реакция");
+localeStrings.push("Вся музыка");
+localeStrings.push("Музыка сценариев");
+localeStrings.push("Назад");
+localeStrings.push("Настройки музыки и эффектов");//80
+localeStrings.push("Открыть звуковые настройки");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -270,18 +270,28 @@ localeStrings.push("Это здание и его улучшения нужны,
 localeStrings.push("Это здание и его улучшения нужны, чтобы нанимать героев.<br>Более высокий уровень таверны позволит нанимать вам более опытных героев.");
 localeStrings.push("Это здание и его улучшения нужны, чтобы нанимать конницу.<br>Более высокий уровень конюшни позволит нанимать вам более опытные войска.");
 localeStrings.push("Это здание и его улучшения нужны, чтобы нанимать лучников.<br>Более высокий уровень стрельбища позволит нанимать вам более опытные войска.");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//245
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//250
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//255
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//245
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//250
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Герой теперь буквально в одном шаге от города!");//255
+localeStrings.push("У вас нет свитка городских врат!");
+localeStrings.push("Сначала направьте героя в город.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//270

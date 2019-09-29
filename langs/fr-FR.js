@@ -70,17 +70,17 @@ localeStrings.push("Exporter la partie");
 localeStrings.push("Importer la partie");
 localeStrings.push("Sauvegarde automatique");
 localeStrings.push("Inverser les couleurs");//70
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//75
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//80
-localeStrings.push("placeholder");
+localeStrings.push("Option");
+localeStrings.push("Sur");
+localeStrings.push("De");
+localeStrings.push("Tous les effets sonores");
+localeStrings.push("Effets sur tous les événements");//75
+localeStrings.push("Effets sur les événements requis");
+localeStrings.push("Musique tout");
+localeStrings.push("Musique de tradition et de paysages");
+localeStrings.push("Retour");
+localeStrings.push("Réglages des effets sonores et de la musique");//80
+localeStrings.push("Ouvrir les paramètres sonores");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -270,18 +270,28 @@ localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour pr
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de cavalerie. <br> Plus le niveau d'écurie est élevé, plus vous pourrez engager des troupes expérimentées là-bas.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone.");//240
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//245
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//250
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//255
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//245
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//250
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Le héros est juste derrière la ville maintenant!");//255
+localeStrings.push("Vous n'avez pas de rouleau Towngate!");
+localeStrings.push("Tout d'abord, dirigez le héros en ville!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//270

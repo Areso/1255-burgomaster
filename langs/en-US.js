@@ -70,17 +70,17 @@ localeStrings.push("Export Game");
 localeStrings.push("Import Game");
 localeStrings.push("Autosave");
 localeStrings.push("Change color mode");//70
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//75
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//80
-localeStrings.push("placeholder");
+localeStrings.push("Option");
+localeStrings.push("On");
+localeStrings.push("Off");
+localeStrings.push("All sound effects");
+localeStrings.push("Effects on all events");//75
+localeStrings.push("Effects on action required events");
+localeStrings.push("All music");
+localeStrings.push("Lore and script music");
+localeStrings.push("Back");
+localeStrings.push("Sound effects and music");//80
+localeStrings.push("Open sound settings");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -284,4 +284,14 @@ localeStrings.push("");
 localeStrings.push("");
 localeStrings.push("");
 localeStrings.push("");
-localeStrings.push("");//255
+localeStrings.push("The hero is just behind the city now!");//255
+localeStrings.push("You don't have a Towngate scroll!");
+localeStrings.push("First, head the hero to the town!");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//260
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");
+localeStrings.push("");//270
