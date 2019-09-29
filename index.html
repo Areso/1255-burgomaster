@@ -355,6 +355,33 @@
 			</table>
 			</div>
 		</div>
+		<div id="Fireguards" class="tabcontent">
+			<h3><div id="lblFireguards">Fire extinguishers service!</div></h3>
+			<table border="0" width="100%">
+			<tr>
+				<td width="60%"><label id="lblFGOption">The service is </label></td>
+				<td width="20%"><label id="lblFGOn">on duty</label></td>
+				<td width="20%"><label id="lblFGOff">off duty</label></td>
+			</tr>
+			<tr>
+				<td width="60%"></td>
+				<td width="20%"><input type = "radio"
+									   name = "fg"
+									   id = "fg_on"
+									   value = "on"
+									   onchange="game.setupFireguards(1)"/></td>
+				<td width="20%"><input type = "radio"
+									   name = "fg"
+									   id = "fg_off"
+									   value = "off"
+									   onchange="game.setupFireguards(0)"
+									   checked = "checked" /></td>
+			</tr>
+			</table>
+			<br>
+			The price of sustain of the service is:	<label id="fgPrice">0</label>
+			<br>
+		</div>
 		<div id="Building" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelBuilding">Building</div></h3>
