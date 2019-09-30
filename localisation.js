@@ -35,7 +35,10 @@ function loadStartLocale(){
 		if (language.indexOf('fr')!==-1) {
 			language = 'fr-FR';
 		}
-		locales = ['en-US','ru-RU','de-DE','eo','fr-FR'];
+		if (language.indexOf('fi')!==-1) {
+			language = 'fi-FI';
+		}
+		locales = ['en-US','ru-RU','de-DE','eo','fr-FR','fi-FI'];
 		default_locale = 'en-US';
 		if (checkValue(language, locales)===1) {
 			loadLocale(language);

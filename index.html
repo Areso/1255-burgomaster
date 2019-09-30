@@ -233,7 +233,8 @@
 				<option id="optionLngRu"          value="ru-RU">Русский</option>
 				<option id="optionLngGe"          value="de-DE">Deutsch</option>
 				<option id="optionLngEo"          value="eo">Esperanto</option>
-				<option id="optionLngFr"          value="fr-FR">français</option>
+				<option id="optionLngFr"          value="fr-FR">Français</option>
+				<option id="optionLngFi"          value="fi-FI">Suomi</option>
 			</select>
 			</div>
 			<br>
@@ -3027,6 +3028,9 @@
 		}
 		if (returnLanguage==='fr-FR') {
 			document.getElementById("selectLng").selectedIndex=4;
+		}
+		if (returnLanguage==='fi-FI') {
+			document.getElementById("selectLng").selectedIndex=5;
 		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
