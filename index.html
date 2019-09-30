@@ -356,7 +356,7 @@
 			</table>
 			</div>
 		</div>
-		<div id="Fireguards" class="tabcontent">
+		<div id="tabFireguards" class="tabcontent">
 			<h3><div id="lblFireguards">Fire extinguishers service!</div></h3>
 			<table border="0" width="100%">
 			<tr>
@@ -380,7 +380,7 @@
 			</tr>
 			</table>
 			<br>
-			The price of sustain of the service is:	<label id="fgPrice">0</label>
+			The price of sustain of the service is:	<label id="fgUpkeepPrice">0</label>
 			<br>
 		</div>
 		<div id="Building" class="tabcontent">
@@ -970,7 +970,7 @@
 		alertMsg = "";
 		if (buildingName==='well') {
 			showAlert = false;
-			//TODO make a dialog with lootboxes
+			checkFireguard();
 		}
 		if (buildingName==='gold') {
 			showAlert = false;
@@ -1222,11 +1222,13 @@
 		buildLevelArchery:0,
 		buildLevelSmith:0,
 		fire:0,
+		fireSteps:0,
+		fireGuard:0,
 		hero:0,
 		happiness:80,
 		o_autosave:0,
 		newSaveVersion: 8,
-		saveVersion:"saveV1008",
+		saveVersion:"saveV1009",
 		castleX: 1,
 		castleY: 1,
 		heroX: 1,
@@ -1258,6 +1260,16 @@
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
+		setupFireguards : function (theValue) {
+			game.fireGuard = theValue;
+		},
+		fireGuardUpkeep : function () {
+			var totalFGUpkeep = 0;
+			totalFGUpkeep    += 5*(game.buildLevelD+game.buildLevelH+game.buildLevelTreasury);
+			totalFGUpkeep    += 5*(game.buildLevelGallows+game.buildLevelFountain+game.buildLevelStash);
+			totalFGUpkeep    += 5*(game.buildLevelInn+game.buildLevelStable+game.buildLevelArchery);
+			return totalFGUpkeep;
+		},
 		towngate : function () {
 			if (game.myhero.aCampaignBackward===1){
 				var theTowngateIndex = game.myhero.inventory.indexOf("artid00");
@@ -2102,8 +2114,53 @@
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
 					game.sergeants = 0;
-					msg   = "you can't afford upkeeping of your sergeants. they are dismissed";
+					msg   = "you can't afford upkeep your sergeants. they are dismissed";
 					postEventLog(msg);
+				}
+			}
+			if (game.turkopols > 0) {
+				if (game.gold - game.turkopols * 5 >= 0) {
+					game.gold = game.gold - game.turkopols * 5;
+				}
+				else {
+					//fire guards which we cannot afford
+					//for now fire all guards!
+					//TODO fire only those who we cannot afford
+					game.turkopols = 0;
+					msg   = "you can't afford upkeep your turkopols. they are dismissed";
+					postEventLog(msg);
+				}
+			}
+			if (game.knights > 0) {
+				if (game.gold - game.knights * 10 >= 0) {
+					game.gold = game.gold - game.knights * 5;
+				}
+				else {
+					//fire guards which we cannot afford
+					//for now fire all guards!
+					//TODO fire only those who we cannot afford
+					game.knights = 0;
+					msg   = "you can't afford upkeep your knights. they are dismissed";
+					postEventLog(msg);
+				}
+			}
+			if (game.fireGuard === 1) {
+				if (game.gold - game.fireGuardUpkeep() >= 0) {
+					game.gold = game.gold - game.fireGuardUpkeep();
+				}
+				else {
+					game.fireGuard = 0;
+					msg   = "you can't afford upkeep your fireguard team. they are dismissed";
+					postEventLog(msg);
+				}
+			}
+			if (game.fire === 1 && game.fireGuard === 1) {
+				if (game.fireSteps > 0) {
+					game.fireSteps = game.fireSteps-1;
+					if (game.fireSteps===0) {
+						game.fire = 0;
+						game.putOutFireUI();
+					}
 				}
 			}
 			if (game.gold !== gold_was) {
@@ -2425,6 +2482,7 @@
 						document.getElementById('fireAudio0').play();
 					}
 					composite();
+					game.fireSteps = config.fireStepsBasic;
 					document.getElementById("gameIcon").href="resources/favicon-flame.png";
 					//TODO make a certain building in fire, not just "city"
 					if (game.buildLevelD == 1) {
@@ -2459,13 +2517,9 @@
 			if (answer === 2) {
 				if (game.gold >= config.costPutOutFire) {
 					game.fire = 0;
+					game.fireSteps = 0;
 					game.gold = game.gold - config.costPutOutFire;
-					document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
-					document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-					msg = localeStrings[40];
-					document.getElementById("gameIcon").href="resources/favicon-normal.png";
-					postEventLog(msg);
-					updateResources();
+					game.putOutFireUI();
 				}
 				else {
 					msg = localeStrings[20];
@@ -2475,6 +2529,14 @@
 				msg = localeStrings[41];
 				postEventLog(msg);
 			}
+		},
+		putOutFireUI : function() {
+			document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
+			msg = localeStrings[40];
+			document.getElementById("gameIcon").href="resources/favicon-normal.png";
+			postEventLog(msg);
+			updateResources();
 		},
 		winLottery : function () {
 			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
@@ -2526,8 +2588,9 @@
 		heroExpK:5,
 		festPrice:2,
 		festCooldown:30,
-		glSaveVersion: 9,
-		genMapCostBasic: 50,
+		glSaveVersion:9,
+		genMapCostBasic:50,
+		fireStepsBasic:120,
 	};
 	var artefacts = {
 		artid00: {
@@ -2670,6 +2733,11 @@
 		//just a placeholder. TODO it
 	}
 	popPage = 0;
+	function checkFireguard() {
+		var fgUpkeepPrice  = document.getElementById("fgUpkeepPrice");
+		fgUpkeepPrice.innerHTML = game.fireGuardUpkeep();
+		openTab(null, 'tabFireguards');
+	}
 	function checkPop() {
 		var year = document.getElementById("popStatK");
 		var pop  = document.getElementById("popStatV");
