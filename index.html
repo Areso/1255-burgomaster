@@ -595,7 +595,7 @@
 				</tr>
 				<tr>
 					<td>
-						castellan
+						<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
 					</td>
 					<td>
 						sergeants: <div id="lblGarnisonSergeants" style="display: inline">0</div><button id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()">↓</button>
@@ -609,7 +609,8 @@
 				</tr>
 				<tr id="trHeroHiringTroops" style="visibility: collapse">
 					<td>
-						hero
+						<img id="imgHeroInHiringScreenKnight" style="display: none" src="resources/hero-knight.png">
+						<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png">
 					</td>
 					<td>
 						sergeants: <div id="lblHeroSergeants" style="display: inline">0</div><button id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()">↑</button>
@@ -3699,6 +3700,13 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
+				if (game.myhero.class===0) {
+					document.getElementById("imgHeroInHiringScreenKnight").style.display="block";
+					document.getElementById("imgHeroInHiringScreenMonk").style.display="none";
+				} else {
+					document.getElementById("imgHeroInHiringScreenKnight").style.display="none";
+					document.getElementById("imgHeroInHiringScreenMonk").style.display="block";
+				}
 				document.getElementById("btnLeaveCity").style.visibility="visible";
 				document.getElementById("btnTowngate").style.visibility="hidden";
 			}
