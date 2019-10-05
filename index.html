@@ -1959,8 +1959,13 @@
 					postEventLog(msg);
 				}
 			} else {
+				disabledElements = [];
+				disabledElements.push("btnHireHero");
+				disabledElements.push("selectHeroClass");
+				document.getElementById("btnHireHero").disabled = true;
+				document.getElementById("selectHeroClass").disabled = true;
 				alertMsg = localeStrings[61];
-				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
 			}
 		},
 		heroLvlUp : function () {
@@ -3074,7 +3079,13 @@
 		}
 	}
 	function getAck() {
-		//
+		console.log('we are at getAck method');
+		console.log("the length is "+disabledElements.length);
+		for (var i=0; i<disabledElements.length; i++) {
+			console.log('we are inside the loop');
+			document.getElementById(disabledElements[0]).disabled = false;
+		}
+		disabledElements = [];
 	}
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
