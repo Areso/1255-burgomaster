@@ -550,7 +550,7 @@
 
 			</div>
 			<br>
-			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
+			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
 			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
 			<button id="btnAutocampaignJournal"    onclick="openTab(null, 'tabAutocampaignJournal')" style="width:160px; visibility: hidden">Open journal</button>
 			<button id="btnTowngate" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
@@ -2597,6 +2597,7 @@
 		glSaveVersion:9,
 		genMapCostBasic:50,
 		fireStepsBasic:120,
+		oneSecMS:1000,
 	};
 	var artefacts = {
 		artid00: {
@@ -2727,8 +2728,8 @@
 	composite();
 	checkSaves();
 	//init timers
-	setInterval(cooldown, 1000);
-	setInterval(endOfTurnTimer, 1000);
+	setInterval(cooldown, config.oneSecMS);
+	setInterval(endOfTurnTimer, config.oneSecMS);
 	setInterval(rndEvents, 100000);
 	include('localisation.js',function(){
 		loadStartLocale();
@@ -3083,7 +3084,7 @@
 		console.log("the length is "+disabledElements.length);
 		for (var i=0; i<disabledElements.length; i++) {
 			console.log('we are inside the loop');
-			document.getElementById(disabledElements[0]).disabled = false;
+			document.getElementById(disabledElements[i]).disabled = false;
 		}
 		disabledElements = [];
 	}
@@ -3598,14 +3599,18 @@
 		game.myhero = {};
 		game.heroHire(true);
 		tmpHero = game.myhero;
+		game.myhero = {};
 		for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-		for (var propertyName in tmpHero) {
-			if (game.myhero[propertyName]===undefined){
-				game.myhero[propertyName] = tmpHero[propertyName];
+		console.log(game.heroExists());
+		if (game.heroExists()){
+			for (var propertyName in tmpHero) {
+				if (game.myhero[propertyName]===undefined){
+					game.myhero[propertyName] = tmpHero[propertyName];
+				}
 			}
-		}
-		while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
-			game.myhero.inventoryWorn.push(0);
+			while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
+				game.myhero.inventoryWorn.push(0);
+			}
 		}
 		//options  = JSON.parse(localStorage.getItem('options'));
 		game.active_tab="";
@@ -3684,6 +3689,9 @@
 			var lblAlignment    = game.heroAlignment("text");
 			var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
 			var heroStatusNeedsUpdate = true;
+		    document.getElementById("btnDismissHero").style.visibility = "visible";
+			document.getElementById("btnAutocampaign").style.visibility = "visible";
+			document.getElementById("btnLeaveCity").style.visibility = "visible";
 			if (game.myhero.class==="knight"){
 				game.myhero.class = 0;
 			}
@@ -3765,6 +3773,10 @@
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
+			document.getElementById("btnDismissHero").style.visibility = "hidden";
+			document.getElementById("btnAutocampaign").style.visibility = "hidden";
+			document.getElementById("btnLeaveCity").style.visibility = "hidden";
+			document.getElementById("btnTowngate").style.visibility = "hidden";
 			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 		}
 	}
