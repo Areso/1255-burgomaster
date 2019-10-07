@@ -1,0 +1,223 @@
+{
+  "id": "b3e00eba-79e7-4d61-a7d5-bbec309a939b",
+  "version": "2.0",
+  "name": "burgomaster",
+  "url": "http://127.0.0.1",
+  "tests": [{
+    "id": "a8973e65-0614-4d76-96dd-a1b3b2f48169",
+    "name": "ClearSave",
+    "commands": [{
+      "id": "f1fb0a77-37b0-4e6b-aae8-4c398e8ed781",
+      "comment": "",
+      "command": "open",
+      "target": "/1255-burgomaster/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4b59a77d-2a46-4ed7-9eba-393103df3168",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1855x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "88203660-0761-476a-9c8c-2a9b3fcf3f5b",
+      "comment": "",
+      "command": "executeScript",
+      "target": "arr=[]; for (let i = 0; i < localStorage.length; i++) {     if (localStorage.key(i).indexOf('game') > -1) {         arr.push(localStorage.key(i));     } }  for (let i = 0; i < arr.length; i++) {     localStorage.removeItem(arr[i]); }",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "383fd8b9-f739-4e2d-829a-db881069e737",
+      "comment": "",
+      "command": "click",
+      "target": "id=htmlGame",
+      "targets": [
+        ["id=htmlGame", "id"],
+        ["css=#htmlGame", "css:finder"],
+        ["xpath=//div[@id='htmlGame']", "xpath:attributes"],
+        ["xpath=//div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6611e5ef-ffac-4e6d-b17a-e53eb68d57a0",
+      "comment": "",
+      "command": "click",
+      "target": "id=saveGameButton",
+      "targets": [
+        ["id=saveGameButton", "id"],
+        ["css=#saveGameButton", "css:finder"],
+        ["xpath=//button[@id='saveGameButton']", "xpath:attributes"],
+        ["xpath=//div[@id='Main']/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Konservi ludon')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "efc10ed6-0cb8-4cc0-a673-7a0410825477",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=myDCanvas",
+      "targets": [
+        ["id=myDCanvas", "id"],
+        ["css=#myDCanvas", "css:finder"],
+        ["xpath=//canvas[@id='myDCanvas']", "xpath:attributes"],
+        ["xpath=//div[@id='htmlGame']/canvas", "xpath:idRelative"],
+        ["xpath=//body/div/canvas", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f5eff9a-cc8b-4ea1-b1e0-4aa03e8d6fe1",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "id=canvas",
+      "targets": [
+        ["id=canvas", "id"],
+        ["css=#canvas", "css:finder"],
+        ["xpath=//canvas[@id='canvas']", "xpath:attributes"],
+        ["xpath=//div[@id='Main']/canvas", "xpath:idRelative"],
+        ["xpath=//canvas", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2678df34-4d69-4349-bcd2-b11ec451fc9e",
+      "comment": "",
+      "command": "click",
+      "target": "id=htmlGame",
+      "targets": [
+        ["id=htmlGame", "id"],
+        ["css=#htmlGame", "css:finder"],
+        ["xpath=//div[@id='htmlGame']", "xpath:attributes"],
+        ["xpath=//div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4597064d-278e-4581-979b-d3623efc0f15",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "css=[id='loadGameButton']",
+      "targets": [],
+      "value": "*inline*"
+    }, {
+      "id": "c6bad523-a258-4115-b872-4d451c456cf5",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "css=#loadGameButton@style",
+      "targets": [],
+      "value": "*inline*"
+    }, {
+      "id": "56e21967-d4a2-448d-a4dd-ab5d5f53cc82",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "id=loadGameButton",
+      "targets": [],
+      "value": "*visible*"
+    }]
+  }, {
+    "id": "aa3d4099-0d52-4a6c-bb8c-07ff8e563b5b",
+    "name": "ClearSave (1)",
+    "commands": [{
+      "id": "2db77f74-a61b-41bd-9a45-c223b3fd40c5",
+      "comment": "",
+      "command": "open",
+      "target": "/1255-burgomaster/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8b676cbe-1904-4417-8ab0-bd4c344084b8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1855x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "85667a56-62bb-4517-9317-863590840732",
+      "comment": "",
+      "command": "executeScript",
+      "target": "arr=[]; for (let i = 0; i < localStorage.length; i++) {     if (localStorage.key(i).indexOf('game') > -1) {         arr.push(localStorage.key(i));     } }  for (let i = 0; i < arr.length; i++) {     localStorage.removeItem(arr[i]); }",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3b9ac14b-5372-4302-892e-2f82b35345a3",
+      "comment": "",
+      "command": "click",
+      "target": "id=htmlGame",
+      "targets": [
+        ["id=htmlGame", "id"],
+        ["css=#htmlGame", "css:finder"],
+        ["xpath=//div[@id='htmlGame']", "xpath:attributes"],
+        ["xpath=//div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eca0fc7a-d540-4c16-ad58-5d8f1c88aeca",
+      "comment": "",
+      "command": "click",
+      "target": "id=saveGameButton",
+      "targets": [
+        ["id=saveGameButton", "id"],
+        ["css=#saveGameButton", "css:finder"],
+        ["xpath=//button[@id='saveGameButton']", "xpath:attributes"],
+        ["xpath=//div[@id='Main']/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Konservi ludon')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e802639a-fcce-40e3-9738-ad098fb104ee",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=myDCanvas",
+      "targets": [
+        ["id=myDCanvas", "id"],
+        ["css=#myDCanvas", "css:finder"],
+        ["xpath=//canvas[@id='myDCanvas']", "xpath:attributes"],
+        ["xpath=//div[@id='htmlGame']/canvas", "xpath:idRelative"],
+        ["xpath=//body/div/canvas", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09a42ea0-0453-41a5-8ccf-bdbbbe94f995",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "id=canvas",
+      "targets": [
+        ["id=canvas", "id"],
+        ["css=#canvas", "css:finder"],
+        ["xpath=//canvas[@id='canvas']", "xpath:attributes"],
+        ["xpath=//div[@id='Main']/canvas", "xpath:idRelative"],
+        ["xpath=//canvas", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "78e4ac81-7535-4ea2-b74d-d9e2cd22ec46",
+      "comment": "",
+      "command": "click",
+      "target": "id=htmlGame",
+      "targets": [
+        ["id=htmlGame", "id"],
+        ["css=#htmlGame", "css:finder"],
+        ["xpath=//div[@id='htmlGame']", "xpath:attributes"],
+        ["xpath=//div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d9d9029-25ca-45c5-b259-81fffd343237",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "css=[id$='loadGameButton']",
+      "targets": [],
+      "value": "style"
+    }]
+  }],
+  "suites": [{
+    "id": "da628df7-4153-425e-89f8-4cb16502e4d0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://127.0.0.1/"],
+  "plugins": []
+}

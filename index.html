@@ -240,6 +240,7 @@
 			<br>
 			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
 			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
+			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()">Mobile UI<br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
@@ -550,7 +551,7 @@
 
 			</div>
 			<br>
-			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px">Dismiss hero</button>
+			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
 			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
 			<button id="btnAutocampaignJournal"    onclick="openTab(null, 'tabAutocampaignJournal')" style="width:160px; visibility: hidden">Open journal</button>
 			<button id="btnTowngate" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
@@ -1067,6 +1068,8 @@
 <script>
 	//GLOBALMAP
 	var canvas_map      = document.getElementById("canvasMap");
+	canvas_map.addEventListener("touchstart", tap_map);
+	canvas_map.addEventListener("mousedown", tap_map);
 	var ctx_map         = canvas_map.getContext("2d");
 	var tile_grass      = loadImage('tiles/grass.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 	var tile_sand       = loadImage('tiles/sand.png');
@@ -1075,8 +1078,13 @@
 	var castle_tile     = loadImage('resources/castle_big.png');
 	var blackmarket_tile= loadImage('resources/black_market.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
-	var chest_tile     = loadImage('resources/chest.png');
+	var chest_tile      = loadImage('resources/chest.png');
 	var tree_tile       = loadImage('resources/tree.png');
+	var arrow_l         = loadImage('resources/pointer_l.png');
+	var arrow_r         = loadImage('resources/pointer_r.png');
+	var arrow_u         = loadImage('resources/pointer_u.png');
+	var arrow_d         = loadImage('resources/pointer_d.png');
+	ctx_map.globalAlpha=1;
 	function composite_gm() {
 		ctx_map.clearRect(0, 0, 800, 480);
 		// try place hero at center of screen
@@ -1193,6 +1201,53 @@
 				}
 			}
 		}
+		//overlay buttons for mobile clients
+		if (game.isMobile===1){
+			ctx_map.globalAlpha=0.5;
+			arrow_lx = 100;
+			arrow_ly = 200;
+			arrow_ux = 200;
+			arrow_uy = 100;
+			arrow_dx = 200;
+			arrow_dy = 300;
+			arrow_rx = 300;
+			arrow_ry = 200;
+			arrow_size=80;
+			ctx_map.drawImage(arrow_l, arrow_lx, arrow_ly);
+			ctx_map.drawImage(arrow_u, arrow_ux, arrow_uy);
+			ctx_map.drawImage(arrow_d, arrow_dx, arrow_dy);
+			ctx_map.drawImage(arrow_r, arrow_rx, arrow_ry);
+			ctx_map.globalAlpha=1;
+		}
+	}
+	function tap_map (e) {
+		pos = getElementPosition(canvasMap);
+		loc = {};
+		tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
+		tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
+		canvasScaleRatio = canvas.width / canvas.offsetWidth;
+		loc.x = (tapX - 9) * canvasScaleRatio;
+		loc.y = (tapY - 58) * canvasScaleRatio;
+		if (loc.x>=arrow_lx&& loc.x<=arrow_lx+arrow_size){
+			if (loc.y>=arrow_ly&& loc.y<=arrow_ly+arrow_size){
+				game.tryHeroMovement(-1,0);//LEFT
+			}
+		}
+		if (loc.x>=arrow_ux&& loc.x<=arrow_ux+arrow_size){
+			if (loc.y>=arrow_uy&& loc.y<=arrow_uy+arrow_size){
+				game.tryHeroMovement(0,-1);//UP
+			}
+		}
+		if (loc.x>=arrow_dx&& loc.x<=arrow_dx+arrow_size){
+			if (loc.y>=arrow_dy&& loc.y<=arrow_dy+arrow_size){
+				game.tryHeroMovement(0,1);//DOWN
+			}
+		}
+		if (loc.x>=arrow_rx&& loc.x<=arrow_rx+arrow_size){
+			if (loc.y>=arrow_ry&& loc.y<=arrow_ry+arrow_size){
+				game.tryHeroMovement(1,0);//LEFT
+			}
+		}
 	}
 </script>
 <script>
@@ -1256,11 +1311,19 @@
 		active_tab: '',
 		prestige: 0,
 		prestige_time: [],
+		isMobile: 0,
 		sfx_all: 0,
 		sfx_events: 0,
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
+		mobileUI : function () {
+			if (document.getElementById("cbMobileUI").checked === true) {
+				game.isMobile = 1;
+			} else {
+				game.isMobile = 0;
+			}
+		},
 		setupFireguards : function (theValue) {
 			game.fireGuard = theValue;
 		},
@@ -1959,8 +2022,13 @@
 					postEventLog(msg);
 				}
 			} else {
+				disabledElements = [];
+				disabledElements.push("btnHireHero");
+				disabledElements.push("selectHeroClass");
+				document.getElementById("btnHireHero").disabled = true;
+				document.getElementById("selectHeroClass").disabled = true;
 				alertMsg = localeStrings[61];
-				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
 			}
 		},
 		heroLvlUp : function () {
@@ -2592,6 +2660,7 @@
 		glSaveVersion:9,
 		genMapCostBasic:50,
 		fireStepsBasic:120,
+		oneSecMS:1000,
 	};
 	var artefacts = {
 		artid00: {
@@ -2722,8 +2791,8 @@
 	composite();
 	checkSaves();
 	//init timers
-	setInterval(cooldown, 1000);
-	setInterval(endOfTurnTimer, 1000);
+	setInterval(cooldown, config.oneSecMS);
+	setInterval(endOfTurnTimer, config.oneSecMS);
 	setInterval(rndEvents, 100000);
 	include('localisation.js',function(){
 		loadStartLocale();
@@ -3074,7 +3143,13 @@
 		}
 	}
 	function getAck() {
-		//
+		console.log('we are at getAck method');
+		console.log("the length is "+disabledElements.length);
+		for (var i=0; i<disabledElements.length; i++) {
+			console.log('we are inside the loop');
+			document.getElementById(disabledElements[i]).disabled = false;
+		}
+		disabledElements = [];
 	}
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
@@ -3491,6 +3566,20 @@
 			document.getElementById("music_scripts_off").checked = true;
 		}
 	}
+	function setupMobileUI() {
+		if (game.isMobile === 1) {
+		    document.getElementById("cbMobileUI").checked = true;
+		} else {
+			document.getElementById("cbMobileUI").checked = false;
+		}
+	}
+	function setupFireguardsUI () {
+		if (game.fireGuard === 1) {
+			document.getElementById("fg_on").checked = true;
+		} else {
+			document.getElementById("fg_off").checked = true;
+		}
+	}
 	function setupAutosave() {
 		game.userASaveAck = 0;
 		if (game.o_autosave==0) {
@@ -3587,17 +3676,23 @@
 		game.myhero = {};
 		game.heroHire(true);
 		tmpHero = game.myhero;
+		game.myhero = {};
 		for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-		for (var propertyName in tmpHero) {
-			if (game.myhero[propertyName]===undefined){
-				game.myhero[propertyName] = tmpHero[propertyName];
+		console.log(game.heroExists());
+		if (game.heroExists()){
+			for (var propertyName in tmpHero) {
+				if (game.myhero[propertyName]===undefined){
+					game.myhero[propertyName] = tmpHero[propertyName];
+				}
 			}
-		}
-		while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
-			game.myhero.inventoryWorn.push(0);
+			while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
+				game.myhero.inventoryWorn.push(0);
+			}
 		}
 		//options  = JSON.parse(localStorage.getItem('options'));
 		game.active_tab="";
+		setupMobileUI();
+		setupFireguardsUI();
 		setupAudioUI();
 		setupAutosave();
 		composite();
@@ -3673,6 +3768,9 @@
 			var lblAlignment    = game.heroAlignment("text");
 			var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
 			var heroStatusNeedsUpdate = true;
+		    document.getElementById("btnDismissHero").style.visibility = "visible";
+			document.getElementById("btnAutocampaign").style.visibility = "visible";
+			document.getElementById("btnLeaveCity").style.visibility = "visible";
 			if (game.myhero.class==="knight"){
 				game.myhero.class = 0;
 			}
@@ -3754,6 +3852,10 @@
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
+			document.getElementById("btnDismissHero").style.visibility = "hidden";
+			document.getElementById("btnAutocampaign").style.visibility = "hidden";
+			document.getElementById("btnLeaveCity").style.visibility = "hidden";
+			document.getElementById("btnTowngate").style.visibility = "hidden";
 			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 		}
 	}
@@ -3878,13 +3980,13 @@
 				game.tryHeroMovement(0,-1);//UP
 			}
 			if(e.keyCode === 37 || e.keyCode === 65) {
-				game.tryHeroMovement(-1,0);
+				game.tryHeroMovement(-1,0);LEFT
 			}
 			if(e.keyCode === 40 || e.keyCode === 83) {
 				game.tryHeroMovement(0,1);//DOWN
 			}
 			if(e.keyCode === 68 || e.keyCode === 39) {
-				game.tryHeroMovement(+1,0);//DOWN
+				game.tryHeroMovement(+1,0);//RIGHT
 			}
 		}
 	}
