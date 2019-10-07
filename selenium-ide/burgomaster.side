@@ -92,12 +92,26 @@
       ],
       "value": ""
     }, {
+      "id": "4597064d-278e-4581-979b-d3623efc0f15",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "css=[id='loadGameButton']",
+      "targets": [],
+      "value": "*inline*"
+    }, {
+      "id": "c6bad523-a258-4115-b872-4d451c456cf5",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "css=#loadGameButton@style",
+      "targets": [],
+      "value": "*inline*"
+    }, {
       "id": "56e21967-d4a2-448d-a4dd-ab5d5f53cc82",
       "comment": "",
-      "command": "assertElementPresent",
+      "command": "storeAttribute",
       "target": "id=loadGameButton",
       "targets": [],
-      "value": ""
+      "value": "*visible*"
     }]
   }, {
     "id": "aa3d4099-0d52-4a6c-bb8c-07ff8e563b5b",
