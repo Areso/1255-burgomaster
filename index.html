@@ -626,6 +626,11 @@
 			</table>
 		</div>
 	    <div id="tabBlackmarket" class="tabcontent">
+			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
+			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span>
+			<br>
+			<br>
+			<br>
 			<div>
 				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div><br>
 				<select id="selectGoodsForHero" size="1" onchange="updateBlackMarket()">
@@ -1203,7 +1208,6 @@
 		}
 		//overlay buttons for mobile clients
 		if (game.isMobile===1){
-			ctx_map.globalAlpha=0.5;
 			arrow_lx = 100;
 			arrow_ly = 200;
 			arrow_ux = 200;
@@ -1213,6 +1217,7 @@
 			arrow_rx = 300;
 			arrow_ry = 200;
 			arrow_size=80;
+			ctx_map.globalAlpha=0.5;
 			ctx_map.drawImage(arrow_l, arrow_lx, arrow_ly);
 			ctx_map.drawImage(arrow_u, arrow_ux, arrow_uy);
 			ctx_map.drawImage(arrow_d, arrow_dx, arrow_dy);
@@ -3872,6 +3877,7 @@
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML          = game.gold;
+		document.getElementById("gold_bm").innerHTML       = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
