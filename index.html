@@ -240,7 +240,11 @@
 			<br>
 			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
 			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
-			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()">Mobile UI<br>
+			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;">Mobile UI
+			<label id="lblSettingsLinesLabel" style="margin-left: 20px;">Event log size</label>
+			<input id="inpSettingsEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:20px; margin-right:10px;">
+			<label id="lblSettingsLines">lines</label>
+			<br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
@@ -1323,6 +1327,9 @@
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
+		setupEventLogSize : function () {
+			//
+		},
 		mobileUI : function () {
 			if (document.getElementById("cbMobileUI").checked === true) {
 				game.isMobile = 1;
