@@ -1264,6 +1264,7 @@
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
 	//init variables
+	disabledElements = [];
 	var game = {
 		gold:20,
 		gens:0,
@@ -2027,7 +2028,6 @@
 					postEventLog(msg);
 				}
 			} else {
-				disabledElements = [];
 				disabledElements.push("btnHireHero");
 				disabledElements.push("selectHeroClass");
 				document.getElementById("btnHireHero").disabled = true;
@@ -2604,13 +2604,17 @@
 				postEventLog(msg);
 			}
 		},
-		putOutFireUI : function() {
-			document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
-			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-			msg = localeStrings[40];
-			document.getElementById("gameIcon").href="resources/favicon-normal.png";
-			postEventLog(msg);
-			updateResources();
+		putOutFireUI : function(load) {
+			if (document.getElementById("fire_graphics") !== null) {
+				document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+				document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
+				document.getElementById("gameIcon").href="resources/favicon-normal.png";
+				if (load!==true){
+					msg = localeStrings[40];
+					postEventLog(msg);
+				}
+				updateResources();
+			}
 		},
 		winLottery : function () {
 			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
@@ -3696,6 +3700,7 @@
 		}
 		//options  = JSON.parse(localStorage.getItem('options'));
 		game.active_tab="";
+		game.putOutFireUI(true);
 		setupMobileUI();
 		setupFireguardsUI();
 		setupAudioUI();
