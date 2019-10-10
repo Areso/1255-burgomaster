@@ -2,7 +2,7 @@
   "id": "b3e00eba-79e7-4d61-a7d5-bbec309a939b",
   "version": "2.0",
   "name": "burgomaster",
-  "url": "http://127.0.0.1",
+  "url": "http://cosmodream.ga",
   "tests": [{
     "id": "a8973e65-0614-4d76-96dd-a1b3b2f48169",
     "name": "ClearSave",
@@ -10,7 +10,7 @@
       "id": "f1fb0a77-37b0-4e6b-aae8-4c398e8ed781",
       "comment": "",
       "command": "open",
-      "target": "/1255-burgomaster/",
+      "target": "1255-burgomaster/",
       "targets": [],
       "value": ""
     }, {
@@ -95,23 +95,23 @@
       "id": "4597064d-278e-4581-979b-d3623efc0f15",
       "comment": "",
       "command": "storeAttribute",
-      "target": "css=[id='loadGameButton']",
-      "targets": [],
-      "value": "*inline*"
-    }, {
-      "id": "c6bad523-a258-4115-b872-4d451c456cf5",
-      "comment": "",
-      "command": "storeAttribute",
       "target": "css=#loadGameButton@style",
       "targets": [],
-      "value": "*inline*"
+      "value": "tmp"
     }, {
-      "id": "56e21967-d4a2-448d-a4dd-ab5d5f53cc82",
+      "id": "6e5533b5-d4e5-41ec-8ad9-3eecce10f08d",
       "comment": "",
-      "command": "storeAttribute",
-      "target": "id=loadGameButton",
+      "command": "executeScript",
+      "target": "return /310px/.test(${tmp})",
       "targets": [],
-      "value": "*visible*"
+      "value": "new_tmp"
+    }, {
+      "id": "7c768664-da38-4551-b7ac-f7cb9d0c1b4c",
+      "comment": "",
+      "command": "echo",
+      "target": "${tmp}",
+      "targets": [],
+      "value": ""
     }]
   }, {
     "id": "aa3d4099-0d52-4a6c-bb8c-07ff8e563b5b",
@@ -218,6 +218,6 @@
     "timeout": 300,
     "tests": []
   }],
-  "urls": ["http://127.0.0.1/"],
+  "urls": ["http://127.0.0.1/", "http://cosmodream.ga/"],
   "plugins": []
 }

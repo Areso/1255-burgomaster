@@ -193,14 +193,14 @@ localeStrings.push("placeholder");//160
 localeStrings.push("Данные о населении по периодам");
 localeStrings.push("Текущий лимит населения %arg1");
 localeStrings.push("Текущий лимит золота %arg1");
-localeStrings.push("placeholder");
+localeStrings.push("Данные о казне по периодам");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//170
-localeStrings.push("Данные о казне по периодам");
+localeStrings.push("День ");
+localeStrings.push("Ваш герой должен быть в автокампании");//170
+localeStrings.push("Вы хотите отозвать героя?");
 localeStrings.push("герой и все его войска встретили свою смерть на поле брани.");
 localeStrings.push("герой встретил превосходящего по численности врага и одолел его. Опыт и деньги стали наградой!");
 localeStrings.push("герой встретил малочисленного врага и одолел его. Опыт и деньги стали наградой!");

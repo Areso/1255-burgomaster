@@ -198,7 +198,7 @@
 			</p>
 			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:250px; left: 20px">Save game</button>
-			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="top:310px; left: 20px; visibility:hidden">Load game</button>
+			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="display: inline; top:310px; left: 20px; visibility:hidden">Load game</button>
 			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:370px; left: 20px; display:none">Put out fire</button>
 			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:460px; left: 20px; display:none">Execute smb</button>
 			<button id="buttonDebug"   onclick="ym(47225574, 'reachGoal', 'min5'); return true;" class="interface" style="top:190px; left: 20px; display:none">X</button>
@@ -240,7 +240,11 @@
 			<br>
 			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
 			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
-			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()">Mobile UI<br>
+			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;">Mobile UI
+			<label id="lblSettingsLinesLabel" style="margin-left: 20px;">Event log size</label>
+			<input id="inpSettingsEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:20px; margin-right:10px;">
+			<label id="lblSettingsLines">lines</label>
+			<br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
@@ -626,6 +630,11 @@
 			</table>
 		</div>
 	    <div id="tabBlackmarket" class="tabcontent">
+			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
+			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span>
+			<br>
+			<br>
+			<br>
 			<div>
 				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div><br>
 				<select id="selectGoodsForHero" size="1" onchange="updateBlackMarket()">
@@ -1203,7 +1212,6 @@
 		}
 		//overlay buttons for mobile clients
 		if (game.isMobile===1){
-			ctx_map.globalAlpha=0.5;
 			arrow_lx = 100;
 			arrow_ly = 200;
 			arrow_ux = 200;
@@ -1213,6 +1221,7 @@
 			arrow_rx = 300;
 			arrow_ry = 200;
 			arrow_size=80;
+			ctx_map.globalAlpha=0.5;
 			ctx_map.drawImage(arrow_l, arrow_lx, arrow_ly);
 			ctx_map.drawImage(arrow_u, arrow_ux, arrow_uy);
 			ctx_map.drawImage(arrow_d, arrow_dx, arrow_dy);
@@ -1259,6 +1268,7 @@
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
 	//init variables
+	disabledElements = [];
 	var game = {
 		gold:20,
 		gens:0,
@@ -1284,7 +1294,7 @@
 		happiness:80,
 		o_autosave:0,
 		newSaveVersion: 8,
-		saveVersion:"saveV1009",
+		saveVersion:"saveV1010",
 		castleX: 1,
 		castleY: 1,
 		heroX: 1,
@@ -1317,6 +1327,9 @@
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
+		setupEventLogSize : function () {
+			//
+		},
 		mobileUI : function () {
 			if (document.getElementById("cbMobileUI").checked === true) {
 				game.isMobile = 1;
@@ -1557,6 +1570,7 @@
 				if (answer === 2) {
 					if (game.gold >= genMapPriceFinal) {
 						genMap(genMapPriceFinal);
+						postEventLog("the sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.")
 					} else {
 						alertMsg = localeStrings[20];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
@@ -1786,11 +1800,9 @@
 		calculateAutocampaign : function () {
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
+				game.myhero.aCampaignTotalLong    += 1;
 				var heroTroopsPrice = game.heroTroopsPrice();
 				var rnd = Math.floor((Math.random() * 24) + 1);
-				if (game.myhero.aCampaignLong===0){
-					postJournalLog("------------------------");
-				}
 				if (game.myhero.stance === 0) {//aggressive stance
 					if (rnd===1) {
 						//you got killed
@@ -1813,7 +1825,7 @@
 						postJournalLog(localeStrings[174]);
 					}
 					if (rnd>12 && rnd<25) {
-						postJournalLog(localeStrings[173]);
+						postJournalLog(localeStrings[175]);
 					}
 				}
 				game.heroLvlUp();
@@ -1821,15 +1833,17 @@
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
 					game.myhero.aCampaignLong     -= 1;
-					postJournalLog(localeStrings[173]);
+					game.myhero.aCampaignTotalLong+= 1;
+					postJournalLog(localeStrings[175]);
 				} else {
 					game.myhero.aCampaignLong      = 0;
+					game.myhero.aCampaignTotalLong = 0;
 					game.myhero.status             = 0;
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
-					postEventLog(localeStrings[176]+game.myhero.gold);
 					game.gold                     += game.myhero.gold;
 					game.myhero.gold               = 0;
+					postEventLog(localeStrings[176]+game.myhero.gold);
 				}
 				game.heroLvlUp();
 			}
@@ -1863,10 +1877,10 @@
 					}
 				} else {
 					if (game.myhero.status===1) {
-						var question      = "Do you want withdraw your hero?";
-						showModal(1, '', game.autocampaignWithdrawCallback, question, "Yes",  "No");
+						var question      = localeStrings[171];
+						showModal(1, '', game.autocampaignWithdrawCallback, question, localeStrings[32],  localeStrings[33]);
 					} else {
-						alertMsg = "You need a hero in town to do that!";
+						alertMsg = localeStrings[170];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				}
@@ -1885,6 +1899,7 @@
 			game.myhero.status = 1;
 			game.myhero.aCampaignForward   = 1;
 			game.myhero.aCampaignBackward  = 0;
+			postJournalLog("------------------------");
 			updateUI();
 		},
 		autocampaignWithdrawCallback : function () {
@@ -1933,22 +1948,22 @@
 			if (returnFormat==="text") {
 				var heroAlignment = "";
 				if (game.myhero.lawful < 40) {
-					heroAlignment += "Chaotic";
+					heroAlignment += localeStrings[200];
 				}
 				if (game.myhero.lawful >= 40 && game.myhero.lawful <60) {
-					heroAlignment += "Neutral";
+					heroAlignment += localeStrings[199];
 				}
 				if (game.myhero.lawful >= 60) {
-					heroAlignment += "Lawful";
+					heroAlignment += localeStrings[198];
 				}
 				if (game.myhero.kindness < 40) {
-					heroAlignment += " "+"Evil";
+					heroAlignment += " "+localeStrings[201];
 				}
 				if (game.myhero.kindness >= 40 && game.myhero.kindness <60) {
-					heroAlignment += " "+"Neutral";
+					heroAlignment += " "+localeStrings[202];
 				}
 				if (game.myhero.kindness >= 60) {
-					heroAlignment += " "+"Good";
+					heroAlignment += " "+localeStrings[203];
 				}
 				heroAlignment += " ("+game.myhero.lawful+"; "+game.myhero.kindness+")";
 			}
@@ -2013,6 +2028,7 @@
 					game.myhero.artefactsWorn      = 0;//5
 					game.myhero.aCampaign          = 0;
 					game.myhero.aCampaignLong      = 0;
+					game.myhero.aCampaignTotalLong = 0;
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
 					updateHeroStatus();
@@ -2022,7 +2038,6 @@
 					postEventLog(msg);
 				}
 			} else {
-				disabledElements = [];
 				disabledElements.push("btnHireHero");
 				disabledElements.push("selectHeroClass");
 				document.getElementById("btnHireHero").disabled = true;
@@ -2599,13 +2614,17 @@
 				postEventLog(msg);
 			}
 		},
-		putOutFireUI : function() {
-			document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
-			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
-			msg = localeStrings[40];
-			document.getElementById("gameIcon").href="resources/favicon-normal.png";
-			postEventLog(msg);
-			updateResources();
+		putOutFireUI : function(load) {
+			if (document.getElementById("fire_graphics") !== null) {
+				document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
+				document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
+				document.getElementById("gameIcon").href="resources/favicon-normal.png";
+				if (load!==true){
+					msg = localeStrings[40];
+					postEventLog(msg);
+				}
+				updateResources();
+			}
 		},
 		winLottery : function () {
 			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
@@ -3198,7 +3217,7 @@
 		document.getElementById("labelBuilding").innerText       = localeStrings[106];
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
 		document.getElementById("lblTabPop").innerText           = localeStrings[161];
-		document.getElementById("lblTabGold").innerText          = localeStrings[171];
+		document.getElementById("lblTabGold").innerText          = localeStrings[164];
 		document.getElementById("btnColorMode").innerText        = localeStrings[70];
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
 		document.getElementById("selectHeroClass")[0].text       = localeStrings[204][0];
@@ -3238,7 +3257,8 @@
 		document.getElementById("lblAutocampaignJournal").innerHTML = "";
 	}
 	function postJournalLog(msgEventLog) {
-		document.getElementById("lblAutocampaignJournal").innerHTML = document.getElementById("lblAutocampaignJournal").innerHTML+"<br>"+"Day "+game.myhero.aCampaignLong+": "+msgEventLog;
+		document.getElementById("lblAutocampaignJournal").innerHTML += localeStrings[169]+game.myhero.aCampaignTotalLong;
+		document.getElementById("lblAutocampaignJournal").innerHTML += ": "+msgEventLog+"<br>";
 		scrollDown();
 	}
 	function populatePatchnotes() {
@@ -3691,6 +3711,7 @@
 		}
 		//options  = JSON.parse(localStorage.getItem('options'));
 		game.active_tab="";
+		game.putOutFireUI(true);
 		setupMobileUI();
 		setupFireguardsUI();
 		setupAudioUI();
@@ -3872,6 +3893,7 @@
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML          = game.gold;
+		document.getElementById("gold_bm").innerHTML       = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
@@ -3980,7 +4002,7 @@
 				game.tryHeroMovement(0,-1);//UP
 			}
 			if(e.keyCode === 37 || e.keyCode === 65) {
-				game.tryHeroMovement(-1,0);LEFT
+				game.tryHeroMovement(-1,0);//LEFT
 			}
 			if(e.keyCode === 40 || e.keyCode === 83) {
 				game.tryHeroMovement(0,1);//DOWN
