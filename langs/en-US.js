@@ -193,14 +193,14 @@ localeStrings.push("placeholder");//160
 localeStrings.push("Population history tab");
 localeStrings.push("Current population limit is %arg1");
 localeStrings.push("Current gold limit is %arg1");
-localeStrings.push("placeholder");
+localeStrings.push("Gold history tab");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//170
-localeStrings.push("Gold history tab");
+localeStrings.push("the sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.");
+localeStrings.push("Day ");
+localeStrings.push("Your hero needs to be in a autocampaign to do that!");//170
+localeStrings.push("Do you want to withdraw your hero?");
 localeStrings.push("the hero and all troops met their death in the glory combat");
 localeStrings.push("the hero has met great number of enemies and crash them. The battle brings to the hero money and experience!");
 localeStrings.push("the hero has met small number of enemies and crash them. The battle brings to the hero money and experience!");

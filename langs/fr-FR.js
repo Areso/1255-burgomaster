@@ -193,14 +193,14 @@ localeStrings.push("placeholder");//160
 localeStrings.push("Onglet Historique de la population");
 localeStrings.push("La population actuelle est limitée à %arg1");
 localeStrings.push("La limite d'or actuelle est de %arg1");
-localeStrings.push("placeholder");
+localeStrings.push("Onglet Historique de l'or");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//170
-localeStrings.push("Onglet Historique de l'or");
+localeStrings.push("Jour ");
+localeStrings.push("Votre héros doit être en autocampagne pour le faire!");//170
+localeStrings.push("Voulez-vous retirer votre héros?");
 localeStrings.push("e héros et toutes les troupes ont rencontré leur mort dans le combat de gloire");
 localeStrings.push("le héros a rencontré un grand nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");
 localeStrings.push("le héros a rencontré un petit nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");

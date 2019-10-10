@@ -193,14 +193,14 @@ localeStrings.push("placeholder");//160
 localeStrings.push("Bevölkerungshistorie-Tab");
 localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");
 localeStrings.push("Aktuelle Goldgrenze ist %arg1");
-localeStrings.push("placeholder");
+localeStrings.push("Goldhistorie-Tab");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//170
-localeStrings.push("Goldhistorie-Tab");
+localeStrings.push("Tag ");
+localeStrings.push("Dein Held muss in einer Autokampagne sein, um das zu tun!");//170
+localeStrings.push("Möchtest du deinen Helden zurückziehen?");
 localeStrings.push("Der Held und alle Truppen sind im Ruhmkampf ums Leben gekommen");
 localeStrings.push("Der Held hat eine große Anzahl von Feinden getroffen und sie zerschlagen. Der Kampf bringt dem Helden Geld und Erfahrung!");
 localeStrings.push("Der Held hat eine kleine Anzahl von Feinden getroffen und sie zerschlagen. Der Kampf bringt dem Helden Geld und Erfahrung!");

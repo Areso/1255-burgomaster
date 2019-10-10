@@ -1,7 +1,7 @@
 var localeStrings = [];
 localeStrings.push("Saluton ludanto en ĉi tiu pliiga ludo!");
 localeStrings.push("Via tasko estas simpla - administru la urbon kiel urbestro de la urbo!");
-localeStrings.push("Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj populacio kreskos ĉiun sezonon ankaŭ");
+localeStrings.push("Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon");
 localeStrings.push("konstruu aŭ plibonigu vian trezorejon");
 localeStrings.push("kvanto da mono pliiĝas");
 localeStrings.push("kvanto da mono malpliiĝas");//5
@@ -13,10 +13,10 @@ localeStrings.push("via urbo atingas loĝantaran limon. Konstruu novajn domojn a
 localeStrings.push("ludo konservis sukcese");
 localeStrings.push("ludo ŝarĝis sukcese");
 localeStrings.push("Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!");
-localeStrings.push("Pardonu! Ne ekzistas konserva dosieron!");
+localeStrings.push("Pardonu! Ne ekzistas konserva dosiero!");
 localeStrings.push("Konservu ludon? Vi reskribos ian ajn konservitan!");//15
 localeStrings.push("Bonvolu enigi konservan ĉenon");
-localeStrings.push("tre longa ĉenon");
+localeStrings.push("tre longa ĉeno");
 localeStrings.push("Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!");
 localeStrings.push("Vi dungis gardiston!");
 localeStrings.push("Ne sufiĉe da oro por fari tion!");//20
@@ -193,14 +193,14 @@ localeStrings.push("placeholder");//160
 localeStrings.push("langeto pri civitanaj historio");
 localeStrings.push("Nuna populacio limo estas %arg1");
 localeStrings.push("Nuna ora limo estas %arg1");
-localeStrings.push("placeholder");
+localeStrings.push("langeto pri mono historio");
 localeStrings.push("placeholder");//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//170
-localeStrings.push("langeto pri mono historio");
+localeStrings.push("Tago ");
+localeStrings.push("Via heroo devas esti en aŭtokampanjo por fari tion!");//170
+localeStrings.push("Ĉu vi volas retiri vian heroon?");
 localeStrings.push("la heroo kaj ĉiuj trupoj renkontis sian morton en la glor-batalo");
 localeStrings.push("la heroo renkontis grandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
 localeStrings.push("la heroo renkontis malgrandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
