@@ -81,9 +81,9 @@ localeStrings.push("Lore and script music");
 localeStrings.push("Back");
 localeStrings.push("Sound effects and music");//80
 localeStrings.push("Open sound settings");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Mobile UI");
+localeStrings.push("Event log size");
+localeStrings.push("lines");
 localeStrings.push("placeholder");//85
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

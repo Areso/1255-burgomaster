@@ -81,9 +81,9 @@ localeStrings.push("Музыка сценариев");
 localeStrings.push("Назад");
 localeStrings.push("Настройки музыки и эффектов");//80
 localeStrings.push("Открыть звуковые настройки");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Мобильный вид");
+localeStrings.push("Размер лога событий");
+localeStrings.push("строк");
 localeStrings.push("placeholder");//85
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -226,7 +226,7 @@ localeStrings.push("Мана");
 localeStrings.push("Опыт");
 localeStrings.push("Текущий опыт");//195
 localeStrings.push("Опыт, необходимый для следующего уровня");
-localeStrings.push("Убеждение");
+localeStrings.push("Характер");
 localeStrings.push("Добропорядочный");
 localeStrings.push("Нейтральный");
 localeStrings.push("Разрушительный");//200

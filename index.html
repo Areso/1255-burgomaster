@@ -239,13 +239,13 @@
 			</div>
 			<br>
 			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
-			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
-			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;">Mobile UI
-			<label id="lblSettingsLinesLabel" style="margin-left: 20px;">Event log size</label>
-			<input id="inpSettingsEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:20px; margin-right:10px;">
-			<label id="lblSettingsLines">lines</label>
+			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button><br>
+			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
+			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
+			<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
+			<label id="lblStnLines">lines</label>
 			<br>
-			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:300px; top:230px; left:40px"></textarea>
+			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
 			<label id="lblSoundMenu">Sound effects and music</label><br>
@@ -1727,9 +1727,6 @@
 				}
 			}
 		},
-		heroExists: function () {
-			return (Object.keys(game.myhero).length === 0 && game.myhero.constructor === Object) ? false : true;
-		},
 		cityLeave : function () {
 			if (game.myMapLand.length===config.sizeMapX) {
 				cityLeaveSmall();
@@ -1944,6 +1941,9 @@
 				document.getElementById("lblBuildHelp").innerHTML=localeStrings[240];
 			}
 		},
+		heroExists: function () {
+			return (Object.keys(game.myhero).length === 0 && game.myhero.constructor === Object) ? false : true;
+		},
 		heroAlignment(returnFormat) {
 			if (returnFormat==="text") {
 				var heroAlignment = "";
@@ -1957,13 +1957,13 @@
 					heroAlignment += localeStrings[198];
 				}
 				if (game.myhero.kindness < 40) {
-					heroAlignment += " "+localeStrings[201];
+					heroAlignment += " "+localeStrings[203];
 				}
 				if (game.myhero.kindness >= 40 && game.myhero.kindness <60) {
 					heroAlignment += " "+localeStrings[202];
 				}
 				if (game.myhero.kindness >= 60) {
-					heroAlignment += " "+localeStrings[203];
+					heroAlignment += " "+localeStrings[201];
 				}
 				heroAlignment += " ("+game.myhero.lawful+"; "+game.myhero.kindness+")";
 			}
@@ -3240,6 +3240,9 @@
 		document.getElementById("btnToGeneralSettings").innerText= localeStrings[79];
 		document.getElementById("lblSoundMenu").innerText        = localeStrings[80];
 		document.getElementById("btnSoundSettings").innerText    = localeStrings[81];
+		document.getElementById("lblStnMobileUI").innerText      = localeStrings[82];
+		document.getElementById("lblStnEventLogSize").innerText  = localeStrings[83];
+		document.getElementById("lblStnLines").innerText         = localeStrings[84];
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();

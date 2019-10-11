@@ -81,9 +81,9 @@ localeStrings.push("Musique de tradition et de paysages");
 localeStrings.push("Retour");
 localeStrings.push("Réglages des effets sonores et de la musique");//80
 localeStrings.push("Ouvrir les paramètres sonores");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Interface utilisateur mobile");
+localeStrings.push("Taille du journal des événements");
+localeStrings.push("lignes");
 localeStrings.push("placeholder");//85
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

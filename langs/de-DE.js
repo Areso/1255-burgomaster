@@ -81,9 +81,9 @@ localeStrings.push("Überlieferungs- und Bühnenmusik");
 localeStrings.push("Zurück");
 localeStrings.push("Einstellungen von Soundeffekten und Musik");//80
 localeStrings.push("Klangeinstellungen öffnen");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Mobile Benutzeroberfläche");
+localeStrings.push("Größe des Ereignisprotokolls");
+localeStrings.push("linien");
 localeStrings.push("placeholder");//85
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

@@ -81,9 +81,9 @@ localeStrings.push("Lore kaj scenomuziko");
 localeStrings.push("Reen");
 localeStrings.push("Preferoj de sonefektoj kaj muziko");//80
 localeStrings.push("Malfermu sonajn preferojn");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Poŝtelefona UI");
+localeStrings.push("Eventa grandeco");
+localeStrings.push("linioj");
 localeStrings.push("placeholder");//85
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
