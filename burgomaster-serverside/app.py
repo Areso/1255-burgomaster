@@ -10,14 +10,15 @@ events = [{
   'current_result':0,
 }]
 
-@app.route('/api/v1.0/nearest_event', methods=['GET'])
 
-def get_index():
-    return 'hello world'
+@app.route('/api/v1.0/date_of_nearest_event', methods=['GET'])
+def date_of_nearest_event():
+    return '2019-10-28-00-00'
 
+
+@app.route('/api/v1.0/events', methods=['GET'])
 def get_index2():
     return jsonify({'all_events': events})
-
 
 
 if __name__ == '__main__':
