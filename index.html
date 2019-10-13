@@ -1327,8 +1327,10 @@
 		sfx_actions: 0,
 		music_all: 0,
 		music_scripts: 0,
+		log_size: 8,
 		setupEventLogSize : function () {
-			//
+			game.log_size = document.getElementById("inpStnEventLogSize").value;
+			document.getElementById("console_n_chat").style.height = game.log_size * 20;
 		},
 		mobileUI : function () {
 			if (document.getElementById("cbMobileUI").checked === true) {
@@ -3265,6 +3267,11 @@
 		scrollDown();
 	}
 	function populatePatchnotes() {
+		msg = "version 1.0.325";
+		writeToTextArea(msg);
+		msg = "Now you could resize the event log";
+		writeToTextArea(msg);
+
 		msg = "version 1.0.245";
 		writeToTextArea(msg);
 		msg = "Now you could see what hero is doing right now";
@@ -3603,6 +3610,10 @@
 			document.getElementById("fg_off").checked = true;
 		}
 	}
+	function setupEventLogSizeUI () {
+		document.getElementById("inpStnEventLogSize").value    = game.log_size;
+		document.getElementById("console_n_chat").style.height = game.log_size * 20;
+	}
 	function setupAutosave() {
 		game.userASaveAck = 0;
 		if (game.o_autosave==0) {
@@ -3719,6 +3730,7 @@
 		setupFireguardsUI();
 		setupAudioUI();
 		setupAutosave();
+		setupEventLogSizeUI();
 		composite();
 		updateUI();
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
