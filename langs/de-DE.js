@@ -81,9 +81,9 @@ localeStrings.push("Überlieferungs- und Bühnenmusik");
 localeStrings.push("Zurück");
 localeStrings.push("Einstellungen von Soundeffekten und Musik");//80
 localeStrings.push("Klangeinstellungen öffnen");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Mobile Benutzeroberfläche");
+localeStrings.push("Größe des Ereignisprotokolls");
+localeStrings.push("linien");
 localeStrings.push("placeholder");//85
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -93,17 +93,17 @@ localeStrings.push("placeholder");//90
 localeStrings.push("Garnison");
 localeStrings.push("Entlassen");
 localeStrings.push("Einstellen");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//95
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//100
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Truppen einstellen");
+localeStrings.push("Kastellan");//95
+localeStrings.push("Held");
+localeStrings.push("Sariantsbrueder ausbilden");
+localeStrings.push("Mieten turkopol");
+localeStrings.push("Ritterbrueder ausbilden");
+localeStrings.push("Sariantsbrueder: ");//100
+localeStrings.push("turkopole: ");
+localeStrings.push("Ritterbrueder: ");
+localeStrings.push("Bewege eine Einheit zum Helden-Trupp");
+localeStrings.push("Bringe eine Einheit in die Garnison");
 localeStrings.push("placeholder");//105
 localeStrings.push("Bauen");
 localeStrings.push("Haus bauen<br/>lvl %arg1<br/>%arg2 gold");

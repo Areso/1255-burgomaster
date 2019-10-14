@@ -81,9 +81,9 @@ localeStrings.push("Музыка сценариев");
 localeStrings.push("Назад");
 localeStrings.push("Настройки музыки и эффектов");//80
 localeStrings.push("Открыть звуковые настройки");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Мобильный вид");
+localeStrings.push("Размер лога событий");
+localeStrings.push("строк");
 localeStrings.push("placeholder");//85
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -93,17 +93,17 @@ localeStrings.push("placeholder");//90
 localeStrings.push("Гарнизон");
 localeStrings.push("Уволить");
 localeStrings.push("Нанять");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//95
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//100
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Найм войск");
+localeStrings.push("Кастелян");//95
+localeStrings.push("Герой");
+localeStrings.push("Обучить брата-сержанта");
+localeStrings.push("Нанять туркопола");
+localeStrings.push("Обучить брата-рыцаря");
+localeStrings.push("братья-сержанты: ");//100
+localeStrings.push("туркополы: ");
+localeStrings.push("братья-рыцари: ");
+localeStrings.push("передать бойца герою");
+localeStrings.push("передать бойца в гарнизон");
 localeStrings.push("placeholder");//105
 localeStrings.push("Строительство");
 localeStrings.push("Построить Дом<br/>ур. %arg1<br/>%arg2 золота");
@@ -226,7 +226,7 @@ localeStrings.push("Мана");
 localeStrings.push("Опыт");
 localeStrings.push("Текущий опыт");//195
 localeStrings.push("Опыт, необходимый для следующего уровня");
-localeStrings.push("Убеждение");
+localeStrings.push("Характер");
 localeStrings.push("Добропорядочный");
 localeStrings.push("Нейтральный");
 localeStrings.push("Разрушительный");//200
