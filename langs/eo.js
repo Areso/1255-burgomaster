@@ -93,17 +93,17 @@ localeStrings.push("placeholder");//90
 localeStrings.push("Garnison");
 localeStrings.push("Forsenti");
 localeStrings.push("Dungi");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//95
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//100
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Dungado de trupoj");
+localeStrings.push("Castellan");//95
+localeStrings.push("Heroo");
+localeStrings.push("Trajni frat-serĝenton");
+localeStrings.push("Dungi turkopolon");
+localeStrings.push("Trejni frat-kavaliron");
+localeStrings.push("frat-serĝentoj: ");//100
+localeStrings.push("turkopoloj: ");
+localeStrings.push("frat-kavaliroj: ");
+localeStrings.push("movi unuon al la heroa taĉmento");
+localeStrings.push("movi unuon al la garnizono");
 localeStrings.push("placeholder");//105
 localeStrings.push("Konstruaĵo");
 localeStrings.push("Konstrui Domon<br/>nivelo %arg1<br/>pro %arg2 oro");

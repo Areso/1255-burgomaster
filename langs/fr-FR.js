@@ -93,17 +93,17 @@ localeStrings.push("placeholder");//90
 localeStrings.push("Garnison");
 localeStrings.push("Licencier");
 localeStrings.push("Embaucher");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//95
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//100
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Embaucher des troupes");
+localeStrings.push("Castellan");//95
+localeStrings.push("Héros");
+localeStrings.push("train frère sergent ");
+localeStrings.push("louer turkopol");
+localeStrings.push("train frère chevalier");
+localeStrings.push("frère sergents: ");//100
+localeStrings.push("turkopols: ");
+localeStrings.push("frère chevaliers: ");
+localeStrings.push("déplacer l'unité à l'équipe de héros");
+localeStrings.push("déplacer une unité à la garnison");
 localeStrings.push("placeholder");//105
 localeStrings.push("Bâtiment");
 localeStrings.push("Construire une Maison<br/>niveau %arg1<br/>%arg2 or");

@@ -93,17 +93,17 @@ localeStrings.push("placeholder");//90
 localeStrings.push("Garrison");
 localeStrings.push("Fire");
 localeStrings.push("Hire");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//95
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//100
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Hiring troops");
+localeStrings.push("Castellan");//95
+localeStrings.push("Hero");
+localeStrings.push("Train brother-sergeant");
+localeStrings.push("Hire turkopol");
+localeStrings.push("Train brother-knight");
+localeStrings.push("brothers-sergeants: ");//100
+localeStrings.push("turkopols: ");
+localeStrings.push("brothers-knights: ");
+localeStrings.push("move unit to the hero squad");
+localeStrings.push("move unit to the garrison");
 localeStrings.push("placeholder");//105
 localeStrings.push("Building");
 localeStrings.push("Build Home<br/>lvl %arg1<br/>%arg2 gold");
