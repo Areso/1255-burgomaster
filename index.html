@@ -568,11 +568,11 @@
 			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:470px; top: 60px; left: 10px"></div>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
-			Hiring troops
+			<label id="lblTroopsHiring">Hiring troops</label>
 			<table border="1px">
 				<tr>
 					<td>
-					placeholder
+
 					</td>
 					<td>
 						images
@@ -586,16 +586,16 @@
 				</tr>
 				<tr>
 					<td>
-						placeholder
+
 					</td>
 					<td>
-						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" style="width:80px">Hire sergeant</button>
+						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" style="width:200px; height:45px;">Hire sergeant</button>
 					</td>
 					<td>
-						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" style="width:80px">Hire turkopol</button>
+						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" style="width:200px; height:45px;">Hire turkopol</button>
 					</td>
 					<td>
-						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" style="width:80px">Hire knight</button>
+						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" style="width:200px; height:45px;">Hire knight</button>
 					</td>
 				</tr>
 				<tr>
@@ -603,13 +603,13 @@
 						<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
 					</td>
 					<td>
-						sergeants: <div id="lblGarnisonSergeants" style="display: inline">0</div><button id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()">↓</button>
+						<label id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div><button id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()">↓</button>
 					</td>
 					<td>
-						turkopols: <div id="lblGarnisonTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()">↓</button>
+						<label id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()">↓</button>
 					</td>
 					<td>
-						knights: <div id="lblGarnisonKnights" style="display: inline">0</div><button id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()">↓</button>
+						<label id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div><button id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()">↓</button>
 					</td>
 				</tr>
 				<tr id="trHeroHiringTroops" style="visibility: collapse">
@@ -618,13 +618,13 @@
 						<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png">
 					</td>
 					<td>
-						sergeants: <div id="lblHeroSergeants" style="display: inline">0</div><button id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()">↑</button>
+						<label id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div><button id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()">↑</button>
 					</td>
 					<td>
-						turkopols: <div id="lblHeroTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()">↑</button>
+						<label id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()">↑</button>
 					</td>
 					<td>
-						knights: <div id="lblHeroKnights" style="display: inline">0</div><button id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()">↑</button>
+						<label id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div><button id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()">↑</button>
 					</td>
 				</tr>
 			</table>
@@ -3245,6 +3245,16 @@
 		document.getElementById("lblStnMobileUI").innerText      = localeStrings[82];
 		document.getElementById("lblStnEventLogSize").innerText  = localeStrings[83];
 		document.getElementById("lblStnLines").innerText         = localeStrings[84];
+		document.getElementById("lblTroopsHiring").innerText     = localeStrings[94];
+		document.getElementById("btnHireSergeant").innerText     = localeStrings[97];
+		document.getElementById("btnHireTurkopol").innerText     = localeStrings[98];
+		document.getElementById("btnHireKnight").innerText       = localeStrings[99];
+		document.getElementById("lblTabHiringTroopsSergeantsGarrison").innerText       = localeStrings[100];
+		document.getElementById("lblTabHiringTroopsTurkopolsGarrison").innerText       = localeStrings[101];
+		document.getElementById("lblTabHiringTroopsKnightsGarrison").innerText         = localeStrings[102];
+		document.getElementById("lblTabHiringTroopsSergeantsHeroSquad").innerText      = localeStrings[100];
+		document.getElementById("lblTabHiringTroopsTurkopolsHeroSquad").innerText      = localeStrings[101];
+		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();
