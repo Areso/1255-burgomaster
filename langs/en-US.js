@@ -251,7 +251,7 @@ localeStrings.push("Send hero to autocampaign");
 localeStrings.push("Withdraw the hero");
 localeStrings.push("Open journal");//220
 localeStrings.push("Use towngate scroll");
-localeStrings.push("Go to adventure map");
+localeStrings.push("Go to the adventure map");
 localeStrings.push("Regenerate map");
 localeStrings.push("Your hero got promoted to the next level!");
 localeStrings.push("Do you want aggressive stance (higher reward, higher risk) or cautious one?");//225
@@ -289,9 +289,25 @@ localeStrings.push("You don't have a Towngate scroll!");
 localeStrings.push("First, head the hero to the town!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//260
+localeStrings.push("The blackmarket's merchant offers these goods for sale!");//260
+localeStrings.push("price ");
+localeStrings.push("Buy selected");
+localeStrings.push("The blackmarket's merchant could buy your goods.");
+localeStrings.push("Sell selected");
+localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//270
+localeStrings.push("Fire brigade");//270
+localeStrings.push("The fire service is");
+localeStrings.push("on duty");
+localeStrings.push("off duty");
+localeStrings.push("The price of sustain of the service is");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280
+

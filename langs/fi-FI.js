@@ -270,28 +270,43 @@ localeStrings.push("This building and its improvements is needed to save your mo
 localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable do you have, the more experienced troops you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");//240
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//245
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//250
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//245
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//250
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("The hero is just behind the city now!");//255
 localeStrings.push("You don't have a Towngate scroll!");
 localeStrings.push("First, head the hero to the town!");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//260
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//270
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("The blackmarket's merchant offers these goods for sale!");//260
+localeStrings.push("price ");
+localeStrings.push("Buy selected");
+localeStrings.push("The blackmarket's merchant could buy your goods.");
+localeStrings.push("Sell selected");
+localeStrings.push("placeholder");//265
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Fire brigade");//270
+localeStrings.push("The fire service is");
+localeStrings.push("on duty");
+localeStrings.push("off duty");
+localeStrings.push("The price of sustain of the service is");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280

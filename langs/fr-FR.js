@@ -289,9 +289,24 @@ localeStrings.push("Vous n'avez pas de rouleau Towngate!");
 localeStrings.push("Tout d'abord, dirigez le héros en ville!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//260
+localeStrings.push("Le marchand du marché noir propose ces produits à la vente!");//260
+localeStrings.push("prix ");
+localeStrings.push("Acheter sélectionné");
+localeStrings.push("Le marchand du marché noir pourrait acheter vos biens.");
+localeStrings.push("Vendre sélectionné");
+localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//270
+localeStrings.push("Le service d'incendie");//270
+localeStrings.push("Le service d'incendie est");
+localeStrings.push("service");
+localeStrings.push("hors service");
+localeStrings.push("Le prix du maintien du service est de");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280

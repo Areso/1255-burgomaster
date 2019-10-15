@@ -289,9 +289,24 @@ localeStrings.push("У вас нет свитка городских врат!")
 localeStrings.push("Сначала направьте героя в город.");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//260
+localeStrings.push("Продавец с черного рынка предлагает свои товары на продажу!");//260
+localeStrings.push("цена ");
+localeStrings.push("Купить выбранное");
+localeStrings.push("Продавец с черного рынка может выкупить ваши товары.");
+localeStrings.push("Продать выбранное");
+localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//270
+localeStrings.push("Пожарная охрана");//270
+localeStrings.push("Пожарная охрана");
+localeStrings.push("на службе");
+localeStrings.push("не на службе");
+localeStrings.push("Цена содержания пожарной охраны");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280

@@ -289,9 +289,24 @@ localeStrings.push("Sie haben keine Towngate-Schriftrolle!");
 localeStrings.push("Begib dich zuerst mit dem Helden in die Stadt!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//260
+localeStrings.push("Der Schwarzmarkt  des Händlers bietet diese Waren zum Verkauf!");//260
+localeStrings.push("preis ");
+localeStrings.push("kaufen Sie ausgewählt");
+localeStrings.push("Der Händler Schwarzmarkt  könnte Ihre Waren kaufen.");
+localeStrings.push("Verkaufen ausgewählt");
+localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//270
+localeStrings.push("Feuerwehr");//270
+localeStrings.push("Die Feuerwehr");
+localeStrings.push("ist im Dienst");
+localeStrings.push("ist dienstfrei");
+localeStrings.push("Der Preis für den Erhalt des Dienstes beträgt");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280

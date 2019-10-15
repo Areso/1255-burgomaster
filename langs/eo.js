@@ -289,9 +289,24 @@ localeStrings.push("Vi ne havas Towngate-movon!");
 localeStrings.push("Unue, direktu la heroon al la urbo!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//260
+localeStrings.push("La komercisto de nigra merkato ofertas ĉi tiujn varojn por vendo!");//260
+localeStrings.push("prezo ");
+localeStrings.push("Aĉeti elektitan");
+localeStrings.push("La komercisto de nigra merkato povus aĉeti viajn varojn.");
+localeStrings.push("Vendi elektita");
+localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//270
+localeStrings.push("Fajrobrigadisto");//270
+localeStrings.push("La fajro servo");
+localeStrings.push("funkcias");
+localeStrings.push("ne funkcias");
+localeStrings.push("La prezo de daŭro de la servo estas");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280
