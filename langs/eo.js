@@ -309,4 +309,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//280
+localeStrings.push("Vi ne povas permesi gardi viajn serĝentojn. Ili estas eksigitaj.");//280
+localeStrings.push("Vi ne povas permesi konservi viajn turkopolojn. Ili estas eksigitaj.");
+localeStrings.push("Vi ne povas permesi konservi viajn kavalirojn. Ili estas eksigitaj.");
+localeStrings.push("Vi ne povas permesi subteni vian fajrestingistaron. Ili estas eksigitaj.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285

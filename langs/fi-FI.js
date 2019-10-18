@@ -34,7 +34,7 @@ localeStrings.push("Kyllä, raakamaisimmalla tavalla!");
 localeStrings.push("Kyllä");
 localeStrings.push("Ei");
 localeStrings.push("Teloitit kansalaisen syystä %arg1.");
-localeStrings.push("treasury funded on %arg1 with confiscated property of the executed citizen");//35
+localeStrings.push("Kulta aarrekammiossasi lisääntyi %arg1 hirtetyn asukkaan entisestä omaisuudesta.");//35
 localeStrings.push("too few citizens");
 localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
 localeStrings.push("fire in the city!");
@@ -309,4 +309,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//280
+localeStrings.push("You can't afford upkeep your sergeants. they are dismissed");//280
+localeStrings.push("You can't afford upkeep your turkopols. they are dismissed");
+localeStrings.push("You can't afford upkeep your knights. they are dismissed");
+localeStrings.push("You can't afford upkeep your fireguard team. they are dismissed");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285

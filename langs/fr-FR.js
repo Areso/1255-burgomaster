@@ -309,4 +309,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//280
+localeStrings.push("Vous ne pouvez pas vous permettre de garder vos sergents. ils sont licenciés.");//280
+localeStrings.push("Vous ne pouvez pas vous permettre d'entretenir vos turkopols. ils sont licenciés.");
+localeStrings.push("Vous ne pouvez pas vous permettre d'entretenir vos chevaliers. ils sont licenciés.");
+localeStrings.push("Vous ne pouvez pas vous permettre d'entretenir votre équipe de gardes-feu. ils sont licenciés.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285

@@ -309,4 +309,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//280
+localeStrings.push("Sie können es sich nicht leisten, Ihre Sergeanten zu behalten. Sie werden entlassen.");//280
+localeStrings.push("Sie können es sich nicht leisten, Ihre Turkopole zu unterhalten. Sie werden entlassen.");
+localeStrings.push("Sie können es sich nicht leisten, Ihre Ritter zu unterhalten. Sie werden entlassen.");
+localeStrings.push("Sie können es sich nicht leisten, Ihr Feuerwehrteam zu unterhalten. Sie werden entlassen.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285

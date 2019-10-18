@@ -309,5 +309,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//280
+localeStrings.push("You can't afford upkeep your sergeants. they are dismissed");//280
+localeStrings.push("You can't afford upkeep your turkopols. they are dismissed");
+localeStrings.push("You can't afford upkeep your knights. they are dismissed");
+localeStrings.push("You can't afford upkeep your fireguard team. they are dismissed");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
 

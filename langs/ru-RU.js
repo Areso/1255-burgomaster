@@ -309,4 +309,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//280
+localeStrings.push("Вы не можете платить содержание сержантам. Они уволены.");//280
+localeStrings.push("Вы не можете платить содержание туркополам. Они уволены.");
+localeStrings.push("Вы не можете платить содержание рыцарям. Они уволены.");
+localeStrings.push("Вы не можете платить содержание пожарным. Они уволены.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
