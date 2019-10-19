@@ -2857,7 +2857,12 @@
 				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
-				// TODO show something!
+				// nothing to show
+				disabledElements.push("saveGameButton");
+				disabledElements.push("loadGameButton");
+				document.getElementById("saveGameButton").disabled = true;
+				document.getElementById("loadGameButton").disabled = true;
+				showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
 			}
 		}		
 	}
@@ -2995,6 +3000,11 @@
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
+				disabledElements.push("saveGameButton");
+				disabledElements.push("loadGameButton");
+				document.getElementById("saveGameButton").disabled = true;
+				document.getElementById("loadGameButton").disabled = true;
+				showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
 			}
 		}		
 	}

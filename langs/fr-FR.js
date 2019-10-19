@@ -64,7 +64,7 @@ localeStrings.push("Vous avez déjà un héros !");
 localeStrings.push("La sauvegarde automatique est activée.");
 localeStrings.push("La sauvegarde automatique est désactivée.");
 localeStrings.push("Vous êtes sur le point de constuire %arg1.\nSi cet objet est construit, vous ne pourrez plus construire %arg2.\nEtes-vous sûr de votre choix ?");
-localeStrings.push("placeholder");//65
+localeStrings.push("Rien à montrer encore, venez ici plus tard.");//65
 localeStrings.push("Paramètres");
 localeStrings.push("Exporter la partie");
 localeStrings.push("Importer la partie");

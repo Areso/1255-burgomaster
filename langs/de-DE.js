@@ -64,7 +64,7 @@ localeStrings.push("Ihr habt schon einen Helden");
 localeStrings.push("Automatisches Speichern ist eingeschaltet");
 localeStrings.push("Automatisches Speichern ist ausgeschaltet");
 localeStrings.push("Ihr sind im Begriff, nach %arg1 zu bauen.\nWenn das Objekt gebaut wird, können Ihr keine %arg2 bauen.\nBist du dir bei deiner Wahl sicher?");
-localeStrings.push("placeholder");//65
+localeStrings.push("Noch nichts zu zeigen, kommen Sie später hierher.");//65
 localeStrings.push("Einstellungen");
 localeStrings.push("Spielstand exportieren");
 localeStrings.push("Spielstand importieren");

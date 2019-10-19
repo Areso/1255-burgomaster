@@ -64,7 +64,7 @@ localeStrings.push("You already have a hero!");
 localeStrings.push("Autosave is turned on");
 localeStrings.push("Autosave is turned off");
 localeStrings.push("You are about to build %arg1.\nIf the object is built, you wouldn't be allow to build %arg2.\nAre you sure in your choice?");
-localeStrings.push("placeholder");//65
+localeStrings.push("Nothing to show yet, come here later.");//65
 localeStrings.push("Settings");
 localeStrings.push("Export Game");
 localeStrings.push("Import Game");
