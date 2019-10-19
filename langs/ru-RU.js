@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("В начало");
+localeStrings.push("Предыдущая");
+localeStrings.push("Следующая");
+localeStrings.push("К текущей");//160
 localeStrings.push("Данные о населении по периодам");
 localeStrings.push("Текущий лимит населения %arg1");
 localeStrings.push("Текущий лимит золота %arg1");
 localeStrings.push("Данные о казне по периодам");
-localeStrings.push("placeholder");//165
+localeStrings.push(["Д","Ч","М"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Небо над городом потемнело, засверкали молнии, и внезапно всё прекратилось.");
 localeStrings.push("День ");
 localeStrings.push("Ваш герой должен быть в автокампании");//170
 localeStrings.push("Вы хотите отозвать героя?");

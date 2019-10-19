@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("Au début");
+localeStrings.push("Précédent");
+localeStrings.push("Prochain");
+localeStrings.push("Au courant");//160
 localeStrings.push("Onglet Historique de la population");
 localeStrings.push("La population actuelle est limitée à %arg1");
 localeStrings.push("La limite d'or actuelle est de %arg1");
 localeStrings.push("Onglet Historique de l'or");
-localeStrings.push("placeholder");//165
+localeStrings.push(["J","H","M"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Le ciel au-dessus de la ville s'assombrit en noir, des éclairs firent un tel spectacle et tout s'arrêta brusquement.");
 localeStrings.push("Jour ");
 localeStrings.push("Votre héros doit être en autocampagne pour le faire!");//170
 localeStrings.push("Voulez-vous retirer votre héros?");

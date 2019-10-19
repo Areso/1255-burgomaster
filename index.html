@@ -510,10 +510,10 @@
 			</tbody>
 			</table>
 			<br>
-			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:80px">To the beginning</button>
-			<button id="btnPopPrev"     onclick="popPrev()" style="width:80px">Earlier</button>
-			<button id="btnPopNext"     onclick="popNext()" style="width:80px">Later</button>
-			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:80px">To the end</button>
+			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px">To the beginning</button>
+			<button id="btnPopPrev"     onclick="popPrev()" style="width:160px">Earlier</button>
+			<button id="btnPopNext"     onclick="popNext()" style="width:160px">Later</button>
+			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px">To the end</button>
 			<br>
 			<br>
 			<div id="lblCurrentPopLimit"></div>
@@ -531,10 +531,10 @@
 			</tbody>
 			</table>
 			<br>
-			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:80px">To the beginning</button>
-			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:80px">Earlier</button>
-			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">Later</button>
-			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">To the end</button>
+			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px">To the beginning</button>
+			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px">Earlier</button>
+			<button id="btnGoldNext"     onclick="goldNext()" style="width:160px">Later</button>
+			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px">To the end</button>
 			<br>
 			<br>
 			<div id="lblCurrentGoldLimit"></div>
@@ -981,7 +981,7 @@
 		alertMsg = "";
 		if (buildingName==='well') {
 			showAlert = false;
-			checkFireguard();
+			checkFirebrigade();
 		}
 		if (buildingName==='gold') {
 			showAlert = false;
@@ -1572,7 +1572,8 @@
 				if (answer === 2) {
 					if (game.gold >= genMapPriceFinal) {
 						genMap(genMapPriceFinal);
-						postEventLog("the sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.")
+						postEventLog(localeStrings[168]);
+						updateUI();
 					} else {
 						alertMsg = localeStrings[20];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
@@ -2825,7 +2826,7 @@
 		//just a placeholder. TODO it
 	}
 	popPage = 0;
-	function checkFireguard() {
+	function checkFirebrigade() {
 		document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();
 		openTab(null, 'tabFirebrigade');
 	}
@@ -2853,7 +2854,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// TODO show something!
@@ -2874,7 +2875,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
 				//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2884,7 +2885,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
 					//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// TODO show something!
@@ -2910,7 +2911,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2920,7 +2921,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -2946,7 +2947,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2956,7 +2957,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -2990,7 +2991,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -3010,7 +3011,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
 				//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -3020,7 +3021,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
 					//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -3046,7 +3047,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[goldPage*10+i]+' and gold is '+game.budgets[goldPage*10+i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -3056,7 +3057,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -3082,7 +3083,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.budgets[goldPage*10+i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -3092,7 +3093,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -3268,6 +3269,14 @@
 		document.getElementById("lblFBOn").innerText             = localeStrings[272];
 		document.getElementById("lblFBOff").innerText            = localeStrings[273];
 		document.getElementById("lblFBUpKeepPrice").innerText    = localeStrings[274];
+		document.getElementById("btnPopAtStart").innerText       = localeStrings[157];
+		document.getElementById("btnGoldAtStart").innerText      = localeStrings[157];
+		document.getElementById("btnPopPrev").innerText          = localeStrings[158];
+		document.getElementById("btnGoldPrev").innerText         = localeStrings[158];
+		document.getElementById("btnPopNext").innerText          = localeStrings[159];
+		document.getElementById("btnGoldNext").innerText         = localeStrings[159];
+		document.getElementById("btnPopAtEnd").innerText         = localeStrings[160];
+		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();

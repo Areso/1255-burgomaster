@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("Zu Beginn");
+localeStrings.push("Bisherige");
+localeStrings.push("Nächster");
+localeStrings.push("Zur aktuellen");//160
 localeStrings.push("Bevölkerungshistorie-Tab");
 localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");
 localeStrings.push("Aktuelle Goldgrenze ist %arg1");
 localeStrings.push("Goldhistorie-Tab");
-localeStrings.push("placeholder");//165
+localeStrings.push(["T","S","M"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Der Himmel über der Stadt verdunkelte sich zu Schwarz, Blitzschläge machten einen solchen Anblick und plötzlich hörten alle auf.");
 localeStrings.push("Tag ");
 localeStrings.push("Dein Held muss in einer Autokampagne sein, um das zu tun!");//170
 localeStrings.push("Möchtest du deinen Helden zurückziehen?");

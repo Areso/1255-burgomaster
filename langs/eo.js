@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("Al la komenco");
+localeStrings.push("Antaŭa");
+localeStrings.push("Sekva");
+localeStrings.push("Al la fluo");//160
 localeStrings.push("langeto pri civitanaj historio");
 localeStrings.push("Nuna populacio limo estas %arg1");
 localeStrings.push("Nuna ora limo estas %arg1");
 localeStrings.push("langeto pri mono historio");
-localeStrings.push("placeholder");//165
+localeStrings.push(["T","H","M"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("La ĉielo super la urbo malheliĝis al nigraj, fulmotondroj faris tian vidon, kaj subite ĉiuj haltis.");
 localeStrings.push("Tago ");
 localeStrings.push("Via heroo devas esti en aŭtokampanjo por fari tion!");//170
 localeStrings.push("Ĉu vi volas retiri vian heroon?");

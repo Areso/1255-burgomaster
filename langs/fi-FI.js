@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("To the beginning");
+localeStrings.push("Previous");
+localeStrings.push("Next");
+localeStrings.push("To the current");//160
 localeStrings.push("Population history tab");
 localeStrings.push("Current population limit is %arg1");
 localeStrings.push("Current gold limit is %arg1");
 localeStrings.push("Gold history tab");
-localeStrings.push("placeholder");//165
+localeStrings.push(["D","H","M"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("The sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.");
 localeStrings.push("Day ");
 localeStrings.push("Your hero needs to be in a autocampaign to do that!");//170
 localeStrings.push("Do you want to withdraw your hero?");
