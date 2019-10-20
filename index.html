@@ -361,31 +361,31 @@
 			</table>
 			</div>
 		</div>
-		<div id="tabFireguards" class="tabcontent">
-			<h3><div id="lblFireguards">Fire extinguishers service!</div></h3>
+		<div id="tabFirebrigade" class="tabcontent">
+			<h3><label id="lblFirebrigade">Fire brigade</label></h3>
 			<table border="0" width="100%">
 			<tr>
-				<td width="60%"><label id="lblFGOption">The service is </label></td>
-				<td width="20%"><label id="lblFGOn">on duty</label></td>
-				<td width="20%"><label id="lblFGOff">off duty</label></td>
+				<td width="60%"><label id="lblFBOption">The fire service is</label></td>
+				<td width="20%"><label id="lblFBOn">on duty</label></td>
+				<td width="20%"><label id="lblFBOff">off duty</label></td>
 			</tr>
 			<tr>
 				<td width="60%"></td>
 				<td width="20%"><input type = "radio"
-									   name = "fg"
-									   id = "fg_on"
+									   name = "inp_fb"
+									   id = "fb_on"
 									   value = "on"
-									   onchange="game.setupFireguards(1)"/></td>
+									   onchange="game.setupFirebrigade(1)"/></td>
 				<td width="20%"><input type = "radio"
-									   name = "fg"
-									   id = "fg_off"
+									   name = "inp_fb"
+									   id = "fb_off"
 									   value = "off"
-									   onchange="game.setupFireguards(0)"
+									   onchange="game.setupFirebrigade(0)"
 									   checked = "checked" /></td>
 			</tr>
 			</table>
 			<br>
-			The price of sustain of the service is:	<label id="fgUpkeepPrice">0</label>
+			<label id="lblFBUpKeepPrice">The price of sustain of the service is:</label><label id="lblFBUpkeepPriceValue" style="margin-left:20px;">0</label>
 			<br>
 		</div>
 		<div id="Building" class="tabcontent">
@@ -510,10 +510,10 @@
 			</tbody>
 			</table>
 			<br>
-			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:80px">To the beginning</button>
-			<button id="btnPopPrev"     onclick="popPrev()" style="width:80px">Earlier</button>
-			<button id="btnPopNext"     onclick="popNext()" style="width:80px">Later</button>
-			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:80px">To the end</button>
+			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px">To the beginning</button>
+			<button id="btnPopPrev"     onclick="popPrev()" style="width:160px">Earlier</button>
+			<button id="btnPopNext"     onclick="popNext()" style="width:160px">Later</button>
+			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px">To the end</button>
 			<br>
 			<br>
 			<div id="lblCurrentPopLimit"></div>
@@ -531,10 +531,10 @@
 			</tbody>
 			</table>
 			<br>
-			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:80px">To the beginning</button>
-			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:80px">Earlier</button>
-			<button id="btnGoldNext"     onclick="goldNext()" style="width:80px">Later</button>
-			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:80px">To the end</button>
+			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px">To the beginning</button>
+			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px">Earlier</button>
+			<button id="btnGoldNext"     onclick="goldNext()" style="width:160px">Later</button>
+			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px">To the end</button>
 			<br>
 			<br>
 			<div id="lblCurrentGoldLimit"></div>
@@ -981,7 +981,7 @@
 		alertMsg = "";
 		if (buildingName==='well') {
 			showAlert = false;
-			checkFireguard();
+			checkFirebrigade();
 		}
 		if (buildingName==='gold') {
 			showAlert = false;
@@ -1328,6 +1328,17 @@
 		music_all: 0,
 		music_scripts: 0,
 		log_size: 8,
+		UID: getUID(),
+		getNearestEventTime : function () {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", "http://localhost:5000/ajax_info.txt", true);
+			xhttp.send();
+		},
 		setupEventLogSize : function () {
 			game.log_size = document.getElementById("inpStnEventLogSize").value;
 			document.getElementById("console_n_chat").style.height = game.log_size * 20;
@@ -1339,15 +1350,15 @@
 				game.isMobile = 0;
 			}
 		},
-		setupFireguards : function (theValue) {
+		setupFirebrigade : function (theValue) {
 			game.fireGuard = theValue;
 		},
 		fireGuardUpkeep : function () {
-			var totalFGUpkeep = 0;
-			totalFGUpkeep    += 5*(game.buildLevelD+game.buildLevelH+game.buildLevelTreasury);
-			totalFGUpkeep    += 5*(game.buildLevelGallows+game.buildLevelFountain+game.buildLevelStash);
-			totalFGUpkeep    += 5*(game.buildLevelInn+game.buildLevelStable+game.buildLevelArchery);
-			return totalFGUpkeep;
+			var totalBGUpkeep = 0;
+			totalBGUpkeep    += 5*(game.buildLevelD+game.buildLevelH+game.buildLevelTreasury);
+			totalBGUpkeep    += 5*(game.buildLevelGallows+game.buildLevelFountain+game.buildLevelStash);
+			totalBGUpkeep    += 5*(game.buildLevelInn+game.buildLevelStable+game.buildLevelArchery);
+			return totalBGUpkeep;
 		},
 		towngate : function () {
 			if (game.myhero.aCampaignBackward===1){
@@ -1572,7 +1583,8 @@
 				if (answer === 2) {
 					if (game.gold >= genMapPriceFinal) {
 						genMap(genMapPriceFinal);
-						postEventLog("the sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.")
+						postEventLog(localeStrings[168]);
+						updateUI();
 					} else {
 						alertMsg = localeStrings[20];
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
@@ -2200,7 +2212,7 @@
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
 					game.sergeants = 0;
-					msg   = "you can't afford upkeep your sergeants. they are dismissed";
+					msg   = localeStrings[280];
 					postEventLog(msg);
 				}
 			}
@@ -2213,7 +2225,7 @@
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
 					game.turkopols = 0;
-					msg   = "you can't afford upkeep your turkopols. they are dismissed";
+					msg   = localeStrings[281];
 					postEventLog(msg);
 				}
 			}
@@ -2226,7 +2238,7 @@
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
 					game.knights = 0;
-					msg   = "you can't afford upkeep your knights. they are dismissed";
+					msg   = localeStrings[282];
 					postEventLog(msg);
 				}
 			}
@@ -2236,7 +2248,8 @@
 				}
 				else {
 					game.fireGuard = 0;
-					msg   = "you can't afford upkeep your fireguard team. they are dismissed";
+					setupFirebrigadeUI();
+					msg   = localeStrings[283];
 					postEventLog(msg);
 				}
 			}
@@ -2683,118 +2696,6 @@
 		fireStepsBasic:120,
 		oneSecMS:1000,
 	};
-	var artefacts = {
-		artid00: {
-			id: "artid00",
-			name: "Towngate scroll",
-			attr: [],
-			change: [],
-			priceBuy: 5000,
-			chance: 1,
-			type: "scrolls",
-		},
-		artid01: {
-			id: "artid01",
-			name: "Four-Leaf Clover",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid02: {
-			id: "artid02",
-			name: "Medal of Valor",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid03: {
-			id: "artid03",
-			name: "Medal of Courage",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid04: {
-			id: "artid04",
-			name: "Medal of Honor",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid05: {
-			id: "artid05",
-			name: "Medal of Distinction",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid06: {
-			id: "artid06",
-			name: "Rabbit's Foot",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid07: {
-			id: "artid07",
-			name: "Golden Horseshoe",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid08: {
-			id: "artid08",
-			name: "Gambler's Lucky Coin",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid09: {
-			id: "artid09",
-			name: "Unlucky hourglass",
-			attr: ["luck"],
-			change: [0],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid10: {
-			id: "artid10",
-			name: "Glass globe",
-			desc: "alows your hero to guess next battle result",//almost all times. 70% I guess, would be enough for start
-			attr: ["luck"],
-			change: [0],
-			priceBuy: 5000000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-	}
 	/*
 	function test () {
 		game.artid01.attr[]
@@ -2820,14 +2721,29 @@
 		console.log('we are in first level include after loadStartLocale()');
 	});
 	//functions
+	function getUID() {
+		var rnd = Math.floor((Math.random() * 10000) + 1);
+		while (rnd.toString().length < 5) {
+			rnd = "0"+rnd;
+		}
+		return getCurrentDate().toString()+rnd;
+	}
+	function getCurrentDate() {
+		if (!Date.now) {
+			Date.now = function now() {
+				return new Date().getTime();
+			};
+		} else {
+			return Date.now();
+		}
+	}
 	function reloadHeroClassImg() {
 		//just a placeholder. TODO it
 	}
 	popPage = 0;
-	function checkFireguard() {
-		var fgUpkeepPrice  = document.getElementById("fgUpkeepPrice");
-		fgUpkeepPrice.innerHTML = game.fireGuardUpkeep();
-		openTab(null, 'tabFireguards');
+	function checkFirebrigade() {
+		document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();
+		openTab(null, 'tabFirebrigade');
 	}
 	function checkPop() {
 		var year = document.getElementById("popStatK");
@@ -2853,10 +2769,15 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
-				// TODO show something!
+				// nothing to show
+				disabledElements.push("saveGameButton");
+				disabledElements.push("loadGameButton");
+				document.getElementById("saveGameButton").disabled = true;
+				document.getElementById("loadGameButton").disabled = true;
+				showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
 			}
 		}		
 	}
@@ -2874,7 +2795,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
 				//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2884,7 +2805,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
 					//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// TODO show something!
@@ -2910,7 +2831,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2920,7 +2841,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -2946,7 +2867,7 @@
 				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
@@ -2956,7 +2877,7 @@
 					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[80].replace("%arg1",game.popLimit());
+				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -2990,10 +2911,15 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
+				disabledElements.push("saveGameButton");
+				disabledElements.push("loadGameButton");
+				document.getElementById("saveGameButton").disabled = true;
+				document.getElementById("loadGameButton").disabled = true;
+				showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
 			}
 		}		
 	}
@@ -3010,7 +2936,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
 				//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -3020,7 +2946,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
 					//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -3046,7 +2972,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[goldPage*10+i]+' and gold is '+game.budgets[goldPage*10+i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -3056,7 +2982,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -3082,7 +3008,7 @@
 				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
 				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.budgets[goldPage*10+i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
@@ -3092,7 +3018,7 @@
 					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.budgets[game.years.length-game.years.length+i]);
 				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[81].replace("%arg1",game.goldLimit());
+				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -3256,12 +3182,35 @@
 		document.getElementById("lblTabHiringTroopsTurkopolsHeroSquad").innerText      = localeStrings[101];
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
-		document.getElementById("imgCastellanInHiringScreen").alt        = localeStrings[95];
-		document.getElementById("imgHeroInHiringScreenKnight").alt       = localeStrings[96];
-		document.getElementById("imgHeroInHiringScreenMonk").alt         = localeStrings[96];
+		document.getElementById("lblGoodsForSale").innerText     = localeStrings[260];
+		document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
+		document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
+		document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
+		document.getElementById("lblGoodsForBuying").innerText   = localeStrings[263];
+		document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
+		document.getElementById("btnLeaveBlackmarket").innerText = localeStrings[222];
+		document.getElementById("lblFirebrigade").innerText      = localeStrings[270];
+		document.getElementById("lblFBOption").innerText         = localeStrings[271];
+		document.getElementById("lblFBOn").innerText             = localeStrings[272];
+		document.getElementById("lblFBOff").innerText            = localeStrings[273];
+		document.getElementById("lblFBUpKeepPrice").innerText    = localeStrings[274];
+		document.getElementById("btnPopAtStart").innerText       = localeStrings[157];
+		document.getElementById("btnGoldAtStart").innerText      = localeStrings[157];
+		document.getElementById("btnPopPrev").innerText          = localeStrings[158];
+		document.getElementById("btnGoldPrev").innerText         = localeStrings[158];
+		document.getElementById("btnPopNext").innerText          = localeStrings[159];
+		document.getElementById("btnGoldNext").innerText         = localeStrings[159];
+		document.getElementById("btnPopAtEnd").innerText         = localeStrings[160];
+		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();
+		loadArtifacts();
+	}
+	function loadArtifacts(){
+		include('artifacts.js',function(){
+			console.log('we are loading the artifacts');
+		});
 	}
 	function welcomeMsg(){
 		postEventLog(localeStrings[0]);
@@ -3617,11 +3566,11 @@
 			document.getElementById("cbMobileUI").checked = false;
 		}
 	}
-	function setupFireguardsUI () {
+	function setupFirebrigadeUI () {
 		if (game.fireGuard === 1) {
-			document.getElementById("fg_on").checked = true;
+			document.getElementById("fb_on").checked = true;
 		} else {
-			document.getElementById("fg_off").checked = true;
+			document.getElementById("fb_off").checked = true;
 		}
 	}
 	function setupEventLogSizeUI () {
@@ -3741,7 +3690,7 @@
 		game.active_tab="";
 		game.putOutFireUI(true);
 		setupMobileUI();
-		setupFireguardsUI();
+		setupFirebrigadeUI();
 		setupAudioUI();
 		setupAutosave();
 		setupEventLogSizeUI();

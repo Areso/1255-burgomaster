@@ -34,7 +34,7 @@ localeStrings.push("Kyllä, raakamaisimmalla tavalla!");
 localeStrings.push("Kyllä");
 localeStrings.push("Ei");
 localeStrings.push("Teloitit kansalaisen syystä %arg1.");
-localeStrings.push("treasury funded on %arg1 with confiscated property of the executed citizen");//35
+localeStrings.push("Kulta aarrekammiossasi lisääntyi %arg1 hirtetyn asukkaan entisestä omaisuudesta.");//35
 localeStrings.push("too few citizens");
 localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
 localeStrings.push("fire in the city!");
@@ -64,7 +64,7 @@ localeStrings.push("You already have a hero!");
 localeStrings.push("Autosave is turned on");
 localeStrings.push("Autosave is turned off");
 localeStrings.push("You are about to build %arg1.\nIf the object is built, you wouldn't be allow to build %arg2.\nAre you sure in your choice?");
-localeStrings.push("placeholder");//65
+localeStrings.push("Nothing to show yet, come here later.");//65
 localeStrings.push("Settings");
 localeStrings.push("Export Game");
 localeStrings.push("Import Game");
@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("To the beginning");
+localeStrings.push("Previous");
+localeStrings.push("Next");
+localeStrings.push("To the current");//160
 localeStrings.push("Population history tab");
 localeStrings.push("Current population limit is %arg1");
 localeStrings.push("Current gold limit is %arg1");
 localeStrings.push("Gold history tab");
-localeStrings.push("placeholder");//165
+localeStrings.push(["D","H","M"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("The sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.");
 localeStrings.push("Day ");
 localeStrings.push("Your hero needs to be in a autocampaign to do that!");//170
 localeStrings.push("Do you want to withdraw your hero?");
@@ -270,28 +270,70 @@ localeStrings.push("This building and its improvements is needed to save your mo
 localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable do you have, the more experienced troops you could hire there.");
 localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");//240
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//245
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//250
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//245
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//250
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("The hero is just behind the city now!");//255
 localeStrings.push("You don't have a Towngate scroll!");
 localeStrings.push("First, head the hero to the town!");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//260
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");
-localeStrings.push("");//270
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("The blackmarket's merchant offers these goods for sale!");//260
+localeStrings.push("price ");
+localeStrings.push("Buy selected");
+localeStrings.push("The blackmarket's merchant could buy your goods.");
+localeStrings.push("Sell selected");
+localeStrings.push("placeholder");//265
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Fire brigade");//270
+localeStrings.push("The fire service is");
+localeStrings.push("on duty");
+localeStrings.push("off duty");
+localeStrings.push("The price of sustain of the service is");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("You can't afford upkeep your sergeants. they are dismissed");//280
+localeStrings.push("You can't afford upkeep your turkopols. they are dismissed");
+localeStrings.push("You can't afford upkeep your knights. they are dismissed");
+localeStrings.push("You can't afford upkeep your fireguard team. they are dismissed");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
+localeStrings.push("Towngate scroll");
+localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
+localeStrings.push("Four-Leaf Clover");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Medal of Valor");//290
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Medal of Courage");
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Medal of Honor");
+localeStrings.push("This item increases your hero's moral by 1");//295
+localeStrings.push("Medal of Distinction");
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Rabbit's Foot");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Golden Horseshoe");//300
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Gambler's Lucky Coin");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Unlucky hourglass");
+localeStrings.push("This item reset any luck bonuses for your hero and opponent's troops");//305
+localeStrings.push("Glass globe");
+localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start

@@ -64,7 +64,7 @@ localeStrings.push("Vi jam havas heroon!");
 localeStrings.push("aŭtomate konservi ŝaltita");
 localeStrings.push("aŭtomate konservi malŝaltita");
 localeStrings.push("Vi estas konstruonta %arg1.\n Se la objekto estas konstruita, vi ne rajtus konstrui %arg2.\n Ĉu vi certas en via elekto?");
-localeStrings.push("placeholder");//65
+localeStrings.push("Nenio por montri ankoraŭ, venu ĉi tien poste.");//65
 localeStrings.push("Preferoj");
 localeStrings.push("eksporti konserva dosieron");
 localeStrings.push("importi konserva dosieron");
@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("Al la komenco");
+localeStrings.push("Antaŭa");
+localeStrings.push("Sekva");
+localeStrings.push("Al la fluo");//160
 localeStrings.push("langeto pri civitanaj historio");
 localeStrings.push("Nuna populacio limo estas %arg1");
 localeStrings.push("Nuna ora limo estas %arg1");
 localeStrings.push("langeto pri mono historio");
-localeStrings.push("placeholder");//165
+localeStrings.push(["T","H","M"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("La ĉielo super la urbo malheliĝis al nigraj, fulmotondroj faris tian vidon, kaj subite ĉiuj haltis.");
 localeStrings.push("Tago ");
 localeStrings.push("Via heroo devas esti en aŭtokampanjo por fari tion!");//170
 localeStrings.push("Ĉu vi volas retiri vian heroon?");
@@ -289,9 +289,51 @@ localeStrings.push("Vi ne havas Towngate-movon!");
 localeStrings.push("Unue, direktu la heroon al la urbo!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//260
+localeStrings.push("La komercisto de nigra merkato ofertas ĉi tiujn varojn por vendo!");//260
+localeStrings.push("prezo ");
+localeStrings.push("Aĉeti elektitan");
+localeStrings.push("La komercisto de nigra merkato povus aĉeti viajn varojn.");
+localeStrings.push("Vendi elektita");
+localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//270
+localeStrings.push("Fajrobrigadisto");//270
+localeStrings.push("La fajro servo");
+localeStrings.push("funkcias");
+localeStrings.push("ne funkcias");
+localeStrings.push("La prezo de daŭro de la servo estas");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Vi ne povas permesi gardi viajn serĝentojn. Ili estas eksigitaj.");//280
+localeStrings.push("Vi ne povas permesi konservi viajn turkopolojn. Ili estas eksigitaj.");
+localeStrings.push("Vi ne povas permesi konservi viajn kavalirojn. Ili estas eksigitaj.");
+localeStrings.push("Vi ne povas permesi subteni vian fajrestingistaron. Ili estas eksigitaj.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
+localeStrings.push("Towngate scroll");
+localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
+localeStrings.push("Four-Leaf Clover");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Medal of Valor");//290
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Medal of Courage");
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Medal of Honor");
+localeStrings.push("This item increases your hero's moral by 1");//295
+localeStrings.push("Medal of Distinction");
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Rabbit's Foot");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Golden Horseshoe");//300
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Gambler's Lucky Coin");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Unlucky hourglass");
+localeStrings.push("This item reset any luck bonuses for your hero and opponent's troops");//305
+localeStrings.push("Glass globe");
+localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start

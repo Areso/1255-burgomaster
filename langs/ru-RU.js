@@ -64,7 +64,7 @@ localeStrings.push("У вас уже есть герой");
 localeStrings.push("Автосохранение включено");
 localeStrings.push("Автосохранение выключено");
 localeStrings.push("Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?");
-localeStrings.push("placeholder");//65
+localeStrings.push("Пока нечего показать. Попробуйте позже.");//65
 localeStrings.push("Настройки");
 localeStrings.push("Экспорт сохранения");
 localeStrings.push("Импорт сохранения");
@@ -186,18 +186,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//160
+localeStrings.push("В начало");
+localeStrings.push("Предыдущая");
+localeStrings.push("Следующая");
+localeStrings.push("К текущей");//160
 localeStrings.push("Данные о населении по периодам");
 localeStrings.push("Текущий лимит населения %arg1");
 localeStrings.push("Текущий лимит золота %arg1");
 localeStrings.push("Данные о казне по периодам");
-localeStrings.push("placeholder");//165
+localeStrings.push(["Д","Ч","М"]);//165
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Небо над городом потемнело, засверкали молнии, и внезапно всё прекратилось.");
 localeStrings.push("День ");
 localeStrings.push("Ваш герой должен быть в автокампании");//170
 localeStrings.push("Вы хотите отозвать героя?");
@@ -289,9 +289,51 @@ localeStrings.push("У вас нет свитка городских врат!")
 localeStrings.push("Сначала направьте героя в город.");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//260
+localeStrings.push("Продавец с черного рынка предлагает свои товары на продажу!");//260
+localeStrings.push("цена ");
+localeStrings.push("Купить выбранное");
+localeStrings.push("Продавец с черного рынка может выкупить ваши товары.");
+localeStrings.push("Продать выбранное");
+localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");//270
+localeStrings.push("Пожарная охрана");//270
+localeStrings.push("Пожарная охрана");
+localeStrings.push("на службе");
+localeStrings.push("не на службе");
+localeStrings.push("Цена содержания пожарной охраны");
+localeStrings.push("placeholder");//275
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("Вы не можете платить содержание сержантам. Они уволены.");//280
+localeStrings.push("Вы не можете платить содержание туркополам. Они уволены.");
+localeStrings.push("Вы не можете платить содержание рыцарям. Они уволены.");
+localeStrings.push("Вы не можете платить содержание пожарным. Они уволены.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
+localeStrings.push("Свиток телепорта");
+localeStrings.push("Этот одноразовый предмет позволяет вам совершить телепорт к городу в автокампании.");
+localeStrings.push("Четырехлистный клевер");
+localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
+localeStrings.push("Медаль отваги");//290
+localeStrings.push("Этот предмет увеличивает мораль героя на 1");
+localeStrings.push("Медаль храбрости");
+localeStrings.push("Этот предмет увеличивает мораль героя на 1");
+localeStrings.push("Медаль чести");
+localeStrings.push("Этот предмет увеличивает мораль героя на 1");//295
+localeStrings.push("Медаль за отличия");
+localeStrings.push("Этот предмет увеличивает мораль героя на 1");
+localeStrings.push("Заячья лапка");
+localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
+localeStrings.push("Золотая подкова");//300
+localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
+localeStrings.push("Удачливая монетка игрока");
+localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
+localeStrings.push("Песочные часы неудачи");
+localeStrings.push("Этот предмет отменяет все бонусы удачи и суеверности героя и его врага");//305
+localeStrings.push("Хрустальный шар");
+localeStrings.push("Этот предмет позволяет предсказать результат следующей битвы");//almost all times. 70% I guess, would be enough for start
