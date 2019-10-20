@@ -119,4 +119,4 @@ var artefacts = {
         type: "artefactsWorn",
         artefactsWorn: 1,
     },
-}
+};

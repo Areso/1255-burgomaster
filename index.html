@@ -1328,6 +1328,17 @@
 		music_all: 0,
 		music_scripts: 0,
 		log_size: 8,
+		UID: getUID(),
+		getNearestEventTime : function () {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", "http://localhost:5000/ajax_info.txt", true);
+			xhttp.send();
+		},
 		setupEventLogSize : function () {
 			game.log_size = document.getElementById("inpStnEventLogSize").value;
 			document.getElementById("console_n_chat").style.height = game.log_size * 20;
@@ -2685,7 +2696,6 @@
 		fireStepsBasic:120,
 		oneSecMS:1000,
 	};
-
 	/*
 	function test () {
 		game.artid01.attr[]
@@ -2711,6 +2721,22 @@
 		console.log('we are in first level include after loadStartLocale()');
 	});
 	//functions
+	function getUID() {
+		var rnd = Math.floor((Math.random() * 10000) + 1);
+		while (rnd.toString().length < 5) {
+			rnd = "0"+rnd;
+		}
+		return getCurrentDate().toString()+rnd;
+	}
+	function getCurrentDate() {
+		if (!Date.now) {
+			Date.now = function now() {
+				return new Date().getTime();
+			};
+		} else {
+			return Date.now();
+		}
+	}
 	function reloadHeroClassImg() {
 		//just a placeholder. TODO it
 	}
