@@ -315,3 +315,25 @@ localeStrings.push("You can't afford upkeep your knights. they are dismissed");
 localeStrings.push("You can't afford upkeep your fireguard team. they are dismissed");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//285
+localeStrings.push("Towngate scroll");
+localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
+localeStrings.push("Four-Leaf Clover");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Medal of Valor");//290
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Medal of Courage");
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Medal of Honor");
+localeStrings.push("This item increases your hero's moral by 1");//295
+localeStrings.push("Medal of Distinction");
+localeStrings.push("This item increases your hero's moral by 1");
+localeStrings.push("Rabbit's Foot");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Golden Horseshoe");//300
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Gambler's Lucky Coin");
+localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("Unlucky hourglass");
+localeStrings.push("This item reset any luck bonuses for your hero and opponent's troops");//305
+localeStrings.push("Glass globe");
+localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start

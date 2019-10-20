@@ -2685,118 +2685,7 @@
 		fireStepsBasic:120,
 		oneSecMS:1000,
 	};
-	var artefacts = {
-		artid00: {
-			id: "artid00",
-			name: "Towngate scroll",
-			attr: [],
-			change: [],
-			priceBuy: 5000,
-			chance: 1,
-			type: "scrolls",
-		},
-		artid01: {
-			id: "artid01",
-			name: "Four-Leaf Clover",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid02: {
-			id: "artid02",
-			name: "Medal of Valor",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid03: {
-			id: "artid03",
-			name: "Medal of Courage",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid04: {
-			id: "artid04",
-			name: "Medal of Honor",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid05: {
-			id: "artid05",
-			name: "Medal of Distinction",
-			attr: ["moral"],
-			change: [1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid06: {
-			id: "artid06",
-			name: "Rabbit's Foot",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid07: {
-			id: "artid07",
-			name: "Golden Horseshoe",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid08: {
-			id: "artid08",
-			name: "Gambler's Lucky Coin",
-			attr: ["luck","superstition"],
-			change: [1,1],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid09: {
-			id: "artid09",
-			name: "Unlucky hourglass",
-			attr: ["luck"],
-			change: [0],
-			priceBuy: 1500000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-		artid10: {
-			id: "artid10",
-			name: "Glass globe",
-			desc: "alows your hero to guess next battle result",//almost all times. 70% I guess, would be enough for start
-			attr: ["luck"],
-			change: [0],
-			priceBuy: 5000000,
-			chance: 1,
-			type: "artefactsWorn",
-			artefactsWorn: 1,
-		},
-	}
+
 	/*
 	function test () {
 		game.artid01.attr[]
@@ -3290,6 +3179,12 @@
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();
+		loadArtifacts();
+	}
+	function loadArtifacts(){
+		include('artifacts.js',function(){
+			console.log('we are loading the artifacts');
+		});
 	}
 	function welcomeMsg(){
 		postEventLog(localeStrings[0]);
