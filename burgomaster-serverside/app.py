@@ -1,5 +1,6 @@
+from datetime import datetime, date
 from flask import Flask, jsonify
-app = Flask(__name__)
+burg_server = Flask(__name__)
 
 
 events = [{
@@ -11,15 +12,24 @@ events = [{
 }]
 
 
-@app.route('/api/v1.0/date_of_nearest_event', methods=['GET'])
-def date_of_nearest_event():
-    return '2019-10-28-00-00'
+@burg_server.route('/api/v1.0/event_countdown', methods=['GET'])
+def event_countdown():
+    date_cur         = datetime.today()
+    date_evt         = datetime.strptime('2019-10-28 0:00:00', '%Y-%m-%d %H:%M:%S')
+    date_diff        = date_evt-date_cur
+    date_diff_days   = str(days_hours_minutes(date_diff))
+    return date_diff_days
 
 
-@app.route('/api/v1.0/events', methods=['GET'])
+@burg_server.route('/api/v1.0/deadend')
+def days_hours_minutes(td):
+    return td.days, td.seconds//3600, (td.seconds//60)%60
+
+
+@burg_server.route('/api/v1.0/events', methods=['GET'])
 def get_index2():
     return jsonify({'all_events': events})
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    burg_server.run(debug=True)
