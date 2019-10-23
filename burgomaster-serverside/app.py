@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from datetime import datetime, date
 from flask import Flask, jsonify
 burg_server = Flask(__name__)
@@ -33,3 +34,4 @@ def get_index2():
 
 if __name__ == '__main__':
     burg_server.run(debug=True)
+
