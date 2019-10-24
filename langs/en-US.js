@@ -195,8 +195,8 @@ localeStrings.push("Current population limit is %arg1");
 localeStrings.push("Current gold limit is %arg1");
 localeStrings.push("Gold history tab");
 localeStrings.push(["D","H","M"]);//165
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("This is the time amount before an event will start");
+localeStrings.push("This is the time amount before the event will end");
 localeStrings.push("The sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.");
 localeStrings.push("Day ");
 localeStrings.push("Your hero needs to be in a autocampaign to do that!");//170
