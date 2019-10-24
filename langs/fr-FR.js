@@ -195,8 +195,8 @@ localeStrings.push("La population actuelle est limitée à %arg1");
 localeStrings.push("La limite d'or actuelle est de %arg1");
 localeStrings.push("Onglet Historique de l'or");
 localeStrings.push(["J","H","M"]);//165
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("This is the time amount before an event will start");
+localeStrings.push("This is the time amount before the event will end");
 localeStrings.push("Le ciel au-dessus de la ville s'assombrit en noir, des éclairs firent un tel spectacle et tout s'arrêta brusquement.");
 localeStrings.push("Jour ");
 localeStrings.push("Votre héros doit être en autocampagne pour le faire!");//170

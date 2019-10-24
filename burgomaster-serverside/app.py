@@ -19,7 +19,7 @@ def event_countdown():
     date_evt         = datetime.strptime('2019-10-28 0:00:00', '%Y-%m-%d %H:%M:%S')
     date_diff        = date_evt-date_cur
     date_diff_days   = str(days_hours_minutes(date_diff))
-    return date_diff_days
+    return {"countdown":date_diff_days,"event_started":0}, 200, {"Access-Control-Allow-Origin" : "*"}
 
 
 @burg_server.route('/api/v1.0/deadend')

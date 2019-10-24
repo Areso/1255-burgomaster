@@ -181,6 +181,7 @@
 			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
 			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
 			<div id="dcounter">30</div>
+			<div id="lblEventCountdownValue" style="margin-left:20px;" onclick="game.getEventHelp()"></div>
 			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
 		<div id="Main" class="tabcontent">
@@ -1270,31 +1271,31 @@
 	//init variables
 	disabledElements = [];
 	var game = {
-		gold:20,
-		gens:0,
-		pop:2,
-		season:2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
-		year:1255,
-		food:20,
-		treasuryGuard:0,
-		buildLevelD:0,
-		buildLevelH:0,
-		buildLevelTreasury:0,
-		buildLevelGallows:0,
-		buildLevelFountain:0,
-		buildLevelStash:0,
-		buildLevelInn:0,
-		buildLevelStable:0,
-		buildLevelArchery:0,
-		buildLevelSmith:0,
-		fire:0,
-		fireSteps:0,
-		fireGuard:0,
-		hero:0,
-		happiness:80,
-		o_autosave:0,
+		gold: 20,
+		gens: 0,
+		pop: 2,
+		season: 2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
+		year: 1255,
+		food: 20,
+		treasuryGuard: 0,
+		buildLevelD: 0,
+		buildLevelH: 0,
+		buildLevelTreasury: 0,
+		buildLevelGallows: 0,
+		buildLevelFountain: 0,
+		buildLevelStash: 0,
+		buildLevelInn: 0,
+		buildLevelStable: 0,
+		buildLevelArchery: 0,
+		buildLevelSmith: 0,
+		fire: 0,
+		fireSteps: 0,
+		fireGuard: 0,
+		hero: 0,
+		happiness: 80,
+		o_autosave: 0,
 		newSaveVersion: 8,
-		saveVersion:"saveV1010",
+		saveVersion: "saveV1010",
 		castleX: 1,
 		castleY: 1,
 		heroX: 1,
@@ -1329,14 +1330,41 @@
 		music_scripts: 0,
 		log_size: 8,
 		UID: getUID(),
+		getEventHelp : function () {
+			disabledElements.push("saveGameButton");
+			disabledElements.push("loadGameButton");
+			document.getElementById("saveGameButton").disabled = true;
+			document.getElementById("loadGameButton").disabled = true;
+			showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+		},
 		getNearestEventTime : function () {
+			back_response = null;
+			eventHelpMsg  = null;
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("demo").innerHTML = this.responseText;
+					back_response = JSON.parse(this.responseText);
+					console.log(back_response);
+					cntdwn = back_response["countdown"];
+					cntdwn = cntdwn.replace("(","");
+					cntdwn = cntdwn.replace(")","");
+					cntdwn = cntdwn.split(",");
+					console.log(cntdwn);
+					var flag_event_started = parseInt(back_response["event_started"]);
+					if (flag_event_started===0){
+						eventHelpMsg = localeStrings[166];
+					} else {
+						eventHelpMsg = localeStrings[167];
+					}
+					console.log(eventHelpMsg);
+					lblMsg  = cntdwn[0]+localeStrings[165][0];
+					lblMsg += " "+cntdwn[1]+localeStrings[165][1];
+					lblMsg += " "+cntdwn[2]+localeStrings[165][2];
+					document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
 				}
 			};
-			xhttp.open("GET", "http://localhost:5000/ajax_info.txt", true);
+			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/event_countdown", true);
+			//xhttp.setRequestHeader("Content-type", "application/json");
 			xhttp.send();
 		},
 		setupEventLogSize : function () {
@@ -2147,6 +2175,7 @@
 		},
 		calculateTurn : function() {
 			game.recordStats();
+			game.getNearestEventTime();
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;

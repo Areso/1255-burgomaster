@@ -195,8 +195,8 @@ localeStrings.push("Nuna populacio limo estas %arg1");
 localeStrings.push("Nuna ora limo estas %arg1");
 localeStrings.push("langeto pri mono historio");
 localeStrings.push(["T","H","M"]);//165
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("This is the time amount before an event will start");
+localeStrings.push("This is the time amount before the event will end");
 localeStrings.push("La ĉielo super la urbo malheliĝis al nigraj, fulmotondroj faris tian vidon, kaj subite ĉiuj haltis.");
 localeStrings.push("Tago ");
 localeStrings.push("Via heroo devas esti en aŭtokampanjo por fari tion!");//170
