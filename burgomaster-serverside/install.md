@@ -9,6 +9,8 @@ sudo nano /etc/systemd/system/burgomaster.service
 where is uwsgi
 output past in ExecStart
 
+systemctl enable burgomaster.service
+
 [Unit]
 Description=uWSGI instance to serve burgomaster
 After=network.target
