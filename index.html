@@ -247,8 +247,8 @@
 			<label id="lblStnLines">lines</label>
 			<br>
 			<lable id="lblStnUID">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px;"></label>
-			<label id="lblStnAlias" style="margin-left: 30px;" >Your nickname</label>
-			<input id="inpStnAliasValue" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
+			<!--<label id="lblStnAlias" style="margin-left: 30px;" >Your nickname</label>
+			<input id="inpStnAliasValue" value="" onchange="game.updateAlias()" style="margin-left: 20px;">-->
 			<br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
 		</div>
@@ -807,7 +807,6 @@
 	var archeryY = 90;
 	var archeryW = 80;
 	var archeryH = 80;
-
 	buildingsInTownB=[];
 	buildingsInTownX=[];
 	buildingsInTownY=[];
@@ -1336,8 +1335,22 @@
 		alias: "",
 		UID: getUID(),
 		updateAlias : function () {
-			proposedAlias = document.getElementById("inpStnUIDValue").value;
+			/*
+			proposedAlias = document.getElementById("inpStnAliasValue").value;
 			console.log(proposedAlias);
+			back_response = null;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					back_response = JSON.parse(this.responseText);
+					console.log(back_response);
+				}
+			};
+			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/register_alias", true);
+			//xhttp.setRequestHeader("Content-type", "application/json");//SOMEWHY IT MAKE OPTIONS CALL INSTEAD OF POST TODO CHECK THIS
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send('dataToParse='+game.UID+";"+game.alias+";"+proposedAlias);
+			*/
 		},
 		getEventHelp : function () {
 			disabledElements.push("saveGameButton");
@@ -4102,7 +4115,7 @@
 		}
 		if (tabName==="Settings"){
 			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
-			document.getElementById("inpStnAliasValue").value = game.alias;
+			//document.getElementById("inpStnAliasValue").value = game.alias;
 		}
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
