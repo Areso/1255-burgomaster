@@ -84,9 +84,9 @@ localeStrings.push("Ouvrir les paramètres sonores");
 localeStrings.push("Interface utilisateur mobile");
 localeStrings.push("Taille du journal des événements");
 localeStrings.push("lignes");
-localeStrings.push("placeholder");//85
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Your UID");//85
+localeStrings.push("Your nickname");
+localeStrings.push("Update");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90

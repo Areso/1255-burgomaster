@@ -84,9 +84,9 @@ localeStrings.push("Malfermu sonajn preferojn");
 localeStrings.push("Poŝtelefona UI");
 localeStrings.push("Eventa grandeco");
 localeStrings.push("linioj");
-localeStrings.push("placeholder");//85
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Your UID");//85
+localeStrings.push("Your nickname");
+localeStrings.push("Update");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90

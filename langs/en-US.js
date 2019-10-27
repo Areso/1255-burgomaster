@@ -84,9 +84,9 @@ localeStrings.push("Open sound settings");
 localeStrings.push("Mobile UI");
 localeStrings.push("Event log size");
 localeStrings.push("lines");
-localeStrings.push("placeholder");//85
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Your UID");//85
+localeStrings.push("Your nickname");
+localeStrings.push("Update");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90

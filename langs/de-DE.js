@@ -84,9 +84,9 @@ localeStrings.push("Klangeinstellungen öffnen");
 localeStrings.push("Mobile Benutzeroberfläche");
 localeStrings.push("Größe des Ereignisprotokolls");
 localeStrings.push("linien");
-localeStrings.push("placeholder");//85
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Your UID");//85
+localeStrings.push("Your nickname");
+localeStrings.push("Update");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90

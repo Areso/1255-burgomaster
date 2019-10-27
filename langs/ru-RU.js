@@ -84,9 +84,9 @@ localeStrings.push("Открыть звуковые настройки");
 localeStrings.push("Мобильный вид");
 localeStrings.push("Размер лога событий");
 localeStrings.push("строк");
-localeStrings.push("placeholder");//85
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Your UID");//85
+localeStrings.push("Your nickname");
+localeStrings.push("Update");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90
