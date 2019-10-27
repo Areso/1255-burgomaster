@@ -33,5 +33,5 @@ def get_index2():
 
 
 if __name__ == '__main__':
-    burg_server.run(debug=True)
+    burg_server.run(debug=True,host='0.0.0.0')
 

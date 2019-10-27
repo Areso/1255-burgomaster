@@ -246,6 +246,10 @@
 			<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
 			<label id="lblStnLines">lines</label>
 			<br>
+			<lable id="lblStnUID">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px;"></label>
+			<label id="lblStnAlias" style="margin-left: 30px;" >Your nickname</label>
+			<input id="inpStnAliasValue" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
+			<br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
@@ -1329,7 +1333,12 @@
 		music_all: 0,
 		music_scripts: 0,
 		log_size: 8,
+		alias: "",
 		UID: getUID(),
+		updateAlias : function () {
+			proposedAlias = document.getElementById("inpStnUIDValue").value;
+			console.log(proposedAlias);
+		},
 		getEventHelp : function () {
 			disabledElements.push("saveGameButton");
 			disabledElements.push("loadGameButton");
@@ -1342,7 +1351,7 @@
 			eventHelpMsg  = null;
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
+				if (this.readyState === 4 && this.status === 200) {
 					back_response = JSON.parse(this.responseText);
 					console.log(back_response);
 					cntdwn = back_response["countdown"];
@@ -4090,6 +4099,10 @@
 		} else {
 			game.active_tab="";
 			console.log('close Explore tab');
+		}
+		if (tabName==="Settings"){
+			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
+			document.getElementById("inpStnAliasValue").value = game.alias;
 		}
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
