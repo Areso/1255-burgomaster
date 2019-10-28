@@ -1080,7 +1080,7 @@
 	//composite();
 </script>
 <script>
-	//GLOBALMAP
+	//THE ADVENTURE MAP
 	var canvas_map      = document.getElementById("canvasMap");
 	canvas_map.addEventListener("touchstart", tap_map);
 	canvas_map.addEventListener("mousedown", tap_map);
@@ -1338,21 +1338,21 @@
 		updateAlias : function () {
 			proposedAlias = document.getElementById("inpStnAliasValue").value;
 			console.log(proposedAlias);
-			back_response = null;
+			back_response_alias = null;
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState === 4 && this.status === 200) {
-					back_response = JSON.parse(this.responseText);
-					console.log(back_response);
-					if (back_response["content"]===200) {
+					back_response_alias = JSON.parse(this.responseText);
+					console.log(back_response_alias);
+					if (back_response_alias["content"]===200) {
 						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][0];
 						game.alias = document.getElementById("inpStnAliasValue").value;
 					}
-					if (back_response["content"]===201) {
+					if (back_response_alias["content"]===201) {
 						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][1];
 						game.alias = document.getElementById("inpStnAliasValue").value;
 					}
-					if (back_response["content"]===204) {
+					if (back_response_alias["content"]===204) {
 						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][2];
 						document.getElementById("inpStnAliasValue").value = "";
 					}
@@ -1365,11 +1365,13 @@
 			xhttp.send(dataToParse);
 		},
 		getEventHelp : function () {
-			disabledElements.push("saveGameButton");
-			disabledElements.push("loadGameButton");
-			document.getElementById("saveGameButton").disabled = true;
-			document.getElementById("loadGameButton").disabled = true;
-			showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+			if (eventHelpMsg!==null) {
+				disabledElements.push("saveGameButton");
+				disabledElements.push("loadGameButton");
+				document.getElementById("saveGameButton").disabled = true;
+				document.getElementById("loadGameButton").disabled = true;
+				showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+			}
 		},
 		getNearestEventTime : function () {
 			back_response = null;
@@ -1395,6 +1397,9 @@
 					lblMsg += " "+cntdwn[1]+localeStrings[165][1];
 					lblMsg += " "+cntdwn[2]+localeStrings[165][2];
 					document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
+					document.getElementById("lblEventCountdownValue").disabled = false;
+				} else {
+					document.getElementById("lblEventCountdownValue").disabled = true;
 				}
 			};
 			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/event_countdown", true);
