@@ -57,7 +57,7 @@ localeStrings.push("Execute somebody");
 localeStrings.push("shit happens: the plague killed %arg1 citizens");//55
 localeStrings.push("Do you want to place a festival?\nIt would cost to you %arg1 gold!\n");
 localeStrings.push("Festival was placed not so long ago.\nThe effect from festival would be weaken.\n");
-localeStrings.push("placeholder");
+localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
 localeStrings.push(["Your gain because of the festival is %arg1","Your loss because of the festival is %arg1"]);
 localeStrings.push("Okay");//60
 localeStrings.push("You already have a hero!");

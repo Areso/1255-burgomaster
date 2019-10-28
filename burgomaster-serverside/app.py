@@ -24,6 +24,24 @@ def myloading():
     return conf_list
 
 
+@burg_server.route('/api/v1.0/make_event_pledge', methods=['POST'])
+def make_event_pledge():
+    myconfig = myloading();
+    reqdata = request.get_data()
+    uid = int(reqdata)
+    mydb = mysql.connector.connect(
+        host=myconfig[2],
+        user=myconfig[0],
+        passwd=myconfig[1],
+        database=myconfig[4]
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("INSERT INTO pledges(id_event, uid, pledge_value) VALUES (0, %(uid)s, 1)", {'uid': uid})
+    mydb.commit()
+    return {"content": 200}, 200, {"Access-Control-Allow-Origin": "*",
+                                      "Content-type": "application/json",
+                                      "Access-Control-Allow-Methods": "POST"}
+
 
 @burg_server.route('/api/v1.0/get_event_details', methods=['GET'])
 def get_event_details():
@@ -36,7 +54,7 @@ def get_event_details():
         database=myconfig[4]
     )
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT sum(value) as res FROM pledges WHERE uid = %(uid)s GROUP BY uid", {'uid': uid})
+    mycursor.execute("SELECT sum(pledge_value) as res FROM pledges WHERE uid = %(uid)s GROUP BY uid", {'uid': uid})
     myresult = mycursor.fetchall()
     if len(myresult)>0:
         for x in myresult:
@@ -46,7 +64,7 @@ def get_event_details():
     else:
         the_player_pledge = 0
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT sum(value) as res FROM pledges WHERE id_event = 0 GROUP BY id_event")
+    mycursor.execute("SELECT sum(pledge_value) as res FROM pledges WHERE id_event = 0 GROUP BY id_event")
     myresult = mycursor.fetchall()
     if len(myresult) > 0:
         for y in myresult:
@@ -60,6 +78,7 @@ def get_event_details():
     msgToPlayer += "Total pledge combined to the Halloween event is " + str(the_total_pledge) + " collected pumpkins!<br>"
     msgToPlayer += "The global goal is to collect 500 pumpkins!<br>"
     msgToPlayer += "If players will achieve this high target, they will be well rewarded, accordingly to their pledge!<br>"
+    msgToPlayer += "Pumpkins could be found on the newly generated adventure map.<br>"
     return {"msgToPlayer": msgToPlayer, "the_player_pledge": the_player_pledge, "the_total_pledge": the_total_pledge}, \
            200, {"Access-Control-Allow-Origin": "*"}
 

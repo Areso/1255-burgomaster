@@ -57,7 +57,7 @@ localeStrings.push("Bürger hinrichten");
 localeStrings.push("Dumm gelaufen: Die Pest streckte %arg1 Bürger nieder!");//55
 localeStrings.push("Möchten Ihr ein Festival veranstalten?\nDas würde Sie %arg1 Gold kosten!\n");
 localeStrings.push("Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n");
-localeStrings.push("Placeholder");
+localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
 localeStrings.push(["Ihr Gewinn wegen des Festivals ist %arg1", "Ihr Verlust wegen des Festivals ist %arg1"]);
 localeStrings.push("Gut");//60
 localeStrings.push("Ihr habt schon einen Helden");
