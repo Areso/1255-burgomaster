@@ -24,13 +24,53 @@ def myloading():
     return conf_list
 
 
+
+@burg_server.route('/api/v1.0/get_event_details', methods=['GET'])
+def get_event_details():
+    myconfig = myloading();
+    uid = request.args.get('uid', default=1, type=int)
+    mydb = mysql.connector.connect(
+        host=myconfig[2],
+        user=myconfig[0],
+        passwd=myconfig[1],
+        database=myconfig[4]
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT sum(value) as res FROM pledges WHERE uid = %(uid)s GROUP BY uid", {'uid': uid})
+    myresult = mycursor.fetchall()
+    if len(myresult)>0:
+        for x in myresult:
+            the_player_pledge = x
+            the_player_pledge = the_player_pledge[0]
+            the_player_pledge = int(the_player_pledge)
+    else:
+        the_player_pledge = 0
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT sum(value) as res FROM pledges WHERE id_event = 0 GROUP BY id_event")
+    myresult = mycursor.fetchall()
+    if len(myresult) > 0:
+        for y in myresult:
+            the_total_pledge = y
+            the_total_pledge = the_total_pledge[0]
+            the_total_pledge = int(the_total_pledge)
+    else:
+        the_total_pledge = 0
+    msgToPlayer = "Hello, dear player!<br>"
+    msgToPlayer += "Your pledge to the Halloween event is "+str(the_player_pledge)+" collected pumpkins!<br>"
+    msgToPlayer += "Total pledge combined to the Halloween event is " + str(the_total_pledge) + " collected pumpkins!<br>"
+    msgToPlayer += "The global goal is to collect 500 pumpkins!<br>"
+    msgToPlayer += "If players will achieve this high target, they will be well rewarded, accordingly to their pledge!<br>"
+    return {"msgToPlayer": msgToPlayer, "the_player_pledge": the_player_pledge, "the_total_pledge": the_total_pledge}, \
+           200, {"Access-Control-Allow-Origin": "*"}
+
+
 @burg_server.route('/api/v1.0/event_countdown', methods=['GET'])
 def event_countdown():
     date_cur         = datetime.today()
-    date_evt         = datetime.strptime('2019-10-29 0:00:00', '%Y-%m-%d %H:%M:%S')
+    date_evt         = datetime.strptime('2019-11-11 0:00:00', '%Y-%m-%d %H:%M:%S')
     date_diff        = date_evt-date_cur
     date_diff_days   = str(days_hours_minutes(date_diff))
-    return {"countdown": date_diff_days, "event_started":0}, 200, {"Access-Control-Allow-Origin": "*"}
+    return {"countdown": date_diff_days, "event_started":1}, 200, {"Access-Control-Allow-Origin": "*"}
 
 
 @burg_server.route('/api/v1.0/register_alias', methods=['POST', 'OPTIONS'])
@@ -51,7 +91,6 @@ def register_alias():
     		database=myconfig[4]
     )
     mycursor = mydb.cursor()
-    #mycursor.execute("select * from nicknames where nickname = %(username)s", {'username': str(reqdata[2])})
     mycursor.execute("select * from nicknames where nickname = %(username)s", {'username': new_nick})
     myresult  = mycursor.fetchall()
     is_exists_w = len(myresult)
@@ -95,4 +134,3 @@ def get_index2():
 
 if __name__ == '__main__':
     burg_server.run(debug=True,host='0.0.0.0')
-

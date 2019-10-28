@@ -662,6 +662,11 @@
 			<br>
 			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 250px">Go to exploring!</button>
 		</div>
+		<div id="tabEvent" class="tabcontent">
+			<lbl id="lblEventDetails">
+
+			</lbl>
+		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -1274,6 +1279,7 @@
 	};
 	//init variables
 	disabledElements = [];
+	flag_event_started = "";
 	var game = {
 		gold: 20,
 		gens: 0,
@@ -1366,11 +1372,15 @@
 		},
 		getEventHelp : function () {
 			if (eventHelpMsg!==null) {
-				disabledElements.push("saveGameButton");
-				disabledElements.push("loadGameButton");
-				document.getElementById("saveGameButton").disabled = true;
-				document.getElementById("loadGameButton").disabled = true;
-				showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+				if (flag_event_started===0){
+					disabledElements.push("saveGameButton");
+					disabledElements.push("loadGameButton");
+					document.getElementById("saveGameButton").disabled = true;
+					document.getElementById("loadGameButton").disabled = true;
+					showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+				} else {
+					openTab(null, 'tabEvent');
+				}
 			}
 		},
 		getNearestEventTime : function () {
@@ -1386,10 +1396,11 @@
 					cntdwn = cntdwn.replace(")","");
 					cntdwn = cntdwn.split(",");
 					console.log(cntdwn);
-					var flag_event_started = parseInt(back_response["event_started"]);
+					flag_event_started = parseInt(back_response["event_started"]);
 					if (flag_event_started===0){
 						eventHelpMsg = localeStrings[166];
 					} else {
+						game.getEventDetails();
 						eventHelpMsg = localeStrings[167];
 					}
 					console.log(eventHelpMsg);
@@ -1404,6 +1415,22 @@
 			};
 			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/event_countdown", true);
 			//xhttp.setRequestHeader("Content-type", "application/json");
+			xhttp.send();
+		},
+		getEventDetails : function () {
+			back_response_evt_details = null;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					back_response_evt_details = JSON.parse(this.responseText);
+					console.log(back_response_evt_details);
+					textToTab = back_response_evt_details["msgToPlayer"];
+					document.getElementById("lblEventDetails").innerHTML = textToTab;
+				} else {
+					//
+				}
+			};
+			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_details?uid="+game.UID, true);
 			xhttp.send();
 		},
 		setupEventLogSize : function () {
@@ -2215,6 +2242,9 @@
 		calculateTurn : function() {
 			game.recordStats();
 			game.getNearestEventTime();
+			/*if (flag_event_started===1) {
+				game.getEventDetails();
+			}*/
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
