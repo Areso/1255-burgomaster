@@ -87,7 +87,7 @@ localeStrings.push("linien");
 localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
-localeStrings.push("placeholder");
+localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90
 localeStrings.push("Garnison");

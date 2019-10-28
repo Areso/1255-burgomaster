@@ -87,7 +87,7 @@ localeStrings.push("строк");
 localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
-localeStrings.push("placeholder");
+localeStrings.push(["Никнейм зарегистрирован","Никнейм обновлен","Извините, но никнейм занят"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90
 localeStrings.push("Гарнизон");

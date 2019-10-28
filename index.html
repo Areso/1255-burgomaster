@@ -246,10 +246,11 @@
 			<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
 			<label id="lblStnLines">lines</label>
 			<br>
-			<lable id="lblStnUID">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px;"></label>
-			<!--<label id="lblStnAlias" style="margin-left: 30px;" >Your nickname</label>
-			<input id="inpStnAliasValue" value="" onchange="game.updateAlias()" style="margin-left: 20px;">-->
+			<lable id="lblStnUID" style="visibility:hidden;">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px; visibility:hidden;"></label>
+			<label id="lblStnAlias" style="margin-left: 30px;" >Your nickname</label>
+			<input id="inpStnAliasValue" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
 			<br>
+			<label id="lblStnAliasResult"></label><br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
@@ -1335,7 +1336,6 @@
 		alias: "",
 		UID: getUID(),
 		updateAlias : function () {
-			/*
 			proposedAlias = document.getElementById("inpStnAliasValue").value;
 			console.log(proposedAlias);
 			back_response = null;
@@ -1344,13 +1344,25 @@
 				if (this.readyState === 4 && this.status === 200) {
 					back_response = JSON.parse(this.responseText);
 					console.log(back_response);
+					if (back_response["content"]===200) {
+						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][0];
+						game.alias = document.getElementById("inpStnAliasValue").value;
+					}
+					if (back_response["content"]===201) {
+						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][1];
+						game.alias = document.getElementById("inpStnAliasValue").value;
+					}
+					if (back_response["content"]===204) {
+						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][2];
+						document.getElementById("inpStnAliasValue").value = "";
+					}
+					setTimeout(function(){ document.getElementById("lblStnAliasResult").innerText=""; }, 5000);
 				}
 			};
+			dataToParse = game.UID+delimiter+game.alias+delimiter+proposedAlias;
 			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/register_alias", true);
-			//xhttp.setRequestHeader("Content-type", "application/json");//SOMEWHY IT MAKE OPTIONS CALL INSTEAD OF POST TODO CHECK THIS
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send('dataToParse='+game.UID+";"+game.alias+";"+proposedAlias);
-			*/
+			xhttp.send(dataToParse);
 		},
 		getEventHelp : function () {
 			disabledElements.push("saveGameButton");
@@ -4115,7 +4127,7 @@
 		}
 		if (tabName==="Settings"){
 			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
-			//document.getElementById("inpStnAliasValue").value = game.alias;
+			document.getElementById("inpStnAliasValue").value = game.alias;
 		}
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
