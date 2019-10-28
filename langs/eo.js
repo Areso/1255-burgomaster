@@ -57,7 +57,7 @@ localeStrings.push("Ekzekuti civitanon");
 localeStrings.push("merdo okazas: la pesto mortigis %arg1 civitanojn");//55
 localeStrings.push("Ĉu vi volas fari festivalon?\nKostus al vi %arg1 oro!\n");
 localeStrings.push("Festivalo estis farita antaŭ ne tre longa tempo.\nLa efekto de festivalo malfortiĝus.\n");
-localeStrings.push("placeholder");
+localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
 localeStrings.push(["Via gajno pro la festivalo estas %arg1", "Via perdo pro la festivalo estas %arg1"]);
 localeStrings.push("OK");//60
 localeStrings.push("Vi jam havas heroon!");
@@ -87,7 +87,7 @@ localeStrings.push("linioj");
 localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
-localeStrings.push("placeholder");
+localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90
 localeStrings.push("Garnison");

@@ -57,7 +57,7 @@ localeStrings.push("Казнить человека");
 localeStrings.push("фигня случается: чума унесла жизни %arg1 жителей");//55
 localeStrings.push("Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n");
 localeStrings.push("Фестиваль был проведен не так давно.\nЭффект от фестиваля будет ослаблен.\n");
-localeStrings.push("placeholder");
+localeStrings.push(["Взят ивентовый предмет!","Ваш вклад записан!"]);
 localeStrings.push(["Ваша прибыль от фестиваля %arg1","Ваш убыток от фестиваля %arg1"]);
 localeStrings.push("Хорошо");//60
 localeStrings.push("У вас уже есть герой");
@@ -87,7 +87,7 @@ localeStrings.push("строк");
 localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
-localeStrings.push("placeholder");
+localeStrings.push(["Никнейм зарегистрирован","Никнейм обновлен","Извините, но никнейм занят"]);
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//90
 localeStrings.push("Гарнизон");

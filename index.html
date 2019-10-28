@@ -246,10 +246,11 @@
 			<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
 			<label id="lblStnLines">lines</label>
 			<br>
-			<lable id="lblStnUID">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px;"></label>
+			<lable id="lblStnUID" style="visibility:hidden;">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px; visibility:hidden;"></label>
 			<label id="lblStnAlias" style="margin-left: 30px;" >Your nickname</label>
 			<input id="inpStnAliasValue" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
 			<br>
+			<label id="lblStnAliasResult"></label><br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
@@ -661,6 +662,11 @@
 			<br>
 			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 250px">Go to exploring!</button>
 		</div>
+		<div id="tabEvent" class="tabcontent">
+			<lbl id="lblEventDetails">
+
+			</lbl>
+		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -807,7 +813,6 @@
 	var archeryY = 90;
 	var archeryW = 80;
 	var archeryH = 80;
-
 	buildingsInTownB=[];
 	buildingsInTownX=[];
 	buildingsInTownY=[];
@@ -1080,7 +1085,7 @@
 	//composite();
 </script>
 <script>
-	//GLOBALMAP
+	//THE ADVENTURE MAP
 	var canvas_map      = document.getElementById("canvasMap");
 	canvas_map.addEventListener("touchstart", tap_map);
 	canvas_map.addEventListener("mousedown", tap_map);
@@ -1093,6 +1098,7 @@
 	var blackmarket_tile= loadImage('resources/black_market.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var chest_tile      = loadImage('resources/chest.png');
+	var pumpkin_tile    = loadImage('resources/pumpkin.png');
 	var tree_tile       = loadImage('resources/tree.png');
 	var arrow_l         = loadImage('resources/pointer_l.png');
 	var arrow_r         = loadImage('resources/pointer_r.png');
@@ -1209,6 +1215,9 @@
 				if (game.myMapRemObjects[i+camXL][j+camYL]===1) {
 					ctx_map.drawImage(chest_tile, i * 48, j * 48);
 				}
+				if (game.myMapRemObjects[i+camXL][j+camYL]===2) {
+					ctx_map.drawImage(pumpkin_tile, i * 48, j * 48);
+				}
 				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
 					console.log("draw hero");
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
@@ -1274,6 +1283,7 @@
 	};
 	//init variables
 	disabledElements = [];
+	flag_event_started = "";
 	var game = {
 		gold: 20,
 		gens: 0,
@@ -1335,16 +1345,64 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		eventItemCollected : function () {
+			back_response_ItemCollected = null;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					back_response_ItemCollected = JSON.parse(this.responseText);
+					console.log(back_response_ItemCollected);
+					if (back_response_ItemCollected["content"]===200) {
+						postEventLog(localeStrings[58][1]);
+					}
+				}
+			};
+			dataToParse = game.UID;
+			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/make_event_pledge", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(dataToParse);
+		},
 		updateAlias : function () {
-			proposedAlias = document.getElementById("inpStnUIDValue").value;
+			proposedAlias = document.getElementById("inpStnAliasValue").value;
 			console.log(proposedAlias);
+			back_response_alias = null;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					back_response_alias = JSON.parse(this.responseText);
+					console.log(back_response_alias);
+					if (back_response_alias["content"]===200) {
+						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][0];
+						game.alias = document.getElementById("inpStnAliasValue").value;
+					}
+					if (back_response_alias["content"]===201) {
+						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][1];
+						game.alias = document.getElementById("inpStnAliasValue").value;
+					}
+					if (back_response_alias["content"]===204) {
+						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][2];
+						document.getElementById("inpStnAliasValue").value = "";
+					}
+					setTimeout(function(){ document.getElementById("lblStnAliasResult").innerText=""; }, 5000);
+				}
+			};
+			dataToParse = game.UID+delimiter+game.alias+delimiter+proposedAlias;
+			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/register_alias", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(dataToParse);
 		},
 		getEventHelp : function () {
-			disabledElements.push("saveGameButton");
-			disabledElements.push("loadGameButton");
-			document.getElementById("saveGameButton").disabled = true;
-			document.getElementById("loadGameButton").disabled = true;
-			showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+			if (eventHelpMsg!==null) {
+				if (flag_event_started===0){
+					disabledElements.push("saveGameButton");
+					disabledElements.push("loadGameButton");
+					document.getElementById("saveGameButton").disabled = true;
+					document.getElementById("loadGameButton").disabled = true;
+					showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+				} else {
+					openTab(null, 'tabEvent');
+				}
+			}
 		},
 		getNearestEventTime : function () {
 			back_response = null;
@@ -1359,10 +1417,11 @@
 					cntdwn = cntdwn.replace(")","");
 					cntdwn = cntdwn.split(",");
 					console.log(cntdwn);
-					var flag_event_started = parseInt(back_response["event_started"]);
+					flag_event_started = parseInt(back_response["event_started"]);
 					if (flag_event_started===0){
 						eventHelpMsg = localeStrings[166];
 					} else {
+						game.getEventDetails();
 						eventHelpMsg = localeStrings[167];
 					}
 					console.log(eventHelpMsg);
@@ -1370,10 +1429,29 @@
 					lblMsg += " "+cntdwn[1]+localeStrings[165][1];
 					lblMsg += " "+cntdwn[2]+localeStrings[165][2];
 					document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
+					document.getElementById("lblEventCountdownValue").disabled = false;
+				} else {
+					document.getElementById("lblEventCountdownValue").disabled = true;
 				}
 			};
 			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/event_countdown", true);
 			//xhttp.setRequestHeader("Content-type", "application/json");
+			xhttp.send();
+		},
+		getEventDetails : function () {
+			back_response_evt_details = null;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					back_response_evt_details = JSON.parse(this.responseText);
+					console.log(back_response_evt_details);
+					textToTab = back_response_evt_details["msgToPlayer"];
+					document.getElementById("lblEventDetails").innerHTML = textToTab;
+				} else {
+					//
+				}
+			};
+			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_details?uid="+game.UID, true);
 			xhttp.send();
 		},
 		setupEventLogSize : function () {
@@ -1713,10 +1791,17 @@
 					for (j = 0; j < config.sizeMapY; j++) {
 						if (game.myMapObjects[i][j]===0) {//to place removable objects, we should the place is free from non-removable objects
 							rnd = Math.floor((Math.random() * 12));
-							if (rnd >= 2) {
-								rnd = 0
+							if (flag_event_started===0) {
+								if (rnd >= 2) {
+									rnd = 0
+								}
+							} else {
+								if (rnd >= 3) {
+									rnd = 0
+								}
 							}
 							game.myMapRemObjects[i][j] = rnd;
+							console.log(rnd)
 						}
 					}
 				}
@@ -1757,6 +1842,10 @@
 				var money_found = 25;
 				postEventLog(localeStrings[186]+money_found);
 				game.gold = game.gold + money_found;
+			}
+			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
+				postEventLog(localeStrings[58][0]);
+				game.eventItemCollected();
 			}
 		},
 		tryHeroMovement : function (changeX, changeY) {
@@ -2185,6 +2274,9 @@
 		calculateTurn : function() {
 			game.recordStats();
 			game.getNearestEventTime();
+			/*if (flag_event_started===1) {
+				game.getEventDetails();
+			}*/
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
