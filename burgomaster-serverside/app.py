@@ -78,7 +78,8 @@ def get_event_details():
     msgToPlayer += "Total pledge combined to the Halloween event is " + str(the_total_pledge) + " collected pumpkins!<br>"
     msgToPlayer += "The global goal is to collect 500 pumpkins!<br>"
     msgToPlayer += "If players will achieve this high target, they will be well rewarded, accordingly to their pledge!<br>"
-    msgToPlayer += "Pumpkins could be found on the newly generated adventure map.<br>"
+    msgToPlayer += "Pumpkins could be found only on the newly generated adventure map.<br>"
+    msgToPlayer += "If you do have one before the event, you need to regenerate the map to get event items on it"
     return {"msgToPlayer": msgToPlayer, "the_player_pledge": the_player_pledge, "the_total_pledge": the_total_pledge}, \
            200, {"Access-Control-Allow-Origin": "*"}
 
