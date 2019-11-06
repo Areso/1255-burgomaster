@@ -344,7 +344,7 @@ localeStrings.push("Castellan");
 localeStrings.push("Hero");
 localeStrings.push("Move the unit to the hero's squad");
 localeStrings.push("Move the unit to the garrison");
-localeStrings.push("placeholder");//315
+localeStrings.push("You don't have any units to transfer in this direction");//315
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
