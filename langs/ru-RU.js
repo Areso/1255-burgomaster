@@ -93,7 +93,7 @@ localeStrings.push("placeholder");//90
 localeStrings.push("Гарнизон");
 localeStrings.push("Уволить");
 localeStrings.push("Нанять");
-localeStrings.push("Найм войск");
+localeStrings.push("Найм и управление войсками");
 localeStrings.push("Кастелян");//95
 localeStrings.push("Герой");
 localeStrings.push("Обучить брата-сержанта");
@@ -337,3 +337,17 @@ localeStrings.push("Песочные часы неудачи");
 localeStrings.push("Этот предмет отменяет все бонусы удачи и суеверности героя и его врага");//305
 localeStrings.push("Хрустальный шар");
 localeStrings.push("Этот предмет позволяет предсказать результат следующей битвы");//almost all times. 70% I guess, would be enough for start
+localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start
+localeStrings.push("Brother-sergeant. Mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");
+localeStrings.push("Turkopol. Mounted ranged unit. Hiring cost %arg1. Upkeep cost %arg2");
+localeStrings.push("Brother-knight. Advanced mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");//310
+localeStrings.push("Castellan");
+localeStrings.push("Hero");
+localeStrings.push("Move the unit to the hero's squad");
+localeStrings.push("Move the unit to the garrison");
+localeStrings.push("placeholder");//315
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//320

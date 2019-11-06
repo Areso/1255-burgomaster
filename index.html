@@ -574,20 +574,23 @@
 			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:470px; top: 60px; left: 10px"></div>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
-			<label id="lblTroopsHiring">Hiring troops</label>
+			<label id="lblTroopsHiring">Hiring troops</label><br>
+			<div id="lblTroopsHelp" style="height: 80px; width: 780px;">
+
+			</div>
 			<table border="1px">
 				<tr>
 					<td>
 
 					</td>
 					<td>
-						images
+						<img id="imgHiringScreenSergeant" src="resources/sergeant.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						images
+						<img id="imgHiringScreenTurkopol" src="resources/turkopol.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						images
+						<img id="imgHiringScreenKnight" src="resources/knight.png" onmouseover="game.help(this)">
 					</td>
 				</tr>
 				<tr>
@@ -595,42 +598,42 @@
 
 					</td>
 					<td>
-						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" style="width:200px; height:45px;">Hire sergeant</button>
+						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" onmouseover="game.help(this)" style="width:200px; height:45px;">Hire sergeant</button>
 					</td>
 					<td>
-						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" style="width:200px; height:45px;">Hire turkopol</button>
+						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" onmouseover="game.help(this)" style="width:200px; height:45px;">Hire turkopol</button>
 					</td>
 					<td>
-						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" style="width:200px; height:45px;">Hire knight</button>
+						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" onmouseover="game.help(this)" style="width:200px; height:45px;">Hire knight</button>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
+						<img id="imgCastellanInHiringScreen" src="resources/castellan.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div><button id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()">↓</button>
+						<label id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div><button id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()">↓</button>
+						<label id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div><button id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()">↓</button>
+						<label id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div><button id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
 					</td>
 				</tr>
 				<tr id="trHeroHiringTroops" style="visibility: collapse">
 					<td>
-						<img id="imgHeroInHiringScreenKnight" style="display: none" src="resources/hero-knight.png">
-						<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png">
+						<img id="imgHeroInHiringScreenKnight" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
+						<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div><button id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()">↑</button>
+						<label id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div><button id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()">↑</button>
+						<label id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div><button id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div><button id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()">↑</button>
+						<label id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div><button id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
 					</td>
 				</tr>
 			</table>
@@ -2080,6 +2083,54 @@
 			if (myobject.id==="archery_img") {
 				document.getElementById("lblBuildHelp").innerHTML=localeStrings[240];
 			}
+			if (myobject.id==="imgHiringScreenSergeant") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
+			}
+			if (myobject.id==="imgHiringScreenTurkopol") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[309].replace("%arg1", config.turkopolHiring).replace("%arg2", config.turkopolUpkeep);
+			}
+			if (myobject.id==="imgHiringScreenKnight") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[310].replace("%arg1", config.knightHiring).replace("%arg2", config.knightUpkeep);
+			}
+			if (myobject.id==="btnHireSergeant") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
+			}
+			if (myobject.id==="btnHireTurkopol") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[309].replace("%arg1", config.turkopolHiring).replace("%arg2", config.turkopolUpkeep);
+			}
+			if (myobject.id==="btnHireKnight") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[310].replace("%arg1", config.knightHiring).replace("%arg2", config.knightUpkeep);
+			}
+			if (myobject.id==="imgCastellanInHiringScreen") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[311];
+			}
+			if (myobject.id==="imgHeroInHiringScreenKnight") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[312];
+			}
+			if (myobject.id==="imgHeroInHiringScreenMonk") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[312];
+			}
+			if (myobject.id==="imgHeroInHiringScreenMonk") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[312];
+			}
+			if (myobject.id==="btnMoveSergeantToHero") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[313];
+			}
+			if (myobject.id==="btnMoveTurkopolToHero") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[313];
+			}
+			if (myobject.id==="btnMoveKnightToHero") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[313];
+			}
+			if (myobject.id==="btnMoveSergeantToGarrison") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[314];
+			}
+			if (myobject.id==="btnMoveTurkopolToGarrison") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[314];
+			}
+			if (myobject.id==="btnMoveKnightToGarrison") {
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[314];
+			}
 		},
 		heroExists: function () {
 			return (Object.keys(game.myhero).length === 0 && game.myhero.constructor === Object) ? false : true;
@@ -2334,7 +2385,7 @@
 			}
 			game.calculateAutocampaign();
 			if (game.sergeants > 0) {
-				if (game.gold - game.sergeants * 5 >= 0) {
+				if (game.gold - game.sergeants * config.sergeantUpkeep >= 0) {
 					game.gold = game.gold - game.sergeants * 5;
 				}
 				else {
@@ -2347,7 +2398,7 @@
 				}
 			}
 			if (game.turkopols > 0) {
-				if (game.gold - game.turkopols * 5 >= 0) {
+				if (game.gold - game.turkopols * config.turkopolUpkeep >= 0) {
 					game.gold = game.gold - game.turkopols * 5;
 				}
 				else {
@@ -2360,7 +2411,7 @@
 				}
 			}
 			if (game.knights > 0) {
-				if (game.gold - game.knights * 10 >= 0) {
+				if (game.gold - game.knights * config.knightUpkeep >= 0) {
 					game.gold = game.gold - game.knights * 5;
 				}
 				else {
@@ -2825,6 +2876,12 @@
 		genMapCostBasic:50,
 		fireStepsBasic:120,
 		oneSecMS:1000,
+		sergeantHiring:20,
+		sergeantUpkeep:5,
+		turkopolHiring:20,
+		turkopolUpkeep:5,
+		knightHiring:40,
+		knightUpkeep:10,
 	};
 	/*
 	function test () {
@@ -3927,6 +3984,9 @@
 				document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
+				document.getElementById("btnMoveSergeantToHero").style.visibility="visible";
+				document.getElementById("btnMoveTurkopolToHero").style.visibility="visible";
+				document.getElementById("btnMoveKnightToHero").style.visibility="visible";
 				if (game.myhero.class===0) {
 					document.getElementById("imgHeroInHiringScreenKnight").style.display="block";
 					document.getElementById("imgHeroInHiringScreenMonk").style.display="none";
@@ -3951,6 +4011,9 @@
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 				document.getElementById("btnLeaveCity").style.visibility="hidden";
 				document.getElementById("btnTowngate").style.visibility="visible";
+				document.getElementById("btnMoveSergeantToHero").style.visibility="hidden";
+				document.getElementById("btnMoveTurkopolToHero").style.visibility="hidden";
+				document.getElementById("btnMoveKnightToHero").style.visibility="hidden";
 			}
 			if (game.myhero.status===2){
 				var rnd = Math.floor(Math.random() * localeStrings[212].length);
@@ -3962,6 +4025,9 @@
 				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 				document.getElementById("btnLeaveCity").style.visibility="visible";
 				document.getElementById("btnTowngate").style.visibility="hidden";
+				document.getElementById("btnMoveSergeantToHero").style.visibility="hidden";
+				document.getElementById("btnMoveTurkopolToHero").style.visibility="hidden";
+				document.getElementById("btnMoveKnightToHero").style.visibility="hidden";
 			}
 			if (heroStatusNeedsUpdate === true) {
 				game.myhero.status = 0;
@@ -3986,14 +4052,16 @@
 			document.getElementById("btnLeaveCity").style.visibility = "hidden";
 			document.getElementById("btnTowngate").style.visibility = "hidden";
 			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
+			document.getElementById("btnMoveSergeantToHero").style.visibility="hidden";
+			document.getElementById("btnMoveTurkopolToHero").style.visibility="hidden";
+			document.getElementById("btnMoveKnightToHero").style.visibility="hidden";
 		}
 	}
 	function updateTroopsNumbers() {
 		document.getElementById("lblGarnisonSergeants").innerHTML  = game.sergeants;
 		document.getElementById("lblGarnisonTurkopols").innerHTML  = game.turkopols;
 		document.getElementById("lblGarnisonKnights").innerHTML    = game.knights;
-		var heroExists = (Object.keys(game.myhero).length===0 && game.myhero.constructor === Object) ? false : true;
-		if (heroExists === true) {
+		if (game.heroExists() === true) {
 			document.getElementById("lblHeroSergeants").innerHTML = game.myhero.sergeants;
 			document.getElementById("lblHeroTurkopols").innerHTML = game.myhero.turkopols;
 			document.getElementById("lblHeroKnights").innerHTML = game.myhero.knights;

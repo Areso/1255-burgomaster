@@ -93,7 +93,7 @@ localeStrings.push("placeholder");//90
 localeStrings.push("Garrison");
 localeStrings.push("Fire");
 localeStrings.push("Hire");
-localeStrings.push("Hiring troops");
+localeStrings.push("Hiring and managing troops");
 localeStrings.push("Castellan");//95
 localeStrings.push("Hero");
 localeStrings.push("Train brother-sergeant");
@@ -337,3 +337,18 @@ localeStrings.push("Unlucky hourglass");
 localeStrings.push("This item reset any luck bonuses for your hero and opponent's troops");//305
 localeStrings.push("Glass globe");
 localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start
+localeStrings.push("Brother-sergeant. Mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");
+localeStrings.push("Turkopol. Mounted ranged unit. Hiring cost %arg1. Upkeep cost %arg2");
+localeStrings.push("Brother-knight. Advanced mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");//310
+localeStrings.push("Castellan");
+localeStrings.push("Hero");
+localeStrings.push("Move the unit to the hero's squad");
+localeStrings.push("Move the unit to the garrison");
+localeStrings.push("placeholder");//315
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//320
+
+
