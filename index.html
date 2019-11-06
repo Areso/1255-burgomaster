@@ -2249,66 +2249,138 @@
 			writeSave();
 		},
 		hireTroopsSergeant : function () {
-			if (game.gold > 20 && game.buildLevelStable>=1) {
-				game.sergeants += 1;
-				game.gold      -= 20;
-				updateTroopsNumbers();
+			if (game.buildLevelStable>=1) {
+				if (game.gold > 20) {
+					game.sergeants += 1;
+					game.gold      -= 20;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
+				}
+			} else {
+				msg = "<b>%arg1</b>";
+				msg = msg.replace("%arg1",localeStrings[316]);
+				postEventLog(msg);
 			}
 		},
 		hireTroopsTurkopol : function () {
-			if (game.gold > 20 && game.buildLevelStable>=1 && game.buildLevelArchery>=1) {
-				game.turkopols += 1;
-				game.gold      -= 20;
-				updateTroopsNumbers();
+			if (game.buildLevelStable>=1) {
+				if (game.buildLevelArchery >= 1) {
+					if (game.gold > 20) {
+						game.turkopols += 1;
+						game.gold -= 20;
+						updateTroopsNumbers();
+					} else {
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1", localeStrings[20]);
+						postEventLog(msg);
+					}
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[317]);
+					postEventLog(msg);
+				}
+			} else {
+				msg = "<b>%arg1</b>";
+				msg = msg.replace("%arg1",localeStrings[316]);
+				postEventLog(msg);
 			}
 		},
 		hireTroopsKnight : function () {
-			if (game.gold > 40 && game.buildLevelStable>=2) {
-				game.knights   += 1;
-				game.gold      -= 40;
-				updateTroopsNumbers();
+			if (game.buildLevelStable>=2) {
+				if (game.gold > 40){
+					game.knights   += 1;
+					game.gold      -= 40;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1", localeStrings[20]);
+					postEventLog(msg);
+				}
+			} else {
+				msg = "<b>%arg1</b>";
+				msg = msg.replace("%arg1",localeStrings[318].replace("%arg1", 2));
+				postEventLog(msg);
 			}
 		},
 		moveSergeantsToHero : function () {
-			if (game.myhero.status===0&&game.sergeants>0){
-				game.sergeants        -= 1;
-				game.myhero.sergeants += 1;
-				updateTroopsNumbers();
+			if (game.myhero.status===0){
+				if (game.sergeants>0) {
+					game.sergeants -= 1;
+					game.myhero.sergeants += 1;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[315]);
+					postEventLog(msg);
+				}
 			}
 		},
 		moveTurkopolsToHero : function () {
-			if (game.myhero.status===0&&game.turkopols>0){
-				game.turkopols        -= 1;
-				game.myhero.turkopols += 1;
-				updateTroopsNumbers();
+			if (game.myhero.status===0){
+				if (game.turkopols>0) {
+					game.turkopols -= 1;
+					game.myhero.turkopols += 1;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[315]);
+					postEventLog(msg);
+				}
 			}
 		},
 		moveKnightsToHero : function () {
-			if (game.myhero.status===0&&game.knights>0){
-				game.knights          -= 1;
-				game.myhero.knights   += 1;
-				updateTroopsNumbers();
+			if (game.myhero.status===0){
+				if (game.knights>0) {
+					game.knights -= 1;
+					game.myhero.knights += 1;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[315]);
+					postEventLog(msg);
+				}
 			}
 		},
 		moveSergeantsToGarnison : function () {
-			if (game.myhero.status===0&&game.myhero.sergeants>0){
-				game.sergeants        += 1;
-				game.myhero.sergeants -= 1;
-				updateTroopsNumbers();
+			if (game.myhero.status===0){
+				if (game.myhero.sergeants>0) {
+					game.sergeants += 1;
+					game.myhero.sergeants -= 1;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[315]);
+					postEventLog(msg);
+				}
 			}
 		},
 		moveTurkopolsToGarnison : function () {
-			if (game.myhero.status===0&&game.myhero.turkopols>0){
-				game.turkopols        += 1;
-				game.myhero.turkopols -= 1;
-				updateTroopsNumbers();
+			if (game.myhero.status===0){
+				if (game.myhero.turkopols>0) {
+					game.turkopols += 1;
+					game.myhero.turkopols -= 1;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[315]);
+					postEventLog(msg);
+				}
 			}
 		},
 		moveKnightsToGarnison : function () {
-			if (game.myhero.status===0&&game.myhero.knights>0){
-				game.knights          += 1;
-				game.myhero.knights   -= 1;
-				updateTroopsNumbers();
+			if (game.myhero.status===0){
+				if (game.myhero.knights>0) {
+					game.knights += 1;
+					game.myhero.knights -= 1;
+					updateTroopsNumbers();
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[315]);
+					postEventLog(msg);
+				}
 			}
 		},
 		goldLimit : function () {
