@@ -346,8 +346,13 @@ localeStrings.push("Hero");
 localeStrings.push("Move the unit to the hero's squad");
 localeStrings.push("Move the unit to the garrison");
 localeStrings.push("You don't have any units to transfer in this direction");//315
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("To do that, you need to build the stable");
+localeStrings.push("To do that, you need to build the archery range");
+localeStrings.push("To do that, you need to upgrade the stable to %arg1 level");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//320
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//325
