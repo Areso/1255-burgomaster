@@ -96,9 +96,9 @@ localeStrings.push("Hire");
 localeStrings.push("Hiring and managing troops");
 localeStrings.push("Castellan");//95
 localeStrings.push("Hero");
-localeStrings.push("Train brother-sergeant");
-localeStrings.push("Hire turkopol");
-localeStrings.push("Train brother-knight");
+localeStrings.push("Train brother-sergeant<br/>%arg1 gold");
+localeStrings.push("Hire turkopol<br/>%arg1 gold");
+localeStrings.push("Train brother-knight<br/>%arg1 gold");
 localeStrings.push("brothers-sergeants: ");//100
 localeStrings.push("turkopols: ");
 localeStrings.push("brothers-knights: ");

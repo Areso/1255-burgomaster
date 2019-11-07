@@ -3431,9 +3431,9 @@
 		document.getElementById("lblStnEventLogSize").innerText  = localeStrings[83];
 		document.getElementById("lblStnLines").innerText         = localeStrings[84];
 		document.getElementById("lblTroopsHiring").innerText     = localeStrings[94];
-		document.getElementById("btnHireSergeant").innerText     = localeStrings[97];
-		document.getElementById("btnHireTurkopol").innerText     = localeStrings[98];
-		document.getElementById("btnHireKnight").innerText       = localeStrings[99];
+		document.getElementById("btnHireSergeant").innerHTML     = localeStrings[97].replace("%arg1",config.sergeantHiring);
+		document.getElementById("btnHireTurkopol").innerText     = localeStrings[98].replace("%arg1",config.turkopolHiring);
+		document.getElementById("btnHireKnight").innerText       = localeStrings[99].replace("%arg1",config.knightHiring);
 		document.getElementById("lblTabHiringTroopsSergeantsGarrison").innerText       = localeStrings[100];
 		document.getElementById("lblTabHiringTroopsTurkopolsGarrison").innerText       = localeStrings[101];
 		document.getElementById("lblTabHiringTroopsKnightsGarrison").innerText         = localeStrings[102];

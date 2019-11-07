@@ -96,9 +96,9 @@ localeStrings.push("Dungi");
 localeStrings.push("Dungado de trupoj");
 localeStrings.push("Castellan");//95
 localeStrings.push("Heroo");
-localeStrings.push("Trajni frat-serĝenton");
-localeStrings.push("Dungi turkopolon");
-localeStrings.push("Trejni frat-kavaliron");
+localeStrings.push("Trajni frat-serĝenton<br/>pro %arg1 oro");
+localeStrings.push("Dungi turkopolon<br/>pro %arg1 oro");
+localeStrings.push("Trejni frat-kavaliron<br/>pro %arg1 oro");
 localeStrings.push("frat-serĝentoj: ");//100
 localeStrings.push("turkopoloj: ");
 localeStrings.push("frat-kavaliroj: ");
@@ -114,8 +114,8 @@ localeStrings.push("Konstrui Pendumilon<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Fonton<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Kaŝejon<br/>nivelo %arg1<br/>pro %arg2 oro");
 localeStrings.push("Konstrui Gatejon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Ĉevalejo<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("Konstrui Pafado<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Konstrui Ĉevalejo<br/>lvl %arg1<br/>pro %arg2 gold");//115
+localeStrings.push("Konstrui Pafado<br/>lvl %arg1<br/>pro %arg2 gold");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

@@ -96,9 +96,9 @@ localeStrings.push("Нанять");
 localeStrings.push("Найм и управление войсками");
 localeStrings.push("Кастелян");//95
 localeStrings.push("Герой");
-localeStrings.push("Обучить брата-сержанта");
-localeStrings.push("Нанять туркопола");
-localeStrings.push("Обучить брата-рыцаря");
+localeStrings.push("Обучить брата-сержанта<br/>%arg1 золота");
+localeStrings.push("Нанять туркопола<br/>%arg1 золота");
+localeStrings.push("Обучить брата-рыцаря<br/>%arg1 золота");
 localeStrings.push("братья-сержанты: ");//100
 localeStrings.push("туркополы: ");
 localeStrings.push("братья-рыцари: ");
