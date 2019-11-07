@@ -598,13 +598,13 @@
 
 					</td>
 					<td>
-						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" onmouseover="game.help(this)" style="width:200px; height:45px;">Hire sergeant</button>
+						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" onmouseover="game.help(this)" style="width:225px; height:45px;">Hire sergeant</button>
 					</td>
 					<td>
-						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" onmouseover="game.help(this)" style="width:200px; height:45px;">Hire turkopol</button>
+						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" onmouseover="game.help(this)" style="width:225px; height:45px;">Hire turkopol</button>
 					</td>
 					<td>
-						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" onmouseover="game.help(this)" style="width:200px; height:45px;">Hire knight</button>
+						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" onmouseover="game.help(this)" style="width:225px; height:45px;">Hire knight</button>
 					</td>
 				</tr>
 				<tr>
@@ -3431,9 +3431,9 @@
 		document.getElementById("lblStnEventLogSize").innerText  = localeStrings[83];
 		document.getElementById("lblStnLines").innerText         = localeStrings[84];
 		document.getElementById("lblTroopsHiring").innerText     = localeStrings[94];
-		document.getElementById("btnHireSergeant").innerText     = localeStrings[97];
-		document.getElementById("btnHireTurkopol").innerText     = localeStrings[98];
-		document.getElementById("btnHireKnight").innerText       = localeStrings[99];
+		document.getElementById("btnHireSergeant").innerHTML     = localeStrings[97].replace("%arg1",config.sergeantHiring);
+		document.getElementById("btnHireTurkopol").innerHTML     = localeStrings[98].replace("%arg1",config.turkopolHiring);
+		document.getElementById("btnHireKnight").innerHTML       = localeStrings[99].replace("%arg1",config.knightHiring);
 		document.getElementById("lblTabHiringTroopsSergeantsGarrison").innerText       = localeStrings[100];
 		document.getElementById("lblTabHiringTroopsTurkopolsGarrison").innerText       = localeStrings[101];
 		document.getElementById("lblTabHiringTroopsKnightsGarrison").innerText         = localeStrings[102];

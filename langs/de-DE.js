@@ -96,9 +96,9 @@ localeStrings.push("Einstellen");
 localeStrings.push("Truppen einstellen");
 localeStrings.push("Kastellan");//95
 localeStrings.push("Held");
-localeStrings.push("Sariantsbrueder ausbilden");
-localeStrings.push("Mieten turkopol");
-localeStrings.push("Ritterbrueder ausbilden");
+localeStrings.push("Sariantsbrueder ausbilden<br/>%arg1 gold");
+localeStrings.push("Mieten turkopol<br/>%arg1 gold");
+localeStrings.push("Ritterbrueder ausbilden<br/>%arg1 gold");
 localeStrings.push("Sariantsbrueder: ");//100
 localeStrings.push("turkopole: ");
 localeStrings.push("Ritterbrueder: ");
