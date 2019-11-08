@@ -55,5 +55,7 @@
 		<br>
 		Colors meaning: red - not yet implemented, but planned to implement<br>
 		All suggestion and bug reports could be made via chat (if enabled) or via <a href="https://github.com/Areso/js-html-mycity/issues">GitHub Issues</a></br>
+		<br>
+		1255 Rise of Teutonic (DLC) allows you to rank your officers according to the history facts<br> 
 </body>
 <html>

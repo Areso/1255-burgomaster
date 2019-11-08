@@ -1348,6 +1348,9 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		addMoneyToTreasury : function (changeValue) {
+
+		},
 		eventItemCollected : function () {
 			back_response_ItemCollected = null;
 			var xhttp = new XMLHttpRequest();
@@ -2430,10 +2433,14 @@
 						game.pop = game.pop*1+1;
 					} else {
 						game.pop = game.pop*1+pop_incr*1;
+						if (game.pop > pop_limit) {
+							game.pop = pop_limit;
+						}
 					}
 					pop_m    = 1;
 					game.userPopAck = 0;
 				} else {
+					game.pop = pop_limit;
 					if (game.userPopAck === 0) {
 						msg = "<b>%arg1</b>";
 						msg = msg.replace("%arg1",localeStrings[10]);
