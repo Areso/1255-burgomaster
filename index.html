@@ -1348,8 +1348,35 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
-		addMoneyToTreasury : function (changeValue) {
-
+		festivalPrice : function () {
+			return game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
+		},
+		addMoneyToTreasury : function (changeValue, silent) {
+			gold_was      = game.gold;
+			gold_limit    = game.goldLimit();
+			gold_possible = game.gold+changeValue;
+			if (gold_possible > gold_limit) {
+				game.gold      = gold_limit;
+				if (game.userGoldAck === 0) {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[3]);
+					postEventLog(msg);
+					game.userGoldAck = 1;
+				}
+			} else {
+				game.gold      = gold_possible;
+				game.userGoldAck = 0;
+			}
+			if (silent===false){
+				if (game.gold !== gold_was) {
+					if (game.gold > gold_was) {
+						msg = localeStrings[4];
+					} else {
+						msg = localeStrings[5];
+					}
+					postEventLog(msg);
+				}
+			}
 		},
 		eventItemCollected : function () {
 			back_response_ItemCollected = null;
@@ -2410,21 +2437,6 @@
 				game.season   = 1;
 				game.year     = game.year+1;
 			}
-			gold_was      = game.gold;
-			gold_limit    = game.goldLimit();
-			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
-			if (gold_possible > gold_limit) {
-				game.gold      = gold_limit;
-				if (game.userGoldAck === 0) {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[3]);
-					postEventLog(msg);
-					game.userGoldAck = 1;
-				}
-			} else {
-				game.gold      = gold_possible;
-				game.userGoldAck = 0;
-			}
 			pop_limit = game.popLimit();
 			if (game.fire ===0) {
 				if (game.pop < pop_limit) {
@@ -2522,6 +2534,25 @@
 					}
 				}
 			}
+			taxes = Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
+			game.addMoneyToTreasury(taxes, false);
+
+			/*
+			gold_was      = game.gold;
+			gold_limit    = game.goldLimit();
+			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
+			if (gold_possible > gold_limit) {
+				game.gold      = gold_limit;
+				if (game.userGoldAck === 0) {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[3]);
+					postEventLog(msg);
+					game.userGoldAck = 1;
+				}
+			} else {
+				game.gold      = gold_possible;
+				game.userGoldAck = 0;
+			}
 			if (game.gold !== gold_was) {
 				if (game.gold > gold_was) {
 					msg = localeStrings[4];
@@ -2530,6 +2561,7 @@
 				}
 				postEventLog(msg);
 			};
+			*/
 			if (game.pop !== pop_was) {
 				if (game.pop > pop_was) {
 					msg = localeStrings[7];
@@ -2547,34 +2579,26 @@
 			updateUI();
 		},
 		makeFestival : function() {
-			var festivalPrice = game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
-			question      = localeStrings[56].replace("%arg1", festivalPrice);
+			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
 			if (game.festival_cooldown !==0) {
 				question += localeStrings[57];
 			}
 			showModal(1, '', game.makeFestivalCallback, question, localeStrings[32], localeStrings[33])
 		},
 		makeFestivalCallback : function() {
-			var festivalPrice = game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
 			if (answer === 2) {
-				if (game.gold>=festivalPrice) {
-					var gold_diff = 0-festivalPrice+Math.floor(festivalPrice*(30-game.festival_cooldown)/30*1.05+2*(game.buildLevelFountain+1));
-					if (gold_diff >=0) {
-						if (game.gold + gold_diff > game.goldLimit()) {
-							game.gold = game.goldLimit();
-							msg = "<b>%arg1</b>";
-							msg = msg.replace("%arg1",localeStrings[3]);
-							postEventLog(msg);
-						} else {
-							game.gold += gold_diff;
-						}
+				if (game.gold>=game.festivalPrice()) {
+					var gold_was          = game.gold;
+					game.gold = game.gold-game.festivalPrice();
+					var fundraising = Math.floor(game.festivalPrice()*(30-game.festival_cooldown)/30*1.05+2*(game.buildLevelFountain+1));
+					game.addMoneyToTreasury(fundraising);
+					gold_diff = game.gold-gold_was;
+					if (gold_diff>=0){
 						msg = localeStrings[59][0].replace("%arg1",gold_diff);
-						postEventLog(msg);
 					} else {
-						game.gold += gold_diff;
 						msg = localeStrings[59][1].replace("%arg1",gold_diff);
-						postEventLog(msg);
 					}
+					postEventLog(msg);
 					game.festival_cooldown  = config.festCooldown;
 					updateResources();
 				} else {
@@ -2783,28 +2807,52 @@
 						document.getElementById('gallowsAudio0').play();
 					}
 					game.pop          = game.pop - 1;
-					gold_was          = game.gold;
-					gold_limit        = game.goldLimit();
-					pop_limit         = game.popLimit();
-					var gold_change   = Math.floor((Math.random() * game.gold)/10 * game.pop / pop_limit + 1);
-					gold_possible = game.gold*1+gold_change;
-					if (gold_possible > gold_limit) {
-						game.gold = gold_limit;
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[3]);
-						postEventLog(msg);
-					} else {
-						game.gold = gold_possible;
+					var gold_was      = game.gold;
+					getTypeOfCitizen  = Math.floor(Math.random()*100+1,0);
+					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 70) {
+						console.log("poorest");
+						//theWealthShare  = Math.floor(Math.random() * 2);
+						wealthShare     = 1/100*1;
+						console.log(wealthShare);
+						sizeOfClass     = (70-1)/100;
+						console.log(sizeOfClass)
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						console.log(sizeOfClassNums);
 					}
-					gold_incr     = game.gold - gold_was;
-					rnd = Math.floor((Math.random() * 6) + 1);
-					reason = localeStrings[24+rnd]
-					msg = localeStrings[34].replace("%arg1", reason);
+					if (getTypeOfCitizen >= 70 && getTypeOfCitizen < 90) {
+						console.log("poor");
+						//theWealthShare  = Math.floor(Math.random() * 20+1);
+						wealthShare     = 1/100*20;
+						sizeOfClass     = (90-20)/100;
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					}
+					if (getTypeOfCitizen >= 90 && getTypeOfCitizen <= 99) {
+						console.log("middle");
+						//theWealthShare  = Math.floor(Math.random() * 30+1);
+						wealthShare     = 1/100*30;
+						sizeOfClass     = (99-20)/100;
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					}
+					if (getTypeOfCitizen > 99 && getTypeOfCitizen <= 100) {
+						console.log("elite");
+						//theWealthShare  = Math.floor(Math.random() * 49+1);
+						wealthShare     = 1/100*49;
+						sizeOfClass     = (100-99)/100;
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					}
+					moneyToSeize    = Math.floor(game.gold*wealthShare/sizeOfClassNums*game.pop/game.popLimit(),0);
+					gold_limit      = game.goldLimit();
+					pop_limit       = game.popLimit();
+					game.addMoneyToTreasury(moneyToSeize);
+					gold_diff       = game.gold - gold_was;
+					rnd             = Math.floor((Math.random() * 6) + 1);
+					reason          = localeStrings[24+rnd]
+					msg             = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
-					msg = localeStrings[35].replace("%arg1", gold_incr);
+					msg             = localeStrings[35].replace("%arg1", gold_diff);
 					postEventLog(msg);
 				} else {
-					alertMsg = localeStrings[36];
+					alertMsg        = localeStrings[36];
 					showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 				}
 				updateResources();
@@ -2902,9 +2950,11 @@
 			}
 		},
 		winLottery : function () {
-			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
+			var gold_was          = game.gold;
+			game.addMoneyToTreasury(config.lotteryPrize);
+			var diff=game.gold-gold_was;
+			msg = localeStrings[43].replace("%arg1", diff);
 			postEventLog(msg);
-			game.gold = game.gold + config.lotteryPrize;
 			updateResources();
 		},
 		startPlague : function () {
