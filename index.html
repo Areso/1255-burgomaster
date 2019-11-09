@@ -2926,9 +2926,11 @@
 			}
 		},
 		winLottery : function () {
-			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
+			var gold_was          = game.gold;
+			game.addMoneyToTreasury(config.lotteryPrize);
+			var diff=game.gold-gold_was;
+			msg = localeStrings[43].replace("%arg1", diff);
 			postEventLog(msg);
-			game.gold = game.gold + config.lotteryPrize;
 			updateResources();
 		},
 		startPlague : function () {
