@@ -2807,28 +2807,52 @@
 						document.getElementById('gallowsAudio0').play();
 					}
 					game.pop          = game.pop - 1;
-					var gold_was          = game.gold;
-					gold_limit        = game.goldLimit();
-					pop_limit         = game.popLimit();
-					var gold_change   = Math.floor((Math.random() * game.gold)/10 * game.pop / pop_limit + 1);
-					gold_possible = game.gold*1+gold_change;
-					if (gold_possible > gold_limit) {
-						game.gold = gold_limit;
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[3]);
-						postEventLog(msg);
-					} else {
-						game.gold = gold_possible;
+					var gold_was      = game.gold;
+					getTypeOfCitizen  = Math.floor(Math.random()*100+1,0);
+					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 70) {
+						console.log("poorest");
+						//theWealthShare  = Math.floor(Math.random() * 2);
+						wealthShare     = 1/100*1;
+						console.log(wealthShare);
+						sizeOfClass     = (70-1)/100;
+						console.log(sizeOfClass)
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						console.log(sizeOfClassNums);
 					}
-					gold_incr     = game.gold - gold_was;
-					rnd = Math.floor((Math.random() * 6) + 1);
-					reason = localeStrings[24+rnd]
-					msg = localeStrings[34].replace("%arg1", reason);
+					if (getTypeOfCitizen >= 70 && getTypeOfCitizen < 90) {
+						console.log("poor");
+						//theWealthShare  = Math.floor(Math.random() * 20+1);
+						wealthShare     = 1/100*20;
+						sizeOfClass     = (90-20)/100;
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					}
+					if (getTypeOfCitizen >= 90 && getTypeOfCitizen <= 99) {
+						console.log("middle");
+						//theWealthShare  = Math.floor(Math.random() * 30+1);
+						wealthShare     = 1/100*30;
+						sizeOfClass     = (99-20)/100;
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					}
+					if (getTypeOfCitizen > 99 && getTypeOfCitizen <= 100) {
+						console.log("elite");
+						//theWealthShare  = Math.floor(Math.random() * 49+1);
+						wealthShare     = 1/100*49;
+						sizeOfClass     = (100-99)/100;
+						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					}
+					moneyToSeize    = Math.floor(game.gold*wealthShare/sizeOfClassNums*game.pop/game.popLimit(),0);
+					gold_limit      = game.goldLimit();
+					pop_limit       = game.popLimit();
+					game.addMoneyToTreasury(moneyToSeize);
+					gold_diff       = game.gold - gold_was;
+					rnd             = Math.floor((Math.random() * 6) + 1);
+					reason          = localeStrings[24+rnd]
+					msg             = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
-					msg = localeStrings[35].replace("%arg1", gold_incr);
+					msg             = localeStrings[35].replace("%arg1", gold_diff);
 					postEventLog(msg);
 				} else {
-					alertMsg = localeStrings[36];
+					alertMsg        = localeStrings[36];
 					showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 				}
 				updateResources();
