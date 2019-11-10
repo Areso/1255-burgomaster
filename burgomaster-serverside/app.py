@@ -43,6 +43,53 @@ def make_event_pledge():
                                       "Access-Control-Allow-Methods": "POST"}
 
 
+@burg_server.route('/api/v1.0/get_event_leaderboard', methods=['GET'])
+def get_event_leaderboard():
+    myconfig = myloading();
+    uid = request.args.get('uid', default=1, type=int)
+    mydb = mysql.connector.connect(
+        host=myconfig[2],
+        user=myconfig[0],
+        passwd=myconfig[1],
+        database=myconfig[4]
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("""select summed.uid, nickname, summed.pledge from
+                        (select sum(pledge_value) as pledge,
+                        uid from pledges
+                        group by uid) as summed
+                        left join nicknames
+                        on summed.uid = nicknames.uid
+                        order by pledge desc;""")
+    myresult = mycursor.fetchall()
+    msgToUser  = "<table>"
+    msgToUser += "<tr><td>#</td><td>nickname<td><td>pledge</td></tr>"
+    print("hw")
+    usersRecord = False
+    placeCounter = 0
+    for x in myresult:
+        placeCounter += 1
+        msgToUser += "<tr>"
+        msgToUser += "<td>"+str(placeCounter)+"</td>"
+        if (x[0] == uid):
+            usersRecord = True
+        if (x[1] is None):
+            nickname = str(x[0])[-5:]
+        else:
+            nickname = x[1]
+        pledge = x[2]
+        msgToUser += "<td>" + str(nickname) + "</td>"
+        if (usersRecord == True):
+            msgToUser += "<td>" + str(pledge) + "<-- it is your pledge! </td>"
+        else:
+            msgToUser += "<td>" + str(pledge) + "</td>"
+        msgToUser += "</tr>"
+        usersRecord = False
+    msgToUser +="</table>"
+    return {"msgToPlayer": msgToUser}, \
+           200, {"Access-Control-Allow-Origin": "*"}
+
+
 @burg_server.route('/api/v1.0/get_event_details', methods=['GET'])
 def get_event_details():
     myconfig = myloading();
@@ -87,7 +134,7 @@ def get_event_details():
 @burg_server.route('/api/v1.0/event_countdown', methods=['GET'])
 def event_countdown():
     date_cur         = datetime.today()
-    date_evt         = datetime.strptime('2019-11-11 0:00:00', '%Y-%m-%d %H:%M:%S')
+    date_evt         = datetime.strptime('2019-11-12 0:00:00', '%Y-%m-%d %H:%M:%S')
     date_diff        = date_evt-date_cur
     date_diff_days   = str(days_hours_minutes(date_diff))
     return {"countdown": date_diff_days, "event_started":1}, 200, {"Access-Control-Allow-Origin": "*"}
