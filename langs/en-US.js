@@ -34,7 +34,7 @@ localeStrings.push("Yes, in the most bloody way!");
 localeStrings.push("Yes");
 localeStrings.push("No");
 localeStrings.push("you executed a citizen for %arg1");
-localeStrings.push("treasury funded on %arg1 with confiscated property of the executed citizen");//35
+localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
 localeStrings.push("too few citizens");
 localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
 localeStrings.push("fire in the city!");
@@ -88,7 +88,7 @@ localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("placeholder");
+localeStrings.push("%arg1 gold has been added to your treasury");
 localeStrings.push("placeholder");//90
 localeStrings.push("Garrison");
 localeStrings.push("Fire");

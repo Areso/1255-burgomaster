@@ -34,7 +34,7 @@ localeStrings.push("Jes, plej sange!");
 localeStrings.push("Jes");
 localeStrings.push("No");
 localeStrings.push("vi ekzekutis civitanon pro %arg1");
-localeStrings.push("trezorejo financita per %arg1 oro kun konfiskitaj posedaĵoj de la ekzekutita civitano");//35
+localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
 localeStrings.push("tre malmultaj civitanoj");
 localeStrings.push("trezoreja gardisto(j) forsendis ĉar vi ne povas pagi al ili!");
 localeStrings.push("fajro en la urbo!");
@@ -88,7 +88,7 @@ localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("placeholder");
+localeStrings.push("%arg1 gold has been added to your treasury");
 localeStrings.push("placeholder");//90
 localeStrings.push("Garnison");
 localeStrings.push("Forsenti");

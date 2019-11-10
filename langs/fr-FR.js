@@ -34,7 +34,7 @@ localeStrings.push("Assurément, de la façon la plus barbare!");
 localeStrings.push("Oui");
 localeStrings.push("Non");
 localeStrings.push("Vous avez exécuté un citoyen pour %arg1.");
-localeStrings.push("Voter Trésorerie s'est remplie de %arg1 or provenant de la confiscation des biens du citoyen exécuté.");//35
+localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
 localeStrings.push("Vous avez trop peu de citoyens.");
 localeStrings.push("Des gardes ont démissioné car vous ne pouvez pas les payer !");
 localeStrings.push("Un incendie dans la cité!");
@@ -88,7 +88,7 @@ localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("placeholder");
+localeStrings.push("%arg1 gold has been added to your treasury");
 localeStrings.push("placeholder");//90
 localeStrings.push("Garnison");
 localeStrings.push("Licencier");

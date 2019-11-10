@@ -34,7 +34,7 @@ localeStrings.push("Да, и как можно кроважаднее!");
 localeStrings.push("Да");
 localeStrings.push("Нет");
 localeStrings.push("вы казнили горожанина за %arg1");//34
-localeStrings.push("казна пополниналась на %arg1 золотых после конфискации имущества");//35
+localeStrings.push("%arg1 золотых конфисковано");//35
 localeStrings.push("слишком мало жителей");
 localeStrings.push("охранники уволились, потому что вам нечем платить им!");
 localeStrings.push("пожар в городе!");
@@ -88,7 +88,7 @@ localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Никнейм зарегистрирован","Никнейм обновлен","Извините, но никнейм занят"]);
-localeStrings.push("placeholder");
+localeStrings.push("Сокровищница была пополнена на %arg1 золота");
 localeStrings.push("placeholder");//90
 localeStrings.push("Гарнизон");
 localeStrings.push("Уволить");
