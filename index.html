@@ -1377,6 +1377,7 @@
 					postEventLog(msg);
 				}
 			}
+			return game.gold - gold_was;
 		},
 		eventItemCollected : function () {
 			back_response_ItemCollected = null;
@@ -1875,8 +1876,12 @@
 		},
 		checkColissionWithRemovableObstacles : function () {
 			if (game.myMapRemObjects[game.heroX][game.heroY]===1) {
-				game.addMoneyToTreasury(config.chestMoney);
-				postEventLog(localeStrings[186]+config.chestMoney);							}
+				var gold_diff = game.addMoneyToTreasury(config.chestMoney);
+				postEventLog(localeStrings[186]+config.chestMoney);
+				if (gold_diff!==config.chestMoney){
+					postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+				}
+			}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
 				postEventLog(localeStrings[58][0]);
 				game.eventItemCollected();
@@ -2012,9 +2017,12 @@
 					game.myhero.status             = 0;
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
-					game.gold                     += game.myhero.gold;
-					game.myhero.gold               = 0;
 					postEventLog(localeStrings[176]+game.myhero.gold);
+					var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
+					if (gold_diff!==game.myhero.gold){
+						postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+					}
+					game.myhero.gold               = 0;
 				}
 				game.heroLvlUp();
 			}

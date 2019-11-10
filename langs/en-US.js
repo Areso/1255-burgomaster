@@ -88,7 +88,7 @@ localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("placeholder");
+localeStrings.push("%arg1 gold has been added to your treasury");
 localeStrings.push("placeholder");//90
 localeStrings.push("Garrison");
 localeStrings.push("Fire");
