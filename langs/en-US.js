@@ -34,7 +34,7 @@ localeStrings.push("Yes, in the most bloody way!");
 localeStrings.push("Yes");
 localeStrings.push("No");
 localeStrings.push("you executed a citizen for %arg1");
-localeStrings.push("treasury funded on %arg1 with confiscated property of the executed citizen");//35
+localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
 localeStrings.push("too few citizens");
 localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
 localeStrings.push("fire in the city!");

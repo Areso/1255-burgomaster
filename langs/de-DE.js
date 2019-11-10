@@ -34,7 +34,7 @@ localeStrings.push("Ja, auf die blutigste Weise!");
 localeStrings.push("Ja");
 localeStrings.push("Nein");
 localeStrings.push("Ihr habt einen Bürger wegen %arg1 hingerichtet.");
-localeStrings.push("Eure Schatzkammer wurde um %arg1 Gold aus dem beschlagnahmten Eigentum des hingerichteten Bürgers bereichert.");//35//TODO find this string. It seems to be too long!
+localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
 localeStrings.push("Ihr habt zu wenig Bürger.");
 localeStrings.push("Einige Wachleute wurden entlassen, weil Ihr sie nicht bezahlen könnt!");
 localeStrings.push("Feuer in der Stadt!");

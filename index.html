@@ -1876,8 +1876,8 @@
 		},
 		checkColissionWithRemovableObstacles : function () {
 			if (game.myMapRemObjects[game.heroX][game.heroY]===1) {
-				var gold_diff = game.addMoneyToTreasury(config.chestMoney);
 				postEventLog(localeStrings[186]+config.chestMoney);
+				var gold_diff = game.addMoneyToTreasury(config.chestMoney);
 				if (gold_diff!==config.chestMoney){
 					postEventLog(localeStrings[89].replace("%arg1", gold_diff));
 				}
@@ -2436,9 +2436,6 @@
 		calculateTurn : function() {
 			game.recordStats();
 			game.getNearestEventTime();
-			/*if (flag_event_started===1) {
-				game.getEventDetails();
-			}*/
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
@@ -2545,32 +2542,6 @@
 			}
 			taxes = Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
 			game.addMoneyToTreasury(taxes, false);
-
-			/*
-			gold_was      = game.gold;
-			gold_limit    = game.goldLimit();
-			gold_possible = game.gold*1+Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
-			if (gold_possible > gold_limit) {
-				game.gold      = gold_limit;
-				if (game.userGoldAck === 0) {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[3]);
-					postEventLog(msg);
-					game.userGoldAck = 1;
-				}
-			} else {
-				game.gold      = gold_possible;
-				game.userGoldAck = 0;
-			}
-			if (game.gold !== gold_was) {
-				if (game.gold > gold_was) {
-					msg = localeStrings[4];
-				} else {
-					msg = localeStrings[5];
-				}
-				postEventLog(msg);
-			};
-			*/
 			if (game.pop !== pop_was) {
 				if (game.pop > pop_was) {
 					msg = localeStrings[7];
@@ -2816,7 +2787,6 @@
 						document.getElementById('gallowsAudio0').play();
 					}
 					game.pop          = game.pop - 1;
-					var gold_was      = game.gold;
 					getTypeOfCitizen  = Math.floor(Math.random()*100+1,0);
 					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 70) {
 						wealthShare     = 1/100*1;
@@ -2838,17 +2808,17 @@
 						sizeOfClass     = (100-99)/100;
 						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
 					}
-					moneyToSeize    = Math.floor(game.gold*wealthShare/sizeOfClassNums*game.pop/game.popLimit(),0);
-					gold_limit      = game.goldLimit();
-					pop_limit       = game.popLimit();
-					game.addMoneyToTreasury(moneyToSeize);
-					gold_diff       = game.gold - gold_was;
+					moneyToSeize    = Math.floor(game.gold*wealthShare/sizeOfClassNums*game.pop/game.popLimit()/10,0);
 					rnd             = Math.floor((Math.random() * 6) + 1);
 					reason          = localeStrings[24+rnd]
 					msg             = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
-					msg             = localeStrings[35].replace("%arg1", gold_diff);
+					msg             = localeStrings[35].replace("%arg1", moneyToSeize);
 					postEventLog(msg);
+					var gold_diff   = game.addMoneyToTreasury(moneyToSeize);
+					if (gold_diff!==moneyToSeize){
+						postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+					}
 				} else {
 					alertMsg        = localeStrings[36];
 					showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
@@ -2948,11 +2918,12 @@
 			}
 		},
 		winLottery : function () {
-			var gold_was          = game.gold;
-			game.addMoneyToTreasury(config.lotteryPrize);
-			var diff=game.gold-gold_was;
-			msg = localeStrings[43].replace("%arg1", diff);
+			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
+			var gold_diff = game.addMoneyToTreasury(config.lotteryPrize);
+			if (gold_diff!==config.lotteryPrize){
+				postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+			}
 			updateResources();
 		},
 		startPlague : function () {

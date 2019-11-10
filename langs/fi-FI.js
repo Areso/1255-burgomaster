@@ -34,7 +34,7 @@ localeStrings.push("Kyllä, raakamaisimmalla tavalla!");
 localeStrings.push("Kyllä");
 localeStrings.push("Ei");
 localeStrings.push("Teloitit kansalaisen syystä %arg1.");
-localeStrings.push("Kulta aarrekammiossasi lisääntyi %arg1 hirtetyn asukkaan entisestä omaisuudesta.");//35
+localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
 localeStrings.push("too few citizens");
 localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
 localeStrings.push("fire in the city!");
