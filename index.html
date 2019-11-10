@@ -340,7 +340,7 @@
 			</table>
 			<br>
 			<hr>
-			<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Return to Settings</button>
+			<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
 		</div>
 		<div id="Garrison" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
@@ -571,7 +571,8 @@
 			<button id="btnGenerateMap"    onclick="game.generateMap()" style="width:160px">Regenerate map</button>
 		</div>
 		<div id="tabAutocampaignJournal" class="tabcontent">
-			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:470px; top: 60px; left: 10px"></div>
+			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:420px; top: 60px; left: 10px"></div>
+			<button id="btnToInn" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
 			<label id="lblTroopsHiring">Hiring troops</label><br>
@@ -3452,6 +3453,7 @@
 		document.getElementById("lblMscAll").innerText           = localeStrings[77];
 		document.getElementById("lblMscScr").innerText           = localeStrings[78];
 		document.getElementById("btnToGeneralSettings").innerText= localeStrings[79];
+		document.getElementById("btnToInn").innerText            = localeStrings[79];
 		document.getElementById("lblSoundMenu").innerText        = localeStrings[80];
 		document.getElementById("btnSoundSettings").innerText    = localeStrings[81];
 		document.getElementById("lblStnMobileUI").innerText      = localeStrings[82];
