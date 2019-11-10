@@ -132,6 +132,16 @@
             overflow-y: scroll;
             */
 		}
+		#lblEventLBDetails {
+			width: 795px;
+			height: 425px;
+			border: thin solid black;
+			overflow:scroll;
+			/*
+            overflow-x: hidden;
+            overflow-y: scroll;
+            */
+		}
 		#htmlGame {
 			margin: auto;
 		}
@@ -670,6 +680,14 @@
 			<lbl id="lblEventDetails">
 
 			</lbl>
+			<br>
+			<button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()">Open Leaderboard</button>
+		</div>
+		<div id="tabEventLeaderboard" class="tabcontent">
+			<div id="lblEventLBDetails">
+
+			</div>
+			<button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')">Back</button>
 		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
@@ -1290,7 +1308,7 @@
 	flag_event_started = "";
 	var game = {
 		gold: 20,
-		gens: 0,
+		gems: 0,
 		pop: 2,
 		season: 2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
 		year: 1255,
@@ -1349,6 +1367,10 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		openLeaderboard : function () {
+			game.getEventLeaderboard();
+			openTab(null, 'tabEventLeaderboard');
+		},
 		festivalPrice : function () {
 			return game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
 		},
@@ -1419,6 +1441,8 @@
 						document.getElementById("inpStnAliasValue").value = "";
 					}
 					setTimeout(function(){ document.getElementById("lblStnAliasResult").innerText=""; }, 5000);
+				} else {
+					game.alias = document.getElementById("inpStnAliasValue").value;
 				}
 			};
 			dataToParse = game.UID+delimiter+game.alias+delimiter+proposedAlias;
@@ -1487,6 +1511,22 @@
 				}
 			};
 			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_details?uid="+game.UID, true);
+			xhttp.send();
+		},
+		getEventLeaderboard : function () {
+			back_response_evt_details = null;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					back_response_evt_details = JSON.parse(this.responseText);
+					console.log(back_response_evt_details);
+					textToTab = back_response_evt_details["msgToPlayer"];
+					document.getElementById("lblEventLBDetails").innerHTML = textToTab;
+				} else {
+					//
+				}
+			};
+			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_leaderboard?uid="+game.UID, true);
 			xhttp.send();
 		},
 		setupEventLogSize : function () {
@@ -2999,6 +3039,7 @@
 	setupAutosave();//DEBUG
 	composite();
 	checkSaves();
+	setupNickname();
 	//init timers
 	setInterval(cooldown, config.oneSecMS);
 	setInterval(endOfTurnTimer, config.oneSecMS);
@@ -3009,7 +3050,7 @@
 	});
 	//functions
 	function getUID() {
-		var rnd = Math.floor((Math.random() * 10000) + 1);
+		var rnd = Math.floor((Math.random() * 100000) + 1);
 		while (rnd.toString().length < 5) {
 			rnd = "0"+rnd;
 		}
@@ -3865,6 +3906,12 @@
 		document.getElementById("inpStnEventLogSize").value    = game.log_size;
 		document.getElementById("console_n_chat").style.height = game.log_size * 20;
 	}
+	function setupNickname() {
+		//console.log("setup a nickname");
+		if (game.alias.length===0) {
+			game.alias = game.UID.slice(-5);
+		}
+	}
 	function setupAutosave() {
 		game.userASaveAck = 0;
 		if (game.o_autosave==0) {
@@ -3984,6 +4031,7 @@
 		setupFirebrigadeUI();
 		setupAudioUI();
 		setupAutosave();
+		setupNickname();
 		setupEventLogSizeUI();
 		composite();
 		updateUI();
