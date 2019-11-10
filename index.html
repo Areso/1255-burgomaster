@@ -1875,10 +1875,8 @@
 		},
 		checkColissionWithRemovableObstacles : function () {
 			if (game.myMapRemObjects[game.heroX][game.heroY]===1) {
-				var money_found = 25;
-				postEventLog(localeStrings[186]+money_found);
-				game.gold = game.gold + money_found;
-			}
+				game.addMoneyToTreasury(config.chestMoney);
+				postEventLog(localeStrings[186]+config.chestMoney);							}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
 				postEventLog(localeStrings[58][0]);
 				game.eventItemCollected();
@@ -3003,6 +3001,7 @@
 		turkopolUpkeep:5,
 		knightHiring:40,
 		knightUpkeep:10,
+		chestMoney:25,
 	};
 	/*
 	function test () {
