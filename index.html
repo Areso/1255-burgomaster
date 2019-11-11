@@ -203,6 +203,8 @@
 				<br>
 				<span id="pop"  class="interface" onclick="checkPop()"  style="position:absolute; top:140px; left:60px">2</span>
 				<br>
+				<br>
+				<span id="gems"  class="interface" onclick="showModal(0, '', getAck, localeStrings[90],  localeStrings[60], '');" style="position:absolute; top:180px; left:60px">0</span>
 			</p>
 			<p id="events_graphics" style="z-index: 8">
 
@@ -688,6 +690,11 @@
 
 			</div>
 			<button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')">Back</button>
+		</div>
+		<div id="tabEventReward" class="tabcontent">
+			<lbl id="lblEventReward">
+
+			</lbl>
 		</div>
 		<div id="Discord" class="tabcontent">
 			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
@@ -1401,6 +1408,24 @@
 				}
 			}
 			return game.gold - gold_was;
+		},
+		getReward : function () {
+			back_response_reward = null;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					back_response_reward = JSON.parse(this.responseText);
+					textToTab  = back_response_reward["msgToPlayer"];
+					game.gems += back_response_reward["gems"];
+					game.gems += back_response_reward["prize_v"];
+					document.getElementById("lblEventReward").innerHTML = textToTab;
+					openTab(null, "tabEventReward")
+				}
+			};
+			dataToParse = game.UID;
+			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/get_reward", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(dataToParse);
 		},
 		eventItemCollected : function () {
 			back_response_ItemCollected = null;
@@ -2598,6 +2623,7 @@
 				//return true;
 			}
 			updateUI();
+			game.getReward();
 		},
 		makeFestival : function() {
 			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
@@ -4223,6 +4249,7 @@
 		document.getElementById("gold").innerHTML          = game.gold;
 		document.getElementById("gold_bm").innerHTML       = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
+		document.getElementById("gems").innerHTML          = game.gems;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
