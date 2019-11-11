@@ -24,7 +24,7 @@ def myloading():
     return conf_list
 
 
-@burg_server.route('/api/v1.0/make_event_pledge', methods=['POST'])
+@burg_server.route('/api/v1.1/make_event_pledge', methods=['POST'])
 def make_event_pledge():
     myconfig = myloading();
     reqdata = request.get_data()
@@ -43,7 +43,101 @@ def make_event_pledge():
                                       "Access-Control-Allow-Methods": "POST"}
 
 
-@burg_server.route('/api/v1.0/get_event_leaderboard', methods=['GET'])
+@burg_server.route('/api/v1.0/get_reward', methods=['POST'])
+def get_reward():
+    myconfig = myloading();
+    reqdata = request.get_data()
+    uid = int(reqdata)
+    mydb = mysql.connector.connect(
+        host=myconfig[2],
+        user=myconfig[0],
+        passwd=myconfig[1],
+        database=myconfig[4]
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM event_reward_notify WHERE uid = %(uid)s", {'uid': uid})
+    myresult = mycursor.fetchall()
+    rewarded = False
+    if len(myresult) > 0:
+        rewarded = True
+    else:
+        rewarded = False
+        mycursor.execute("INSERT INTO event_reward_notify(uid, id_event) VALUES (%(uid)s, 0)", {'uid': uid})
+        mydb.commit()
+    if rewarded is False:
+        mycursor.execute("SELECT sum(pledge_value) as res FROM pledges WHERE uid = %(uid)s AND paid=0 GROUP BY uid", {'uid': uid})
+        myresult = mycursor.fetchall()
+        if len(myresult) > 0:
+            for x in myresult:
+                the_player_pledge = x
+                the_player_pledge = the_player_pledge[0]
+                the_player_pledge = int(the_player_pledge)
+        else:
+            the_player_pledge = 0
+            return {"msgToPlayer": 0, "gems": 0, "prize_v": 0, "position": 0}, \
+                   201, {"Access-Control-Allow-Origin": "*",
+                         "Content-type": "application/json",
+                         "Access-Control-Allow-Methods": "POST"}
+        msgToPlayer="""Hello player.<br>
+                       You didn't participate in the event, but I hope you will join the next one.<br>
+                       See you!<br>
+                       Sincerely yours, Areso, the game developer."""
+        prize_v = 0
+        the_user_pos = -1
+        if the_player_pledge > 0:
+            mycursor.execute("UPDATE pledges SET paid=1 where uid=%(uid)s AND paid=0", {'uid': uid})
+            mydb.commit()
+            mycursor.execute("""select uid, sum(pledge_value) as pledge from pledges
+                                    group by uid
+                                    order by pledge desc;""")
+            myresult = mycursor.fetchall()
+            position = 0
+            the_user_pos = -1
+            for x in myresult:
+                position += 1
+                if (x[0] == uid):
+                    usersRecord = True
+                    the_user_pos = position
+            prize1 = ". For the first place you were additionally awarded with %arg3 gems"
+            prize_v1 = 30
+            prize2 = ". For the second place you were additionally awarded with %arg3 gems"
+            prize_v2 = 20
+            prize3 = ". For the third place you were additionally awarded with %arg3 gems"
+            prize_v3 = 10
+            msgToPlayer = """Hello player.<br>
+                             First of all, I would like to thank you because your help made this event happen.<br>
+                             As a token of my gratitude, I would like to give you %arg1 gems, according to your pledge.<br>
+                             They will become useful in the nearest future.<br>
+                             Your place was %arg2 %prize<br>
+                             I hope will participate in the next event too.<br>
+                             See you!<br>
+                             Sincerely yours, Areso, the game developer."""
+            if (the_user_pos==1 or the_user_pos==2 or the_user_pos==3):
+                if the_user_pos == 1:
+                    msgToPlayer = msgToPlayer.replace("%prize", prize1)
+                    prize_v = prize_v1
+                if the_user_pos == 2:
+                    msgToPlayer = msgToPlayer.replace("%prize", prize2)
+                    prize_v = prize_v2
+                if the_user_pos == 3:
+                    msgToPlayer = msgToPlayer.replace("%prize", prize3)
+                    prize_v = prize_v3
+                msgToPlayer = msgToPlayer.replace("%arg3", str(prize_v))
+            else:
+                msgToPlayer = msgToPlayer.replace("%prize", ".")
+            msgToPlayer = msgToPlayer.replace("%arg1", str(the_player_pledge))
+            msgToPlayer = msgToPlayer.replace("%arg2", str(the_user_pos))
+        return {"msgToPlayer": msgToPlayer, "gems": the_player_pledge, "prize_v": prize_v, "position": the_user_pos}, \
+                                          200, {"Access-Control-Allow-Origin": "*",
+                                          "Content-type": "application/json",
+                                          "Access-Control-Allow-Methods": "POST"}
+    else:
+        return {"msgToPlayer": 0, "gems": 0, "prize_v": 0, "position": 0}, \
+               201, {"Access-Control-Allow-Origin": "*",
+                     "Content-type": "application/json",
+                     "Access-Control-Allow-Methods": "POST"}
+
+@burg_server.route('/api/v1.1/get_event_leaderboard', methods=['GET'])
 def get_event_leaderboard():
     myconfig = myloading();
     uid = request.args.get('uid', default=1, type=int)
@@ -90,7 +184,7 @@ def get_event_leaderboard():
            200, {"Access-Control-Allow-Origin": "*"}
 
 
-@burg_server.route('/api/v1.0/get_event_details', methods=['GET'])
+@burg_server.route('/api/v1.1/get_event_details', methods=['GET'])
 def get_event_details():
     myconfig = myloading();
     uid = request.args.get('uid', default=1, type=int)
@@ -131,7 +225,7 @@ def get_event_details():
            200, {"Access-Control-Allow-Origin": "*"}
 
 
-@burg_server.route('/api/v1.0/event_countdown', methods=['GET'])
+@burg_server.route('/api/v1.1/event_countdown', methods=['GET'])
 def event_countdown():
     date_cur         = datetime.today()
     date_evt         = datetime.strptime('2019-11-12 0:00:00', '%Y-%m-%d %H:%M:%S')
@@ -140,7 +234,7 @@ def event_countdown():
     return {"countdown": date_diff_days, "event_started":1}, 200, {"Access-Control-Allow-Origin": "*"}
 
 
-@burg_server.route('/api/v1.0/register_alias', methods=['POST', 'OPTIONS'])
+@burg_server.route('/api/v1.1/register_alias', methods=['POST', 'OPTIONS'])
 def register_alias():
     reqdata = request.get_data()
     reqdata = reqdata.decode()
@@ -189,12 +283,12 @@ def register_alias():
                                        "Access-Control-Allow-Methods": "POST"}
 
 
-@burg_server.route('/api/v1.0/deadend')
+@burg_server.route('/api/v1.1/deadend')
 def days_hours_minutes(td):
     return td.days, td.seconds//3600, (td.seconds//60)%60
 
 
-@burg_server.route('/api/v1.0/events', methods=['GET'])
+@burg_server.route('/api/v1.1/events', methods=['GET'])
 def get_index2():
     return jsonify({'all_events': events})
 

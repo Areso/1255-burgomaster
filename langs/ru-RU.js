@@ -89,7 +89,7 @@ localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Никнейм зарегистрирован","Никнейм обновлен","Извините, но никнейм занят"]);
 localeStrings.push("Сокровищница была пополнена на %arg1 золота");
-localeStrings.push("placeholder");//90
+localeStrings.push("Самоцветы - самая ценная валюта в игре");//90
 localeStrings.push("Гарнизон");
 localeStrings.push("Уволить");
 localeStrings.push("Нанять");
