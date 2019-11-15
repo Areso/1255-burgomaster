@@ -1381,10 +1381,10 @@
 		festivalPrice : function () {
 			return game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
 		},
-		addMoneyToTreasury : function (changeValue, silent) {
-			gold_was      = game.gold;
-			gold_limit    = game.goldLimit();
-			gold_possible = game.gold+changeValue;
+		addMoneyToTreasury : function (changeValue) {
+			var gold_was      = game.gold;
+			var gold_limit    = game.goldLimit();
+			var gold_possible = game.gold+changeValue;
 			if (gold_possible > gold_limit) {
 				game.gold      = gold_limit;
 				if (game.userGoldAck === 0) {
@@ -1396,16 +1396,6 @@
 			} else {
 				game.gold      = gold_possible;
 				game.userGoldAck = 0;
-			}
-			if (silent===false){
-				if (game.gold !== gold_was) {
-					if (game.gold > gold_was) {
-						msg = localeStrings[4];
-					} else {
-						msg = localeStrings[5];
-					}
-					postEventLog(msg);
-				}
 			}
 			return game.gold - gold_was;
 		},
@@ -2039,6 +2029,51 @@
 				game.heroDie();
 			}
 		},
+		heroSergeantsUpkeep : function () {
+			return game.myhero.sergeants*config.sergeantUpkeep;
+		},
+		heroTurkopolsUpkeep : function () {
+			return game.myhero.turkopols*config.turkopolUpkeep;
+		},
+		heroKnightsUpkeep : function () {
+			return game.myhero.knights*config.knightUpkeep;
+		},
+		heroSquadUpkeep : function () {
+			if (game.gold >= game.heroTurkopolsUpkeep()) {
+				game.gold -= game.heroTurkopolsUpkeep();
+			} else {
+				while(game.gold<game.heroTurkopolsUpkeep()){
+					game.myhero.turkopols -= 1;
+				}
+				game.gold -= game.heroTurkopolsUpkeep();
+			}
+			if (game.gold >= game.heroKnightsUpkeep()) {
+				game.gold -= game.heroKnightsUpkeep();
+			} else {
+				while(game.gold<game.heroKnightsUpkeep()){
+					game.myhero.knights -= 1;
+				}
+				game.gold -= game.heroKnightsUpkeep();
+			}
+			flagTreasuryToNull = false;
+			if (game.gold >= game.heroSergeantsUpkeep()) {
+				game.gold -= game.heroSergeantsUpkeep();
+			} else {
+				while(game.gold<game.heroSergeantsUpkeep()){
+					if (game.myhero.sergeants!==1) {
+						game.myhero.sergeants -= 1;
+					} else {
+						flagTreasuryToNull = true;
+						break;
+					}
+				}
+				if (flagTreasuryToNull===true) {
+					game.gold = 0
+				} else {
+					game.gold -= game.heroSergeantsUpkeep();
+				}
+			}
+		},
 		calculateAutocampaign : function () {
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
@@ -2500,6 +2535,7 @@
 			game.pops.push(game.pop);
 		},
 		calculateTurn : function() {
+			var gold_was = game.gold;
 			game.recordStats();
 			game.getNearestEventTime();
 			pop_m         = 0;
@@ -2533,6 +2569,8 @@
 					}
 				}
 			}
+			game.calculateAutocampaign();
+			game.heroSquadUpkeep();
 			if (game.treasuryGuard > 0) {
 				if (game.gold - game.treasuryGuard * config.treasuryGuardPricePayroll >= 0) {
 					game.gold = game.gold - game.treasuryGuard * config.treasuryGuardPricePayroll;
@@ -2546,7 +2584,6 @@
 					postEventLog(msg);
 				}
 			}
-			game.calculateAutocampaign();
 			if (game.sergeants > 0) {
 				if (game.gold - game.sergeants * config.sergeantUpkeep >= 0) {
 					game.gold = game.gold - game.sergeants * 5;
@@ -2607,7 +2644,15 @@
 				}
 			}
 			taxes = Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
-			game.addMoneyToTreasury(taxes, false);
+			game.addMoneyToTreasury(taxes);
+			if (game.gold !== gold_was) {
+				if (game.gold > gold_was) {
+					msg = localeStrings[4];
+				} else {
+					msg = localeStrings[5];
+				}
+				postEventLog(msg);
+			}
 			if (game.pop !== pop_was) {
 				if (game.pop > pop_was) {
 					msg = localeStrings[7];
