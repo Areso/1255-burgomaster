@@ -1409,7 +1409,8 @@
 					game.gems += back_response_reward["gems"];
 					game.gems += back_response_reward["prize_v"];
 					document.getElementById("lblEventReward").innerHTML = textToTab;
-					openTab(null, "tabEventReward")
+					openTab(null, "tabEventReward");
+					updateUI();
 				}
 			};
 			dataToParse = game.UID;
