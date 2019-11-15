@@ -2039,38 +2039,40 @@
 			return game.myhero.knights*config.knightUpkeep;
 		},
 		heroSquadUpkeep : function () {
-			if (game.gold >= game.heroTurkopolsUpkeep()) {
-				game.gold -= game.heroTurkopolsUpkeep();
-			} else {
-				while(game.gold<game.heroTurkopolsUpkeep()){
-					game.myhero.turkopols -= 1;
-				}
-				game.gold -= game.heroTurkopolsUpkeep();
-			}
-			if (game.gold >= game.heroKnightsUpkeep()) {
-				game.gold -= game.heroKnightsUpkeep();
-			} else {
-				while(game.gold<game.heroKnightsUpkeep()){
-					game.myhero.knights -= 1;
-				}
-				game.gold -= game.heroKnightsUpkeep();
-			}
-			flagTreasuryToNull = false;
-			if (game.gold >= game.heroSergeantsUpkeep()) {
-				game.gold -= game.heroSergeantsUpkeep();
-			} else {
-				while(game.gold<game.heroSergeantsUpkeep()){
-					if (game.myhero.sergeants!==1) {
-						game.myhero.sergeants -= 1;
-					} else {
-						flagTreasuryToNull = true;
-						break;
-					}
-				}
-				if (flagTreasuryToNull===true) {
-					game.gold = 0
+			if (game.heroExists()) {
+				if (game.gold >= game.heroTurkopolsUpkeep()) {
+					game.gold -= game.heroTurkopolsUpkeep();
 				} else {
+					while (game.gold < game.heroTurkopolsUpkeep()) {
+						game.myhero.turkopols -= 1;
+					}
+					game.gold -= game.heroTurkopolsUpkeep();
+				}
+				if (game.gold >= game.heroKnightsUpkeep()) {
+					game.gold -= game.heroKnightsUpkeep();
+				} else {
+					while(game.gold<game.heroKnightsUpkeep()){
+						game.myhero.knights -= 1;
+					}
+					game.gold -= game.heroKnightsUpkeep();
+				}
+				flagTreasuryToNull = false;
+				if (game.gold >= game.heroSergeantsUpkeep()) {
 					game.gold -= game.heroSergeantsUpkeep();
+				} else {
+					while (game.gold < game.heroSergeantsUpkeep()) {
+						if (game.myhero.sergeants !== 1) {
+							game.myhero.sergeants -= 1;
+						} else {
+							flagTreasuryToNull = true;
+							break;
+						}
+					}
+					if (flagTreasuryToNull === true) {
+						game.gold = 0
+					} else {
+						game.gold -= game.heroSergeantsUpkeep();
+					}
 				}
 			}
 		},
