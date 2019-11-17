@@ -570,12 +570,11 @@
 			<br>
 			<br>
 			<div id="heroStats">
-
 			</div>
 			<br>
 			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
 			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
-			<button id="btnAutocampaignJournal"    onclick="openTab(null, 'tabAutocampaignJournal')" style="width:160px; visibility: hidden">Open journal</button>
+			<button id="btnAutocampaignJournal"    onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
 			<button id="btnTowngate" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
 			<br>
 			<br>
@@ -651,7 +650,7 @@
 				</tr>
 			</table>
 		</div>
-	    <div id="tabBlackmarket" class="tabcontent">
+		<div id="tabBlackmarket" class="tabcontent">
 			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
 			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span>
 			<br>
@@ -3123,6 +3122,10 @@
 		console.log('we are in first level include after loadStartLocale()');
 	});
 	//functions
+	function openTabAutocampaignJournal() {
+		openTab(null, 'tabAutocampaignJournal');
+		scrollDown();
+	}
 	function getUID() {
 		var rnd = Math.floor((Math.random() * 100000) + 1);
 		while (rnd.toString().length < 5) {
@@ -4374,9 +4377,9 @@
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 		}
-		var textarea = document.getElementById("lblAutocampaignJournal");
-		if(textarea.selectionStart === textarea.selectionEnd) {
-			textarea.scrollTop = textarea.scrollHeight;
+		var textareaJrnl = document.getElementById("lblAutocampaignJournal");
+		if(textareaJrnl.selectionStart === textareaJrnl.selectionEnd) {
+			textareaJrnl.scrollTop = textareaJrnl.scrollHeight;
 		}
 	}
 	function updateImagesBuildingTab () {
