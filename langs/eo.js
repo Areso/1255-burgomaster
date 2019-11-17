@@ -283,7 +283,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Direction: ");
 localeStrings.push("La heroo estas malantaŭ la urbo nun!");//255
 localeStrings.push("Vi ne havas Towngate-movon!");
 localeStrings.push("Unue, direktu la heroon al la urbo!");

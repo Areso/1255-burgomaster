@@ -283,7 +283,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Direction: ");
 localeStrings.push("Герой теперь буквально в одном шаге от города!");//255
 localeStrings.push("У вас нет свитка городских врат!");
 localeStrings.push("Сначала направьте героя в город.");

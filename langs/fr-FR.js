@@ -283,7 +283,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Direction: ");
 localeStrings.push("Le héros est juste derrière la ville maintenant!");//255
 localeStrings.push("Vous n'avez pas de rouleau Towngate!");
 localeStrings.push("Tout d'abord, dirigez le héros en ville!");
