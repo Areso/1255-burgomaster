@@ -283,7 +283,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Direction: ");
 localeStrings.push("The hero is just behind the city now!");//255
 localeStrings.push("You don't have a Towngate scroll!");
 localeStrings.push("First, head the hero to the town!");
