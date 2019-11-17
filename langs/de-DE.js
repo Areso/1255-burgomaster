@@ -283,7 +283,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Direction: ");
 localeStrings.push("Der Held ist gerade hinter der Stadt!");//255
 localeStrings.push("Sie haben keine Towngate-Schriftrolle!");
 localeStrings.push("Begib dich zuerst mit dem Helden in die Stadt!");
