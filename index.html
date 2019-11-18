@@ -1279,7 +1279,7 @@
 		canvasScaleRatio = canvas.width / canvas.offsetWidth;
 		loc.x = (tapX - 9) * canvasScaleRatio;
 		loc.y = (tapY - 58) * canvasScaleRatio;
-		if (game.isMobile===1) {
+		if (game.isMobile===1 && allowMvt===1) {
 			if (loc.x >= arrow_lx && loc.x <= arrow_lx + arrow_size) {
 				if (loc.y >= arrow_ly && loc.y <= arrow_ly + arrow_size) {
 					game.tryHeroMovement(-1, 0);//LEFT
@@ -1314,6 +1314,7 @@
 	//init variables
 	disabledElements = [];
 	flag_event_started = "";
+	allowMvt = 1;
 	var game = {
 		gold: 20,
 		gems: 0,
@@ -1961,6 +1962,8 @@
 						openTab(null, 'tabBlackmarket');
 					}
 					composite_gm();
+					allowMvt = 0;
+					setTimeout(cooldownMvt, 500);
 				}
 			}
 		},
@@ -4430,6 +4433,9 @@
 		}
 	}
 	//timers
+	function cooldownMvt(){
+		allowMvt = 1;
+	}
 	function rndEvents() {
 		var rnd = Math.floor((Math.random() * 12) + 1);
 		//rnd = 2;//debug
