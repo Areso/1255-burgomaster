@@ -222,9 +222,6 @@
 		</div>
 		<div id="Explore" class="tabcontent">
 			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
-			<p style="position:absolute; top:60px; left: 20px">
-			GLOBALMAP
-			</p>
 		</div>
 		<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
@@ -1282,24 +1279,26 @@
 		canvasScaleRatio = canvas.width / canvas.offsetWidth;
 		loc.x = (tapX - 9) * canvasScaleRatio;
 		loc.y = (tapY - 58) * canvasScaleRatio;
-		if (loc.x>=arrow_lx&& loc.x<=arrow_lx+arrow_size){
-			if (loc.y>=arrow_ly&& loc.y<=arrow_ly+arrow_size){
-				game.tryHeroMovement(-1,0);//LEFT
+		if (game.isMobile===1) {
+			if (loc.x >= arrow_lx && loc.x <= arrow_lx + arrow_size) {
+				if (loc.y >= arrow_ly && loc.y <= arrow_ly + arrow_size) {
+					game.tryHeroMovement(-1, 0);//LEFT
+				}
 			}
-		}
-		if (loc.x>=arrow_ux&& loc.x<=arrow_ux+arrow_size){
-			if (loc.y>=arrow_uy&& loc.y<=arrow_uy+arrow_size){
-				game.tryHeroMovement(0,-1);//UP
+			if (loc.x >= arrow_ux && loc.x <= arrow_ux + arrow_size) {
+				if (loc.y >= arrow_uy && loc.y <= arrow_uy + arrow_size) {
+					game.tryHeroMovement(0, -1);//UP
+				}
 			}
-		}
-		if (loc.x>=arrow_dx&& loc.x<=arrow_dx+arrow_size){
-			if (loc.y>=arrow_dy&& loc.y<=arrow_dy+arrow_size){
-				game.tryHeroMovement(0,1);//DOWN
+			if (loc.x >= arrow_dx && loc.x <= arrow_dx + arrow_size) {
+				if (loc.y >= arrow_dy && loc.y <= arrow_dy + arrow_size) {
+					game.tryHeroMovement(0, 1);//DOWN
+				}
 			}
-		}
-		if (loc.x>=arrow_rx&& loc.x<=arrow_rx+arrow_size){
-			if (loc.y>=arrow_ry&& loc.y<=arrow_ry+arrow_size){
-				game.tryHeroMovement(1,0);//LEFT
+			if (loc.x >= arrow_rx && loc.x <= arrow_rx + arrow_size) {
+				if (loc.y >= arrow_ry && loc.y <= arrow_ry + arrow_size) {
+					game.tryHeroMovement(1, 0);//LEFT
+				}
 			}
 		}
 	}
@@ -2118,6 +2117,7 @@
 					game.myhero.aCampaignTotalLong+= 1;
 					postJournalLog(localeStrings[175]);
 				} else {
+					document.getElementById("btnAutocampaign").disabled = false;
 					game.myhero.aCampaignLong      = 0;
 					game.myhero.aCampaignTotalLong = 0;
 					game.myhero.status             = 0;
@@ -2195,6 +2195,7 @@
 				} else {
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 1;
+					document.getElementById("btnAutocampaign").disabled = true;
 					updateUI();
 				}
 			}
