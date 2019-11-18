@@ -222,9 +222,6 @@
 		</div>
 		<div id="Explore" class="tabcontent">
 			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
-			<p style="position:absolute; top:60px; left: 20px">
-			GLOBALMAP
-			</p>
 		</div>
 		<div id="Settings" class="tabcontent">
 			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
@@ -407,8 +404,7 @@
 			<br>
 		</div>
 		<div id="Building" class="tabcontent">
-			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
-			<h3><div id="labelBuilding">Building</div></h3>
+			<div id="labelBuilding" style="display: none;">Building</div>
 			<div id="theBuildingDiv">
 				<table>
 					<tr>
@@ -501,6 +497,10 @@
 							</table>
 						</td>
 						<td>
+							<div id="lblBuildGold">
+							<img id="gold_img_bt" src="resources/gold_a.png" onclick="checkGold()" >
+							<span id="gold_bt" onclick="checkGold()" >0</span>
+							</div>
 							<div id="lblBuildHelp">
 
 							</div>
@@ -1279,24 +1279,26 @@
 		canvasScaleRatio = canvas.width / canvas.offsetWidth;
 		loc.x = (tapX - 9) * canvasScaleRatio;
 		loc.y = (tapY - 58) * canvasScaleRatio;
-		if (loc.x>=arrow_lx&& loc.x<=arrow_lx+arrow_size){
-			if (loc.y>=arrow_ly&& loc.y<=arrow_ly+arrow_size){
-				game.tryHeroMovement(-1,0);//LEFT
+		if (game.isMobile===1 && allowMvt===1) {
+			if (loc.x >= arrow_lx && loc.x <= arrow_lx + arrow_size) {
+				if (loc.y >= arrow_ly && loc.y <= arrow_ly + arrow_size) {
+					game.tryHeroMovement(-1, 0);//LEFT
+				}
 			}
-		}
-		if (loc.x>=arrow_ux&& loc.x<=arrow_ux+arrow_size){
-			if (loc.y>=arrow_uy&& loc.y<=arrow_uy+arrow_size){
-				game.tryHeroMovement(0,-1);//UP
+			if (loc.x >= arrow_ux && loc.x <= arrow_ux + arrow_size) {
+				if (loc.y >= arrow_uy && loc.y <= arrow_uy + arrow_size) {
+					game.tryHeroMovement(0, -1);//UP
+				}
 			}
-		}
-		if (loc.x>=arrow_dx&& loc.x<=arrow_dx+arrow_size){
-			if (loc.y>=arrow_dy&& loc.y<=arrow_dy+arrow_size){
-				game.tryHeroMovement(0,1);//DOWN
+			if (loc.x >= arrow_dx && loc.x <= arrow_dx + arrow_size) {
+				if (loc.y >= arrow_dy && loc.y <= arrow_dy + arrow_size) {
+					game.tryHeroMovement(0, 1);//DOWN
+				}
 			}
-		}
-		if (loc.x>=arrow_rx&& loc.x<=arrow_rx+arrow_size){
-			if (loc.y>=arrow_ry&& loc.y<=arrow_ry+arrow_size){
-				game.tryHeroMovement(1,0);//LEFT
+			if (loc.x >= arrow_rx && loc.x <= arrow_rx + arrow_size) {
+				if (loc.y >= arrow_ry && loc.y <= arrow_ry + arrow_size) {
+					game.tryHeroMovement(1, 0);//LEFT
+				}
 			}
 		}
 	}
@@ -1312,6 +1314,7 @@
 	//init variables
 	disabledElements = [];
 	flag_event_started = "";
+	allowMvt = 1;
 	var game = {
 		gold: 20,
 		gems: 0,
@@ -1959,6 +1962,8 @@
 						openTab(null, 'tabBlackmarket');
 					}
 					composite_gm();
+					allowMvt = 0;
+					setTimeout(cooldownMvt, 500);
 				}
 			}
 		},
@@ -2115,6 +2120,7 @@
 					game.myhero.aCampaignTotalLong+= 1;
 					postJournalLog(localeStrings[175]);
 				} else {
+					document.getElementById("btnAutocampaign").disabled = false;
 					game.myhero.aCampaignLong      = 0;
 					game.myhero.aCampaignTotalLong = 0;
 					game.myhero.status             = 0;
@@ -2192,6 +2198,7 @@
 				} else {
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 1;
+					document.getElementById("btnAutocampaign").disabled = true;
 					updateUI();
 				}
 			}
@@ -3178,6 +3185,7 @@
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
+				var alertMsg = localeStrings[65];
 				disabledElements.push("saveGameButton");
 				disabledElements.push("loadGameButton");
 				document.getElementById("saveGameButton").disabled = true;
@@ -3320,6 +3328,7 @@
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
+				var alertMsg = localeStrings[65];
 				disabledElements.push("saveGameButton");
 				disabledElements.push("loadGameButton");
 				document.getElementById("saveGameButton").disabled = true;
@@ -4303,6 +4312,7 @@
 	function updateResources() {
 		document.getElementById("gold").innerHTML          = game.gold;
 		document.getElementById("gold_bm").innerHTML       = game.gold;
+		document.getElementById("gold_bt").innerHTML       = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("gems").innerHTML          = game.gems;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
@@ -4423,6 +4433,9 @@
 		}
 	}
 	//timers
+	function cooldownMvt(){
+		allowMvt = 1;
+	}
 	function rndEvents() {
 		var rnd = Math.floor((Math.random() * 12) + 1);
 		//rnd = 2;//debug
