@@ -1149,7 +1149,6 @@
 			camXH = config.sizeMapX;
 			//console.log('override XH>SizeMapX! game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
 		}
-
 		camYL = game.heroY - Math.floor(config.sizeScrY/2);
 		camYH = camYL + config.sizeScrY;
 		if (camYL < 0) {
@@ -4119,6 +4118,11 @@
 		game.userPopAck   = 0;
 		game.userGoldAck  = 0;
 		game.userASaveAck = 0;
+		buildingsInTownB=[];
+		buildingsInTownX=[];
+		buildingsInTownY=[];
+		buildingsInTownW=[];
+		buildingsInTownH=[];
 		setupMobileUI();
 		setupFirebrigadeUI();
 		setupAudioUI();
