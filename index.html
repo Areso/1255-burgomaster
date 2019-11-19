@@ -2948,7 +2948,14 @@
 			}
 		},
 		theftFromTreasury : function () {
-			rndThieves = Math.floor(Math.random()*(game.treasuryGuard+2)+1);
+			var guards = game.treasuryGuard;
+			guards    += game.sergeants + game.turkopols + game.knights;
+			if (game.heroExists()===true) {
+				if (game.myhero.status===0){// in town
+					guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
+				}
+			}
+			rndThieves = Math.floor(Math.random()*(guards+2)+1);
 			console.log(rndThieves);
 			if (rndThieves === 1) {
 				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))+1);
