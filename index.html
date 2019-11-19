@@ -352,7 +352,6 @@
 			<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
 		</div>
 		<div id="Garrison" class="tabcontent">
-			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelGarrison">Garrison</div></h3>
 			<div id="divtreasuryGuard">
 			<table border="1">
@@ -2862,6 +2861,10 @@
 		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
+				disabledElements.push("buttonFireGuard");
+				disabledElements.push("buttonHireGuard");
+				document.getElementById("buttonFireGuard").disabled = true;
+				document.getElementById("buttonHireGuard").disabled = true;
 				question = localeStrings[18].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);;
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
@@ -2883,9 +2886,14 @@
 					postEventLog(msg);
 				}
 			}
+			getAck();
 		},
 		fireTreasuryGuard : function () {
 			if (game.treasuryGuard > 0) {
+				disabledElements.push("buttonFireGuard");
+				disabledElements.push("buttonHireGuard");
+				document.getElementById("buttonFireGuard").disabled = true;
+				document.getElementById("buttonHireGuard").disabled = true;
 				showModal(1, '', game.fireTreasuryGuardCallback, localeStrings[22],  localeStrings[32], localeStrings[33])
 			} else {
 				msg = localeStrings[24];
@@ -2899,6 +2907,7 @@
 				postEventLog(msg);
 				updateResources();
 			}
+			getAck();
 		},
 		deathPenalty : function () {
 			if (game.buildLevelGallows > 0) {
@@ -2954,7 +2963,7 @@
 					guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
 				}
 			}
-			guards     = Math.floor(guards / 4);
+			guards     = Math.ceil(guards / 4);
 			guards    += game.treasuryGuard;
 			rndThieves = Math.floor(Math.random()*(guards+2)+1);
 			console.log(rndThieves);
