@@ -304,7 +304,7 @@ localeStrings.push("Die Feuerwehr");
 localeStrings.push("ist im Dienst");
 localeStrings.push("ist dienstfrei");
 localeStrings.push("Der Preis für den Erhalt des Dienstes beträgt");
-localeStrings.push("placeholder");//275
+localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

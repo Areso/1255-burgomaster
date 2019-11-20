@@ -304,7 +304,7 @@ localeStrings.push("Пожарная охрана");
 localeStrings.push("на службе");
 localeStrings.push("не на службе");
 localeStrings.push("Цена содержания пожарной охраны");
-localeStrings.push("placeholder");//275
+localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

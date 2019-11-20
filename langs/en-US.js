@@ -304,7 +304,7 @@ localeStrings.push("The fire service is");
 localeStrings.push("on duty");
 localeStrings.push("off duty");
 localeStrings.push("The price of sustain of the service is");
-localeStrings.push("placeholder");//275
+localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

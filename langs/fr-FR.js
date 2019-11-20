@@ -304,7 +304,7 @@ localeStrings.push("Le service d'incendie est");
 localeStrings.push("service");
 localeStrings.push("hors service");
 localeStrings.push("Le prix du maintien du service est de");
-localeStrings.push("placeholder");//275
+localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");

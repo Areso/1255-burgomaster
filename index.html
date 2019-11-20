@@ -2650,6 +2650,11 @@
 						game.fire = 0;
 						game.putOutFireUI();
 					}
+					if (game.fireGuard===1){
+						document.getElementById("divFBProgress").style.display="inline";
+					}
+					var fireProgress = Math.ceil((config.fireStepsBasic-game.fireSteps)/config.fireStepsBasic*100);
+					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1",fireProgress);
 				}
 			}
 			taxes = Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
@@ -2998,6 +3003,10 @@
 					}
 					composite();
 					game.fireSteps = config.fireStepsBasic;
+					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1","0");
+					if (game.fireGuard===1){
+						document.getElementById("divFBProgress").style.display="inline";
+					}
 					document.getElementById("gameIcon").href="resources/favicon-flame.png";
 					//TODO make a certain building in fire, not just "city"
 					if (game.buildLevelD == 1) {
@@ -3049,6 +3058,7 @@
 				document.getElementById("fire_graphics").setAttribute("style", "position:absolute; top:200px; left:200px; z-index=100; display:none");
 				document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:none");
 				document.getElementById("gameIcon").href="resources/favicon-normal.png";
+				document.getElementById("divFBProgress").style.display="none";
 				if (load!==true){
 					msg = localeStrings[40];
 					postEventLog(msg);
