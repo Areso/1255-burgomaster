@@ -304,7 +304,7 @@ localeStrings.push("La fajro servo");
 localeStrings.push("funkcias");
 localeStrings.push("ne funkcias");
 localeStrings.push("La prezo de daŭro de la servo estas");
-localeStrings.push("placeholder");//275
+localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
