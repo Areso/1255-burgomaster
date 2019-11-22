@@ -2037,30 +2037,95 @@
 		heroSergeantsUpkeep : function () {
 			return game.myhero.sergeants*config.sergeantUpkeep;
 		},
-		heroTurkopolsUpkeep : function () {
-			return game.myhero.turkopols*config.turkopolUpkeep;
+		hrTrkplsUpkp : function (turkopols) {
+			return turkopols*config.turkopolUpkeep;
 		},
-		heroKnightsUpkeep : function () {
-			return game.myhero.knights*config.knightUpkeep;
+		hrKnghtsUpkp : function (knights) {
+			return knights*config.knightUpkeep;
 		},
 		heroSquadUpkeep : function () {
 			if (game.heroExists()) {
-				if (game.gold >= game.heroTurkopolsUpkeep()) {
-					game.gold -= game.heroTurkopolsUpkeep();
+				paidTurkopols   = 0;
+				UnPaidTurkopols = 0;
+				paidSergeants   = 0;
+				UnPaidSergeants = 0;
+				paidKnights     = 0;
+				UnPaidKnights   = 0;
+				UnPaidTurkopols = game.myhero.turkopols;
+				UnPaidSergeants = game.myhero.sergeants;
+				UnPaidKnights   = game.myhero.knights;
+				/*------------------------------------------*/
+				var gold_was_purse = game.myhero.gold;
+				if (game.myhero.gold >= game.hrTrkplsUpkp(UnPaidTurkopols)){
+					paidTurkopols        = UnPaidTurkopols;
+					UnPaidTurkopols      = 0;
+					game.myhero.gold    -= game.hrTrkplsUpkp(paidTurkopols);
 				} else {
-					while (game.gold < game.heroTurkopolsUpkeep()) {
-						game.myhero.turkopols -= 1;
+					while (game.myhero.gold >= game.hrTrkplsUpkp(paidTurkopols+1)) {
+						paidTurkopols   += 1;
+						UnPaidTurkopols -= 1;
 					}
-					game.gold -= game.heroTurkopolsUpkeep();
+					game.myhero.gold    -= game.hrTrkplsUpkp(paidTurkopols);
 				}
-				if (game.gold >= game.heroKnightsUpkeep()) {
-					game.gold -= game.heroKnightsUpkeep();
+				var purse_diff = gold_was_purse-game.myhero.gold;
+				if (purse_diff!==0){
+					console.log("we paid from hero's purse to "+paidTurkopols+" and paid "+purse_diff);
+				}
+				/*------------------------------------------*/
+				var gold_was_treasury = game.gold;
+				if (game.gold >= game.hrTrkplsUpkp(UnPaidTurkopols)) {
+					game.gold            -= game.hrTrkplsUpkp(UnPaidTurkopols);
+					paidTurkopols        += UnPaidTurkopols;
 				} else {
-					while(game.gold<game.heroKnightsUpkeep()){
-						game.myhero.knights -= 1;
+					while (game.gold < game.hrTrkplsUpkp(UnPaidTurkopols)) {
+						UnPaidTurkopols  -= 1;
 					}
-					game.gold -= game.heroKnightsUpkeep();
+					game.myhero.gold     -= game.hrTrkplsUpkp(UnPaidTurkopols);
+					paidTurkopols        += UnPaidTurkopols;
+					game.myhero.turkopols = paidTurkopols;
 				}
+				var treasury_diff = gold_was_treasury-game.gold;
+				if (treasury_diff!==0){
+					console.log("we paid from treasury to "+UnPaidTurkopols+" and paid "+treasury_diff);
+				}
+				UnPaidTurkopols       = 0;
+
+				/*------------------------------------------*/
+				var gold_was_purse = game.myhero.gold;
+				if (game.myhero.gold >= game.hrKnghtsUpkp(UnPaidKnights)){
+					paidKnights        = UnPaidKnights;
+					UnPaidKnights      = 0;
+					game.myhero.gold  -= game.hrKnghtsUpkp(paidKnights);
+				} else {
+					while (game.myhero.gold >= game.hrKnghtsUpkp(paidKnights+1)) {
+						paidKnights   += 1;
+						UnPaidKnights -= 1;
+					}
+					game.myhero.gold    -= game.hrKnghtsUpkp(paidKnights);
+				}
+				var purse_diff = gold_was_purse-game.myhero.gold;
+				if (purse_diff!==0){
+					console.log("we paid from hero's purse to "+paidKnights+" and paid "+purse_diff);
+				}
+				/*------------------------------------------*/
+				var gold_was_treasury = game.gold;
+				if (game.gold >= game.hrKnghtsUpkp(UnPaidKnights)) {
+					game.gold            -= game.hrKnghtsUpkp(UnPaidKnights);
+					paidKnights          += UnPaidKnights;
+				} else {
+					while (game.gold < game.hrKnghtsUpkp(UnPaidKnights)) {
+						UnPaidKnights  -= 1;
+					}
+					game.myhero.gold     -= game.hrKnghtsUpkp(UnPaidKnights);
+					paidKnights          += UnPaidKnights;
+					game.myhero.knights   = paidKnights;
+				}
+				var treasury_diff = gold_was_treasury-game.gold;
+				if (treasury_diff!==0){
+					console.log("we paid from treasury to "+UnPaidKnights+" and paid "+treasury_diff);
+				}
+				UnPaidKnights       = 0;
+				/*------------------------------------------*/
 				flagTreasuryToNull = false;
 				if (game.gold >= game.heroSergeantsUpkeep()) {
 					game.gold -= game.heroSergeantsUpkeep();
