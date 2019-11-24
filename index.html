@@ -4463,13 +4463,15 @@
 			HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
 			HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
 			HTMLofHeroStats    += heroActivity+"<br>";
-			HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";
-			if (game.myhero.aCampaignForward===1) {
-				HTMLofHeroStats    += localeStrings[254]+localeStrings[214]+"<br>";
-			} else {
-				HTMLofHeroStats    += localeStrings[254]+localeStrings[215]+"<br>";
+			if (game.myhero.status===1) {
+				HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";
+				if (game.myhero.aCampaignForward === 1) {
+					HTMLofHeroStats += localeStrings[254] + localeStrings[214] + "<br>";
+				} else {
+					HTMLofHeroStats += localeStrings[254] + localeStrings[215] + "<br>";
+				}
+				HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 			}
-			HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
