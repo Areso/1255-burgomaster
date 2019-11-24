@@ -308,13 +308,13 @@ localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("The primary source of payments to the hero's troops is ");
 localeStrings.push("You can't afford upkeep your sergeants. they are dismissed");//280
 localeStrings.push("You can't afford upkeep your turkopols. they are dismissed");
 localeStrings.push("You can't afford upkeep your knights. they are dismissed");
 localeStrings.push("You can't afford upkeep your fireguard team. they are dismissed");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//285
+localeStrings.push("the hero's purse");
+localeStrings.push("the treasury");//285
 localeStrings.push("Towngate scroll");
 localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
 localeStrings.push("Four-Leaf Clover");

@@ -562,12 +562,21 @@
 			<div id="lblTabInn">Welcome to Inn!</div>
 			<br>
 			<br>
-			<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
-				<option id="optionKnight" selected value="0">Knight</option>
-				<option id="optionMonk"            value="1"  >Monk</option>
-				<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
-			</select>
-			<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+			<div id="hireHeroBlock">
+				<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
+					<option id="optionKnight" selected value="0">Knight</option>
+					<option id="optionMonk"            value="1"  >Monk</option>
+					<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
+				</select>
+				<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+			</div>
+			<div id="heroUpkeep">
+				<label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
+				<select id="selectUpkeepSrc" size="1" onchange="game.changeUpkeepSrc()">
+					<option id="optionPurse" selected value="0">Hero's purse</option>
+					<option id="optionTreasury"       value="1">Treasury</option>
+				</select>
+			</div>
 			<br>
 			<br>
 			<div id="heroStats">
@@ -1376,6 +1385,16 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		changeUpkeepSrc : function () {
+			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
+			var y         = document.getElementById("selectUpkeepSrc").options;
+			var upkeepSrc = parseInt(y[x].value); //y[x].id, text, index
+			if (upkeepSrc === 0){
+				game.myhero.upkeepsrc = 0;
+			} else {
+				game.myhero.upkeepsrc = 1;
+			}
+		},
 		openLeaderboard : function () {
 			game.getEventLeaderboard();
 			openTab(null, 'tabEventLeaderboard');
@@ -2045,129 +2064,166 @@
 		},
 		heroSquadUpkeep : function () {
 			if (game.heroExists()) {
-				paidTurkopols   = 0;
-				UnPaidTurkopols = 0;
-				paidSergeants   = 0;
-				UnPaidSergeants = 0;
-				paidKnights     = 0;
-				UnPaidKnights   = 0;
-				UnPaidTurkopols = game.myhero.turkopols;
-				UnPaidSergeants = game.myhero.sergeants;
-				UnPaidKnights   = game.myhero.knights;
-				/*------------------------------------------*/
-				var gold_was_purse        = game.myhero.gold;
-				if (game.myhero.gold >= game.hrTrkplsUpkp(UnPaidTurkopols)){
-					paidTurkopols         = UnPaidTurkopols;
-					UnPaidTurkopols       = 0;
-					game.myhero.gold     -= game.hrTrkplsUpkp(paidTurkopols);
-				} else {
-					while (game.myhero.gold >= game.hrTrkplsUpkp(paidTurkopols+1)) {
-						paidTurkopols   += 1;
-						UnPaidTurkopols -= 1;
+				if (game.myhero.upkeepsrc === 0) {
+					paidTurkopols = 0;
+					UnPaidTurkopols = 0;
+					paidSergeants = 0;
+					UnPaidSergeants = 0;
+					paidKnights = 0;
+					UnPaidKnights = 0;
+					UnPaidTurkopols = game.myhero.turkopols;
+					UnPaidSergeants = game.myhero.sergeants;
+					UnPaidKnights = game.myhero.knights;
+					/*------------------------------------------*/
+					var gold_was_purse = game.myhero.gold;
+					if (game.myhero.gold >= game.hrTrkplsUpkp(UnPaidTurkopols)) {
+						paidTurkopols = UnPaidTurkopols;
+						UnPaidTurkopols = 0;
+						game.myhero.gold -= game.hrTrkplsUpkp(paidTurkopols);
+					} else {
+						while (game.myhero.gold >= game.hrTrkplsUpkp(paidTurkopols + 1)) {
+							paidTurkopols += 1;
+							UnPaidTurkopols -= 1;
+						}
+						game.myhero.gold -= game.hrTrkplsUpkp(paidTurkopols);
 					}
-					game.myhero.gold     -= game.hrTrkplsUpkp(paidTurkopols);
-				}
-				var purse_diff = gold_was_purse-game.myhero.gold;
-				if (purse_diff!==0){
-					console.log("we paid from hero's purse to "+paidTurkopols+" and paid "+purse_diff);
-				}
-				/*------------------------------------------*/
-				var gold_was_treasury     = game.gold;
-				if (game.gold >= game.hrTrkplsUpkp(UnPaidTurkopols)) {
-					game.gold            -= game.hrTrkplsUpkp(UnPaidTurkopols);
-					paidTurkopols        += UnPaidTurkopols;
-				} else {
-					while (game.gold < game.hrTrkplsUpkp(UnPaidTurkopols)) {
-						UnPaidTurkopols  -= 1;
+					var purse_diff = gold_was_purse - game.myhero.gold;
+					if (purse_diff !== 0) {
+						console.log("we paid from hero's purse to " + paidTurkopols + " and paid " + purse_diff);
 					}
-					game.gold            -= game.hrTrkplsUpkp(UnPaidTurkopols);
-					paidTurkopols        += UnPaidTurkopols;
-					game.myhero.turkopols = paidTurkopols;
-				}
-				var treasury_diff = gold_was_treasury-game.gold;
-				if (treasury_diff!==0){
-					console.log("we paid from treasury to "+UnPaidTurkopols+" and paid "+treasury_diff);
-				}
-				UnPaidTurkopols           = 0;
+					/*------------------------------------------*/
+					var gold_was_treasury = game.gold;
+					if (game.gold >= game.hrTrkplsUpkp(UnPaidTurkopols)) {
+						game.gold -= game.hrTrkplsUpkp(UnPaidTurkopols);
+						paidTurkopols += UnPaidTurkopols;
+					} else {
+						while (game.gold < game.hrTrkplsUpkp(UnPaidTurkopols)) {
+							UnPaidTurkopols -= 1;
+						}
+						game.gold -= game.hrTrkplsUpkp(UnPaidTurkopols);
+						paidTurkopols += UnPaidTurkopols;
+						game.myhero.turkopols = paidTurkopols;
+					}
+					var treasury_diff = gold_was_treasury - game.gold;
+					if (treasury_diff !== 0) {
+						console.log("we paid from treasury to " + UnPaidTurkopols + " and paid " + treasury_diff);
+					}
+					UnPaidTurkopols = 0;
 
-				/*------------------------------------------*/
-				var gold_was_purse        = game.myhero.gold;
-				if (game.myhero.gold >= game.hrKnghtsUpkp(UnPaidKnights)){
-					paidKnights           = UnPaidKnights;
-					UnPaidKnights         = 0;
-					game.myhero.gold     -= game.hrKnghtsUpkp(paidKnights);
-				} else {
-					while (game.myhero.gold >= game.hrKnghtsUpkp(paidKnights+1)) {
-						paidKnights   += 1;
-						UnPaidKnights -= 1;
+					/*------------------------------------------*/
+					var gold_was_purse = game.myhero.gold;
+					if (game.myhero.gold >= game.hrKnghtsUpkp(UnPaidKnights)) {
+						paidKnights = UnPaidKnights;
+						UnPaidKnights = 0;
+						game.myhero.gold -= game.hrKnghtsUpkp(paidKnights);
+					} else {
+						while (game.myhero.gold >= game.hrKnghtsUpkp(paidKnights + 1)) {
+							paidKnights += 1;
+							UnPaidKnights -= 1;
+						}
+						game.myhero.gold -= game.hrKnghtsUpkp(paidKnights);
 					}
-					game.myhero.gold     -= game.hrKnghtsUpkp(paidKnights);
-				}
-				var purse_diff = gold_was_purse-game.myhero.gold;
-				if (purse_diff!==0){
-					console.log("we paid from hero's purse to "+paidKnights+" and paid "+purse_diff);
-				}
-				/*------------------------------------------*/
-				var gold_was_treasury     = game.gold;
-				if (game.gold >= game.hrKnghtsUpkp(UnPaidKnights)) {
-					game.gold            -= game.hrKnghtsUpkp(UnPaidKnights);
-					paidKnights          += UnPaidKnights;
-				} else {
-					while (game.gold < game.hrKnghtsUpkp(UnPaidKnights)) {
-						UnPaidKnights  -= 1;
+					var purse_diff = gold_was_purse - game.myhero.gold;
+					if (purse_diff !== 0) {
+						console.log("we paid from hero's purse to " + paidKnights + " and paid " + purse_diff);
 					}
-					game.gold            -= game.hrKnghtsUpkp(UnPaidKnights);
-					paidKnights          += UnPaidKnights;
-					game.knights          = paidKnights;
-				}
-				var treasury_diff = gold_was_treasury-game.gold;
-				if (treasury_diff!==0){
-					console.log("we paid from treasury to "+UnPaidKnights+" and paid "+treasury_diff);
-				}
-				UnPaidKnights             = 0;
+					/*------------------------------------------*/
+					var gold_was_treasury = game.gold;
+					if (game.gold >= game.hrKnghtsUpkp(UnPaidKnights)) {
+						game.gold -= game.hrKnghtsUpkp(UnPaidKnights);
+						paidKnights += UnPaidKnights;
+					} else {
+						while (game.gold < game.hrKnghtsUpkp(UnPaidKnights)) {
+							UnPaidKnights -= 1;
+						}
+						game.gold -= game.hrKnghtsUpkp(UnPaidKnights);
+						paidKnights += UnPaidKnights;
+						game.knights = paidKnights;
+					}
+					var treasury_diff = gold_was_treasury - game.gold;
+					if (treasury_diff !== 0) {
+						console.log("we paid from treasury to " + UnPaidKnights + " and paid " + treasury_diff);
+					}
+					UnPaidKnights = 0;
 
-				/*------------------------------------------*/
-				var gold_was_purse        = game.myhero.gold;
-				if (game.myhero.gold >= game.hrSrgntsUpkp(UnPaidSergeants)){
-					paidSergeants         = UnPaidSergeants;
-					UnPaidSergeants       = 0;
-					game.myhero.gold     -= game.hrSrgntsUpkp(paidSergeants);
-				} else {
-					while (game.myhero.gold >= game.hrSrgntsUpkp(paidSergeants+1)) {
-						paidSergeants    += 1;
-						UnPaidSergeants  -= 1;
+					/*------------------------------------------*/
+					var gold_was_purse = game.myhero.gold;
+					if (game.myhero.gold >= game.hrSrgntsUpkp(UnPaidSergeants)) {
+						paidSergeants = UnPaidSergeants;
+						UnPaidSergeants = 0;
+						game.myhero.gold -= game.hrSrgntsUpkp(paidSergeants);
+					} else {
+						while (game.myhero.gold >= game.hrSrgntsUpkp(paidSergeants + 1)) {
+							paidSergeants += 1;
+							UnPaidSergeants -= 1;
+						}
+						game.myhero.gold -= game.hrSrgntsUpkp(paidSergeants);
 					}
-					game.myhero.gold     -= game.hrSrgntsUpkp(paidSergeants);
-				}
-				var purse_diff = gold_was_purse-game.myhero.gold;
-				if (purse_diff!==0){
-					console.log("we paid from hero's purse to "+paidSergeants+" and paid "+purse_diff);
-				}
-				/*------------------------------------------*/
-				flagTreasuryToNull = false;
-				var gold_was_treasury         = game.gold;
-				if (game.gold >= game.hrSrgntsUpkp(UnPaidSergeants)) {
-					game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
-				} else {
-					while (game.gold < game.hrSrgntsUpkp(UnPaidSergeants)) {
-						if (UnPaidSergeants !== 1) {
-							UnPaidSergeants   -= 1;
+					var purse_diff = gold_was_purse - game.myhero.gold;
+					if (purse_diff !== 0) {
+						console.log("we paid from hero's purse to " + paidSergeants + " and paid " + purse_diff);
+					}
+					/*------------------------------------------*/
+					flagTreasuryToNull = false;
+					var gold_was_treasury = game.gold;
+					if (game.gold >= game.hrSrgntsUpkp(UnPaidSergeants)) {
+						game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
+					} else {
+						while (game.gold < game.hrSrgntsUpkp(UnPaidSergeants)) {
+							if (UnPaidSergeants !== 1) {
+								UnPaidSergeants -= 1;
+							} else {
+								flagTreasuryToNull = true;
+								break;
+							}
+						}
+						if (flagTreasuryToNull === true) {
+							game.gold = 0
 						} else {
-							flagTreasuryToNull = true;
-							break;
+							game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
 						}
 					}
-					if (flagTreasuryToNull === true) {
-						game.gold  = 0
+					var treasury_diff = gold_was_treasury - game.gold;
+					if (treasury_diff !== 0) {
+						console.log("we paid from treasury to " + UnPaidSergeants + " and paid " + treasury_diff);
+					}
+					UnPaidSergeants = 0;
+				} else {//from treasury only
+					if (game.gold >= game.hrTrkplsUpkp(game.myhero.turkopols)) {
+						game.gold -= game.hrTrkplsUpkp(game.myhero.turkopols);
 					} else {
-						game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
+						while (game.gold < game.hrTrkplsUpkp(game.myhero.turkopols)) {
+							game.myhero.turkopols -= 1;
+						}
+						game.gold -= game.hrTrkplsUpkp(game.myhero.turkopols);
+					}
+					if (game.gold >= game.hrKnghtsUpkp(game.myhero.knights)) {
+						game.gold -= game.hrKnghtsUpkp(game.myhero.knights);
+					} else {
+						while(game.gold<game.hrKnghtsUpkp(game.myhero.knights)){
+							game.myhero.knights -= 1;
+						}
+						game.gold -= game.hrKnghtsUpkp(game.myhero.knights);
+					}
+					flagTreasuryToNull = false;
+					if (game.gold >= game.hrSrgntsUpkp(game.myhero.sergeants)) {
+						game.gold -= game.hrSrgntsUpkp(game.myhero.sergeants);
+					} else {
+						while (game.gold < game.hrSrgntsUpkp(game.myhero.sergeants)) {
+							if (game.myhero.sergeants !== 1) {
+								game.myhero.sergeants -= 1;
+							} else {
+								flagTreasuryToNull = true;
+								break;
+							}
+						}
+						if (flagTreasuryToNull === true) {
+							game.gold = 0
+						} else {
+							game.gold -= game.hrSrgntsUpkp(game.myhero.sergeants);
+						}
 					}
 				}
-				var treasury_diff = gold_was_treasury-game.gold;
-				if (treasury_diff!==0){
-					console.log("we paid from treasury to "+UnPaidSergeants+" and paid "+treasury_diff);
-				}
-				UnPaidSergeants                = 0;
 			}
 		},
 		calculateAutocampaign : function () {
@@ -2439,6 +2495,7 @@
 					game.myhero.inventoryWorn= [];//should the list contain objects?
 					game.myhero.status     = 0;
 					game.myhero.gold       = 0;
+					game.myhero.upkeepsrc  = 0;//0 from the hero's purse, 1 from the treasury
 					game.myhero.statLuck           = 0;
 					game.myhero.statSuperstition   = 0;
 					game.myhero.statMorale         = 0;
@@ -3061,10 +3118,10 @@
 			}
 			guards     = Math.ceil(guards / 4);
 			guards    += game.treasuryGuard;
-			rndThieves = Math.floor(Math.random()*(guards+2)+1);
+			rndThieves = Math.floor(Math.random()*(guards+1)+1);
 			console.log(rndThieves);
 			if (rndThieves === 1) {
-				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards+1)+1);
+				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
 				if (goldLost > game.gold) {
 					goldLost = game.gold;
 				}
@@ -3681,6 +3738,9 @@
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
 		document.getElementById("selectHeroClass")[0].text       = localeStrings[204][0];
 		document.getElementById("selectHeroClass")[1].text       = localeStrings[204][1];
+		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
+		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
+		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
 		document.getElementById("btnColorMode").innerText        = localeStrings[70];
 		document.getElementById("btnDismissHero").innerText      = localeStrings[217];
 		//document.getElementById("btnAutocampaign").innerText     = localeStrings[218];
@@ -4317,6 +4377,8 @@
 		    document.getElementById("btnDismissHero").style.visibility = "visible";
 			document.getElementById("btnAutocampaign").style.visibility = "visible";
 			document.getElementById("btnLeaveCity").style.visibility = "visible";
+			document.getElementById("hireHeroBlock").style.display = "none";
+			document.getElementById("heroUpkeep").style.display = "inline";
 			if (game.myhero.class==="knight"){
 				game.myhero.class = 0;
 			}
@@ -4401,16 +4463,20 @@
 			HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
 			HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
 			HTMLofHeroStats    += heroActivity+"<br>";
-			HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";
-			if (game.myhero.aCampaignForward===1) {
-				HTMLofHeroStats    += localeStrings[254]+localeStrings[214]+"<br>";
-			} else {
-				HTMLofHeroStats    += localeStrings[254]+localeStrings[215]+"<br>";
+			if (game.myhero.status===1) {
+				HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";
+				if (game.myhero.aCampaignForward === 1) {
+					HTMLofHeroStats += localeStrings[254] + localeStrings[214] + "<br>";
+				} else {
+					HTMLofHeroStats += localeStrings[254] + localeStrings[215] + "<br>";
+				}
+				HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 			}
-			HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
+			document.getElementById("hireHeroBlock").style.display = "inline";
+			document.getElementById("heroUpkeep").style.display = "none";
 			document.getElementById("btnDismissHero").style.visibility = "hidden";
 			document.getElementById("btnAutocampaign").style.visibility = "hidden";
 			document.getElementById("btnLeaveCity").style.visibility = "hidden";

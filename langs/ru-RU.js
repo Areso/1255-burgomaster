@@ -308,13 +308,13 @@ localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("Основной источник выплаты содержания войскам героя ");
 localeStrings.push("Вы не можете платить содержание сержантам. Они уволены.");//280
 localeStrings.push("Вы не можете платить содержание туркополам. Они уволены.");
 localeStrings.push("Вы не можете платить содержание рыцарям. Они уволены.");
 localeStrings.push("Вы не можете платить содержание пожарным. Они уволены.");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//285
+localeStrings.push("кошелек героя");
+localeStrings.push("сокровищница");//285
 localeStrings.push("Свиток телепорта");
 localeStrings.push("Этот одноразовый предмет позволяет вам совершить телепорт к городу в автокампании.");
 localeStrings.push("Четырехлистный клевер");

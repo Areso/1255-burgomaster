@@ -308,13 +308,13 @@ localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("The primary source of payments to the hero's troops is ");
 localeStrings.push("Vous ne pouvez pas vous permettre de garder vos sergents. ils sont licenciés.");//280
 localeStrings.push("Vous ne pouvez pas vous permettre d'entretenir vos turkopols. ils sont licenciés.");
 localeStrings.push("Vous ne pouvez pas vous permettre d'entretenir vos chevaliers. ils sont licenciés.");
 localeStrings.push("Vous ne pouvez pas vous permettre d'entretenir votre équipe de gardes-feu. ils sont licenciés.");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//285
+localeStrings.push("the hero's purse");
+localeStrings.push("the treasury");//285
 localeStrings.push("Towngate scroll");
 localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
 localeStrings.push("Four-Leaf Clover");
