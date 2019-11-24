@@ -308,13 +308,13 @@ localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placeholder");
+localeStrings.push("The primary source of payments to the hero's troops is ");
 localeStrings.push("Vi ne povas permesi gardi viajn serĝentojn. Ili estas eksigitaj.");//280
 localeStrings.push("Vi ne povas permesi konservi viajn turkopolojn. Ili estas eksigitaj.");
 localeStrings.push("Vi ne povas permesi konservi viajn kavalirojn. Ili estas eksigitaj.");
 localeStrings.push("Vi ne povas permesi subteni vian fajrestingistaron. Ili estas eksigitaj.");
-localeStrings.push("placeholder");
-localeStrings.push("placeholder");//285
+localeStrings.push("the hero's purse");
+localeStrings.push("the treasury");//285
 localeStrings.push("Towngate scroll");
 localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
 localeStrings.push("Four-Leaf Clover");

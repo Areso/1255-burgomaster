@@ -562,12 +562,21 @@
 			<div id="lblTabInn">Welcome to Inn!</div>
 			<br>
 			<br>
-			<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
-				<option id="optionKnight" selected value="0">Knight</option>
-				<option id="optionMonk"            value="1"  >Monk</option>
-				<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
-			</select>
-			<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+			<div id="hireHeroBlock">
+				<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
+					<option id="optionKnight" selected value="0">Knight</option>
+					<option id="optionMonk"            value="1"  >Monk</option>
+					<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
+				</select>
+				<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+			</div>
+			<div id="heroUpkeep">
+				<label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
+				<select id="selectUpkeepSrc" size="1" onchange="game.changeUpkeepSrc()">
+					<option id="optionPurse" selected value="0">Hero's purse</option>
+					<option id="optionTreasury"       value="1">Treasury</option>
+				</select>
+			</div>
 			<br>
 			<br>
 			<div id="heroStats">
@@ -1376,6 +1385,16 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		changeUpkeepSrc : function () {
+			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
+			var y         = document.getElementById("selectUpkeepSrc").options;
+			var upkeepSrc = parseInt(y[x].value); //y[x].id, text, index
+			if (upkeepSrc === 0){
+				game.myhero.upkeepsrc = 0;
+			} else {
+				game.myhero.upkeepsrc = 1;
+			}
+		},
 		openLeaderboard : function () {
 			game.getEventLeaderboard();
 			openTab(null, 'tabEventLeaderboard');
@@ -3719,6 +3738,9 @@
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
 		document.getElementById("selectHeroClass")[0].text       = localeStrings[204][0];
 		document.getElementById("selectHeroClass")[1].text       = localeStrings[204][1];
+		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
+		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
+		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
 		document.getElementById("btnColorMode").innerText        = localeStrings[70];
 		document.getElementById("btnDismissHero").innerText      = localeStrings[217];
 		//document.getElementById("btnAutocampaign").innerText     = localeStrings[218];
@@ -4355,6 +4377,8 @@
 		    document.getElementById("btnDismissHero").style.visibility = "visible";
 			document.getElementById("btnAutocampaign").style.visibility = "visible";
 			document.getElementById("btnLeaveCity").style.visibility = "visible";
+			document.getElementById("hireHeroBlock").style.display = "none";
+			document.getElementById("heroUpkeep").style.display = "inline";
 			if (game.myhero.class==="knight"){
 				game.myhero.class = 0;
 			}
@@ -4449,6 +4473,8 @@
 			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
+			document.getElementById("hireHeroBlock").style.display = "inline";
+			document.getElementById("heroUpkeep").style.display = "none";
 			document.getElementById("btnDismissHero").style.visibility = "hidden";
 			document.getElementById("btnAutocampaign").style.visibility = "hidden";
 			document.getElementById("btnLeaveCity").style.visibility = "hidden";
