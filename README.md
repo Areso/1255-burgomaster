@@ -2,11 +2,6 @@
 	<body>
 		<h1>1255 Burgomaster</h1><br>
 		<img src="https://img.shields.io/github/issues/Areso/1255-burgomaster"><img src="https://img.shields.io/github/issues-closed/Areso/1255-burgomaster"><img src="https://img.shields.io/github/commit-activity/m/Areso/1255-burgomaster?foo=bar"><img src="https://img.shields.io/discord/564554640755130409?label=Discord&logo=Discord">
-		<h2>License</h2><br>
-		The source code is under GPLv3.<br>
-		ALL GRAPHIC ASSETS UNDER PROPRIETARY LICENSE.<br>
-		YOU MAY NOT REDISTRIBUTE THE GAME WITH THE ASSETS VIA PUBLISHING IN INTERNET, STORES, OR ANY OTHER WAY<br>
-		YOU MAY USE ASSETS ONLY FOR LOCAL RUNNING<br>
 		<h2>About the project</h2><br>
 		Hello there! My name is Gladyshev Anton, and I'm the author of the project. 
 		The homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a>. 
@@ -70,5 +65,11 @@
 		All suggestion and bug reports could be made via chat (if enabled) or via <a href="https://github.com/Areso/js-html-mycity/issues">GitHub Issues</a></br>
 		<br>
 		1255 Rise of Teutonic (DLC) allows you to rank your officers according to the history facts<br> 
+		<br> 
+		<h2>License</h2><br>
+		The source code is under GPLv3.<br>
+		ALL GRAPHIC ASSETS UNDER PROPRIETARY LICENSE.<br>
+		YOU MAY NOT REDISTRIBUTE THE GAME WITH THE ASSETS VIA PUBLISHING IN INTERNET, STORES, OR ANY OTHER WAY<br>
+		YOU MAY USE ASSETS ONLY FOR LOCAL RUNNING<br>
 </body>
 <html>
