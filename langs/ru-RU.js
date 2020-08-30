@@ -41,7 +41,7 @@ localeStrings.push("пожар в городе!");
 localeStrings.push("Вызвать пожарных? Это будет стоить %arg1 золота");
 localeStrings.push("пожарные погасили огонь");//40
 localeStrings.push("будет гореть дотла!");
-localeStrings.push("фигня случается: воры украли %arg1 золота из вашей Сокровищницы");
+localeStrings.push("фигня случается: воры украли %arg1 золота из вашей казны");
 localeStrings.push("вы выиграли в лотерею %arg1 золота");
 localeStrings.push("Сохранить игру");
 localeStrings.push("Загрузить игру");//45
