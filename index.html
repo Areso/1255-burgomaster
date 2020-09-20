@@ -1923,10 +1923,21 @@
 						}
 					}
 				}
+                //ISSUE #339
+                game.checkObjAccessibility();
 				game.mapCreated = 1;
 				composite_gm();
 			}
 		},
+        checkObjAccessibility: function () {
+            //GLADYSHEV
+            startPoint = gane.myMapObjects[game.castleX][game.castleY+1];
+            nonAccessible = false;
+            objectsCounter = 1;
+            for (i=0; i<objectsCounter; i++){
+                //
+            }
+        },
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
 				return true;
