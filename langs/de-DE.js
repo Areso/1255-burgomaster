@@ -337,7 +337,6 @@ localeStrings.push("Unlucky hourglass");
 localeStrings.push("This item reset any luck bonuses for your hero and opponent's troops");//305
 localeStrings.push("Glass globe");
 localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start
-localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start
 localeStrings.push("Brother-sergeant. Mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");
 localeStrings.push("Turkopol. Mounted ranged unit. Hiring cost %arg1. Upkeep cost %arg2");
 localeStrings.push("Brother-knight. Advanced mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");//310
@@ -356,3 +355,6 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
+localeStrings.push("There is no savestring in the textbox");
+localeStrings.push("Couldn't load the game from the savestring");
+localeStrings.push("Download game for playing off-grid (to play without Internet connection)");

@@ -228,28 +228,31 @@
 			<h3><div id="labelSettings">Settings</div></h3>
 			<!-- TODO make checkboxes with chat system messages -->
 			<!--<p>Alert / MSG to chat</p>-->
-			<table>
-			<tr>
-				<!-- TODO make a message about turning on / off autosaves for color disabled people -->
-				<td><div id="labelAutosave">Autosave</div><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png"></td>
-				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
-				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
-			</tr>
-			</table>
-			<input id="savestring" name="savestring" value="" style="width:600px">
-			<div style="position: absolute; top: 90px; left:500px">
 			<select id="selectLng" size="1" onchange="reloadLang()">
 				<option id="optionLngEn" selected value="en-US">English</option>
 				<option id="optionLngRu"          value="ru-RU">Русский</option>
 				<option id="optionLngGe"          value="de-DE">Deutsch</option>
 				<option id="optionLngEo"          value="eo">Esperanto</option>
 				<option id="optionLngFr"          value="fr-FR">Français</option>
-				<option id="optionLngFi"          value="fi-FI">Suomi</option>
 			</select>
-			</div>
+			<table>
+			<tr>
+				<!-- TODO make a message about turning on / off autosaves for color disabled people -->
+				<td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
+				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
+				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
+			</tr>
+			</table>
+            <br>
+			<input id="savestring" name="savestring" value="" style="width:600px">
+            <br>
+            <a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
 			<br>
+            <br>
 			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
-			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button><br>
+			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
+            <br>
+            <br>
 			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
 			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
 			<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
@@ -1920,10 +1923,21 @@
 						}
 					}
 				}
+                //ISSUE #339
+                game.checkObjAccessibility();
 				game.mapCreated = 1;
 				composite_gm();
 			}
 		},
+        checkObjAccessibility: function () {
+            //GLADYSHEV
+            startPoint = gane.myMapObjects[game.castleX][game.castleY+1];
+            nonAccessible = false;
+            objectsCounter = 1;
+            for (i=0; i<objectsCounter; i++){
+                //
+            }
+        },
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
 				return true;
@@ -3794,6 +3808,7 @@
 		document.getElementById("btnGoldNext").innerText         = localeStrings[159];
 		document.getElementById("btnPopAtEnd").innerText         = localeStrings[160];
 		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
+        document.getElementById("downloadGame").innerText        = localeStrings[328];
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();
@@ -3809,8 +3824,18 @@
 		postEventLog(localeStrings[1]);
 		postEventLog(localeStrings[2]);
 	}
-	function postEventLog(msgEventLog) {
-		document.getElementById("console_n_chat").innerHTML = document.getElementById("console_n_chat").innerHTML+"<br>"+getTime(0)+": "+msgEventLog;
+	function postEventLog(msgEventLog, styling) {
+        styling = styling.toUpperCase();
+        if (styling.indexOf("BOLD")!==-1){
+            msgEventLog = "<b>"+msgEventLog+"</b>";
+        }
+        if (styling.indexOf("ITALIC")!==-1){
+            msgEventLog = "<i>"+msgEventLog+"</i>";
+        }
+        if (styling.indexOf("RED")!==-1){
+            msgEventLog = "<font color='red'>"+msgEventLog+"</font>";
+        }
+		document.getElementById("console_n_chat").innerHTML += getTime(0)+": "+msgEventLog+"<br>";
 		scrollDown();
 	}
 	function clearJournalLog() {
@@ -3822,6 +3847,16 @@
 		scrollDown();
 	}
 	function populatePatchnotes() {
+        msg = "version 1.0.327";
+		writeToTextArea(msg);
+		msg = "added a link to download game to play it offline";
+		writeToTextArea(msg);
+        
+        msg = "version 1.0.326";
+		writeToTextArea(msg);
+		msg = "Fixed bug with dismissed hero";
+		writeToTextArea(msg);
+        
 		msg = "version 1.0.325";
 		writeToTextArea(msg);
 		msg = "Now you could resize the event log";
@@ -4207,7 +4242,7 @@
 	}
 	function importGame() {
 		save64 = document.getElementById("savestring").value;
-		if (save64 != null) {
+		if (save64 !== "" ) {
 			try {
 				console.log("we try to load the imported save");
 				saveLine  = atob(save64);
@@ -4216,9 +4251,12 @@
 				overrideGame(gameTemp);
 			}
 			catch(err) {
+                postEventLog(localeStrings[327],"bold,red");
 				console.log(err);
 			}
-		}
+		} else {
+            postEventLog(localeStrings[326],"bold");
+        }
 	}
 	function saveGame(saveConfirmation) {
 		if (saveConfirmation=="silent") {
