@@ -337,17 +337,17 @@ localeStrings.push("Песочные часы неудачи");
 localeStrings.push("Этот предмет отменяет все бонусы удачи и суеверности героя и его врага");//305
 localeStrings.push("Хрустальный шар");
 localeStrings.push("Этот предмет позволяет предсказать результат следующей битвы");//almost all times. 70% I guess, would be enough for start
-localeStrings.push("Brother-sergeant. Mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");
-localeStrings.push("Turkopol. Mounted ranged unit. Hiring cost %arg1. Upkeep cost %arg2");
-localeStrings.push("Brother-knight. Advanced mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");//310
-localeStrings.push("Castellan");
-localeStrings.push("Hero");
-localeStrings.push("Move the unit to the hero's squad");
-localeStrings.push("Move the unit to the garrison");
-localeStrings.push("You don't have any units to transfer in this direction");//315
-localeStrings.push("To do that, you need to build the stable");
-localeStrings.push("To do that, you need to build the archery range");
-localeStrings.push("To do that, you need to upgrade the stable to %arg1 level");
+localeStrings.push("Брат-сержант. Конный воин ближнего боя. Цена найма %arg1. Цена содержания %arg2");
+localeStrings.push("Туркопол. Верховой лучник. Цена найма %arg1. Цена содержания %arg2");
+localeStrings.push("Брат-рыцарь. Конный воин ближнего боя с хорошими доспехами. Цена найма %arg1. Цена содержания %arg2");//310
+localeStrings.push("Кастелян");
+localeStrings.push("Герой");
+localeStrings.push("Переместить бойца в отряд героя");
+localeStrings.push("Переместить бойца в гарнизон");
+localeStrings.push("У вас нет бойцов, которых можно переместить");//315
+localeStrings.push("Для этого вам нужна конюшня");
+localeStrings.push("Для этого вам нужно стрельбище");
+localeStrings.push("Для этого нужно улучшить конюшни до %arg1 уровня");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//320
 localeStrings.push("placeholder");
@@ -355,3 +355,6 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
+localeStrings.push("Строчка сохранения не найдена в текстовом поле");
+localeStrings.push("Не получается загрузить игру из этого сохранения");
+localeStrings.push("Скачать игру (чтобы играть без Интернета)");
