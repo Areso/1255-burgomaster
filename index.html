@@ -4404,11 +4404,14 @@
 				heroStatusNeedsUpdate = false;
 				document.getElementById("btnAutocampaign").innerText=localeStrings[218];
 				document.getElementById("btnAutocampaign").style.visibility="visible";
+                document.getElementById("btnAutocampaign").disabled = false;
+                document.getElementById("btnAutocampaign").style.visibility="visible";
 				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 				document.getElementById("trHeroHiringTroops").style.visibility="visible";
 				document.getElementById("btnMoveSergeantToHero").style.visibility="visible";
 				document.getElementById("btnMoveTurkopolToHero").style.visibility="visible";
 				document.getElementById("btnMoveKnightToHero").style.visibility="visible";
+                
 				if (game.myhero.class===0) {
 					document.getElementById("imgHeroInHiringScreenKnight").style.display="block";
 					document.getElementById("imgHeroInHiringScreenMonk").style.display="none";
