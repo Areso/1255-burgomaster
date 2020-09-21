@@ -859,6 +859,9 @@
 	buildingsInTownY=[];
 	buildingsInTownW=[];
 	buildingsInTownH=[];
+    function inArray (arrayToCheck, valueToCheck) {
+		 return arrayToCheck.indexOf(valueToCheck) > -1;
+	}
 	function deleteFromArray (arrayToMod, indexToDelete) {
 		arrayLenght                = arrayToMod.length;
 		tArrayBeforeDeletedElement = arrayToMod.slice(0,indexToDelete);
@@ -1888,6 +1891,7 @@
 									rnd = 0;
 								}
 							}
+                            //TODO, TO DO CHECK THIS CODE. IT SMELLS.
 							if (i===config.sizeMapX-1 && j===config.sizeMapY-1 && blackmarket_flag===false){
 								rnd = 4;
 							}
@@ -1931,11 +1935,19 @@
 		},
         checkObjAccessibility: function () {
             //GLADYSHEV
-            startPoint = gane.myMapObjects[game.castleX][game.castleY+1];
-            nonAccessible = false;
-            objectsCounter = 1;
-            for (i=0; i<objectsCounter; i++){
-                //
+            startPoint            = gane.myMapObjects[game.castleX][game.castleY+1];
+            nonAccessible         = false;
+            //10 castle entrance, 4 
+            visitableElements     = [10]; 
+            for (i=0; i<config.sizeMapX; i++){
+                for (j=0; j<config.sizeMapX; j++){
+                    //first we check whether myMapObjects has something
+                    //then add AND condition
+                    //that myMapObjects is NOT in the list of nonVisitableElements
+                    if (game.myMapObjects[i][j] !== 0 && !(inArray(nonVisitableElements, game.myMapObjects[i][j])) {
+                        console.log("myMapObjects"
+                    }
+                }
             }
         },
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
@@ -3825,7 +3837,11 @@
 		postEventLog(localeStrings[2]);
 	}
 	function postEventLog(msgEventLog, styling) {
-        styling = styling.toUpperCase();
+        if (typeof variable !== 'undefined') {
+            styling = styling.toUpperCase();
+        } else {
+            styling = "";
+        }
         if (styling.indexOf("BOLD")!==-1){
             msgEventLog = "<b>"+msgEventLog+"</b>";
         }
