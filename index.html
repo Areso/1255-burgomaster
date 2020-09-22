@@ -2115,7 +2115,7 @@
 					}
 					var purse_diff = gold_was_purse - game.myhero.gold;
 					if (purse_diff !== 0) {
-						console.log("we paid from hero's purse to " + paidTurkopols + " and paid " + purse_diff);
+						console.log("we paid from hero's purse to this amount of Tukropols " + paidTurkopols + " and this amount of gold " + purse_diff);
 					}
 					/*------------------------------------------*/
 					var gold_was_treasury = game.gold;
@@ -2132,7 +2132,7 @@
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
-						console.log("we paid from treasury to " + UnPaidTurkopols + " and paid " + treasury_diff);
+						console.log("we paid from treasury to this amount of Tukropols " + UnPaidTurkopols + " and this amount of gold " + treasury_diff);
 					}
 					UnPaidTurkopols = 0;
 
@@ -2151,7 +2151,7 @@
 					}
 					var purse_diff = gold_was_purse - game.myhero.gold;
 					if (purse_diff !== 0) {
-						console.log("we paid from hero's purse to " + paidKnights + " and paid " + purse_diff);
+						console.log("we paid from hero's purse to this amount of Knights " + paidKnights + " and this amount of gold " + purse_diff);
 					}
 					/*------------------------------------------*/
 					var gold_was_treasury = game.gold;
@@ -2163,12 +2163,13 @@
 							UnPaidKnights -= 1;
 						}
 						game.gold -= game.hrKnghtsUpkp(UnPaidKnights);
+                        console.log('paid knights was '+paidKnights);//DEBUG
 						paidKnights += UnPaidKnights;
-						game.knights = paidKnights;
+						game.myhero.knights = paidKnights;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
-						console.log("we paid from treasury to " + UnPaidKnights + " and paid " + treasury_diff);
+						console.log("we paid from treasury to this amount of Knights" + UnPaidKnights + " and this amount of gold " + treasury_diff);
 					}
 					UnPaidKnights = 0;
 
@@ -2187,7 +2188,7 @@
 					}
 					var purse_diff = gold_was_purse - game.myhero.gold;
 					if (purse_diff !== 0) {
-						console.log("we paid from hero's purse to " + paidSergeants + " and paid " + purse_diff);
+						console.log("we paid from hero's purse to this amount of Sergeants" + paidSergeants + " and this amount of gold " + purse_diff);
 					}
 					/*------------------------------------------*/
 					flagTreasuryToNull = false;
@@ -2203,15 +2204,17 @@
 								break;
 							}
 						}
+                        paidSergeants += UnPaidSergeants;
 						if (flagTreasuryToNull === true) {
 							game.gold = 0
 						} else {
 							game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
 						}
+                        game.myhero.sergeants = paidSergeants;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
-						console.log("we paid from treasury to " + UnPaidSergeants + " and paid " + treasury_diff);
+						console.log("we paid from treasury to this amount of Sergeants" + UnPaidSergeants + " and this amount of gold " + treasury_diff);
 					}
 					UnPaidSergeants = 0;
 				} else {//from treasury only
