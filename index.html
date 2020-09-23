@@ -859,6 +859,9 @@
 	buildingsInTownY=[];
 	buildingsInTownW=[];
 	buildingsInTownH=[];
+    function inArray (arrayToCheck, valueToCheck) {
+		 return arrayToCheck.indexOf(valueToCheck) > -1;
+	}
 	function deleteFromArray (arrayToMod, indexToDelete) {
 		arrayLenght                = arrayToMod.length;
 		tArrayBeforeDeletedElement = arrayToMod.slice(0,indexToDelete);
@@ -1888,6 +1891,7 @@
 									rnd = 0;
 								}
 							}
+                            //TODO, TO DO CHECK THIS CODE. IT SMELLS.
 							if (i===config.sizeMapX-1 && j===config.sizeMapY-1 && blackmarket_flag===false){
 								rnd = 4;
 							}
@@ -1924,18 +1928,26 @@
 					}
 				}
                 //ISSUE #339
-                game.checkObjAccessibility();
+                //game.checkObjAccessibility();
 				game.mapCreated = 1;
 				composite_gm();
 			}
 		},
         checkObjAccessibility: function () {
             //GLADYSHEV
-            startPoint = gane.myMapObjects[game.castleX][game.castleY+1];
-            nonAccessible = false;
-            objectsCounter = 1;
-            for (i=0; i<objectsCounter; i++){
-                //
+            startPoint            = gane.myMapObjects[game.castleX][game.castleY+1];
+            nonAccessible         = false;
+            //10 castle entrance, 4 
+            visitableElements     = [10]; 
+            for (i=0; i<config.sizeMapX; i++){
+                for (j=0; j<config.sizeMapX; j++){
+                    //first we check whether myMapObjects has something
+                    //then add AND condition
+                    //that myMapObjects is NOT in the list of nonVisitableElements
+                    if (game.myMapObjects[i][j] !== 0 && !(inArray(nonVisitableElements, game.myMapObjects[i][j]))) {
+                        console.log("myMapObjects");
+                    }
+                }
             }
         },
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
@@ -2103,7 +2115,7 @@
 					}
 					var purse_diff = gold_was_purse - game.myhero.gold;
 					if (purse_diff !== 0) {
-						console.log("we paid from hero's purse to " + paidTurkopols + " and paid " + purse_diff);
+						console.log("we paid from hero's purse to this amount of Tukropols " + paidTurkopols + " and this amount of gold " + purse_diff);
 					}
 					/*------------------------------------------*/
 					var gold_was_treasury = game.gold;
@@ -2120,7 +2132,7 @@
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
-						console.log("we paid from treasury to " + UnPaidTurkopols + " and paid " + treasury_diff);
+						console.log("we paid from treasury to this amount of Tukropols " + UnPaidTurkopols + " and this amount of gold " + treasury_diff);
 					}
 					UnPaidTurkopols = 0;
 
@@ -2139,7 +2151,7 @@
 					}
 					var purse_diff = gold_was_purse - game.myhero.gold;
 					if (purse_diff !== 0) {
-						console.log("we paid from hero's purse to " + paidKnights + " and paid " + purse_diff);
+						console.log("we paid from hero's purse to this amount of Knights " + paidKnights + " and this amount of gold " + purse_diff);
 					}
 					/*------------------------------------------*/
 					var gold_was_treasury = game.gold;
@@ -2151,12 +2163,13 @@
 							UnPaidKnights -= 1;
 						}
 						game.gold -= game.hrKnghtsUpkp(UnPaidKnights);
+                        console.log('paid knights was '+paidKnights);//DEBUG
 						paidKnights += UnPaidKnights;
-						game.knights = paidKnights;
+						game.myhero.knights = paidKnights;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
-						console.log("we paid from treasury to " + UnPaidKnights + " and paid " + treasury_diff);
+						console.log("we paid from treasury to this amount of Knights" + UnPaidKnights + " and this amount of gold " + treasury_diff);
 					}
 					UnPaidKnights = 0;
 
@@ -2175,7 +2188,7 @@
 					}
 					var purse_diff = gold_was_purse - game.myhero.gold;
 					if (purse_diff !== 0) {
-						console.log("we paid from hero's purse to " + paidSergeants + " and paid " + purse_diff);
+						console.log("we paid from hero's purse to this amount of Sergeants" + paidSergeants + " and this amount of gold " + purse_diff);
 					}
 					/*------------------------------------------*/
 					flagTreasuryToNull = false;
@@ -2191,15 +2204,17 @@
 								break;
 							}
 						}
+                        paidSergeants += UnPaidSergeants;
 						if (flagTreasuryToNull === true) {
 							game.gold = 0
 						} else {
 							game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
 						}
+                        game.myhero.sergeants = paidSergeants;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
-						console.log("we paid from treasury to " + UnPaidSergeants + " and paid " + treasury_diff);
+						console.log("we paid from treasury to this amount of Sergeants" + UnPaidSergeants + " and this amount of gold " + treasury_diff);
 					}
 					UnPaidSergeants = 0;
 				} else {//from treasury only
@@ -3825,7 +3840,11 @@
 		postEventLog(localeStrings[2]);
 	}
 	function postEventLog(msgEventLog, styling) {
-        styling = styling.toUpperCase();
+        if (typeof variable !== 'undefined') {
+            styling = styling.toUpperCase();
+        } else {
+            styling = "";
+        }
         if (styling.indexOf("BOLD")!==-1){
             msgEventLog = "<b>"+msgEventLog+"</b>";
         }
