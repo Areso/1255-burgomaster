@@ -358,3 +358,9 @@ localeStrings.push("placeholder");//325
 localeStrings.push("There is no savestring in the textbox");
 localeStrings.push("Couldn't load the game from the savestring");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//330
+localeStrings.push("Move troops to hero's squad");
+localeStrings.push("Move all forces to hero's squad");
+localeStrings.push("Move troops to garrison");
+localeStrings.push("Move all forces to garrison");
