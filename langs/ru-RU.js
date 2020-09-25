@@ -358,3 +358,9 @@ localeStrings.push("placeholder");//325
 localeStrings.push("Строчка сохранения не найдена в текстовом поле");
 localeStrings.push("Не получается загрузить игру из этого сохранения");
 localeStrings.push("Скачать игру (чтобы играть без Интернета)");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//330
+localeStrings.push("Переместить бойцов в отряд героя");
+localeStrings.push("Переместить все войска в отряд героя");
+localeStrings.push("Переместить бойцов в гарнизон");
+localeStrings.push("Переместить все войска в гарнизон");
