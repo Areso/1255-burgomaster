@@ -159,11 +159,17 @@
 		/*-- Some new styles --*/
 
 		.btn-hire {
-			width: 209px;
+			width: 200px;
 			height: 45px;
 		}
 
-
+        .btnArrow {
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+        .lblHiringTroops {
+            font-size: 12px;
+        }
 	</style>
 	<script id="chatBroEmbedCode">
 		/* Chatbro Widget Embed Code Start */
@@ -648,22 +654,22 @@
 						<img id="imgCastellanInHiringScreen" src="resources/castellan.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div>
-						<button id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
-						<button id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">↓↓</button>
+						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div>
+						<button class="btnArrow" id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
+						<button class="btnArrow" id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">⇓</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div>
-						<button id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
-						<button id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">↓↓</button>
+						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div>
+						<button class="btnArrow" id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
+						<button class="btnArrow" id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">⇓</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div>
-						<button id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
-						<button id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">↓↓</button>
+						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div>
+						<button class="btnArrow" id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
+						<button class="btnArrow" id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">⇓</button>
 					</td>
 					<td>
-						<button id="btnMoveAllTroopsToHero" onclick="game.moveAllTroopsToHero()" onmouseover="game.help(this)" style="width: 50px;">↓↓↓</button>
+						<button class="btnArrow"  id="btnMoveAllTroopsToHero" onclick="game.moveAllTroopsToHero()" onmouseover="game.help(this)">⤋</button>
 					</td>
 				</tr>
 				<tr id="trHeroHiringTroops" style="visibility: collapse">
@@ -672,22 +678,22 @@
 						<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div>
-						<button id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
-						<button id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">↑↑</button>
+						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div>
+						<button class="btnArrow" id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
+						<button class="btnArrow" id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">⇑</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div>
-						<button id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
-						<button id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">↑↑</button>
+						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div>
+						<button class="btnArrow" id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
+						<button class="btnArrow" id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">⇑</button>
 					</td>
 					<td>
-						<label id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div>
-						<button id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
-						<button id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">↑↑</button>
+						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div>
+						<button class="btnArrow" id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
+						<button class="btnArrow" id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">⇑</button>
 					</td>
 					<td>
-						<button id="btnMoveAllTroopsToGarrison" onclick="game.moveAllTroopsToGarrison()" onmouseover="game.help(this)" style="width: 50px;">↑↑↑</button>
+						<button class="btnArrow" id="btnMoveAllTroopsToGarrison" onclick="game.moveAllTroopsToGarrison()" onmouseover="game.help(this)">⤊</button>
 					</td>
 				</tr>
 			</table>
@@ -2483,36 +2489,30 @@
 			if (myobject.id==="btnMoveKnightToGarrison") {
 				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[314];
 			}
-
-			//--- Move troops help msg: Start ---//
 			if (myobject.id==="btnMoveAllSergeantsToHero") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move troops to hero's squad";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[331];
 			}
 			if (myobject.id==="btnMoveAllTurkopolsToHero") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move troops to hero's squad";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[331];
 			}
 			if (myobject.id==="btnMoveAllKnightsToHero") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move troops to hero's squad";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[331];
 			}
 			if (myobject.id==="btnMoveAllTroopsToHero") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move all forces to hero's squad";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[332];
 			}
 			if (myobject.id==="btnMoveAllSergeantsToGarrison") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move troops to garrison";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[333];
 			}
 			if (myobject.id==="btnMoveAllTurkopolsToGarrison") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move troops to garrison";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[333];
 			}
 			if (myobject.id==="btnMoveAllKnightsToGarrison") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move troops to garrison";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[333];
 			}
 			if (myobject.id==="btnMoveAllTroopsToGarrison") {
-				document.getElementById("lblTroopsHelp").innerHTML="Move all forces to garrison";
+				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[334];
 			}
-
-			//--- Move troops help msg: End ---//
-
-
 		},
 		heroExists: function () {
 			return (Object.keys(game.myhero).length === 0 && game.myhero.constructor === Object) ? false : true;
