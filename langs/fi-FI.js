@@ -365,3 +365,7 @@ localeStrings.push("Move troops to hero's squad");
 localeStrings.push("Move all forces to hero's squad");
 localeStrings.push("Move troops to garrison");
 localeStrings.push("Move all forces to garrison");
+localeStrings.push("You cannot afford upkeeping of %arg1 treasury guard(s). They are dismissed.");
+localeStrings.push("You cannot afford upkeeping of %arg1 sergeant(s). They are dismissed.");
+localeStrings.push("You cannot afford upkeeping of %arg1 turkopols(s). They are dismissed.");
+localeStrings.push("You cannot afford upkeeping of %arg1 knights(s). They are dismissed.");

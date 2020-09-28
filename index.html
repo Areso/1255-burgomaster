@@ -3043,6 +3043,7 @@
 		},
 		calculateTurn : function() {
 			var gold_was = game.gold;
+			//console.log("%c GOLD BEFORE UPDATE: ", "color: red", gold_was);
 			game.recordStats();
 			game.getNearestEventTime();
 			pop_m         = 0;
@@ -3086,8 +3087,15 @@
 					//fire guards which we cannot afford
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
-					game.treasuryGuard = 0;
-					msg   = localeStrings[37];
+					var canUpkeep = Math.floor(game.gold/config.treasuryGuardPricePayroll);
+					var dissmisedTreasuryGuard = game.treasuryGuard - canUpkeep;
+					game.treasuryGuard = canUpkeep;
+					game.gold -= (canUpkeep * config.treasuryGuardPricePayroll);
+					console.group("%c Treausury guard: ", "background-color: cyan; color: #333");
+					console.log("Treasury guard: ", game.treasuryGuard);
+					console.groupEnd();
+
+					msg = (canUpkeep > 0) ? localeStrings[335].replace("%arg1", dissmisedTreasuryGuard) : localeStrings[37];
 					postEventLog(msg);
 				}
 			}
@@ -3099,8 +3107,17 @@
 					//fire guards which we cannot afford
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
-					game.sergeants = 0;
-					msg   = localeStrings[280];
+					
+					var canUpkeep = Math.floor(game.gold/config.sergeantUpkeep);
+					var dismissedSergeants = game.sergeants - canUpkeep;
+					game.sergeants = canUpkeep;
+					game.gold -= (canUpkeep * config.sergeantUpkeep);
+
+					console.group("%c Sergeants: ", "background-color: cyan; color: #333");
+					console.log("Sergeants: ", game.sergeants);
+					console.groupEnd();
+
+					msg = (canUpkeep > 0) ? localeStrings[336].replace("%arg1", dismissedSergeants) : localeStrings[280];
 					postEventLog(msg);
 				}
 			}
@@ -3112,8 +3129,17 @@
 					//fire guards which we cannot afford
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
-					game.turkopols = 0;
-					msg   = localeStrings[281];
+
+					var canUpkeep = Math.floor(game.gold/config.turkopolUpkeep);
+					var dismissedTurkopols = game.turkopols - canUpkeep;
+					game.turkopols = canUpkeep;
+					game.gold -= (canUpkeep * config.turkopolUpkeep);
+
+					console.group("%c Turkopols: ", "background-color: cyan; color: #333");
+					console.log("Turkopols: ", game.turkopols);
+					console.groupEnd();
+
+					msg = (canUpkeep > 0) ? localeStrings[337].replace("%arg1", dismissedTurkopols) : localeStrings[281];
 					postEventLog(msg);
 				}
 			}
@@ -3125,8 +3151,18 @@
 					//fire guards which we cannot afford
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
-					game.knights = 0;
-					msg   = localeStrings[282];
+
+
+					var canUpkeep = Math.floor(game.gold/config.knightUpkeep);
+					var dismissedKnights = game.knights - canUpkeep;
+					game.knights = canUpkeep;
+					game.gold -= (canUpkeep * config.knightUpkeep);
+
+					console.group("%c Knights: ", "background-color: cyan; color: #333");
+					console.log("Knights: ", game.knights);
+					console.groupEnd();
+
+					msg = (canUpkeep > 0) ? localeStrings[338].replace("%arg1", dismissedKnights) : localeStrings[282];
 					postEventLog(msg);
 				}
 			}
@@ -3155,6 +3191,9 @@
 					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1",fireProgress);
 				}
 			}
+
+			//console.log("%c GOLD AFTER UPKEEP PAYMENTS: ", "color: blue", game.gold);
+
 			taxes = Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
 			game.addMoneyToTreasury(taxes);
 			if (game.gold !== gold_was) {
@@ -3179,6 +3218,7 @@
 				//ym(47225574, 'reachGoal', 'min5');
 				//return true;
 			}
+			//console.log("GOLD AFTER UPDATE: ", game.gold);
 			updateUI();
 			game.getReward();
 		},
