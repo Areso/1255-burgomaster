@@ -2637,6 +2637,7 @@
 					game.sergeants += 1;
 					game.gold      -= 20;
 					updateTroopsNumbers();
+                    updateResources();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[20]);
@@ -2655,6 +2656,7 @@
 						game.turkopols += 1;
 						game.gold -= 20;
 						updateTroopsNumbers();
+                        updateResources();
 					} else {
 						msg = "<b>%arg1</b>";
 						msg = msg.replace("%arg1", localeStrings[20]);
@@ -2677,6 +2679,7 @@
 					game.knights   += 1;
 					game.gold      -= 40;
 					updateTroopsNumbers();
+                    updateResources();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1", localeStrings[20]);
