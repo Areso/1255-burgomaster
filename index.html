@@ -1973,7 +1973,8 @@
             startPoint            = game.myMapObjects[game.castleX][game.castleY+1];
             nonAccessible         = false;
             //10 castle entrance, 4 
-            visitableElements     = [10]; 
+            visitableElements     = [10];
+            pointsToCheck         = [];
             for (i=0; i<config.sizeMapX; i++){
                 for (j=0; j<config.sizeMapX; j++){
                     //first we check whether myMapObjects has something
@@ -1981,6 +1982,7 @@
                     //that myMapObjects is NOT in the list of nonVisitableElements
                     if (inArray(visitableElements, game.myMapObjects[i][j])) {
                         console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
+                        pointsToCheck.push({"coord":[i,j]});
                     }
                 }
             }
