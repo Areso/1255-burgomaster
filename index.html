@@ -1963,14 +1963,14 @@
 					}
 				}
                 //ISSUE #339
-                //game.checkObjAccessibility();
+                game.checkObjAccessibility();
 				game.mapCreated = 1;
 				composite_gm();
 			}
 		},
         checkObjAccessibility: function () {
             //GLADYSHEV
-            startPoint            = gane.myMapObjects[game.castleX][game.castleY+1];
+            startPoint            = game.myMapObjects[game.castleX][game.castleY+1];
             nonAccessible         = false;
             //10 castle entrance, 4 
             visitableElements     = [10]; 
@@ -1979,8 +1979,8 @@
                     //first we check whether myMapObjects has something
                     //then add AND condition
                     //that myMapObjects is NOT in the list of nonVisitableElements
-                    if (game.myMapObjects[i][j] !== 0 && !(inArray(nonVisitableElements, game.myMapObjects[i][j]))) {
-                        console.log("myMapObjects");
+                    if (inArray(visitableElements, game.myMapObjects[i][j])) {
+                        console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
                     }
                 }
             }
