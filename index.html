@@ -1958,7 +1958,7 @@
 								}
 							}
 							game.myMapRemObjects[i][j] = rnd;
-							console.log(rnd)
+							//console.log(rnd)
 						}
 					}
 				}
@@ -1988,20 +1988,27 @@
                     }
                 }
             }
-            pf = game.prepareMap();
-            pointsToCheck.forEach(function(POI) {
-				thePath = game.getPath(pf, POI);
-			});
+            pf              = game.prepareMap();
+            numberOfPoints  = pointsToCheck.length;
+            console.log("---");
+            for (np=0; np<numberOfPoints; np++) {
+				console.log(pointsToCheck[np]);
+				thePath = game.getPath(pf, pointsToCheck[np]);
+			}
+			console.log("---");
         },
         prepareMap : function () {
 			preparedMap = game.myMapObjects;
 			for (i=0; i<config.sizeMapX; i++){
                 for (j=0; j<config.sizeMapX; j++){
 					if (game.myMapObjects[i][j] == 10){
-						preparedMap[i][j] = 0;
+						preparedMap[i][j] = 1;
+					}
+					if (game.myMapObjects[i][j] == 0){
+						preparedMap[i][j] = 1;
 					}
 					if (game.myMapObjects[i][j] !== 0 && game.myMapObjects[i][j] !== 10) {
-						preparedMap[i][j] = -1;
+						preparedMap[i][j] = 0;
 					}
 				}
 			}
@@ -2009,11 +2016,33 @@
         },
         getPath : function (pf, POI) {
 			neighbor_offsets = [(-1, -1), (1, -1), (1, 1), (-1, 1)];
-            node_list = [POI];
-            console.log(POI);
-            console.log(POI["coord"][0]);
-            console.log(POI["coord"][1]);
-            //score = game.myMapObjects[POI[0]][POI[1]];
+			console.log("original map");
+			console.log(game.myMapObjects);
+			console.log("prepared map");
+			console.log(pf);
+			console.log("POI in getPath is ");
+			console.log(POI);
+			console.log("end of POI");
+            node_list        = [[POI["coord"][0],POI["coord"][1]]];
+            score            = 1;
+            size = 17
+            /*
+            for (node in node_list) {
+				for (neighbor_offset in neighbor_offsets) {
+					neighbor_x = node[0]+neighbor_offset[0]
+					neighbor_y = node[1]+neighbor_offset[1]
+					if (neighbor_x < 0 ||
+					   neighbor_y < 0 ||
+					   neighbor_x >= size ||
+					   neighbor_y >= size) {
+						 console.log("out of borders - we can not move here "+str(neighbor_x)+";"+str(neighbor_y))
+					}
+					if (pf[neighbor_x][neighbor_y] < score && pf[neighbor_x][neighbor_y] != 0){
+						score = pf[neighbor_x][neighbor_y]
+					}
+				}
+			}
+			*/
 		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
