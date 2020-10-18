@@ -1988,12 +1988,12 @@
                     }
                 }
             }
-            pf              = game.prepareMap();
+            pfmap           = game.prepareMap();
             numberOfPoints  = pointsToCheck.length;
             console.log("---");
             for (np=0; np<numberOfPoints; np++) {
 				console.log(pointsToCheck[np]);
-				thePath = game.getPath(pf, pointsToCheck[np]);
+				resPathMap = game.genPathMap(pfmap)
 			}
 			console.log("---");
         },
@@ -2014,35 +2014,58 @@
 			}
 			return preparedMap;
         },
-        getPath : function (pf, POI) {
-			neighbor_offsets = [(-1, -1), (1, -1), (1, 1), (-1, 1)];
-			console.log("original map");
-			console.log(game.myMapObjects);
-			console.log("prepared map");
-			console.log(pf);
-			console.log("POI in getPath is ");
-			console.log(POI);
-			console.log("end of POI");
-            node_list        = [[POI["coord"][0],POI["coord"][1]]];
-            score            = 1;
-            size = 17
-            /*
-            for (node in node_list) {
-				for (neighbor_offset in neighbor_offsets) {
-					neighbor_x = node[0]+neighbor_offset[0]
-					neighbor_y = node[1]+neighbor_offset[1]
-					if (neighbor_x < 0 ||
-					   neighbor_y < 0 ||
-					   neighbor_x >= size ||
-					   neighbor_y >= size) {
-						 console.log("out of borders - we can not move here "+str(neighbor_x)+";"+str(neighbor_y))
-					}
-					if (pf[neighbor_x][neighbor_y] < score && pf[neighbor_x][neighbor_y] != 0){
-						score = pf[neighbor_x][neighbor_y]
-					}
+        genPathMap : function (gen_pfmap) {
+			console.log("call gen path map");
+			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+			pathMap          = [];
+			for (i=0;i<config.sizeMapX;i++) {
+				pathMap.push([]);
+			}
+			for (i = 0; i < config.sizeMapX; i++) {
+				for (j = 0; j < config.sizeMapY; j++) {
+					pathMap[i][j]=0;
 				}
 			}
+			nodeList         = [[game.heroX, game.heroY]];
+			pathMap[game.heroX][game.heroY]  =  1;
+			/*
+			node_list = [start]
+			path_map[start[0]][start[1]] = 1
+			for node in node_list:
+				# print("---new-node---")
+				score = path_map[node[0]][node[1]]
+				# print(score)
+				for neighbor_offset in neighbor_offsets:
+					# print("run over neighbor offsets")
+					neighbor_x = node[0]+neighbor_offset[0]
+					neighbor_y = node[1]+neighbor_offset[1]
+					if (neighbor_x < 0 or
+					   neighbor_y < 0 or
+					   neighbor_x >= size or
+					   neighbor_y >= size):
+						# print("out of borders - we can not move here "+str(neighbor_x)+";"+str(neighbor_y))
+						continue
+					if travelable[neighbor_x][neighbor_y] == 0:
+						# print("not travelable - we can not move here "+str(neighbor_x)+";"+str(neighbor_y))
+						continue
+					if travelable[neighbor_x][neighbor_y] == 1:
+						# print("travelable - we could move there " + str(neighbor_x) + ";" + str(neighbor_y))
+						if neighbor_x == start[0] and neighbor_y == start[1]:
+							#print("we found the target!")
+							path_map[neighbor_x][neighbor_y] = score + 1
+						else:
+							if path_map[neighbor_x][neighbor_y] == 0:
+								#print("can move here "+str(neighbor_x)+";"+str(neighbor_y))
+								node_list.append([neighbor_x, neighbor_y])
+								path_map[neighbor_x][neighbor_y] = score + 1
+								continue
+							else:
+								#print("we already have been here " + str(neighbor_x) + ";" + str(neighbor_y))
+								continue
+				print("-----")
+				return path_map
 			*/
+			return 0;
 		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
