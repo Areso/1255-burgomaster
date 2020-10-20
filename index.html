@@ -2042,26 +2042,26 @@
 					   neighbor_y < 0 ||
 					   neighbor_x >= config.sizeMapX ||
 					   neighbor_y >= config.sizeMapY){
-						//print("out of borders - we can not move here "+str(neighbor_x)+";"+str(neighbor_y))
+						console.log("out of borders - we can not move here "+neighbor_x+";"+neighbor_y);
 						continue
 					}
 					if (gen_pfmap[neighbor_x][neighbor_y] == 0){
-						//print("not travelable - we can not move here "+str(neighbor_x)+";"+str(neighbor_y))
+						console.log("not travelable - we can not move here "+neighbor_x+";"+neighbor_y);
 						continue
 					}
 					if (gen_pfmap[neighbor_x][neighbor_y] == 1){
-						//print("travelable - we could move there " + str(neighbor_x) + ";" + str(neighbor_y))
+						console.log("travelable - we could move there " + neighbor_x + ";" + neighbor_y);
 						if (neighbor_x == start[0] && neighbor_y == start[1]) {
-							//print("we found the target!")
+							console.log("we found the target!");
 							pathMap[neighbor_x][neighbor_y] = score*1 + 1
 						} else {
 							if (pathMap[neighbor_x][neighbor_y] == 0){
-								//print("can move here "+str(neighbor_x)+";"+str(neighbor_y))
-								node_list.push([neighbor_x, neighbor_y])
-								pathMap[neighbor_x][neighbor_y] = score*1 + 1
+								console.log("can move here "+neighbor_x+";"+neighbor_y);
+								node_list.push([neighbor_x, neighbor_y]);
+								pathMap[neighbor_x][neighbor_y] = score*1 + 1;
 								continue
 							} else {
-								//print("we already have been here " + str(neighbor_x) + ";" + str(neighbor_y))
+								console.log("we already have been here " + neighbor_x + ";" + neighbor_y);
 								continue
 							}
 						}
