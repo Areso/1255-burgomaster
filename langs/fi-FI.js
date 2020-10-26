@@ -369,3 +369,42 @@ localeStrings.push("You cannot afford upkeeping of %arg1 treasury guard(s). They
 localeStrings.push("You cannot afford upkeeping of %arg1 sergeant(s). They are dismissed.");
 localeStrings.push("You cannot afford upkeeping of %arg1 turkopols(s). They are dismissed.");
 localeStrings.push("You cannot afford upkeeping of %arg1 knights(s). They are dismissed.");
+localeStrings.push("Dismiss a sergeant from the garrison");
+localeStrings.push("Dismiss all sergeants from the garrison"); //340
+localeStrings.push("Dismiss a turkopol from the garrison");
+localeStrings.push("Dismiss all turkopols from the garrison");
+localeStrings.push("Dismiss a knight from the garrison");
+localeStrings.push("Dismiss all knights from the garrison");
+localeStrings.push("Dismiss all forces from the garrison"); //345
+localeStrings.push("Dismiss a sergeant from the heroe's squad");
+localeStrings.push("Dismiss all sergeants from the heroe's squad");
+localeStrings.push("Dismiss a turkopol from the heroe's squad");
+localeStrings.push("Dismiss all turkopols from the heroe's squad");
+localeStrings.push("Dismiss a knight from the heroe's squad");  //350
+localeStrings.push("Dismiss all knights from the heroe's squad");
+localeStrings.push("Dismiss all forces from the heroe's squad");
+localeStrings.push("You are going to dismiss a sergeant from the garrison. Are you sure?");
+localeStrings.push("You are going to dismiss a turkopol from the garrison. Are you sure?");
+localeStrings.push("You are going to dismiss a knight from the garrison. Are you sure?"); // 355
+localeStrings.push("You are going to dismiss all sergeants from the garrison. Are you sure?");
+localeStrings.push("You are going to dismiss all turkopols from the garrison. Are you sure?");
+localeStrings.push("You are going to dismiss all knights from the garrison. Are you sure?");
+localeStrings.push("You are going to dismiss a sergeant from the heroe's squad. Are you sure?");
+localeStrings.push("You are going to dismiss a turkopol from the heroe's squad. Are you sure?"); //360
+localeStrings.push("You are going to dismiss a knight from the heroe's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all sergeants from the heroe's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all turkopols from the heroe's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all knights from the heroe's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all garrison forces: %arg1 %arg2 %arg3. Are you sure?"); //365
+localeStrings.push("You are going to dismiss all heroe's squad forces: %arg1 %arg2 %arg3. Are you sure?");
+localeStrings.push("You don't have any sergeants at the garrison");
+localeStrings.push("You don't have any turkopols at the garrison");
+localeStrings.push("You don't have any knights at the garrison");
+localeStrings.push("You don't have any sergeants at the heroe's squad"); //370
+localeStrings.push("You don't have any turkopols at the heroe's squad");
+localeStrings.push("You don't have any knights at the heroe's squad");
+localeStrings.push("You don't have any forces at the garrison"); 
+localeStrings.push("You don't have any forces at the heroe's squad");
+localeStrings.push("sergeants(%arg1)"); //375
+localeStrings.push("turkopols(%arg1)");
+localeStrings.push("knights(%arg1)");
