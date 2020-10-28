@@ -128,9 +128,9 @@
 			border: thin solid black;
 			overflow:scroll;
 			/*
-            overflow-x: hidden;
-            overflow-y: scroll;
-            */
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
 		}
 		#lblEventLBDetails {
 			width: 795px;
@@ -138,9 +138,9 @@
 			border: thin solid black;
 			overflow:scroll;
 			/*
-            overflow-x: hidden;
-            overflow-y: scroll;
-            */
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
 		}
 		#htmlGame {
 			margin: auto;
@@ -151,9 +151,9 @@
 			border: thin solid black;
 			overflow:scroll;
 			/*
-            overflow-x: hidden;
-            overflow-y: scroll;
-            */
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
 		}
 
 		/*-- Some new styles --*/
@@ -163,18 +163,18 @@
 			height: 45px;
 		}
 
-        .btnArrow {
-            padding-left: 1px;
-            padding-right: 1px;
-        }
-        .lblHiringTroops {
-            font-size: 12px;
-        }
+		.btnArrow {
+			padding-left: 1px;
+			padding-right: 1px;
+		}
+		.lblHiringTroops {
+			font-size: 12px;
+		}
 
-        .btnDismiss {
-        	padding: 0 1px;
-        	height: 22px;
-        }
+		.btnDismiss {
+			padding: 0 1px;
+			height: 22px;
+		}
 
 	</style>
 	<script id="chatBroEmbedCode">
@@ -663,29 +663,29 @@
 						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">⇓</button>
-
+						<br>
 						<button id="btnDismissGarrisonSergeant" class="btnDismiss" onclick="game.dismissGarrisonSergeant()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllGarrisonSergeants" class="btnDismiss" onclick="game.dismissAllGarrisonSergenats()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">⇓</button>
-
+						<br>
 						<button id="btnDismissGarrisonTurkopol" class="btnDismiss" onclick="game.dismissGarrisonTurkopol()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllGarrisonTurkopols" class="btnDismiss" onclick="game.dismissAllGarrisonTurkopols()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">⇓</button>
+						<br>
 						<button id="btnDismissGarrisonKnight" class="btnDismiss" onclick="game.dismissGarrisonKnight()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllGarrisonKnights" class="btnDismiss" onclick="game.dismissAllGarrisonKnights()" onmouseover="game.help(this)">XX</button>
 					</td>
 					<td>
 						<button class="btnArrow"  id="btnMoveAllTroopsToHero" onclick="game.moveAllTroopsToHero()" onmouseover="game.help(this)">⤋</button>
+						<br>
 						<button id="btnDismissAllGarrisonForces" class="btnDismiss" onclick="game.dismissAllGarrisonForces()" onmouseover="game.help(this)">XXX</button>
 					</td>
 				</tr>
@@ -698,31 +698,29 @@
 						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">⇑</button>
-
+						<br>
 						<button id="btnDismissHeroSergeant" class="btnDismiss" onclick="game.dismissHeroSergeant()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllHeroSergeants" class="btnDismiss" onclick="game.dismissAllHeroSergeants()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">⇑</button>
-
+						<br>
 						<button id="btnDismissHeroTurkopol" class="btnDismiss" onclick="game.dismissHeroTurkopol()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllHeroTurkopols" class="btnDismiss" onclick="game.dismissAllHeroTurkopols()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">⇑</button>
-
+						<br>
 						<button id="btnDismissHeroKnight" class="btnDismiss" onclick="game.dismissHeroKnight()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllHeroKnights" class="btnDismiss" onclick="game.dismissAllHeroKnights()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<button class="btnArrow" id="btnMoveAllTroopsToGarrison" onclick="game.moveAllTroopsToGarrison()" onmouseover="game.help(this)">⤊</button>
+						<br>
 						<button id="btnDismissAllHeroForces" class="btnDismiss" onclick="game.dismissAllHeroForces()" onmouseover="game.help(this)">XXX</button>
 					</td>
 				</tr>
