@@ -1990,45 +1990,45 @@
 						}
 					}
 				}
-                //ISSUE #339
-                game.checkObjAccessibility();
+				//ISSUE #339
+				//game.checkObjAccessibility();//THIS CODE IS BROKEN!
 				game.mapCreated = 1;
 				composite_gm();
 			}
 		},
-        checkObjAccessibility: function () {
-            //GLADYSHEV
-            startPoint            = game.myMapObjects[game.castleX][game.castleY+1];
-            nonAccessible         = false;
-            //10 castle entrance, 4 
-            visitableElements     = [10];
-            pointsToCheck         = [];
-            ci                    = 0;
-            for (i=0; i<config.sizeMapX; i++){
-                for (j=0; j<config.sizeMapX; j++){
+		checkObjAccessibility: function () {
+			//GLADYSHEV
+			startPoint            = game.myMapObjects[game.castleX][game.castleY+1];
+			nonAccessible         = false;
+			//10 castle entrance, 4 
+			visitableElements     = [10];
+			pointsToCheck         = [];
+			ci                    = 0;
+			for (i=0; i<config.sizeMapX; i++){
+				for (j=0; j<config.sizeMapX; j++){
 					ci = ci + 1; //ci is common iterator for objects
-                    //first we check whether myMapObjects has something
-                    //then add AND condition
-                    //that myMapObjects is NOT in the list of nonVisitableElements
-                    if (inArray(visitableElements, game.myMapObjects[i][j])) {
-                        console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
-                        pointsToCheck.push({"coord":[i,j]});
-                    }
-                }
-            }
-            pfmap           = game.prepareMap();
-            numberOfPoints  = pointsToCheck.length;
-            console.log("---");
-            for (np=0; np<numberOfPoints; np++) {
+					//first we check whether myMapObjects has something
+					//then add AND condition
+					//that myMapObjects is NOT in the list of nonVisitableElements
+					if (inArray(visitableElements, game.myMapObjects[i][j])) {
+						console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
+						pointsToCheck.push({"coord":[i,j]});
+					}
+				}
+			}
+			pfmap           = game.prepareMap();
+			numberOfPoints  = pointsToCheck.length;
+			console.log("---");
+			for (np=0; np<numberOfPoints; np++) {
 				console.log(pointsToCheck[np]);
 				resPathMap = game.genPathMap(pfmap)
 			}
 			console.log("---");
-        },
-        prepareMap : function () {
+		},
+		prepareMap : function () {
 			preparedMap = game.myMapObjects;
 			for (i=0; i<config.sizeMapX; i++){
-                for (j=0; j<config.sizeMapX; j++){
+		for (j=0; j<config.sizeMapX; j++){
 					if (game.myMapObjects[i][j] == 10){
 						preparedMap[i][j] = 1;
 					}
@@ -2041,8 +2041,8 @@
 				}
 			}
 			return preparedMap;
-        },
-        genPathMap : function (gen_pfmap) {
+		},
+		genPathMap : function (gen_pfmap) {
 			console.log("call gen path map");
 			console.log(gen_pfmap);
 			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
