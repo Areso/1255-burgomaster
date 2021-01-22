@@ -1856,7 +1856,7 @@
 			game.blackMarketGoods.push("artid00");
 			game.blackMarketGoods.push("artid"+rnd);
 		},
-generateMap : function () {
+		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
@@ -1990,8 +1990,12 @@ generateMap : function () {
 					}
 				}
 				game.mapCreated = 1;
+				game.checkNewMap();
 				composite_gm();
 			}
+		},
+		checkNewMap : function () {
+			
 		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
@@ -2056,12 +2060,7 @@ generateMap : function () {
 			}
 		},
 		cityLeave : function () {
-			if (game.myMapLand.length===config.sizeMapX) {
-				cityLeaveSmall();
-			} else {
-				game.generateMapCallback(true);
-				cityLeaveSmall();
-			}
+			cityLeaveSmall();
 			function cityLeaveSmall() {
 				if (game.heroExists()===true && game.myhero.status === 0) {
 					if (game.isHeroHaveTroops() === true) {
