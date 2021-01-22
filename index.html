@@ -1989,13 +1989,37 @@
 						}
 					}
 				}
-				game.mapCreated = 1;
-				game.checkNewMap();
-				composite_gm();
+				if (game.checkNewMap()) {
+					//QC is passed!
+					game.mapCreated = 1;
+					composite_gm();
+				}
+				else {
+					genMap(0);
+				};
 			}
 		},
 		checkNewMap : function () {
-			
+			//WIP
+			nonAccessible         = false;
+			//castle entrance 10
+			visitableElements     = [10];
+			ci = 0;
+			pointsToCheck         = [];
+			for (i=0; i<config.sizeMapX; i++){
+				for (j=0; j<config.sizeMapX; j++){
+					ci = ci + 1; //ci is common iterator for objects
+					//first we check whether myMapObjects has something
+					//then add AND condition
+					//that myMapObjects is NOT in the list of nonVisitableElements
+					if (inArray(visitableElements, game.myMapObjects[i][j])) {
+						console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
+						pointsToCheck.push({"coord":[i,j]});
+					}
+				}
+			}
+			console.log(pointsToCheck);
+			return true;
 		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
