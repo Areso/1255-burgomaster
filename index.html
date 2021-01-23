@@ -2019,7 +2019,50 @@
 				}
 			}
 			console.log(pointsToCheck);
+			pfmap   = game.prepareMap();
+			wavemap = game.genPathMap();
 			return true;
+		},
+		genPathMap : function () {
+			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+			pathMap          = [];
+			for (i=0;i<config.sizeMapX;i++) {
+				pathMap.push([]);
+			}
+			for (i = 0; i < config.sizeMapX; i++) {
+				for (j = 0; j < config.sizeMapY; j++) {
+					pathMap[i][j]=0;
+				}
+			}
+			pathMap[game.heroX][game.heroY]  =  1;
+			node_list = [];
+			node_list.push([[game.heroX],[game.heroY]])
+			console.log("node list");
+			console.log(node_list);
+			for (node of node_list){
+				console.log("node is ");
+				console.log(node);
+				score = pathMap[node[0]][node[1]]
+				console.log("score is "+score);
+			}
+			return true;
+		},
+		prepareMap : function () {
+			preparedMap = game.myMapObjects;
+			for (i=0; i<config.sizeMapX; i++){
+				for (j=0; j<config.sizeMapX; j++){
+					if (game.myMapObjects[i][j] == 10){
+						preparedMap[i][j] = 1;
+					}
+					if (game.myMapObjects[i][j] == 0){
+						preparedMap[i][j] = 1;
+					}
+					if (game.myMapObjects[i][j] !== 0 && game.myMapObjects[i][j] !== 10) {
+						preparedMap[i][j] = 0;
+					}
+				}
+			}
+			return preparedMap;
 		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
