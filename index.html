@@ -830,6 +830,13 @@
 				<source src="sounds/sfx/6_sound_of_stealing_gold_0.mp3" type="audio/mpeg">
 			</audio>
 		</div>
+		<div id="tabDebugging" class="tabcontent">
+			<div id="inpTable">
+			
+			</div>
+			<div id="outTable">
+			</div>
+		</div>
 		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 540px; left: 10px"></div>
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
@@ -1950,12 +1957,14 @@
 							if (rnd===4) {
 								if (blackmarket_flag===false){
 									blackmarket_flag = true;
+									game.blackmarketLoc = [i,j];
 								} else {
 									rnd = 0;
 								}
 							}
 							if (i===config.sizeMapX-1 && j===config.sizeMapY-1 && blackmarket_flag===false){
 								rnd = 4;
+								game.blackmarketLoc = [i,j];
 							}
 							game.myMapObjects[i][j]=rnd;
 						}
@@ -1985,7 +1994,6 @@
 								}
 							}
 							game.myMapRemObjects[i][j] = rnd;
-							console.log(rnd)
 						}
 					}
 				}
@@ -2020,7 +2028,7 @@
 			}
 			console.log(pointsToCheck);
 			pfmap   = game.prepareMap();
-			//wavemap = game.genPathMap();
+			wavemap = game.genPathMap();
 			return true;
 		},
 		genPathMap : function () {
@@ -2037,49 +2045,70 @@
 			pathMap[game.heroX][game.heroY]  =  1;
 			node_list = [];
 			node_list.push([[game.heroX],[game.heroY]])
+			target = [];
+			target[0] = game.blackmarketLoc[0]
+			target[1] = game.blackmarketLoc[1]
 			console.log("node list");
-			console.log(node_list);
+			console.log(node_list+"lenght of the node_list is "+node_list.length);
 			for (node of node_list){
-				console.log("node is ");
-				console.log(node);
+				//console.log("node is ");
+				//console.log(node);
 				score = pathMap[node[0]][node[1]]
-				console.log("score is "+score);
+				//console.log("score is "+score);
 				for (neighbor_offset of neighbor_offsets){
-					console.log("run over neighbor offsets");
+					//console.log("run over neighbor offsets");
 					neighbor_x = node[0]*1+neighbor_offset[0]*1;
 					neighbor_y = node[1]*1+neighbor_offset[1]*1;
 					if (neighbor_x < 0 ||
 						neighbor_y < 0 ||
 						neighbor_x >= config.sizeMapX ||
 						neighbor_y >= config.sizeMapY){
-						console.log("out of borders - we can not move here "+neighbor_x+";"+neighbor_y);
+						//console.log("out of borders - we can not move here "+neighbor_x+";"+neighbor_y);
 						continue
 					}
 					if (pfmap[neighbor_x][neighbor_y] == 0){
-						console.log("not travelable - we can not move here "+neighbor_x+";"+neighbor_y);
+						//console.log("not travelable - we can not move here "+neighbor_x+";"+neighbor_y);
 						continue
 					}
 					if (pfmap[neighbor_x][neighbor_y] == 1){
-						console.log("travelable - we could move there " + neighbor_x + ";" + neighbor_y);
-						if (neighbor_x == start[0] && neighbor_y == start[1]) {
+						//console.log("travelable - we could move there " + neighbor_x + ";" + neighbor_y);
+						if (neighbor_x == target[0] && neighbor_y == target[1]) {
 							console.log("we found the target!");
-							pathMap[neighbor_x][neighbor_y] = score*1 + 1
+							pathMap[neighbor_x][neighbor_y] = score*1 + 1;
+							continue
 						} else {
 							if (pathMap[neighbor_x][neighbor_y] == 0){
-								console.log("can move here "+neighbor_x+";"+neighbor_y);
+								//console.log("can move here "+neighbor_x+";"+neighbor_y);
 								node_list.push([neighbor_x, neighbor_y]);
 								pathMap[neighbor_x][neighbor_y] = score*1 + 1;
 								continue
 							} else {
-								console.log("we already have been here " + neighbor_x + ";" + neighbor_y);
+								//console.log("we already have been here " + neighbor_x + ";" + neighbor_y);
 								continue
 							}
 						}
 					}
 				}
-				//print("-----")
-				console.log("---the pathMap----");
-				console.log(pathMap);
+			}
+			console.log("---the pathMap----");
+			console.log(pathMap);
+			document.getElementById("outTable").innerHTML="";
+			for (j = 0; j < config.sizeMapY; j++) {
+				for (i = 0; i < config.sizeMapX; i++) {
+					
+					//console.log("target coord is "+target[0]+" "+target[1]);
+					if (pathMap[i][j] < 10) {
+						prVal = "0"+pathMap[i][j]
+					} else {
+						prVal = pathMap[i][j]
+					}
+					if (i===target[0] && j===target[1]) {
+						prVal = "<b>"+prVal+"</b>";
+					}
+					document.getElementById("outTable").innerHTML+=prVal;
+					document.getElementById("outTable").innerHTML+=" | ";
+				}
+				document.getElementById("outTable").innerHTML+="</br>";
 			}
 			return true;
 		},
@@ -2095,17 +2124,22 @@
 			}
 			for (i=0; i<config.sizeMapX; i++){
 				for (j=0; j<config.sizeMapX; j++){
-					if (game.myMapObjects[i][j] == 10){
+					if (game.myMapObjects[i][j] == 10){//city entrance
+						preparedMap[i][j] = 1;
+					} 
+					else if (game.myMapObjects[i][j] == 4){//blackmarket
 						preparedMap[i][j] = 1;
 					}
-					if (game.myMapObjects[i][j] == 0){
+					else if (game.myMapObjects[i][j] == 0){//no object
 						preparedMap[i][j] = 1;
 					}
-					if (game.myMapObjects[i][j] !== 0 && game.myMapObjects[i][j] !== 10) {
+					else {
 						preparedMap[i][j] = 0;
 					}
 				}
 			}
+			console.log("prepared map is");
+			console.log(preparedMap);
 			return preparedMap;
 		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
