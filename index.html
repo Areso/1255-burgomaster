@@ -2028,10 +2028,13 @@
 			}
 			console.log(pointsToCheck);
 			pfmap   = game.prepareMap();
-			wavemap = game.genPathMap();
+			wavemap = game.genWaveMap();
+			track   = game.genTrack();
+			console.log("track is");
+			console.log(track);
 			return true;
 		},
-		genPathMap : function () {
+		genWaveMap : function () {
 			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
 			pathMap          = [];
 			for (i=0;i<config.sizeMapX;i++) {
@@ -2110,7 +2113,40 @@
 				}
 				document.getElementById("outTable").innerHTML+="</br>";
 			}
-			return true;
+			return pathMap;
+		},
+		genTrack : function () {
+			target[0] = game.blackmarketLoc[0]
+			target[1] = game.blackmarketLoc[1]
+			if (wavemap[target[0]][target[1]] != 0 && wavemap[target[0]][target[1]] != -1){
+				console.log("try to get_path")
+				//print(wave_map[target[0]][target[1]])
+				// neighbor_offsets = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+				neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+				node_list = [target]
+				score = wavemap[target[0]][target[1]]
+				//print("blank path map")
+				for (node of node_list){
+					for (neighbor_offset of neighbor_offsets){
+						neighbor_x = node[0]+neighbor_offset[0]
+						neighbor_y = node[1]+neighbor_offset[1]
+						if (neighbor_x < 0 ||
+							neighbor_y < 0 ||
+							neighbor_x >= config.sizeMapX ||
+							neighbor_y >= config.sizeMapY){
+							continue
+						}
+						if (wavemap[neighbor_x][neighbor_y] < score && wavemap[neighbor_x][neighbor_y] != 0){
+							score = wavemap[neighbor_x][neighbor_y]
+							node_list.push([neighbor_x, neighbor_y]);
+						}
+					}
+				}
+				return node_list
+				//return true
+			} else {
+				return false
+			}
 		},
 		prepareMap : function () {
 			preparedMap = []
