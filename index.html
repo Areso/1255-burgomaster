@@ -186,23 +186,6 @@
 </head>
 <body>
 <div id="htmlGame">
-		<script>
-			var url = window.location.pathname;
-			var filename = url.substring(url.lastIndexOf('/')+1);
-			if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
-				res_mod = "b";
-			}
-			else {
-				res_mod = "b";
-			}
-			//alert(res_mod);
-			/*
-			function reload_res(this) {
-			this.src=str.replace(\"_a\", res_mod);
-			alert(this.src);
-			}
-			*/
-		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
 			<!--<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>-->
@@ -437,7 +420,7 @@
 							<table border="1">
 								<tr>
 									<td class="building">
-										<div align="center">
+										<div id="defences_img" align="center">
 											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
@@ -842,6 +825,23 @@
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
 <script>
+			var url = window.location.pathname;
+			var filename = url.substring(url.lastIndexOf('/')+1);
+			if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
+				res_mod = "b";
+			}
+			else {
+				res_mod = "b";
+			}
+			//alert(res_mod);
+			/*
+			function reload_res(this) {
+			this.src=str.replace(\"_a\", res_mod);
+			alert(this.src);
+			}
+			*/
+</script>
+<script>
 	//TOWN
 	canvas  = document.getElementById("canvas");
 	canvas.addEventListener("touchstart", tap);
@@ -851,33 +851,33 @@
 	var img1    = loadImage('resources/background_a.png', composite);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 	var img2    = loadImage('resources/sawmill_a.png', composite);
 	var sawmillX     = 670;
-	var sawmillY	 = 65;
+	var sawmillY     = 65;
 	var sawmillW     = 110;
 	var sawmillH     = 56;
 	var img3    = loadImage('resources/gold_a.png', composite);
 	var goldX        = 10;
-	var goldY   	 = 40;
+	var goldY        = 40;
 	var goldW        = 28;
 	var goldH        = 22;
 	var img4    = loadImage('resources/pop_a.png', composite);
 	var popX         = 10;
-	var popY   	     = 80;
+	var popY         = 80;
 	var popW         = 29;
 	var popH         = 22;
 	var img5    = loadImage('resources/home_as.png', composite);
 	var homeX        = 90;
-	var homeY   	 = 160;
+	var homeY        = 160;
 	var homeW        = 80;
 	var homeH        = 90;
 	var img5_1  = loadImage('resources/house_as.png', composite);
 	var houseX       = 90;
-	var houseY   	 = 160;
+	var houseY       = 160;
 	var houseW       = 113;
 	var houseH       = 125;
 	var img6_1  = loadImage('resources/wallsr_a.png', composite);
 	var img6_2  = loadImage('resources/wallsf_a.png', composite);
 	var wallX        = 330;
-	var wallY   	 = 400;
+	var wallY        = 400;
 	var wallW        = 110;
 	var wallH        = 65;
 	var img7    = loadImage('resources/castle_as.png', composite);
@@ -885,9 +885,14 @@
 	var castleY      = 160;
 	var castleW      = 180;
 	var castleH      = 160;
+	var img71   = loadImage('resources/castle_st.png', composite);
+	var castle_st_X  = 300;
+	var castle_st_Y  = 160;
+	var castle_st_W  = 195;
+	var castle_st_H  = 175;
 	var img8    = loadImage('resources/wishing_well_builded.png', composite);
 	var wellX        = 230;
-	var wellY      	 = 200;
+	var wellY        = 200;
 	var wellW        = 41;
 	var wellH        = 47;
 	var img9    = loadImage('resources/treasury_as.png', composite);
@@ -897,7 +902,7 @@
 	var treasuryH    = 120;
 	var img10   = loadImage('resources/gallows.png', composite);
 	var gallowsX     = 485;
-	var gallowsY   	 = 270;
+	var gallowsY     = 270;
 	var gallowsW     = 50;
 	var gallowsH     = 75;
 	var img11   = loadImage('resources/fountain.png', composite);
@@ -929,7 +934,7 @@
 	buildingsInTownY=[];
 	buildingsInTownW=[];
 	buildingsInTownH=[];
-    function inArray (arrayToCheck, valueToCheck) {
+	function inArray (arrayToCheck, valueToCheck) {
 		 return arrayToCheck.indexOf(valueToCheck) > -1;
 	}
 	function deleteFromArray (arrayToMod, indexToDelete) {
@@ -972,8 +977,8 @@
 				removeIndex = buildingsInTownB.indexOf('wall');
 				removeFromArrays(removeIndex);
 			}
-			if (buildingName==='scastle') {
-				removeIndex = buildingsInTownB.indexOf('scastle');
+			if (buildingName==='stone_castle') {
+				removeIndex = buildingsInTownB.indexOf('castle');
 				removeFromArrays(removeIndex);
 			}
 			buildingsInTownB.push(buildingName);
@@ -1008,10 +1013,15 @@
 			ctx.drawImage(img5_1, houseX, houseY);
 			pushBuilding('house', houseX, houseY, houseW, houseH);
 		}
-		if (game.buildLevelD > 1) {
+		if (game.buildLevelD === 2) {
 			// draw castle
 			ctx.drawImage(img7, castleX, castleY);
 			pushBuilding('castle', castleX, castleY, castleW, castleH);
+		}
+		if (game.buildLevelD === 3) {
+			// draw castle
+			ctx.drawImage(img71, castle_st_X, castle_st_Y);
+			pushBuilding('stone_castle', castle_st_X, castle_st_Y, castle_st_W, castle_st_H);
 		}
 		if (game.buildLevelTreasury > 0) {
 			// draw treasury
@@ -1142,7 +1152,7 @@
 		if (buildingName==='castle') {
 			alertMsg = localeStrings[136];
 		}
-		if (buildingName==='scastle') {
+		if (buildingName==='stone_castle') {
 			alertMsg = localeStrings[137];
 		}
 		if (buildingName==='inn') {
@@ -3797,7 +3807,8 @@
 			}
 		},
 		Build : function (Structure) {
-			if (Structure==="Wall" || Structure ==="Tower") {
+			if (Structure==="Wall" || Structure ==="Tower" || Structure ==="Castle") {
+				//WALL
 				if (game.gold >= config.costWall && game.buildLevelD == 0) {
 					game.buildLevelD        = game.buildLevelD*1 + 1;
 					game.gold               = game.gold - config.costWall;
@@ -3808,9 +3819,21 @@
 					msg = msg.replace("%arg1",localeStrings[20]);
 					postEventLog(msg);
 				}
+				//WOODEN TOWER
 				if (game.gold >= config.costTower && game.buildLevelD == 1) {
 					game.buildLevelD        = game.buildLevelD*1 + 1;
 					game.gold               = game.gold - config.costTower;
+					commonBuild();
+					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
+				}
+				//STONE CASTLE
+				if (game.gold >= config.costCastle && game.buildLevelD == 2) {
+					game.buildLevelD        = game.buildLevelD*1 + 1;
+					game.gold               = game.gold - config.costCastle;
 					commonBuild();
 					return true;
 				} else {
@@ -3915,9 +3938,8 @@
 				}
 			}
 			function commonBuild() {
-				updateResources();
+				updateUI();
 				composite();
-				updateButtonCaptions();
 			}
 		},
 		buildGallowsOrFountain(objectToBuild) {
@@ -4179,7 +4201,8 @@
 	//init const-variables
 	var config = {
 		costWall:2,
-		costTower:4,
+		costTower:8,
+		costCastle:24,
 		costHome:2,
 		costTreasury:20,
 		costGallows:50,
@@ -5276,36 +5299,30 @@
 		updateButtonCaptions();
 		updateHeroStatus();
 		updateBlackMarket();
+		updateImagesBuildingTab();
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
 		nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));
 		document.getElementById("homes").innerHTML=localeStrings[107].replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
-
 		nextLvlTreasury       = game.buildLevelTreasury*1+1;
 		nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
 		document.getElementById("treasury").innerHTML=localeStrings[110].replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
-
 		nextLvlGallows        = game.buildLevelGallows*1+1;
 		nextLvlPriceGallows   = Math.pow(config.costGallows,(game.buildLevelGallows*1+1));
 		document.getElementById("buttonBldGallows").innerHTML=localeStrings[111].replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
-
 		nextLvlFountain       = game.buildLevelFountain*1+1;
 		nextLvlPriceFountain  = Math.pow(config.costFountain,(game.buildLevelFountain*1+1));
 		document.getElementById("buttonBldFountain").innerHTML=localeStrings[112].replace("%arg1",nextLvlFountain).replace("%arg2",nextLvlPriceFountain);
-
 		nextLvlStash          = game.buildLevelStash*1+1;
 		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML=localeStrings[113].replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
-
 		nextLvlInn            = game.buildLevelInn*1+1;
 		nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
 		document.getElementById("buttonBldInn").innerHTML=localeStrings[114].replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
-
 		nextLvlStable         = game.buildLevelStable*1+1;
 		nextLvlPriceStable    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
 		document.getElementById("buttonBldStable").innerHTML=localeStrings[115].replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
-
 		nextLvlArchery         = game.buildLevelArchery*1+1;
 		nextLvlPriceArchery    = Math.pow(config.costArchery,(game.buildLevelArchery*1+1));
 		document.getElementById("buttonBldArchery").innerHTML=localeStrings[116].replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
@@ -5320,6 +5337,11 @@
 			document.getElementById("defence").setAttribute("onclick", towerClick);
 		}
 		if (game.buildLevelD == 2) {
+			document.getElementById("defence").innerHTML=localeStrings[117].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costCastle);
+			var towerClick = "game.Build("+"\'Castle\'"+")";
+			document.getElementById("defence").setAttribute("onclick", towerClick);
+		}
+		if (game.buildLevelD == 3) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
 		if (game.buildLevelFountain > 0) {
@@ -5581,7 +5603,12 @@
 		}
 	}
 	function updateImagesBuildingTab () {
-		//TODO
+		if (game.buildLevelD === 1) {
+			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_w_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+		}
+		if (game.buildLevelD === 2) {
+			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+		}
 	}
 	function askPlayer(question, typeofasking) {
 		if (typeofasking === 1) {
