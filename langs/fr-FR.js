@@ -116,7 +116,7 @@ localeStrings.push("Construire une Planque<br/>niveau %arg1<br/>%arg2 or");
 localeStrings.push("Construire une Auberge<br/>niveau %arg1<br/>%arg2 or");
 localeStrings.push("Construire une Écuries<br/>niveau %arg1<br/>%arg2 or");//115
 localeStrings.push("Construire Camp de tir à l'arc<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("placeholder");
+localeStrings.push("Construire un Château<br/>niveau %arg1<br/>%arg2 or");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120

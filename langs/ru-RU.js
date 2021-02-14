@@ -116,7 +116,7 @@ localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 з
 localeStrings.push("Построить Таверну<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("Построить Конюшню<br/>ур. %arg1<br/>%arg2 золота");//115
 localeStrings.push("Построить Стрельбище<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("placeholder");
+localeStrings.push("Построить Замок<br/>ур. %arg1<br/>%arg2 золота");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120

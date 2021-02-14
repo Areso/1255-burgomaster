@@ -116,7 +116,7 @@ localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
 localeStrings.push("Build Archery range<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
+localeStrings.push("Build Castle<br/>lvl %arg1<br/>%arg2 gold");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
