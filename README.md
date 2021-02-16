@@ -67,14 +67,7 @@
 		Regarding your choices, you could get a boost in taxes or birthrate, happiness and so on.<br>
 		The game could become to a Clicker game in case you build Gallows and like to execute you citizens.<br>
 		This game created and new features right now in development inspired by Travian, Townsmen, Stronghold and Stronghold Crusaders, HoMM (Heroes of Might and Magic), Lord of Realm, Anno series.<br> 
-		You can export and import save to transfer your progress between different browsers and PCs.<br>
-		
-		<br>
-		Colors meaning: red - not yet implemented, but planned to implement<br>
-		All suggestion and bug reports could be made via chat (if enabled) or via <a href="https://github.com/Areso/js-html-mycity/issues">GitHub Issues</a></br>
-		<br>
-		1255 Rise of Teutonic (DLC) allows you to rank your officers according to the history facts<br> 
-		<br> 
+		You can export and import save to transfer your progress between different browsers and PCs.<br><br>
 		<h2>License</h2><br>
 		The source code is under GPLv3.<br>
 		ALL GRAPHIC AND SOUND ASSETS UNDER PROPRIETARY LICENSE.<br>
