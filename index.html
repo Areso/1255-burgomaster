@@ -4028,27 +4028,27 @@
 					}
 					game.pop          = game.pop - 1;
 					getTypeOfCitizen  = Math.floor(Math.random()*100+1,0);
-					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 70) {
-						wealthShare     = 1/100*1;
-						sizeOfClass     = (70-1)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 50) {
+						wealthShare     = 1/100*10;
+						shareOfClass    = 50/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					if (getTypeOfCitizen >= 70 && getTypeOfCitizen < 90) {
+					if (getTypeOfCitizen >= 50 && getTypeOfCitizen < 80) {
 						wealthShare     = 1/100*20;
-						sizeOfClass     = (90-20)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						shareOfClass    = 30/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					if (getTypeOfCitizen >= 90 && getTypeOfCitizen <= 99) {
+					if (getTypeOfCitizen >= 80 && getTypeOfCitizen <= 99) {
 						wealthShare     = 1/100*30;
-						sizeOfClass     = (99-20)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						shareOfClass    = 9/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
 					if (getTypeOfCitizen > 99 && getTypeOfCitizen <= 100) {
-						wealthShare     = 1/100*49;
-						sizeOfClass     = (100-99)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						wealthShare     = 1/100*40;
+						shareOfClass    = 1/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					moneyToSeize    = Math.floor(game.gold*wealthShare/sizeOfClassNums*game.pop/game.popLimit()/10,0);
+					moneyToSeize    = Math.floor(game.gold*wealthShare*game.pop/game.popLimit()/8,0)+1;
 					rnd             = Math.floor((Math.random() * 6) + 1);
 					reason          = localeStrings[24+rnd]
 					msg             = localeStrings[34].replace("%arg1", reason);
