@@ -2819,6 +2819,7 @@
 						game.myhero.atk       = 2;
 						game.myhero.def       = 2;
 						game.myhero.mpow      = 0;
+						game.myhero.int       = 0;
 						game.myhero.mana      = 0;
 						game.myhero.cmana     = 0;
 						game.myhero.lawful    = 80;
@@ -2828,6 +2829,7 @@
 						game.myhero.atk       = 0;
 						game.myhero.def       = 0;
 						game.myhero.mpow      = 2;
+						game.myhero.int       = 2
 						game.myhero.mana      = 20;
 						game.myhero.cmana     = 20;
 						game.myhero.lawful    = 80;
@@ -5268,6 +5270,14 @@
 				if (game.myhero[propertyName]===undefined){
 					game.myhero[propertyName] = tmpHero[propertyName];
 				}
+				if (propertyName === "int") {
+					if (game.myhero.class===0) {
+						game.myhero.int = 0;
+					}
+					if (game.myhero.class===1) {
+						game.myhero.int = 2;
+					}
+				}
 			}
 			while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
 				game.myhero.inventoryWorn.push(0);
@@ -5482,6 +5492,7 @@
 			HTMLofHeroStats    += localeStrings[196]+": "+game.heroNextLvlExpLimit()+"<br>";
 			HTMLofHeroStats    += localeStrings[190]+": "+game.myhero.atk+" | ";
 			HTMLofHeroStats    += localeStrings[191]+": "+game.myhero.def+"<br>";
+			HTMLofHeroStats    += localeStrings[187]+": "+game.myhero.int+"<br>";
 			HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
 			HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
 			HTMLofHeroStats    += heroActivity+"<br>";

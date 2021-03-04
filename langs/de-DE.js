@@ -216,7 +216,7 @@ localeStrings.push("Glück");
 localeStrings.push("Aberglaube");
 localeStrings.push("Moral"); // 185
 localeStrings.push("Der Held hat etwas Geld gefunden: ");
-localeStrings.push("placeholder");
+localeStrings.push("Intelligenz");
 localeStrings.push("placeholder");
 localeStrings.push("Stufe");
 localeStrings.push("Attack");//190
