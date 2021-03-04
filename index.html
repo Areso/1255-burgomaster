@@ -5606,10 +5606,16 @@
 	}
 	function updateImagesBuildingTab () {
 		if (game.buildLevelD === 1) {
-			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_w_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			elementText = document.getElementById("defences_img").innerHTML;
+			if (elementText.indexOf("btab_w_castle.png") === -1) {
+				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_w_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			}
 		}
 		if (game.buildLevelD === 2) {
-			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			elementText = document.getElementById("defences_img").innerHTML;
+			if (elementText.indexOf("btab_st_castle.png") === -1) {
+				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			}
 		}
 	}
 	function askPlayer(question, typeofasking) {
