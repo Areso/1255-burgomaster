@@ -3601,7 +3601,8 @@
 			var gold_was = game.gold;
 			//console.log("%c GOLD BEFORE UPDATE: ", "color: red", gold_was);
 			game.recordStats();
-			game.getNearestEventTime();
+			//game.getNearestEventTime();
+			//game.getReward();
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
@@ -3776,7 +3777,6 @@
 			}
 			//console.log("GOLD AFTER UPDATE: ", game.gold);
 			updateUI();
-			//game.getReward();
 		},
 		makeFestival : function() {
 			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
@@ -5606,10 +5606,16 @@
 	}
 	function updateImagesBuildingTab () {
 		if (game.buildLevelD === 1) {
-			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_w_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			elementText = document.getElementById("defences_img").innerHTML;
+			if (elementText.indexOf("btab_w_castle.png") === -1) {
+				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_w_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			}
 		}
 		if (game.buildLevelD === 2) {
-			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			elementText = document.getElementById("defences_img").innerHTML;
+			if (elementText.indexOf("btab_st_castle.png") === -1) {
+				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			}
 		}
 	}
 	function askPlayer(question, typeofasking) {
