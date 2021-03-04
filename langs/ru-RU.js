@@ -221,8 +221,8 @@ localeStrings.push("placeholder");
 localeStrings.push("Уровень");
 localeStrings.push("Атака");//190
 localeStrings.push("Защита");
-localeStrings.push("Сила магии");
 localeStrings.push("Мана");
+localeStrings.push("Сила магии");
 localeStrings.push("Опыт");
 localeStrings.push("Текущий опыт");//195
 localeStrings.push("Опыт, необходимый для следующего уровня");
