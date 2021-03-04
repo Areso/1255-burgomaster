@@ -5367,6 +5367,15 @@
 			document.getElementById("btnLeaveCity").style.visibility = "visible";
 			document.getElementById("hireHeroBlock").style.display = "none";
 			document.getElementById("heroUpkeep").style.display = "inline";
+			if (game.myhero.upkeepsrc === 0) {
+				if (document.getElementById("selectUpkeepSrc").selectedIndex !==0) {
+					document.getElementById("selectUpkeepSrc").selectedIndex = 0;
+				}
+			} else {
+				if (document.getElementById("selectUpkeepSrc").selectedIndex !==1) {
+					document.getElementById("selectUpkeepSrc").selectedIndex = 1;
+				}
+			}
 			if (game.myhero.class==="knight"){
 				game.myhero.class = 0;
 			}
