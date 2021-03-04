@@ -216,7 +216,7 @@ localeStrings.push("bonŝanco");
 localeStrings.push("superstiĉo");
 localeStrings.push("moralo"); // 185
 localeStrings.push("la heroo trovis iom da mono: ");
-localeStrings.push("placeholder");
+localeStrings.push("Inteligenteco");
 localeStrings.push("placeholder");
 localeStrings.push("Nivelo");
 localeStrings.push("Atako");//190

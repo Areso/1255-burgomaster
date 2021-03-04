@@ -216,7 +216,7 @@ localeStrings.push("chance");
 localeStrings.push("superstition");
 localeStrings.push("morale"); // 185
 localeStrings.push("le héros a trouvé de l'or: ");
-localeStrings.push("placeholder");
+localeStrings.push("Intelligence");
 localeStrings.push("placeholder");
 localeStrings.push("Niveau");
 localeStrings.push("Attaque");//190

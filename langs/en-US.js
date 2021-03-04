@@ -216,7 +216,7 @@ localeStrings.push("luck");
 localeStrings.push("superstition");
 localeStrings.push("morale");//185
 localeStrings.push("the hero found some money: ");
-localeStrings.push("placeholder");
+localeStrings.push("Intelligence");
 localeStrings.push("placeholder");
 localeStrings.push("Level");
 localeStrings.push("Attack");//190

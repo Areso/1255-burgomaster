@@ -216,7 +216,7 @@ localeStrings.push("удача");
 localeStrings.push("суеверность");
 localeStrings.push("мораль");//185
 localeStrings.push("герой нашел немного денег: ");
-localeStrings.push("placeholder");
+localeStrings.push("Интеллект");
 localeStrings.push("placeholder");
 localeStrings.push("Уровень");
 localeStrings.push("Атака");//190
