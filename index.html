@@ -3601,7 +3601,8 @@
 			var gold_was = game.gold;
 			//console.log("%c GOLD BEFORE UPDATE: ", "color: red", gold_was);
 			game.recordStats();
-			game.getNearestEventTime();
+			//game.getNearestEventTime();
+			//game.getReward();
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
@@ -3776,7 +3777,6 @@
 			}
 			//console.log("GOLD AFTER UPDATE: ", game.gold);
 			updateUI();
-			//game.getReward();
 		},
 		makeFestival : function() {
 			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
