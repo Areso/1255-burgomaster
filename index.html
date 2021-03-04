@@ -371,9 +371,9 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:80px">Fire</button>
+						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
 						<span id="treasuryGuard">0</span>
-						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:80px">Hire</button>
+						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
 						<!--<button id="fireGuard" onclick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
 						<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
 						<button id="hireGuard" onclick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
@@ -2017,13 +2017,8 @@
 				};
 			}
 		},
-		checkNewMap : function () {
-			//WIP
-			nonAccessible         = false;
-			//castle entrance 10
-			visitableElements     = [10];
+		populatePOIs : function (elemsToCheck) {
 			ci = 0;
-			pointsToCheck         = [];
 			for (i=0; i<config.sizeMapX; i++){
 				for (j=0; j<config.sizeMapX; j++){
 					ci = ci + 1; //ci is common iterator for objects
@@ -2037,25 +2032,32 @@
 				}
 			}
 			console.log(pointsToCheck);
+			return pointsToCheck;
+		},
+		checkNewMap : function () {
+			//WIP
+			nonAccessible         = false;
+			//castle entrance 10
+			visitableElements     = [10];
+			pointsToCheck         = [];
+			pointsToCheck = game.populatePOIs(visitableElements);
 			pfmap   = game.prepareMap();
-			wavemap = game.genWaveMap();
-			track   = game.genTrack();
-			console.log("track is");
-			console.log(track);
+			wavemap = game.genWaveMap(pfmap, pointsToCheck);
+			//track   = game.genTrack();
 			return true;
 		},
-		genWaveMap : function () {
+		genWaveMap : function (map, POIs) {
 			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
-			pathMap          = [];
+			waveMap          = [];
 			for (i=0;i<config.sizeMapX;i++) {
-				pathMap.push([]);
+				waveMap.push([]);
 			}
 			for (i = 0; i < config.sizeMapX; i++) {
 				for (j = 0; j < config.sizeMapY; j++) {
-					pathMap[i][j]=0;
+					waveMap[i][j]=0;
 				}
 			}
-			pathMap[game.heroX][game.heroY]  =  1;
+			waveMap[game.heroX][game.heroY]  =  1;
 			node_list = [];
 			node_list.push([[game.heroX],[game.heroY]])
 			target = [];
@@ -2066,7 +2068,7 @@
 			for (node of node_list){
 				//console.log("node is ");
 				//console.log(node);
-				score = pathMap[node[0]][node[1]]
+				score = waveMap[node[0]][node[1]]
 				//console.log("score is "+score);
 				for (neighbor_offset of neighbor_offsets){
 					//console.log("run over neighbor offsets");
@@ -2087,13 +2089,13 @@
 						//console.log("travelable - we could move there " + neighbor_x + ";" + neighbor_y);
 						if (neighbor_x == target[0] && neighbor_y == target[1]) {
 							console.log("we found the target!");
-							pathMap[neighbor_x][neighbor_y] = score*1 + 1;
+							waveMap[neighbor_x][neighbor_y] = score*1 + 1;
 							continue
 						} else {
-							if (pathMap[neighbor_x][neighbor_y] == 0){
+							if (waveMap[neighbor_x][neighbor_y] == 0){
 								//console.log("can move here "+neighbor_x+";"+neighbor_y);
 								node_list.push([neighbor_x, neighbor_y]);
-								pathMap[neighbor_x][neighbor_y] = score*1 + 1;
+								waveMap[neighbor_x][neighbor_y] = score*1 + 1;
 								continue
 							} else {
 								//console.log("we already have been here " + neighbor_x + ";" + neighbor_y);
@@ -2103,17 +2105,17 @@
 					}
 				}
 			}
-			console.log("---the pathMap----");
-			console.log(pathMap);
+			console.log("---the waveMap----");
+			console.log(waveMap);
 			document.getElementById("outTable").innerHTML="";
 			for (j = 0; j < config.sizeMapY; j++) {
 				for (i = 0; i < config.sizeMapX; i++) {
 					
 					//console.log("target coord is "+target[0]+" "+target[1]);
-					if (pathMap[i][j] < 10) {
-						prVal = "0"+pathMap[i][j]
+					if (waveMap[i][j] < 10) {
+						prVal = "0"+waveMap[i][j]
 					} else {
-						prVal = pathMap[i][j]
+						prVal = waveMap[i][j]
 					}
 					if (i===target[0] && j===target[1]) {
 						prVal = "<b>"+prVal+"</b>";
@@ -2123,7 +2125,7 @@
 				}
 				document.getElementById("outTable").innerHTML+="</br>";
 			}
-			return pathMap;
+			return waveMap;
 		},
 		genTrack : function () {
 			target[0] = game.blackmarketLoc[0]
@@ -3774,7 +3776,7 @@
 			}
 			//console.log("GOLD AFTER UPDATE: ", game.gold);
 			updateUI();
-			game.getReward();
+			//game.getReward();
 		},
 		makeFestival : function() {
 			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
@@ -4028,27 +4030,27 @@
 					}
 					game.pop          = game.pop - 1;
 					getTypeOfCitizen  = Math.floor(Math.random()*100+1,0);
-					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 70) {
-						wealthShare     = 1/100*1;
-						sizeOfClass     = (70-1)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 50) {
+						wealthShare     = 1/100*10;
+						shareOfClass    = 50/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					if (getTypeOfCitizen >= 70 && getTypeOfCitizen < 90) {
+					if (getTypeOfCitizen >= 50 && getTypeOfCitizen < 80) {
 						wealthShare     = 1/100*20;
-						sizeOfClass     = (90-20)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						shareOfClass    = 30/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					if (getTypeOfCitizen >= 90 && getTypeOfCitizen <= 99) {
+					if (getTypeOfCitizen >= 80 && getTypeOfCitizen <= 99) {
 						wealthShare     = 1/100*30;
-						sizeOfClass     = (99-20)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						shareOfClass    = 9/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
 					if (getTypeOfCitizen > 99 && getTypeOfCitizen <= 100) {
-						wealthShare     = 1/100*49;
-						sizeOfClass     = (100-99)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						wealthShare     = 1/100*40;
+						shareOfClass    = 1/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					moneyToSeize    = Math.floor(game.gold*wealthShare/sizeOfClassNums*game.pop/game.popLimit()/10,0);
+					moneyToSeize    = Math.floor(game.gold*wealthShare*game.pop/game.popLimit()/8,0)+1;
 					rnd             = Math.floor((Math.random() * 6) + 1);
 					reason          = localeStrings[24+rnd]
 					msg             = localeStrings[34].replace("%arg1", reason);
