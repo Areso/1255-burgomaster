@@ -2289,6 +2289,10 @@
 			openTab(null, 'Explore');
 			updateUI();
 			composite_gm();
+			if (!game.tips.includes("adventure_map")){
+				game.tips.push("adventure_map");
+				showModal(0, '', getAck, locObj.advmap.txt, locObj.okay.txt, '');
+			}
 		},
 		cityEnter : function () {
 			if (game.heroExists()===true && game.myhero.status === 2) {
