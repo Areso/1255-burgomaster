@@ -407,3 +407,8 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+locObj = {};
+//locObj.welcome2 = {"txt":"", "loc":""}
+locObj.welcome0 = {"txt":"Saluton ludanto en ĉi tiu pliiga ludo!", "loc":"Once game initted, those strings are put to the gamelog"};
+locObj.welcome1 = {"txt":"Via tasko estas simpla - administru la urbon kiel urbestro de la urbo!", "loc":"same"};
+locObj.welcome2 = {"txt":"Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon", "loc":"same"};

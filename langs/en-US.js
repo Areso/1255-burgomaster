@@ -407,4 +407,11 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+locObj = {};
+//locObj.welcome2 = {"txt":"", "loc":""}
+locObj.welcome0 = {"txt":"Hello player in this incremental game!", "loc":"Once game initted, those strings are put to the gamelog"};
+locObj.welcome1 = {"txt":"Your task is simple - manage the city as mayor of the city!", "loc":"same"};
+locObj.welcome2 = {"txt":"Citizen will pay taxes each season (30 secs) and population will grow each season", "loc":"same"};
+
+
 

@@ -1471,6 +1471,7 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		tips: [],
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -4769,9 +4770,14 @@
 		});
 	}
 	function welcomeMsg(){
+		/*
 		postEventLog(localeStrings[0]);
 		postEventLog(localeStrings[1]);
 		postEventLog(localeStrings[2]);
+		*/
+		postEventLog(locObj.welcome0.txt);
+		postEventLog(locObj.welcome1.txt);
+		postEventLog(locObj.welcome2.txt);
 	}
 	function postEventLog(msgEventLog, styling) {
         if (typeof variable !== 'undefined') {
