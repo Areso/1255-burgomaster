@@ -407,3 +407,10 @@ localeStrings.push("У вас нет войск в отряде героя");
 localeStrings.push("сержанты(%arg1)"); // 375
 localeStrings.push("туркополы(%arg1)");
 localeStrings.push("рыцари(%arg1)");
+locObj = {}
+//locObj.welcome2 = {"txt":"", "loc":""};
+locObj.welcome1 = {"txt":"Приветствую вас!", "loc":"Кладём в игровой лог при инициализации игры"};
+locObj.welcome2 = {"txt":"Ваша задача проста - вам нужно управлять городом", "loc":"там же"};
+locObj.welcome3 = {"txt":"Горожане будут платить налоги и размножаться каждый сезон (30 секунд)", "loc":"там же"};
+locObj.okay = {"txt":"Хорошо", "loc":"В диалоговых окнах ознакомления"};
+locObj.advmap = {"txt":"Для движения героя, используй клавиши-стрелки\nДля поддержки сенсорного экрана, включи Мобильный UI в настройках", "loc":"when first visiting adventure map"};

@@ -407,3 +407,10 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+locObj = {};
+//locObj.welcome2 = {"txt":"", "loc":""};
+locObj.welcome0 = {"txt":"Bonjour nouveau joueur et bienvenue dans mon jeux", "loc":"Once game initted, those strings are put to the gamelog"};
+locObj.welcome1 = {"txt":"Ta mission est simple - gérer cette cité en tant que maire.", "loc":"same"};
+locObj.welcome2 = {"txt":"Les citoyens payent des impôts chaque saison (30 sec.) et la population grandit chaque saison", "loc":"same"};
+locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
+locObj.advmap = {"txt":"Pour déplacer votre héros, utilisez les boutons fléchés.\nSi vous jouez avec l'entrée de capteur, veuillez activer l'interface utilisateur mobile dans les paramètres", "loc":"when first visiting adventure map"};
