@@ -1,7 +1,7 @@
 var localeStrings = [];
-localeStrings.push("Saluton ludanto en ĉi tiu pliiga ludo!");
-localeStrings.push("Via tasko estas simpla - administru la urbon kiel urbestro de la urbo!");
-localeStrings.push("Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("konstruu aŭ plibonigu vian trezorejon");
 localeStrings.push("kvanto da mono pliiĝas");
 localeStrings.push("kvanto da mono malpliiĝas");//5
@@ -54,7 +54,7 @@ localeStrings.push("Kiel ludi");
 localeStrings.push("Discord");
 localeStrings.push("Estingi la fajron");
 localeStrings.push("Ekzekuti civitanon");
-localeStrings.push("merdo okazas: la pesto mortigis %arg1 civitanojn");//55
+localeStrings.push("placeholder");//55
 localeStrings.push("Ĉu vi volas fari festivalon?\nKostus al vi %arg1 oro!\n");
 localeStrings.push("Festivalo estis farita antaŭ ne tre longa tempo.\nLa efekto de festivalo malfortiĝus.\n");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
@@ -414,3 +414,6 @@ locObj.welcome1 = {"txt":"Via tasko estas simpla - administru la urbon kiel urbe
 locObj.welcome2 = {"txt":"Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 locObj.advmap = {"txt":"Por movi vian heroon uzu sagobutonojn.\nSe vi ludas per sensila eniro, bonvolu ŝalti Mobile UI en Preferoj", "loc":"when first visiting adventure map"};
+locObj.plague_turk = {"txt":"Rande: via turkopolo ekvidis pestulon kaj pafis lin. La kadavro estis bruligita poste ", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
+locObj.plague_army = {"txt":"merdo okazas: la pesta eksplodo estis ĉesigita de via garnizono, sed mortigis %arg1 el viaj garnizonaj trupoj", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
+locObj.plague = {"txt":"merdo okazas: la pesto mortigis %arg1 civitanojn", "loc":"default plague case + case where army failed to prevent outbreak"};
