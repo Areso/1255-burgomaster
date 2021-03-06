@@ -1,7 +1,7 @@
 var localeStrings = [];
-localeStrings.push("Seid gegrüßt, edler Spieler.");
-localeStrings.push("Eure Aufgabe ist einfach - verwaltet die Stadt als ihr Bürgermeister.");
-localeStrings.push("Bürger zahlen jede Saison (30 Sekunden) Steuern. Außerdem wird die Bevölkerung jede Saison wachsen.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Baut oder verbessert Eure Schatzkammer.");
 localeStrings.push("Euer Reichtum vergrößerte sich.");
 localeStrings.push("Euer Reichtum verringerte sich.");//5
@@ -54,7 +54,7 @@ localeStrings.push("Anleitung");
 localeStrings.push("Discord");
 localeStrings.push("Löscht das feuer");
 localeStrings.push("Bürger hinrichten");
-localeStrings.push("Dumm gelaufen: Die Pest streckte %arg1 Bürger nieder!");//55
+localeStrings.push("placeholder");//55
 localeStrings.push("Möchten Ihr ein Festival veranstalten?\nDas würde Sie %arg1 Gold kosten!\n");
 localeStrings.push("Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
@@ -414,3 +414,6 @@ locObj.welcome1 = {"txt":"Eure Aufgabe ist einfach - verwaltet die Stadt als ihr
 locObj.welcome2 = {"txt":"Bürger zahlen jede Saison (30 Sekunden) Steuern. Außerdem wird die Bevölkerung jede Saison wachsen.", "loc":"same"};
 locObj.okay = {"txt":"Gut", "loc":"Mostly used in information dialogues"}
 locObj.advmap = {"txt":"Um deinen Helden zu bewegen, benutze die Pfeiltasten\nWenn Sie mit Sensoreingaben spielen, aktivieren Sie bitte die mobile Benutzeroberfläche in den Einstellungen", "loc":"when first visiting adventure map"};
+locObj.plague_turk = {"txt":"Am Rande: Ihr Turkopol hat eine Pestperson entdeckt und auf sie geschossen. Die Leiche wurde danach verbrannt", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
+locObj.plague_army = {"txt":"Dumm gelaufen: Der Pestausbruch wurde von Ihrer Garnison gestoppt, aber %arg1 Ihrer Garnisonstruppen getötet", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
+locObj.plague = {"txt":"Dumm gelaufen: Die Pest streckte %arg1 Bürger nieder!", "loc":"default plague case + case where army failed to prevent outbreak"};

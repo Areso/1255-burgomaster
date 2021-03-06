@@ -1,7 +1,7 @@
 var localeStrings = [];
-localeStrings.push("Hello player in this incremental game!");
-localeStrings.push("Your task is simple - manage the city as mayor of the city!");
-localeStrings.push("Citizen will pay taxes each season (30 secs) and population will grow each season");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("build or upgrade your Treasury");
 localeStrings.push("amount of money is increased");
 localeStrings.push("amount of money is decreased");//5
@@ -54,7 +54,7 @@ localeStrings.push("How To Play");
 localeStrings.push("Discord");
 localeStrings.push("Put out the fire");
 localeStrings.push("Execute somebody");
-localeStrings.push("shit happens: the plague killed %arg1 citizens");//55
+localeStrings.push("placeholder");//55
 localeStrings.push("Do you want to place a festival?\nIt would cost to you %arg1 gold!\n");
 localeStrings.push("Festival was placed not so long ago.\nThe effect from festival would be weaken.\n");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
@@ -414,3 +414,6 @@ locObj.welcome1 = {"txt":"Your task is simple - manage the city as mayor of the 
 locObj.welcome2 = {"txt":"Citizen will pay taxes each season (30 secs) and population will grow each season", "loc":"same"};
 locObj.okay = {"txt":"Okay", "loc":"Mostly used in information dialogues"}
 locObj.advmap = {"txt":"To move your hero use arrow keys\nIf you play with sensor input, please turn on Mobile UI in Settings", "loc":"when first visiting adventure map"};
+locObj.plague_turk = {"txt":"On the edge: your turkopol spotted a plague person and shot him. The corpse was burned afterwards", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
+locObj.plague_army = {"txt":"shit happens: the plague outbreak was stopped by your garrison, but killed %arg1 of your garrisoned troops", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
+locObj.plague = {"txt":"shit happens: the plague killed %arg1 citizens", "loc":"default plague case + case where army failed to prevent outbreak"};

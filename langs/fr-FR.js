@@ -1,7 +1,7 @@
 var localeStrings = [];
-localeStrings.push("Bonjour nouveau joueur et bienvenue dans mon jeux");
-localeStrings.push("Ta mission est simple - gérer cette cité en tant que maire.");
-localeStrings.push("Les citoyens payent des impôts chaque saison (30 sec.) et la population grandit chaque saison");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Construisez ou améliorez votre Trésorerie.");
 localeStrings.push("Votre richesse augmente.");
 localeStrings.push("Votre richesse diminue.");//5
@@ -54,7 +54,7 @@ localeStrings.push("Comment jouer");
 localeStrings.push("Discord");
 localeStrings.push("Eteindre le feu");
 localeStrings.push("Exécuter quelqu'un");
-localeStrings.push("Un événement fâcheux vient de se produire : la peste a tué %arg1 citoyens.");//55
+localeStrings.push("placeholder");//55
 localeStrings.push("Voulez-vous organiser un festival?\nCela vous coûterait %arg1 or.\n");
 localeStrings.push("Un Festival a été organisé il n'y a pas si longtemps.\nL'effet du festival serait affaibli.\n");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
@@ -414,3 +414,6 @@ locObj.welcome1 = {"txt":"Ta mission est simple - gérer cette cité en tant que
 locObj.welcome2 = {"txt":"Les citoyens payent des impôts chaque saison (30 sec.) et la population grandit chaque saison", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 locObj.advmap = {"txt":"Pour déplacer votre héros, utilisez les boutons fléchés.\nSi vous jouez avec l'entrée de capteur, veuillez activer l'interface utilisateur mobile dans les paramètres", "loc":"when first visiting adventure map"};
+locObj.plague_turk = {"txt":"Sur le bord: votre turkopol a repéré une personne peste et lui a tiré dessus. Le cadavre a été brûlé après", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
+locObj.plague_army = {"txt":"Un événement fâcheux vient de se produire : l'épidémie de peste a été stoppée par votre garnison, mais a tué %arg1 de vos troupes en garnison", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
+locObj.plague = {"txt":"Un événement fâcheux vient de se produire : la peste a tué %arg1 citoyens.", "loc":"default plague case + case where army failed to prevent outbreak"};
