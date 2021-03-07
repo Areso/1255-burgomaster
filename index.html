@@ -2008,12 +2008,14 @@
 						}
 					}
 				}
-				if (game.checkNewMap()) {
+				qc = game.checkNewMap()
+				if (qc) {
 					//QC is passed!
 					game.mapCreated = 1;
 					composite_gm();
 				}
 				else {
+					console.log("qc of newly generated map failed. regen the map");
 					genMap(0);
 				};
 			}
@@ -2028,7 +2030,7 @@
 					//that myMapObjects is NOT in the list of nonVisitableElements
 					if (inArray(visitableElements, game.myMapObjects[i][j])) {
 						console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
-						pointsToCheck.push({"coord":[i,j]});
+						pointsToCheck.push([i,j]);
 					}
 				}
 			}
@@ -2037,17 +2039,27 @@
 		},
 		checkNewMap : function () {
 			//WIP
-			nonAccessible         = false;
-			//castle entrance 10
-			visitableElements     = [10];
+			//blackmarket 4, castle entrance 10
+			assertions = [];
+			visitableElements     = [4];
 			pointsToCheck         = [];
 			pointsToCheck = game.populatePOIs(visitableElements);
 			pfmap   = game.prepareMap();
-			wavemap = game.genWaveMap(pfmap, pointsToCheck);
-			//track   = game.genTrack();
-			return true;
+			lenOfPOIs = pointsToCheck.length;
+			for (i=0;i<lenOfPOIs;i++){
+				console.log(pointsToCheck[i])
+				assertions.push(game.genWaveMap(pfmap, pointsToCheck[i]));
+				//wavemap = game.genWaveMap(pfmap, pointsToCheck[i]);
+				//track   = game.genTrack();
+			}
+			if (!assertions.includes("failed")){
+				return true;
+			} else {
+				return false;
+			}
 		},
-		genWaveMap : function (map, POIs) {
+		genWaveMap : function (map, POI) {
+			qg_passed = "failed";
 			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
 			waveMap          = [];
 			for (i=0;i<config.sizeMapX;i++) {
@@ -2062,8 +2074,10 @@
 			node_list = [];
 			node_list.push([[game.heroX],[game.heroY]])
 			target = [];
-			target[0] = game.blackmarketLoc[0]
-			target[1] = game.blackmarketLoc[1]
+			target[0] = POI[0]
+			target[1] = POI[1]
+			console.log("new target is ");
+			console.log(target);
 			console.log("node list");
 			console.log(node_list+"lenght of the node_list is "+node_list.length);
 			for (node of node_list){
@@ -2090,6 +2104,7 @@
 						//console.log("travelable - we could move there " + neighbor_x + ";" + neighbor_y);
 						if (neighbor_x == target[0] && neighbor_y == target[1]) {
 							console.log("we found the target!");
+							qg_passed = "passed";
 							waveMap[neighbor_x][neighbor_y] = score*1 + 1;
 							continue
 						} else {
@@ -2126,7 +2141,8 @@
 				}
 				document.getElementById("outTable").innerHTML+="</br>";
 			}
-			return waveMap;
+			//return waveMap;
+			return qg_passed;
 		},
 		genTrack : function () {
 			target[0] = game.blackmarketLoc[0]
