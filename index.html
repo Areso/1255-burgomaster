@@ -929,6 +929,9 @@
 	var archeryY = 90;
 	var archeryW = 80;
 	var archeryH = 80;
+	var chest_img   = loadImage('resources/chest.png', composite);
+	var chest_imgW = 48;
+	var chest_imgH = 48;
 	buildingsInTownB=[];
 	buildingsInTownX=[];
 	buildingsInTownY=[];
@@ -1072,6 +1075,14 @@
 			document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
 			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
 		}
+		if (game.chestCity === 1) {
+			console.log("try to draw a chest of gold");
+			var chest_imgX = Math.floor(Math.random() * (800-chest_imgW*2)+chest_imgW);
+			var chest_imgY = Math.floor(Math.random() * (480-chest_imgH*2)+chest_imgH);
+			console.log("locX is "+chest_imgX+" and locY is "+chest_imgY);
+			ctx.drawImage(chest_img, chest_imgX, chest_imgY);
+			pushBuilding('chest', chest_imgX, chest_imgY, chest_imgW, chest_imgH);
+		}
 	}
 	function loadImage(src, onload) {
 		var img = new Image();
@@ -1201,6 +1212,10 @@
 				var Audio = 'archeryAudio'+arnd;
 				document.getElementById(Audio).play();
 			}
+		}
+		if (buildingName==='chest') {
+			showAlert = false;
+			game.chestCityOpen();
 		}
 		if (showAlert === true &&  alertMsg !=="" ) {
 			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
@@ -1472,6 +1487,7 @@
 		alias: "",
 		UID: getUID(),
 		tips: [],
+		chestCity: 0,
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -2038,7 +2054,6 @@
 			return pointsToCheck;
 		},
 		checkNewMap : function () {
-			//WIP
 			//blackmarket 4, castle entrance 10
 			assertions = [];
 			visitableElements     = [4];
@@ -4204,6 +4219,28 @@
 			}
 			updateResources();
 		},
+		chestCityAppear : function () {
+			game.chestCity = 1;
+			chest_timer = setTimeout(game.chestCityDisappear, config.chestCity_timeout);
+			composite();
+		},
+		chestCityDisappear : function () {
+			game.chestCity = 0;
+			removeIndex = buildingsInTownB.indexOf('chest');
+			removeFromArrays(removeIndex);
+			composite();
+		},
+		chestCityOpen : function () {
+			msg = locObj.city_chest_gold.txt.replace("%arg1", config.chestCity);
+			postEventLog(msg);
+			var gold_diff = game.addMoneyToTreasury(config.chestCity);
+			if (gold_diff!==config.chestCity){
+				postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+			}
+			updateResources();
+			//REMOVE THE CHEST
+			game.chestCityDisappear();
+		},
 		startPlague : function () {
 			rnd = Math.floor((Math.random() * 15) + 1);
 			if (rnd === 1) {
@@ -4351,6 +4388,8 @@
 		knightHiring:40,
 		knightUpkeep:10,
 		chestMoney:25,
+		chestCity_timeout:15000,//ms
+		chestCity:50,
 	};
 
 	//init service variables
@@ -5798,7 +5837,7 @@
 				game.startPlague();
 				break;
 			case 4:
-				//
+				game.chestAppear();
 				break;
 			case 5:
 				//

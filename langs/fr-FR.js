@@ -417,3 +417,4 @@ locObj.advmap = {"txt":"Pour déplacer votre héros, utilisez les boutons fléch
 locObj.plague_turk = {"txt":"Sur le bord: votre turkopol a repéré une personne peste et lui a tiré dessus. Le cadavre a été brûlé après", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
 locObj.plague_army = {"txt":"Un événement fâcheux vient de se produire : l'épidémie de peste a été stoppée par votre garnison, mais a tué %arg1 de vos troupes en garnison", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
 locObj.plague = {"txt":"Un événement fâcheux vient de se produire : la peste a tué %arg1 citoyens.", "loc":"default plague case + case where army failed to prevent outbreak"};
+locObj.city_chest_gold = {"txt":"Vous avez trouvé %arg1 pièces d'or dans un coffre! ", "loc":"Random event. Opened a short-living chest in city screen"};

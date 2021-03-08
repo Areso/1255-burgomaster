@@ -417,3 +417,4 @@ locObj.advmap = {"txt":"To move your hero use arrow keys\nIf you play with senso
 locObj.plague_turk = {"txt":"On the edge: your turkopol spotted a plague person and shot him. The corpse was burned afterwards", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
 locObj.plague_army = {"txt":"shit happens: the plague outbreak was stopped by your garrison, but killed %arg1 of your garrisoned troops", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
 locObj.plague = {"txt":"shit happens: the plague killed %arg1 citizens", "loc":"default plague case + case where army failed to prevent outbreak"};
+locObj.city_chest_gold = {"txt":"You found %arg1 gold in a chest!", "loc":"Random event. Opened a short-living chest in city screen"};
