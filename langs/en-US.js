@@ -418,3 +418,6 @@ locObj.plague_turk = {"txt":"On the edge: your turkopol spotted a plague person 
 locObj.plague_army = {"txt":"shit happens: the plague outbreak was stopped by your garrison, but killed %arg1 of your garrisoned troops", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
 locObj.plague = {"txt":"shit happens: the plague killed %arg1 citizens", "loc":"default plague case + case where army failed to prevent outbreak"};
 locObj.city_chest_gold = {"txt":"You found %arg1 gold in a chest!", "loc":"Random event. Opened a short-living chest in city screen"};
+locObj.blackmarket_dstr = {"txt":"A tall, fat-belly green goblin, who named itself Elbenkonig,\n  offered you a variety of magic artifacts.\nYou, as a true Christian, a brother of Teutonic order, were offended by it.\nThe first your intention was to kill the goblin and to burn the market.\nOn the other hand, magical artifacts could prove helpful in this world.\nWhat will you do?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
+locObj.blackmarket_dstr_brn = {"txt":"Kill the goblin and burn the blackmarket!", "loc":"Destroying the blackmarket"};
+locObj.blackmarket_dstr_kp = {"txt":"Start trade", "loc":"Keeping the blackmarket"};

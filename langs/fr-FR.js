@@ -418,3 +418,7 @@ locObj.plague_turk = {"txt":"Sur le bord: votre turkopol a repéré une personne
 locObj.plague_army = {"txt":"Un événement fâcheux vient de se produire : l'épidémie de peste a été stoppée par votre garnison, mais a tué %arg1 de vos troupes en garnison", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
 locObj.plague = {"txt":"Un événement fâcheux vient de se produire : la peste a tué %arg1 citoyens.", "loc":"default plague case + case where army failed to prevent outbreak"};
 locObj.city_chest_gold = {"txt":"Vous avez trouvé %arg1 pièces d'or dans un coffre! ", "loc":"Random event. Opened a short-living chest in city screen"};
+locObj.blackmarket_dstr = {"txt":"Un grand gobelin vert au gros ventre, qui s'appelait Elbenkonig,\n  vous a offert une variété d'artefacts magiques.\nVous, en tant que vrai chrétien, frère de l'ordre teutonique, vous en avez été offensé.\nVotre première intention était de tuer le gobelin et de brûler le marché.\nD'un autre côté, des artefacts magiques pourraient s'avérer utiles dans ce monde.\nQue ferez-vous?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
+locObj.blackmarket_dstr_brn = {"txt":"Tuez le gobelin et brûlez le marché noir!", "loc":"Destroying the blackmarket"};
+locObj.blackmarket_dstr_kp = {"txt":"Commencer le commerce", "loc":"Keeping the blackmarket"};
+

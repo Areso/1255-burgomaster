@@ -418,3 +418,7 @@ locObj.plague_turk = {"txt":"Rande: via turkopolo ekvidis pestulon kaj pafis lin
 locObj.plague_army = {"txt":"merdo okazas: la pesta eksplodo estis ĉesigita de via garnizono, sed mortigis %arg1 el viaj garnizonaj trupoj", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
 locObj.plague = {"txt":"merdo okazas: la pesto mortigis %arg1 civitanojn", "loc":"default plague case + case where army failed to prevent outbreak"};
 locObj.city_chest_gold = {"txt":"Vi trovis %arg1 oron en kesto! !", "loc":"Random event. Opened a short-living chest in city screen"};
+locObj.blackmarket_dstr = {"txt":"Alta, grasventra verda koboldo, kiu nomis sin Elbenkonig,\n  ofertis al vi diversajn magiajn artefaktojn.\nVi, kiel vera kristano, frato de teŭtona ordo, ofendiĝis pro ĝi.\nLa unua via intenco estis mortigi la koboldon kaj bruligi la merkaton.\nAliflanke, magiaj artefaktoj povus montriĝi utilaj en ĉi tiu mondo.\nKion vi faros?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
+locObj.blackmarket_dstr_brn = {"txt":"Mortigu la koboldon kaj forbruligu la nigran merkaton!", "loc":"Destroying the blackmarket"};
+locObj.blackmarket_dstr_kp = {"txt":"Komencu komercadon ", "loc":"Keeping the blackmarket"};
+
