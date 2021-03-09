@@ -1235,6 +1235,7 @@
 	var tile_water      = loadImage('tiles/water.png');
 	var castle_tile     = loadImage('resources/castle_big.png');
 	var blackmarket_tile= loadImage('resources/black_market.png');
+	var bmarket_burned_tile= loadImage('resources/black_market_burned.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var chest_tile      = loadImage('resources/chest.png');
 	var pumpkin_tile    = loadImage('resources/pumpkin.png');
@@ -1299,6 +1300,10 @@
 				if (game.myMapObjects[i+camXL][j+camYL]===4) {
 					//console.log("draw blackmarket");
 					ctx_map.drawImage(blackmarket_tile, i * 48, j * 48);
+				}
+				if (game.myMapObjects[i+camXL][j+camYL]===41) {
+					//console.log("draw burned blackmarket");
+					ctx_map.drawImage(bmarket_burned_tile, i * 48, j * 48);
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===12) {
 					//console.log("draw castle");
@@ -1926,6 +1931,10 @@
 			}
 			function genMap(priceOfMapGen){
 				console.log("new map is generated");
+				//restore the blackmarket
+				if (game.tips.includes("blackmarket")){
+					game.tips.pop("blackmarket");
+				}
 				game.genBlackMarketGoods();
 				game.gold = game.gold - priceOfMapGen;
 				game.myMapLand=[];
@@ -2247,6 +2256,9 @@
 				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===4){
 					return false;//we can enter the blackmarket!
 				}
+				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===41){
+					return false;//we can step over the burned blackmarket!
+				}
 				return true;
 			}
 		},
@@ -2275,13 +2287,28 @@
 						game.cityEnter();
 					}
 					if (game.myMapObjects[game.heroX][game.heroY]===4) {
-						updateUI();
-						openTab(null, 'tabBlackmarket');
+						if (!game.tips.includes("blackmarket")){
+							game.tips.push("blackmarket");
+							showModal(1, '', game.blackmarketCallback, locObj.blackmarket_dstr.txt, locObj.blackmarket_dstr_brn.txt, locObj.blackmarket_dstr_kp.txt);
+						} else {
+							updateUI();
+							openTab(null, 'tabBlackmarket');
+						}
 					}
 					composite_gm();
 					allowMvt = 0;
 					setTimeout(cooldownMvt, 500);
 				}
+			}
+		},
+		blackmarketCallback : function () {
+			if (answer === 2) {
+				//BURN THE MARKET DOWN
+				game.myMapObjects[game.heroX][game.heroY]=41;//blackmarket burned down
+			}
+			if (answer === 3) {
+				updateUI();
+				openTab(null, 'tabBlackmarket');
 			}
 		},
 		cityLeave : function () {
