@@ -1,7 +1,7 @@
 var localeStrings = [];
-localeStrings.push("Приветствую вас!");
-localeStrings.push("Ваша задача проста - вам нужно управлять городом");
-localeStrings.push("Горожане будут платить налоги и размножаться каждый сезон (30 секунд)");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("постройте или улучшите вашу Сокровищницу");
 localeStrings.push("казна пополняется, милорд!");
 localeStrings.push("казна пустеет, милорд");//5
@@ -54,7 +54,7 @@ localeStrings.push("Как играть");
 localeStrings.push("Discord");
 localeStrings.push("Потушить огонь");
 localeStrings.push("Казнить человека");
-localeStrings.push("фигня случается: чума унесла жизни %arg1 жителей");//55
+localeStrings.push("placeholder");//55
 localeStrings.push("Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n");
 localeStrings.push("Фестиваль был проведен не так давно.\nЭффект от фестиваля будет ослаблен.\n");
 localeStrings.push(["Взят ивентовый предмет!","Ваш вклад записан!"]);
@@ -116,7 +116,7 @@ localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 з
 localeStrings.push("Построить Таверну<br/>ур. %arg1<br/>%arg2 золота");
 localeStrings.push("Построить Конюшню<br/>ур. %arg1<br/>%arg2 золота");//115
 localeStrings.push("Построить Стрельбище<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("placeholder");
+localeStrings.push("Построить Замок<br/>ур. %arg1<br/>%arg2 золота");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -216,13 +216,13 @@ localeStrings.push("удача");
 localeStrings.push("суеверность");
 localeStrings.push("мораль");//185
 localeStrings.push("герой нашел немного денег: ");
-localeStrings.push("placeholder");
+localeStrings.push("Интеллект");
 localeStrings.push("placeholder");
 localeStrings.push("Уровень");
 localeStrings.push("Атака");//190
 localeStrings.push("Защита");
-localeStrings.push("Сила магии");
 localeStrings.push("Мана");
+localeStrings.push("Сила магии");
 localeStrings.push("Опыт");
 localeStrings.push("Текущий опыт");//195
 localeStrings.push("Опыт, необходимый для следующего уровня");
@@ -407,3 +407,17 @@ localeStrings.push("У вас нет войск в отряде героя");
 localeStrings.push("сержанты(%arg1)"); // 375
 localeStrings.push("туркополы(%arg1)");
 localeStrings.push("рыцари(%arg1)");
+locObj = {}
+//locObj.welcome2 = {"txt":"", "loc":""};
+locObj.welcome0 = {"txt":"Приветствую вас!", "loc":"Кладём в игровой лог при инициализации игры"};
+locObj.welcome1 = {"txt":"Ваша задача проста - вам нужно управлять городом", "loc":"там же"};
+locObj.welcome2 = {"txt":"Горожане будут платить налоги и размножаться каждый сезон (30 секунд)", "loc":"там же"};
+locObj.okay = {"txt":"Хорошо", "loc":"В диалоговых окнах ознакомления"};
+locObj.advmap = {"txt":"Для движения героя, используй клавиши-стрелки\nДля поддержки сенсорного экрана, включи Мобильный UI в настройках", "loc":"когда впервые игрок посещает карту приключений"};
+locObj.plague_turk = {"txt":"на краю: один из лучников увидел чумного человека и пристрелил его. Тело чумного сожгли", "loc":"Случайное событие - чума. Туркопол предотвратил чуму"};
+locObj.plague_army = {"txt":"фигня случается: вспышка чумы была остановлена гарнизоном, но унесла жизни %arg1 солдат вашего гарнизона", "loc":"Случайное событие - чума. Остановлена гарнизоном с потерями в гарнизоне"};
+locObj.plague = {"txt":"фигня случается: чума унесла жизни %arg1 жителей", "loc":"Случайное событие - чума. Вариант по умолчанию + вариант, когда армия не справилась с чумой"};
+locObj.city_chest_gold = {"txt":"Вы нашли в %arg1 золота в сундуке!", "loc":"Случайное событие. Сундук. Открытие сундука на экране города"};
+locObj.blackmarket_dstr = {"txt":"Высокий толстопузый зеленокожий гоблин, назвавшийся Элвенконингом,\n  предложил вам разнообразные амагические артефакты.\nВы, как истинный христианин, брат Тевтоноского ордена, оскорбились.\nПервая мысль была убить нечисть и сжечь рынок.\nС другой стороны, магические артефакты могут пригодиться в этом мире.\nЧто вы сделаете?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
+locObj.blackmarket_dstr_brn = {"txt":"Убить гоблина и сжечь его рынок!", "loc":"Destroying the blackmarket"};
+locObj.blackmarket_dstr_kp = {"txt":"Начать торговлю", "loc":"Keeping the blackmarket"};

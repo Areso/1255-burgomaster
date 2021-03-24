@@ -2,6 +2,9 @@
 	<body>
 		<h1>1255 Burgomaster</h1><br>
 		<img src="https://img.shields.io/github/issues/Areso/1255-burgomaster"><img src="https://img.shields.io/github/issues-closed/Areso/1255-burgomaster"><img src="https://img.shields.io/github/commit-activity/m/Areso/1255-burgomaster?foo=bar"><img src="https://img.shields.io/discord/564554640755130409?label=Discord&logo=Discord">
+		<h2>Play the game</h2><br>
+		<a href="https://areso.github.io/1255-burgomaster">Play the game in web</a><br>
+		<a href="http://cosmodream.ga/1255-burgomaster">Play the game in web (reserve link)</a><br><br>
 		<h2>About the project</h2><br>
 		Hello there! My name is Gladyshev Anton, and I'm the author of the project. 
 		The homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a>. 
@@ -46,26 +49,25 @@
 		You can construct buildings, but upgrading existing ones will require each time more gold because this game is an Incremental game.<br>
 		As for now, constructing building do not require time, only resources.<br> 
 		Straight management, which means, you need place management by clicking here and there and you will get what you clicked.</br>
+		What game offers now:<br>
+		<ul>
+		<li>12 buildings to build of 9 types</li>
+		<li>maps to explore (HoMM3-like)</li>
+		<li>autocampaigns (Fallout Shelter-like)</li>
+		<li>a hero managemenet</li>
+		<li>troops managemenet</li>
+		<li>artifacts to collect</li>
+		<li>executing people</li>
+		<li>placing festivals</li>
+		<li>random events: stealings from the treasury, fires and plagues</li>
+		<li>time-limited events: Halloween</li>
+		<li>a record table</li>
+		</ul>
 		<div style="color:red">You will explore wild territories near your city.</div><br>
 		Regarding your choices, you could get a boost in taxes or birthrate, happiness and so on.<br>
 		The game could become to a Clicker game in case you build Gallows and like to execute you citizens.<br>
 		This game created and new features right now in development inspired by Travian, Townsmen, Stronghold and Stronghold Crusaders, HoMM (Heroes of Might and Magic), Lord of Realm, Anno series.<br> 
-		You can export and import save to transfer your progress between different browsers and PCs.<br>
-		For keeping you tuned, you will get a handful of unfortunate or, on the contrary, fortunate events:<br>
-		<ul> 
-		 <li>thieves will steal your gold,</li>
-		 <li><div style="color:red"><font color="red">aggressive neighbors will attack your city,</font></div></li>
-		 <li><div style="color:red"><font color="red">flood and drought will kill your crops,</font></div></li>
-		 <li><div style="color:red"><font color="red">mouses and rats will devastate your barns,</font></div></li>
-		 <li>fires will destroy your buildings,</li>
-		 <li>and I will add more events</li>
-		</ul>
-		<br>
-		Colors meaning: red - not yet implemented, but planned to implement<br>
-		All suggestion and bug reports could be made via chat (if enabled) or via <a href="https://github.com/Areso/js-html-mycity/issues">GitHub Issues</a></br>
-		<br>
-		1255 Rise of Teutonic (DLC) allows you to rank your officers according to the history facts<br> 
-		<br> 
+		You can export and import save to transfer your progress between different browsers and PCs.<br><br>
 		<h2>License</h2><br>
 		The source code is under GPLv3.<br>
 		ALL GRAPHIC AND SOUND ASSETS UNDER PROPRIETARY LICENSE.<br>

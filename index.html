@@ -128,9 +128,9 @@
 			border: thin solid black;
 			overflow:scroll;
 			/*
-            overflow-x: hidden;
-            overflow-y: scroll;
-            */
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
 		}
 		#lblEventLBDetails {
 			width: 795px;
@@ -138,9 +138,9 @@
 			border: thin solid black;
 			overflow:scroll;
 			/*
-            overflow-x: hidden;
-            overflow-y: scroll;
-            */
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
 		}
 		#htmlGame {
 			margin: auto;
@@ -151,9 +151,9 @@
 			border: thin solid black;
 			overflow:scroll;
 			/*
-            overflow-x: hidden;
-            overflow-y: scroll;
-            */
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
 		}
 
 		/*-- Some new styles --*/
@@ -163,18 +163,18 @@
 			height: 45px;
 		}
 
-        .btnArrow {
-            padding-left: 1px;
-            padding-right: 1px;
-        }
-        .lblHiringTroops {
-            font-size: 12px;
-        }
+		.btnArrow {
+			padding-left: 1px;
+			padding-right: 1px;
+		}
+		.lblHiringTroops {
+			font-size: 12px;
+		}
 
-        .btnDismiss {
-        	padding: 0 1px;
-        	height: 22px;
-        }
+		.btnDismiss {
+			padding: 0 1px;
+			height: 22px;
+		}
 
 	</style>
 	<script id="chatBroEmbedCode">
@@ -186,23 +186,6 @@
 </head>
 <body>
 <div id="htmlGame">
-		<script>
-			var url = window.location.pathname;
-			var filename = url.substring(url.lastIndexOf('/')+1);
-			if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
-				res_mod = "b";
-			}
-			else {
-				res_mod = "b";
-			}
-			//alert(res_mod);
-			/*
-			function reload_res(this) {
-			this.src=str.replace(\"_a\", res_mod);
-			alert(this.src);
-			}
-			*/
-		</script>
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
 			<!--<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>-->
@@ -388,9 +371,9 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:80px">Fire</button>
+						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
 						<span id="treasuryGuard">0</span>
-						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:80px">Hire</button>
+						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
 						<!--<button id="fireGuard" onclick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
 						<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
 						<button id="hireGuard" onclick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
@@ -437,7 +420,7 @@
 							<table border="1">
 								<tr>
 									<td class="building">
-										<div align="center">
+										<div id="defences_img" align="center">
 											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
@@ -663,29 +646,29 @@
 						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">⇓</button>
-
+						<br>
 						<button id="btnDismissGarrisonSergeant" class="btnDismiss" onclick="game.dismissGarrisonSergeant()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllGarrisonSergeants" class="btnDismiss" onclick="game.dismissAllGarrisonSergenats()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">⇓</button>
-
+						<br>
 						<button id="btnDismissGarrisonTurkopol" class="btnDismiss" onclick="game.dismissGarrisonTurkopol()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllGarrisonTurkopols" class="btnDismiss" onclick="game.dismissAllGarrisonTurkopols()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">⇓</button>
+						<br>
 						<button id="btnDismissGarrisonKnight" class="btnDismiss" onclick="game.dismissGarrisonKnight()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllGarrisonKnights" class="btnDismiss" onclick="game.dismissAllGarrisonKnights()" onmouseover="game.help(this)">XX</button>
 					</td>
 					<td>
 						<button class="btnArrow"  id="btnMoveAllTroopsToHero" onclick="game.moveAllTroopsToHero()" onmouseover="game.help(this)">⤋</button>
+						<br>
 						<button id="btnDismissAllGarrisonForces" class="btnDismiss" onclick="game.dismissAllGarrisonForces()" onmouseover="game.help(this)">XXX</button>
 					</td>
 				</tr>
@@ -698,31 +681,29 @@
 						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">⇑</button>
-
+						<br>
 						<button id="btnDismissHeroSergeant" class="btnDismiss" onclick="game.dismissHeroSergeant()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllHeroSergeants" class="btnDismiss" onclick="game.dismissAllHeroSergeants()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">⇑</button>
-
+						<br>
 						<button id="btnDismissHeroTurkopol" class="btnDismiss" onclick="game.dismissHeroTurkopol()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllHeroTurkopols" class="btnDismiss" onclick="game.dismissAllHeroTurkopols()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">⇑</button>
-
+						<br>
 						<button id="btnDismissHeroKnight" class="btnDismiss" onclick="game.dismissHeroKnight()" onmouseover="game.help(this)">X</button>
 						<button id="btnDismissAllHeroKnights" class="btnDismiss" onclick="game.dismissAllHeroKnights()" onmouseover="game.help(this)">XX</button>
-
 					</td>
 					<td>
 						<button class="btnArrow" id="btnMoveAllTroopsToGarrison" onclick="game.moveAllTroopsToGarrison()" onmouseover="game.help(this)">⤊</button>
+						<br>
 						<button id="btnDismissAllHeroForces" class="btnDismiss" onclick="game.dismissAllHeroForces()" onmouseover="game.help(this)">XXX</button>
 					</td>
 				</tr>
@@ -832,10 +813,34 @@
 				<source src="sounds/sfx/6_sound_of_stealing_gold_0.mp3" type="audio/mpeg">
 			</audio>
 		</div>
+		<div id="tabDebugging" class="tabcontent">
+			<div id="inpTable">
+			
+			</div>
+			<div id="outTable">
+			</div>
+		</div>
 		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 540px; left: 10px"></div>
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
+<script>
+			var url = window.location.pathname;
+			var filename = url.substring(url.lastIndexOf('/')+1);
+			if (filename == ""|| filename == "index.html" || filename =="index.htm" || filename =="index.php" || filename == "main2.html" || filename =="main.htm") {
+				res_mod = "b";
+			}
+			else {
+				res_mod = "b";
+			}
+			//alert(res_mod);
+			/*
+			function reload_res(this) {
+			this.src=str.replace(\"_a\", res_mod);
+			alert(this.src);
+			}
+			*/
+</script>
 <script>
 	//TOWN
 	canvas  = document.getElementById("canvas");
@@ -846,33 +851,33 @@
 	var img1    = loadImage('resources/background_a.png', composite);//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 	var img2    = loadImage('resources/sawmill_a.png', composite);
 	var sawmillX     = 670;
-	var sawmillY	 = 65;
+	var sawmillY     = 65;
 	var sawmillW     = 110;
 	var sawmillH     = 56;
 	var img3    = loadImage('resources/gold_a.png', composite);
 	var goldX        = 10;
-	var goldY   	 = 40;
+	var goldY        = 40;
 	var goldW        = 28;
 	var goldH        = 22;
 	var img4    = loadImage('resources/pop_a.png', composite);
 	var popX         = 10;
-	var popY   	     = 80;
+	var popY         = 80;
 	var popW         = 29;
 	var popH         = 22;
 	var img5    = loadImage('resources/home_as.png', composite);
 	var homeX        = 90;
-	var homeY   	 = 160;
+	var homeY        = 160;
 	var homeW        = 80;
 	var homeH        = 90;
 	var img5_1  = loadImage('resources/house_as.png', composite);
 	var houseX       = 90;
-	var houseY   	 = 160;
+	var houseY       = 160;
 	var houseW       = 113;
 	var houseH       = 125;
 	var img6_1  = loadImage('resources/wallsr_a.png', composite);
 	var img6_2  = loadImage('resources/wallsf_a.png', composite);
 	var wallX        = 330;
-	var wallY   	 = 400;
+	var wallY        = 400;
 	var wallW        = 110;
 	var wallH        = 65;
 	var img7    = loadImage('resources/castle_as.png', composite);
@@ -880,9 +885,14 @@
 	var castleY      = 160;
 	var castleW      = 180;
 	var castleH      = 160;
+	var img71   = loadImage('resources/castle_st.png', composite);
+	var castle_st_X  = 300;
+	var castle_st_Y  = 160;
+	var castle_st_W  = 195;
+	var castle_st_H  = 175;
 	var img8    = loadImage('resources/wishing_well_builded.png', composite);
 	var wellX        = 230;
-	var wellY      	 = 200;
+	var wellY        = 200;
 	var wellW        = 41;
 	var wellH        = 47;
 	var img9    = loadImage('resources/treasury_as.png', composite);
@@ -892,7 +902,7 @@
 	var treasuryH    = 120;
 	var img10   = loadImage('resources/gallows.png', composite);
 	var gallowsX     = 485;
-	var gallowsY   	 = 270;
+	var gallowsY     = 270;
 	var gallowsW     = 50;
 	var gallowsH     = 75;
 	var img11   = loadImage('resources/fountain.png', composite);
@@ -919,12 +929,15 @@
 	var archeryY = 90;
 	var archeryW = 80;
 	var archeryH = 80;
+	var chest_img   = loadImage('resources/chest.png', composite);
+	var chest_imgW = 48;
+	var chest_imgH = 48;
 	buildingsInTownB=[];
 	buildingsInTownX=[];
 	buildingsInTownY=[];
 	buildingsInTownW=[];
 	buildingsInTownH=[];
-    function inArray (arrayToCheck, valueToCheck) {
+	function inArray (arrayToCheck, valueToCheck) {
 		 return arrayToCheck.indexOf(valueToCheck) > -1;
 	}
 	function deleteFromArray (arrayToMod, indexToDelete) {
@@ -967,8 +980,8 @@
 				removeIndex = buildingsInTownB.indexOf('wall');
 				removeFromArrays(removeIndex);
 			}
-			if (buildingName==='scastle') {
-				removeIndex = buildingsInTownB.indexOf('scastle');
+			if (buildingName==='stone_castle') {
+				removeIndex = buildingsInTownB.indexOf('castle');
 				removeFromArrays(removeIndex);
 			}
 			buildingsInTownB.push(buildingName);
@@ -1003,10 +1016,15 @@
 			ctx.drawImage(img5_1, houseX, houseY);
 			pushBuilding('house', houseX, houseY, houseW, houseH);
 		}
-		if (game.buildLevelD > 1) {
+		if (game.buildLevelD === 2) {
 			// draw castle
 			ctx.drawImage(img7, castleX, castleY);
 			pushBuilding('castle', castleX, castleY, castleW, castleH);
+		}
+		if (game.buildLevelD === 3) {
+			// draw castle
+			ctx.drawImage(img71, castle_st_X, castle_st_Y);
+			pushBuilding('stone_castle', castle_st_X, castle_st_Y, castle_st_W, castle_st_H);
 		}
 		if (game.buildLevelTreasury > 0) {
 			// draw treasury
@@ -1056,6 +1074,14 @@
 			//img15.style   = 'position:absolute; top:170px; left:0px; z-index:8';
 			document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
 			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
+		}
+		if (game.chestCity === 1) {
+			console.log("try to draw a chest of gold");
+			var chest_imgX = Math.floor(Math.random() * (800-chest_imgW*2)+chest_imgW);
+			var chest_imgY = Math.floor(Math.random() * (480-chest_imgH*2)+chest_imgH);
+			console.log("locX is "+chest_imgX+" and locY is "+chest_imgY);
+			ctx.drawImage(chest_img, chest_imgX, chest_imgY);
+			pushBuilding('chest', chest_imgX, chest_imgY, chest_imgW, chest_imgH);
 		}
 	}
 	function loadImage(src, onload) {
@@ -1137,7 +1163,7 @@
 		if (buildingName==='castle') {
 			alertMsg = localeStrings[136];
 		}
-		if (buildingName==='scastle') {
+		if (buildingName==='stone_castle') {
 			alertMsg = localeStrings[137];
 		}
 		if (buildingName==='inn') {
@@ -1187,6 +1213,10 @@
 				document.getElementById(Audio).play();
 			}
 		}
+		if (buildingName==='chest') {
+			showAlert = false;
+			game.chestCityOpen();
+		}
 		if (showAlert === true &&  alertMsg !=="" ) {
 			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 		}
@@ -1205,6 +1235,7 @@
 	var tile_water      = loadImage('tiles/water.png');
 	var castle_tile     = loadImage('resources/castle_big.png');
 	var blackmarket_tile= loadImage('resources/black_market.png');
+	var bmarket_burned_tile= loadImage('resources/black_market_burned.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var chest_tile      = loadImage('resources/chest.png');
 	var pumpkin_tile    = loadImage('resources/pumpkin.png');
@@ -1269,6 +1300,10 @@
 				if (game.myMapObjects[i+camXL][j+camYL]===4) {
 					//console.log("draw blackmarket");
 					ctx_map.drawImage(blackmarket_tile, i * 48, j * 48);
+				}
+				if (game.myMapObjects[i+camXL][j+camYL]===41) {
+					//console.log("draw burned blackmarket");
+					ctx_map.drawImage(bmarket_burned_tile, i * 48, j * 48);
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===12) {
 					//console.log("draw castle");
@@ -1456,6 +1491,8 @@
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		tips: [],
+		chestCity: 0,
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -1894,6 +1931,10 @@
 			}
 			function genMap(priceOfMapGen){
 				console.log("new map is generated");
+				//restore the blackmarket
+				if (game.tips.includes("blackmarket")){
+					game.tips.pop("blackmarket");
+				}
 				game.genBlackMarketGoods();
 				game.gold = game.gold - priceOfMapGen;
 				game.myMapLand=[];
@@ -1952,13 +1993,14 @@
 							if (rnd===4) {
 								if (blackmarket_flag===false){
 									blackmarket_flag = true;
+									game.blackmarketLoc = [i,j];
 								} else {
 									rnd = 0;
 								}
 							}
-                            //TODO, TO DO CHECK THIS CODE. IT SMELLS.
 							if (i===config.sizeMapX-1 && j===config.sizeMapY-1 && blackmarket_flag===false){
 								rnd = 4;
+								game.blackmarketLoc = [i,j];
 							}
 							game.myMapObjects[i][j]=rnd;
 						}
@@ -1988,121 +2030,206 @@
 								}
 							}
 							game.myMapRemObjects[i][j] = rnd;
-							//console.log(rnd)
 						}
 					}
 				}
-                //ISSUE #339
-                game.checkObjAccessibility();
-				game.mapCreated = 1;
-				composite_gm();
+				qc = game.checkNewMap()
+				if (qc) {
+					//QC is passed!
+					game.mapCreated = 1;
+					composite_gm();
+				}
+				else {
+					console.log("qc of newly generated map failed. regen the map");
+					genMap(0);
+				};
 			}
 		},
-        checkObjAccessibility: function () {
-            //GLADYSHEV
-            startPoint            = game.myMapObjects[game.castleX][game.castleY+1];
-            nonAccessible         = false;
-            //10 castle entrance, 4 
-            visitableElements     = [10];
-            pointsToCheck         = [];
-            ci                    = 0;
-            for (i=0; i<config.sizeMapX; i++){
-                for (j=0; j<config.sizeMapX; j++){
-					ci = ci + 1; //ci is common iterator for objects
-                    //first we check whether myMapObjects has something
-                    //then add AND condition
-                    //that myMapObjects is NOT in the list of nonVisitableElements
-                    if (inArray(visitableElements, game.myMapObjects[i][j])) {
-                        console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
-                        pointsToCheck.push({"coord":[i,j]});
-                    }
-                }
-            }
-            pfmap           = game.prepareMap();
-            numberOfPoints  = pointsToCheck.length;
-            console.log("---");
-            for (np=0; np<numberOfPoints; np++) {
-				console.log(pointsToCheck[np]);
-				resPathMap = game.genPathMap(pfmap)
-			}
-			console.log("---");
-        },
-        prepareMap : function () {
-			preparedMap = game.myMapObjects;
+		populatePOIs : function (elemsToCheck) {
+			ci = 0;
 			for (i=0; i<config.sizeMapX; i++){
-                for (j=0; j<config.sizeMapX; j++){
-					if (game.myMapObjects[i][j] == 10){
-						preparedMap[i][j] = 1;
-					}
-					if (game.myMapObjects[i][j] == 0){
-						preparedMap[i][j] = 1;
-					}
-					if (game.myMapObjects[i][j] !== 0 && game.myMapObjects[i][j] !== 10) {
-						preparedMap[i][j] = 0;
+				for (j=0; j<config.sizeMapX; j++){
+					ci = ci + 1; //ci is common iterator for objects
+					//first we check whether myMapObjects has something
+					//then add AND condition
+					//that myMapObjects is NOT in the list of nonVisitableElements
+					if (inArray(visitableElements, game.myMapObjects[i][j])) {
+						console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
+						pointsToCheck.push([i,j]);
 					}
 				}
 			}
-			return preparedMap;
-        },
-        genPathMap : function (gen_pfmap) {
-			console.log("call gen path map");
-			console.log(gen_pfmap);
+			console.log(pointsToCheck);
+			return pointsToCheck;
+		},
+		checkNewMap : function () {
+			//blackmarket 4, castle entrance 10
+			assertions = [];
+			visitableElements     = [4];
+			pointsToCheck         = [];
+			pointsToCheck = game.populatePOIs(visitableElements);
+			pfmap   = game.prepareMap();
+			lenOfPOIs = pointsToCheck.length;
+			for (i=0;i<lenOfPOIs;i++){
+				console.log(pointsToCheck[i])
+				assertions.push(game.genWaveMap(pfmap, pointsToCheck[i]));
+				//wavemap = game.genWaveMap(pfmap, pointsToCheck[i]);
+				//track   = game.genTrack();
+			}
+			if (!assertions.includes("failed")){
+				return true;
+			} else {
+				return false;
+			}
+		},
+		genWaveMap : function (map, POI) {
+			qg_passed = "failed";
 			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
-			pathMap          = [];
+			waveMap          = [];
 			for (i=0;i<config.sizeMapX;i++) {
-				pathMap.push([]);
+				waveMap.push([]);
 			}
 			for (i = 0; i < config.sizeMapX; i++) {
 				for (j = 0; j < config.sizeMapY; j++) {
-					pathMap[i][j]=0;
+					waveMap[i][j]=0;
 				}
 			}
-			nodeList         = [[game.heroX, game.heroY]];
-			pathMap[game.heroX][game.heroY]  =  1;
-			node_list       = [[game.heroX][game.heroY]];
-			for (node in node_list){
-				//print("---new-node---")
-				score = pathMap[node[0]][node[1]]
-				//print(score)
-				for (neighbor_offset in neighbor_offsets){
-					//print("run over neighbor offsets")
+			waveMap[game.heroX][game.heroY]  =  1;
+			node_list = [];
+			node_list.push([[game.heroX],[game.heroY]])
+			target = [];
+			target[0] = POI[0]
+			target[1] = POI[1]
+			console.log("new target is ");
+			console.log(target);
+			console.log("node list");
+			console.log(node_list+"lenght of the node_list is "+node_list.length);
+			for (node of node_list){
+				//console.log("node is ");
+				//console.log(node);
+				score = waveMap[node[0]][node[1]]
+				//console.log("score is "+score);
+				for (neighbor_offset of neighbor_offsets){
+					//console.log("run over neighbor offsets");
 					neighbor_x = node[0]*1+neighbor_offset[0]*1;
 					neighbor_y = node[1]*1+neighbor_offset[1]*1;
 					if (neighbor_x < 0 ||
-					   neighbor_y < 0 ||
-					   neighbor_x >= config.sizeMapX ||
-					   neighbor_y >= config.sizeMapY){
-						console.log("out of borders - we can not move here "+neighbor_x+";"+neighbor_y);
+						neighbor_y < 0 ||
+						neighbor_x >= config.sizeMapX ||
+						neighbor_y >= config.sizeMapY){
+						//console.log("out of borders - we can not move here "+neighbor_x+";"+neighbor_y);
 						continue
 					}
-					if (gen_pfmap[neighbor_x][neighbor_y] == 0){
-						console.log("not travelable - we can not move here "+neighbor_x+";"+neighbor_y);
+					if (pfmap[neighbor_x][neighbor_y] == 0){
+						//console.log("not travelable - we can not move here "+neighbor_x+";"+neighbor_y);
 						continue
 					}
-					if (gen_pfmap[neighbor_x][neighbor_y] == 1){
-						console.log("travelable - we could move there " + neighbor_x + ";" + neighbor_y);
-						if (neighbor_x == start[0] && neighbor_y == start[1]) {
+					if (pfmap[neighbor_x][neighbor_y] == 1){
+						//console.log("travelable - we could move there " + neighbor_x + ";" + neighbor_y);
+						if (neighbor_x == target[0] && neighbor_y == target[1]) {
 							console.log("we found the target!");
-							pathMap[neighbor_x][neighbor_y] = score*1 + 1
+							qg_passed = "passed";
+							waveMap[neighbor_x][neighbor_y] = score*1 + 1;
+							continue
 						} else {
-							if (pathMap[neighbor_x][neighbor_y] == 0){
-								console.log("can move here "+neighbor_x+";"+neighbor_y);
+							if (waveMap[neighbor_x][neighbor_y] == 0){
+								//console.log("can move here "+neighbor_x+";"+neighbor_y);
 								node_list.push([neighbor_x, neighbor_y]);
-								pathMap[neighbor_x][neighbor_y] = score*1 + 1;
+								waveMap[neighbor_x][neighbor_y] = score*1 + 1;
 								continue
 							} else {
-								console.log("we already have been here " + neighbor_x + ";" + neighbor_y);
+								//console.log("we already have been here " + neighbor_x + ";" + neighbor_y);
 								continue
 							}
 						}
 					}
 				}
-				//print("-----")
-				console.log("---the pathMap----");
-				console.log(pathMap);
-				return pathMap;
 			}
-			return 0;
+			console.log("---the waveMap----");
+			console.log(waveMap);
+			document.getElementById("outTable").innerHTML="";
+			for (j = 0; j < config.sizeMapY; j++) {
+				for (i = 0; i < config.sizeMapX; i++) {
+					
+					//console.log("target coord is "+target[0]+" "+target[1]);
+					if (waveMap[i][j] < 10) {
+						prVal = "0"+waveMap[i][j]
+					} else {
+						prVal = waveMap[i][j]
+					}
+					if (i===target[0] && j===target[1]) {
+						prVal = "<b>"+prVal+"</b>";
+					}
+					document.getElementById("outTable").innerHTML+=prVal;
+					document.getElementById("outTable").innerHTML+=" | ";
+				}
+				document.getElementById("outTable").innerHTML+="</br>";
+			}
+			//return waveMap;
+			return qg_passed;
+		},
+		genTrack : function () {
+			target[0] = game.blackmarketLoc[0]
+			target[1] = game.blackmarketLoc[1]
+			if (wavemap[target[0]][target[1]] != 0 && wavemap[target[0]][target[1]] != -1){
+				console.log("try to get_path")
+				//print(wave_map[target[0]][target[1]])
+				// neighbor_offsets = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+				neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+				node_list = [target]
+				score = wavemap[target[0]][target[1]]
+				//print("blank path map")
+				for (node of node_list){
+					for (neighbor_offset of neighbor_offsets){
+						neighbor_x = node[0]+neighbor_offset[0]
+						neighbor_y = node[1]+neighbor_offset[1]
+						if (neighbor_x < 0 ||
+							neighbor_y < 0 ||
+							neighbor_x >= config.sizeMapX ||
+							neighbor_y >= config.sizeMapY){
+							continue
+						}
+						if (wavemap[neighbor_x][neighbor_y] < score && wavemap[neighbor_x][neighbor_y] != 0){
+							score = wavemap[neighbor_x][neighbor_y]
+							node_list.push([neighbor_x, neighbor_y]);
+						}
+					}
+				}
+				return node_list
+				//return true
+			} else {
+				return false
+			}
+		},
+		prepareMap : function () {
+			preparedMap = []
+			for (i=0;i<config.sizeMapX;i++) {
+				preparedMap.push([]);
+			}
+			for (i = 0; i < config.sizeMapX; i++) {
+				for (j = 0; j < config.sizeMapY; j++) {
+					preparedMap[i][j]=0;
+				}
+			}
+			for (i=0; i<config.sizeMapX; i++){
+				for (j=0; j<config.sizeMapX; j++){
+					if (game.myMapObjects[i][j] == 10){//city entrance
+						preparedMap[i][j] = 1;
+					} 
+					else if (game.myMapObjects[i][j] == 4){//blackmarket
+						preparedMap[i][j] = 1;
+					}
+					else if (game.myMapObjects[i][j] == 0){//no object
+						preparedMap[i][j] = 1;
+					}
+					else {
+						preparedMap[i][j] = 0;
+					}
+				}
+			}
+			console.log("prepared map is");
+			console.log(preparedMap);
+			return preparedMap;
 		},
 		checkCollisionWithBordersOfMap : function (changeX, changeY) {
 			if (game.heroX+changeX<0){
@@ -2128,6 +2255,9 @@
 				}
 				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===4){
 					return false;//we can enter the blackmarket!
+				}
+				if (game.myMapObjects[game.heroX+changeX][game.heroY+changeY]===41){
+					return false;//we can step over the burned blackmarket!
 				}
 				return true;
 			}
@@ -2157,8 +2287,13 @@
 						game.cityEnter();
 					}
 					if (game.myMapObjects[game.heroX][game.heroY]===4) {
-						updateUI();
-						openTab(null, 'tabBlackmarket');
+						if (!game.tips.includes("blackmarket")){
+							game.tips.push("blackmarket");
+							showModal(1, '', game.blackmarketCallback, locObj.blackmarket_dstr.txt, locObj.blackmarket_dstr_brn.txt, locObj.blackmarket_dstr_kp.txt);
+						} else {
+							updateUI();
+							openTab(null, 'tabBlackmarket');
+						}
 					}
 					composite_gm();
 					allowMvt = 0;
@@ -2166,13 +2301,18 @@
 				}
 			}
 		},
-		cityLeave : function () {
-			if (game.myMapLand.length===config.sizeMapX) {
-				cityLeaveSmall();
-			} else {
-				game.generateMapCallback(true);
-				cityLeaveSmall();
+		blackmarketCallback : function () {
+			if (answer === 2) {
+				//BURN THE MARKET DOWN
+				game.myMapObjects[game.heroX][game.heroY]=41;//blackmarket burned down
 			}
+			if (answer === 3) {
+				updateUI();
+				openTab(null, 'tabBlackmarket');
+			}
+		},
+		cityLeave : function () {
+			cityLeaveSmall();
 			function cityLeaveSmall() {
 				if (game.heroExists()===true && game.myhero.status === 0) {
 					if (game.isHeroHaveTroops() === true) {
@@ -2207,6 +2347,10 @@
 			openTab(null, 'Explore');
 			updateUI();
 			composite_gm();
+			if (!game.tips.includes("adventure_map")){
+				game.tips.push("adventure_map");
+				showModal(0, '', getAck, locObj.advmap.txt, locObj.okay.txt, '');
+			}
 		},
 		cityEnter : function () {
 			if (game.heroExists()===true && game.myhero.status === 2) {
@@ -2738,6 +2882,7 @@
 						game.myhero.atk       = 2;
 						game.myhero.def       = 2;
 						game.myhero.mpow      = 0;
+						game.myhero.int       = 0;
 						game.myhero.mana      = 0;
 						game.myhero.cmana     = 0;
 						game.myhero.lawful    = 80;
@@ -2747,6 +2892,7 @@
 						game.myhero.atk       = 0;
 						game.myhero.def       = 0;
 						game.myhero.mpow      = 2;
+						game.myhero.int       = 2
 						game.myhero.mana      = 20;
 						game.myhero.cmana     = 20;
 						game.myhero.lawful    = 80;
@@ -3520,7 +3666,8 @@
 			var gold_was = game.gold;
 			//console.log("%c GOLD BEFORE UPDATE: ", "color: red", gold_was);
 			game.recordStats();
-			game.getNearestEventTime();
+			//game.getNearestEventTime();
+			//game.getReward();
 			pop_m         = 0;
 			pop_was       = game.pop;
 			game.season   = game.season + 1;
@@ -3695,7 +3842,6 @@
 			}
 			//console.log("GOLD AFTER UPDATE: ", game.gold);
 			updateUI();
-			game.getReward();
 		},
 		makeFestival : function() {
 			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
@@ -3728,7 +3874,8 @@
 			}
 		},
 		Build : function (Structure) {
-			if (Structure==="Wall" || Structure ==="Tower") {
+			if (Structure==="Wall" || Structure ==="Tower" || Structure ==="Castle") {
+				//WALL
 				if (game.gold >= config.costWall && game.buildLevelD == 0) {
 					game.buildLevelD        = game.buildLevelD*1 + 1;
 					game.gold               = game.gold - config.costWall;
@@ -3739,9 +3886,21 @@
 					msg = msg.replace("%arg1",localeStrings[20]);
 					postEventLog(msg);
 				}
+				//WOODEN TOWER
 				if (game.gold >= config.costTower && game.buildLevelD == 1) {
 					game.buildLevelD        = game.buildLevelD*1 + 1;
 					game.gold               = game.gold - config.costTower;
+					commonBuild();
+					return true;
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[20]);
+					postEventLog(msg);
+				}
+				//STONE CASTLE
+				if (game.gold >= config.costCastle && game.buildLevelD == 2) {
+					game.buildLevelD        = game.buildLevelD*1 + 1;
+					game.gold               = game.gold - config.costCastle;
 					commonBuild();
 					return true;
 				} else {
@@ -3846,9 +4005,8 @@
 				}
 			}
 			function commonBuild() {
-				updateResources();
+				updateUI();
 				composite();
-				updateButtonCaptions();
 			}
 		},
 		buildGallowsOrFountain(objectToBuild) {
@@ -3937,27 +4095,27 @@
 					}
 					game.pop          = game.pop - 1;
 					getTypeOfCitizen  = Math.floor(Math.random()*100+1,0);
-					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 70) {
-						wealthShare     = 1/100*1;
-						sizeOfClass     = (70-1)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+					if (getTypeOfCitizen >= 1 && getTypeOfCitizen < 50) {
+						wealthShare     = 1/100*10;
+						shareOfClass    = 50/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					if (getTypeOfCitizen >= 70 && getTypeOfCitizen < 90) {
+					if (getTypeOfCitizen >= 50 && getTypeOfCitizen < 80) {
 						wealthShare     = 1/100*20;
-						sizeOfClass     = (90-20)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						shareOfClass    = 30/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					if (getTypeOfCitizen >= 90 && getTypeOfCitizen <= 99) {
+					if (getTypeOfCitizen >= 80 && getTypeOfCitizen <= 99) {
 						wealthShare     = 1/100*30;
-						sizeOfClass     = (99-20)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						shareOfClass    = 9/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
 					if (getTypeOfCitizen > 99 && getTypeOfCitizen <= 100) {
-						wealthShare     = 1/100*49;
-						sizeOfClass     = (100-99)/100;
-						sizeOfClassNums = Math.floor(sizeOfClass*game.pop,0);
+						wealthShare     = 1/100*40;
+						shareOfClass    = 1/100;
+						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
-					moneyToSeize    = Math.floor(game.gold*wealthShare/sizeOfClassNums*game.pop/game.popLimit()/10,0);
+					moneyToSeize    = Math.floor(game.gold*wealthShare*game.pop/game.popLimit()/8,0)+1;
 					rnd             = Math.floor((Math.random() * 6) + 1);
 					reason          = localeStrings[24+rnd]
 					msg             = localeStrings[34].replace("%arg1", reason);
@@ -4088,8 +4246,30 @@
 			}
 			updateResources();
 		},
+		chestCityAppear : function () {
+			game.chestCity = 1;
+			chest_timer = setTimeout(game.chestCityDisappear, config.chestCity_timeout);
+			composite();
+		},
+		chestCityDisappear : function () {
+			game.chestCity = 0;
+			removeIndex = buildingsInTownB.indexOf('chest');
+			removeFromArrays(removeIndex);
+			composite();
+		},
+		chestCityOpen : function () {
+			msg = locObj.city_chest_gold.txt.replace("%arg1", config.chestCity);
+			postEventLog(msg);
+			var gold_diff = game.addMoneyToTreasury(config.chestCity);
+			if (gold_diff!==config.chestCity){
+				postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+			}
+			updateResources();
+			//REMOVE THE CHEST
+			game.chestCityDisappear();
+		},
 		startPlague : function () {
-			rnd = Math.floor((Math.random() * 5) + 1);
+			rnd = Math.floor((Math.random() * 15) + 1);
 			if (rnd === 1) {
 				if (game.pop > 2) {
 					numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
@@ -4097,7 +4277,7 @@
 						numberOfDied = game.pop-2;
 					}
 					game.pop     = game.pop - numberOfDied;
-					msg = localeStrings[55].replace("%arg1", numberOfDied);
+					msg = msg = locObj.plague.txt.replace("%arg1", numberOfDied);
 					if (game.checkAudio('sfx', 'events')===true) {
 						document.getElementById('plagueAudio0').play();
 					}
@@ -4105,12 +4285,104 @@
 					updateResources();
 				}
 			}
+			if (rnd === 2) {
+				if (game.pop > 2) {
+					if (game.turkopols>0){
+						if (game.checkAudio('sfx', 'events')===true) {
+							document.getElementById('archeryAudio0').play();
+						}
+						postEventLog(locObj.plague_turk.txt);
+					} else {
+						army_count = game.treasuryGuard+game.sergeants+game.knights;
+						if (army_count > 0) {
+							numberOfDied = Math.floor(Math.random() * (army_count*0.5)+1);
+							if (numberOfDied > army_count) {
+								numberOfDied = army_count
+							}
+							if (game.checkAudio('sfx', 'events')===true) {
+								document.getElementById('plagueAudio0').play();
+							}
+							deceased = 0;
+							while (deceased < numberOfDied && game.treasuryGuard>0){
+								game.treasuryGuard=game.treasuryGuard-1;
+								deceased = deceased+1;
+							}
+							if (deceased < numberOfDied){
+								while (deceased < numberOfDied && game.sergeants>0){
+									game.sergeants=game.sergeants-1;
+									deceased = deceased+1;
+								}
+							}
+							if (deceased < numberOfDied){
+								while (deceased < numberOfDied && game.knights>0){
+									game.knights=game.knights-1;
+									deceased = deceased+1;
+								}
+							}
+							console.log("so the random value of numberOfDied in the army is "+numberOfDied);
+							console.log("and number actually deceased troops is "+deceased);
+							postEventLog(locObj.plague_army.txt.replace("%arg1", numberOfDied));
+							updateTroopsNumbers();
+							updateResources();
+						}
+					}
+				}
+			}
+			if (rnd === 3) {
+				army_count = game.treasuryGuard+game.sergeants+game.knights;
+				if (army_count > 0) {
+					numberOfDied = Math.floor(Math.random() * (army_count*0.5)+1);
+					if (numberOfDied > army_count) {
+						numberOfDied = army_count
+					}
+					if (game.checkAudio('sfx', 'events')===true) {
+						document.getElementById('plagueAudio0').play();
+					}
+					deceased = 0;
+					while (deceased < numberOfDied && game.treasuryGuard>0){
+						game.treasuryGuard=game.treasuryGuard-1;
+						deceased = deceased+1;
+					}
+					if (deceased < numberOfDied){
+						while (deceased < numberOfDied && game.sergeants>0){
+							game.sergeants=game.sergeants-1;
+							deceased = deceased+1;
+						}
+					}
+					if (deceased < numberOfDied){
+						while (deceased < numberOfDied && game.knights>0){
+							game.knights=game.knights-1;
+							deceased = deceased+1;
+						}
+					}
+					console.log("so the random value of numberOfDied in the army is "+numberOfDied);
+					console.log("and number actually deceased troops is "+deceased);
+					postEventLog(locObj.plague_army.txt.replace("%arg1", numberOfDied));
+					updateTroopsNumbers();
+					updateResources();
+				} else {
+					if (game.pop > 2) {
+						numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
+						if (numberOfDied>game.pop-2){
+							numberOfDied = game.pop-2;
+						}
+						game.pop     = game.pop - numberOfDied;
+						msg = locObj.plague.txt.replace("%arg1", numberOfDied);
+						if (game.checkAudio('sfx', 'events')===true) {
+							document.getElementById('plagueAudio0').play();
+						}
+						postEventLog(msg);
+						updateResources();
+					}
+				}
+			}
 		}
 	};
 	//init const-variables
 	var config = {
 		costWall:2,
-		costTower:4,
+		costTower:8,
+		costCastle:24,
 		costHome:2,
 		costTreasury:20,
 		costGallows:50,
@@ -4122,7 +4394,7 @@
 		costArchery:50,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
-		treasuryGuardPricePayroll:25,
+		treasuryGuardPricePayroll:10,
 		costPutOutFire:20,
 		sizeMapX:18,//18
 		sizeScrX:16,//16
@@ -4143,11 +4415,10 @@
 		knightHiring:40,
 		knightUpkeep:10,
 		chestMoney:25,
+		chestCity_timeout:15000,//ms
+		chestCity:50,
 	};
-	/*
-	function test () {
-		game.artid01.attr[]
-	}*/
+
 	//init service variables
 	var cnt_cursession= 0;
 	var delimiter     = ";"
@@ -4673,9 +4944,9 @@
 		});
 	}
 	function welcomeMsg(){
-		postEventLog(localeStrings[0]);
-		postEventLog(localeStrings[1]);
-		postEventLog(localeStrings[2]);
+		postEventLog(locObj.welcome0.txt);
+		postEventLog(locObj.welcome1.txt);
+		postEventLog(locObj.welcome2.txt);
 	}
 	function postEventLog(msgEventLog, styling) {
         if (typeof variable !== 'undefined') {
@@ -5174,6 +5445,14 @@
 				if (game.myhero[propertyName]===undefined){
 					game.myhero[propertyName] = tmpHero[propertyName];
 				}
+				if (propertyName === "int") {
+					if (game.myhero.class===0) {
+						game.myhero.int = 0;
+					}
+					if (game.myhero.class===1) {
+						game.myhero.int = 2;
+					}
+				}
 			}
 			while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
 				game.myhero.inventoryWorn.push(0);
@@ -5207,36 +5486,30 @@
 		updateButtonCaptions();
 		updateHeroStatus();
 		updateBlackMarket();
+		updateImagesBuildingTab();
 	}
 	function updateButtonCaptions(){
 		nextLvlHome           = game.buildLevelH*1+1;
 		nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));
 		document.getElementById("homes").innerHTML=localeStrings[107].replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
-
 		nextLvlTreasury       = game.buildLevelTreasury*1+1;
 		nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
 		document.getElementById("treasury").innerHTML=localeStrings[110].replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
-
 		nextLvlGallows        = game.buildLevelGallows*1+1;
 		nextLvlPriceGallows   = Math.pow(config.costGallows,(game.buildLevelGallows*1+1));
 		document.getElementById("buttonBldGallows").innerHTML=localeStrings[111].replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
-
 		nextLvlFountain       = game.buildLevelFountain*1+1;
 		nextLvlPriceFountain  = Math.pow(config.costFountain,(game.buildLevelFountain*1+1));
 		document.getElementById("buttonBldFountain").innerHTML=localeStrings[112].replace("%arg1",nextLvlFountain).replace("%arg2",nextLvlPriceFountain);
-
 		nextLvlStash          = game.buildLevelStash*1+1;
 		nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 		document.getElementById("buttonBldStash").innerHTML=localeStrings[113].replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
-
 		nextLvlInn            = game.buildLevelInn*1+1;
 		nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
 		document.getElementById("buttonBldInn").innerHTML=localeStrings[114].replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
-
 		nextLvlStable         = game.buildLevelStable*1+1;
 		nextLvlPriceStable    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
 		document.getElementById("buttonBldStable").innerHTML=localeStrings[115].replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
-
 		nextLvlArchery         = game.buildLevelArchery*1+1;
 		nextLvlPriceArchery    = Math.pow(config.costArchery,(game.buildLevelArchery*1+1));
 		document.getElementById("buttonBldArchery").innerHTML=localeStrings[116].replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
@@ -5251,6 +5524,11 @@
 			document.getElementById("defence").setAttribute("onclick", towerClick);
 		}
 		if (game.buildLevelD == 2) {
+			document.getElementById("defence").innerHTML=localeStrings[117].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costCastle);
+			var towerClick = "game.Build("+"\'Castle\'"+")";
+			document.getElementById("defence").setAttribute("onclick", towerClick);
+		}
+		if (game.buildLevelD == 3) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
 		if (game.buildLevelFountain > 0) {
@@ -5274,6 +5552,15 @@
 			document.getElementById("btnLeaveCity").style.visibility = "visible";
 			document.getElementById("hireHeroBlock").style.display = "none";
 			document.getElementById("heroUpkeep").style.display = "inline";
+			if (game.myhero.upkeepsrc === 0) {
+				if (document.getElementById("selectUpkeepSrc").selectedIndex !==0) {
+					document.getElementById("selectUpkeepSrc").selectedIndex = 0;
+				}
+			} else {
+				if (document.getElementById("selectUpkeepSrc").selectedIndex !==1) {
+					document.getElementById("selectUpkeepSrc").selectedIndex = 1;
+				}
+			}
 			if (game.myhero.class==="knight"){
 				game.myhero.class = 0;
 			}
@@ -5380,6 +5667,7 @@
 			HTMLofHeroStats    += localeStrings[196]+": "+game.heroNextLvlExpLimit()+"<br>";
 			HTMLofHeroStats    += localeStrings[190]+": "+game.myhero.atk+" | ";
 			HTMLofHeroStats    += localeStrings[191]+": "+game.myhero.def+"<br>";
+			HTMLofHeroStats    += localeStrings[187]+": "+game.myhero.int+"<br>";
 			HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
 			HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
 			HTMLofHeroStats    += heroActivity+"<br>";
@@ -5512,7 +5800,18 @@
 		}
 	}
 	function updateImagesBuildingTab () {
-		//TODO
+		if (game.buildLevelD === 1) {
+			elementText = document.getElementById("defences_img").innerHTML;
+			if (elementText.indexOf("btab_w_castle.png") === -1) {
+				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_w_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			}
+		}
+		if (game.buildLevelD === 2) {
+			elementText = document.getElementById("defences_img").innerHTML;
+			if (elementText.indexOf("btab_st_castle.png") === -1) {
+				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			}
+		}
 	}
 	function askPlayer(question, typeofasking) {
 		if (typeofasking === 1) {
@@ -5565,7 +5864,7 @@
 				game.startPlague();
 				break;
 			case 4:
-				//
+				game.chestCityAppear();
 				break;
 			case 5:
 				//

@@ -1,7 +1,7 @@
 var localeStrings = [];
-localeStrings.push("Hello player in this incremental game!");
-localeStrings.push("Your task is simple - manage the city as mayor of the city!");
-localeStrings.push("Citizen will pay taxes each season (30 secs) and population will grow each season");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("build or upgrade your Treasury");
 localeStrings.push("amount of money is increased");
 localeStrings.push("amount of money is decreased");//5
@@ -54,7 +54,7 @@ localeStrings.push("How To Play");
 localeStrings.push("Discord");
 localeStrings.push("Put out the fire");
 localeStrings.push("Execute somebody");
-localeStrings.push("shit happens: the plague killed %arg1 citizens");//55
+localeStrings.push("placeholder");//55
 localeStrings.push("Do you want to place a festival?\nIt would cost to you %arg1 gold!\n");
 localeStrings.push("Festival was placed not so long ago.\nThe effect from festival would be weaken.\n");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
@@ -116,7 +116,7 @@ localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
 localeStrings.push("Build Archery range<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
+localeStrings.push("Build Castle<br/>lvl %arg1<br/>%arg2 gold");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -216,7 +216,7 @@ localeStrings.push("luck");
 localeStrings.push("superstition");
 localeStrings.push("morale");//185
 localeStrings.push("the hero found some money: ");
-localeStrings.push("placeholder");
+localeStrings.push("Intelligence");
 localeStrings.push("placeholder");
 localeStrings.push("Level");
 localeStrings.push("Attack");//190
@@ -266,10 +266,10 @@ localeStrings.push("This building and its improvements is needed to raise your p
 localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
 localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235
 localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
-localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash do you have, the more you could hide in the Stash.");
-localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn do you have, the more experienced hero you could hire there.");
-localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable do you have, the more experienced troops you could hire there.");
-localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range do you have, the more experienced troops you could hire there.");//240
+localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash you have, the more you could hide in the Stash.");
+localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn you have, the more experienced hero you could hire there.");
+localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable you have, the more experienced troops you could hire there.");
+localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range you have, the more experienced troops you could hire there.");//240
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -375,36 +375,49 @@ localeStrings.push("Dismiss all turkopols from the garrison");
 localeStrings.push("Dismiss a knight from the garrison");
 localeStrings.push("Dismiss all knights from the garrison");
 localeStrings.push("Dismiss all forces from the garrison"); //345
-localeStrings.push("Dismiss a sergeant from the heroe's squad");
-localeStrings.push("Dismiss all sergeants from the heroe's squad");
-localeStrings.push("Dismiss a turkopol from the heroe's squad");
-localeStrings.push("Dismiss all turkopols from the heroe's squad");
-localeStrings.push("Dismiss a knight from the heroe's squad");  //350
-localeStrings.push("Dismiss all knights from the heroe's squad");
-localeStrings.push("Dismiss all forces from the heroe's squad");
+localeStrings.push("Dismiss a sergeant from the hero's squad");
+localeStrings.push("Dismiss all sergeants from the hero's squad");
+localeStrings.push("Dismiss a turkopol from the hero's squad");
+localeStrings.push("Dismiss all turkopols from the hero's squad");
+localeStrings.push("Dismiss a knight from the hero's squad");  //350
+localeStrings.push("Dismiss all knights from the hero's squad");
+localeStrings.push("Dismiss all forces from the hero's squad");
 localeStrings.push("You are going to dismiss a sergeant from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss a turkopol from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss a knight from the garrison. Are you sure?"); // 355
 localeStrings.push("You are going to dismiss all sergeants from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss all turkopols from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss all knights from the garrison. Are you sure?");
-localeStrings.push("You are going to dismiss a sergeant from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss a turkopol from the heroe's squad. Are you sure?"); //360
-localeStrings.push("You are going to dismiss a knight from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss all sergeants from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss all turkopols from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss all knights from the heroe's squad. Are you sure?");
+localeStrings.push("You are going to dismiss a sergeant from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss a turkopol from the hero's squad. Are you sure?"); //360
+localeStrings.push("You are going to dismiss a knight from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all sergeants from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all turkopols from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all knights from the hero's squad. Are you sure?");
 localeStrings.push("You are going to dismiss all garrison forces: %arg1 %arg2 %arg3. Are you sure?"); //365
-localeStrings.push("You are going to dismiss all heroe's squad forces: %arg1 %arg2 %arg3. Are you sure?");
+localeStrings.push("You are going to dismiss all hero's squad forces: %arg1 %arg2 %arg3. Are you sure?");
 localeStrings.push("You don't have any sergeants at the garrison");
 localeStrings.push("You don't have any turkopols at the garrison");
 localeStrings.push("You don't have any knights at the garrison");
-localeStrings.push("You don't have any sergeants at the heroe's squad"); //370
-localeStrings.push("You don't have any turkopols at the heroe's squad");
-localeStrings.push("You don't have any knights at the heroe's squad");
+localeStrings.push("You don't have any sergeants at the hero's squad"); //370
+localeStrings.push("You don't have any turkopols at the hero's squad");
+localeStrings.push("You don't have any knights at the hero's squad");
 localeStrings.push("You don't have any forces at the garrison"); 
-localeStrings.push("You don't have any forces at the heroe's squad");
+localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
-
+locObj = {};
+//locObj.welcome2 = {"txt":"", "loc":""};
+locObj.welcome0 = {"txt":"Hello player in this incremental game!", "loc":"Once game initted, those strings are put to the gamelog"};
+locObj.welcome1 = {"txt":"Your task is simple - manage the city as mayor of the city!", "loc":"same"};
+locObj.welcome2 = {"txt":"Citizen will pay taxes each season (30 secs) and population will grow each season", "loc":"same"};
+locObj.okay = {"txt":"Okay", "loc":"Mostly used in information dialogues"}
+locObj.advmap = {"txt":"To move your hero use arrow keys\nIf you play with sensor input, please turn on Mobile UI in Settings", "loc":"when first visiting adventure map"};
+locObj.plague_turk = {"txt":"On the edge: your turkopol spotted a plague person and shot him. The corpse was burned afterwards", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
+locObj.plague_army = {"txt":"shit happens: the plague outbreak was stopped by your garrison, but killed %arg1 of your garrisoned troops", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
+locObj.plague = {"txt":"shit happens: the plague killed %arg1 citizens", "loc":"default plague case + case where army failed to prevent outbreak"};
+locObj.city_chest_gold = {"txt":"You found %arg1 gold in a chest!", "loc":"Random event. Opened a short-living chest in city screen"};
+locObj.blackmarket_dstr = {"txt":"A tall, fat-belly green goblin, who named itself Elbenkonig,\n  offered you a variety of magic artifacts.\nYou, as a true Christian, a brother of Teutonic order, were offended by it.\nThe first your intention was to kill the goblin and to burn the market.\nOn the other hand, magical artifacts could prove helpful in this world.\nWhat will you do?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
+locObj.blackmarket_dstr_brn = {"txt":"Kill the goblin and burn the blackmarket!", "loc":"Destroying the blackmarket"};
+locObj.blackmarket_dstr_kp = {"txt":"Start trade", "loc":"Keeping the blackmarket"};

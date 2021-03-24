@@ -116,7 +116,7 @@ localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
 localeStrings.push("Build Archery range<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("placeholder");
+localeStrings.push("Build Castle<br/>lvl %arg1<br/>%arg2 gold");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -337,7 +337,6 @@ localeStrings.push("Unlucky hourglass");
 localeStrings.push("This item reset any luck bonuses for your hero and opponent's troops");//305
 localeStrings.push("Glass globe");
 localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start
-localeStrings.push("This item alows your hero to guess next battle result");//almost all times. 70% I guess, would be enough for start
 localeStrings.push("Brother-sergeant. Mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");
 localeStrings.push("Turkopol. Mounted ranged unit. Hiring cost %arg1. Upkeep cost %arg2");
 localeStrings.push("Brother-knight. Advanced mounted melee unit. Hiring cost %arg1. Upkeep cost %arg2");//310
@@ -376,35 +375,35 @@ localeStrings.push("Dismiss all turkopols from the garrison");
 localeStrings.push("Dismiss a knight from the garrison");
 localeStrings.push("Dismiss all knights from the garrison");
 localeStrings.push("Dismiss all forces from the garrison"); //345
-localeStrings.push("Dismiss a sergeant from the heroe's squad");
-localeStrings.push("Dismiss all sergeants from the heroe's squad");
-localeStrings.push("Dismiss a turkopol from the heroe's squad");
-localeStrings.push("Dismiss all turkopols from the heroe's squad");
-localeStrings.push("Dismiss a knight from the heroe's squad");  //350
-localeStrings.push("Dismiss all knights from the heroe's squad");
-localeStrings.push("Dismiss all forces from the heroe's squad");
+localeStrings.push("Dismiss a sergeant from the hero's squad");
+localeStrings.push("Dismiss all sergeants from the hero's squad");
+localeStrings.push("Dismiss a turkopol from the hero's squad");
+localeStrings.push("Dismiss all turkopols from the hero's squad");
+localeStrings.push("Dismiss a knight from the hero's squad");  //350
+localeStrings.push("Dismiss all knights from the hero's squad");
+localeStrings.push("Dismiss all forces from the hero's squad");
 localeStrings.push("You are going to dismiss a sergeant from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss a turkopol from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss a knight from the garrison. Are you sure?"); // 355
 localeStrings.push("You are going to dismiss all sergeants from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss all turkopols from the garrison. Are you sure?");
 localeStrings.push("You are going to dismiss all knights from the garrison. Are you sure?");
-localeStrings.push("You are going to dismiss a sergeant from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss a turkopol from the heroe's squad. Are you sure?"); //360
-localeStrings.push("You are going to dismiss a knight from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss all sergeants from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss all turkopols from the heroe's squad. Are you sure?");
-localeStrings.push("You are going to dismiss all knights from the heroe's squad. Are you sure?");
+localeStrings.push("You are going to dismiss a sergeant from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss a turkopol from the hero's squad. Are you sure?"); //360
+localeStrings.push("You are going to dismiss a knight from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all sergeants from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all turkopols from the hero's squad. Are you sure?");
+localeStrings.push("You are going to dismiss all knights from the hero's squad. Are you sure?");
 localeStrings.push("You are going to dismiss all garrison forces: %arg1 %arg2 %arg3. Are you sure?"); //365
-localeStrings.push("You are going to dismiss all heroe's squad forces: %arg1 %arg2 %arg3. Are you sure?");
+localeStrings.push("You are going to dismiss all hero's squad forces: %arg1 %arg2 %arg3. Are you sure?");
 localeStrings.push("You don't have any sergeants at the garrison");
 localeStrings.push("You don't have any turkopols at the garrison");
 localeStrings.push("You don't have any knights at the garrison");
-localeStrings.push("You don't have any sergeants at the heroe's squad"); //370
-localeStrings.push("You don't have any turkopols at the heroe's squad");
-localeStrings.push("You don't have any knights at the heroe's squad");
+localeStrings.push("You don't have any sergeants at the hero's squad"); //370
+localeStrings.push("You don't have any turkopols at the hero's squad");
+localeStrings.push("You don't have any knights at the hero's squad");
 localeStrings.push("You don't have any forces at the garrison"); 
-localeStrings.push("You don't have any forces at the heroe's squad");
+localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
