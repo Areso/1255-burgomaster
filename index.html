@@ -5365,7 +5365,11 @@
 		saveGame("silent");
 	}
 	function exportGame() {
-		stringSavegame = JSON.stringify(game);
+		tmpExportGame = game;
+		tmpExportGame.pops = [];
+		tmpExportGame.budgets = [];
+		tmpExportGame.years = [];
+		stringSavegame = JSON.stringify(tmpExportGame);
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {
