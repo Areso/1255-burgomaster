@@ -1430,6 +1430,15 @@
 		e.async=true;
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
+	function shuffleArray(array) {
+		for (var i = array.length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
 	//init variables
 	disabledElements = [];
 	flag_event_started = "";
@@ -2055,27 +2064,25 @@
 			}
 		},
 		placeMobsOnTheMap : function(elemsToDefend) {
-			//WIP
-			console.log("TRY TO PLACE MOBS");
-			console.log("elemsToDefend");
 			console.log(elemsToDefend);
+			//WIP
 			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
 			for (i = 0; i < elemsToDefend.length; i++) {
 			    everyPoint = elemsToDefend[i];
-				console.log("WE HAVE POINTS TO DEFEND");
-				console.log(everyPoint);
 				mobPlaced = false;
-				for (neighbor_offset of neighbor_offsets) {
-					console.log("MY MAP OBJECTS ARE");
-					console.log(game.myMapObjects);
+				neighbor_offsets_s = [];
+				
+				for (s = 0; s < neighbor_offsets.length; s++) {
+					neighbor_offsets_s[s] = neighbor_offsets[s];
+				}
+				neighbor_offsets_s = shuffleArray(neighbor_offsets_s);
+				for (neighbor_offset of neighbor_offsets_s) {
 					neighbor_x = everyPoint[0]*1+neighbor_offset[0]*1;
 					neighbor_y = everyPoint[1]*1+neighbor_offset[1]*1;
-					console.log("neighbor_x is "+ neighbor_x + "neighbor_y is " + neighbor_y);
 					if (neighbor_x >= 0 && neighbor_y >= 0 && 
 					 neighbor_x < config.sizeMapX && neighbor_y < config.sizeMapY) {
 						if (game.myMapObjects[neighbor_x][neighbor_y]===0 &&
 						 game.myMapRemObjects[neighbor_x][neighbor_y]===0) {
-							console.log("PLACED A MOB");
 							mobPlaced = true;
 							game.myMapRemObjects[neighbor_x][neighbor_y]=3;
 						}
