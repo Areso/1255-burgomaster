@@ -2067,6 +2067,8 @@
 			console.log(elemsToDefend);
 			//WIP
 			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+			neighbor_offsets_ext = [[0, 1], [1, 0], [0, -1], [-1, 0],
+									[1, 1], [-1, -1], [1, -1], [-1, 1]];
 			for (i = 0; i < elemsToDefend.length; i++) {
 			    everyPoint = elemsToDefend[i];
 				mobPlaced = false;
@@ -2079,12 +2081,29 @@
 				for (neighbor_offset of neighbor_offsets_s) {
 					neighbor_x = everyPoint[0]*1+neighbor_offset[0]*1;
 					neighbor_y = everyPoint[1]*1+neighbor_offset[1]*1;
+					//if there is no such condition we would end out of the range
 					if (neighbor_x >= 0 && neighbor_y >= 0 && 
 					 neighbor_x < config.sizeMapX && neighbor_y < config.sizeMapY) {
 						if (game.myMapObjects[neighbor_x][neighbor_y]===0 &&
 						 game.myMapRemObjects[neighbor_x][neighbor_y]===0) {
-							mobPlaced = true;
-							game.myMapRemObjects[neighbor_x][neighbor_y]=3;
+							//check here if in any directions a starting point.
+							castleEntranceFound = false;
+							for (neighbor_offset_castle of neighbor_offsets_ext) {
+								//castleEntranceFound = false;
+								castle_neighbor_x = neighbor_x*1+neighbor_offset_castle[0]*1;
+								castle_neighbor_y = neighbor_y*1+neighbor_offset_castle[1]*1;
+								//if there is no such condition we would end out of the range
+								if (castle_neighbor_x >= 0 && castle_neighbor_y >= 0 && 
+									castle_neighbor_x < config.sizeMapX && castle_neighbor_y < config.sizeMapY) {
+									if (game.myMapRemObjects[castle_neighbor_x][castle_neighbor_y]===40) {//40 means hero
+										castleEntranceFound = true;
+									}
+								}
+							}
+							if (castleEntranceFound === false) {
+							    mobPlaced = true;
+							    game.myMapRemObjects[neighbor_x][neighbor_y]=3;
+							}
 						}
 					}
 					if (mobPlaced === true){
