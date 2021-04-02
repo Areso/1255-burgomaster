@@ -2377,6 +2377,8 @@
 					allowMvt = 0;
 					setTimeout(cooldownMvt, 500);
 				}
+			} else {
+				postEventLog(locObj.borderCollide.txt, "BOLD");
 			}
 		},
 		blackmarketCallback : function () {
@@ -5027,11 +5029,12 @@
 		postEventLog(locObj.welcome2.txt);
 	}
 	function postEventLog(msgEventLog, styling) {
-        if (typeof variable !== 'undefined') {
+        if (typeof styling !== 'undefined') {
             styling = styling.toUpperCase();
         } else {
             styling = "";
         }
+        styling = styling.toUpperCase();
         if (styling.indexOf("BOLD")!==-1){
             msgEventLog = "<b>"+msgEventLog+"</b>";
         }
