@@ -68,6 +68,16 @@
 			/*resize: none;*/
 			overflow: auto;
 		}
+
+		#lblAutocampaignJournal {
+			width: 800px;
+			height: 420px;
+			top: 60px;
+			left: 10px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
 		/* Style the tab */
 		div.tab {
 			overflow: hidden;
@@ -174,6 +184,28 @@
 		.btnDismiss {
 			padding: 0 1px;
 			height: 22px;
+		}
+
+		.accordion {
+			box-sizing: border-box;
+			width: 100%;
+			padding: 0 20px;
+			margin-bottom: 6px;
+		}
+
+		.accordion-header {
+			padding: 8px 10px;
+			border: 1px solid #333;
+			background-color: #f1f1f1;
+		}
+
+		.accordion-body {
+			display: none;
+			padding: 10px;
+		}
+
+		.accordion.active > .accordion-body {
+			display: block;
 		}
 
 	</style>
@@ -599,7 +631,7 @@
 			<button id="btnGenerateMap"    onclick="game.generateMap()" style="width:160px">Regenerate map</button>
 		</div>
 		<div id="tabAutocampaignJournal" class="tabcontent">
-			<div id="lblAutocampaignJournal" class="interface" value="" style="width:800px; height:420px; top: 60px; left: 10px"></div>
+			<div id="lblAutocampaignJournal" class="interface"></div>
 			<button id="btnToInn" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
@@ -1506,6 +1538,7 @@
 		UID: getUID(),
 		tips: [],
 		chestCity: 0,
+		autocampaignCounter: 0,
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -2739,6 +2772,7 @@
 			game.myhero.status = 1;
 			game.myhero.aCampaignForward   = 1;
 			game.myhero.aCampaignBackward  = 0;
+			createJournalAccordion();
 			postJournalLog("------------------------");
 			updateUI();
 		},
@@ -5050,9 +5084,41 @@
 	function clearJournalLog() {
 		document.getElementById("lblAutocampaignJournal").innerHTML = "";
 	}
+
+	function createJournalAccordion() {
+		var accordionContainerElement = document.createElement('div');
+		var accordionHeaderElement    = document.createElement('div');
+		var accordionBodyElement      = document.createElement('div');
+
+		accordionContainerElement.classList.add('accordion', 'active');
+		accordionHeaderElement.classList.add('accordion-header');
+		accordionBodyElement.classList.add('accordion-body');
+
+		game.autocampaignCounter++;
+
+		let previousCampaignList = document.querySelectorAll('.accordion');
+
+		previousCampaignList.forEach(function (item) {
+			if (item.classList.contains('active')) {
+				item.classList.remove('active');
+			}
+		});
+
+		accordionBodyElement.setAttribute('id', 'accordionBody-' + game.autocampaignCounter);
+		accordionHeaderElement.innerText = localeStrings[378].replace("%arg1", game.autocampaignCounter);
+
+		accordionContainerElement.appendChild(accordionHeaderElement);
+		accordionContainerElement.appendChild(accordionBodyElement);
+
+
+		document.getElementById("lblAutocampaignJournal").appendChild(accordionContainerElement);
+	}
+
 	function postJournalLog(msgEventLog) {
-		document.getElementById("lblAutocampaignJournal").innerHTML += localeStrings[169]+game.myhero.aCampaignTotalLong;
-		document.getElementById("lblAutocampaignJournal").innerHTML += ": "+msgEventLog+"<br>";
+		var id = "accordionBody-" + game.autocampaignCounter;
+		var targetCampaignLogElement = document.getElementById(id);
+		targetCampaignLogElement.innerHTML += localeStrings[169]+game.myhero.aCampaignTotalLong;
+		targetCampaignLogElement.innerHTML += ": "+msgEventLog+"<br>";
 		scrollDown();
 	}
 	function populatePatchnotes() {
@@ -6025,6 +6091,22 @@
 	}
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("tabCity").click();
+
+	function accordion(elem){
+		document.addEventListener('click', function (e) {
+		if (!e.target.matches(elem + ' .accordion-header')) return;
+		else{
+			if(!e.target.parentElement.classList.contains('active')){         
+				e.target.parentElement.classList.add('active');
+			}else{
+				e.target.parentElement.classList.remove('active');
+			}
+		}
+		});
+	}
+
+	accordion('.accordion');
+
 </script>
 <script async src="dialogue.js"></script>
 <!--<script src="localisation.js"></script>-->
