@@ -421,4 +421,4 @@ locObj.city_chest_gold = {"txt":"Vi trovis %arg1 oron en kesto! !", "loc":"Rando
 locObj.blackmarket_dstr = {"txt":"Alta, grasventra verda koboldo, kiu nomis sin Elbenkonig,\n  ofertis al vi diversajn magiajn artefaktojn.\nVi, kiel vera kristano, frato de teŭtona ordo, ofendiĝis pro ĝi.\nLa unua via intenco estis mortigi la koboldon kaj bruligi la merkaton.\nAliflanke, magiaj artefaktoj povus montriĝi utilaj en ĉi tiu mondo.\nKion vi faros?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
 locObj.blackmarket_dstr_brn = {"txt":"Mortigu la koboldon kaj forbruligu la nigran merkaton!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Komencu komercadon ", "loc":"Keeping the blackmarket"};
-
+locObj.borderCollide = {"txt":"Vi trafis nevideblan muron. Vi ne povus preterpasi plu", "loc":"adventure map. collision with border"};

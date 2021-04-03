@@ -1239,6 +1239,7 @@
 	var hero_tile       = loadImage('resources/someKnight3.png');
 	var chest_tile      = loadImage('resources/chest.png');
 	var pumpkin_tile    = loadImage('resources/pumpkin.png');
+	var monster_tile    = loadImage('resources/bloody_monster_old.png');
 	var tree_tile       = loadImage('resources/tree.png');
 	var arrow_l         = loadImage('resources/pointer_l.png');
 	var arrow_r         = loadImage('resources/pointer_r.png');
@@ -1361,6 +1362,9 @@
 				if (game.myMapRemObjects[i+camXL][j+camYL]===2) {
 					ctx_map.drawImage(pumpkin_tile, i * 48, j * 48);
 				}
+				if (game.myMapRemObjects[i+camXL][j+camYL]===3) {
+					ctx_map.drawImage(monster_tile, i * 48, j * 48);
+				}
 				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
 					console.log("draw hero");
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
@@ -1426,6 +1430,15 @@
 		e.async=true;
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
+	function shuffleArray(array) {
+		for (var i = array.length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
 	//init variables
 	disabledElements = [];
 	flag_event_started = "";
@@ -2033,6 +2046,11 @@
 						}
 					}
 				}
+				
+				defElementsTypes  = [1];
+				pointsToDef       = game.populatePOIs(defElementsTypes, []);
+				game.placeMobsOnTheMap(pointsToDef);
+				
 				qc = game.checkNewMap()
 				if (qc) {
 					//QC is passed!
@@ -2045,21 +2063,80 @@
 				};
 			}
 		},
-		populatePOIs : function (elemsToCheck) {
-			ci = 0;
-			for (i=0; i<config.sizeMapX; i++){
-				for (j=0; j<config.sizeMapX; j++){
-					ci = ci + 1; //ci is common iterator for objects
-					//first we check whether myMapObjects has something
-					//then add AND condition
-					//that myMapObjects is NOT in the list of nonVisitableElements
-					if (inArray(visitableElements, game.myMapObjects[i][j])) {
-						console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
-						pointsToCheck.push([i,j]);
+		placeMobsOnTheMap : function(elemsToDefend) {
+			console.log(elemsToDefend);
+			//WIP
+			neighbor_offsets = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+			neighbor_offsets_ext = [[0, 1], [1, 0], [0, -1], [-1, 0],
+									[1, 1], [-1, -1], [1, -1], [-1, 1]];
+			for (i = 0; i < elemsToDefend.length; i++) {
+			    everyPoint = elemsToDefend[i];
+				mobPlaced = false;
+				neighbor_offsets_s = [];
+				
+				for (s = 0; s < neighbor_offsets.length; s++) {
+					neighbor_offsets_s[s] = neighbor_offsets[s];
+				}
+				neighbor_offsets_s = shuffleArray(neighbor_offsets_s);
+				for (neighbor_offset of neighbor_offsets_s) {
+					neighbor_x = everyPoint[0]*1+neighbor_offset[0]*1;
+					neighbor_y = everyPoint[1]*1+neighbor_offset[1]*1;
+					//if there is no such condition we would end out of the range
+					if (neighbor_x >= 0 && neighbor_y >= 0 && 
+					 neighbor_x < config.sizeMapX && neighbor_y < config.sizeMapY) {
+						if (game.myMapObjects[neighbor_x][neighbor_y]===0 &&
+						 game.myMapRemObjects[neighbor_x][neighbor_y]===0) {
+							//check here if in any directions a starting point.
+							castleEntranceFound = false;
+							for (neighbor_offset_castle of neighbor_offsets_ext) {
+								//castleEntranceFound = false;
+								castle_neighbor_x = neighbor_x*1+neighbor_offset_castle[0]*1;
+								castle_neighbor_y = neighbor_y*1+neighbor_offset_castle[1]*1;
+								//if there is no such condition we would end out of the range
+								if (castle_neighbor_x >= 0 && castle_neighbor_y >= 0 && 
+									castle_neighbor_x < config.sizeMapX && castle_neighbor_y < config.sizeMapY) {
+									if (game.myMapRemObjects[castle_neighbor_x][castle_neighbor_y]===40) {//40 means hero
+										castleEntranceFound = true;
+									}
+								}
+							}
+							if (castleEntranceFound === false) {
+							    mobPlaced = true;
+							    game.myMapRemObjects[neighbor_x][neighbor_y]=3;
+							}
+						}
+					}
+					if (mobPlaced === true){
+						break;
 					}
 				}
 			}
-			console.log(pointsToCheck);
+		},
+		populatePOIs : function (elemsRemToCheck,elemsStatToCheck) {
+			console.log("WE ARE INSIDE populateDefPOIs FUNCTION");
+			pointsToCheck = [];
+			if (elemsRemToCheck.length > 0){
+				console.log("WE ARE POPULATING REMOVABLE ITEMS LIST");
+				for (i=0; i<config.sizeMapX; i++){
+					for (j=0; j<config.sizeMapX; j++){
+						if (inArray(elemsRemToCheck, game.myMapRemObjects[i][j])) {
+							console.log("the element code is "+game.myMapRemObjects[i][j]+" in this loc "+i+"; "+j);
+							pointsToCheck.push([i,j]);
+						}
+					}
+				}
+			}
+			if (elemsStatToCheck.length > 0){
+				console.log("WE ARE POPULATING STATICAL ITEMS LIST");
+				for (i=0; i<config.sizeMapX; i++){
+					for (j=0; j<config.sizeMapX; j++){
+						if (inArray(elemsStatToCheck, game.myMapObjects[i][j])) {
+							console.log("the element code is "+game.myMapObjects[i][j]+" in this loc "+i+"; "+j);
+							pointsToCheck.push([i,j]);
+						}
+					}
+				}
+			}
 			return pointsToCheck;
 		},
 		checkNewMap : function () {
@@ -2067,7 +2144,8 @@
 			assertions = [];
 			visitableElements     = [4];
 			pointsToCheck         = [];
-			pointsToCheck = game.populatePOIs(visitableElements);
+			//pointsToCheck = game.populatePOIs(visitableElements);
+			pointsToCheck = game.populatePOIs([], visitableElements);
 			pfmap   = game.prepareMap();
 			lenOfPOIs = pointsToCheck.length;
 			for (i=0;i<lenOfPOIs;i++){
@@ -2299,6 +2377,8 @@
 					allowMvt = 0;
 					setTimeout(cooldownMvt, 500);
 				}
+			} else {
+				postEventLog(locObj.borderCollide.txt, "BOLD");
 			}
 		},
 		blackmarketCallback : function () {
@@ -4949,11 +5029,12 @@
 		postEventLog(locObj.welcome2.txt);
 	}
 	function postEventLog(msgEventLog, styling) {
-        if (typeof variable !== 'undefined') {
+        if (typeof styling !== 'undefined') {
             styling = styling.toUpperCase();
         } else {
             styling = "";
         }
+        styling = styling.toUpperCase();
         if (styling.indexOf("BOLD")!==-1){
             msgEventLog = "<b>"+msgEventLog+"</b>";
         }
@@ -5365,7 +5446,11 @@
 		saveGame("silent");
 	}
 	function exportGame() {
-		stringSavegame = JSON.stringify(game);
+		tmpExportGame = game;
+		tmpExportGame.pops = [];
+		tmpExportGame.budgets = [];
+		tmpExportGame.years = [];
+		stringSavegame = JSON.stringify(tmpExportGame);
 		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function importGame() {

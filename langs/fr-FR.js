@@ -421,4 +421,4 @@ locObj.city_chest_gold = {"txt":"Vous avez trouvé %arg1 pièces d'or dans un co
 locObj.blackmarket_dstr = {"txt":"Un grand gobelin vert au gros ventre, qui s'appelait Elbenkonig,\n  vous a offert une variété d'artefacts magiques.\nVous, en tant que vrai chrétien, frère de l'ordre teutonique, vous en avez été offensé.\nVotre première intention était de tuer le gobelin et de brûler le marché.\nD'un autre côté, des artefacts magiques pourraient s'avérer utiles dans ce monde.\nQue ferez-vous?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
 locObj.blackmarket_dstr_brn = {"txt":"Tuez le gobelin et brûlez le marché noir!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Commencer le commerce", "loc":"Keeping the blackmarket"};
-
+locObj.borderCollide = {"txt":"Vous frappez un mur invisible. Tu ne pouvais pas aller plus loin", "loc":"adventure map. collision with border"};

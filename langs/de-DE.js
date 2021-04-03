@@ -421,4 +421,4 @@ locObj.city_chest_gold = {"txt":"Du hast %arg1 Gold in einer Truhe gefunden!", "
 locObj.blackmarket_dstr = {"txt":"Ein großer grüner Kobold mit fettem Bauch, der sich Elbenkonig nannte,\n  bot Ihnen eine Vielzahl magischer Artefakte an.\nSie als wahrer Christ, ein Bruder des Deutschen Ordens, waren davon beleidigt.\nDas erste, was Sie vorhatten, war, den Kobold zu töten und den Markt zu verbrennen.\nAndererseits könnten sich magische Artefakte in dieser Welt als hilfreich erweisen.\nWas werden Sie tun?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
 locObj.blackmarket_dstr_brn = {"txt":"Töte den Kobold und verbrenne den Schwarzmarkt!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Starten Sie den Handel", "loc":"Keeping the blackmarket"};
-
+locObj.borderCollide = {"txt":"Du hast eine unsichtbare Wand getroffen. Du konnten nicht weiter gehen", "loc":"adventure map. collision with border"};
