@@ -425,3 +425,4 @@ locObj.blackmarket_dstr = {"txt":"Высокий толстопузый зеле
 locObj.blackmarket_dstr_brn = {"txt":"Убить гоблина и сжечь его рынок!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Начать торговлю", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Вы врезались в невидимую границу. Вы не можете пройти дальше", "loc":"Карта приключений. Столкновение с границей"};
+locObj.campaignTitle = {"txt":"Кампания-%arg1","loc":"Заголовок аккоредона в логах автокампании"};
