@@ -407,6 +407,7 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+
 locObj = {};
 //locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Seid gegrüßt, edler Spieler.", "loc":"Once game initted, those strings are put to the gamelog"};
@@ -422,3 +423,4 @@ locObj.blackmarket_dstr = {"txt":"Ein großer grüner Kobold mit fettem Bauch, d
 locObj.blackmarket_dstr_brn = {"txt":"Töte den Kobold und verbrenne den Schwarzmarkt!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Starten Sie den Handel", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Du hast eine unsichtbare Wand getroffen. Du konnten nicht weiter gehen", "loc":"adventure map. collision with border"};
+locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};

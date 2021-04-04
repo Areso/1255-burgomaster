@@ -407,3 +407,4 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+localeStrings.push("Campaign-%arg1");

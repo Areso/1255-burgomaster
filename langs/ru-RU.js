@@ -407,6 +407,7 @@ localeStrings.push("У вас нет войск в отряде героя");
 localeStrings.push("сержанты(%arg1)"); // 375
 localeStrings.push("туркополы(%arg1)");
 localeStrings.push("рыцари(%arg1)");
+
 locObj = {}
 //locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Приветствую вас!", "loc":"Кладём в игровой лог при инициализации игры"};
@@ -422,3 +423,4 @@ locObj.blackmarket_dstr = {"txt":"Высокий толстопузый зеле
 locObj.blackmarket_dstr_brn = {"txt":"Убить гоблина и сжечь его рынок!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Начать торговлю", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Вы врезались в невидимую границу. Вы не можете пройти дальше", "loc":"Карта приключений. Столкновение с границей"};
+locObj.campaignTitle = {"txt":"Кампания-%arg1","loc":"Заголовок аккоредона в логах автокампании"};

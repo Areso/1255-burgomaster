@@ -407,6 +407,7 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+
 locObj = {};
 //locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Saluton ludanto en ĉi tiu pliiga ludo!", "loc":"Once game initted, those strings are put to the gamelog"};
@@ -422,3 +423,4 @@ locObj.blackmarket_dstr = {"txt":"Alta, grasventra verda koboldo, kiu nomis sin 
 locObj.blackmarket_dstr_brn = {"txt":"Mortigu la koboldon kaj forbruligu la nigran merkaton!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Komencu komercadon ", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Vi trafis nevideblan muron. Vi ne povus preterpasi plu", "loc":"adventure map. collision with border"};
+locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};
