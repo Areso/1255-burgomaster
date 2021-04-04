@@ -5105,7 +5105,7 @@
 		});
 
 		accordionBodyElement.setAttribute('id', 'accordionBody-' + game.autocampaignCounter);
-		accordionHeaderElement.innerText = localeStrings[378].replace("%arg1", game.autocampaignCounter);
+		accordionHeaderElement.innerText = locObj.campaignTitle.txt.replace("%arg1", game.autocampaignCounter);
 
 		accordionContainerElement.appendChild(accordionHeaderElement);
 		accordionContainerElement.appendChild(accordionBodyElement);
