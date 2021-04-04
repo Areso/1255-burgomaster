@@ -407,8 +407,6 @@ localeStrings.push("У вас нет войск в отряде героя");
 localeStrings.push("сержанты(%arg1)"); // 375
 localeStrings.push("туркополы(%arg1)");
 localeStrings.push("рыцари(%arg1)");
-localeStrings.push("Кампания-%arg1");
-
 
 locObj = {}
 //locObj.welcome2 = {"txt":"", "loc":""};
