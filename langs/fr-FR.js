@@ -407,7 +407,6 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
-localeStrings.push("Campaign-%arg1");
 
 locObj = {};
 //locObj.welcome2 = {"txt":"", "loc":""};
@@ -424,3 +423,4 @@ locObj.blackmarket_dstr = {"txt":"Un grand gobelin vert au gros ventre, qui s'ap
 locObj.blackmarket_dstr_brn = {"txt":"Tuez le gobelin et brûlez le marché noir!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Commencer le commerce", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Vous frappez un mur invisible. Tu ne pouvais pas aller plus loin", "loc":"adventure map. collision with border"};
+locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};
