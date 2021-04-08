@@ -132,6 +132,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
 localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>How to play</h2>" +
+   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>'
     "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
     "After each clock turn your population is paying taxes to you and growing.<br>" +
     "Normally, each citizen pays to you one gold piece per tick.<br>" +
@@ -356,7 +357,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
 localeStrings.push("There is no savestring in the field");
-localeStrings.push("Couldn't load the game from the savestring");
+localeStrings.push("Couldn't load the game from the savestring ;-;");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
