@@ -407,6 +407,7 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+
 locObj = {};
 //locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Bonjour nouveau joueur et bienvenue dans mon jeux", "loc":"Once game initted, those strings are put to the gamelog"};
@@ -421,4 +422,5 @@ locObj.city_chest_gold = {"txt":"Vous avez trouvé %arg1 pièces d'or dans un co
 locObj.blackmarket_dstr = {"txt":"Un grand gobelin vert au gros ventre, qui s'appelait Elbenkonig,\n  vous a offert une variété d'artefacts magiques.\nVous, en tant que vrai chrétien, frère de l'ordre teutonique, vous en avez été offensé.\nVotre première intention était de tuer le gobelin et de brûler le marché.\nD'un autre côté, des artefacts magiques pourraient s'avérer utiles dans ce monde.\nQue ferez-vous?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
 locObj.blackmarket_dstr_brn = {"txt":"Tuez le gobelin et brûlez le marché noir!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Commencer le commerce", "loc":"Keeping the blackmarket"};
-
+locObj.borderCollide = {"txt":"Vous frappez un mur invisible. Tu ne pouvais pas aller plus loin", "loc":"adventure map. collision with border"};
+locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};

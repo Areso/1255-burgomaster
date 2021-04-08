@@ -407,6 +407,7 @@ localeStrings.push("У вас нет войск в отряде героя");
 localeStrings.push("сержанты(%arg1)"); // 375
 localeStrings.push("туркополы(%arg1)");
 localeStrings.push("рыцари(%arg1)");
+
 locObj = {}
 //locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Приветствую вас!", "loc":"Кладём в игровой лог при инициализации игры"};
@@ -421,3 +422,5 @@ locObj.city_chest_gold = {"txt":"Вы нашли в %arg1 золота в сун
 locObj.blackmarket_dstr = {"txt":"Высокий толстопузый зеленокожий гоблин, назвавшийся Элвенконингом,\n  предложил вам разнообразные амагические артефакты.\nВы, как истинный христианин, брат Тевтоноского ордена, оскорбились.\nПервая мысль была убить нечисть и сжечь рынок.\nС другой стороны, магические артефакты могут пригодиться в этом мире.\nЧто вы сделаете?", "loc":"This dialogue happens every time you first visit blackmarket on the newly generated map"};
 locObj.blackmarket_dstr_brn = {"txt":"Убить гоблина и сжечь его рынок!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Начать торговлю", "loc":"Keeping the blackmarket"};
+locObj.borderCollide = {"txt":"Вы врезались в невидимую границу. Вы не можете пройти дальше", "loc":"Карта приключений. Столкновение с границей"};
+locObj.campaignTitle = {"txt":"Кампания-%arg1","loc":"Заголовок аккоредона в логах автокампании"};
