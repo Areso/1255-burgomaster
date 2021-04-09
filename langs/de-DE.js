@@ -424,3 +424,5 @@ locObj.blackmarket_dstr_brn = {"txt":"Töte den Kobold und verbrenne den Schwarz
 locObj.blackmarket_dstr_kp = {"txt":"Starten Sie den Handel", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Du hast eine unsichtbare Wand getroffen. Du konnten nicht weiter gehen", "loc":"adventure map. collision with border"};
 locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};
+locObj.upgCostSidebar = {"txt":"Ein Upgrade auf %arg1 Level kostet %arg2 Gold", "loc":"Shows under the building description on the left sidebar for upgrades"};
+locObj.bldCostSidebar = {"txt":"Der Bau kostet %arg2 Gold", "loc":"Shows under the building description on the left sidebar for initial building"};

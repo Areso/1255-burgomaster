@@ -132,6 +132,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
 localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>How to play</h2>" +
+   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
     "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
     "After each clock turn your population is paying taxes to you and growing.<br>" +
     "Normally, each citizen pays to you one gold piece per tick.<br>" +
@@ -356,7 +357,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
 localeStrings.push("There is no savestring in the field");
-localeStrings.push("Couldn't load the game from the savestring");
+localeStrings.push("Couldn't load the game from the savestring ;-;");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -424,3 +425,5 @@ locObj.blackmarket_dstr_brn = {"txt":"Kill the goblin and burn the blackmarket!"
 locObj.blackmarket_dstr_kp = {"txt":"Start trade", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"You hit an invisible border. You couldn't pass any further", "loc":"adventure map. collision with border"};
 locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};
+locObj.upgCostSidebar = {"txt":"Upgrade to %arg1 level costs %arg2 gold", "loc":"Shows under the building description on the left sidebar for upgrades"};
+locObj.bldCostSidebar = {"txt":"Building costs %arg2 gold", "loc":"Shows under the building description on the left sidebar for initial building"};

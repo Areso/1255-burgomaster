@@ -424,3 +424,5 @@ locObj.blackmarket_dstr_brn = {"txt":"Mortigu la koboldon kaj forbruligu la nigr
 locObj.blackmarket_dstr_kp = {"txt":"Komencu komercadon ", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Vi trafis nevideblan muron. Vi ne povus preterpasi plu", "loc":"adventure map. collision with border"};
 locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};
+locObj.upgCostSidebar = {"txt":"Altgradigo al %arg1 nivelo kostas %arg2 orojn", "loc":"Shows under the building description on the left sidebar for upgrades"};
+locObj.bldCostSidebar = {"txt":"Konstruaĵo kostas %arg2 orojn ", "loc":"Shows under the building description on the left sidebar for initial building"};
