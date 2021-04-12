@@ -5,7 +5,7 @@ var artefacts = {
         desc: localeStrings[287],
         attr: [],
         change: [],
-        priceBuy: 5000,
+        priceBuy: 500,
         chance: 1,
         type: "scrolls",
     },
