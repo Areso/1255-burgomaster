@@ -132,7 +132,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
 localeStrings.push("<h1>1255 Бургомастер</h1>" +
     "<h2>Как играть</h2>" +
-    "ссылка на вики <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>"+
+    "ссылка на вики <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>"+
     "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
     "После каждого тика, население растет и платит налоги.<br>" +
     "Обычно, каждый горожанин приносит один золотой за тик.<br>" +
