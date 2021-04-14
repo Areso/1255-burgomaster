@@ -1659,7 +1659,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 	var heroAttributesRandomizer = new WeightedRandom();
 	var enemyRandomizer = new WeightedRandom();
-
+	function Monster(monster, coordx, coordy) {
+		this.monster = monster;
+		this.coordx = coordx;
+		this.coordy = coordy;
+	}
 	var game = {
 		gold: 20,
 		gems: 0,
@@ -1733,7 +1737,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		difficultyModifier: 0,
 		attacker: 0,
 		isAutoBattle: false,
-
+		monstersOnAdvMap: [],
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -2291,6 +2295,25 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				};
 			}
 		},
+		monsterCheck : function () {
+			//WIP
+			for (index = 0; index < game.monstersOnAdvMap.length; ++index) {
+				//console.log(monsterArray[index]);
+				//console.log('charx is '+game.charcoordx+' charxy is '+game.charcoordy)
+				if (Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)<=1) {
+					if (Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)<=1) {
+						//TODO FIX THAT
+						//monsterArray[index].coordx = game.charcoordx;
+						//monsterArray[index].coordy = game.charcoordy;
+						//globalObjects[game.charcoordx][game.charcoordy] = 7;
+						//globalObjects[monsterArray[index].coordy][monsterArray[index].coordx] = 0;
+						//composite_gm();
+						//TODO BATTLE
+						console.log("movement a monster toward the hero");
+					}
+				}
+			}
+		},
 		placeMobsOnTheMap : function(elemsToDefend) {
 			console.log(elemsToDefend);
 			//WIP
@@ -2298,7 +2321,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			neighbor_offsets_ext = [[0, 1], [1, 0], [0, -1], [-1, 0],
 									[1, 1], [-1, -1], [1, -1], [-1, 1]];
 			for (i = 0; i < elemsToDefend.length; i++) {
-			    everyPoint = elemsToDefend[i];
+				everyPoint = elemsToDefend[i];
 				mobPlaced = false;
 				neighbor_offsets_s = [];
 				
@@ -2329,8 +2352,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 								}
 							}
 							if (castleEntranceFound === false) {
-							    mobPlaced = true;
-							    game.myMapRemObjects[neighbor_x][neighbor_y]=3;
+								mobPlaced = true;
+								game.myMapRemObjects[neighbor_x][neighbor_y]=3;
+								mymonster = new Monster("monster", neighbor_x, neighbor_y);
+								game.monstersOnAdvMap.push(mymonster);
 							}
 						}
 					}
@@ -3216,7 +3241,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		help(myobject) {
-			//WIP
 			if (myobject.id==="defencies_img") {
 				nextDefPrice = 0;
 				blMaxLvlDef = 0;
