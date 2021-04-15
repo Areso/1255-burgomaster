@@ -89,7 +89,7 @@ localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Никнейм зарегистрирован","Никнейм обновлен","Извините, но никнейм занят"]);
 localeStrings.push("Сокровищница была пополнена на %arg1 золота");
-localeStrings.push("Самоцветы - самая ценная валюта в игре");//90
+localeStrings.push("Янтарь - самая ценная валюта в игре");//90
 localeStrings.push("Гарнизон");
 localeStrings.push("Уволить");
 localeStrings.push("Нанять");
@@ -132,6 +132,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
 localeStrings.push("<h1>1255 Бургомастер</h1>" +
     "<h2>Как играть</h2>" +
+    "ссылка на вики <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>"+
     "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
     "После каждого тика, население растет и платит налоги.<br>" +
     "Обычно, каждый горожанин приносит один золотой за тик.<br>" +

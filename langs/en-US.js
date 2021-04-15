@@ -89,7 +89,7 @@ localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
 localeStrings.push("%arg1 gold has been added to your treasury");
-localeStrings.push("Gems are most valued currency");//90
+localeStrings.push("Amber are most valued currency");//90
 localeStrings.push("Garrison");
 localeStrings.push("Fire");
 localeStrings.push("Hire");
@@ -133,6 +133,7 @@ localeStrings.push("placeholder");//130
 localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>How to play</h2>" +
    'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
+     'feedback <a href="https://form.jotform.com/211014175318041">https://form.jotform.com/211014175318041</a><br>' +
     "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
     "After each clock turn your population is paying taxes to you and growing.<br>" +
     "Normally, each citizen pays to you one gold piece per tick.<br>" +
