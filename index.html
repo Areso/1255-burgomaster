@@ -1405,9 +1405,10 @@
 	var blackmarket_tile= loadImage('resources/black_market.png');
 	var bmarket_burned_tile= loadImage('resources/black_market_burned.png');
 	var hero_tile       = loadImage('resources/someKnight3.png');
+	var hero_atk_tile   = loadImage('resources/someKnightAttacked2.png');
 	var chest_tile      = loadImage('resources/chest.png');
 	var pumpkin_tile    = loadImage('resources/pumpkin.png');
-	var monster_tile    = loadImage('resources/bloody_monster_old.png');
+	var monster_tile    = loadImage('resources/monster_redpeople.png');
 	var tree_tile       = loadImage('resources/tree.png');
 	var arrow_l         = loadImage('resources/pointer_l.png');
 	var arrow_r         = loadImage('resources/pointer_r.png');
@@ -1440,7 +1441,6 @@
 			camYL = config.sizeMapY-config.sizeScrY;
 			camYH = config.sizeMapY;
 		}
-		console.log('camYL, camYH are '+camYL+', '+camYH);
 		for (i = 0; i < config.sizeScrX; i++) {
 			for (j = 0; j < config.sizeScrY; j++) {
 				if (game.myMapLand[i+camXL][j+camYL]===0) {
@@ -1534,8 +1534,10 @@
 					ctx_map.drawImage(monster_tile, i * 48, j * 48);
 				}
 				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
-					console.log("draw hero");
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
+				}
+				if (game.myMapRemObjects[i+camXL][j+camYL]===41) {
+					ctx_map.drawImage(hero_atk_tile, i * 48, j * 48);   //draw hero being attacked
 				}
 			}
 		}
@@ -1659,7 +1661,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 	var heroAttributesRandomizer = new WeightedRandom();
 	var enemyRandomizer = new WeightedRandom();
-
+	function Monster(monster, coordx, coordy) {
+		this.monster = monster;
+		this.coordx = coordx;
+		this.coordy = coordy;
+	}
 	var game = {
 		gold: 20,
 		gems: 0,
@@ -1733,7 +1739,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		difficultyModifier: 0,
 		attacker: 0,
 		isAutoBattle: false,
-
+		monstersOnAdvMap: [],
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -2291,6 +2297,32 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				};
 			}
 		},
+		checkMonsters : function () {
+			//WIP
+			for (index = 0; index < game.monstersOnAdvMap.length; ++index) {
+				if (Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)<=1) {
+					if (Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)<=1) {
+						if (Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)===1&&Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)===1){
+							//do nothing
+						} else {
+							console.log("movement a monster toward the hero");
+							game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
+							//prepare for battle!
+							//generate enemy squad
+							game.generateEnemyUnitsForBattle();
+							game.calcAttackPhase("AdvMap");
+							//suppose we win the battle
+							//removing the monster from removable objects (render array)
+							game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy] = 0;
+							//removing the monster object from monsters array
+							game.monstersOnAdvMap.splice(index, 1);
+							composite_gm();
+							break;
+						}
+					}
+				}
+			}
+		},
 		placeMobsOnTheMap : function(elemsToDefend) {
 			console.log(elemsToDefend);
 			//WIP
@@ -2298,7 +2330,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			neighbor_offsets_ext = [[0, 1], [1, 0], [0, -1], [-1, 0],
 									[1, 1], [-1, -1], [1, -1], [-1, 1]];
 			for (i = 0; i < elemsToDefend.length; i++) {
-			    everyPoint = elemsToDefend[i];
+				everyPoint = elemsToDefend[i];
 				mobPlaced = false;
 				neighbor_offsets_s = [];
 				
@@ -2329,8 +2361,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 								}
 							}
 							if (castleEntranceFound === false) {
-							    mobPlaced = true;
-							    game.myMapRemObjects[neighbor_x][neighbor_y]=3;
+								mobPlaced = true;
+								game.myMapRemObjects[neighbor_x][neighbor_y]=3;
+								mymonster = new Monster("monster", neighbor_x, neighbor_y);
+								game.monstersOnAdvMap.push(mymonster);
 							}
 						}
 					}
@@ -2601,6 +2635,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							openTab(null, 'tabBlackmarket');
 						}
 					}
+					game.checkMonsters();
 					composite_gm();
 					allowMvt = 0;
 					setTimeout(cooldownMvt, 200);
@@ -2671,8 +2706,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		/*-- New: Used for adding troops to squands on autocamp. start and after recalc of enemy troops when autobattle is over (if gamer is won the battle of course) --*/
 
 		genUnitStack: function(unit, count, squad) {
-		  
-				var stackName = unit.name;
+			var stackName = unit.name;
 			if (squad && squad.hasOwnProperty(stackName)) {
 				squad[stackName].count += count;
 				squad[stackName].stackHealth = squad[stackName].health * squad[stackName].count;
@@ -2724,26 +2758,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 		checkWinner: function() {
-		  if (game.attacker === 1) {
+			if (game.attacker === 1) {
+				if (game.myhero.stance === 1) {
+					postJournalLog(localeStrings[174]);
+				} else {
+					postJournalLog(localeStrings[173]);
+				}
+				console.log("The player is the winner");
+				game.myhero.gold += game.goldReward;
+				game.myhero.exp += game.expReward;
+				game.restoreHealth();
+				game.generateEnemyUnitsForBattle();
 
-		  	if (game.myhero.stance === 1) {
-				postJournalLog(localeStrings[174]);
 			} else {
-				postJournalLog(localeStrings[173]);
+				postJournalLog(localeStrings[172]);
+				game.heroDie();
+				console.log("The PC opponent is the Winner");
 			}
-
-		  	console.log('Winner is player')
-
-			game.myhero.gold += game.goldReward;
-			game.myhero.exp += game.expReward;
-			game.restoreHealth();
-			game.generateEnemyUnitsForBattle();
-
-		  } else {
-		  	postJournalLog(localeStrings[172]);
-		  	game.heroDie();
-		  	console.log("Winner is COMP")
-		  }
 		},
 
 		calcDmg: function(attackerSquad, attackerHeroAttack, defenderSquad, defenderHeroDefence) {
@@ -2800,7 +2831,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		          console.log('DMG before round: ', dmg);
 		          dmg = Math.round(dmg);
 		          console.log(dmg);
-
+		          
 		          if (dmg >= target.stackHealth) {
 		            console.log(`${target.name} is dying`);
 		            delete defenderStack.units[defenderKey];
@@ -2827,9 +2858,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		},
 
-		calcAttackPhase: function () {
-			game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
-
+		calcAttackPhase: function (campaignType) {
+			if (campaignType==="AdvMap"){
+				game.attacker = game.myheroArmy.armyID;
+			} else {
+				game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
+			}
 			var attackVal = 0;
 			var defenceVal = 0;
 			
@@ -3071,7 +3105,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						game.isAutoBattle = true;
 
 						while (game.isAutoBattle) {
-							game.calcAttackPhase();
+							game.calcAttackPhase("AutoCampaign");
 						} 
 
 					}
@@ -3092,7 +3126,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						game.isAutoBattle = true;
 
 						while (game.isAutoBattle) {
-							game.calcAttackPhase();
+							game.calcAttackPhase("AutoCampaign");
 						} 
 
 					}
@@ -3216,7 +3250,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		help(myobject) {
-			//WIP
 			if (myobject.id==="defencies_img") {
 				nextDefPrice = 0;
 				blMaxLvlDef = 0;
