@@ -1408,7 +1408,7 @@
 	var hero_atk_tile   = loadImage('resources/someKnightAttacked2.png');
 	var chest_tile      = loadImage('resources/chest.png');
 	var pumpkin_tile    = loadImage('resources/pumpkin.png');
-	var monster_tile    = loadImage('resources/bloody_monster_old.png');
+	var monster_tile    = loadImage('resources/monster_redpeople.png');
 	var tree_tile       = loadImage('resources/tree.png');
 	var arrow_l         = loadImage('resources/pointer_l.png');
 	var arrow_r         = loadImage('resources/pointer_r.png');
@@ -1441,7 +1441,6 @@
 			camYL = config.sizeMapY-config.sizeScrY;
 			camYH = config.sizeMapY;
 		}
-		console.log('camYL, camYH are '+camYL+', '+camYH);
 		for (i = 0; i < config.sizeScrX; i++) {
 			for (j = 0; j < config.sizeScrY; j++) {
 				if (game.myMapLand[i+camXL][j+camYL]===0) {
@@ -1535,11 +1534,9 @@
 					ctx_map.drawImage(monster_tile, i * 48, j * 48);
 				}
 				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
-					console.log("draw hero");
 					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
 				}
 				if (game.myMapRemObjects[i+camXL][j+camYL]===41) {
-					console.log("draw hero");
 					ctx_map.drawImage(hero_atk_tile, i * 48, j * 48);   //draw hero being attacked
 				}
 			}
@@ -2303,22 +2300,25 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		checkMonsters : function () {
 			//WIP
 			for (index = 0; index < game.monstersOnAdvMap.length; ++index) {
-				//console.log(monsterArray[index]);
-				//console.log('charx is '+game.charcoordx+' charxy is '+game.charcoordy)
 				if (Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)<=1) {
 					if (Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)<=1) {
-						//TODO FIX THAT
-						//monsterArray[index].coordx = game.charcoordx;
-						//monsterArray[index].coordy = game.charcoordy;
-						//globalObjects[game.charcoordx][game.charcoordy] = 7;
-						//globalObjects[monsterArray[index].coordy][monsterArray[index].coordx] = 0;
-						//composite_gm();
-						//TODO BATTLE
-						console.log("movement a monster toward the hero");
-						game.myMapRemObjects[game.monstersOnAdvMap[index].coordy][game.monstersOnAdvMap[index].coordx] = 0;
-						game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
-						composite_gm();
-						game.calcAttackPhase();
+						if (Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)===1&&Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)===1){
+							//do nothing
+						} else {
+							console.log("movement a monster toward the hero");
+							game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
+							//prepare for battle!
+							//generate enemy squad
+							game.generateEnemyUnitsForBattle();
+							game.calcAttackPhase("AdvMap");
+							//suppose we win the battle
+							//removing the monster from removable objects (render array)
+							game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy] = 0;
+							//removing the monster object from monsters array
+							game.monstersOnAdvMap.splice(index, 1);
+							composite_gm();
+							break;
+						}
 					}
 				}
 			}
@@ -2706,8 +2706,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		/*-- New: Used for adding troops to squands on autocamp. start and after recalc of enemy troops when autobattle is over (if gamer is won the battle of course) --*/
 
 		genUnitStack: function(unit, count, squad) {
-		  
-				var stackName = unit.name;
+			var stackName = unit.name;
 			if (squad && squad.hasOwnProperty(stackName)) {
 				squad[stackName].count += count;
 				squad[stackName].stackHealth = squad[stackName].health * squad[stackName].count;
@@ -2760,15 +2759,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		checkWinner: function() {
 			if (game.attacker === 1) {
-
 				if (game.myhero.stance === 1) {
 					postJournalLog(localeStrings[174]);
 				} else {
 					postJournalLog(localeStrings[173]);
 				}
-
-				console.log('The player is the winner');
-
+				console.log("The player is the winner");
 				game.myhero.gold += game.goldReward;
 				game.myhero.exp += game.expReward;
 				game.restoreHealth();
@@ -2835,7 +2831,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		          console.log('DMG before round: ', dmg);
 		          dmg = Math.round(dmg);
 		          console.log(dmg);
-
+		          
 		          if (dmg >= target.stackHealth) {
 		            console.log(`${target.name} is dying`);
 		            delete defenderStack.units[defenderKey];
@@ -2862,9 +2858,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		},
 
-		calcAttackPhase: function () {
-			game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
-
+		calcAttackPhase: function (campaignType) {
+			if (campaignType==="AdvMap"){
+				game.attacker = game.myheroArmy.armyID;
+			} else {
+				game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
+			}
 			var attackVal = 0;
 			var defenceVal = 0;
 			
@@ -3106,7 +3105,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						game.isAutoBattle = true;
 
 						while (game.isAutoBattle) {
-							game.calcAttackPhase();
+							game.calcAttackPhase("AutoCampaign");
 						} 
 
 					}
@@ -3127,7 +3126,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						game.isAutoBattle = true;
 
 						while (game.isAutoBattle) {
-							game.calcAttackPhase();
+							game.calcAttackPhase("AutoCampaign");
 						} 
 
 					}
