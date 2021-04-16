@@ -2759,15 +2759,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		checkWinner: function() {
 			if (game.attacker === 1) {
-
 				if (game.myhero.stance === 1) {
 					postJournalLog(localeStrings[174]);
 				} else {
 					postJournalLog(localeStrings[173]);
 				}
-
-				console.log('The player is the winner');
-
+				console.log("The player is the winner");
 				game.myhero.gold += game.goldReward;
 				game.myhero.exp += game.expReward;
 				game.restoreHealth();
@@ -2834,7 +2831,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		          console.log('DMG before round: ', dmg);
 		          dmg = Math.round(dmg);
 		          console.log(dmg);
-
+		          
 		          if (dmg >= target.stackHealth) {
 		            console.log(`${target.name} is dying`);
 		            delete defenderStack.units[defenderKey];
