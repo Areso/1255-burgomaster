@@ -2307,10 +2307,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						} else {
 							console.log("movement a monster toward the hero");
 							game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
-							//game.calcAttackPhase();
+							//prepare for battle!
+							//generate enemy squad
+							game.generateEnemyUnitsForBattle();
+							game.calcAttackPhase("AdvMap");
 							//suppose we win the battle
 							//removing the monster from removable objects (render array)
-							console.log(game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy]);
 							game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy] = 0;
 							//removing the monster object from monsters array
 							game.monstersOnAdvMap.splice(index, 1);
@@ -2704,8 +2706,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		/*-- New: Used for adding troops to squands on autocamp. start and after recalc of enemy troops when autobattle is over (if gamer is won the battle of course) --*/
 
 		genUnitStack: function(unit, count, squad) {
-		  
-				var stackName = unit.name;
+			var stackName = unit.name;
 			if (squad && squad.hasOwnProperty(stackName)) {
 				squad[stackName].count += count;
 				squad[stackName].stackHealth = squad[stackName].health * squad[stackName].count;
@@ -2860,9 +2861,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		},
 
-		calcAttackPhase: function () {
-			game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
-
+		calcAttackPhase: function (campaignType) {
+			if (campaignType==="AdvMap"){
+				game.attacker = game.myheroArmy.armyID;
+			} else {
+				game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
+			}
 			var attackVal = 0;
 			var defenceVal = 0;
 			
@@ -3104,7 +3108,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						game.isAutoBattle = true;
 
 						while (game.isAutoBattle) {
-							game.calcAttackPhase();
+							game.calcAttackPhase("AutoCampaign");
 						} 
 
 					}
@@ -3125,7 +3129,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						game.isAutoBattle = true;
 
 						while (game.isAutoBattle) {
-							game.calcAttackPhase();
+							game.calcAttackPhase("AutoCampaign");
 						} 
 
 					}
