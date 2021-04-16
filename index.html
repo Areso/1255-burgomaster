@@ -2302,15 +2302,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			for (index = 0; index < game.monstersOnAdvMap.length; ++index) {
 				if (Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)<=1) {
 					if (Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)<=1) {
-						console.log
+						console.log("---")
 						console.log("x offset is "+Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx));
 						console.log("y offset is "+Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy));
-						if (!(Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)===1&&Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)===1)){
+						if (Math.abs(game.heroY-game.monstersOnAdvMap[index].coordy)===1&&Math.abs(game.heroX-game.monstersOnAdvMap[index].coordx)===1){
+							//do nothing
+						} else {
 							console.log("movement a monster toward the hero");
-							game.myMapRemObjects[game.monstersOnAdvMap[index].coordy][game.monstersOnAdvMap[index].coordx] = 0;
 							game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
 							composite_gm();
 							//game.calcAttackPhase();
+							//suppose we win the battle
+							//removing the monster object from monsters array
+							game.monstersOnAdvMap.splice(index, 1);
+							//removing the monster from removable objects (render array)
+							//this is not working yet
+							game.myMapRemObjects[game.monstersOnAdvMap[index].coordy][game.monstersOnAdvMap[index].coordx] = 0;
+							//--
 						}
 					}
 				}
