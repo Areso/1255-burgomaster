@@ -72,7 +72,8 @@
 			overflow: auto;
 		}
 
-		#lblAutocampaignJournal {
+		#lblAutocampaignJournal,
+		#lblAutocampaignBattle {
 			width: 800px;
 			height: 420px;
 			top: 60px;
@@ -189,25 +190,29 @@
 			height: 22px;
 		}
 
-		.accordion {
+		.accordion,
+		.accordion-battle {
 			box-sizing: border-box;
 			width: 100%;
 			padding: 0 20px;
 			margin-bottom: 6px;
 		}
 
-		.accordion-header {
+		.accordion-header,
+		.accordion-battle-header {
 			padding: 8px 10px;
 			border: 1px solid #333;
 			background-color: #f1f1f1;
 		}
 
-		.accordion-body {
+		.accordion-body,
+		.accordion-battle-body {
 			display: none;
 			padding: 10px;
 		}
 
-		.accordion.active > .accordion-body {
+		.accordion.active > .accordion-body,
+		.accordion-battle.active > .accordion-battle-body {
 			display: block;
 		}
 
@@ -645,11 +650,21 @@
 			<br>
 			<button id="btnLeaveCity"    onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
 			<button id="btnGenerateMap"    onclick="game.generateMap()" style="width:160px">Regenerate map</button>
+
+			<button id="btnAutobattlesList" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
+
 		</div>
+
 		<div id="tabAutocampaignJournal" class="tabcontent">
 			<div id="lblAutocampaignJournal" class="interface"></div>
 			<button id="btnToInn" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
 		</div>
+
+		<div id="tabAutocampaignBattle" class="tabcontent">
+			<div id="lblAutocampaignBattle" class="interface"></div>
+			<button id="btnToInn1" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
+		</div>
+
 		<div id="tabTroopsHiring" class="tabcontent">
 			<label id="lblTroopsHiring">Hiring troops</label><br>
 			<div id="lblTroopsHelp" style="height: 80px; width: 780px;">
@@ -1734,13 +1749,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		tips: [],
 		chestCity: 0,
 		autocampaignCounter: 0,
+		autocampaignBattlesCounter: 0,
 		enemyHero: null,
 		enemyHeroArmy: {armyID: 2, units: {}},
 		enemyMaxArmyCount: 3, 
 		expReward: 0,
 		goldReward: 0,
 		difficultyModifier: 0,
-		attacker: 0,
+		attacker: 1,
 		isAutoBattle: false,
 		nightMode: false,
 		monstersOnAdvMap: [],
@@ -2762,7 +2778,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 		checkWinner: function() {
-			if (game.attacker === 1) {
+			if (game.attacker === 1 && !game.isAutoBattle) {
 				if (game.myhero.stance === 1) {
 					postJournalLog(localeStrings[174]);
 				} else {
@@ -2816,30 +2832,54 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		},
 
+		unitNameLoc: function (name) {
+			switch (name) {
+				case "sergeants": return locObj.unit_sergeants.txt;
+				case "turkopols": return locObj.unit_turkopols.txt;
+				case "knights": return locObj.unit_knights.txt;
+				case "bandit": return locObj.unit_bandit.txt;
+				case "banditArcher": return locObj.unit_bandit_archer.txt;
+				case "mercSwordman": return locObj.unit_merc_swordman.txt;
+				case "mercSpearmen": return locObj.unit_merc_spearman.txt;
+				default: return "Unknown unit name";
+			}
+		},
+
 		calcAutoBattle: function(attackerStack, attackerHeroAttack, defenderStack, defenderHeroDefence) {
 
 		  console.log('--Attack start --');
+
+		  var startRoundStr = locObj.autobattle_journal_log_start.txt;
+		  var endRoundStr = locObj.autobattle_journal_log_end.txt;
+
+		  postBattleLog(startRoundStr);
 
 		  for (var attackerKey  in attackerStack.units) {
 
 		    if (attackerStack.units.hasOwnProperty(attackerKey)) {
 
-		      console.log('Attacker: ', attackerStack.units[attackerKey]);
+		    	console.log('Attacker: ', attackerStack.units[attackerKey]);
 
 		      for (var defenderKey in defenderStack.units) {
 
 		        if (defenderStack.units.hasOwnProperty(defenderKey)) {
 
-		          var target = defenderStack.units[defenderKey];
-		          var dmg = game.calcDmg(attackerStack.units[attackerKey], attackerHeroAttack, defenderStack.units[defenderKey], defenderHeroDefence);
-		          console.log('DMG before round: ', dmg);
-		          dmg = Math.round(dmg);
-		          console.log(dmg);
-		          
+					var target = defenderStack.units[defenderKey];
+
+					var dmg = game.calcDmg(attackerStack.units[attackerKey], attackerHeroAttack, defenderStack.units[defenderKey], defenderHeroDefence);
+					console.log('DMG before round: ', dmg);
+					dmg = Math.round(dmg);
+					console.log(dmg);
+
+					var attackerStr = locObj.autobattle_journal_log_dmg.txt.replace("%arg1", game.unitNameLoc(attackerStack.units[attackerKey].name)).replace("%arg2", dmg).replace("%arg3", game.unitNameLoc(target.name));
+					
+
 		          if (dmg >= target.stackHealth) {
 		            console.log(`${target.name} is dying`);
 		            delete defenderStack.units[defenderKey];
 		            console.log("%c DEFENDER UNITS LIST: ", "background: purple; color: #ededed", defenderStack.units);
+					attackerStr += ' '  + locObj.autobattle_journal_log_destroyed.txt.replace("%arg1", game.unitNameLoc(target.name));
+					postBattleLog(attackerStr);
 		            if (isEmptyObj(defenderStack.units)) {
 		              game.isAutoBattle = false;
 		              game.checkWinner();
@@ -2849,14 +2889,22 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		            var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
 		            defenderStack.units[defenderKey].count -= defenderLooses;
 		            target.stackHealth -= dmg;
+		            if (defenderLooses > 0) {
+		            	attackerStr += ' ' + locObj.autobattle_journal_log_dead.txt.replace("%arg1", defenderLooses).replace("%arg2", game.unitNameLoc(target.name));
+		            }
+		            postBattleLog(attackerStr);
 		          }
+
 		        }
 		      }
 
+		      
+
 		    }
+
 		  }
 
-
+		  postBattleLog(endRoundStr);
 		  console.log('-- Attack turn ended --');
 		  console.log('-----------------------');
 
@@ -2883,10 +2931,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal);
 				game.attacker = 2;
-			} else {
+			} else if (game.attacker === 2) {
 
 				if (game.enemyHero && game.enemyHero.atk) {
-					attackVal = game.myhero.atk;
+					attackVal = game.enemyHero.atk;
 				}
 
 				if (game.myhero.def) {
@@ -3099,14 +3147,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				var heroTroopsPrice = game.heroTroopsPrice();
 				var rnd = Math.floor((Math.random() * 24) + 1);
 				if (game.myhero.stance === 0) {//aggressive stance
-					// if (rnd===1) {
-					// 	postJournalLog(localeStrings[172]);
-					// 	game.heroDie();
-					// }
+
 					if (rnd<=12) {
 
-
 						game.isAutoBattle = true;
+						createBattleAccordion();
 
 						while (game.isAutoBattle) {
 							game.calcAttackPhase("AutoCampaign");
@@ -3121,13 +3166,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 					if (rnd>1 && rnd<=12) {
 
-						game.myhero.gold += game.goldReward;
-						game.myhero.exp += game.expReward;
-
-						//game.myhero.gold += Math.floor(heroTroopsPrice*0.35+1);
-						//game.myhero.exp  += Math.floor(heroTroopsPrice*0.35+1);
-
 						game.isAutoBattle = true;
+						createBattleAccordion();
 
 						while (game.isAutoBattle) {
 							game.calcAttackPhase("AutoCampaign");
@@ -3557,6 +3597,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						heroAttributesRandomizer.addEntry('mpow', 0.0);
 
 					}
+
+
+					for (var i = 1; i < game.buildLevelInn; i++) {
+						var rndAttrName = heroAttributesRandomizer.getRandom();
+						game.myhero[rndAttrName]++;
+						console.log(rndAttrName);
+						if (rndAttrName === "int") {
+							game.recalcManaPoints();
+						}						
+					}
+
 					game.myhero.sergeants  = 0;
 					game.myhero.turkopols  = 0;
 					game.myhero.knights    = 0;
@@ -5117,6 +5168,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		openTab(null, 'tabAutocampaignJournal');
 		scrollDown();
 	}
+
+	function openTabAutocampaignBattle() {
+		openTab(null, 'tabAutocampaignBattle');
+		scrollDown();
+	}
+
+
 	function getUID() {
 		var rnd = Math.floor((Math.random() * 100000) + 1);
 		while (rnd.toString().length < 5) {
@@ -5594,6 +5652,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("btnTowngate").innerText         = localeStrings[221];
 		document.getElementById("btnLeaveCity").innerText        = localeStrings[222];
 		document.getElementById("btnGenerateMap").innerText      = localeStrings[223];
+
+		document.getElementById("btnAutobattlesList").innerText  = locObj.autobattle_journal_btn.txt;
+
 		document.getElementById("lblOption").innerText           = localeStrings[71];
 		document.getElementById("lblOn").innerText               = localeStrings[72];
 		document.getElementById("lblOff").innerText              = localeStrings[73];
@@ -5603,7 +5664,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblMscAll").innerText           = localeStrings[77];
 		document.getElementById("lblMscScr").innerText           = localeStrings[78];
 		document.getElementById("btnToGeneralSettings").innerText= localeStrings[79];
+		
 		document.getElementById("btnToInn").innerText            = localeStrings[79];
+		document.getElementById("btnToInn1").innerText           = localeStrings[79];
+
 		document.getElementById("lblSoundMenu").innerText        = localeStrings[80];
 		document.getElementById("btnSoundSettings").innerText    = localeStrings[81];
 		document.getElementById("lblStnMobileUI").innerText      = localeStrings[82];
@@ -5706,6 +5770,46 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 
 		document.getElementById("lblAutocampaignJournal").appendChild(accordionContainerElement);
+	}
+
+
+	function createBattleAccordion() {
+		var accordionContainerElement = document.createElement('div');
+		var accordionHeaderElement    = document.createElement('div');
+		var accordionBodyElement      = document.createElement('div');
+
+		accordionContainerElement.classList.add('accordion-battle', 'active');
+		accordionHeaderElement.classList.add('accordion-battle-header');
+		accordionBodyElement.classList.add('accordion-battle-body');
+
+		game.autocampaignBattlesCounter++;
+
+		let previousListItem = document.querySelectorAll('.accordion-battle');
+
+		previousListItem.forEach(function (item) {
+			if (item.classList.contains('active')) {
+				item.classList.remove('active');
+			}
+		});
+
+		accordionBodyElement.setAttribute('id', 'accordionBattleBody-' + game.autocampaignBattlesCounter);
+		accordionHeaderElement.innerText = locObj.autobattleTitle.txt.replace("%arg1", game.autocampaignBattlesCounter);
+
+		accordionContainerElement.appendChild(accordionHeaderElement);
+		accordionContainerElement.appendChild(accordionBodyElement);
+
+		document.getElementById("lblAutocampaignBattle").appendChild(accordionContainerElement);
+
+	}
+
+
+	function postBattleLog(msgBattleLog) {
+		var id = 'accordionBattleBody-' + game.autocampaignBattlesCounter;
+		var accordionBattleElement = document.getElementById(id);
+		var logStrElement = document.createElement('p');	
+		
+		logStrElement.innerText = msgBattleLog;
+		accordionBattleElement.appendChild(logStrElement);
 	}
 
 	function postJournalLog(msgEventLog) {
@@ -6687,9 +6791,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("tabCity").click();
 
-	function accordion(elem){
+	function accordion(elem, targetClass){
 		document.addEventListener('click', function (e) {
-		if (!e.target.matches(elem + ' .accordion-header')) return;
+		var matchStr = elem + ' ' + targetClass;
+		if (!e.target.matches(matchStr)) return;
 		else{
 			if(!e.target.parentElement.classList.contains('active')){         
 				e.target.parentElement.classList.add('active');
@@ -6700,7 +6805,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		});
 	}
 
-	accordion('.accordion');
+	accordion('.accordion', '.accordion-header');
+	accordion('.accordion-battle', '.accordion-battle-header');
 
 </script>
 <script async src="dialogue.js"></script>
