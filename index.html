@@ -40,6 +40,9 @@
 			top:0px;
 			z-index:3;
 		}
+		.tables {
+			
+		}
 		/*fire*/
 		.fire {
 			position:absolute;
@@ -409,7 +412,7 @@
 			<table border="1">
 				<tr>
 					<td>
-						<div align="center">
+						<div id="treasury_guard_div" align="center">
 							<img src="resources/knight6.png">
 						</div>
 					</td>
@@ -713,7 +716,7 @@
 						<img id="imgCastellanInHiringScreen" src="resources/castellan.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label><div id="lblGarnisonSergeants" style="display: inline">0</div>
+						<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label></div><div id="lblGarnisonSergeants" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">⇓</button>
 						<br>
@@ -721,7 +724,7 @@
 						<button id="btnDismissAllGarrisonSergeants" class="btnDismiss" onclick="game.dismissAllGarrisonSergenats()" onmouseover="game.help(this)">XX</button>
 					</td>
 					<td>
-						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label><div id="lblGarnisonTurkopols" style="display: inline">0</div>
+						<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label></div><div id="lblGarnisonTurkopols" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">⇓</button>
 						<br>
@@ -729,7 +732,7 @@
 						<button id="btnDismissAllGarrisonTurkopols" class="btnDismiss" onclick="game.dismissAllGarrisonTurkopols()" onmouseover="game.help(this)">XX</button>
 					</td>
 					<td>
-						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label><div id="lblGarnisonKnights" style="display: inline">0</div>
+						<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label></div><div id="lblGarnisonKnights" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
 						<button class="btnArrow" id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">⇓</button>
 						<br>
@@ -748,7 +751,7 @@
 						<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
 					</td>
 					<td>
-						<label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label><div id="lblHeroSergeants" style="display: inline">0</div>
+						<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label></div><div id="lblHeroSergeants" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">⇑</button>
 						<br>
@@ -756,7 +759,7 @@
 						<button id="btnDismissAllHeroSergeants" class="btnDismiss" onclick="game.dismissAllHeroSergeants()" onmouseover="game.help(this)">XX</button>
 					</td>
 					<td>
-						<label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label><div id="lblHeroTurkopols" style="display: inline">0</div>
+						<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label></div><div id="lblHeroTurkopols" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">⇑</button>
 						<br>
@@ -764,7 +767,7 @@
 						<button id="btnDismissAllHeroTurkopols" class="btnDismiss" onclick="game.dismissAllHeroTurkopols()" onmouseover="game.help(this)">XX</button>
 					</td>
 					<td>
-						<label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label><div id="lblHeroKnights" style="display: inline">0</div>
+						<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label></div><div id="lblHeroKnights" style="display: inline">0</div>
 						<button class="btnArrow" id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
 						<button class="btnArrow" id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">⇑</button>
 						<br>
@@ -1739,6 +1742,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		difficultyModifier: 0,
 		attacker: 0,
 		isAutoBattle: false,
+		nightMode: false,
 		monstersOnAdvMap: [],
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
@@ -5172,7 +5176,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				document.getElementById("loadGameButton").disabled = true;
 				showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
 			}
-		}		
+		}
 	}
 	function popAtStart() { 
 		var year = document.getElementById("popStatK");
@@ -5427,16 +5431,29 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			document.getElementById("loadGameButton").style.visibility = "visible";
 		}
 	}
-	function changeColorMode() {
-		if (nightMode === 0) {
-			//oldStyle= document.getElementsByTagName('body').style;
+	function enforceColorMode() {
+		if (game.nightMode === true) {
+			//darktheme
+			var treasury_guard_darkmode = new Image;
+			treasury_guard_darkmode.src = 'resources/treasury_guard_night_mode.png'
+			document.getElementById("treasury_guard_div").innerHTML = "";
+			document.getElementById("treasury_guard_div").appendChild(treasury_guard_darkmode);
 			var b = document.getElementsByTagName("body");
-			//b[0].setAttribute("style",oldStyle+"background-color:black");
 			b[0].style.backgroundColor = "black";
 			var divs = document.getElementsByTagName("div");
 			for (var i = 0; i < divs.length; i++){
 				divs[i].style.color = "#404040";
 			}
+			/*
+			var labels = document.getElementsByTagName("label");
+			for (var i = 0; i < divs.length; i++){
+				labels[i].style.color = "#404040";
+			}
+			var spans = document.getElementsByTagName("span");
+			for (var i = 0; i < divs.length; i++){
+				spans[i].style.color = "#404040";
+			}
+			*/
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
 				textAreas[i].style.color = "#404040";
@@ -5454,14 +5471,28 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "#606060";
 				inputs[i].style.backgroundColor = "#202020";
 			}
-			nightMode = 1;
 		} else {
+			var treasury_guard_darkmode = new Image;
+			treasury_guard_darkmode.src = 'resources/knight6.png'
+			document.getElementById("treasury_guard_div").innerHTML = "";
+			document.getElementById("treasury_guard_div").appendChild(treasury_guard_darkmode);
+			
 			var b = document.getElementsByTagName("body");
 			b[0].style.backgroundColor = "white";
 			var divs = document.getElementsByTagName("div");
 			for (var i = 0; i < divs.length; i++){
 				divs[i].style.color = "black";
 			}
+			/*
+			var labels = document.getElementsByTagName("label");
+			for (var i = 0; i < divs.length; i++){
+				labels[i].style.color = "black";
+			}
+			var spans = document.getElementsByTagName("span");
+			for (var i = 0; i < divs.length; i++){
+				spans[i].style.color = "black";
+			}
+			*/
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
 				textAreas[i].style.color = "black";
@@ -5479,8 +5510,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "black";
 				inputs[i].style.backgroundColor = "white";
 			}
-			
+		}
+	}
+	function changeColorMode() {
+		if (game.nightMode === false) {
+			nightMode = 1;
+			game.nightMode = true;
+			enforceColorMode();
+		} else {
 			nightMode = 0;
+			game.nightMode = false;
+			enforceColorMode();
 		}
 	}
 	function getAck() {
@@ -6181,6 +6221,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		setupNickname();
 		setupEventLogSizeUI();
 		composite();
+		enforceColorMode();
 		updateUI();
 		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
 		scrollDown();
