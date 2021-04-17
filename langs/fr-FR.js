@@ -414,6 +414,23 @@ locObj.welcome0 = {"txt":"Bonjour nouveau joueur et bienvenue dans mon jeux", "l
 locObj.welcome1 = {"txt":"Ta mission est simple - gérer cette cité en tant que maire.", "loc":"same"};
 locObj.welcome2 = {"txt":"Les citoyens payent des impôts chaque saison (30 sec.) et la population grandit chaque saison", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
+
+locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
+locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
+locObj.unit_knights = {"txt": "Brother-knights", "loc": "Autbattle log, player unit"};
+
+locObj.unit_bandit = {"txt": "Bandits", "loc": "Autbattle log, enemy unit"};
+locObj.unit_bandit_archer = {"txt": "Bandits archers", "loc": "Autbattle log, enemy unit"};
+locObj.unit_merc_swordman = {"txt": "Mercenary swordman", "loc": "Autbattle log, highlevel enemy unit"};
+locObj.unit_merc_spearman = {"txt": "Mercenary spearman", "loc": "Autbattle log, highlevel enemy unit"};
+
+locObj.autobattle_journal_btn = {"txt": "Battle journal", "loc": "Inn window. Battle report by round moves"};
+locObj.autobattle_journal_log_start = {"txt": "Round started", "loc": "Start round title"};
+locObj.autobattle_journal_log_end = {"txt": "Round ended", "loc": "End round title"};
+locObj.autobattle_journal_log_dmg = {"txt": "%arg1 squad does %arg2 dmg to %arg3.", "loc": "Autobattle dmg log"};
+locObj.autobattle_journal_log_dead = {"txt": "%arg1 %arg2 is dead.", "loc": "Autobattle dead log"};
+locObj.autobattle_journal_log_destroyed = {"txt": "%arg1 squad is destroyed.", "loc": "Autobattle destroyed squad log"};
+
 locObj.advmap = {"txt":"Pour déplacer votre héros, utilisez les boutons fléchés.\nSi vous jouez avec l'entrée de capteur, veuillez activer l'interface utilisateur mobile dans les paramètres", "loc":"when first visiting adventure map"};
 locObj.plague_turk = {"txt":"Sur le bord: votre turkopol a repéré une personne peste et lui a tiré dessus. Le cadavre a été brûlé après", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
 locObj.plague_army = {"txt":"Un événement fâcheux vient de se produire : l'épidémie de peste a été stoppée par votre garnison, mais a tué %arg1 de vos troupes en garnison", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
@@ -423,6 +440,9 @@ locObj.blackmarket_dstr = {"txt":"Un grand gobelin vert au gros ventre, qui s'ap
 locObj.blackmarket_dstr_brn = {"txt":"Tuez le gobelin et brûlez le marché noir!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Commencer le commerce", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Vous frappez un mur invisible. Tu ne pouvais pas aller plus loin", "loc":"adventure map. collision with border"};
+
 locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};
+locObj.autobattleTitle = {"txt": "Battle-%arg1", "loc": "Autobattle log title"};
+
 locObj.upgCostSidebar = {"txt":"La mise à niveau au niveau %arg1 coûte %arg2 pièces d'or", "loc":"Shows under the building description on the left sidebar for upgrades"};
 locObj.bldCostSidebar = {"txt":"Le bâtiment coûte %arg2 pièces d'or", "loc":"Shows under the building description on the left sidebar for initial building"};

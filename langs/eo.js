@@ -414,6 +414,23 @@ locObj.welcome0 = {"txt":"Saluton ludanto en ĉi tiu pliiga ludo!", "loc":"Once 
 locObj.welcome1 = {"txt":"Via tasko estas simpla - administru la urbon kiel urbestro de la urbo!", "loc":"same"};
 locObj.welcome2 = {"txt":"Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
+
+locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
+locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
+locObj.unit_knights = {"txt": "Brother-knights", "loc": "Autbattle log, player unit"};
+
+locObj.unit_bandit = {"txt": "Bandits", "loc": "Autbattle log, enemy unit"};
+locObj.unit_bandit_archer = {"txt": "Bandits archers", "loc": "Autbattle log, enemy unit"};
+locObj.unit_merc_swordman = {"txt": "Mercenary swordman", "loc": "Autbattle log, highlevel enemy unit"};
+locObj.unit_merc_spearman = {"txt": "Mercenary spearman", "loc": "Autbattle log, highlevel enemy unit"};
+
+locObj.autobattle_journal_btn = {"txt": "Battle journal", "loc": "Inn window. Battle report by round moves"};
+locObj.autobattle_journal_log_start = {"txt": "Round started", "loc": "Start round title"};
+locObj.autobattle_journal_log_end = {"txt": "Round ended", "loc": "End round title"};
+locObj.autobattle_journal_log_dmg = {"txt": "%arg1 squad does %arg2 dmg to %arg3.", "loc": "Autobattle dmg log"};
+locObj.autobattle_journal_log_dead = {"txt": "%arg1 %arg2 is dead.", "loc": "Autobattle dead log"};
+locObj.autobattle_journal_log_destroyed = {"txt": "%arg1 squad is destroyed.", "loc": "Autobattle destroyed squad log"};
+
 locObj.advmap = {"txt":"Por movi vian heroon uzu sagobutonojn.\nSe vi ludas per sensila eniro, bonvolu ŝalti Mobile UI en Preferoj", "loc":"when first visiting adventure map"};
 locObj.plague_turk = {"txt":"Rande: via turkopolo ekvidis pestulon kaj pafis lin. La kadavro estis bruligita poste ", "loc":"Random event. Plague. A turkopol prevents plague in the city"};
 locObj.plague_army = {"txt":"merdo okazas: la pesta eksplodo estis ĉesigita de via garnizono, sed mortigis %arg1 el viaj garnizonaj trupoj", "loc":"Your army prevents plague in the city. Some soldiers are dead now"};
@@ -423,6 +440,9 @@ locObj.blackmarket_dstr = {"txt":"Alta, grasventra verda koboldo, kiu nomis sin 
 locObj.blackmarket_dstr_brn = {"txt":"Mortigu la koboldon kaj forbruligu la nigran merkaton!", "loc":"Destroying the blackmarket"};
 locObj.blackmarket_dstr_kp = {"txt":"Komencu komercadon ", "loc":"Keeping the blackmarket"};
 locObj.borderCollide = {"txt":"Vi trafis nevideblan muron. Vi ne povus preterpasi plu", "loc":"adventure map. collision with border"};
+
 locObj.campaignTitle = {"txt":"Campaign-%arg1","loc":"Autocampaign accordion title"};
+locObj.autobattleTitle = {"txt": "Battle-%arg1", "loc": "Autobattle log title"};
+
 locObj.upgCostSidebar = {"txt":"Altgradigo al %arg1 nivelo kostas %arg2 orojn", "loc":"Shows under the building description on the left sidebar for upgrades"};
 locObj.bldCostSidebar = {"txt":"Konstruaĵo kostas %arg2 orojn ", "loc":"Shows under the building description on the left sidebar for initial building"};
