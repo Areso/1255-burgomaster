@@ -56,6 +56,15 @@
 			top:0px;
 			z-index:99;
 		}
+		.dynamicCells {
+			
+		}
+		.dynamicCellsDay {
+			color: rgb(0,0,0);
+		}
+		.dynamicCellsNight {
+			color: rgb(64,64,64);
+		}
 		.resources{
 			position: relative;
 			left:0px;
@@ -272,19 +281,12 @@
 			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:370px; left: 20px; display:none">Put out fire</button>
 			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:460px; left: 20px; display:none">Execute smb</button>
 			<button id="buttonDebug"   onclick="ym(47225574, 'reachGoal', 'min5'); return true;" class="interface" style="top:190px; left: 20px; display:none">X</button>
-			<!--
-			<iframe id="constructionWindow" src="construction.html" class="interface" style="left:600px" width="1" height="1"></iframe>
-			<button id="constructionButton" onclick="maximizew('construction')" class="interface" style="top:260px">Open construction menu</button>
-			-->
 		</div>
 		<div id="Explore" class="tabcontent">
 			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
 		</div>
 		<div id="Settings" class="tabcontent">
-			<!--<span onclick="this.parentElement.style.display='none'" class="topright">x</span>-->
 			<h3><div id="labelSettings">Settings</div></h3>
-			<!-- TODO make checkboxes with chat system messages -->
-			<!--<p>Alert / MSG to chat</p>-->
 			<select id="selectLng" size="1" onchange="reloadLang()">
 				<option id="optionLngEn" selected value="en-US">English</option>
 				<option id="optionLngRu"          value="ru-RU">Русский</option>
@@ -294,7 +296,6 @@
 			</select>
 			<table>
 			<tr>
-				<!-- TODO make a message about turning on / off autosaves for color disabled people -->
 				<td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
@@ -427,9 +428,6 @@
 						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
 						<span id="treasuryGuard">0</span>
 						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
-						<!--<button id="fireGuard" onclick="fireTreasuryGuard()" class="interface" style="top:170px; left:20px; width:80px">Fire</button>
-						<span id="treasuryGuard" class="interface" style="position:absolute; top:170px; left:120px">0</span>
-						<button id="hireGuard" onclick="hireTreasuryGuard()" class="interface" style="top:170px; left:180px;-->
 					</td>
 				</tr>
 			</table>
@@ -5205,25 +5203,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		year.innerHTML = "";
 		pop.innerHTML  = "";
 		popPage  = Math.round(game.years.length)/10;
-		//console.log('checkPop '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-10+i] +'</td>';
-				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-10+i]  +'</td>';
-				//console.log('period is '+game.years[game.years.length-10+i]+' and pop is '+game.pops[game.years.length-10+i]);
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-10+i] +'</span></td>';
+				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-10+i]  +'</span></td>';
 			}
 			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
-					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
+					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
 				}
 				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -5242,25 +5239,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		year.innerHTML = "";
 		pop.innerHTML  = "";
 		popPage  = 0;
-		//console.log('popStart '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[i] +'</td>';
-				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
-				//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i] +'</span></td>';
+				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[i]  +'</span></td>';
 			}
 			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[i] +'</td>';
-					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[i]  +'</td>';
-					//console.log('period is '+game.years[i]+' and pop is '+game.pops[i]);
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i] +'</span></td>';
+					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[i]  +'</span></td>';
 				}
 				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabPopulation');
 			} else {
 				// TODO show something!
@@ -5278,25 +5274,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			popPage = 0;
 		}
 		popPage  = Math.round(popPage*10)/10;
-		//console.log('popPrev is '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[popPage*10+i] +'</td>';
-				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
-				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[popPage*10+i] +'</span></td>';
+				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[popPage*10+i]  +'</span></td>';
 			}
 			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
-					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
+					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
 				}
 				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -5314,25 +5309,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			popPage  = Math.round(game.years.length)/10-1;
 		}
 		popPage  = Math.round(popPage*10)/10;
-		//console.log('popNext is '+popPage);
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[popPage*10+i] +'</td>';
-				pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[popPage*10+i]  +'</td>';
-				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.pops[popPage*10+i]);
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[popPage*10+i] +'</span></td>';
+				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[popPage*10+i]  +'</span></td>';
 			}
 			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i] +'</td>';
-					pop.innerHTML  = pop.innerHTML  +'<td>'+ game.pops[game.years.length-game.years.length+i]  +'</td>';
-					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.pops[game.years.length-game.years.length+i]);
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
+					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
 				}
 				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabPopulation');
 			} else {
 				// nothing to show
@@ -5352,21 +5346,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-10+i]    +'</td>';
-				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-10+i]  +'</td>';
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-10+i]    +'</span></td>';
+				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-10+i]  +'</span></td>';
 				//console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
 			}
 			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
-					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
+					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
 					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 				}
 				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -5388,21 +5384,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[i]    +'</td>';
-				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i]    +'</span></td>';
+				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[i]  +'</span></td>';
 				//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 			}
 			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[i]    +'</td>';
-					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[i]  +'</td>';
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i]    +'</span></td>';
+					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[i]  +'</span></td>';
 					//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 				}
 				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -5424,21 +5422,21 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[goldPage*10+i]    +'</td>';
-				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
-				//console.log('period is '+game.years[goldPage*10+i]+' and gold is '+game.budgets[goldPage*10+i]);
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[goldPage*10+i]    +'</span></td>';
+				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[goldPage*10+i]  +'</span></td>';
 			}
 			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
-					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
-					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
+					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
 				}
 				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -5460,21 +5458,21 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (game.years.length > 10) {
 			//select the latest 10
 			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td>'+ game.years[goldPage*10+i]    +'</td>';
-				gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[goldPage*10+i]  +'</td>';
-				//console.log('period is '+game.years[popPage*10+i]+' and pop is '+game.budgets[goldPage*10+i]);
+				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[goldPage*10+i]    +'</span></td>';
+				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[goldPage*10+i]  +'</span></td>';
 			}
 			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {
 			if (game.years.length > 0) 
 			{
 				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td>'+ game.years[game.years.length-game.years.length+i]    +'</td>';
-					gold.innerHTML = gold.innerHTML +'<td>'+ game.budgets[game.years.length-game.years.length+i]  +'</td>';
-					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and pop is '+game.budgets[game.years.length-game.years.length+i]);
+					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
+					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
 				}
 				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+				dynamicCellsSetStyle();
 				openTab(null, 'tabGold');
 			} else {
 				// nothing to show
@@ -5487,6 +5485,27 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function checkSaves() {
 		if (localStorage.getItem('game')!==null) {
 			document.getElementById("loadGameButton").style.visibility = "visible";
+		}
+	}
+	function dynamicCellsSetStyle() {
+		if (game.nightMode === true){
+			var dynElementsDay = document.getElementsByClassName('dynamicCellsDay');
+			while(dynElementsDay.length) {
+				dynElementsDay[0].className = 'dynamicCellsNight';
+			}
+			var dynElements = document.getElementsByClassName('dynamicCells');
+			while(dynElements.length) {
+				dynElements[0].className = 'dynamicCellsNight';
+			}
+		} else {
+			var dynElementsNight = document.getElementsByClassName('dynamicCellsNight');
+			while(dynElementsNight.length) {
+				dynElementsNight[0].className = 'dynamicCellsDay';
+			}
+			var dynElements = document.getElementsByClassName('dynamicCells');
+			while(dynElements.length) {
+				dynElements[0].className = 'dynamicCellsDay';
+			}
 		}
 	}
 	function enforceColorMode() {
@@ -5502,17 +5521,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			for (var i = 0; i < divs.length; i++){
 				divs[i].style.color = "#404040";
 			}
-			/*
 			var labels = document.getElementsByTagName("label");
-			for (var i = 0; i < divs.length; i++){
+			for (var i = 0; i < labels.length; i++){
 				labels[i].style.color = "#404040";
 			}
-			
 			var spans = document.getElementsByTagName("span");
-			for (var i = 0; i < divs.length; i++){
+			for (var i = 0; i < spans.length; i++){
 				spans[i].style.color = "#404040";
 			}
-			*/
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
 				textAreas[i].style.color = "#404040";
@@ -5530,29 +5546,26 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "#606060";
 				inputs[i].style.backgroundColor = "#202020";
 			}
+			dynamicCellsSetStyle();
 		} else {
 			var treasury_guard_darkmode = new Image;
 			treasury_guard_darkmode.src = 'resources/knight6.png'
 			document.getElementById("treasury_guard_div").innerHTML = "";
 			document.getElementById("treasury_guard_div").appendChild(treasury_guard_darkmode);
-			
 			var b = document.getElementsByTagName("body");
 			b[0].style.backgroundColor = "white";
 			var divs = document.getElementsByTagName("div");
 			for (var i = 0; i < divs.length; i++){
 				divs[i].style.color = "black";
 			}
-			/*
 			var labels = document.getElementsByTagName("label");
-			for (var i = 0; i < divs.length; i++){
+			for (var i = 0; i < labels.length; i++){
 				labels[i].style.color = "black";
 			}
-			
 			var spans = document.getElementsByTagName("span");
-			for (var i = 0; i < divs.length; i++){
+			for (var i = 0; i < spans.length; i++){
 				spans[i].style.color = "black";
 			}
-			*/
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
 				textAreas[i].style.color = "black";
@@ -5570,6 +5583,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "black";
 				inputs[i].style.backgroundColor = "white";
 			}
+			dynamicCellsSetStyle();
 		}
 	}
 	function changeColorMode() {
