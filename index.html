@@ -95,7 +95,7 @@
 		div.tab {
 			overflow: hidden;
 			border: 1px solid #ccc;
-
+			box-sizing: border-box;
 			width: 800px;
 			background-color: #f1f1f1;
 		}
@@ -132,8 +132,9 @@
 		/* Style the tab content */
 		.tabcontent {
 			display: none;
-			padding: 6px 0px;
+			padding: 16px 0 6px;
 			border: 1px solid #ccc;
+			box-sizing: border-box;
 			border-top: none;
 			height: 470px;
 			width: 800px;/*800-12*2*/
@@ -238,6 +239,48 @@
 			margin-bottom: 4px;
 		}
 
+		.resource-panel {
+			width: 800px;
+			padding: 6px 10px;
+			background-color: #f1f1f1;
+			position: absolute;
+			border: 1px solid #ccc;
+			border-top: 0;
+			z-index: 999;
+			box-sizing: border-box;
+			display: flex;
+		}
+
+		.resource-icon {
+			width: 20px;
+			margin-right: 5px;
+		}
+
+
+		#pop_img {
+			width: 17px;
+		}
+
+		#gems_img {
+			width: 22px;
+		}
+
+		.gold-val,
+		.population-val,
+		.gems-val,
+		.time-val {
+			display: flex;
+			align-items: center;
+			margin-right: 12px;
+		}
+
+		.gold-val,
+		.population-val,
+		.gems-val,
+		.time-val > span {
+			color: inherit;
+		}
+
 	</style>
 	<script id="chatBroEmbedCode">
 		/* Chatbro Widget Embed Code Start */
@@ -256,14 +299,33 @@
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
 			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
 			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
-			<div id="dcounter">30</div>
 			<div id="lblEventCountdownValue" style="margin-left:20px;" onclick="game.getEventHelp()"></div>
 			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
+
+		<div class="resource-panel">
+			<div class="gold-val" onclick="checkGold()">
+				<img id="gold_img_bt" class="resource-icon" src="resources/gold_a.png">
+				<span id="gold">0</span>
+			</div>
+			<div class="population-val" onclick="checkPop()">
+				<img id="pop_img" class="resource-icon" src="resources/pop.png">
+				<span id="pop">2</span>
+			</div>
+			<div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  localeStrings[60], '');">
+				<img id="gems_img" class="resource-icon" src="resources/amber_ico.png">
+				<span id="gems">0</span>
+			</div>
+			<div class="time-val">
+				<img class="resource-icon" src="resources/sand-clock.png">
+				<span id="dcounter">30</span>
+			</div>
+		</div>
+
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
 			<br>
-			<p id="resources">
+<!-- 			<p id="resources">
 				<span id="gold" class="interface" onclick="checkGold()" style="position:absolute; top:100px; left:60px">0</span>
 				<br>
 				<br>
@@ -271,7 +333,7 @@
 				<br>
 				<br>
 				<span id="gems"  class="interface" onclick="showModal(0, '', getAck, localeStrings[90],  localeStrings[60], '');" style="position:absolute; top:180px; left:60px">0</span>
-			</p>
+			</p> -->
 			<p id="events_graphics" style="z-index: 8">
 
 			</p>
@@ -556,10 +618,10 @@
 							</table>
 						</td>
 						<td>
-							<div id="lblBuildGold">
+<!-- 							<div id="lblBuildGold">
 							<img id="gold_img_bt" src="resources/gold_a.png" onclick="checkGold()" >
 							<span id="gold_bt" onclick="checkGold()" >0</span>
-							</div>
+							</div> -->
 							<div id="lblBuildHelp">
 
 							</div>
@@ -796,8 +858,8 @@
 			</table>
 		</div>
 		<div id="tabBlackmarket" class="tabcontent">
-			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
-			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span>
+<!-- 			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
+			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span> -->
 			<br>
 			<br>
 			<br>
@@ -906,7 +968,7 @@
 			<div id="outTable">
 			</div>
 		</div>
-		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 540px; left: 10px"></div>
+		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 548px; left: 10px"></div>
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
@@ -1168,11 +1230,11 @@
 		ctx.drawImage(img1, 0, 0);   //draw background
 		ctx.drawImage(img2, sawmillX, sawmillY);//draw sawmill
 		pushBuilding('sawmill', sawmillX, sawmillY, sawmillW, sawmillH);
-		ctx.drawImage(img3, goldX, goldY); //draw gold icon
-		pushBuilding('gold', goldX, goldY, goldW, goldH);
-		ctx.drawImage(img4, popX, popY); //draw pop  icon
-		pushBuilding('amber', amberX, amberY, amberW, amberH);
-		ctx.drawImage(amber_ico, amberX, amberY); //draw pop  icon
+		// ctx.drawImage(img3, goldX, goldY); //draw gold icon
+		// pushBuilding('gold', goldX, goldY, goldW, goldH);
+		// ctx.drawImage(img4, popX, popY); //draw pop  icon
+		// pushBuilding('amber', amberX, amberY, amberW, amberH);
+		// ctx.drawImage(amber_ico, amberX, amberY); //draw pop  icon
 		pushBuilding('pop', popX, popY, popW, popH);
 		ctx.drawImage(img8, wellX, wellY); //draw wishing well
 		pushBuilding('well', wellX, wellY, wellW, wellH);
@@ -3636,6 +3698,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
 					updateHeroStatus();
+
+					game.gold -= config.costHero;
+
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[20]);
@@ -5527,7 +5592,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 			var spans = document.getElementsByTagName("span");
 			for (var i = 0; i < spans.length; i++){
-				spans[i].style.color = "#404040";
+				spans[i].style.color = "#ededed";
 			}
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
@@ -5546,6 +5611,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "#606060";
 				inputs[i].style.backgroundColor = "#202020";
 			}
+
+			document.querySelector(".resource-panel").style.backgroundColor = "black";
+			document.querySelector("#pop_img").setAttribute("src", "resources/pop_light.png");
+
+
 			dynamicCellsSetStyle();
 		} else {
 			var treasury_guard_darkmode = new Image;
@@ -5583,6 +5653,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "black";
 				inputs[i].style.backgroundColor = "white";
 			}
+
+			document.querySelector(".resource-panel").style.backgroundColor = "#f1f1f1";
+			document.querySelector("#pop_img").setAttribute("src", "resources/pop.png");
+
 			dynamicCellsSetStyle();
 		}
 	}
@@ -6580,8 +6654,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML          = game.gold;
-		document.getElementById("gold_bm").innerHTML       = game.gold;
-		document.getElementById("gold_bt").innerHTML       = game.gold;
+		// document.getElementById("gold_bm").innerHTML       = game.gold;
+		// document.getElementById("gold_bt").innerHTML       = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("gems").innerHTML          = game.gems;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
