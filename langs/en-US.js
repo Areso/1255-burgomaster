@@ -460,8 +460,3 @@ locObj.heroStatsAtkLbl = {"txt":"Attack", "loc":"The inn when we are hiring. Sta
 locObj.heroStatsDefLbl = {"txt":"Defence", "loc":"The inn when we are hiring. Stats. Defence"};
 locObj.heroStatsMpowLbl = {"txt":"Magic power", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Intelligence", "loc":"The inn when we are hiring. Stats. Intelligence"};
-//localeStrings.push("Level");
-//localeStrings.push("Attack");//190
-//localeStrings.push("Defense");
-//localeStrings.push("Manapoints");
-//localeStrings.push("Spellpower");
