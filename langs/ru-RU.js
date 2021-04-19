@@ -447,3 +447,15 @@ locObj.autobattleTitle = {"txt": "Битва-%arg1", "loc": "Заголовок 
 
 locObj.upgCostSidebar = {"txt":"Улучшение до %arg1 уровня стоит %arg2 золотых", "loc":"Показывается под описанием строения в левом экране при улучшениях"};
 locObj.bldCostSidebar = {"txt":"Строительство стоит %arg2 золотых", "loc":"Показывается под описанием строения в левом экране при первоначальном строительстве"};
+
+locObj.knightLearnCurve = {"txt":"Имеет высокий шанс улучшить Атаку при повышении уровня", "loc":"краткое описание класса в таверне"};
+locObj.monkLearnCurve = {"txt":"Имеет высокий шанс улучшить Защиту при повышении уровня", "loc":"краткое описание класса в таверне"};
+locObj.heroClassKnight = {"txt":"Рыцарь", "loc":"Имя класса в таверне"};
+locObj.heroClassMonk = {"txt":"Монах", "loc":"Имя класса в таверне"};
+
+locObj.heroLvlLbl = {"txt":"уровень", "loc":"Надпись в таверне при найме"};
+locObj.heroStatsLbl = {"txt":"Статы:", "loc":"Надпись в таверне при найме"};
+locObj.heroStatsAtkLbl = {"txt":"Атака", "loc":"Надпись в таверне при найме"};
+locObj.heroStatsDefLbl = {"txt":"Защита", "loc":"Надпись в таверне при найме"};
+locObj.heroStatsMpowLbl = {"txt":"Сила магии", "loc":"Надпись в таверне при найме"};
+locObj.heroStatsIntLbl = {"txt":"Интеллект", "loc":"Надпись в таверне при найме"};

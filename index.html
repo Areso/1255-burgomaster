@@ -95,7 +95,7 @@
 		div.tab {
 			overflow: hidden;
 			border: 1px solid #ccc;
-
+			box-sizing: border-box;
 			width: 800px;
 			background-color: #f1f1f1;
 		}
@@ -132,12 +132,18 @@
 		/* Style the tab content */
 		.tabcontent {
 			display: none;
-			padding: 6px 0px;
+			padding: 16px 0 6px;
 			border: 1px solid #ccc;
+			box-sizing: border-box;
 			border-top: none;
 			height: 470px;
 			width: 800px;/*800-12*2*/
 		}
+		
+		.tabcontent > div:not(#lblAboutGame) {
+			margin-top: 20px;
+		}
+		
 		/* Style the close button */
 		.topright {
 			float: right;
@@ -238,6 +244,48 @@
 			margin-bottom: 4px;
 		}
 
+		.resource-panel {
+			width: 800px;
+			padding: 6px 10px;
+			background-color: #f1f1f1;
+			position: absolute;
+			border: 1px solid #ccc;
+			border-top: 0;
+			z-index: 999;
+			box-sizing: border-box;
+			display: flex;
+		}
+
+		.resource-icon {
+			width: 20px;
+			margin-right: 5px;
+		}
+
+
+		#pop_img {
+			width: 17px;
+		}
+
+		#gems_img {
+			width: 22px;
+		}
+
+		.gold-val,
+		.population-val,
+		.gems-val,
+		.time-val {
+			display: flex;
+			align-items: center;
+			margin-right: 12px;
+		}
+
+		.gold-val,
+		.population-val,
+		.gems-val,
+		.time-val > span {
+			color: inherit;
+		}
+
 	</style>
 	<script id="chatBroEmbedCode">
 		/* Chatbro Widget Embed Code Start */
@@ -256,14 +304,33 @@
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
 			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
 			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
-			<div id="dcounter">30</div>
 			<div id="lblEventCountdownValue" style="margin-left:20px;" onclick="game.getEventHelp()"></div>
 			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
 		</div>
+
+		<div class="resource-panel">
+			<div class="gold-val" onclick="checkGold()">
+				<img id="gold_img_bt" class="resource-icon" src="resources/gold_a.png">
+				<span id="gold">0</span>
+			</div>
+			<div class="population-val" onclick="checkPop()">
+				<img id="pop_img" class="resource-icon" src="resources/pop.png">
+				<span id="pop">2</span>
+			</div>
+			<div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  localeStrings[60], '');">
+				<img id="gems_img" class="resource-icon" src="resources/amber_ico.png">
+				<span id="gems">0</span>
+			</div>
+			<div class="time-val">
+				<img class="resource-icon" src="resources/sand-clock.png">
+				<span id="dcounter">30</span>
+			</div>
+		</div>
+
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
 			<br>
-			<p id="resources">
+<!-- 			<p id="resources">
 				<span id="gold" class="interface" onclick="checkGold()" style="position:absolute; top:100px; left:60px">0</span>
 				<br>
 				<br>
@@ -271,7 +338,7 @@
 				<br>
 				<br>
 				<span id="gems"  class="interface" onclick="showModal(0, '', getAck, localeStrings[90],  localeStrings[60], '');" style="position:absolute; top:180px; left:60px">0</span>
-			</p>
+			</p> -->
 			<p id="events_graphics" style="z-index: 8">
 
 			</p>
@@ -556,10 +623,10 @@
 							</table>
 						</td>
 						<td>
-							<div id="lblBuildGold">
+<!-- 							<div id="lblBuildGold">
 							<img id="gold_img_bt" src="resources/gold_a.png" onclick="checkGold()" >
 							<span id="gold_bt" onclick="checkGold()" >0</span>
-							</div>
+							</div> -->
 							<div id="lblBuildHelp">
 
 							</div>
@@ -575,7 +642,6 @@
 			</div>
 		</div>
 		<div id="tabPopulation" class="tabcontent">
-			<!-- TODO make style!!! -->
 			<div id="lblTabPop">Population history tab</div>
 			<br>
 			<table border="1">
@@ -596,7 +662,6 @@
 			<div id="lblCurrentPopLimit"></div>
 		</div>
 		<div id="tabGold" class="tabcontent">
-			<!-- TODO make style!!! -->
 			<div id="lblTabGold">Gold history tab</div>
 			<br>
 			<table border="1">
@@ -620,12 +685,33 @@
 			<div id="lblTabInn">Welcome to Inn!</div>
 			<br>
 			<br>
+			
 			<div id="hireHeroBlock">
-				<select id="selectHeroClass" size="1" onchange="reloadHeroClassImg()">
-					<option id="optionKnight" selected value="0">Knight</option>
-					<option id="optionMonk"            value="1"  >Monk</option>
-					<!--TODO <option id="optionInquisitor"          value="inquisitor">Inquisitor</option> -->
-				</select>
+				<label id="lblAvailableForHire">Hero for hire</label>
+				<table>
+					<tr>
+						<td>
+							<!--HRP-->
+						<img id="imgPrevHero" src="resources/pointer_l.png" onclick="prevHero()">
+						<img id="imgHeroForHire" src="resources/hero-knight.png">
+						<img id="imgNextHero" src="resources/pointer_r.png" onclick="nextHero()">
+						</td>
+						<td>
+						<div>
+							<label id="lblClassForHire">Knight</label>
+							<label>,  </label>
+							<label id="lblLevelForHireLbl">level </label>
+							<label id="lblLevelForHire">1</label>
+						</div>
+						<div>
+							<label id="lblPrimaryStats">ATK:2, DEF:2, INT: 2, MP: 20</label>
+						</div>
+						<div>
+							<label id="lblSpeciality">Get high chances to increase ATK when level up</label>
+						</div>
+						</td>
+					</tr>
+				</table>
 				<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
 			</div>
 			<div id="heroUpkeep">
@@ -796,8 +882,8 @@
 			</table>
 		</div>
 		<div id="tabBlackmarket" class="tabcontent">
-			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
-			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span>
+<!-- 			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
+			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span> -->
 			<br>
 			<br>
 			<br>
@@ -906,7 +992,7 @@
 			<div id="outTable">
 			</div>
 		</div>
-		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 540px; left: 10px"></div>
+		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 548px; left: 10px"></div>
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
@@ -1168,11 +1254,11 @@
 		ctx.drawImage(img1, 0, 0);   //draw background
 		ctx.drawImage(img2, sawmillX, sawmillY);//draw sawmill
 		pushBuilding('sawmill', sawmillX, sawmillY, sawmillW, sawmillH);
-		ctx.drawImage(img3, goldX, goldY); //draw gold icon
-		pushBuilding('gold', goldX, goldY, goldW, goldH);
-		ctx.drawImage(img4, popX, popY); //draw pop  icon
-		pushBuilding('amber', amberX, amberY, amberW, amberH);
-		ctx.drawImage(amber_ico, amberX, amberY); //draw pop  icon
+		// ctx.drawImage(img3, goldX, goldY); //draw gold icon
+		// pushBuilding('gold', goldX, goldY, goldW, goldH);
+		// ctx.drawImage(img4, popX, popY); //draw pop  icon
+		// pushBuilding('amber', amberX, amberY, amberW, amberH);
+		// ctx.drawImage(amber_ico, amberX, amberY); //draw pop  icon
 		pushBuilding('pop', popX, popY, popW, popH);
 		ctx.drawImage(img8, wellX, wellY); //draw wishing well
 		pushBuilding('well', wellX, wellY, wellW, wellH);
@@ -1674,8 +1760,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	flag_event_started = "";
 	allowMvt = 1;
 	curObjId = "";
-
-	var heroAttributesRandomizer = new WeightedRandom();
+	
+	//OTHERWISE RECORDS ONLY ADDS AND STACKS IN THE SAME OBJECT FOR DIFFERENT HEROES
+	//CANDIDATE FOR DELETING
+	//var heroAttributesRandomizer = new WeightedRandom();
+	
 	var enemyRandomizer = new WeightedRandom();
 	function Monster(monster, coordx, coordy) {
 		this.monster = monster;
@@ -2843,15 +2932,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 
-		calcAutoBattle: function(attackerStack, attackerHeroAttack, defenderStack, defenderHeroDefence) {
+		calcAutoBattle: function(attackerStack, attackerHeroAttack, defenderStack, defenderHeroDefence, campaignType) {
 
 		  console.log('--Attack start --');
 
 		  var startRoundStr = locObj.autobattle_journal_log_start.txt;
 		  var endRoundStr = locObj.autobattle_journal_log_end.txt;
-
-		  postBattleLog(startRoundStr);
-
+		  if (campaignType==="AutoCampaign") {
+		    postBattleLog(startRoundStr);
+		  }
 		  for (var attackerKey  in attackerStack.units) {
 
 		    if (attackerStack.units.hasOwnProperty(attackerKey)) {
@@ -2890,7 +2979,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		            if (defenderLooses > 0) {
 		            	attackerStr += ' ' + locObj.autobattle_journal_log_dead.txt.replace("%arg1", defenderLooses).replace("%arg2", game.unitNameLoc(target.name));
 		            }
-		            postBattleLog(attackerStr);
+		            if (campaignType==="AutoCampaign") {
+		              postBattleLog(attackerStr);
+		            }
 		          }
 
 		        }
@@ -2901,8 +2992,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		    }
 
 		  }
-
-		  postBattleLog(endRoundStr);
+		  if (campaignType==="AutoCampaign") {
+		    postBattleLog(endRoundStr);
+		  }
 		  console.log('-- Attack turn ended --');
 		  console.log('-----------------------');
 
@@ -2927,7 +3019,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					defenceVal = game.enemyHero.def
 				}
 
-				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal);
+				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
 				game.attacker = 2;
 			} else if (game.attacker === 2) {
 
@@ -2939,7 +3031,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					defenceVal = game.myhero.def
 				}
 
-				game.calcAutoBattle(game.enemyHeroArmy, attackVal, game.myheroArmy, defenceVal);
+				game.calcAutoBattle(game.enemyHeroArmy, attackVal, game.myheroArmy, defenceVal, campaignType);
 				game.attacker = 1;
 			}
 		},
@@ -3553,59 +3645,36 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						game.gold                 = game.gold - config.costHero;
 					}
 					clearJournalLog();
-					game.myhero.level         = game.buildLevelInn;
-					game.myhero.exp           = Math.pow(game.myhero.level * config.heroExpK,2);
-					var x = document.getElementById("selectHeroClass").selectedIndex;
-					var y = document.getElementById("selectHeroClass").options;
-					var heroclass             = y[x].value; //y[x].id, text, index
-					game.myhero.class         = parseInt(heroclass);
+					game.myhero.level     = heroesForHire[curHeroForHire].level;
+					game.myhero.exp       = Math.pow(game.myhero.level * config.heroExpK,2);
+					game.myhero.class     = curHeroForHire;
+					game.myhero.atk       = heroesForHire[curHeroForHire].atk;
+					game.myhero.def       = heroesForHire[curHeroForHire].def;
+					game.myhero.mpow      = heroesForHire[curHeroForHire].mpow;
+					game.myhero.int       = heroesForHire[curHeroForHire].int;
+					game.myhero.mana      = heroesForHire[curHeroForHire].int*10;
+					game.myhero.cmana     = heroesForHire[curHeroForHire].int*10;
+					
 					if (game.myhero.class===0){
-						game.myhero.atk       = 2;
-						game.myhero.def       = 2;
-						game.myhero.mpow      = 0;
-						game.myhero.int       = 0;
-						game.myhero.mana      = 0;
-						game.myhero.cmana     = 0;
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 50;
-
 						/*-- New --*/
-
+						var heroAttributesRandomizer = new WeightedRandom();
 						heroAttributesRandomizer.addEntry('atk', 60.0);
 						heroAttributesRandomizer.addEntry('def', 40.0);
 						heroAttributesRandomizer.addEntry('int', 0.0); // Temp logic for knight, until there is no magic mechanics at autocampaign
 						heroAttributesRandomizer.addEntry('mpow', 0.0); // Temp logic for knight, until there is no magic mechanics at autocampaign
-
 					}
 					if (game.myhero.class===1){
-						game.myhero.atk       = 0;
-						game.myhero.def       = 0;
-						game.myhero.mpow      = 2;
-						game.myhero.int       = 2
-						game.myhero.mana      = 20;
-						game.myhero.cmana     = 20;
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 70;
-
 						/*-- New --*/
-
+						var heroAttributesRandomizer = new WeightedRandom();
 						heroAttributesRandomizer.addEntry('atk', 45.0);  //Temp logic for monk, until there is no magic mechanics in autocampaign
 						heroAttributesRandomizer.addEntry('def', 55.0); //Temp logic for monk, until there is no magic mechanics in autocampaign
 						heroAttributesRandomizer.addEntry('int', 0.0);
 						heroAttributesRandomizer.addEntry('mpow', 0.0);
-
 					}
-
-
-					for (var i = 1; i < game.buildLevelInn; i++) {
-						var rndAttrName = heroAttributesRandomizer.getRandom();
-						game.myhero[rndAttrName]++;
-						console.log(rndAttrName);
-						if (rndAttrName === "int") {
-							game.recalcManaPoints();
-						}						
-					}
-
 					game.myhero.sergeants  = 0;
 					game.myhero.turkopols  = 0;
 					game.myhero.knights    = 0;
@@ -3636,6 +3705,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
 					updateHeroStatus();
+
+					game.gold -= config.costHero;
+
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[20]);
@@ -4693,6 +4765,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					if (game.buildLevelInn===1) {
 						game.generateMapCallback(true);
 					}
+					populateHeroesForHire();
 					commonBuild();
 					return true;
 				} else {
@@ -5146,6 +5219,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var nightMode     = 0;
 	var dcounter_def  = 30;
 	var dcounter      = dcounter_def;
+	var curHeroForHire= 0;
+	var heroesForHire = [];
+	
 	updateResources();
 	populatePatchnotes();
 	var autosaveObject;
@@ -5153,6 +5229,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	composite();
 	checkSaves();
 	setupNickname();
+	
 	//init timers
 	setInterval(cooldown, config.oneSecMS);
 	setInterval(endOfTurnTimer, config.oneSecMS);
@@ -5171,8 +5248,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		openTab(null, 'tabAutocampaignBattle');
 		scrollDown();
 	}
-
-
 	function getUID() {
 		var rnd = Math.floor((Math.random() * 100000) + 1);
 		while (rnd.toString().length < 5) {
@@ -5187,6 +5262,77 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			};
 		} else {
 			return Date.now();
+		}
+	}
+	function heroForHire(heroClass, level, heroStats, heroCurve, heroLearnCurve, image) {
+		this.heroClassLbl    = heroClass;
+		this.heroStatsArr    = heroStats;
+		this.level           = level;
+		this.atk             = heroStats[0];
+		this.def             = heroStats[1];
+		this.mpow            = heroStats[2];
+		this.int             = heroStats[3];
+		this.heroCurveArr    = heroCurve;
+		this.curveAtk        = heroCurve[0];
+		this.curveDef        = heroCurve[1];
+		this.curveMpow       = heroCurve[2];
+		this.curveInt        = heroCurve[3];
+		this.heroLearnCurve  = heroLearnCurve;
+		this.image           = image;
+	}
+	function populateHeroesForHire(){
+		heroesForHire = [];
+		knight = new heroForHire(locObj.heroClassKnight.txt, 1, [2,2,0,0], [60,40,0,0],
+								locObj.knightLearnCurve.txt, 'hero-knight.png');
+		monk   = new heroForHire(locObj.heroClassMonk.txt, 1, [0,0,2,2], [45,55,0,0],
+								locObj.monkLearnCurve.txt, 'hero-monk.png');
+		heroesForHire.push(knight);
+		heroesForHire.push(monk);
+		for (hero of heroesForHire){
+			var heroAttributesRandomizer = new WeightedRandom();
+			console.log(heroAttributesRandomizer);
+			heroAttributesRandomizer.addEntry('atk', hero.curveAtk);
+			heroAttributesRandomizer.addEntry('def', hero.curveDef);
+			heroAttributesRandomizer.addEntry('int', hero.curveInt);
+			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
+			for (i=0; i<game.buildLevelInn-1;i++){
+				var rndAttrName    = heroAttributesRandomizer.getRandom();
+				hero[rndAttrName]++;
+				hero["level"]++;
+			}
+		}
+		updateHeroAvForHire(0);
+	}
+	
+	function updateHeroAvForHire(heroClassId){
+		console.log("heroClassId is "+heroClassId);
+		document.getElementById("lblClassForHire").innerText    = heroesForHire[heroClassId].heroClassLbl;
+		document.getElementById("lblSpeciality").innerText      = heroesForHire[heroClassId].heroLearnCurve;
+		document.getElementById("imgHeroForHire").src           = 'resources/'+heroesForHire[heroClassId].image;
+		document.getElementById("lblLevelForHire").innerText    = heroesForHire[heroClassId].level;
+		theStats    = locObj.heroStatsAtkLbl.txt  +": " + heroesForHire[heroClassId]["atk"]+"; ";
+		theStats   += locObj.heroStatsDefLbl.txt  +": " + heroesForHire[heroClassId]["def"]+" ";
+		theStats   += "<br>"
+		theStats   += locObj.heroStatsMpowLbl.txt +": " + heroesForHire[heroClassId]["mpow"]+"; ";
+		theStats   += locObj.heroStatsIntLbl.txt  +": " + heroesForHire[heroClassId]["int"]+" ";
+		document.getElementById("lblPrimaryStats").innerHTML    = theStats;
+	}
+	function prevHero(){
+		if (curHeroForHire===0) {
+			curHeroForHire = heroesForHire.length - 1;
+			updateHeroAvForHire(curHeroForHire);
+		} else {
+			curHeroForHire = curHeroForHire - 1;
+			updateHeroAvForHire(curHeroForHire);
+		}
+	}
+	function nextHero(){
+		if (curHeroForHire===heroesForHire.length - 1) {
+			curHeroForHire = 0
+			updateHeroAvForHire(curHeroForHire);
+		} else {
+			curHeroForHire = curHeroForHire + 1;
+			updateHeroAvForHire(curHeroForHire);
 		}
 	}
 	function reloadHeroClassImg() {
@@ -5527,7 +5673,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 			var spans = document.getElementsByTagName("span");
 			for (var i = 0; i < spans.length; i++){
-				spans[i].style.color = "#404040";
+				spans[i].style.color = "#ededed";
 			}
 			var textAreas = document.getElementsByTagName("textarea");
 			for (var i = 0; i < textAreas.length; i++){
@@ -5546,6 +5692,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "#606060";
 				inputs[i].style.backgroundColor = "#202020";
 			}
+
+			document.querySelector(".resource-panel").style.backgroundColor = "black";
+			document.querySelector("#pop_img").setAttribute("src", "resources/pop_light.png");
+
+
 			dynamicCellsSetStyle();
 		} else {
 			var treasury_guard_darkmode = new Image;
@@ -5583,6 +5734,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				inputs[i].style.color = "black";
 				inputs[i].style.backgroundColor = "white";
 			}
+
+			document.querySelector(".resource-panel").style.backgroundColor = "#f1f1f1";
+			document.querySelector("#pop_img").setAttribute("src", "resources/pop.png");
+
 			dynamicCellsSetStyle();
 		}
 	}
@@ -5656,8 +5811,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblTabGold").innerText          = localeStrings[164];
 		document.getElementById("btnColorMode").innerText        = localeStrings[70];
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
-		document.getElementById("selectHeroClass")[0].text       = localeStrings[204][0];
-		document.getElementById("selectHeroClass")[1].text       = localeStrings[204][1];
 		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
 		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
 		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
@@ -5720,7 +5873,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("btnGoldNext").innerText         = localeStrings[159];
 		document.getElementById("btnPopAtEnd").innerText         = localeStrings[160];
 		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
-        document.getElementById("downloadGame").innerText        = localeStrings[328];
+		document.getElementById("downloadGame").innerText        = localeStrings[328];
+		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
+		populateHeroesForHire();
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();
@@ -5836,7 +5991,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		scrollDown();
 	}
 	function populatePatchnotes() {
-        msg = "version 1.0.327";
+		msg = "version 1.0.327";
 		writeToTextArea(msg);
 		msg = "added a link to download game to play it offline";
 		writeToTextArea(msg);
@@ -6580,8 +6735,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 	function updateResources() {
 		document.getElementById("gold").innerHTML          = game.gold;
-		document.getElementById("gold_bm").innerHTML       = game.gold;
-		document.getElementById("gold_bt").innerHTML       = game.gold;
+		// document.getElementById("gold_bm").innerHTML       = game.gold;
+		// document.getElementById("gold_bt").innerHTML       = game.gold;
 		document.getElementById("pop").innerHTML           = game.pop;
 		document.getElementById("gems").innerHTML          = game.gems;
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
@@ -6791,6 +6946,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
 			document.getElementById("inpStnAliasValue").value = game.alias;
 		}
+		if (tabName==="tabInn"){
+			//updateHeroAvForHire(0);
+		}
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
@@ -6826,7 +6984,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 </script>
 <script async src="dialogue.js"></script>
-<!--<script src="localisation.js"></script>-->
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
 <script async>
