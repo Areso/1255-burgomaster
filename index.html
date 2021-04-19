@@ -2932,15 +2932,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 
-		calcAutoBattle: function(attackerStack, attackerHeroAttack, defenderStack, defenderHeroDefence) {
+		calcAutoBattle: function(attackerStack, attackerHeroAttack, defenderStack, defenderHeroDefence, campaignType) {
 
 		  console.log('--Attack start --');
 
 		  var startRoundStr = locObj.autobattle_journal_log_start.txt;
 		  var endRoundStr = locObj.autobattle_journal_log_end.txt;
-
-		  postBattleLog(startRoundStr);
-
+		  if (campaignType==="AutoCampaign") {
+		    postBattleLog(startRoundStr);
+		  }
 		  for (var attackerKey  in attackerStack.units) {
 
 		    if (attackerStack.units.hasOwnProperty(attackerKey)) {
@@ -2979,7 +2979,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		            if (defenderLooses > 0) {
 		            	attackerStr += ' ' + locObj.autobattle_journal_log_dead.txt.replace("%arg1", defenderLooses).replace("%arg2", game.unitNameLoc(target.name));
 		            }
-		            postBattleLog(attackerStr);
+		            if (campaignType==="AutoCampaign") {
+		              postBattleLog(attackerStr);
+		            }
 		          }
 
 		        }
@@ -2990,8 +2992,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		    }
 
 		  }
-
-		  postBattleLog(endRoundStr);
+		  if (campaignType==="AutoCampaign") {
+		    postBattleLog(endRoundStr);
+		  }
 		  console.log('-- Attack turn ended --');
 		  console.log('-----------------------');
 
@@ -3016,7 +3019,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					defenceVal = game.enemyHero.def
 				}
 
-				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal);
+				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
 				game.attacker = 2;
 			} else if (game.attacker === 2) {
 
@@ -3028,7 +3031,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					defenceVal = game.myhero.def
 				}
 
-				game.calcAutoBattle(game.enemyHeroArmy, attackVal, game.myheroArmy, defenceVal);
+				game.calcAutoBattle(game.enemyHeroArmy, attackVal, game.myheroArmy, defenceVal, campaignType);
 				game.attacker = 1;
 			}
 		},
