@@ -446,3 +446,15 @@ locObj.autobattleTitle = {"txt": "Battle-%arg1", "loc": "Autobattle log title"};
 
 locObj.upgCostSidebar = {"txt":"La mise à niveau au niveau %arg1 coûte %arg2 pièces d'or", "loc":"Shows under the building description on the left sidebar for upgrades"};
 locObj.bldCostSidebar = {"txt":"Le bâtiment coûte %arg2 pièces d'or", "loc":"Shows under the building description on the left sidebar for initial building"};
+
+locObj.knightLearnCurve = {"txt":"A de fortes chances d'augmenter l'ATK lorsque le niveau augmente", "loc":"short description of the class in inn"};
+locObj.monkLearnCurve = {"txt":"A de fortes chances d'augmenter la DEF lorsque le niveau augmente ", "loc":"short description of the class in inn"};
+locObj.heroClassKnight = {"txt":"Сhevalier", "loc":"The inn when we are hiring. Hero class"};
+locObj.heroClassMonk = {"txt":"Moine", "loc":"The inn when we are hiring. Hero class"};
+
+locObj.heroLvlLbl = {"txt":"niveau", "loc":"The inn when we are hiring. Level"};
+locObj.heroStatsLbl = {"txt":"Statistiques:", "loc":"The inn when we are hiring. Stats"};
+locObj.heroStatsAtkLbl = {"txt":"Attaque", "loc":"The inn when we are hiring. Stats. Attack"};
+locObj.heroStatsDefLbl = {"txt":"Défense", "loc":"The inn when we are hiring. Stats. Defence"};
+locObj.heroStatsMpowLbl = {"txt":"Pouvoir Magique", "loc":"The inn when we are hiring. Stats. Magic power"};
+locObj.heroStatsIntLbl = {"txt":"Intelligence", "loc":"The inn when we are hiring. Stats. Intelligence"};
