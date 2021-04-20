@@ -1902,6 +1902,19 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(dataToParse);
 		},
+		sendSaveToTheCloud : function (lastHope_str) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					msg = "savegame sent to the cloud successfully";
+					postEventLog(msg);
+				}
+			};
+			dataToParse = game.UID;
+			xhttp.open("POST", "http://51.68.172.115:6600/lasthope", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(lastHope_str);
+		},
 		eventItemCollected : function () {
 			back_response_ItemCollected = null;
 			var xhttp = new XMLHttpRequest();
@@ -6384,6 +6397,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function lastHope(){
 		stringSavegame = JSON.stringify(localStorage.getItem('game'));
 		document.getElementById("savestring").value = btoa(stringSavegame);
+		savehope_str = btoa(stringSavegame);
+		game.sendSaveToTheCloud(savehope_str);
 	}
 	function exportGame() {
 		tmpExportGame = game;
