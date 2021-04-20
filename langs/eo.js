@@ -415,6 +415,9 @@ locObj.welcome1 = {"txt":"Via tasko estas simpla - administru la urbon kiel urbe
 locObj.welcome2 = {"txt":"Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 
+locObj.tutorial0_w0 = {"txt":"Via onklo, la landestro de teŭtona ordo,\nsendis vin konstrui urbon sur la pagana limo.\nVi trovis taŭgan lokon kun monteto, rivero, arbaro.\nViaj kamparanoj jam liberigis la lokon kaj pretas konstrui", "loc":"tutorial0_w0"};
+locObj.tutorial1_pop0 = {"txt":"Sinjoro majoro, vi bezonas konstrui domojn por kreskigi vian loĝantaron ", "loc":"tutorial0_w0"};
+
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
 locObj.unit_knights = {"txt": "Brother-knights", "loc": "Autbattle log, player unit"};

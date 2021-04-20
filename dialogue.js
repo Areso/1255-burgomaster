@@ -51,6 +51,11 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
         ctx.font          = "14px Calibri";
         sceneTextArray    = sceneText.split("\n");
         sceneTextLength   = sceneTextArray.length;
+        if (sceneTextLength === 1) {
+          sceneTextOrLength  = sceneText.length;
+          //console.log("dialog text len is "+sceneTextLength);
+          nextLine = sceneText.lastIndexOf(" ", 80) 
+        }
         sceneLines        = 0;
         sceneOffsetX      = img1sizeX + 20;
         sceneOffsetY      = 40;

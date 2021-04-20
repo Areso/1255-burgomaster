@@ -300,7 +300,7 @@
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
 			<!--<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>-->
 			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
-			<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>
+			<!--<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>-->
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
 			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
 			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
@@ -322,7 +322,7 @@
 				<span id="gems">0</span>
 			</div>
 			<div class="time-val">
-				<img class="resource-icon" src="resources/sand-clock.png">
+				<img class="resource-icon" src="resources/sand_clock.png">
 				<span id="dcounter">30</span>
 			</div>
 		</div>
@@ -330,19 +330,8 @@
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
 			<br>
-<!-- 			<p id="resources">
-				<span id="gold" class="interface" onclick="checkGold()" style="position:absolute; top:100px; left:60px">0</span>
-				<br>
-				<br>
-				<span id="pop"  class="interface" onclick="checkPop()"  style="position:absolute; top:140px; left:60px">2</span>
-				<br>
-				<br>
-				<span id="gems"  class="interface" onclick="showModal(0, '', getAck, localeStrings[90],  localeStrings[60], '');" style="position:absolute; top:180px; left:60px">0</span>
-			</p> -->
 			<p id="events_graphics" style="z-index: 8">
-
 			</p>
-			<!--<img src="resources/fire_a.gif" id="fire_graphics" onclick="putOutFire()" style="position:absolute; top:170px; left:0px; z-index=98; display:none">-->
 			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:250px; left: 20px">Save game</button>
 			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="display: inline; top:310px; left: 20px; visibility:hidden">Load game</button>
 			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:370px; left: 20px; display:none">Put out fire</button>
@@ -479,7 +468,7 @@
 			<hr>
 			<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
 		</div>
-		<div id="Garrison" class="tabcontent">
+		<div id="tabGarrison" class="tabcontent">
 			<h3><div id="labelGarrison">Garrison</div></h3>
 			<div id="divtreasuryGuard">
 			<table border="1">
@@ -1457,7 +1446,7 @@
 			game.makeFestival();
 		}
 		if (buildingName==='treasury') {
-			alertMsg = localeStrings[143];
+			openTab(null, 'tabGarrison');
 			if (game.checkAudio('sfx', 'all')===true) {
 				var arnd = Math.floor(Math.random() * 3);
 				var Audio = 'treasuryAudio'+arnd;
@@ -1771,10 +1760,51 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		this.coordx = coordx;
 		this.coordy = coordy;
 	}
+	var config = {
+		startPop: 6,
+		costWall:2,
+		costTower:8,
+		costCastle:24,
+		costHome:2,
+		costTreasury:20,
+		costGallows:50,
+		costFountain:50,
+		costStash:50,
+		costInn:20,
+		costStable:50,
+		costSmith:50,
+		costArchery:50,
+		lotteryPrize:50,
+		treasuryGuardPriceHire:20,
+		treasuryGuardPricePayroll:10,
+		costPutOutFire:20,
+		sizeMapX:18,//18
+		sizeScrX:16,//16
+		sizeMapY:18,//18
+		sizeScrY:10,//10
+		costHero:20,
+		heroExpK:5,
+		festPrice:2,
+		festCooldown:30,
+		glSaveVersion:9,
+		genMapCostBasic:50,
+		fireStepsBasic:60,
+		oneSecMS:1000,
+		sergeantHiring:20,
+		sergeantUpkeep:5,
+		turkopolHiring:20,
+		turkopolUpkeep:5,
+		knightHiring:40,
+		knightUpkeep:10,
+		chestMoney:25,
+		chestCity_timeout:15000,//ms
+		chestCity:50,
+	};
+
 	var game = {
 		gold: 20,
 		gems: 0,
-		pop: 2,
+		pop: config.startPop,
 		season: 2, //1 - Winter, 2 - Spring, 3 - Summer, 4 - Autumn
 		year: 1255,
 		food: 20,
@@ -4448,7 +4478,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
 		popLimit : function () {
-			return 2*Math.pow((game.buildLevelH*1+3),2);
+			if (game.buildLevelH>1){
+				return 2*Math.pow((game.buildLevelH*1+3),2);
+			} else {
+				return 6;
+			}
 		},
 		recordStats : function() {
 			game.years.push(game.year+" "+game.season);
@@ -4489,6 +4523,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						msg = msg.replace("%arg1",localeStrings[10]);
 						postEventLog(msg);
 						game.userPopAck = 1;
+					}
+					if (!game.tips.includes("tutorial1-pop0")){
+						game.tips.push("tutorial1-pop0");
+						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
 					}
 				}
 			}
@@ -5173,45 +5211,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 	};
 	//init const-variables
-	var config = {
-		costWall:2,
-		costTower:8,
-		costCastle:24,
-		costHome:2,
-		costTreasury:20,
-		costGallows:50,
-		costFountain:50,
-		costStash:50,
-		costInn:20,
-		costStable:50,
-		costSmith:50,
-		costArchery:50,
-		lotteryPrize:50,
-		treasuryGuardPriceHire:20,
-		treasuryGuardPricePayroll:10,
-		costPutOutFire:20,
-		sizeMapX:18,//18
-		sizeScrX:16,//16
-		sizeMapY:18,//18
-		sizeScrY:10,//10
-		costHero:20,
-		heroExpK:5,
-		festPrice:2,
-		festCooldown:30,
-		glSaveVersion:9,
-		genMapCostBasic:50,
-		fireStepsBasic:60,
-		oneSecMS:1000,
-		sergeantHiring:20,
-		sergeantUpkeep:5,
-		turkopolHiring:20,
-		turkopolUpkeep:5,
-		knightHiring:40,
-		knightUpkeep:10,
-		chestMoney:25,
-		chestCity_timeout:15000,//ms
-		chestCity:50,
-	};
 
 	//init service variables
 	var cnt_cursession= 0;
@@ -5227,7 +5226,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	composite();
-	checkSaves();
+	
 	setupNickname();
 	
 	//init timers
@@ -5334,9 +5333,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			curHeroForHire = curHeroForHire + 1;
 			updateHeroAvForHire(curHeroForHire);
 		}
-	}
-	function reloadHeroClassImg() {
-		//just a placeholder. TODO it
 	}
 	popPage = 0;
 	function checkFirebrigade() {
@@ -5631,6 +5627,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function checkSaves() {
 		if (localStorage.getItem('game')!==null) {
 			document.getElementById("loadGameButton").style.visibility = "visible";
+		} else {
+			if (!game.tips.includes("tutorial0-welcome0")){
+				game.tips.push("tutorial0-welcome0");
+				showModal(0, '', getAck, locObj.tutorial0_w0.txt, locObj.okay.txt, '')
+			}
 		}
 	}
 	function dynamicCellsSetStyle() {
@@ -5793,7 +5794,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("tabCity").innerText             = localeStrings[46];
 		//document.getElementById("tabExplore").innerText          = localeStrings[47];
 		document.getElementById("tabSettings").innerText         = localeStrings[48];
-		document.getElementById("tabGarrison").innerText         = localeStrings[49];
+		//document.getElementById("tabGarrison").innerText         = localeStrings[49];
 		document.getElementById("tabBuilding").innerText         = localeStrings[50];
 		document.getElementById("tabAbout").innerText            = localeStrings[51];
 		document.getElementById("tabDiscord").innerText          = localeStrings[52];
@@ -5876,6 +5877,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("downloadGame").innerText        = localeStrings[328];
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
 		populateHeroesForHire();
+		checkSaves();
 		welcomeMsg();
 		updateButtonCaptions();
 		updateHeroStatus();
@@ -6946,9 +6948,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
 			document.getElementById("inpStnAliasValue").value = game.alias;
 		}
-		if (tabName==="tabInn"){
-			//updateHeroAvForHire(0);
-		}
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
@@ -6962,7 +6961,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			evt.currentTarget.className += " active";
 		}
 	}
-	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("tabCity").click();
 
 	function accordion(elem, targetClass){
