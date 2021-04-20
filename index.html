@@ -365,6 +365,7 @@
 			<tr>
 				<td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
+				<td><button id="buttonExportGame" onclick="lastHope()" >Last hope</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
 			</tr>
 			</table>
@@ -6379,6 +6380,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 	function autosaveGame() {
 		saveGame("silent");
+	}
+	function lastHope(){
+		stringSavegame = JSON.stringify(localStorage.getItem('game'));
+		document.getElementById("savestring").value = btoa(stringSavegame);
 	}
 	function exportGame() {
 		tmpExportGame = game;
