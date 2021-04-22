@@ -417,6 +417,9 @@ locObj.welcome1 = {"txt":"Your task is simple - manage the city as mayor of the 
 locObj.welcome2 = {"txt":"Citizen will pay taxes each season (30 secs) and population will grow each season", "loc":"same"};
 locObj.okay = {"txt":"Okay", "loc":"Mostly used in information dialogues"}
 
+locObj.tutorial0_w0 = {"txt":"Your uncle, the landmaster of Teutonic order,\nsent you to build a city on the pagan frontier.\nYou have found a suituable place with a hill, river, forest.\nYour peasants already cleared the place and ready for building", "loc":"tutorial0_w0"};
+locObj.tutorial1_pop0 = {"txt":"Sir Commander, you need to build houses to keep your population growing", "loc":"tutorial0_w0"};
+
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
 locObj.unit_knights = {"txt": "Brother-knights", "loc": "Autbattle log, player unit"};
@@ -448,3 +451,15 @@ locObj.autobattleTitle = {"txt": "Battle-%arg1", "loc": "Autobattle log title"};
 
 locObj.upgCostSidebar = {"txt":"Upgrade to %arg1 level costs %arg2 gold", "loc":"Shows under the building description on the left sidebar for upgrades"};
 locObj.bldCostSidebar = {"txt":"Building costs %arg2 gold", "loc":"Shows under the building description on the left sidebar for initial building"};
+
+locObj.knightLearnCurve = {"txt":"Has high chance to increase ATK when level up", "loc":"short description of the class in inn"};
+locObj.monkLearnCurve = {"txt":"Has high chance to increase DEF when level up", "loc":"short description of the class in inn"};
+locObj.heroClassKnight = {"txt":"Knight", "loc":"The inn when we are hiring. Hero class"};
+locObj.heroClassMonk = {"txt":"Monk", "loc":"The inn when we are hiring. Hero class"};
+
+locObj.heroLvlLbl = {"txt":"level", "loc":"The inn when we are hiring. Level"};
+locObj.heroStatsLbl = {"txt":"Stats:", "loc":"The inn when we are hiring. Stats"};
+locObj.heroStatsAtkLbl = {"txt":"Attack", "loc":"The inn when we are hiring. Stats. Attack"};
+locObj.heroStatsDefLbl = {"txt":"Defence", "loc":"The inn when we are hiring. Stats. Defence"};
+locObj.heroStatsMpowLbl = {"txt":"Magic power", "loc":"The inn when we are hiring. Stats. Magic power"};
+locObj.heroStatsIntLbl = {"txt":"Intelligence", "loc":"The inn when we are hiring. Stats. Intelligence"};
