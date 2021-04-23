@@ -463,3 +463,5 @@ locObj.heroStatsAtkLbl = {"txt":"Attack", "loc":"The inn when we are hiring. Sta
 locObj.heroStatsDefLbl = {"txt":"Defence", "loc":"The inn when we are hiring. Stats. Defence"};
 locObj.heroStatsMpowLbl = {"txt":"Magic power", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Intelligence", "loc":"The inn when we are hiring. Stats. Intelligence"};
+
+locObj.moneyExceedsTreasury = {"txt":"Sir Commander, sum of money your treasury and your hero's purse had exceeds your treasury capacity. To avoid losing money, build or upgrade your treasury now", "loc":"checking function which indicated if player needs to upgrade his treasury"};

@@ -1896,6 +1896,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		festivalPrice : function () {
 			return game.pop*config.festPrice*(game.buildLevelTreasury+1)*(game.buildLevelFountain+1);
 		},
+		checkTreasuryCapacity : function() {
+			if(game.heroExists()) {
+				if (game.gold+game.myhero.gold > game.goldLimit()) {
+					postEventLog(locObj.moneyExceedsTreasury.txt, "bold");
+				}
+			} else {
+				if (game.gold > game.goldLimit()) {
+					postEventLog(locObj.moneyExceedsTreasury.txt, "bold");
+				}
+			}
+		},
 		addMoneyToTreasury : function (changeValue) {
 			var gold_was      = game.gold;
 			var gold_limit    = game.goldLimit();
@@ -2110,6 +2121,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				var the_selling_artefactIndex = y[x].index; //y[x].id, text, index
 				buyingPrice = artefacts[the_selling_artefact].priceBuy/2;
 				game.myhero.gold += buyingPrice;
+				game.checkTreasuryCapacity();
 				game.artefact_loss(artefacts[the_selling_artefact], "hero", the_selling_artefactIndex);
 				if (artefacts[the_selling_artefact].id!=="artid00"){
 					game.blackMarketGoods.push(artefacts[the_selling_artefact].id);
@@ -2745,6 +2757,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (game.myMapRemObjects[game.heroX][game.heroY]===1) {
 				postEventLog(localeStrings[186]+config.chestMoney);
 				game.myhero.gold += config.chestMoney;
+				game.checkTreasuryCapacity();
 			}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
 				postEventLog(localeStrings[58][0]);

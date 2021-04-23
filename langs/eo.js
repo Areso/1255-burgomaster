@@ -415,8 +415,8 @@ locObj.welcome1 = {"txt":"Via tasko estas simpla - administru la urbon kiel urbe
 locObj.welcome2 = {"txt":"Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 
-locObj.tutorial0_w0 = {"txt":"Via onklo, la landestro de teŭtona ordo,\nsendis vin konstrui urbon sur la pagana limo.\nVi trovis taŭgan lokon kun monteto, rivero, arbaro.\nViaj kamparanoj jam liberigis la lokon kaj pretas konstrui", "loc":"tutorial0_w0"};
-locObj.tutorial1_pop0 = {"txt":"Sinjoro majoro, vi bezonas konstrui domojn por kreskigi vian loĝantaron ", "loc":"tutorial0_w0"};
+locObj.tutorial0_w0 = {"txt":"Via onklo, la landestro de teŭtona ordo, sendis vin konstrui urbon sur la pagana limo.\nVi trovis taŭgan lokon kun monteto, rivero, arbaro.\nViaj kamparanoj jam liberigis la lokon kaj pretas konstrui", "loc":"tutorial0_w0"};
+locObj.tutorial1_pop0 = {"txt":"Sinjoro Komtur, vi bezonas konstrui domojn por kreskigi vian loĝantaron ", "loc":"tutorial0_w0"};
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
@@ -461,3 +461,5 @@ locObj.heroStatsAtkLbl = {"txt":"Atako", "loc":"The inn when we are hiring. Stat
 locObj.heroStatsDefLbl = {"txt":"Defendo", "loc":"The inn when we are hiring. Stats. Defence"};
 locObj.heroStatsMpowLbl = {"txt":"Magia potenco", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Inteligenteco", "loc":"The inn when we are hiring. Stats. Intelligence"};
+
+locObj.moneyExceedsTreasury = {"txt":"Sinjoro Komtur, monsumo via trezorejo kaj la monujo de via heroo superas vian trezorejan kapablon. Por eviti perdi monon, konstruu aŭ plibonigu vian trezorejon nun", "loc":"checking function which indicated if player needs to upgrade his treasury"};

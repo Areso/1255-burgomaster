@@ -461,3 +461,5 @@ locObj.heroStatsAtkLbl = {"txt":"Attacke", "loc":"The inn when we are hiring. St
 locObj.heroStatsDefLbl = {"txt":"Verteidigung", "loc":"The inn when we are hiring. Stats. Defence"};
 locObj.heroStatsMpowLbl = {"txt":"Magische Kraft", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Intelligenz ", "loc":"The inn when we are hiring. Stats. Intelligence"};
+
+locObj.moneyExceedsTreasury = {"txt":"Herr Komtur, die Geldsumme, die Ihre Schatzkammer und die Geldbörse Ihres Helden haben, übersteigt Ihre Schatzkapazität. Um Geld zu vermeiden, bauen oder verbessern Sie jetzt Ihre Schatzkammer", "loc":"checking function which indicated if player needs to upgrade his treasury"};
