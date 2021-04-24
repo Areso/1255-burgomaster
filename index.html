@@ -5121,66 +5121,67 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			game.chestCityDisappear();
 		},
 		startPlague : function () {
-			rnd = Math.floor((Math.random() * 15) + 1);
-			if (rnd === 1) {
-				if (game.pop > 2) {
-					numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
-					if (numberOfDied>game.pop-2){
-						numberOfDied = game.pop-2;
-					}
-					game.pop     = game.pop - numberOfDied;
-					msg = msg = locObj.plague.txt.replace("%arg1", numberOfDied);
-					if (game.checkAudio('sfx', 'events')===true) {
-						document.getElementById('plagueAudio0').play();
-					}
-					postEventLog(msg);
-					updateResources();
-				}
-			}
-			if (rnd === 2) {
-				if (game.pop > 2) {
-					if (game.turkopols>0){
+			if (game.year > 1265) {
+				rnd = Math.floor((Math.random() * 15) + 1);
+				if (rnd === 1) {
+					if (game.pop > 2) {
+						numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
+						if (numberOfDied>game.pop-2){
+							numberOfDied = game.pop-2;
+						}
+						game.pop     = game.pop - numberOfDied;
+						msg = msg = locObj.plague.txt.replace("%arg1", numberOfDied);
 						if (game.checkAudio('sfx', 'events')===true) {
-							document.getElementById('archeryAudio0').play();
+							document.getElementById('plagueAudio0').play();
 						}
-						postEventLog(locObj.plague_turk.txt);
-					} else {
-						army_count = game.treasuryGuard+game.sergeants+game.knights;
-						if (army_count > 0) {
-							numberOfDied = Math.floor(Math.random() * (army_count*0.5)+1);
-							if (numberOfDied > army_count) {
-								numberOfDied = army_count
-							}
+						postEventLog(msg);
+						updateResources();
+					}
+				}
+				if (rnd === 2) {
+					if (game.pop > 2) {
+						if (game.turkopols>0){
 							if (game.checkAudio('sfx', 'events')===true) {
-								document.getElementById('plagueAudio0').play();
+								document.getElementById('archeryAudio0').play();
 							}
-							deceased = 0;
-							while (deceased < numberOfDied && game.treasuryGuard>0){
-								game.treasuryGuard=game.treasuryGuard-1;
-								deceased = deceased+1;
-							}
-							if (deceased < numberOfDied){
-								while (deceased < numberOfDied && game.sergeants>0){
-									game.sergeants=game.sergeants-1;
+							postEventLog(locObj.plague_turk.txt);
+						} else {
+							army_count = game.treasuryGuard+game.sergeants+game.knights;
+							if (army_count > 0) {
+								numberOfDied = Math.floor(Math.random() * (army_count*0.5)+1);
+								if (numberOfDied > army_count) {
+									numberOfDied = army_count
+								}
+								if (game.checkAudio('sfx', 'events')===true) {
+									document.getElementById('plagueAudio0').play();
+								}
+								deceased = 0;
+								while (deceased < numberOfDied && game.treasuryGuard>0){
+									game.treasuryGuard=game.treasuryGuard-1;
 									deceased = deceased+1;
 								}
-							}
-							if (deceased < numberOfDied){
-								while (deceased < numberOfDied && game.knights>0){
-									game.knights=game.knights-1;
-									deceased = deceased+1;
+								if (deceased < numberOfDied){
+									while (deceased < numberOfDied && game.sergeants>0){
+										game.sergeants=game.sergeants-1;
+										deceased = deceased+1;
+									}
 								}
+								if (deceased < numberOfDied){
+									while (deceased < numberOfDied && game.knights>0){
+										game.knights=game.knights-1;
+										deceased = deceased+1;
+									}
+								}
+								console.log("so the random value of numberOfDied in the army is "+numberOfDied);
+								console.log("and number actually deceased troops is "+deceased);
+								postEventLog(locObj.plague_army.txt.replace("%arg1", numberOfDied));
+								updateTroopsNumbers();
+								updateResources();
 							}
-							console.log("so the random value of numberOfDied in the army is "+numberOfDied);
-							console.log("and number actually deceased troops is "+deceased);
-							postEventLog(locObj.plague_army.txt.replace("%arg1", numberOfDied));
-							updateTroopsNumbers();
-							updateResources();
 						}
 					}
 				}
-			}
-			if (rnd === 3) {
+				if (rnd === 3) {
 				army_count = game.treasuryGuard+game.sergeants+game.knights;
 				if (army_count > 0) {
 					numberOfDied = Math.floor(Math.random() * (army_count*0.5)+1);
@@ -5226,6 +5227,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postEventLog(msg);
 						updateResources();
 					}
+				}
 				}
 			}
 		}
