@@ -1696,6 +1696,7 @@ var WeightedRandom = function() {
 };
 
 WeightedRandom.prototype.addEntry = function(object, weight) {
+	console.log("Adding new entry!");
   this.accumulatedWeight += weight;
   this.entries.push( { object: object, accumulatedWeight: this.accumulatedWeight });
 }
@@ -2461,7 +2462,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							//prepare for battle!
 							//generate enemy squad
 							game.generateEnemyUnitsForBattle();
-							game.calcAttackPhase("AdvMap");
+
+							game.isAutoBattle = true;
+
+							while(game.isAutoBattle) {
+								game.calcAttackPhase("AdvMap");
+							}
 							//suppose we win the battle
 							//removing the monster from removable objects (render array)
 							game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy] = 0;
@@ -2912,24 +2918,35 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 
-		checkWinner: function() {
-			if (game.attacker === 1 && !game.isAutoBattle) {
-				if (game.myhero.stance === 1) {
-					postJournalLog(localeStrings[174]);
-				} else {
-					postJournalLog(localeStrings[173]);
-				}
-				console.log("The player is the winner");
-				game.myhero.gold += game.goldReward;
-				game.myhero.exp += game.expReward;
-				game.restoreHealth();
-				game.generateEnemyUnitsForBattle();
+		checkWinner: function(campaignType) {
+			console.log("%c CHECKING WINNER!", "color: #333; background: red");
+				if (game.attacker === 1 && !game.isAutoBattle) {
+					if (campaignType === "AutoCampaign") {
+						if (game.myhero.stance === 1) {
+							postJournalLog(localeStrings[174]);
+						} else {
+							postJournalLog(localeStrings[173]);
+						}
+					}
 
-			} else {
-				postJournalLog(localeStrings[172]);
-				game.heroDie();
-				console.log("The PC opponent is the Winner");
-			}
+					console.log("The player is the winner");
+					game.myhero.gold += game.goldReward;
+					game.myhero.exp += game.expReward;
+					game.restoreHealth();
+					game.generateEnemyUnitsForBattle();
+
+					if (campaignType !== "AutoCampaign") {
+						game.heroLvlUp("AdvMap");
+						updateUI();
+					}
+
+				} else {
+					if (campaignType === "AutoCampaign") {
+						postJournalLog(localeStrings[172]);
+					}
+					game.heroDie();
+					console.log("The PC opponent is the Winner");
+				}
 		},
 
 		calcDmg: function(attackerSquad, attackerHeroAttack, defenderSquad, defenderHeroDefence) {
@@ -3018,9 +3035,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postBattleLog(attackerStr);
 					}
 		            if (isEmptyObj(defenderStack.units)) {
-		              game.isAutoBattle = false;
-		              game.checkWinner();
-		              game.attacker = 0;
+						game.isAutoBattle = false;
+						game.checkWinner(campaignType);
+						if (campaignType === "AutoCampaign") {
+							game.attacker = 0;
+						}
 		            }
 		          } else {
 		            var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
@@ -3068,6 +3087,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.enemyHero && game.enemyHero.def) {
 					defenceVal = game.enemyHero.def
 				}
+
+				console.log("%cENEMY ARMY FROM MAP: ", 'color: #333; background: #fc3; padding: 6px;', game.enemyHeroArmy);
 
 				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
 				game.attacker = 2;
@@ -3318,7 +3339,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postJournalLog(localeStrings[175]);
 					}
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
@@ -3339,7 +3360,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 					game.myhero.gold               = 0;
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 		},
 		isHeroHaveTroops : function () {
@@ -3772,9 +3793,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
 			}
 		},
-		heroLvlUp : function () {
+		heroLvlUp : function (campaignType) {
 			if (game.myhero.exp > game.heroNextLvlExpLimit()){
 				game.myhero.level +=1;
+				var heroAttributesRandomizer = new WeightedRandom();
+				if (game.myhero.class === 0) {
+					heroAttributesRandomizer.addEntry('atk', 60.0);
+					heroAttributesRandomizer.addEntry('def', 40.0);
+					heroAttributesRandomizer.addEntry('int', 0.0); // Temp logic for knight, until there is no magic mechanics at autocampaign
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
+
+				if (game.myhero.class === 1) {
+					heroAttributesRandomizer.addEntry('atk', 45.0);  //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('def', 55.0); //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('int', 0.0);
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
 
 				var rndAttrName = heroAttributesRandomizer.getRandom();
 				game.myhero[rndAttrName]++;
@@ -3783,7 +3818,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.recalcManaPoints();
 				}
 
-				postJournalLog(localeStrings[224]);
+				if (campaignType === "AutoCampaign") {
+					postJournalLog(localeStrings[224]);
+				}
 			}
 		},
 
@@ -3793,6 +3830,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		heroDie : function () {
 			game.myhero = {};
+			//heroAttributesRandomizer.clearEntriesList();
 			updateHeroStatus();
 			writeSave();
 		},
@@ -5315,6 +5353,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			heroAttributesRandomizer.addEntry('def', hero.curveDef);
 			heroAttributesRandomizer.addEntry('int', hero.curveInt);
 			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
+
+			console.log(heroAttributesRandomizer.entries);
+
 			for (i=0; i<game.buildLevelInn-1;i++){
 				var rndAttrName    = heroAttributesRandomizer.getRandom();
 				hero[rndAttrName]++;
