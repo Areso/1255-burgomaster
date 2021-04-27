@@ -1,6 +1,7 @@
 var artefacts = {
     artid00: {
         id: "artid00",
+        img: "scroll_01.png",
         name: localeStrings[286],
         desc: localeStrings[287],
         attr: [],
@@ -119,4 +120,40 @@ var artefacts = {
         type: "artefactsWorn",
         artefactsWorn: 1,
     },
+    artid11: {
+        id: "artid11",
+        img: "glyph_01.png",
+        name: "Glyph of Knight's Valor",
+        desc: "Increases the hero's attack +10, increases heroe's defence +6",
+        attr: ["atk", "def"],
+        change: [],
+        priceBuy: 5000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1,
+    },
+    artid12: {
+        id: "artid12",
+        img: "glyph_02.png",
+        name: "Glyph of Monk's Virtue",
+        desc: "Increases the hero's attack +4, increases heroe's defence +12",
+        attr: ["atk", "def"],
+        change: [],
+        priceBuy: 5000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1,
+    },
+    artid13: {
+        id: "artid13",
+        img: "rune_gold.png",
+        name: "Rune of Golden Search",
+        desc: "Increases the hero's gold reward after battle by 35%",
+        attr: ["gold"],
+        change: [],
+        priceBuy: 5000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1
+    }
 };

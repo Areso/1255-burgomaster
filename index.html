@@ -286,6 +286,76 @@
 			color: inherit;
 		}
 
+		.inventory-item {
+			box-sizing: border-box;
+			padding: 10px;
+			margin: 0 10px 6px;
+			display: flex;
+			max-width: 761px;
+			border: 1px solid #333;
+			background-color: #f1f1f1;
+			font-size: 15px;
+		}
+
+		.inventory-item__wrapper-img {
+			flex: 0 0 40px;
+			height: 40px;
+			border: 1px solid #333;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #9f9f9f;
+		}
+
+		.inventory-item__wrapper-desc {
+			display: flex;
+			flex-direction: column;
+			margin-left: 15px;
+			margin-right: 15px;
+			flex: 1 1 100%;
+		}
+
+		.inventory-item__name {
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 4px;
+			margin-top: 0;
+		}
+
+		.inventory-item__btn {
+			width: 120px;
+			height: 21px;
+			align-self: center;
+		}
+
+		#marketList,
+		#heroMarketList {
+			overflow-y: auto;
+			height: 100%;
+			max-height: 140px;
+		}
+
+
+		.price-val {
+			background-color: #b9b9b9;
+			padding: 2px 8px;
+			margin-left: 12px;
+			font-size: 15px;
+			display: inline-block;
+		}
+
+		.shop-title {
+			margin: 0 10px 6px;
+		}
+
+		.dark-theme.inventory-item {
+			background-color: #202020;
+		}
+
+		.dark-theme.inventory-item__name {
+			color: #fff !important;
+		}
+
 	</style>
 	<script id="chatBroEmbedCode">
 		/* Chatbro Widget Embed Code Start */
@@ -873,31 +943,16 @@
 			</table>
 		</div>
 		<div id="tabBlackmarket" class="tabcontent">
-<!-- 			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
-			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span> -->
-			<br>
-			<br>
 			<br>
 			<div>
-				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div><br>
-				<select id="selectGoodsForHero" size="1" onchange="updateBlackMarket()">
-				</select>
-				<div id="lblArtefactBuyPrice" style="display: inline">price </div><div id="lblArtefactBuyPriceValue" style="display: inline">0</div>
-				<button id="btnBuyArtefact" onclick="game.artefact_buy()">Buy selected</button><br>
+				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
+				<div id="marketList"></div>
 			</div>
-			<br>
-			<br>
 			<div>
-				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div><br>
-				<select id="selectGoodsFromHero" size="1" onchange="updateBlackMarket()">
-				</select>
-				<div id="lblArtefactSellPrice" style="display: inline">price </div><div id="lblArtefactSellPriceValue" style="display: inline">0</div>
-				<button id="btnSellArtefact" onclick="game.artefact_sell()">Sell selected</button><br>
+				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
+				<div id="heroMarketList"></div>
 			</div>
-			<br>
-			<br>
-			<br>
-			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 250px">Go to exploring!</button>
+			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
 		</div>
 		<div id="tabEvent" class="tabcontent">
 			<lbl id="lblEventDetails">
@@ -1696,6 +1751,7 @@ var WeightedRandom = function() {
 };
 
 WeightedRandom.prototype.addEntry = function(object, weight) {
+	console.log("Adding new entry!");
   this.accumulatedWeight += weight;
   this.entries.push( { object: object, accumulatedWeight: this.accumulatedWeight });
 }
@@ -2286,12 +2342,20 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			var rnd = Math.floor((Math.random() * 8) + 1);
-			if (rnd.toString().length<2) {
+			//var rnd = Math.floor((Math.random() * 8) + 1);
+			//game.blackMarketGoods.push("artid00");
+			//game.blackMarketGoods.push("artid"+rnd);
+			var rnd = randomFromRange(11, 13);
+			if (rnd.toString().length < 2) {
 				rnd = "0"+rnd;
 			}
-			game.blackMarketGoods.push("artid00");
-			game.blackMarketGoods.push("artid"+rnd);
+			var scroll = getItem("artid00");
+			addItem("trader", scroll);
+
+			var id = "artid" + rnd;
+			var randomItem = getItem(id);
+			addItem("trader", randomItem);
+			console.log(game.blackMarketGoods);
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
@@ -2461,7 +2525,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							//prepare for battle!
 							//generate enemy squad
 							game.generateEnemyUnitsForBattle();
-							game.calcAttackPhase("AdvMap");
+
+							game.isAutoBattle = true;
+
+							while(game.isAutoBattle) {
+								game.calcAttackPhase("AdvMap");
+							}
 							//suppose we win the battle
 							//removing the monster from removable objects (render array)
 							game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy] = 0;
@@ -2912,24 +2981,35 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 
-		checkWinner: function() {
-			if (game.attacker === 1 && !game.isAutoBattle) {
-				if (game.myhero.stance === 1) {
-					postJournalLog(localeStrings[174]);
-				} else {
-					postJournalLog(localeStrings[173]);
-				}
-				console.log("The player is the winner");
-				game.myhero.gold += game.goldReward;
-				game.myhero.exp += game.expReward;
-				game.restoreHealth();
-				game.generateEnemyUnitsForBattle();
+		checkWinner: function(campaignType) {
+			console.log("%c CHECKING WINNER!", "color: #333; background: red");
+				if (game.attacker === 1 && !game.isAutoBattle) {
+					if (campaignType === "AutoCampaign") {
+						if (game.myhero.stance === 1) {
+							postJournalLog(localeStrings[174]);
+						} else {
+							postJournalLog(localeStrings[173]);
+						}
+					}
 
-			} else {
-				postJournalLog(localeStrings[172]);
-				game.heroDie();
-				console.log("The PC opponent is the Winner");
-			}
+					console.log("The player is the winner");
+					game.myhero.gold += game.goldReward;
+					game.myhero.exp += game.expReward;
+					game.restoreHealth();
+					game.generateEnemyUnitsForBattle();
+
+					if (campaignType !== "AutoCampaign") {
+						game.heroLvlUp("AdvMap");
+						updateUI();
+					}
+
+				} else {
+					if (campaignType === "AutoCampaign") {
+						postJournalLog(localeStrings[172]);
+					}
+					game.heroDie();
+					console.log("The PC opponent is the Winner");
+				}
 		},
 
 		calcDmg: function(attackerSquad, attackerHeroAttack, defenderSquad, defenderHeroDefence) {
@@ -3018,9 +3098,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postBattleLog(attackerStr);
 					}
 		            if (isEmptyObj(defenderStack.units)) {
-		              game.isAutoBattle = false;
-		              game.checkWinner();
-		              game.attacker = 0;
+						game.isAutoBattle = false;
+						game.checkWinner(campaignType);
+						if (campaignType === "AutoCampaign") {
+							game.attacker = 0;
+						}
 		            }
 		          } else {
 		            var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
@@ -3068,6 +3150,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.enemyHero && game.enemyHero.def) {
 					defenceVal = game.enemyHero.def
 				}
+
+				console.log("%cENEMY ARMY FROM MAP: ", 'color: #333; background: #fc3; padding: 6px;', game.enemyHeroArmy);
 
 				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
 				game.attacker = 2;
@@ -3318,7 +3402,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postJournalLog(localeStrings[175]);
 					}
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
@@ -3339,7 +3423,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 					game.myhero.gold               = 0;
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 		},
 		isHeroHaveTroops : function () {
@@ -3772,9 +3856,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
 			}
 		},
-		heroLvlUp : function () {
+		heroLvlUp : function (campaignType) {
 			if (game.myhero.exp > game.heroNextLvlExpLimit()){
 				game.myhero.level +=1;
+				var heroAttributesRandomizer = new WeightedRandom();
+				if (game.myhero.class === 0) {
+					heroAttributesRandomizer.addEntry('atk', 60.0);
+					heroAttributesRandomizer.addEntry('def', 40.0);
+					heroAttributesRandomizer.addEntry('int', 0.0); // Temp logic for knight, until there is no magic mechanics at autocampaign
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
+
+				if (game.myhero.class === 1) {
+					heroAttributesRandomizer.addEntry('atk', 45.0);  //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('def', 55.0); //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('int', 0.0);
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
 
 				var rndAttrName = heroAttributesRandomizer.getRandom();
 				game.myhero[rndAttrName]++;
@@ -3783,7 +3881,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.recalcManaPoints();
 				}
 
-				postJournalLog(localeStrings[224]);
+				if (campaignType === "AutoCampaign") {
+					postJournalLog(localeStrings[224]);
+				}
 			}
 		},
 
@@ -3793,6 +3893,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		heroDie : function () {
 			game.myhero = {};
+			//heroAttributesRandomizer.clearEntriesList();
 			updateHeroStatus();
 			writeSave();
 		},
@@ -5315,6 +5416,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			heroAttributesRandomizer.addEntry('def', hero.curveDef);
 			heroAttributesRandomizer.addEntry('int', hero.curveInt);
 			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
+
+			console.log(heroAttributesRandomizer.entries);
+
 			for (i=0; i<game.buildLevelInn-1;i++){
 				var rndAttrName    = heroAttributesRandomizer.getRandom();
 				hero[rndAttrName]++;
@@ -5876,11 +5980,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblGoodsForSale").innerText     = localeStrings[260];
-		document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
-		document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
-		document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
+
+		//document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
+		//document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
+		//document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
 		document.getElementById("lblGoodsForBuying").innerText   = localeStrings[263];
-		document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
+		//document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
 		document.getElementById("btnLeaveBlackmarket").innerText = localeStrings[222];
 		document.getElementById("lblFirebrigade").innerText      = localeStrings[270];
 		document.getElementById("lblFBOption").innerText         = localeStrings[271];
@@ -6765,50 +6870,51 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
-		var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
-		if (changeSaleOffer!==null) {
-			if (changeSaleOffer!==undefined){
-				selectGoodsForBuying.options[changeSaleOffer].remove();
-			}
-		}
-		var selectedItemIndex = selectGoodsForBuying.selectedIndex;
-		selectGoodsForBuying.length = 0;
-		for(var j in game.blackMarketGoods)	{
-			selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
-		}
-		if (selectedItemIndex!==-1) {
-			selectGoodsForBuying.selectedIndex=selectedItemIndex;
-		}
-		if (game.blackMarketGoods.length!==0){
-			if (selectedItemIndex !== -1){
-				document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
-			}
-		}
-		document.getElementById("lblArtefactSellPriceValue").innerText=0;
-		if (game.heroExists()){
-			var selectGoodsForSale = document.getElementById("selectGoodsFromHero");
-			if (changeBuyOffer!==null) {
-				if (changeSaleOffer!==undefined){
-					selectGoodsForSale.options[changeBuyOffer].remove();
-				}
-			}
-			var selectedSaleItemIndex = selectGoodsForSale.selectedIndex;
-			selectGoodsForSale.length = 0;
-			for(var i in game.myhero.inventory)	{
-				selectGoodsForSale.add(new Option(artefacts[game.myhero.inventory[i]].name,artefacts[game.myhero.inventory[i]].id));
-			}
-			if (selectedItemIndex!==-1) {
-				selectGoodsForSale.selectedIndex=selectedSaleItemIndex;
-			}
-			if (game.myhero.inventory.length!==0){
-				if (selectedSaleItemIndex !== -1){
-					document.getElementById("btnSellArtefact").disabled = false;
-					document.getElementById("lblArtefactSellPriceValue").innerText = artefacts[game.myhero.inventory[selectedSaleItemIndex]].priceBuy/2;
-				} else { document.getElementById("btnSellArtefact").disabled = true; }
-			} else {
-				document.getElementById("btnSellArtefact").disabled = true;
-			}
-		}
+
+		// var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
+		// if (changeSaleOffer!==null) {
+		// 	if (changeSaleOffer!==undefined){
+		// 		selectGoodsForBuying.options[changeSaleOffer].remove();
+		// 	}
+		// }
+		// var selectedItemIndex = selectGoodsForBuying.selectedIndex;
+		// selectGoodsForBuying.length = 0;
+		// for(var j in game.blackMarketGoods)	{
+		// 	selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
+		// }
+		// if (selectedItemIndex!==-1) {
+		// 	selectGoodsForBuying.selectedIndex=selectedItemIndex;
+		// }
+		// if (game.blackMarketGoods.length!==0){
+		// 	if (selectedItemIndex !== -1){
+		// 		document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
+		// 	}
+		// }
+		// document.getElementById("lblArtefactSellPriceValue").innerText=0;
+		// if (game.heroExists()){
+		// 	var selectGoodsForSale = document.getElementById("selectGoodsFromHero");
+		// 	if (changeBuyOffer!==null) {
+		// 		if (changeSaleOffer!==undefined){
+		// 			selectGoodsForSale.options[changeBuyOffer].remove();
+		// 		}
+		// 	}
+		// 	var selectedSaleItemIndex = selectGoodsForSale.selectedIndex;
+		// 	selectGoodsForSale.length = 0;
+		// 	for(var i in game.myhero.inventory)	{
+		// 		selectGoodsForSale.add(new Option(artefacts[game.myhero.inventory[i]].name,artefacts[game.myhero.inventory[i]].id));
+		// 	}
+		// 	if (selectedItemIndex!==-1) {
+		// 		selectGoodsForSale.selectedIndex=selectedSaleItemIndex;
+		// 	}
+		// 	if (game.myhero.inventory.length!==0){
+		// 		if (selectedSaleItemIndex !== -1){
+		// 			document.getElementById("btnSellArtefact").disabled = false;
+		// 			document.getElementById("lblArtefactSellPriceValue").innerText = artefacts[game.myhero.inventory[selectedSaleItemIndex]].priceBuy/2;
+		// 		} else { document.getElementById("btnSellArtefact").disabled = true; }
+		// 	} else {
+		// 		document.getElementById("btnSellArtefact").disabled = true;
+		// 	}
+		// }
 	}
 	function getTime(type) {
 		var d  = new Date();
@@ -7003,6 +7109,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 </script>
 <script async src="dialogue.js"></script>
+<script async src="shop.js"></script>
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
 <script async>
