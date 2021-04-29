@@ -123,8 +123,8 @@ var artefacts = {
     artid11: {
         id: "artid11",
         img: "glyph_01.png",
-        name: "Glyph of Knight's Valor",
-        desc: "Increases the hero's attack +10, increases heroe's defence +6",
+        name: locObj.glyphKnightTile.txt,
+        desc: locObj.glyphKnightDesc.txt,
         attr: ["atk", "def"],
         change: [],
         priceBuy: 5000000,
@@ -135,8 +135,8 @@ var artefacts = {
     artid12: {
         id: "artid12",
         img: "glyph_02.png",
-        name: "Glyph of Monk's Virtue",
-        desc: "Increases the hero's attack +4, increases heroe's defence +12",
+        name: locObj.glyphMonkTile.txt,
+        desc: locObj.glyphMonkDesc.txt,
         attr: ["atk", "def"],
         change: [],
         priceBuy: 5000000,
@@ -147,8 +147,8 @@ var artefacts = {
     artid13: {
         id: "artid13",
         img: "rune_gold.png",
-        name: "Rune of Golden Search",
-        desc: "Increases the hero's gold reward after battle by 35%",
+        name: locObj.goldRuneTitle.txt,
+        desc: locObj.goldRuneTitle.txt,
         attr: ["gold"],
         change: [],
         priceBuy: 5000000,

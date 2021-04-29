@@ -463,3 +463,12 @@ locObj.heroStatsMpowLbl = {"txt":"Magia potenco", "loc":"The inn when we are hir
 locObj.heroStatsIntLbl = {"txt":"Inteligenteco", "loc":"The inn when we are hiring. Stats. Intelligence"};
 
 locObj.moneyExceedsTreasury = {"txt":"Sinjoro Komtur, monsumo via trezorejo kaj la monujo de via heroo superas vian trezorejan kapablon. Por eviti perdi monon, konstruu aŭ plibonigu vian trezorejon nun", "loc":"checking function which indicated if player needs to upgrade his treasury"};
+
+locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Имя глифа"};
+locObj.glyphKnightDesc = {"txt": "Increases the hero's attack +10, increases heroe's defence +6.", "loc": "Glyph desc"};
+
+locObj.glyphMonkTile = {"txt": "Glyph of Monk's Virtue", "loc": "Имя глифа"};
+locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe's defence +12.", "loc": "Glyph desc"};
+
+locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
+locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 35%.", "loc": "Glyph desc"};
