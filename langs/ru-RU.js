@@ -464,3 +464,14 @@ locObj.heroStatsMpowLbl = {"txt":"Сила магии", "loc":"Надпись в
 locObj.heroStatsIntLbl = {"txt":"Интеллект", "loc":"Надпись в таверне при найме"};
 
 locObj.moneyExceedsTreasury = {"txt":"Герр Комтур! Сумма денег в казне и в кошелке героя превышает объем казны. Постройте или улучшите вашу сокровищницу сейчас, чтобы избежать потери денег.", "loc":"checking function which indicated if player needs to upgrade his treasury"};
+
+
+locObj.glyphKnightTile = {"txt": "Глиф Рыцарской Доблести", "loc": "Имя глифа"};
+locObj.glyphKnightDesc = {"txt": "Увеличивает атаку героя на +10, увеличивает защиту героя на +6", "loc": "Описание глифа"};
+
+locObj.glyphMonkTile = {"txt": "Глиф Монашеской Добродетели", "loc": "Имя глифа"};
+locObj.glyphMonkDesc = {"txt": "Увеличивает атаку героя на +4, увеличивает защиту героя на +12", "loc": "Описание глифа"};
+
+locObj.goldRuneTitle = {"txt": "Руна Золотого Поиска", "loc": "Имя глифа"};
+locObj.goldRuneDesc = {"txt": "Увеличивает награду героя золотом после боя на 35%.", "loc": "Описание глифа"};
+

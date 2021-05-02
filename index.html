@@ -286,6 +286,76 @@
 			color: inherit;
 		}
 
+		.inventory-item {
+			box-sizing: border-box;
+			padding: 10px;
+			margin: 0 10px 6px;
+			display: flex;
+			max-width: 761px;
+			border: 1px solid #333;
+			background-color: #f1f1f1;
+			font-size: 15px;
+		}
+
+		.inventory-item__wrapper-img {
+			flex: 0 0 40px;
+			height: 40px;
+			border: 1px solid #333;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #9f9f9f;
+		}
+
+		.inventory-item__wrapper-desc {
+			display: flex;
+			flex-direction: column;
+			margin-left: 15px;
+			margin-right: 15px;
+			flex: 1 1 100%;
+		}
+
+		.inventory-item__name {
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 4px;
+			margin-top: 0;
+		}
+
+		.inventory-item__btn {
+			width: 120px;
+			height: 21px;
+			align-self: center;
+		}
+
+		#marketList,
+		#heroMarketList {
+			overflow-y: auto;
+			height: 100%;
+			max-height: 140px;
+		}
+
+
+		.price-val {
+			background-color: #b9b9b9;
+			padding: 2px 8px;
+			margin-left: 12px;
+			font-size: 15px;
+			display: inline-block;
+		}
+
+		.shop-title {
+			margin: 0 10px 6px;
+		}
+
+		.dark-theme.inventory-item {
+			background-color: #202020;
+		}
+
+		.dark-theme.inventory-item__name {
+			color: #fff !important;
+		}
+
 	</style>
 	<script id="chatBroEmbedCode">
 		/* Chatbro Widget Embed Code Start */
@@ -750,10 +820,10 @@
 						<div class="unit-main">
 							<img id="imgHiringScreenSergeant" src="resources/sergeant.png" onmouseover="game.help(this)">
 							<div class="unit-info">
-								<p>Atk.: 5</p>
-								<p>Def.: 8</p>
+								<p>Atk.: <span id="sergeantsAttack">5</span></p>
+								<p>Def.: <span id="sergeantsDefence">8</span></p>
 								<p>Dmg: 3-4</p>
-								<p>HP: 15</p>
+								<p>HP: <span id="sergeantsHealth">15</span></p>
 							</div>		
 						</div>
 					</td>
@@ -761,10 +831,10 @@
 						<div class="unit-main">
 							<img id="imgHiringScreenTurkopol" src="resources/turkopol.png" onmouseover="game.help(this)">
 							<div class="unit-info">
-								<p>Atk.: 5</p>
-								<p>Def.: 5</p>
+								<p>Atk.: <span id="turkopolsAttack">5</span></p>
+								<p>Def.: <span id="turkopolsDefence">5</span></p>
 								<p>Dmg: 2-3</p>
-								<p>HP: 12</p>
+								<p>HP: <span id="turkopolsHealth">12</span></p>
 							</div>
 						</div>
 
@@ -773,10 +843,10 @@
 						<div class="unit-main">
 							<img id="imgHiringScreenKnight" src="resources/knight.png" onmouseover="game.help(this)">
 							<div class="unit-info">
-								<p>Atk.: 10</p>
-								<p>Def.: 9</p>
+								<p>Atk.: <span id="knightsAttack">10</span></p>
+								<p>Def.: <span id="knightsDefence">9</span></p>
 								<p>Dmg: 5-10</p>
-								<p>HP: 20</p>
+								<p>HP: <span id="knightsHealth">20</span></p>
 							</div>
 						</div>
 					</td>
@@ -869,31 +939,16 @@
 			</table>
 		</div>
 		<div id="tabBlackmarket" class="tabcontent">
-<!-- 			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
-			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span> -->
-			<br>
-			<br>
 			<br>
 			<div>
-				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div><br>
-				<select id="selectGoodsForHero" size="1" onchange="updateBlackMarket()">
-				</select>
-				<div id="lblArtefactBuyPrice" style="display: inline">price </div><div id="lblArtefactBuyPriceValue" style="display: inline">0</div>
-				<button id="btnBuyArtefact" onclick="game.artefact_buy()">Buy selected</button><br>
+				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
+				<div id="marketList"></div>
 			</div>
-			<br>
-			<br>
 			<div>
-				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div><br>
-				<select id="selectGoodsFromHero" size="1" onchange="updateBlackMarket()">
-				</select>
-				<div id="lblArtefactSellPrice" style="display: inline">price </div><div id="lblArtefactSellPriceValue" style="display: inline">0</div>
-				<button id="btnSellArtefact" onclick="game.artefact_sell()">Sell selected</button><br>
+				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
+				<div id="heroMarketList"></div>
 			</div>
-			<br>
-			<br>
-			<br>
-			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 250px">Go to exploring!</button>
+			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
 		</div>
 		<div id="tabEvent" class="tabcontent">
 			<lbl id="lblEventDetails">
@@ -1486,7 +1541,7 @@
 	canvas_map.addEventListener("touchstart", tap_map);
 	canvas_map.addEventListener("mousedown", tap_map);
 	var ctx_map         = canvas_map.getContext("2d");
-	var tile_grass      = loadImage('tiles/grass.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
+	var tile_grass      = loadImage('tiles/grass1.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 	var tile_sand       = loadImage('tiles/sand.png');
 	var tile_snow       = loadImage('tiles/snow.png');
 	var tile_water      = loadImage('tiles/water.png');
@@ -1498,7 +1553,8 @@
 	var chest_tile      = loadImage('resources/chest.png');
 	var pumpkin_tile    = loadImage('resources/pumpkin.png');
 	var monster_tile    = loadImage('resources/monster_redpeople.png');
-	var tree_tile       = loadImage('resources/tree.png');
+	var tree_tile       = loadImage('resources/tree2.png');
+	var tree_tile2		= loadImage('resources/tree.png');
 	var arrow_l         = loadImage('resources/pointer_l.png');
 	var arrow_r         = loadImage('resources/pointer_r.png');
 	var arrow_u         = loadImage('resources/pointer_u.png');
@@ -1549,7 +1605,7 @@
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===2) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);
+					ctx_map.drawImage(tree_tile2, i * 48, j * 48);
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===3) {
 					//console.log("draw tree");
@@ -1797,6 +1853,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		chestMoney:25,
 		chestCity_timeout:15000,//ms
 		chestCity:50,
+
+		maxLevelHome: 40,
+		maxLevelTreasury: -1, //Not limited
+		maxLevelStash: -1, //Not limited
+		maxLevelGallows: 10,
+		maxLevelFountain: 10,
+		maxLevelInn: 10,
+		maxLevelStable: 3,
+		maxLevelArchery: 3
 	};
 
 	var game = {
@@ -2283,12 +2348,20 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			var rnd = Math.floor((Math.random() * 8) + 1);
-			if (rnd.toString().length<2) {
+			//var rnd = Math.floor((Math.random() * 8) + 1);
+			//game.blackMarketGoods.push("artid00");
+			//game.blackMarketGoods.push("artid"+rnd);
+			var rnd = randomFromRange(11, 13);
+			if (rnd.toString().length < 2) {
 				rnd = "0"+rnd;
 			}
-			game.blackMarketGoods.push("artid00");
-			game.blackMarketGoods.push("artid"+rnd);
+			var scroll = getItem("artid00");
+			addItem("trader", scroll);
+
+			var id = "artid" + rnd;
+			var randomItem = getItem(id);
+			addItem("trader", randomItem);
+			console.log(game.blackMarketGoods);
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
@@ -2458,7 +2531,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							//prepare for battle!
 							//generate enemy squad
 							game.generateEnemyUnitsForBattle();
-							game.calcAttackPhase("AdvMap");
+
+							game.isAutoBattle = true;
+
+							while(game.isAutoBattle) {
+								game.calcAttackPhase("AdvMap");
+							}
 							//suppose we win the battle
 							//removing the monster from removable objects (render array)
 							game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy] = 0;
@@ -2755,6 +2833,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(localeStrings[186]+config.chestMoney);
 				game.myhero.gold += config.chestMoney;
 				game.checkTreasuryCapacity();
+				updateUI();
 			}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
 				postEventLog(localeStrings[58][0]);
@@ -2909,24 +2988,35 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 
-		checkWinner: function() {
-			if (game.attacker === 1 && !game.isAutoBattle) {
-				if (game.myhero.stance === 1) {
-					postJournalLog(localeStrings[174]);
-				} else {
-					postJournalLog(localeStrings[173]);
-				}
-				console.log("The player is the winner");
-				game.myhero.gold += game.goldReward;
-				game.myhero.exp += game.expReward;
-				game.restoreHealth();
-				game.generateEnemyUnitsForBattle();
+		checkWinner: function(campaignType) {
+			console.log("%c CHECKING WINNER!", "color: #333; background: red");
+				if (game.attacker === 1 && !game.isAutoBattle) {
+					if (campaignType === "AutoCampaign") {
+						if (game.myhero.stance === 1) {
+							postJournalLog(localeStrings[174]);
+						} else {
+							postJournalLog(localeStrings[173]);
+						}
+					}
 
-			} else {
-				postJournalLog(localeStrings[172]);
-				game.heroDie();
-				console.log("The PC opponent is the Winner");
-			}
+					console.log("The player is the winner");
+					game.myhero.gold += game.goldReward;
+					game.myhero.exp += game.expReward;
+					game.restoreHealth();
+					game.generateEnemyUnitsForBattle();
+
+					if (campaignType !== "AutoCampaign") {
+						game.heroLvlUp("AdvMap");
+						updateUI();
+					}
+
+				} else {
+					if (campaignType === "AutoCampaign") {
+						postJournalLog(localeStrings[172]);
+					}
+					game.heroDie();
+					console.log("The PC opponent is the Winner");
+				}
 		},
 
 		calcDmg: function(attackerSquad, attackerHeroAttack, defenderSquad, defenderHeroDefence) {
@@ -3015,9 +3105,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postBattleLog(attackerStr);
 					}
 		            if (isEmptyObj(defenderStack.units)) {
-		              game.isAutoBattle = false;
-		              game.checkWinner();
-		              game.attacker = 0;
+						game.isAutoBattle = false;
+						game.checkWinner(campaignType);
+						if (campaignType === "AutoCampaign") {
+							game.attacker = 0;
+						}
 		            }
 		          } else {
 		            var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
@@ -3065,6 +3157,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.enemyHero && game.enemyHero.def) {
 					defenceVal = game.enemyHero.def
 				}
+
+				console.log("%cENEMY ARMY FROM MAP: ", 'color: #333; background: #fc3; padding: 6px;', game.enemyHeroArmy);
 
 				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
 				game.attacker = 2;
@@ -3315,7 +3409,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postJournalLog(localeStrings[175]);
 					}
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
@@ -3336,7 +3430,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 					game.myhero.gold               = 0;
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 		},
 		isHeroHaveTroops : function () {
@@ -3769,9 +3863,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
 			}
 		},
-		heroLvlUp : function () {
+		heroLvlUp : function (campaignType) {
 			if (game.myhero.exp > game.heroNextLvlExpLimit()){
 				game.myhero.level +=1;
+				var heroAttributesRandomizer = new WeightedRandom();
+				if (game.myhero.class === 0) {
+					heroAttributesRandomizer.addEntry('atk', 60.0);
+					heroAttributesRandomizer.addEntry('def', 40.0);
+					heroAttributesRandomizer.addEntry('int', 0.0); // Temp logic for knight, until there is no magic mechanics at autocampaign
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
+
+				if (game.myhero.class === 1) {
+					heroAttributesRandomizer.addEntry('atk', 45.0);  //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('def', 55.0); //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('int', 0.0);
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
 
 				var rndAttrName = heroAttributesRandomizer.getRandom();
 				game.myhero[rndAttrName]++;
@@ -3780,7 +3888,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.recalcManaPoints();
 				}
 
-				postJournalLog(localeStrings[224]);
+				if (campaignType === "AutoCampaign") {
+					postJournalLog(localeStrings[224]);
+				}
 			}
 		},
 
@@ -3790,6 +3900,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		heroDie : function () {
 			game.myhero = {};
+			//heroAttributesRandomizer.clearEntriesList();
 			updateHeroStatus();
 			writeSave();
 		},
@@ -4759,7 +4870,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Home") {
-				if (game.gold >= Math.pow(config.costHome,(game.buildLevelH*1 + 1))) {
+				if (game.gold >= Math.pow(config.costHome,(game.buildLevelH*1 + 1)) && game.buildLevelH < config.maxLevelHome) {
 					game.gold               = game.gold - Math.pow(config.costHome,(game.buildLevelH*1 + 1));
 					game.buildLevelH        = game.buildLevelH*1 + 1;
 					commonBuild();
@@ -4783,7 +4894,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Gallows") {
-				if (game.gold >= Math.pow(config.costGallows,(game.buildLevelGallows*1 + 1)) && game.buildLevelFountain == 0) {
+				if (game.gold >= Math.pow(config.costGallows,(game.buildLevelGallows*1 + 1)) && game.buildLevelFountain == 0 && game.buildLevelGallows < config.maxLevelGallows) {
 					game.gold               = game.gold - Math.pow(config.costGallows,(game.buildLevelGallows*1 + 1));
 					game.buildLevelGallows  = game.buildLevelGallows*1 + 1;
 					commonBuild();
@@ -4795,7 +4906,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Fountain") {
-				if (game.gold >= Math.pow(config.costFountain,(game.buildLevelFountain*1 + 1)) && game.buildLevelGallows == 0) {
+				if (game.gold >= Math.pow(config.costFountain,(game.buildLevelFountain*1 + 1)) && game.buildLevelGallows == 0 && game.buildLevelGallows < config.maxLevelGallows) {
 					game.gold               = game.gold - Math.pow(config.costFountain,(game.buildLevelFountain*1 + 1));
 					game.buildLevelFountain = game.buildLevelFountain*1 + 1;
 					commonBuild();
@@ -4815,7 +4926,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Inn") {
-				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1))) {
+				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1)) && game.buildLevelInn < config.maxLevelInn) {
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					if (game.buildLevelInn===1) {
@@ -4831,8 +4942,30 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Stable") {
-				if (game.gold >= Math.pow(config.costStable,(game.buildLevelStable*1 + 1))) {
+				if (game.gold >= Math.pow(config.costStable,(game.buildLevelStable*1 + 1)) && game.buildLevelStable < config.maxLevelStable) {
 					game.gold               = game.gold - Math.pow(config.costStable,(game.buildLevelStable*1 + 1));
+
+					if (game.buildLevelStable >= 1) {
+						sergeantsData.attack++;
+						sergeantsData.defence++;
+						sergeantsData.health = Math.round(sergeantsData.health * 1.1);
+						updateUnitsStats();
+					}
+
+					if (game.buildLevelArchery >= 1) {
+						turkopolsData.attack++;
+						turkopolsData.defence++;
+						turkopolsData.health = Math.round(turkopolsData.health * 1.1);
+						updateUnitsStats();
+					}
+
+					if (game.buildLevelStable >= 2) {
+						knightsData.attack++;
+						knightsData.defence++;
+						knightsData.health = Math.round(knightsData.health * 1.2);
+						updateUnitsStats();
+					}
+
 					game.buildLevelStable   = game.buildLevelStable*1 + 1;
 					commonBuild();
 					return true;
@@ -4843,7 +4976,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Archery") {
-				if (game.gold >= Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1))) {
+				if (game.gold >= Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1)) && game.buildLevelArchery < config.maxLevelArchery) {
 					game.gold                = game.gold - Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1));
 					game.buildLevelArchery   = game.buildLevelArchery*1 + 1;
 					commonBuild();
@@ -5315,7 +5448,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			heroAttributesRandomizer.addEntry('def', hero.curveDef);
 			heroAttributesRandomizer.addEntry('int', hero.curveInt);
 			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
+<<<<<<< HEAD
 			console.log(heroAttributesRandomizer.entries);
+=======
+
+			console.log(heroAttributesRandomizer.entries);
+
+>>>>>>> 11e73f3d28d8cbe27ce62bc6bb4821bc8071accf
 			for (i=0; i<game.buildLevelInn-1;i++){
 				var rndAttrName    = heroAttributesRandomizer.getRandom();
 				hero[rndAttrName]++;
@@ -5877,11 +6016,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblGoodsForSale").innerText     = localeStrings[260];
-		document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
-		document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
-		document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
+
+		//document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
+		//document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
+		//document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
 		document.getElementById("lblGoodsForBuying").innerText   = localeStrings[263];
-		document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
+		//document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
 		document.getElementById("btnLeaveBlackmarket").innerText = localeStrings[222];
 		document.getElementById("lblFirebrigade").innerText      = localeStrings[270];
 		document.getElementById("lblFBOption").innerText         = localeStrings[271];
@@ -6577,6 +6717,33 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (game.buildLevelD === 3) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
+
+		if (game.buildLevelH === config.maxLevelHome) {
+			document.getElementById("homes").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelGallows === config.maxLevelGallows) {
+			document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelFountain === config.maxLevelFountain) {
+			document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
+		}
+
+
+		if (game.buildLevelInn === config.maxLevelInn) {
+			document.getElementById("buttonBldInn").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelStable === config.maxLevelStable) {
+			document.getElementById("buttonBldStable").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelArchery === config.maxLevelArchery) {
+			document.getElementById("buttonBldArchery").setAttribute("style", "display:none");
+		}
+
+
 		if (game.buildLevelFountain > 0) {
 			document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
 		}
@@ -6587,6 +6754,21 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 	}
+
+	function updateUnitsStats() {
+		document.getElementById("sergeantsAttack").innerText = sergeantsData.attack;
+		document.getElementById("sergeantsDefence").innerText = sergeantsData.defence;
+		document.getElementById("sergeantsHealth").innerText = sergeantsData.health;
+
+		document.getElementById("turkopolsAttack").innerText = turkopolsData.attack;
+		document.getElementById("turkopolsDefence").innerText = turkopolsData.defence;
+		document.getElementById("turkopolsHealth").innerText = turkopolsData.health;
+
+		document.getElementById("knightsAttack").innerText = knightsData.attack;
+		document.getElementById("knightsDefence").innerText = knightsData.defence;
+		document.getElementById("knightsHealth").innerText = knightsData.health;
+	}
+
 	function updateHeroStatus() {
 		if ( game.heroExists() === true) {
 			var lblHeroClass    = localeStrings[204][game.myhero.class];
@@ -6767,50 +6949,51 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
-		var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
-		if (changeSaleOffer!==null) {
-			if (changeSaleOffer!==undefined){
-				selectGoodsForBuying.options[changeSaleOffer].remove();
-			}
-		}
-		var selectedItemIndex = selectGoodsForBuying.selectedIndex;
-		selectGoodsForBuying.length = 0;
-		for(var j in game.blackMarketGoods)	{
-			selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
-		}
-		if (selectedItemIndex!==-1) {
-			selectGoodsForBuying.selectedIndex=selectedItemIndex;
-		}
-		if (game.blackMarketGoods.length!==0){
-			if (selectedItemIndex !== -1){
-				document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
-			}
-		}
-		document.getElementById("lblArtefactSellPriceValue").innerText=0;
-		if (game.heroExists()){
-			var selectGoodsForSale = document.getElementById("selectGoodsFromHero");
-			if (changeBuyOffer!==null) {
-				if (changeSaleOffer!==undefined){
-					selectGoodsForSale.options[changeBuyOffer].remove();
-				}
-			}
-			var selectedSaleItemIndex = selectGoodsForSale.selectedIndex;
-			selectGoodsForSale.length = 0;
-			for(var i in game.myhero.inventory)	{
-				selectGoodsForSale.add(new Option(artefacts[game.myhero.inventory[i]].name,artefacts[game.myhero.inventory[i]].id));
-			}
-			if (selectedItemIndex!==-1) {
-				selectGoodsForSale.selectedIndex=selectedSaleItemIndex;
-			}
-			if (game.myhero.inventory.length!==0){
-				if (selectedSaleItemIndex !== -1){
-					document.getElementById("btnSellArtefact").disabled = false;
-					document.getElementById("lblArtefactSellPriceValue").innerText = artefacts[game.myhero.inventory[selectedSaleItemIndex]].priceBuy/2;
-				} else { document.getElementById("btnSellArtefact").disabled = true; }
-			} else {
-				document.getElementById("btnSellArtefact").disabled = true;
-			}
-		}
+
+		// var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
+		// if (changeSaleOffer!==null) {
+		// 	if (changeSaleOffer!==undefined){
+		// 		selectGoodsForBuying.options[changeSaleOffer].remove();
+		// 	}
+		// }
+		// var selectedItemIndex = selectGoodsForBuying.selectedIndex;
+		// selectGoodsForBuying.length = 0;
+		// for(var j in game.blackMarketGoods)	{
+		// 	selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
+		// }
+		// if (selectedItemIndex!==-1) {
+		// 	selectGoodsForBuying.selectedIndex=selectedItemIndex;
+		// }
+		// if (game.blackMarketGoods.length!==0){
+		// 	if (selectedItemIndex !== -1){
+		// 		document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
+		// 	}
+		// }
+		// document.getElementById("lblArtefactSellPriceValue").innerText=0;
+		// if (game.heroExists()){
+		// 	var selectGoodsForSale = document.getElementById("selectGoodsFromHero");
+		// 	if (changeBuyOffer!==null) {
+		// 		if (changeSaleOffer!==undefined){
+		// 			selectGoodsForSale.options[changeBuyOffer].remove();
+		// 		}
+		// 	}
+		// 	var selectedSaleItemIndex = selectGoodsForSale.selectedIndex;
+		// 	selectGoodsForSale.length = 0;
+		// 	for(var i in game.myhero.inventory)	{
+		// 		selectGoodsForSale.add(new Option(artefacts[game.myhero.inventory[i]].name,artefacts[game.myhero.inventory[i]].id));
+		// 	}
+		// 	if (selectedItemIndex!==-1) {
+		// 		selectGoodsForSale.selectedIndex=selectedSaleItemIndex;
+		// 	}
+		// 	if (game.myhero.inventory.length!==0){
+		// 		if (selectedSaleItemIndex !== -1){
+		// 			document.getElementById("btnSellArtefact").disabled = false;
+		// 			document.getElementById("lblArtefactSellPriceValue").innerText = artefacts[game.myhero.inventory[selectedSaleItemIndex]].priceBuy/2;
+		// 		} else { document.getElementById("btnSellArtefact").disabled = true; }
+		// 	} else {
+		// 		document.getElementById("btnSellArtefact").disabled = true;
+		// 	}
+		// }
 	}
 	function getTime(type) {
 		var d  = new Date();
@@ -7124,6 +7307,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 </script>
 <script async src="dialogue.js"></script>
+<script async src="shop.js"></script>
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
 <script async>
