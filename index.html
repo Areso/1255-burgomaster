@@ -588,7 +588,7 @@
 			<div id="divFBProgress" style="display: none">0% of fire extinguished</div>
 			<br>
 		</div>
-		<div id="Building" class="tabcontent">
+		<div id="Building" class="tabcontent building_tab">
 			<div id="labelBuilding" style="display: none;">Building</div>
 			<div id="theBuildingDiv">
 				<table>
@@ -597,97 +597,93 @@
 							<table border="1">
 								<tr>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_house_class">
 											<img id="home_img" src="resources/home_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 										
 									</td>
 									<td class="building">
-										<div id="defences_img" align="center">
+										<div id="defences_img" align="center" class="bld_tab_defence_class">
 											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_treasury_class">
 											<img id="treasury_img" src="resources/treasury_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<button id="homes" onclick="game.Build('Home')" class="building">Build home</button>
+										<button id="homes" onclick="game.Build('Home')" class="building bld_tab_house_class">Build home</button>
 										
 									</td>
 									<td class="building">
-										<button id="defence" onclick="game.Build('Wall')" class="building">Build walls</button>
+										<button id="defence" onclick="game.Build('Wall')" class="building bld_tab_defence_class">Build walls</button>
 									</td>
 									<td class="building">
-										<button id="treasury" onclick="game.Build('Treasury')" class="building">Build treasury</button>
+										<button id="treasury" onclick="game.Build('Treasury')" class="building bld_tab_treasury_class">Build treasury</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_social_class">
 											<img id="gallows_img" src="resources/gallows.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_social_class">
 											<img id="fountain_img" src="resources/fountain.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_stash_class">
 											<img id="moneystash_img" src="resources/trapdoor.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building">Build gallows</button>
+										<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building bld_tab_social_class">Build gallows</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building">Build fountain</button>
+										<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building bld_tab_social_class">Build fountain</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldStash" onclick="game.Build('Stash')" class="building">Build stash</button>
+										<button id="buttonBldStash" onclick="game.Build('Stash')" class="building bld_tab_stash_class">Build stash</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<div align="center">
-											<img id="inn_img" src="resources/inn.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_stable_class">
 											<img id="stable_img" src="resources/stable.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_archery_class">
 											<img id="archery_img" src="resources/archery_range.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+									<td class="building">
+										<div align="center" class="bld_tab_inn_class">
+											<img id="inn_img" src="resources/inn.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<button id="buttonBldInn" onclick="game.Build('Inn')" class="building">Build Inn</button>
+										<button id="buttonBldStable" onclick="game.Build('Stable')" class="building bld_tab_stable_class">Build Stable</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldStable" onclick="game.Build('Stable')" class="building">Build Stable</button>
+										<button id="buttonBldArchery" onclick="game.Build('Archery')" class="building bld_tab_archery_class">Build Archery range</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldArchery" onclick="game.Build('Archery')" class="building">Build Archery range</button>
+										<button id="buttonBldInn" onclick="game.Build('Inn')" class="building bld_tab_inn_class">Build Inn</button>
 									</td>
 								</tr>
 							</table>
 						</td>
 						<td>
-<!-- 							<div id="lblBuildGold">
-							<img id="gold_img_bt" src="resources/gold_a.png" onclick="checkGold()" >
-							<span id="gold_bt" onclick="checkGold()" >0</span>
-							</div> -->
 							<div id="lblBuildHelp">
 
 							</div>
@@ -1932,6 +1928,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		UID: getUID(),
 		tips: [],
 		chestCity: 0,
+		ticks: 0,
 		autocampaignCounter: 0,
 		autocampaignBattlesCounter: 0,
 		enemyHero: null,
@@ -4628,6 +4625,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			//game.getReward();
 			pop_m         = 0;
 			pop_was       = game.pop;
+			game.ticks    = game.ticks + 1;
 			game.season   = game.season + 1;
 			if (game.season === 5) {
 				game.season   = 1;
@@ -4655,8 +4653,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postEventLog(msg);
 						game.userPopAck = 1;
 					}
-					if (!game.tips.includes("tutorial1-pop0")){
-						game.tips.push("tutorial1-pop0");
+					if (!game.tips.includes("tutorial1_pop0")){
+						game.tips.push("tutorial1_pop0");
 						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
 					}
 				}
@@ -5147,43 +5145,45 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		startFire : function () {
-			if (game.fire === 0) {
-				rnd = Math.floor((Math.random() * 3) + 1);
-				if (rnd === 1) {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[38]);
-					postEventLog(msg);
-					game.fire = 1;
-					if (game.checkAudio('sfx', 'actions')===true) {
-						document.getElementById('fireAudio0').play();
-					}
-					composite();
-					game.fireSteps = config.fireStepsBasic;
-					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1","0");
-					if (game.fireGuard===1){
-						document.getElementById("divFBProgress").style.display="inline";
-					}
-					document.getElementById("gameIcon").href="resources/favicon-flame.png";
-					//TODO make a certain building in fire, not just "city"
-					if (game.buildLevelD == 1) {
-						ceil = 1
-					}
-					if (game.buildLevelD == 2) {
-						ceil = 2
-					}
-					rnd = Math.floor((Math.random() * 2) + 0);
-					if (rnd === 0) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-					}
+			if (game.year > 1260) {
+				if (game.fire === 0) {
+					rnd = Math.floor((Math.random() * 3) + 1);
 					if (rnd === 1) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1",localeStrings[38]);
+						postEventLog(msg);
+						game.fire = 1;
+						if (game.checkAudio('sfx', 'actions')===true) {
+							document.getElementById('fireAudio0').play();
+						}
+						composite();
+						game.fireSteps = config.fireStepsBasic;
+						document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1","0");
+						if (game.fireGuard===1){
+							document.getElementById("divFBProgress").style.display="inline";
+						}
+						document.getElementById("gameIcon").href="resources/favicon-flame.png";
+						//TODO make a certain building in fire, not just "city"
+						if (game.buildLevelD == 1) {
+							ceil = 1
+						}
+						if (game.buildLevelD == 2) {
+							ceil = 2
+						}
+						rnd = Math.floor((Math.random() * 2) + 0);
+						if (rnd === 0) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
+						if (rnd === 1) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
+						if (rnd === 0) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
 					}
-					if (rnd === 0) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-					}
+				} else {
+					//you can't get another fire, while you do have previous still burning your city. For now.
 				}
-			} else {
-				//you can't get another fire, while you do have previous still burning your city. For now.
 			}
 		},
 		putOutFire : function () {
@@ -5448,9 +5448,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			heroAttributesRandomizer.addEntry('def', hero.curveDef);
 			heroAttributesRandomizer.addEntry('int', hero.curveInt);
 			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
+<<<<<<< HEAD
+			console.log(heroAttributesRandomizer.entries);
+=======
 
 			console.log(heroAttributesRandomizer.entries);
 
+>>>>>>> 11e73f3d28d8cbe27ce62bc6bb4821bc8071accf
 			for (i=0; i<game.buildLevelInn-1;i++){
 				var rndAttrName    = heroAttributesRandomizer.getRandom();
 				hero[rndAttrName]++;
@@ -6040,6 +6044,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		updateButtonCaptions();
 		updateHeroStatus();
 		loadArtifacts();
+		updateUI();
 	}
 	function loadArtifacts(){
 		include('artifacts.js',function(){
@@ -7023,7 +7028,126 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			textareaJrnl.scrollTop = textareaJrnl.scrollHeight;
 		}
 	}
-	function updateImagesBuildingTab () {
+	function updateImagesBuildingTab() {
+		//HIDING
+		console.log("update images building tab");
+		if (!game.tips.includes("tutorial1_pop0") && game.buildLevelH===0 ){
+			console.log("DEBUG HOUSES ARE NOT VISIBLE");
+			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+			document.getElementById("tabBuilding").style = "visibility: hidden;"
+		} else {
+			console.log("DEBUG HOUSES ARE VISIBLE");
+			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+			document.getElementById("tabBuilding").style = "";
+		}
+		
+		if (!game.tips.includes("defence") && game.buildLevelD===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_defence_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_defence_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+		}
+		
+		if (!game.tips.includes("treasury") && game.buildLevelTreasury ===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+		}
+		
+		if (!game.tips.includes("social") && game.buildLevelFountain===0 && game.buildLevelGallows===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+			updateButtonCaptions();
+		}
+		
+		if (!game.tips.includes("treasury3") && game.buildLevelStash===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+		}
+		
+		if (!game.tips.includes("stable") && game.buildLevelStable===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+		}
+		
+		if (!game.tips.includes("archery") && game.buildLevelArchery===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+		}
+		
+		if (!game.tips.includes("inn") && game.buildLevelInn===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+		}
+		
 		if (game.buildLevelD === 1) {
 			elementText = document.getElementById("defences_img").innerHTML;
 			if (elementText.indexOf("btab_w_castle.png") === -1) {
