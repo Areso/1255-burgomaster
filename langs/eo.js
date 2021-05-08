@@ -462,6 +462,8 @@ locObj.heroStatsDefLbl = {"txt":"Defendo", "loc":"The inn when we are hiring. St
 locObj.heroStatsMpowLbl = {"txt":"Magia potenco", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Inteligenteco", "loc":"The inn when we are hiring. Stats. Intelligence"};
 
+locObj.equipmentTitle = {"txt": "Equiped", "loc": "Equiped items title"};
+
 locObj.moneyExceedsTreasury = {"txt":"Sinjoro Komtur, monsumo via trezorejo kaj la monujo de via heroo superas vian trezorejan kapablon. Por eviti perdi monon, konstruu aŭ plibonigu vian trezorejon nun", "loc":"checking function which indicated if player needs to upgrade his treasury"};
 
 locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Имя глифа"};

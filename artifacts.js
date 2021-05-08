@@ -125,7 +125,10 @@ var artefacts = {
         img: "glyph_01.png",
         name: locObj.glyphKnightTile.txt,
         desc: locObj.glyphKnightDesc.txt,
-        attr: ["atk", "def"],
+        attr: [
+            { name: "atk", type: "flat", val: 10 },
+            { name: "def", type: "flat", val: 6 }
+        ],
         change: [],
         priceBuy: 5000000,
         chance: 1,
@@ -137,7 +140,10 @@ var artefacts = {
         img: "glyph_02.png",
         name: locObj.glyphMonkTile.txt,
         desc: locObj.glyphMonkDesc.txt,
-        attr: ["atk", "def"],
+        attr: [
+            { name: "atk", type: "flat", val: 4 },
+            { name: "def", type: "flat", val: 12 }
+        ],
         change: [],
         priceBuy: 5000000,
         chance: 1,
@@ -149,7 +155,7 @@ var artefacts = {
         img: "rune_gold.png",
         name: locObj.goldRuneTitle.txt,
         desc: locObj.goldRuneTitle.txt,
-        attr: ["gold"],
+        attr: [{name: "gold", type: "percentage", val: 1.07}],
         change: [],
         priceBuy: 5000000,
         chance: 1,
@@ -157,3 +163,5 @@ var artefacts = {
         artefactsWorn: 1
     }
 };
+
+Object.freeze(artefacts);

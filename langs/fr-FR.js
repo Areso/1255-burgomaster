@@ -463,6 +463,8 @@ locObj.heroStatsDefLbl = {"txt":"Défense", "loc":"The inn when we are hiring. S
 locObj.heroStatsMpowLbl = {"txt":"Pouvoir Magique", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Intelligence", "loc":"The inn when we are hiring. Stats. Intelligence"};
 
+locObj.equipmentTitle = {"txt": "Equiped", "loc": "Equiped items title"};
+
 locObj.moneyExceedsTreasury = {"txt":"Monseigneur Commandeur, la somme d'argent de votre trésorerie et de la bourse de votre héros dépasse votre capacité de trésorerie. Pour éviter de perdre de l'argent, construisez ou améliorez votre trésorerie maintenant", "loc":"checking function which indicated if player needs to upgrade his treasury"};
 
 locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Имя глифа"};
