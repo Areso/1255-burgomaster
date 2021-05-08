@@ -409,7 +409,7 @@ localeStrings.push("сержанты(%arg1)"); // 375
 localeStrings.push("туркополы(%arg1)");
 localeStrings.push("рыцари(%arg1)");
 
-locObj = {}
+var locObj = {}
 //locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Приветствую вас!", "loc":"Кладём в игровой лог при инициализации игры"};
 locObj.welcome1 = {"txt":"Ваша задача проста - вам нужно управлять городом", "loc":"там же"};
@@ -473,5 +473,4 @@ locObj.glyphMonkTile = {"txt": "Глиф Монашеской Добродете
 locObj.glyphMonkDesc = {"txt": "Увеличивает атаку героя на +4, увеличивает защиту героя на +12", "loc": "Описание глифа"};
 
 locObj.goldRuneTitle = {"txt": "Руна Золотого Поиска", "loc": "Имя глифа"};
-locObj.goldRuneDesc = {"txt": "Увеличивает награду героя золотом после боя на 35%.", "loc": "Описание глифа"};
-
+locObj.goldRuneDesc = {"txt": "Увеличивает награду героя золотом после боя на 7%.", "loc": "Описание глифа"};

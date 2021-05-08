@@ -416,4 +416,4 @@ locObj.glyphMonkTile = {"txt": "Glyph of Monk's Virtue", "loc": "Имя глиф
 locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe's defence +12.", "loc": "Glyph desc"};
 
 locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
-locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 35%.", "loc": "Glyph desc"};
+locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};
