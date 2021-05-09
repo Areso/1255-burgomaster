@@ -4833,15 +4833,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 			
 			if (!game.tips.includes("tutorial_stable") && game.pop>=50){
-				game.tips.push("tutorial_treasury");
+				game.tips.push("tutorial_stable");
 				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
 			}
 			if (!game.tips.includes("tutorial_archery") && game.pop>=70){
-				game.tips.push("tutorial_treasury");
+				game.tips.push("tutorial_archery");
 				showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
 			}
 			if (!game.tips.includes("tutorial_inn") && game.pop>=100){
-				game.tips.push("tutorial_treasury");
+				game.tips.push("tutorial_inn");
 				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
 			}
 			
@@ -4939,6 +4939,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					if (!game.tips.includes("tutorial_treasury_guards")){
 						game.tips.push("tutorial_treasury_guards");
 						showModal(0, '', getAck, locObj.tutorial_treasury_guards.txt, locObj.okay.txt, '')
+						updateImagesBuildingTab();
 					}
 					commonBuild();
 					return true;
@@ -7150,7 +7151,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		}
 		
-		if (!game.tips.includes("social") && game.buildLevelFountain===0 && game.buildLevelGallows===0 ){
+		if (!game.tips.includes("tutorial_social") && game.buildLevelFountain===0 && game.buildLevelGallows===0 ){
 			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
@@ -7175,7 +7176,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		}
 		
-		if (!game.tips.includes("stable") && game.buildLevelStable===0){
+		if (!game.tips.includes("tutorial_stable") && game.buildLevelStable===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
@@ -7187,7 +7188,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		}
 		
-		if (!game.tips.includes("archery") && game.buildLevelArchery===0){
+		if (!game.tips.includes("tutorial_archery") && game.buildLevelArchery===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
@@ -7199,7 +7200,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		}
 		
-		if (!game.tips.includes("inn") && game.buildLevelInn===0){
+		if (!game.tips.includes("tutorial_inn") && game.buildLevelInn===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"

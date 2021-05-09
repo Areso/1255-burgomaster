@@ -421,10 +421,10 @@ locObj.tutorial_defense = {"txt":"Monseigneur Commandeur, des éclaireurs ont si
 locObj.tutorial_treasury = {"txt":"Monseigneur Commandeur, votre offre d'or augmente.\nConstruisez un trésor pour stocker la grande quantité d'or", "loc":"tutorial msg when treasury is unlocked"};
 locObj.tutorial_treasury_guards = {"txt":"Monseigneur Commandeur, maintenant vous pouvez engager des gardes du trésor dans votre trésor\nIls réduisent les chances de voler le trésor", "loc":"tutorial msg when treasury is built"};
 locObj.tutorial_stash = {"txt":"Monseigneur Commandeur, des voleurs ont volé l'or de votre trésor!\nConstruisez une réserve, afin que vous puissiez cacher de l'or du vol", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nStables will allow you to hire turkopols in stables", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_catastrophe = {"txt":"Your forces captured a witch. Trial was quick and short\nWhile people gathered to watch the execution\nshe started to chant. When flames licked her bare foots, she screamed\n In this very moment, out of nowhere striked lightining bolt with titanic power\nright in the center of the fire...", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_stable = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire des écuries\nLes écuries vous permettront d'embaucher des sergents et des chevaliers ", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_archery = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire un champ de tir à l'arc\nLe stand de tir à l'arc vous permettra de louer des turkopols dans les écuries", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_inn = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire\nL'Auberge vous permettra d'embaucher un héros", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_catastrophe = {"txt":"Vos forces ont capturé une sorcière. Le procès a été rapide et court\nPendant que les gens se rassemblaient pour regarder l'exécution,\nelle a commencé à chanter. Quand les flammes léchaient ses pieds nus, elle hurlait\nEn ce moment même, de nulle part a frappé un éclair avec \nune puissance titanesque. En plein centre du feu ... ", "loc":"tutorial msg catastrophe"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};

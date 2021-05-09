@@ -420,11 +420,11 @@ locObj.tutorial1_pop0 = {"txt":"Sinjoro Komtur, vi bezonas konstrui domojn por k
 locObj.tutorial_defense = {"txt":"Sinjoro Komtur, skoltoj raportis pri armitaj homoj\nen la plej proksima arbaro. Pripensu konstrui muron", "loc":"tutorial msg when defense line is unlocked"};
 locObj.tutorial_treasury = {"txt":"Sinjoro Komtur, via orprovizo kreskas. Konstruu trezorejon\npor stoki la vastan kvanton da oro", "loc":"tutorial msg when treasury is unlocked"};
 locObj.tutorial_treasury_guards = {"txt":"Sinjoro Komtur, nun vi povus dungi trezorajn gardistojn en via trezorejo\nIli malpliigas ŝancon ŝteli de la trezorejo", "loc":"tutorial msg when treasury is built"};
-locObj.tutorial_stash = {"txt":"Sir Commander, thieves stole gold from your treasury!\nBuild a stash, so you could hide some gold from stealing", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nStables will allow you to hire turkopols in stables", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_catastrophe = {"txt":"Your forces captured a witch. Trial was quick and short\nWhile people gathered to watch the execution\nshe started to chant. When flames licked her bare foots, she screamed\n In this very moment, out of nowhere striked lightining bolt with titanic power\nright in the center of the fire...", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_stash = {"txt":"Sinjoro Komtur, ŝtelistoj ŝtelis oron el via trezorejo!\nKonstruu konservon, por ke vi kaŝu iom da oro kontraŭ ŝtelo", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Sinjoro Komtur, nun vi povus konstrui Stalojn.\nStaloj permesos vin dungi serĝentojn kaj kavalirojn", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_archery = {"txt":"Sinjoro Komtur, nun vi povus konstrui Arkpafadon.\nArkpafado permesos vin dungi turkopolojn en staloj", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_inn = {"txt":"Sinjoro Komtur, nun vi povus enkonstrui\nLa Gastejo permesos vin dungi heroon", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_catastrophe = {"txt":"Viaj fortoj kaptis sorĉistinon. La proceso estis rapida kaj mallonga\nDum homoj kolektiĝis por spekti la ekzekuton, ŝi ekĉantis. Kiam flamoj lekis\nŝiajn nudajn piedojn, ŝi kriegis. Ĝuste en ĉi tiu momento el nenio ekbrilis\nfulmo kun titana potenco. Ĝuste en la centro de la fajro...", "loc":"tutorial msg catastrophe"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
