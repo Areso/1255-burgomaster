@@ -4678,6 +4678,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postEventLog(msg);
 						game.userPopAck = 1;
 					}
+					//TUTORIALS
 					if (!game.tips.includes("tutorial1_pop0")){
 						game.tips.push("tutorial1_pop0");
 						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
@@ -4819,6 +4820,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 				postEventLog(msg);
 			};
+			//TUTORIALS
 			if (game.ticks === 3){
 				if (!game.tips.includes("tutorial_defense")){
 					game.tips.push("tutorial_defense");
@@ -4829,7 +4831,20 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.tips.push("tutorial_treasury");
 				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
 			}
-			//TUTORIALS
+			
+			if (!game.tips.includes("tutorial_stable") && game.pop>=50){
+				game.tips.push("tutorial_treasury");
+				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_archery") && game.pop>=70){
+				game.tips.push("tutorial_treasury");
+				showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_inn") && game.pop>=100){
+				game.tips.push("tutorial_treasury");
+				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
+			}
+			
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//TODO
@@ -5157,31 +5172,37 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		theftFromTreasury : function () {
-			var guards = 0;
-			guards    += game.sergeants + game.turkopols + game.knights;
-			if (game.heroExists()===true) {
-				if (game.myhero.status===0){// in town
-					guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
+			if (game.buildLevelTreasury > 0) {
+				var guards = 0;
+				guards    += game.sergeants + game.turkopols + game.knights;
+				if (game.heroExists()===true) {
+					if (game.myhero.status===0){// in town
+						guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
+					}
 				}
-			}
-			guards     = Math.ceil(guards / 4);
-			guards    += game.treasuryGuard;
-			rndThieves = Math.floor(Math.random()*(guards+1)+1);
-			console.log(rndThieves);
-			if (rndThieves === 1) {
-				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
-				if (goldLost > game.gold) {
-					goldLost = game.gold;
+				guards     = Math.ceil(guards / 4);
+				guards    += game.treasuryGuard;
+				rndThieves = Math.floor(Math.random()*(guards+1)+1);
+				console.log(rndThieves);
+				if (rndThieves === 1) {
+					goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
+					if (goldLost > game.gold) {
+						goldLost = game.gold;
+					}
+					if (game.checkAudio('sfx', 'events')===true) {
+						document.getElementById('stealingAudio0').play();
+					}
+					game.gold     = game.gold - goldLost;
+					msg = localeStrings[42].replace("%arg1", goldLost);
+					postEventLog(msg);
+					updateResources();
+					if (!game.tips.includes("tutorial_stash")){
+						game.tips.push("tutorial_stash");
+						showModal(0, '', getAck, locObj.tutorial_stash.txt, locObj.okay.txt, '')
+					}
+				} else {
+					//TODO make a message about failed robbery
 				}
-				if (game.checkAudio('sfx', 'events')===true) {
-					document.getElementById('stealingAudio0').play();
-				}
-				game.gold     = game.gold - goldLost;
-				msg = localeStrings[42].replace("%arg1", goldLost);
-				postEventLog(msg);
-				updateResources();
-			} else {
-				//TODO make a message about failed robbery
 			}
 		},
 		startFire : function () {
@@ -7142,7 +7163,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			updateButtonCaptions();
 		}
 		
-		if (!game.tips.includes("treasury3") && game.buildLevelStash===0){
+		if (!game.tips.includes("tutorial_stash") && game.buildLevelStash===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"

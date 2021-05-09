@@ -422,6 +422,11 @@ locObj.tutorial1_pop0 = {"txt":"Sir Commander, you need to build houses to keep 
 locObj.tutorial_defense = {"txt":"Sir Commander, scouts reported on armed people\nin the nearest woods. Consider building a wall", "loc":"tutorial msg when defense line is unlocked"};
 locObj.tutorial_treasury = {"txt":"Sir Commander, your gold supply is growing\nBuild a treasury to store the vast amount of gold", "loc":"tutorial msg when treasury is unlocked"};
 locObj.tutorial_treasury_guards = {"txt":"Sir Commander, now you could hire treasury guards in your treasury\nThey are decreasing the chance of stealing from the treasury", "loc":"tutorial msg when treasury is built"};
+locObj.tutorial_stash = {"txt":"Sir Commander, thieves stole gold from your treasury!\nBuild a stash, so you could hide some gold from stealing", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nStables will allow you to hire turkopols in stables", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_catastrophe = {"txt":"Your forces captured a witch. Trial was quick and short\nWhile people gathered to watch the execution\nshe started to chant. When flames licked her bare foots, she screamed\n In this very moment, out of nowhere striked lightining bolt with titanic power\nright in the center of the fire...", "loc":"tutorial msg catastrophe"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};

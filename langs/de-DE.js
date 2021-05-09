@@ -420,6 +420,11 @@ locObj.tutorial1_pop0 = {"txt":"Herr Komtur, Sie müssen Häuser bauen,\num Ihre
 locObj.tutorial_defense = {"txt":"Herr Komtur, Pfadfinder berichteten\nüber bewaffnete Menschen im nächsten Wald.\nErwägen Sie, eine Mauer zu bauen", "loc":"tutorial msg when defense line is unlocked"};
 locObj.tutorial_treasury = {"txt":"Herr Komtur, Ihr Goldvorrat wächst.\nBaue eine Schatzkammer, um die große Menge Gold aufzubewahren", "loc":"tutorial msg when treasury is unlocked"};
 locObj.tutorial_treasury_guards = {"txt":"Herr Komtur, Jetzt können Sie Schatzmeister in Ihrer Schatzkammer einstellen\nSie verringern die Wahrscheinlichkeit, aus der Schatzkammer zu stehlen", "loc":"tutorial msg when treasury is built"};
+locObj.tutorial_stash = {"txt":"Herr Komtur, Diebe haben Gold aus deiner Schatzkammer gestohlen!\nBaue ein Versteck, damit du etwas Gold vor\ndem Stehlen verstecken kannst ", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nStables will allow you to hire turkopols in stables", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_catastrophe = {"txt":"Your forces captured a witch. Trial was quick and short\nWhile people gathered to watch the execution\nshe started to chant. When flames licked her bare foots, she screamed\n In this very moment, out of nowhere striked lightining bolt with titanic power\nright in the center of the fire...", "loc":"tutorial msg catastrophe"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
