@@ -618,7 +618,7 @@
 										
 									</td>
 									<td class="building">
-										<div id="defences_img" align="center" class="bld_tab_defence_class">
+										<div id="defences_img" align="center" class="bld_tab_defense_class">
 											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
@@ -634,7 +634,7 @@
 										
 									</td>
 									<td class="building">
-										<button id="defence" onclick="game.Build('Wall')" class="building bld_tab_defence_class">Build walls</button>
+										<button id="defence" onclick="game.Build('Wall')" class="building bld_tab_defense_class">Build walls</button>
 									</td>
 									<td class="building">
 										<button id="treasury" onclick="game.Build('Treasury')" class="building bld_tab_treasury_class">Build treasury</button>
@@ -4819,6 +4819,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 				postEventLog(msg);
 			};
+			if (game.ticks === 3){
+				if (!game.tips.includes("tutorial_defense")){
+					game.tips.push("tutorial_defense");
+					showModal(0, '', getAck, locObj.tutorial_defense.txt, locObj.okay.txt, '')
+				}
+			}
+			if (!game.tips.includes("tutorial_treasury") && game.gold>=200){
+				game.tips.push("tutorial_treasury");
+				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
+			}
+			//TUTORIALS
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//TODO
@@ -4910,6 +4921,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.gold >= Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1))) {
 					game.gold               = game.gold - Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1));
 					game.buildLevelTreasury = game.buildLevelTreasury*1 + 1;
+					if (!game.tips.includes("tutorial_treasury_guards")){
+						game.tips.push("tutorial_treasury_guards");
+						showModal(0, '', getAck, locObj.tutorial_treasury_guards.txt, locObj.okay.txt, '')
+					}
 					commonBuild();
 					return true;
 				} else {
@@ -7076,48 +7091,41 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		//HIDING
 		console.log("update images building tab");
 		if (!game.tips.includes("tutorial1_pop0") && game.buildLevelH===0 ){
-			console.log("DEBUG HOUSES ARE NOT VISIBLE");
 			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 			document.getElementById("tabBuilding").style = "visibility: hidden;"
 		} else {
-			console.log("DEBUG HOUSES ARE VISIBLE");
 			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 			document.getElementById("tabBuilding").style = "";
 		}
-		
-		if (!game.tips.includes("defence") && game.buildLevelD===0 ){
-			var tabBldElements = document.getElementsByClassName("bld_tab_defence_class");
+		if (!game.tips.includes("tutorial_defense") && game.buildLevelD===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
 				console.log(tabBldElements);
 			}
 		} else {
-			var tabBldElements = document.getElementsByClassName("bld_tab_defence_class");
+			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
 				console.log(tabBldElements);
 			}
 		}
 		
-		if (!game.tips.includes("treasury") && game.buildLevelTreasury ===0 ){
+		if (!game.tips.includes("tutorial_treasury") && game.buildLevelTreasury ===0 ){
 			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
@@ -7125,13 +7133,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 			updateButtonCaptions();
 		}
@@ -7140,13 +7146,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
@@ -7154,13 +7158,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
@@ -7168,13 +7170,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
@@ -7182,13 +7182,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		

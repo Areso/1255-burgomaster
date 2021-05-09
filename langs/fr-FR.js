@@ -417,6 +417,9 @@ locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Votre oncle, le maître foncier de l'ordre teutonique,\nvous a envoyé construire une ville sur la frontière païenne.\nVous avez trouvé un endroit convenable avec une colline, une rivière, une forêt.\nVos paysans ont déjà dégagé l'endroit et prêt à construire", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Monseigneur Commandeur, vous devez construire des maisons\npour maintenir la croissance de votre population", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Monseigneur Commandeur, des éclaireurs ont signalé la présence\nde personnes armées dans les bois les plus proches.\nPensez à construire un mur", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Monseigneur Commandeur, votre offre d'or augmente.\nConstruisez un trésor pour stocker la grande quantité d'or", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Monseigneur Commandeur, maintenant vous pouvez engager des gardes du trésor dans votre trésor\nIls réduisent les chances de voler le trésor", "loc":"tutorial msg when treasury is built"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};

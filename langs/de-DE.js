@@ -417,6 +417,10 @@ locObj.okay = {"txt":"Gut", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Ihr Onkel, der Landmeister des Deutschen Ordens, hat Sie geschickt,\num eine Stadt an der heidnischen Grenze zu bauen.\nSie haben einen geeigneten Ort mit einem Hügel, einem Fluss und einem Wald gefunden.\nIhre Bauern haben den Platz bereits geräumt und sind bereit zum Bauen", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Herr Komtur, Sie müssen Häuser bauen,\num Ihre Bevölkerung wachsen zu lassen", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Herr Komtur, Pfadfinder berichteten\nüber bewaffnete Menschen im nächsten Wald.\nErwägen Sie, eine Mauer zu bauen", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Herr Komtur, Ihr Goldvorrat wächst.\nBaue eine Schatzkammer, um die große Menge Gold aufzubewahren", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Herr Komtur, Jetzt können Sie Schatzmeister in Ihrer Schatzkammer einstellen\nSie verringern die Wahrscheinlichkeit, aus der Schatzkammer zu stehlen", "loc":"tutorial msg when treasury is built"};
+
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};

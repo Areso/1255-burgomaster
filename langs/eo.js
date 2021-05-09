@@ -417,6 +417,10 @@ locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Via onklo, la landestro de teŭtona ordo, sendis vin konstrui urbon sur la pagana limo.\nVi trovis taŭgan lokon kun monteto, rivero, arbaro.\nViaj kamparanoj jam liberigis la lokon kaj pretas konstrui", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Sinjoro Komtur, vi bezonas konstrui domojn por kreskigi vian loĝantaron ", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Sinjoro Komtur, skoltoj raportis pri armitaj homoj\nen la plej proksima arbaro. Pripensu konstrui muron", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Sinjoro Komtur, via orprovizo kreskas. Konstruu trezorejon\npor stoki la vastan kvanton da oro", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Sinjoro Komtur, nun vi povus dungi trezorajn gardistojn en via trezorejo\nIli malpliigas ŝancon ŝteli de la trezorejo", "loc":"tutorial msg when treasury is built"};
+
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};

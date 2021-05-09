@@ -419,6 +419,10 @@ locObj.okay = {"txt":"Okay", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Your uncle, the landmaster of Teutonic order,\nsent you to build a city on the pagan frontier.\nYou have found a suituable place with a hill, river, forest.\nYour peasants already cleared the place and ready for building", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Sir Commander, you need to build houses to keep your population growing", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Sir Commander, scouts reported on armed people\nin the nearest woods. Consider building a wall", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Sir Commander, your gold supply is growing\nBuild a treasury to store the vast amount of gold", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Sir Commander, now you could hire treasury guards in your treasury\nThey are decreasing the chance of stealing from the treasury", "loc":"tutorial msg when treasury is built"};
+
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
