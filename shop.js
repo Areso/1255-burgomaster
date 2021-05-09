@@ -25,6 +25,7 @@ function addItem(target, item) {
 			newItem.uid = uuidv4();
 			game.myhero.inventory.push(newItem);
 			createElementUI(newItem, "heroMarketList");
+			equipItem(newItem.uid);
 		}
 	}
 
@@ -136,6 +137,7 @@ function createElementUI(item, targetListId) {
 			updateUI();
 			removeItem("hero", id);
 			removeElementUI(item.uid);
+			unequipItem(item.uid);
 		};
 	}
 
@@ -167,10 +169,69 @@ function createElementUI(item, targetListId) {
 	wrapperElement.appendChild(descWrapperElement);
 	wrapperElement.appendChild(actionBtnElement);
 	actionBtnElement.classList.add("inventory-item__btn");
-	
+
 	wrapperElement.classList.add("inventory-item");	
 	wrapperElement.setAttribute("data-uid", item.uid);
 
 	parent.appendChild(wrapperElement);
 
+}
+
+function equipItem(itemUID) {
+	var inventoryItem = null;
+	var equipedItem = null;
+	for (var i = 0; i < game.myhero.inventory.length; i++) {
+		if (game.myhero.inventory[i].uid === itemUID) {
+			inventoryItem = game.myhero.inventory[i];
+			break;
+		}
+	}
+
+	for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {
+		if (game.myhero.inventoryWorn[i].uid === itemUID) {
+			equipedItem = game.myhero.inventoryWorn[i];
+			break;
+		}
+	}
+
+	if (inventoryItem && !equipedItem) {
+		var newItem = JSON.parse(JSON.stringify(inventoryItem));
+		game.myhero.inventoryWorn.push(newItem);
+		recalcStats(newItem.attr);
+	}
+
+}
+
+
+function unequipItem(itemUID) {
+	var equipedItem = null;
+
+	for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {
+		if (game.myhero.inventoryWorn[i].uid === itemUID) {
+			equipedItem = game.myhero.inventoryWorn[i];
+			break;
+		}
+	}
+
+	console.log(equipedItem);
+
+	if (equipedItem) {
+		for (var i = 0; i < equipedItem.attr.length; i++) {
+			game.myhero[equipedItem.attr[i].name] -= equipedItem.attr[i].val; 
+		}
+		game.myhero.inventoryWorn = deleteFromArray(game.myhero.inventoryWorn, game.myhero.inventoryWorn.indexOf(equipedItem));
+	}
+
+	return
+}
+
+
+function recalcStats(itemStats) {
+	if (itemStats.length) {
+		for (var i = 0; i < itemStats.length; i++) {
+			if (itemStats[i].type === "flat") {
+				game.myhero[itemStats[i].name] += itemStats[i].val
+			}
+		}
+	}
 }

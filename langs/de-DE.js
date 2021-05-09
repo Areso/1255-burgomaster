@@ -462,6 +462,8 @@ locObj.heroStatsDefLbl = {"txt":"Verteidigung", "loc":"The inn when we are hirin
 locObj.heroStatsMpowLbl = {"txt":"Magische Kraft", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Intelligenz ", "loc":"The inn when we are hiring. Stats. Intelligence"};
 
+locObj.equipmentTitle = {"txt": "Equiped", "loc": "Equiped items title"};
+
 locObj.moneyExceedsTreasury = {"txt":"Herr Komtur, die Geldsumme, die Ihre Schatzkammer und die Geldbörse Ihres Helden haben, übersteigt Ihre Schatzkapazität. Um Geld zu vermeiden, bauen oder verbessern Sie jetzt Ihre Schatzkammer", "loc":"checking function which indicated if player needs to upgrade his treasury"};
 
 locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Имя глифа"};
@@ -471,4 +473,4 @@ locObj.glyphMonkTile = {"txt": "Glyph of Monk's Virtue", "loc": "Имя глиф
 locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe's defence +12.", "loc": "Glyph desc"};
 
 locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
-locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 35%.", "loc": "Glyph desc"};
+locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};

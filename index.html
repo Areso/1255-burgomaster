@@ -356,6 +356,21 @@
 			color: #fff !important;
 		}
 
+		#heroEquipment {
+			margin-top: 10px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		#heroEquipment > .inventory-item__wrapper-img {
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+
+		#tabInn {
+			padding: 10px;
+		}
+
 	</style>
 	<script id="chatBroEmbedCode">
 		/* Chatbro Widget Embed Code Start */
@@ -2364,6 +2379,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			console.log(game.blackMarketGoods);
 		},
 		generateMap : function () {
+			game.blackMarketGoods = [];
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
@@ -2974,6 +2990,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.expReward += Math.round(unit.health * game.difficultyModifier);
 				game.goldReward += Math.round(randomFromRange(4, unit.health) * game.difficultyModifier);
 				game.genUnitStack(unit, 1, game.enemyHeroArmy.units);
+			}
+
+			if (game.myhero.inventory.length) {
+				for (var i = 0; i < game.myhero.inventory.length; i++) {
+					if (game.myhero.inventory[i].id === "artid13") {
+						game.goldReward = Math.round(game.goldReward * game.myhero.inventory[i].attr[0].val);
+						break;
+					}
+				}
 			}
 
 			console.log("%c NEW ENEMY ARMY: ", "color: red;", game.enemyHeroArmy)
@@ -5448,13 +5473,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			heroAttributesRandomizer.addEntry('def', hero.curveDef);
 			heroAttributesRandomizer.addEntry('int', hero.curveInt);
 			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
-<<<<<<< HEAD
-			console.log(heroAttributesRandomizer.entries);
-=======
-
 			console.log(heroAttributesRandomizer.entries);
 
->>>>>>> 11e73f3d28d8cbe27ce62bc6bb4821bc8071accf
 			for (i=0; i<game.buildLevelInn-1;i++){
 				var rndAttrName    = heroAttributesRandomizer.getRandom();
 				hero[rndAttrName]++;
@@ -6908,7 +6928,31 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 				HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 			}
-			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
+
+			var heroStatsElem = document.getElementById("heroStats"); 
+			heroStatsElem.innerHTML = HTMLofHeroStats;
+			
+			var equipmentTitleElem = document.createElement("div");
+			var equipmentListElem = document.createElement("div");
+			equipmentListElem.setAttribute("id", "heroEquipment");
+			equipmentTitleElem.innerText = "Equiped:";
+			heroStatsElem.appendChild(equipmentTitleElem);
+			heroStatsElem.appendChild(equipmentListElem);
+
+			for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {
+				var wrapper = document.getElementById('heroEquipment');
+				var imgWrapperElement = document.createElement("div");
+				var imgElement = document.createElement("img");
+
+				var imgSrc = "resources/" + game.myhero.inventoryWorn[i].img;
+				imgElement.setAttribute("src", imgSrc);
+
+				imgWrapperElement.classList.add("inventory-item__wrapper-img");
+				imgWrapperElement.appendChild(imgElement)
+
+				wrapper.appendChild(imgWrapperElement);
+			}
+
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
 			document.getElementById("hireHeroBlock").style.display = "inline";
