@@ -421,10 +421,12 @@ locObj.tutorial_defense = {"txt":"Herr Komtur, Pfadfinder berichteten\nüber bew
 locObj.tutorial_treasury = {"txt":"Herr Komtur, Ihr Goldvorrat wächst.\nBaue eine Schatzkammer, um die große Menge Gold aufzubewahren", "loc":"tutorial msg when treasury is unlocked"};
 locObj.tutorial_treasury_guards = {"txt":"Herr Komtur, Jetzt können Sie Schatzmeister in Ihrer Schatzkammer einstellen\nSie verringern die Wahrscheinlichkeit, aus der Schatzkammer zu stehlen", "loc":"tutorial msg when treasury is built"};
 locObj.tutorial_stash = {"txt":"Herr Komtur, Diebe haben Gold aus deiner Schatzkammer gestohlen!\nBaue ein Versteck, damit du etwas Gold vor\ndem Stehlen verstecken kannst ", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_stable = {"txt":"Herr Komtur, Jetzt könnten Sie Ställe bauen\nIn Ställen können Sie Sergeants und Ritter einstellen", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_archery = {"txt":"Herr Komtur, Jetzt können Sie die Bogenschießanlage bauen\nMit dem Bogenschießbereich können Sie Turkopole in Ställen mieten", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_inn = {"txt":"Herr Komtur, Jetzt könnten Sie einbauen\nIm Inn können Sie einen Helden einstellen ", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Herr Komtur, Jetzt könnten Sie Ställe bauen\nIn Ställen können Sie Sergeants und Ritter einstellen", "loc":"tutorial msg when reached 50 pop"};
+locObj.tutorial_archery = {"txt":"Herr Komtur, Jetzt können Sie die Bogenschießanlage bauen\nMit dem Bogenschießbereich können Sie Turkopole in Ställen mieten", "loc":"tutorial msg when reached 70 pop"};
+locObj.tutorial_inn = {"txt":"Herr Komtur, Jetzt könnten Sie einbauen\nIm Inn können Sie einen Helden einstellen ", "loc":"tutorial msg when reached 100 pop"};
 locObj.tutorial_catastrophe = {"txt":"Deine Streitkräfte haben eine Hexe gefangen genommen. Der Prozess war schnell und kurz\nWährend sich die Leute versammelten, um die Hinrichtung zu beobachten, begann sie zu singen\nAls Flammen ihre nackten Füße leckten, schrie sie. In diesem Moment traf aus dem Nichts\nein Blitz mit titanischer Kraft. Mitten im Feuer...", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_social = {"txt":"Herr Komtur, Jetzt könnten Sie Galgen oder Brunnen bauen\nBeide haben eigene passive und aktive Boni ", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_firebrigade = {"txt":"Herr Komtur, Sie können eine Feuerwehr mieten, indem Sie auf den Brunnen klicken\nDie Feuerwehr wird das Feuer irgendwann löschen\nDer Unterhalt der Feuerwehr hängt davon ab, wie viele Gebäude Sie gebaut und aufgerüstet haben", "loc":"tutorial msg when fire, pop>50, year>1260"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};

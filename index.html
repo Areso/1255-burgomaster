@@ -1868,7 +1868,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		chestMoney:25,
 		chestCity_timeout:15000,//ms
 		chestCity:50,
-
 		maxLevelHome: 40,
 		maxLevelTreasury: -1, //Not limited
 		maxLevelStash: -1, //Not limited
@@ -1916,6 +1915,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		years: [],
 		pops: [],
 		budgets: [],
+		adv_steps: 0,
+		ac_steps: 0,
 		userPopAck: 0,
 		userGoldAck: 0,
 		userASaveAck: 0,
@@ -4844,7 +4845,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.tips.push("tutorial_inn");
 				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
 			}
-			
+			if (!game.tips.includes("tutorial_social") && game.pop>=120){
+				game.tips.push("tutorial_inn");
+				showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
+			}
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//TODO
@@ -4982,11 +4986,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Inn") {
+				//TUTORIAL
 				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1)) && game.buildLevelInn < config.maxLevelInn) {
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					if (game.buildLevelInn===1) {
 						game.generateMapCallback(true);
+						if (!game.tips.includes("tutorial_catastrophe")){
+							game.tips.push("tutorial_catastrophe");
+							showModal(0, '', getAck, locObj.tutorial_catastrophe.txt, locObj.okay.txt, '')
+						}
 					}
 					populateHeroesForHire();
 					commonBuild();
@@ -5225,6 +5234,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							document.getElementById("divFBProgress").style.display="inline";
 						}
 						document.getElementById("gameIcon").href="resources/favicon-flame.png";
+						//TUTORIALS
+						if (!game.tips.includes("tutorial_firebrigade") && game.pop>=50){
+							game.tips.push("tutorial_firebrigade");
+							showModal(0, '', getAck, locObj.tutorial_firebrigade.txt, locObj.okay.txt, '')
+						}
 						//TODO make a certain building in fire, not just "city"
 						if (game.buildLevelD == 1) {
 							ceil = 1
