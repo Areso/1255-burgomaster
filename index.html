@@ -618,7 +618,7 @@
 										
 									</td>
 									<td class="building">
-										<div id="defences_img" align="center" class="bld_tab_defence_class">
+										<div id="defences_img" align="center" class="bld_tab_defense_class">
 											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
@@ -634,7 +634,7 @@
 										
 									</td>
 									<td class="building">
-										<button id="defence" onclick="game.Build('Wall')" class="building bld_tab_defence_class">Build walls</button>
+										<button id="defence" onclick="game.Build('Wall')" class="building bld_tab_defense_class">Build walls</button>
 									</td>
 									<td class="building">
 										<button id="treasury" onclick="game.Build('Treasury')" class="building bld_tab_treasury_class">Build treasury</button>
@@ -1868,7 +1868,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		chestMoney:25,
 		chestCity_timeout:15000,//ms
 		chestCity:50,
-
 		maxLevelHome: 40,
 		maxLevelTreasury: -1, //Not limited
 		maxLevelStash: -1, //Not limited
@@ -1916,6 +1915,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		years: [],
 		pops: [],
 		budgets: [],
+		adv_steps: 0,
+		ac_steps: 0,
 		userPopAck: 0,
 		userGoldAck: 0,
 		userASaveAck: 0,
@@ -4678,6 +4679,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postEventLog(msg);
 						game.userPopAck = 1;
 					}
+					//TUTORIALS
 					if (!game.tips.includes("tutorial1_pop0")){
 						game.tips.push("tutorial1_pop0");
 						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
@@ -4819,6 +4821,34 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 				postEventLog(msg);
 			};
+			//TUTORIALS
+			if (game.ticks === 3){
+				if (!game.tips.includes("tutorial_defense")){
+					game.tips.push("tutorial_defense");
+					showModal(0, '', getAck, locObj.tutorial_defense.txt, locObj.okay.txt, '')
+				}
+			}
+			if (!game.tips.includes("tutorial_treasury") && game.gold>=200){
+				game.tips.push("tutorial_treasury");
+				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
+			}
+			
+			if (!game.tips.includes("tutorial_stable") && game.pop>=50){
+				game.tips.push("tutorial_stable");
+				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_archery") && game.pop>=70){
+				game.tips.push("tutorial_archery");
+				showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_inn") && game.pop>=100){
+				game.tips.push("tutorial_inn");
+				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_social") && game.pop>=120){
+				game.tips.push("tutorial_inn");
+				showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
+			}
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//TODO
@@ -4910,6 +4940,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.gold >= Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1))) {
 					game.gold               = game.gold - Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1));
 					game.buildLevelTreasury = game.buildLevelTreasury*1 + 1;
+					if (!game.tips.includes("tutorial_treasury_guards")){
+						game.tips.push("tutorial_treasury_guards");
+						showModal(0, '', getAck, locObj.tutorial_treasury_guards.txt, locObj.okay.txt, '')
+						updateImagesBuildingTab();
+					}
 					commonBuild();
 					return true;
 				} else {
@@ -4951,11 +4986,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Inn") {
+				//TUTORIAL
 				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1)) && game.buildLevelInn < config.maxLevelInn) {
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					if (game.buildLevelInn===1) {
 						game.generateMapCallback(true);
+						if (!game.tips.includes("tutorial_catastrophe")){
+							game.tips.push("tutorial_catastrophe");
+							showModal(0, '', getAck, locObj.tutorial_catastrophe.txt, locObj.okay.txt, '')
+						}
 					}
 					populateHeroesForHire();
 					commonBuild();
@@ -5142,31 +5182,37 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		theftFromTreasury : function () {
-			var guards = 0;
-			guards    += game.sergeants + game.turkopols + game.knights;
-			if (game.heroExists()===true) {
-				if (game.myhero.status===0){// in town
-					guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
+			if (game.buildLevelTreasury > 0) {
+				var guards = 0;
+				guards    += game.sergeants + game.turkopols + game.knights;
+				if (game.heroExists()===true) {
+					if (game.myhero.status===0){// in town
+						guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
+					}
 				}
-			}
-			guards     = Math.ceil(guards / 4);
-			guards    += game.treasuryGuard;
-			rndThieves = Math.floor(Math.random()*(guards+1)+1);
-			console.log(rndThieves);
-			if (rndThieves === 1) {
-				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
-				if (goldLost > game.gold) {
-					goldLost = game.gold;
+				guards     = Math.ceil(guards / 4);
+				guards    += game.treasuryGuard;
+				rndThieves = Math.floor(Math.random()*(guards+1)+1);
+				console.log(rndThieves);
+				if (rndThieves === 1) {
+					goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
+					if (goldLost > game.gold) {
+						goldLost = game.gold;
+					}
+					if (game.checkAudio('sfx', 'events')===true) {
+						document.getElementById('stealingAudio0').play();
+					}
+					game.gold     = game.gold - goldLost;
+					msg = localeStrings[42].replace("%arg1", goldLost);
+					postEventLog(msg);
+					updateResources();
+					if (!game.tips.includes("tutorial_stash")){
+						game.tips.push("tutorial_stash");
+						showModal(0, '', getAck, locObj.tutorial_stash.txt, locObj.okay.txt, '')
+					}
+				} else {
+					//TODO make a message about failed robbery
 				}
-				if (game.checkAudio('sfx', 'events')===true) {
-					document.getElementById('stealingAudio0').play();
-				}
-				game.gold     = game.gold - goldLost;
-				msg = localeStrings[42].replace("%arg1", goldLost);
-				postEventLog(msg);
-				updateResources();
-			} else {
-				//TODO make a message about failed robbery
 			}
 		},
 		startFire : function () {
@@ -5188,6 +5234,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							document.getElementById("divFBProgress").style.display="inline";
 						}
 						document.getElementById("gameIcon").href="resources/favicon-flame.png";
+						//TUTORIALS
+						if (!game.tips.includes("tutorial_firebrigade") && game.pop>=50){
+							game.tips.push("tutorial_firebrigade");
+							showModal(0, '', getAck, locObj.tutorial_firebrigade.txt, locObj.okay.txt, '')
+						}
 						//TODO make a certain building in fire, not just "city"
 						if (game.buildLevelD == 1) {
 							ceil = 1
@@ -7076,119 +7127,102 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		//HIDING
 		console.log("update images building tab");
 		if (!game.tips.includes("tutorial1_pop0") && game.buildLevelH===0 ){
-			console.log("DEBUG HOUSES ARE NOT VISIBLE");
 			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 			document.getElementById("tabBuilding").style = "visibility: hidden;"
 		} else {
-			console.log("DEBUG HOUSES ARE VISIBLE");
 			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 			document.getElementById("tabBuilding").style = "";
 		}
-		
-		if (!game.tips.includes("defence") && game.buildLevelD===0 ){
-			var tabBldElements = document.getElementsByClassName("bld_tab_defence_class");
+		if (!game.tips.includes("tutorial_defense") && game.buildLevelD===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
 				console.log(tabBldElements);
 			}
 		} else {
-			var tabBldElements = document.getElementsByClassName("bld_tab_defence_class");
+			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
 				console.log(tabBldElements);
 			}
 		}
 		
-		if (!game.tips.includes("treasury") && game.buildLevelTreasury ===0 ){
+		if (!game.tips.includes("tutorial_treasury") && game.buildLevelTreasury ===0 ){
 			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
-		if (!game.tips.includes("social") && game.buildLevelFountain===0 && game.buildLevelGallows===0 ){
+		if (!game.tips.includes("tutorial_social") && game.buildLevelFountain===0 && game.buildLevelGallows===0 ){
 			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 			updateButtonCaptions();
 		}
 		
-		if (!game.tips.includes("treasury3") && game.buildLevelStash===0){
+		if (!game.tips.includes("tutorial_stash") && game.buildLevelStash===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
-		if (!game.tips.includes("stable") && game.buildLevelStable===0){
+		if (!game.tips.includes("tutorial_stable") && game.buildLevelStable===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
-		if (!game.tips.includes("archery") && game.buildLevelArchery===0){
+		if (!game.tips.includes("tutorial_archery") && game.buildLevelArchery===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		
-		if (!game.tips.includes("inn") && game.buildLevelInn===0){
+		if (!game.tips.includes("tutorial_inn") && game.buildLevelInn===0){
 			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "";
-				console.log(tabBldElements);
 			}
 		}
 		

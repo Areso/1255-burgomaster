@@ -417,6 +417,16 @@ locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Votre oncle, le maître foncier de l'ordre teutonique,\nvous a envoyé construire une ville sur la frontière païenne.\nVous avez trouvé un endroit convenable avec une colline, une rivière, une forêt.\nVos paysans ont déjà dégagé l'endroit et prêt à construire", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Monseigneur Commandeur, vous devez construire des maisons\npour maintenir la croissance de votre population", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Monseigneur Commandeur, des éclaireurs ont signalé la présence\nde personnes armées dans les bois les plus proches.\nPensez à construire un mur", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Monseigneur Commandeur, votre offre d'or augmente.\nConstruisez un trésor pour stocker la grande quantité d'or", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Monseigneur Commandeur, maintenant vous pouvez engager des gardes du trésor dans votre trésor\nIls réduisent les chances de voler le trésor", "loc":"tutorial msg when treasury is built"};
+locObj.tutorial_stash = {"txt":"Monseigneur Commandeur, des voleurs ont volé l'or de votre trésor!\nConstruisez une réserve, afin que vous puissiez cacher de l'or du vol", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire des écuries\nLes écuries vous permettront d'embaucher des sergents et des chevaliers ", "loc":"tutorial msg when reached 50 pop"};
+locObj.tutorial_archery = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire un champ de tir à l'arc\nLe stand de tir à l'arc vous permettra de louer des turkopols dans les écuries", "loc":"tutorial msg when reached 70 pop"};
+locObj.tutorial_inn = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire\nL'Auberge vous permettra d'embaucher un héros", "loc":"tutorial msg when reached 100 pop"};
+locObj.tutorial_catastrophe = {"txt":"Vos forces ont capturé une sorcière. Le procès a été rapide et court\nPendant que les gens se rassemblaient pour regarder l'exécution,\nelle a commencé à chanter. Quand les flammes léchaient ses pieds nus, elle hurlait\nEn ce moment même, de nulle part a frappé un éclair avec \nune puissance titanesque. En plein centre du feu ... ", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_social = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire potence ou fontaine\nLes deux ont leurs propres bonus passifs et actifs", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_firebrigade = {"txt":"Monseigneur Commandeur, vous pouvez engager un pompier en cliquant sur le puits\nLes pompiers finiront par éteindre le feu\nL'entretien des pompiers dépend du nombre de bâtiments\nque vous avez construits et modernisés", "loc":"tutorial msg when fire, pop>50, year>1260"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};

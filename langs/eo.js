@@ -417,6 +417,17 @@ locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Via onklo, la landestro de teŭtona ordo, sendis vin konstrui urbon sur la pagana limo.\nVi trovis taŭgan lokon kun monteto, rivero, arbaro.\nViaj kamparanoj jam liberigis la lokon kaj pretas konstrui", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Sinjoro Komtur, vi bezonas konstrui domojn por kreskigi vian loĝantaron ", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Sinjoro Komtur, skoltoj raportis pri armitaj homoj\nen la plej proksima arbaro. Pripensu konstrui muron", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Sinjoro Komtur, via orprovizo kreskas. Konstruu trezorejon\npor stoki la vastan kvanton da oro", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Sinjoro Komtur, nun vi povus dungi trezorajn gardistojn en via trezorejo\nIli malpliigas ŝancon ŝteli de la trezorejo", "loc":"tutorial msg when treasury is built"};
+locObj.tutorial_stash = {"txt":"Sinjoro Komtur, ŝtelistoj ŝtelis oron el via trezorejo!\nKonstruu konservon, por ke vi kaŝu iom da oro kontraŭ ŝtelo", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Sinjoro Komtur, nun vi povus konstrui Stalojn.\nStaloj permesos vin dungi serĝentojn kaj kavalirojn", "loc":"tutorial msg when reached 50 pop"};
+locObj.tutorial_archery = {"txt":"Sinjoro Komtur, nun vi povus konstrui Arkpafadon.\nArkpafado permesos vin dungi turkopolojn en staloj", "loc":"tutorial msg when reached 70 pop"};
+locObj.tutorial_inn = {"txt":"Sinjoro Komtur, nun vi povus enkonstrui\nLa Gastejo permesos vin dungi heroon", "loc":"tutorial msg when reached 100 pop"};
+locObj.tutorial_catastrophe = {"txt":"Viaj fortoj kaptis sorĉistinon. La proceso estis rapida kaj mallonga\nDum homoj kolektiĝis por spekti la ekzekuton, ŝi ekĉantis. Kiam flamoj lekis\nŝiajn nudajn piedojn, ŝi kriegis. Ĝuste en ĉi tiu momento el nenio ekbrilis\nfulmo kun titana potenco. Ĝuste en la centro de la fajro...", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_social = {"txt":"Sinjoro Komtur, nun vi povus konstrui Pendilon aŭ Fontanon\nAmbaŭ havas proprajn pasivajn kaj aktivajn gratifikojn", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_firebrigade = {"txt":"Sinjoro Komtur, vi povus dungi fajroŝirmilon alklakante la puton\nLa fajrobrigado estingos la fajron eventuale\nLa prizorgado de la fajrobrigado dependas de kiom\nda konstruaĵoj vi konstruis kaj plibonigis", "loc":"tutorial msg when fire, pop>50, year>1260"};
+
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
