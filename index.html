@@ -2966,6 +2966,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 		generateEnemyUnitsForBattle: function() {
+
+			game.goldReward = 0;
+			game.expReward = 0;
+
 			var myheroTotalUnits = game.myhero.turkopols + game.myhero.sergeants + game.myhero.knights;
 			var enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
 
