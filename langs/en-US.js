@@ -423,10 +423,12 @@ locObj.tutorial_defense = {"txt":"Sir Commander, scouts reported on armed people
 locObj.tutorial_treasury = {"txt":"Sir Commander, your gold supply is growing\nBuild a treasury to store the vast amount of gold", "loc":"tutorial msg when treasury is unlocked"};
 locObj.tutorial_treasury_guards = {"txt":"Sir Commander, now you could hire treasury guards in your treasury\nThey are decreasing the chance of stealing from the treasury", "loc":"tutorial msg when treasury is built"};
 locObj.tutorial_stash = {"txt":"Sir Commander, thieves stole gold from your treasury!\nBuild a stash, so you could hide some gold from stealing", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nArchery range will allow you to hire turkopols in stables", "loc":"tutorial msg when first stealing has a place"};
-locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when reached 50 pop"};
+locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nArchery range will allow you to hire turkopols in stables", "loc":"tutorial msg when reached 70 pop"};
+locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when reached 100 pop"};
 locObj.tutorial_catastrophe = {"txt":"Your forces captured a witch. The trial was quick and short\nWhile people gathered to watch the execution\nshe started to chant. When flames licked her bare feet, she screamed\nAt this very moment, out of nowhere struck a lightning bolt with titanic power\nright in the center of the fire...", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_social = {"txt":"Sir Commander, now you could build Gallows or Fountain\nBoth have own passive and active bonuses", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_firebrigade = {"txt":"Sir Commander, you could hire a firebrigade by clicking on the well\nThe firebrigade will put out the fire eventually\nThe brigade's upkeep depends on how many buildings you have built and upgraded", "loc":"tutorial msg when fire, pop>50, year>1260"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
