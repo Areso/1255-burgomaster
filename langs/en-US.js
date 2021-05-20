@@ -429,7 +429,8 @@ locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn wi
 locObj.tutorial_catastrophe = {"txt":"Your forces captured a witch. The trial was quick and short\nWhile people gathered to watch the execution\nshe started to chant. When flames licked her bare feet, she screamed\nAt this very moment, out of nowhere struck a lightning bolt with titanic power\nright in the center of the fire...", "loc":"tutorial msg catastrophe"};
 locObj.tutorial_social = {"txt":"Sir Commander, now you could build Gallows or Fountain\nBoth have own passive and active bonuses", "loc":"tutorial msg when reached 120 pop"};
 locObj.tutorial_firebrigade = {"txt":"Sir Commander, you could hire a firebrigade by clicking on the well\nThe firebrigade will put out the fire eventually\nThe brigade's upkeep depends on how many buildings you have built and upgraded", "loc":"tutorial msg when fire, pop>50, year>1260"};
-
+locObj.tutorial_two_steps = {"txt":"You saw a few peasants, running from ugly monsters you have never seen\nYou killed monsters and asked peasants what happened\nThey told you that trolls were mad because they don't paid for passing by...", "loc":"tutorial. when you step 2 times from city"};
+locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};

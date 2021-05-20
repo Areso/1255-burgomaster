@@ -2879,6 +2879,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 					game.checkMonsters();
 					composite_gm();
+					game.adv_steps += 1;
+					if (game.adv_steps === 2) {
+						if (!game.tips.includes("tutorial_two_steps")){
+							game.tips.push("tutorial_two_steps");
+							showModal(0, '', getAck, locObj.tutorial_two_steps.txt, locObj.okay.txt, '');
+						}
+					}
 					allowMvt = 0;
 					setTimeout(cooldownMvt, 200);
 				}
@@ -3405,6 +3412,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
 				game.myhero.aCampaignTotalLong    += 1;
+				game.ac_steps                     += 1;
+				if (game.ac_steps === 2) {
+					if (!game.tips.includes("tutorial_two_steps")){
+						game.tips.push("tutorial_two_steps");
+						showModal(0, '', getAck, locObj.tutorial_two_steps.txt, locObj.okay.txt, '');
+					}
+				}
 				var heroTroopsPrice = game.heroTroopsPrice();
 				var rnd = Math.floor((Math.random() * 24) + 1);
 				if (game.myhero.stance === 0) {//aggressive stance
@@ -4836,7 +4850,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.tips.push("tutorial_treasury");
 				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
 			}
-			
+			if (!game.tips.includes("tutorial_autosave") && game.ticks===10){
+				game.tips.push("tutorial_autosave");
+				showModal(0, '', getAck, locObj.tutorial_autosave.txt, locObj.okay.txt, '')
+			}
 			if (!game.tips.includes("tutorial_stable") && game.pop>=50){
 				game.tips.push("tutorial_stable");
 				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
