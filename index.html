@@ -4840,33 +4840,34 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(msg);
 			};
 			//TUTORIALS
+			
 			if (game.ticks === 3){
 				if (!game.tips.includes("tutorial_defense")){
 					game.tips.push("tutorial_defense");
 					showModal(0, '', getAck, locObj.tutorial_defense.txt, locObj.okay.txt, '')
 				}
 			}
-			if (!game.tips.includes("tutorial_treasury") && game.gold>=200){
+			if (!game.tips.includes("tutorial_treasury") && game.gold>=200 && !dialogShown){
 				game.tips.push("tutorial_treasury");
 				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
 			}
-			if (!game.tips.includes("tutorial_autosave") && game.ticks===10){
+			if (!game.tips.includes("tutorial_autosave") && game.ticks>=10 && !dialogShown)){
 				game.tips.push("tutorial_autosave");
 				showModal(0, '', getAck, locObj.tutorial_autosave.txt, locObj.okay.txt, '')
 			}
-			if (!game.tips.includes("tutorial_stable") && game.pop>=50){
+			if (!game.tips.includes("tutorial_stable") && game.pop>=50 && !dialogShown)){
 				game.tips.push("tutorial_stable");
 				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
 			}
-			if (!game.tips.includes("tutorial_archery") && game.pop>=70){
+			if (!game.tips.includes("tutorial_archery") && game.pop>=70 && !dialogShown)){
 				game.tips.push("tutorial_archery");
 				showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
 			}
-			if (!game.tips.includes("tutorial_inn") && game.pop>=100){
+			if (!game.tips.includes("tutorial_inn") && game.pop>=100 && !dialogShown)){
 				game.tips.push("tutorial_inn");
 				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
 			}
-			if (!game.tips.includes("tutorial_social") && game.pop>=120){
+			if (!game.tips.includes("tutorial_social") && game.pop>=120 && !dialogShown)){
 				game.tips.push("tutorial_inn");
 				showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
 			}
@@ -6014,6 +6015,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			document.getElementById(disabledElements[i]).disabled = false;
 		}
 		disabledElements = [];
+		dialogShown = false;
 	}
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
@@ -7267,6 +7269,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		return playerDecision;
 	}
 	function showModal(typeofModal, dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo) {
+		dialogShown = true;
 		if (typeofModal===0) {
 			myCanvas(dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo);
 		}
@@ -7372,6 +7375,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
 			document.getElementById("inpStnAliasValue").value = game.alias;
 		}
+		
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
@@ -7383,6 +7387,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById(tabName).style.display = "block";
 		if (evt !== null) {
 			evt.currentTarget.className += " active";
+		}
+		if (tabName==="tabTroopsHiring"){
+			if (!game.tips.includes("tutorial_moving_troops") && game.heroExists()){
+				game.tips.push("tutorial_moving_troops");
+				showModal(0, '', getAck, locObj.tutorial_moving_troops.txt, locObj.okay.txt, '');
+			}
 		}
 	}
 	document.getElementById("tabCity").click();
