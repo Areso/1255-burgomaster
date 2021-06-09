@@ -1049,7 +1049,22 @@
 			<div id="outTable">
 			</div>
 		</div>
-		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 548px; left: 10px"></div>
+		<br>
+		<div id="chat_log_box">
+			<button id="log_btn"  onclick="openLog()" >log</button>
+			<button id="chat_btn" onclick="openChat()">chat</button>
+			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
+			
+		
+			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
+			<input id="inp_nickname"  style="position: absolute; top: 720px; left:  10px; width: 100px;"          ></input>
+			<input id="msg_out"       style="position: absolute; top: 720px; left: 120px; width: 500px;" value="" ></input>
+			<button id="btnSend" onclick="send()" style="position: absolute; top: 720px; left: 700px; width: 100px;"          >send</button>
+		
+		</div>
+		
+		
+		
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
@@ -5479,7 +5494,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	composite();
-	
+	openLog();
 	setupNickname();
 	
 	//init timers
@@ -7359,6 +7374,30 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		} else {
 			game.festival_cooldown = 0;
 		}
+	}
+				function openChat() {
+		log_dom   = document.getElementById("console_n_chat");
+		chat_dom  = document.getElementById("chat");
+		nick_dom  = document.getElementById("inp_nickname");
+		msg_dom   = document.getElementById("msg_out");
+		btn_send  = document.getElementById("btnSend");
+		log_dom.style.visibility  = "hidden";
+		chat_dom.style.visibility = "visible";
+		nick_dom.style.visibility = "visible";
+		msg_dom.style.visibility  = "visible";
+		btn_send.style.visibility = "visible";
+	}
+	function openLog() {
+		log_dom   = document.getElementById("console_n_chat");
+		chat_dom  = document.getElementById("chat");
+		nick_dom  = document.getElementById("inp_nickname");
+		msg_dom   = document.getElementById("msg_out");
+		btn_send  = document.getElementById("btnSend");
+		log_dom.style.visibility  = "visible";
+		chat_dom.style.visibility = "hidden";
+		nick_dom.style.visibility = "hidden";
+		msg_dom.style.visibility  = "hidden";
+		btn_send.style.visibility = "hidden";
 	}
 </script>
 <script>
