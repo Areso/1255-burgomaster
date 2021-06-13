@@ -7375,7 +7375,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			game.festival_cooldown = 0;
 		}
 	}
-				function openChat() {
+	function openChat() {
 		log_dom   = document.getElementById("console_n_chat");
 		chat_dom  = document.getElementById("chat");
 		nick_dom  = document.getElementById("inp_nickname");
@@ -7488,6 +7488,59 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			d.addEventListener("DOMContentLoaded", f, false);
 		} else { f(); }
 	})(document, window, "yandex_metrika_callbacks");
+</script>
+<script>
+	log_dom   = document.getElementById("console_n_chat");
+	chat_dom  = document.getElementById("chat");
+	nick_dom  = document.getElementById("inp_nickname");
+	msg_dom   = document.getElementById("msg_out");
+	btn_send  = document.getElementById("btnSend");
+	users = document.querySelector('.users');
+	websocket = new WebSocket("ws://mydiod.ga:6699/");
+	function send() {
+		sending_msg  = msg_dom.value;
+		sending_auth = nick_dom.value;
+		console.log("the message out values is "+sending_msg);
+		console.log("the author out values is "+sending_auth);
+		websocket.send(JSON.stringify({"msg": sending_msg, "author":sending_auth}));
+		}
+	function get_offset() {
+		//get server time
+		//get browser time
+		currentLocTime = Math.floor(Date.now() / 1000);
+		console.log(currentLocTime);
+	}
+	websocket.onmessage = function (event) {
+		data = JSON.parse(event.data);
+		switch (data.type) {
+			case 'state':
+				//value.textContent = data.value;
+				console.log(data);
+				chat_dom.innerHTML = "";
+				data.msg.forEach(printToChat);
+				get_offset();
+				function printToChat(item, index) {
+					chat_box = chat_dom;
+					msg  = "["+item[2]+"] ";
+					msg += item[0]+": "+item[1];
+					chat_box.innerHTML += msg+"<br>";
+					var textarea = chat_box;
+					if(textarea.selectionStart === textarea.selectionEnd) {
+						textarea.scrollTop = textarea.scrollHeight;
+					}
+				}
+				break;
+			case 'users':
+				/*
+				users.textContent = (
+				data.count.toString() + " user" +
+				(data.count == 1 ? "" : "s"));
+				*/
+				break;
+			default:
+				console.error("unsupported event", data);
+		}
+	};
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
