@@ -1,6 +1,7 @@
 var artefacts = {
     artid00: {
         id: "artid00",
+        img: "scroll_01.png",
         name: localeStrings[286],
         desc: localeStrings[287],
         attr: [],
@@ -119,4 +120,48 @@ var artefacts = {
         type: "artefactsWorn",
         artefactsWorn: 1,
     },
+    artid11: {
+        id: "artid11",
+        img: "glyph_01.png",
+        name: locObj.glyphKnightTile.txt,
+        desc: locObj.glyphKnightDesc.txt,
+        attr: [
+            { name: "atk", type: "flat", val: 10 },
+            { name: "def", type: "flat", val: 6 }
+        ],
+        change: [],
+        priceBuy: 5000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1,
+    },
+    artid12: {
+        id: "artid12",
+        img: "glyph_02.png",
+        name: locObj.glyphMonkTile.txt,
+        desc: locObj.glyphMonkDesc.txt,
+        attr: [
+            { name: "atk", type: "flat", val: 4 },
+            { name: "def", type: "flat", val: 12 }
+        ],
+        change: [],
+        priceBuy: 5000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1,
+    },
+    artid13: {
+        id: "artid13",
+        img: "rune_gold.png",
+        name: locObj.goldRuneTitle.txt,
+        desc: locObj.goldRuneTitle.txt,
+        attr: [{name: "gold", type: "percentage", val: 1.07}],
+        change: [],
+        priceBuy: 5000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1
+    }
 };
+
+Object.freeze(artefacts);

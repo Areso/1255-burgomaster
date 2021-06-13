@@ -417,6 +417,19 @@ locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Votre oncle, le maître foncier de l'ordre teutonique,\nvous a envoyé construire une ville sur la frontière païenne.\nVous avez trouvé un endroit convenable avec une colline, une rivière, une forêt.\nVos paysans ont déjà dégagé l'endroit et prêt à construire", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Monseigneur Commandeur, vous devez construire des maisons\npour maintenir la croissance de votre population", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Monseigneur Commandeur, des éclaireurs ont signalé la présence\nde personnes armées dans les bois les plus proches.\nPensez à construire un mur", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Monseigneur Commandeur, votre offre d'or augmente.\nConstruisez un trésor pour stocker la grande quantité d'or", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Monseigneur Commandeur, maintenant vous pouvez engager des gardes du trésor dans votre trésor\nIls réduisent les chances de voler le trésor", "loc":"tutorial msg when treasury is built"};
+locObj.tutorial_stash = {"txt":"Monseigneur Commandeur, des voleurs ont volé l'or de votre trésor!\nConstruisez une réserve, afin que vous puissiez cacher de l'or du vol", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire des écuries\nLes écuries vous permettront d'embaucher des sergents et des chevaliers ", "loc":"tutorial msg when reached 50 pop"};
+locObj.tutorial_archery = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire un champ de tir à l'arc\nLe stand de tir à l'arc vous permettra de louer des turkopols dans les écuries", "loc":"tutorial msg when reached 70 pop"};
+locObj.tutorial_inn = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire\nL'Auberge vous permettra d'embaucher un héros", "loc":"tutorial msg when reached 100 pop"};
+locObj.tutorial_catastrophe = {"txt":"Vos forces ont capturé une sorcière. Le procès a été rapide et court\nPendant que les gens se rassemblaient pour regarder l'exécution,\nelle a commencé à chanter. Quand les flammes léchaient ses pieds nus, elle hurlait\nEn ce moment même, de nulle part a frappé un éclair avec \nune puissance titanesque. En plein centre du feu ... ", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_social = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire potence ou fontaine\nLes deux ont leurs propres bonus passifs et actifs", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_firebrigade = {"txt":"Monseigneur Commandeur, vous pouvez engager un pompier en cliquant sur le puits\nLes pompiers finiront par éteindre le feu\nL'entretien des pompiers dépend du nombre de bâtiments\nque vous avez construits et modernisés", "loc":"tutorial msg when fire, pop>50, year>1260"};
+locObj.tutorial_two_steps = {"txt":"You saw a few peasants, running from ugly monsters you have never seen\nYou killed monsters and asked peasants what happened\nThey told you that trolls were mad because they don't paid for passing by...", "loc":"tutorial. when you step 2 times from city"};
+locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
+locObj.tutorial_moving_troops = {"txt":"Sir Commander, buttons near the number of units allow you to manage units\nSingle arrow moves a unit, double arrow moves a stack,\nX button fires a unit, XX button fires a stack", "loc":"triggered by first enter into Hiring tab"};
 
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
@@ -463,4 +476,15 @@ locObj.heroStatsDefLbl = {"txt":"Défense", "loc":"The inn when we are hiring. S
 locObj.heroStatsMpowLbl = {"txt":"Pouvoir Magique", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Intelligence", "loc":"The inn when we are hiring. Stats. Intelligence"};
 
+locObj.equipmentTitle = {"txt": "Equiped", "loc": "Equiped items title"};
+
 locObj.moneyExceedsTreasury = {"txt":"Monseigneur Commandeur, la somme d'argent de votre trésorerie et de la bourse de votre héros dépasse votre capacité de trésorerie. Pour éviter de perdre de l'argent, construisez ou améliorez votre trésorerie maintenant", "loc":"checking function which indicated if player needs to upgrade his treasury"};
+
+locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Имя глифа"};
+locObj.glyphKnightDesc = {"txt": "Increases the hero's attack +10, increases heroe's defence +6.", "loc": "Glyph desc"};
+
+locObj.glyphMonkTile = {"txt": "Glyph of Monk's Virtue", "loc": "Имя глифа"};
+locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe's defence +12.", "loc": "Glyph desc"};
+
+locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
+locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};

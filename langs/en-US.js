@@ -419,6 +419,20 @@ locObj.okay = {"txt":"Okay", "loc":"Mostly used in information dialogues"}
 
 locObj.tutorial0_w0 = {"txt":"Your uncle, the landmaster of Teutonic order,\nsent you to build a city on the pagan frontier.\nYou have found a suituable place with a hill, river, forest.\nYour peasants already cleared the place and ready for building", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Sir Commander, you need to build houses to keep your population growing", "loc":"tutorial0_w0"};
+locObj.tutorial_defense = {"txt":"Sir Commander, scouts reported on armed people\nin the nearest woods. Consider building a wall", "loc":"tutorial msg when defense line is unlocked"};
+locObj.tutorial_treasury = {"txt":"Sir Commander, your gold supply is growing\nBuild a treasury to store the vast amount of gold", "loc":"tutorial msg when treasury is unlocked"};
+locObj.tutorial_treasury_guards = {"txt":"Sir Commander, now you could hire treasury guards in your treasury\nThey are decreasing the chance of stealing from the treasury", "loc":"tutorial msg when treasury is built"};
+locObj.tutorial_stash = {"txt":"Sir Commander, thieves stole gold from your treasury!\nBuild a stash, so you could hide some gold from stealing", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when reached 50 pop"};
+locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nArchery range will allow you to hire turkopols in stables", "loc":"tutorial msg when reached 70 pop"};
+locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when reached 100 pop"};
+locObj.tutorial_catastrophe = {"txt":"Your forces captured a witch. The trial was quick and short\nWhile people gathered to watch the execution\nshe started to chant. When flames licked her bare feet, she screamed\nAt this very moment, out of nowhere struck a lightning bolt with titanic power\nright in the center of the fire...", "loc":"tutorial msg catastrophe"};
+locObj.tutorial_social = {"txt":"Sir Commander, now you could build Gallows or Fountain\nBoth have own passive and active bonuses", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_firebrigade = {"txt":"Sir Commander, you could hire a firebrigade by clicking on the well\nThe firebrigade will put out the fire eventually\nThe brigade's upkeep depends on how many buildings you have built and upgraded", "loc":"tutorial msg when fire, pop>50, year>1260"};
+locObj.tutorial_two_steps = {"txt":"You saw a few peasants, running from ugly monsters you have never seen\nYou killed monsters and asked peasants what happened\nThey told you that trolls were mad because they don't paid for passing by...", "loc":"tutorial. when you step 2 times from city"};
+locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
+locObj.tutorial_moving_troops = {"txt":"Sir Commander, buttons near the number of units allow you to manage units\nSingle arrow moves a unit, double arrow moves a stack,\nX button fires a unit, XX button fires a stack", "loc":"triggered by first enter into Hiring tab"};
+
 
 locObj.unit_sergeants = {"txt": "Sergeants", "loc": "Autbattle log, player unit"};
 locObj.unit_turkopols = {"txt": "Turkopols", "loc": "Autbattle log, player unit"};
@@ -464,4 +478,15 @@ locObj.heroStatsDefLbl = {"txt":"Defence", "loc":"The inn when we are hiring. St
 locObj.heroStatsMpowLbl = {"txt":"Magic power", "loc":"The inn when we are hiring. Stats. Magic power"};
 locObj.heroStatsIntLbl = {"txt":"Intelligence", "loc":"The inn when we are hiring. Stats. Intelligence"};
 
+locObj.equipmentTitle = {"txt": "Equiped", "loc": "Equiped items title"};
+
 locObj.moneyExceedsTreasury = {"txt":"Sir Commander, sum of money your treasury and your hero's purse had exceeds your treasury capacity. To avoid losing money, build or upgrade your treasury now", "loc":"checking function which indicated if player needs to upgrade his treasury"};
+
+locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Имя глифа"};
+locObj.glyphKnightDesc = {"txt": "Increases the hero's attack +10, increases heroe's defence +6.", "loc": "Glyph desc"};
+
+locObj.glyphMonkTile = {"txt": "Glyph of Monk's Virtue", "loc": "Имя глифа"};
+locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe's defence +12.", "loc": "Glyph desc"};
+
+locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
+locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};

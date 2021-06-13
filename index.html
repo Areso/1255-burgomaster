@@ -76,7 +76,7 @@
 		#buttonBldGallows, #buttonBldFountain, #buttonBldStash {
 			width: 180px;
 		}*/
-		#console_n_chat, #lblAutocampaignJournal, #lblAutocampaignBattle {
+		#console_n_chat, #chat, #lblAutocampaignJournal, #lblAutocampaignBattle {
 			/*resize: none;*/
 			overflow: auto;
 		}
@@ -284,6 +284,91 @@
 		.gems-val,
 		.time-val > span {
 			color: inherit;
+		}
+
+		.inventory-item {
+			box-sizing: border-box;
+			padding: 10px;
+			margin: 0 10px 6px;
+			display: flex;
+			max-width: 761px;
+			border: 1px solid #333;
+			background-color: #f1f1f1;
+			font-size: 15px;
+		}
+
+		.inventory-item__wrapper-img {
+			flex: 0 0 40px;
+			height: 40px;
+			border: 1px solid #333;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #9f9f9f;
+		}
+
+		.inventory-item__wrapper-desc {
+			display: flex;
+			flex-direction: column;
+			margin-left: 15px;
+			margin-right: 15px;
+			flex: 1 1 100%;
+		}
+
+		.inventory-item__name {
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 4px;
+			margin-top: 0;
+		}
+
+		.inventory-item__btn {
+			width: 120px;
+			height: 21px;
+			align-self: center;
+		}
+
+		#marketList,
+		#heroMarketList {
+			overflow-y: auto;
+			height: 100%;
+			max-height: 140px;
+		}
+
+
+		.price-val {
+			background-color: #b9b9b9;
+			padding: 2px 8px;
+			margin-left: 12px;
+			font-size: 15px;
+			display: inline-block;
+		}
+
+		.shop-title {
+			margin: 0 10px 6px;
+		}
+
+		.dark-theme.inventory-item {
+			background-color: #202020;
+		}
+
+		.dark-theme.inventory-item__name {
+			color: #fff !important;
+		}
+
+		#heroEquipment {
+			margin-top: 10px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		#heroEquipment > .inventory-item__wrapper-img {
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+
+		#tabInn {
+			padding: 10px;
 		}
 
 	</style>
@@ -518,7 +603,7 @@
 			<div id="divFBProgress" style="display: none">0% of fire extinguished</div>
 			<br>
 		</div>
-		<div id="Building" class="tabcontent">
+		<div id="Building" class="tabcontent building_tab">
 			<div id="labelBuilding" style="display: none;">Building</div>
 			<div id="theBuildingDiv">
 				<table>
@@ -527,97 +612,93 @@
 							<table border="1">
 								<tr>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_house_class">
 											<img id="home_img" src="resources/home_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 										
 									</td>
 									<td class="building">
-										<div id="defences_img" align="center">
+										<div id="defences_img" align="center" class="bld_tab_defense_class">
 											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_treasury_class">
 											<img id="treasury_img" src="resources/treasury_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<button id="homes" onclick="game.Build('Home')" class="building">Build home</button>
+										<button id="homes" onclick="game.Build('Home')" class="building bld_tab_house_class">Build home</button>
 										
 									</td>
 									<td class="building">
-										<button id="defence" onclick="game.Build('Wall')" class="building">Build walls</button>
+										<button id="defence" onclick="game.Build('Wall')" class="building bld_tab_defense_class">Build walls</button>
 									</td>
 									<td class="building">
-										<button id="treasury" onclick="game.Build('Treasury')" class="building">Build treasury</button>
+										<button id="treasury" onclick="game.Build('Treasury')" class="building bld_tab_treasury_class">Build treasury</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_social_class">
 											<img id="gallows_img" src="resources/gallows.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_social_class">
 											<img id="fountain_img" src="resources/fountain.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_stash_class">
 											<img id="moneystash_img" src="resources/trapdoor.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building">Build gallows</button>
+										<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building bld_tab_social_class">Build gallows</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building">Build fountain</button>
+										<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building bld_tab_social_class">Build fountain</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldStash" onclick="game.Build('Stash')" class="building">Build stash</button>
+										<button id="buttonBldStash" onclick="game.Build('Stash')" class="building bld_tab_stash_class">Build stash</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<div align="center">
-											<img id="inn_img" src="resources/inn.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_stable_class">
 											<img id="stable_img" src="resources/stable.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 									<td class="building">
-										<div align="center">
+										<div align="center" class="bld_tab_archery_class">
 											<img id="archery_img" src="resources/archery_range.png" onmouseover="game.help(this)" onclick="game.help(this)">
+										</div>
+									</td>
+									<td class="building">
+										<div align="center" class="bld_tab_inn_class">
+											<img id="inn_img" src="resources/inn.png" onmouseover="game.help(this)" onclick="game.help(this)">
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td class="building">
-										<button id="buttonBldInn" onclick="game.Build('Inn')" class="building">Build Inn</button>
+										<button id="buttonBldStable" onclick="game.Build('Stable')" class="building bld_tab_stable_class">Build Stable</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldStable" onclick="game.Build('Stable')" class="building">Build Stable</button>
+										<button id="buttonBldArchery" onclick="game.Build('Archery')" class="building bld_tab_archery_class">Build Archery range</button>
 									</td>
 									<td class="building">
-										<button id="buttonBldArchery" onclick="game.Build('Archery')" class="building">Build Archery range</button>
+										<button id="buttonBldInn" onclick="game.Build('Inn')" class="building bld_tab_inn_class">Build Inn</button>
 									</td>
 								</tr>
 							</table>
 						</td>
 						<td>
-<!-- 							<div id="lblBuildGold">
-							<img id="gold_img_bt" src="resources/gold_a.png" onclick="checkGold()" >
-							<span id="gold_bt" onclick="checkGold()" >0</span>
-							</div> -->
 							<div id="lblBuildHelp">
 
 							</div>
@@ -754,10 +835,10 @@
 						<div class="unit-main">
 							<img id="imgHiringScreenSergeant" src="resources/sergeant.png" onmouseover="game.help(this)">
 							<div class="unit-info">
-								<p>Atk.: 5</p>
-								<p>Def.: 8</p>
+								<p>Atk.: <span id="sergeantsAttack">5</span></p>
+								<p>Def.: <span id="sergeantsDefence">8</span></p>
 								<p>Dmg: 3-4</p>
-								<p>HP: 15</p>
+								<p>HP: <span id="sergeantsHealth">15</span></p>
 							</div>		
 						</div>
 					</td>
@@ -765,10 +846,10 @@
 						<div class="unit-main">
 							<img id="imgHiringScreenTurkopol" src="resources/turkopol.png" onmouseover="game.help(this)">
 							<div class="unit-info">
-								<p>Atk.: 5</p>
-								<p>Def.: 5</p>
+								<p>Atk.: <span id="turkopolsAttack">5</span></p>
+								<p>Def.: <span id="turkopolsDefence">5</span></p>
 								<p>Dmg: 2-3</p>
-								<p>HP: 12</p>
+								<p>HP: <span id="turkopolsHealth">12</span></p>
 							</div>
 						</div>
 
@@ -777,10 +858,10 @@
 						<div class="unit-main">
 							<img id="imgHiringScreenKnight" src="resources/knight.png" onmouseover="game.help(this)">
 							<div class="unit-info">
-								<p>Atk.: 10</p>
-								<p>Def.: 9</p>
+								<p>Atk.: <span id="knightsAttack">10</span></p>
+								<p>Def.: <span id="knightsDefence">9</span></p>
 								<p>Dmg: 5-10</p>
-								<p>HP: 20</p>
+								<p>HP: <span id="knightsHealth">20</span></p>
 							</div>
 						</div>
 					</td>
@@ -873,31 +954,16 @@
 			</table>
 		</div>
 		<div id="tabBlackmarket" class="tabcontent">
-<!-- 			<img id="gold_img_bm" src="resources/gold_a.png" onclick="checkGold()" style="position:absolute; top:60px; left:40px">
-			<span id="gold_bm" class="interface" onclick="checkGold()" style="position:absolute; top:60px; left:120px">0</span> -->
-			<br>
-			<br>
 			<br>
 			<div>
-				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div><br>
-				<select id="selectGoodsForHero" size="1" onchange="updateBlackMarket()">
-				</select>
-				<div id="lblArtefactBuyPrice" style="display: inline">price </div><div id="lblArtefactBuyPriceValue" style="display: inline">0</div>
-				<button id="btnBuyArtefact" onclick="game.artefact_buy()">Buy selected</button><br>
+				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
+				<div id="marketList"></div>
 			</div>
-			<br>
-			<br>
 			<div>
-				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div><br>
-				<select id="selectGoodsFromHero" size="1" onchange="updateBlackMarket()">
-				</select>
-				<div id="lblArtefactSellPrice" style="display: inline">price </div><div id="lblArtefactSellPriceValue" style="display: inline">0</div>
-				<button id="btnSellArtefact" onclick="game.artefact_sell()">Sell selected</button><br>
+				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
+				<div id="heroMarketList"></div>
 			</div>
-			<br>
-			<br>
-			<br>
-			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 250px">Go to exploring!</button>
+			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
 		</div>
 		<div id="tabEvent" class="tabcontent">
 			<lbl id="lblEventDetails">
@@ -983,7 +1049,22 @@
 			<div id="outTable">
 			</div>
 		</div>
-		<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 548px; left: 10px"></div>
+		<br>
+		<div id="chat_log_box">
+			<button id="log_btn"  onclick="openLog()" >log</button>
+			<button id="chat_btn" onclick="openChat()">chat</button>
+			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
+			
+		
+			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
+			<input id="inp_nickname"  style="position: absolute; top: 725px; left:  10px; width: 100px;"          ></input>
+			<input id="msg_out"       style="position: absolute; top: 725px; left: 120px; width: 500px;" value="" ></input>
+			<button id="btnSend" onclick="send()" style="position: absolute; top: 725px; left: 700px; width: 100px;"          >send</button>
+		
+		</div>
+		
+		
+		
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
@@ -1490,7 +1571,7 @@
 	canvas_map.addEventListener("touchstart", tap_map);
 	canvas_map.addEventListener("mousedown", tap_map);
 	var ctx_map         = canvas_map.getContext("2d");
-	var tile_grass      = loadImage('tiles/grass.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
+	var tile_grass      = loadImage('tiles/grass1.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 	var tile_sand       = loadImage('tiles/sand.png');
 	var tile_snow       = loadImage('tiles/snow.png');
 	var tile_water      = loadImage('tiles/water.png');
@@ -1502,7 +1583,8 @@
 	var chest_tile      = loadImage('resources/chest.png');
 	var pumpkin_tile    = loadImage('resources/pumpkin.png');
 	var monster_tile    = loadImage('resources/monster_redpeople.png');
-	var tree_tile       = loadImage('resources/tree.png');
+	var tree_tile       = loadImage('resources/tree2.png');
+	var tree_tile2		= loadImage('resources/tree.png');
 	var arrow_l         = loadImage('resources/pointer_l.png');
 	var arrow_r         = loadImage('resources/pointer_r.png');
 	var arrow_u         = loadImage('resources/pointer_u.png');
@@ -1553,7 +1635,7 @@
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===2) {
 					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);
+					ctx_map.drawImage(tree_tile2, i * 48, j * 48);
 				}
 				if (game.myMapObjects[i+camXL][j+camYL]===3) {
 					//console.log("draw tree");
@@ -1686,7 +1768,7 @@
 	}
 </script>
 <script>
-
+//THE GAME
 
 /*-- New --*/
 
@@ -1801,6 +1883,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		chestMoney:25,
 		chestCity_timeout:15000,//ms
 		chestCity:50,
+		maxLevelHome: 40,
+		maxLevelTreasury: -1, //Not limited
+		maxLevelStash: -1, //Not limited
+		maxLevelGallows: 10,
+		maxLevelFountain: 10,
+		maxLevelInn: 10,
+		maxLevelStable: 3,
+		maxLevelArchery: 3
 	};
 
 	var game = {
@@ -1840,6 +1930,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		years: [],
 		pops: [],
 		budgets: [],
+		adv_steps: 0,
+		ac_steps: 0,
 		userPopAck: 0,
 		userGoldAck: 0,
 		userASaveAck: 0,
@@ -1867,6 +1959,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		UID: getUID(),
 		tips: [],
 		chestCity: 0,
+		ticks: 0,
 		autocampaignCounter: 0,
 		autocampaignBattlesCounter: 0,
 		enemyHero: null,
@@ -2286,14 +2379,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			var rnd = Math.floor((Math.random() * 8) + 1);
-			if (rnd.toString().length<2) {
+			//var rnd = Math.floor((Math.random() * 8) + 1);
+			//game.blackMarketGoods.push("artid00");
+			//game.blackMarketGoods.push("artid"+rnd);
+			var rnd = randomFromRange(11, 13);
+			if (rnd.toString().length < 2) {
 				rnd = "0"+rnd;
 			}
-			game.blackMarketGoods.push("artid00");
-			game.blackMarketGoods.push("artid"+rnd);
+			var scroll = getItem("artid00");
+			addItem("trader", scroll);
+
+			var id = "artid" + rnd;
+			var randomItem = getItem(id);
+			addItem("trader", randomItem);
+			console.log(game.blackMarketGoods);
 		},
 		generateMap : function () {
+			game.blackMarketGoods = [];
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
@@ -2461,7 +2563,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							//prepare for battle!
 							//generate enemy squad
 							game.generateEnemyUnitsForBattle();
-							game.calcAttackPhase("AdvMap");
+
+							game.isAutoBattle = true;
+
+							while(game.isAutoBattle) {
+								game.calcAttackPhase("AdvMap");
+							}
 							//suppose we win the battle
 							//removing the monster from removable objects (render array)
 							game.myMapRemObjects[game.monstersOnAdvMap[index].coordx][game.monstersOnAdvMap[index].coordy] = 0;
@@ -2758,6 +2865,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(localeStrings[186]+config.chestMoney);
 				game.myhero.gold += config.chestMoney;
 				game.checkTreasuryCapacity();
+				updateUI();
 			}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
 				postEventLog(localeStrings[58][0]);
@@ -2786,6 +2894,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 					game.checkMonsters();
 					composite_gm();
+					game.adv_steps += 1;
+					if (game.adv_steps === 2) {
+						if (!game.tips.includes("tutorial_two_steps")){
+							game.tips.push("tutorial_two_steps");
+							showModal(0, '', getAck, locObj.tutorial_two_steps.txt, locObj.okay.txt, '');
+						}
+					}
 					allowMvt = 0;
 					setTimeout(cooldownMvt, 200);
 				}
@@ -2873,6 +2988,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 		generateEnemyUnitsForBattle: function() {
+
+			game.goldReward = 0;
+			game.expReward = 0;
+
 			var myheroTotalUnits = game.myhero.turkopols + game.myhero.sergeants + game.myhero.knights;
 			var enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
 
@@ -2900,6 +3019,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.genUnitStack(unit, 1, game.enemyHeroArmy.units);
 			}
 
+			if (game.myhero.inventory.length) {
+				for (var i = 0; i < game.myhero.inventory.length; i++) {
+					if (game.myhero.inventory[i].id === "artid13") {
+						game.goldReward = Math.round(game.goldReward * game.myhero.inventory[i].attr[0].val);
+						break;
+					}
+				}
+			}
+
 			console.log("%c NEW ENEMY ARMY: ", "color: red;", game.enemyHeroArmy)
 
 		},
@@ -2912,24 +3040,35 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 
-		checkWinner: function() {
-			if (game.attacker === 1 && !game.isAutoBattle) {
-				if (game.myhero.stance === 1) {
-					postJournalLog(localeStrings[174]);
-				} else {
-					postJournalLog(localeStrings[173]);
-				}
-				console.log("The player is the winner");
-				game.myhero.gold += game.goldReward;
-				game.myhero.exp += game.expReward;
-				game.restoreHealth();
-				game.generateEnemyUnitsForBattle();
+		checkWinner: function(campaignType) {
+			console.log("%c CHECKING WINNER!", "color: #333; background: red");
+				if (game.attacker === 1 && !game.isAutoBattle) {
+					if (campaignType === "AutoCampaign") {
+						if (game.myhero.stance === 1) {
+							postJournalLog(localeStrings[174]);
+						} else {
+							postJournalLog(localeStrings[173]);
+						}
+					}
 
-			} else {
-				postJournalLog(localeStrings[172]);
-				game.heroDie();
-				console.log("The PC opponent is the Winner");
-			}
+					console.log("The player is the winner");
+					game.myhero.gold += game.goldReward;
+					game.myhero.exp += game.expReward;
+					game.restoreHealth();
+					game.generateEnemyUnitsForBattle();
+
+					if (campaignType !== "AutoCampaign") {
+						game.heroLvlUp("AdvMap");
+						updateUI();
+					}
+
+				} else {
+					if (campaignType === "AutoCampaign") {
+						postJournalLog(localeStrings[172]);
+					}
+					game.heroDie();
+					console.log("The PC opponent is the Winner");
+				}
 		},
 
 		calcDmg: function(attackerSquad, attackerHeroAttack, defenderSquad, defenderHeroDefence) {
@@ -3018,9 +3157,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postBattleLog(attackerStr);
 					}
 		            if (isEmptyObj(defenderStack.units)) {
-		              game.isAutoBattle = false;
-		              game.checkWinner();
-		              game.attacker = 0;
+						game.isAutoBattle = false;
+						game.checkWinner(campaignType);
+						if (campaignType === "AutoCampaign") {
+							game.attacker = 0;
+						}
 		            }
 		          } else {
 		            var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
@@ -3068,6 +3209,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.enemyHero && game.enemyHero.def) {
 					defenceVal = game.enemyHero.def
 				}
+
+				console.log("%cENEMY ARMY FROM MAP: ", 'color: #333; background: #fc3; padding: 6px;', game.enemyHeroArmy);
 
 				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
 				game.attacker = 2;
@@ -3284,6 +3427,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
 				game.myhero.aCampaignLong         += 1;
 				game.myhero.aCampaignTotalLong    += 1;
+				game.ac_steps                     += 1;
+				if (game.ac_steps === 2) {
+					if (!game.tips.includes("tutorial_two_steps")){
+						game.tips.push("tutorial_two_steps");
+						showModal(0, '', getAck, locObj.tutorial_two_steps.txt, locObj.okay.txt, '');
+					}
+				}
 				var heroTroopsPrice = game.heroTroopsPrice();
 				var rnd = Math.floor((Math.random() * 24) + 1);
 				if (game.myhero.stance === 0) {//aggressive stance
@@ -3318,7 +3468,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postJournalLog(localeStrings[175]);
 					}
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
 				if (game.myhero.aCampaignLong-1>0){
@@ -3339,7 +3489,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 					game.myhero.gold               = 0;
 				}
-				game.heroLvlUp();
+				game.heroLvlUp("AutoCampaign");
 			}
 		},
 		isHeroHaveTroops : function () {
@@ -3772,9 +3922,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
 			}
 		},
-		heroLvlUp : function () {
+		heroLvlUp : function (campaignType) {
 			if (game.myhero.exp > game.heroNextLvlExpLimit()){
 				game.myhero.level +=1;
+				var heroAttributesRandomizer = new WeightedRandom();
+				if (game.myhero.class === 0) {
+					heroAttributesRandomizer.addEntry('atk', 60.0);
+					heroAttributesRandomizer.addEntry('def', 40.0);
+					heroAttributesRandomizer.addEntry('int', 0.0); // Temp logic for knight, until there is no magic mechanics at autocampaign
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
+
+				if (game.myhero.class === 1) {
+					heroAttributesRandomizer.addEntry('atk', 45.0);  //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('def', 55.0); //Temp logic for monk, until there is no magic mechanics in autocampaign
+					heroAttributesRandomizer.addEntry('int', 0.0);
+					heroAttributesRandomizer.addEntry('mpow', 0.0);
+				}
 
 				var rndAttrName = heroAttributesRandomizer.getRandom();
 				game.myhero[rndAttrName]++;
@@ -3783,7 +3947,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.recalcManaPoints();
 				}
 
-				postJournalLog(localeStrings[224]);
+				if (campaignType === "AutoCampaign") {
+					postJournalLog(localeStrings[224]);
+				}
 			}
 		},
 
@@ -3793,6 +3959,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		heroDie : function () {
 			game.myhero = {};
+			//heroAttributesRandomizer.clearEntriesList();
 			updateHeroStatus();
 			writeSave();
 		},
@@ -4517,6 +4684,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			//game.getReward();
 			pop_m         = 0;
 			pop_was       = game.pop;
+			game.ticks    = game.ticks + 1;
 			game.season   = game.season + 1;
 			if (game.season === 5) {
 				game.season   = 1;
@@ -4544,8 +4712,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postEventLog(msg);
 						game.userPopAck = 1;
 					}
-					if (!game.tips.includes("tutorial1-pop0")){
-						game.tips.push("tutorial1-pop0");
+					//TUTORIALS
+					if (!game.tips.includes("tutorial1_pop0")){
+						game.tips.push("tutorial1_pop0");
 						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
 					}
 				}
@@ -4685,6 +4854,38 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 				postEventLog(msg);
 			};
+			//TUTORIALS
+			
+			if (game.ticks === 3){
+				if (!game.tips.includes("tutorial_defense")){
+					game.tips.push("tutorial_defense");
+					showModal(0, '', getAck, locObj.tutorial_defense.txt, locObj.okay.txt, '')
+				}
+			}
+			if (!game.tips.includes("tutorial_treasury") && game.gold>=200 && !dialogShown){
+				game.tips.push("tutorial_treasury");
+				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_autosave") && game.ticks>=10 && !dialogShown){
+				game.tips.push("tutorial_autosave");
+				showModal(0, '', getAck, locObj.tutorial_autosave.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_stable") && game.pop>=50 && !dialogShown){
+				game.tips.push("tutorial_stable");
+				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_archery") && game.pop>=70 && !dialogShown){
+				game.tips.push("tutorial_archery");
+				showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_inn") && game.pop>=100 && !dialogShown){
+				game.tips.push("tutorial_inn");
+				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
+			}
+			if (!game.tips.includes("tutorial_social") && game.pop>=120 && !dialogShown){
+				game.tips.push("tutorial_inn");
+				showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
+			}
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//TODO
@@ -4761,7 +4962,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Home") {
-				if (game.gold >= Math.pow(config.costHome,(game.buildLevelH*1 + 1))) {
+				if (game.gold >= Math.pow(config.costHome,(game.buildLevelH*1 + 1)) && game.buildLevelH < config.maxLevelHome) {
 					game.gold               = game.gold - Math.pow(config.costHome,(game.buildLevelH*1 + 1));
 					game.buildLevelH        = game.buildLevelH*1 + 1;
 					commonBuild();
@@ -4776,6 +4977,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.gold >= Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1))) {
 					game.gold               = game.gold - Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1));
 					game.buildLevelTreasury = game.buildLevelTreasury*1 + 1;
+					if (!game.tips.includes("tutorial_treasury_guards")){
+						game.tips.push("tutorial_treasury_guards");
+						showModal(0, '', getAck, locObj.tutorial_treasury_guards.txt, locObj.okay.txt, '')
+						updateImagesBuildingTab();
+					}
 					commonBuild();
 					return true;
 				} else {
@@ -4785,7 +4991,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Gallows") {
-				if (game.gold >= Math.pow(config.costGallows,(game.buildLevelGallows*1 + 1)) && game.buildLevelFountain == 0) {
+				if (game.gold >= Math.pow(config.costGallows,(game.buildLevelGallows*1 + 1)) && game.buildLevelFountain == 0 && game.buildLevelGallows < config.maxLevelGallows) {
 					game.gold               = game.gold - Math.pow(config.costGallows,(game.buildLevelGallows*1 + 1));
 					game.buildLevelGallows  = game.buildLevelGallows*1 + 1;
 					commonBuild();
@@ -4797,7 +5003,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Fountain") {
-				if (game.gold >= Math.pow(config.costFountain,(game.buildLevelFountain*1 + 1)) && game.buildLevelGallows == 0) {
+				if (game.gold >= Math.pow(config.costFountain,(game.buildLevelFountain*1 + 1)) && game.buildLevelGallows == 0 && game.buildLevelGallows < config.maxLevelGallows) {
 					game.gold               = game.gold - Math.pow(config.costFountain,(game.buildLevelFountain*1 + 1));
 					game.buildLevelFountain = game.buildLevelFountain*1 + 1;
 					commonBuild();
@@ -4817,11 +5023,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Inn") {
-				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1))) {
+				//TUTORIAL
+				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1)) && game.buildLevelInn < config.maxLevelInn) {
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					if (game.buildLevelInn===1) {
 						game.generateMapCallback(true);
+						if (!game.tips.includes("tutorial_catastrophe")){
+							game.tips.push("tutorial_catastrophe");
+							showModal(0, '', getAck, locObj.tutorial_catastrophe.txt, locObj.okay.txt, '')
+						}
 					}
 					populateHeroesForHire();
 					commonBuild();
@@ -4833,8 +5044,30 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Stable") {
-				if (game.gold >= Math.pow(config.costStable,(game.buildLevelStable*1 + 1))) {
+				if (game.gold >= Math.pow(config.costStable,(game.buildLevelStable*1 + 1)) && game.buildLevelStable < config.maxLevelStable) {
 					game.gold               = game.gold - Math.pow(config.costStable,(game.buildLevelStable*1 + 1));
+
+					if (game.buildLevelStable >= 1) {
+						sergeantsData.attack++;
+						sergeantsData.defence++;
+						sergeantsData.health = Math.round(sergeantsData.health * 1.1);
+						updateUnitsStats();
+					}
+
+					if (game.buildLevelArchery >= 1) {
+						turkopolsData.attack++;
+						turkopolsData.defence++;
+						turkopolsData.health = Math.round(turkopolsData.health * 1.1);
+						updateUnitsStats();
+					}
+
+					if (game.buildLevelStable >= 2) {
+						knightsData.attack++;
+						knightsData.defence++;
+						knightsData.health = Math.round(knightsData.health * 1.2);
+						updateUnitsStats();
+					}
+
 					game.buildLevelStable   = game.buildLevelStable*1 + 1;
 					commonBuild();
 					return true;
@@ -4845,7 +5078,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Archery") {
-				if (game.gold >= Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1))) {
+				if (game.gold >= Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1)) && game.buildLevelArchery < config.maxLevelArchery) {
 					game.gold                = game.gold - Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1));
 					game.buildLevelArchery   = game.buildLevelArchery*1 + 1;
 					commonBuild();
@@ -4986,71 +5219,84 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		theftFromTreasury : function () {
-			var guards = 0;
-			guards    += game.sergeants + game.turkopols + game.knights;
-			if (game.heroExists()===true) {
-				if (game.myhero.status===0){// in town
-					guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
+			if (game.buildLevelTreasury > 0) {
+				var guards = 0;
+				guards    += game.sergeants + game.turkopols + game.knights;
+				if (game.heroExists()===true) {
+					if (game.myhero.status===0){// in town
+						guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
+					}
 				}
-			}
-			guards     = Math.ceil(guards / 4);
-			guards    += game.treasuryGuard;
-			rndThieves = Math.floor(Math.random()*(guards+1)+1);
-			console.log(rndThieves);
-			if (rndThieves === 1) {
-				goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
-				if (goldLost > game.gold) {
-					goldLost = game.gold;
+				guards     = Math.ceil(guards / 4);
+				guards    += game.treasuryGuard;
+				rndThieves = Math.floor(Math.random()*(guards+1)+1);
+				console.log(rndThieves);
+				if (rndThieves === 1) {
+					goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
+					if (goldLost > game.gold) {
+						goldLost = game.gold;
+					}
+					if (game.checkAudio('sfx', 'events')===true) {
+						document.getElementById('stealingAudio0').play();
+					}
+					game.gold     = game.gold - goldLost;
+					msg = localeStrings[42].replace("%arg1", goldLost);
+					postEventLog(msg);
+					updateResources();
+					if (!game.tips.includes("tutorial_stash")){
+						game.tips.push("tutorial_stash");
+						showModal(0, '', getAck, locObj.tutorial_stash.txt, locObj.okay.txt, '')
+					}
+				} else {
+					//TODO make a message about failed robbery
 				}
-				if (game.checkAudio('sfx', 'events')===true) {
-					document.getElementById('stealingAudio0').play();
-				}
-				game.gold     = game.gold - goldLost;
-				msg = localeStrings[42].replace("%arg1", goldLost);
-				postEventLog(msg);
-				updateResources();
-			} else {
-				//TODO make a message about failed robbery
 			}
 		},
 		startFire : function () {
-			if (game.fire === 0) {
-				rnd = Math.floor((Math.random() * 3) + 1);
-				if (rnd === 1) {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[38]);
-					postEventLog(msg);
-					game.fire = 1;
-					if (game.checkAudio('sfx', 'actions')===true) {
-						document.getElementById('fireAudio0').play();
-					}
-					composite();
-					game.fireSteps = config.fireStepsBasic;
-					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1","0");
-					if (game.fireGuard===1){
-						document.getElementById("divFBProgress").style.display="inline";
-					}
-					document.getElementById("gameIcon").href="resources/favicon-flame.png";
-					//TODO make a certain building in fire, not just "city"
-					if (game.buildLevelD == 1) {
-						ceil = 1
-					}
-					if (game.buildLevelD == 2) {
-						ceil = 2
-					}
-					rnd = Math.floor((Math.random() * 2) + 0);
-					if (rnd === 0) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-					}
+			if (game.year > 1260) {
+				if (game.fire === 0) {
+					rnd = Math.floor((Math.random() * 3) + 1);
 					if (rnd === 1) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1",localeStrings[38]);
+						postEventLog(msg);
+						game.fire = 1;
+						if (game.checkAudio('sfx', 'actions')===true) {
+							document.getElementById('fireAudio0').play();
+						}
+						composite();
+						game.fireSteps = config.fireStepsBasic;
+						document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1","0");
+						if (game.fireGuard===1){
+							document.getElementById("divFBProgress").style.display="inline";
+						}
+						document.getElementById("gameIcon").href="resources/favicon-flame.png";
+						//TUTORIALS
+						if (!game.tips.includes("tutorial_firebrigade") && game.pop>=50){
+							game.tips.push("tutorial_firebrigade");
+							showModal(0, '', getAck, locObj.tutorial_firebrigade.txt, locObj.okay.txt, '')
+						}
+						//TODO make a certain building in fire, not just "city"
+						if (game.buildLevelD == 1) {
+							ceil = 1
+						}
+						if (game.buildLevelD == 2) {
+							ceil = 2
+						}
+						rnd = Math.floor((Math.random() * 2) + 0);
+						if (rnd === 0) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
+						if (rnd === 1) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
+						if (rnd === 0) {
+							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
+						}
 					}
-					if (rnd === 0) {
-						//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-					}
+				} else {
+					//you can't get another fire, while you do have previous still burning your city. For now.
 				}
-			} else {
-				//you can't get another fire, while you do have previous still burning your city. For now.
 			}
 		},
 		putOutFire : function () {
@@ -5248,7 +5494,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var autosaveObject;
 	setupAutosave();//DEBUG
 	composite();
-	
+	openLog();
 	setupNickname();
 	
 	//init timers
@@ -5315,6 +5561,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			heroAttributesRandomizer.addEntry('def', hero.curveDef);
 			heroAttributesRandomizer.addEntry('int', hero.curveInt);
 			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
+			console.log(heroAttributesRandomizer.entries);
+
 			for (i=0; i<game.buildLevelInn-1;i++){
 				var rndAttrName    = heroAttributesRandomizer.getRandom();
 				hero[rndAttrName]++;
@@ -5782,6 +6030,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			document.getElementById(disabledElements[i]).disabled = false;
 		}
 		disabledElements = [];
+		dialogShown = false;
 	}
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
@@ -5876,11 +6125,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblGoodsForSale").innerText     = localeStrings[260];
-		document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
-		document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
-		document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
+
+		//document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
+		//document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
+		//document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
 		document.getElementById("lblGoodsForBuying").innerText   = localeStrings[263];
-		document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
+		//document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
 		document.getElementById("btnLeaveBlackmarket").innerText = localeStrings[222];
 		document.getElementById("lblFirebrigade").innerText      = localeStrings[270];
 		document.getElementById("lblFBOption").innerText         = localeStrings[271];
@@ -5903,6 +6153,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		updateButtonCaptions();
 		updateHeroStatus();
 		loadArtifacts();
+		updateUI();
 	}
 	function loadArtifacts(){
 		include('artifacts.js',function(){
@@ -6575,6 +6826,33 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (game.buildLevelD === 3) {
 			document.getElementById("defence").setAttribute("style", "display:none");
 		}
+
+		if (game.buildLevelH === config.maxLevelHome) {
+			document.getElementById("homes").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelGallows === config.maxLevelGallows) {
+			document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelFountain === config.maxLevelFountain) {
+			document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
+		}
+
+
+		if (game.buildLevelInn === config.maxLevelInn) {
+			document.getElementById("buttonBldInn").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelStable === config.maxLevelStable) {
+			document.getElementById("buttonBldStable").setAttribute("style", "display:none");
+		}
+
+		if (game.buildLevelArchery === config.maxLevelArchery) {
+			document.getElementById("buttonBldArchery").setAttribute("style", "display:none");
+		}
+
+
 		if (game.buildLevelFountain > 0) {
 			document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
 		}
@@ -6585,6 +6863,21 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 	}
+
+	function updateUnitsStats() {
+		document.getElementById("sergeantsAttack").innerText = sergeantsData.attack;
+		document.getElementById("sergeantsDefence").innerText = sergeantsData.defence;
+		document.getElementById("sergeantsHealth").innerText = sergeantsData.health;
+
+		document.getElementById("turkopolsAttack").innerText = turkopolsData.attack;
+		document.getElementById("turkopolsDefence").innerText = turkopolsData.defence;
+		document.getElementById("turkopolsHealth").innerText = turkopolsData.health;
+
+		document.getElementById("knightsAttack").innerText = knightsData.attack;
+		document.getElementById("knightsDefence").innerText = knightsData.defence;
+		document.getElementById("knightsHealth").innerText = knightsData.health;
+	}
+
 	function updateHeroStatus() {
 		if ( game.heroExists() === true) {
 			var lblHeroClass    = localeStrings[204][game.myhero.class];
@@ -6724,7 +7017,31 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 				HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 			}
-			document.getElementById("heroStats").innerHTML = HTMLofHeroStats;
+
+			var heroStatsElem = document.getElementById("heroStats"); 
+			heroStatsElem.innerHTML = HTMLofHeroStats;
+			
+			var equipmentTitleElem = document.createElement("div");
+			var equipmentListElem = document.createElement("div");
+			equipmentListElem.setAttribute("id", "heroEquipment");
+			equipmentTitleElem.innerText = "Equiped:";
+			heroStatsElem.appendChild(equipmentTitleElem);
+			heroStatsElem.appendChild(equipmentListElem);
+
+			for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {
+				var wrapper = document.getElementById('heroEquipment');
+				var imgWrapperElement = document.createElement("div");
+				var imgElement = document.createElement("img");
+
+				var imgSrc = "resources/" + game.myhero.inventoryWorn[i].img;
+				imgElement.setAttribute("src", imgSrc);
+
+				imgWrapperElement.classList.add("inventory-item__wrapper-img");
+				imgWrapperElement.appendChild(imgElement)
+
+				wrapper.appendChild(imgWrapperElement);
+			}
+
 		} else {
 			document.getElementById("heroStats").innerHTML = "";
 			document.getElementById("hireHeroBlock").style.display = "inline";
@@ -6765,50 +7082,51 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
-		var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
-		if (changeSaleOffer!==null) {
-			if (changeSaleOffer!==undefined){
-				selectGoodsForBuying.options[changeSaleOffer].remove();
-			}
-		}
-		var selectedItemIndex = selectGoodsForBuying.selectedIndex;
-		selectGoodsForBuying.length = 0;
-		for(var j in game.blackMarketGoods)	{
-			selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
-		}
-		if (selectedItemIndex!==-1) {
-			selectGoodsForBuying.selectedIndex=selectedItemIndex;
-		}
-		if (game.blackMarketGoods.length!==0){
-			if (selectedItemIndex !== -1){
-				document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
-			}
-		}
-		document.getElementById("lblArtefactSellPriceValue").innerText=0;
-		if (game.heroExists()){
-			var selectGoodsForSale = document.getElementById("selectGoodsFromHero");
-			if (changeBuyOffer!==null) {
-				if (changeSaleOffer!==undefined){
-					selectGoodsForSale.options[changeBuyOffer].remove();
-				}
-			}
-			var selectedSaleItemIndex = selectGoodsForSale.selectedIndex;
-			selectGoodsForSale.length = 0;
-			for(var i in game.myhero.inventory)	{
-				selectGoodsForSale.add(new Option(artefacts[game.myhero.inventory[i]].name,artefacts[game.myhero.inventory[i]].id));
-			}
-			if (selectedItemIndex!==-1) {
-				selectGoodsForSale.selectedIndex=selectedSaleItemIndex;
-			}
-			if (game.myhero.inventory.length!==0){
-				if (selectedSaleItemIndex !== -1){
-					document.getElementById("btnSellArtefact").disabled = false;
-					document.getElementById("lblArtefactSellPriceValue").innerText = artefacts[game.myhero.inventory[selectedSaleItemIndex]].priceBuy/2;
-				} else { document.getElementById("btnSellArtefact").disabled = true; }
-			} else {
-				document.getElementById("btnSellArtefact").disabled = true;
-			}
-		}
+
+		// var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
+		// if (changeSaleOffer!==null) {
+		// 	if (changeSaleOffer!==undefined){
+		// 		selectGoodsForBuying.options[changeSaleOffer].remove();
+		// 	}
+		// }
+		// var selectedItemIndex = selectGoodsForBuying.selectedIndex;
+		// selectGoodsForBuying.length = 0;
+		// for(var j in game.blackMarketGoods)	{
+		// 	selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
+		// }
+		// if (selectedItemIndex!==-1) {
+		// 	selectGoodsForBuying.selectedIndex=selectedItemIndex;
+		// }
+		// if (game.blackMarketGoods.length!==0){
+		// 	if (selectedItemIndex !== -1){
+		// 		document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
+		// 	}
+		// }
+		// document.getElementById("lblArtefactSellPriceValue").innerText=0;
+		// if (game.heroExists()){
+		// 	var selectGoodsForSale = document.getElementById("selectGoodsFromHero");
+		// 	if (changeBuyOffer!==null) {
+		// 		if (changeSaleOffer!==undefined){
+		// 			selectGoodsForSale.options[changeBuyOffer].remove();
+		// 		}
+		// 	}
+		// 	var selectedSaleItemIndex = selectGoodsForSale.selectedIndex;
+		// 	selectGoodsForSale.length = 0;
+		// 	for(var i in game.myhero.inventory)	{
+		// 		selectGoodsForSale.add(new Option(artefacts[game.myhero.inventory[i]].name,artefacts[game.myhero.inventory[i]].id));
+		// 	}
+		// 	if (selectedItemIndex!==-1) {
+		// 		selectGoodsForSale.selectedIndex=selectedSaleItemIndex;
+		// 	}
+		// 	if (game.myhero.inventory.length!==0){
+		// 		if (selectedSaleItemIndex !== -1){
+		// 			document.getElementById("btnSellArtefact").disabled = false;
+		// 			document.getElementById("lblArtefactSellPriceValue").innerText = artefacts[game.myhero.inventory[selectedSaleItemIndex]].priceBuy/2;
+		// 		} else { document.getElementById("btnSellArtefact").disabled = true; }
+		// 	} else {
+		// 		document.getElementById("btnSellArtefact").disabled = true;
+		// 	}
+		// }
 	}
 	function getTime(type) {
 		var d  = new Date();
@@ -6843,7 +7161,109 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			textareaJrnl.scrollTop = textareaJrnl.scrollHeight;
 		}
 	}
-	function updateImagesBuildingTab () {
+	function updateImagesBuildingTab() {
+		//HIDING
+		console.log("update images building tab");
+		if (!game.tips.includes("tutorial1_pop0") && game.buildLevelH===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+			}
+			document.getElementById("tabBuilding").style = "visibility: hidden;"
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_house_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+			}
+			document.getElementById("tabBuilding").style = "";
+		}
+		if (!game.tips.includes("tutorial_defense") && game.buildLevelD===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+				console.log(tabBldElements);
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+				console.log(tabBldElements);
+			}
+		}
+		
+		if (!game.tips.includes("tutorial_treasury") && game.buildLevelTreasury ===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_treasury_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+			}
+		}
+		
+		if (!game.tips.includes("tutorial_social") && game.buildLevelFountain===0 && game.buildLevelGallows===0 ){
+			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_social_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+			}
+			updateButtonCaptions();
+		}
+		
+		if (!game.tips.includes("tutorial_stash") && game.buildLevelStash===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_stash_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+			}
+		}
+		
+		if (!game.tips.includes("tutorial_stable") && game.buildLevelStable===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_stable_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+			}
+		}
+		
+		if (!game.tips.includes("tutorial_archery") && game.buildLevelArchery===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_archery_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+			}
+		}
+		
+		if (!game.tips.includes("tutorial_inn") && game.buildLevelInn===0){
+			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "visibility: hidden;"
+			}
+		} else {
+			var tabBldElements = document.getElementsByClassName("bld_tab_inn_class");
+			for (tabBldElem of tabBldElements){
+				tabBldElem.style = "";
+			}
+		}
+		
 		if (game.buildLevelD === 1) {
 			elementText = document.getElementById("defences_img").innerHTML;
 			if (elementText.indexOf("btab_w_castle.png") === -1) {
@@ -6864,6 +7284,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		return playerDecision;
 	}
 	function showModal(typeofModal, dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo) {
+		dialogShown = true;
 		if (typeofModal===0) {
 			myCanvas(dlgImage, dlgCallback, dlgMessage,  dlgAnswerOne, dlgAnswerTwo);
 		}
@@ -6954,6 +7375,30 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			game.festival_cooldown = 0;
 		}
 	}
+	function openChat() {
+		log_dom   = document.getElementById("console_n_chat");
+		chat_dom  = document.getElementById("chat");
+		nick_dom  = document.getElementById("inp_nickname");
+		msg_dom   = document.getElementById("msg_out");
+		btn_send  = document.getElementById("btnSend");
+		log_dom.style.visibility  = "hidden";
+		chat_dom.style.visibility = "visible";
+		nick_dom.style.visibility = "visible";
+		msg_dom.style.visibility  = "visible";
+		btn_send.style.visibility = "visible";
+	}
+	function openLog() {
+		log_dom   = document.getElementById("console_n_chat");
+		chat_dom  = document.getElementById("chat");
+		nick_dom  = document.getElementById("inp_nickname");
+		msg_dom   = document.getElementById("msg_out");
+		btn_send  = document.getElementById("btnSend");
+		log_dom.style.visibility  = "visible";
+		chat_dom.style.visibility = "hidden";
+		nick_dom.style.visibility = "hidden";
+		msg_dom.style.visibility  = "hidden";
+		btn_send.style.visibility = "hidden";
+	}
 </script>
 <script>
 	function openTab(evt, tabName) {
@@ -6969,6 +7414,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
 			document.getElementById("inpStnAliasValue").value = game.alias;
 		}
+		
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
@@ -6980,6 +7426,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById(tabName).style.display = "block";
 		if (evt !== null) {
 			evt.currentTarget.className += " active";
+		}
+		if (tabName==="tabTroopsHiring"){
+			if (!game.tips.includes("tutorial_moving_troops") && game.heroExists()){
+				game.tips.push("tutorial_moving_troops");
+				showModal(0, '', getAck, locObj.tutorial_moving_troops.txt, locObj.okay.txt, '');
+			}
 		}
 	}
 	document.getElementById("tabCity").click();
@@ -7003,6 +7455,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 </script>
 <script async src="dialogue.js"></script>
+<script async src="shop.js"></script>
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
 <script async>
@@ -7035,6 +7488,59 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			d.addEventListener("DOMContentLoaded", f, false);
 		} else { f(); }
 	})(document, window, "yandex_metrika_callbacks");
+</script>
+<script>
+	log_dom   = document.getElementById("console_n_chat");
+	chat_dom  = document.getElementById("chat");
+	nick_dom  = document.getElementById("inp_nickname");
+	msg_dom   = document.getElementById("msg_out");
+	btn_send  = document.getElementById("btnSend");
+	users = document.querySelector('.users');
+	websocket = new WebSocket("ws://mydiod.ga:6699/");
+	function send() {
+		sending_msg  = msg_dom.value;
+		sending_auth = nick_dom.value;
+		console.log("the message out values is "+sending_msg);
+		console.log("the author out values is "+sending_auth);
+		websocket.send(JSON.stringify({"msg": sending_msg, "author":sending_auth}));
+		}
+	function get_offset() {
+		//get server time
+		//get browser time
+		currentLocTime = Math.floor(Date.now() / 1000);
+		console.log(currentLocTime);
+	}
+	websocket.onmessage = function (event) {
+		data = JSON.parse(event.data);
+		switch (data.type) {
+			case 'state':
+				//value.textContent = data.value;
+				console.log(data);
+				chat_dom.innerHTML = "";
+				data.msg.forEach(printToChat);
+				get_offset();
+				function printToChat(item, index) {
+					chat_box = chat_dom;
+					msg  = "["+item[2]+"] ";
+					msg += item[0]+": "+item[1];
+					chat_box.innerHTML += msg+"<br>";
+					var textarea = chat_box;
+					if(textarea.selectionStart === textarea.selectionEnd) {
+						textarea.scrollTop = textarea.scrollHeight;
+					}
+				}
+				break;
+			case 'users':
+				/*
+				users.textContent = (
+				data.count.toString() + " user" +
+				(data.count == 1 ? "" : "s"));
+				*/
+				break;
+			default:
+				console.error("unsupported event", data);
+		}
+	};
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
