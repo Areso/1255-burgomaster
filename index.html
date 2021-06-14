@@ -1059,7 +1059,7 @@
 			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
 			<input id="inp_nickname"  style="position: absolute; top: 725px; left:  10px; width: 100px;" value="Nickname" ></input>
 			<input id="msg_out"       style="position: absolute; top: 725px; left: 120px; width: 500px;" value=""         ></input>
-			<button id="btnSend" onclick="send()" style="position: absolute; top: 725px; left: 700px; width: 100px;"          >send</button>
+			<button id="btnSend" onclick="sendOnClick()"   style="position: absolute; top: 725px; left: 700px; width: 100px;"          >send</button>
 		
 		</div>
 		
@@ -7497,14 +7497,22 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	btn_send  = document.getElementById("btnSend");
 	users = document.querySelector('.users');
 	websocket = new WebSocket("ws://mydiod.ga:6699/");
-	function send() {
+	function sendOnClick() {
+		send();
+	}
+	msg_dom.onkeypress = function(e) {
+		if(e.keyCode === 13) {
+			send();
+		}
+	}
+	function send(){
 		sending_msg  = msg_dom.value;
 		sending_auth = nick_dom.value;
 		msg_dom.value = "";
 		console.log("the message out values is "+sending_msg);
 		console.log("the author out values is "+sending_auth);
 		websocket.send(JSON.stringify({"msg": sending_msg, "author":sending_auth}));
-		}
+	}
 	function get_offset() {
 		//get server time
 		//get browser time
