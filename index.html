@@ -4928,37 +4928,37 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		Build : function (Structure) {
 			if (Structure==="Wall" || Structure ==="Tower" || Structure ==="Castle") {
 				//WALL
-				if (game.gold >= config.costWall && game.buildLevelD == 0) {
-					game.buildLevelD        = game.buildLevelD*1 + 1;
-					game.gold               = game.gold - config.costWall;
-					commonBuild();
-					return true;
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+				if (game.buildLevelD === 0) {
+					if (game.gold >= config.costWall){
+						game.buildLevelD        = game.buildLevelD*1 + 1;
+						game.gold               = game.gold - config.costWall;
+						commonBuild();
+						return true;
+					} else {
+						postEventLog(localeStrings[20], "bold");
+					}
 				}
 				//WOODEN TOWER
-				if (game.gold >= config.costTower && game.buildLevelD == 1) {
-					game.buildLevelD        = game.buildLevelD*1 + 1;
-					game.gold               = game.gold - config.costTower;
-					commonBuild();
-					return true;
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+				if (game.buildLevelD === 1) {
+					if (game.gold >= config.costTower){
+						game.buildLevelD        = game.buildLevelD*1 + 1;
+						game.gold               = game.gold - config.costTower;
+						commonBuild();
+						return true;
+					} else {
+						postEventLog(localeStrings[20], "bold");
+					}
 				}
 				//STONE CASTLE
-				if (game.gold >= config.costCastle && game.buildLevelD == 2) {
-					game.buildLevelD        = game.buildLevelD*1 + 1;
-					game.gold               = game.gold - config.costCastle;
-					commonBuild();
-					return true;
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+				if (game.buildLevelD === 2) {
+					if (game.gold >= config.costCastle) {
+						game.buildLevelD        = game.buildLevelD*1 + 1;
+						game.gold               = game.gold - config.costCastle;
+						commonBuild();
+						return true;
+					} else {
+						postEventLog(localeStrings[20], "bold");
+					}
 				}
 			}
 			if (Structure==="Home") {
@@ -6770,6 +6770,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		setupAutosave();
 		setupNickname();
 		setupEventLogSizeUI();
+		updateImagesBuildingTab()
 		composite();
 		enforceColorMode();
 		updateUI();
@@ -7185,10 +7186,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				console.log(tabBldElements);
 			}
 		} else {
-			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
-			for (tabBldElem of tabBldElements){
-				tabBldElem.style = "";
-				console.log(tabBldElements);
+			if (game.buildLevelD === 3) {
+				document.getElementById("defencies_img").style.visibility="visible";
+			} else {
+				var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
+				for (tabBldElem of tabBldElements){
+					tabBldElem.style = "";
+					console.log(tabBldElements);
+				}
 			}
 		}
 		
@@ -7272,6 +7277,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		}
 		if (game.buildLevelD === 2) {
+			elementText = document.getElementById("defences_img").innerHTML;
+			if (elementText.indexOf("btab_st_castle.png") === -1) {
+				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
+			}
+		}
+		if (game.buildLevelD === 3) {
 			elementText = document.getElementById("defences_img").innerHTML;
 			if (elementText.indexOf("btab_st_castle.png") === -1) {
 				document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
