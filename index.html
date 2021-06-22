@@ -4883,7 +4883,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
 			}
 			if (!game.tips.includes("tutorial_social") && game.pop>=120 && !dialogShown){
-				game.tips.push("tutorial_inn");
+				game.tips.push("tutorial_social");
 				showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
 			}
 			cnt_cursession = cnt_cursession+1;
@@ -6720,6 +6720,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (localStorage.getItem('game')!==null){
 				//Object.assign(game, JSON.parse(localStorage.getItem('game')));//DOESN'T WORK IN IE AT ALL.
 				gameTemp = JSON.parse(localStorage.getItem('game'));
+				dialogShown = false;
 				overrideGame(gameTemp);
 			} else {
 				//TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
