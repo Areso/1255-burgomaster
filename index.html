@@ -7562,8 +7562,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				get_offset();
 				function printToChat(item, index) {
 					chat_box = chat_dom;
-					msg  = "["+item[2]+"] ";
-					msg += item[0]+": "+item[1];
+					//item[2] is Linux time
+					let usertime = new Date(item[2]);
+					usertime     = usertime.toLocaleTimeString();
+					msg          = "["+usertime+"] ";
+					msg         += item[0]+": "+item[1];
 					chat_box.innerHTML += msg+"<br>";
 					var textarea = chat_box;
 					if(textarea.selectionStart === textarea.selectionEnd) {
