@@ -378,6 +378,18 @@
 		/* Chatbro Widget Embed Code End */
 		ChatbroLoader({encodedChatId: '1Leg'});
 	</script>
+	<script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+      'use strict';
+      Sentry.init({ dsn: 'https://84a2a9b7436b40a6868d8493ee91c6dd@o1014630.ingest.sentry.io/5979860' });
+      
+        try {
+          throw new Error('Caught');
+        } catch (err) {
+          Sentry.captureException(err);
+        }
+      
+    </script>
 </head>
 <body>
 <div id="htmlGame">
@@ -7580,6 +7592,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 	};
 </script>
+
 <noscript><div><img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </body>
