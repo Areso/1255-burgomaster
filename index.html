@@ -7545,12 +7545,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		console.log("the author out values is "+sending_auth);
 		websocket.send(JSON.stringify({"msg": sending_msg, "author":sending_auth}));
 	}
-	function get_offset() {
-		//get server time
-		//get browser time
-		currentLocTime = Math.floor(Date.now() / 1000);
-		console.log(currentLocTime);
-	}
 	websocket.onmessage = function (event) {
 		data = JSON.parse(event.data);
 		switch (data.type) {
@@ -7559,11 +7553,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				console.log(data);
 				chat_dom.innerHTML = "";
 				data.msg.forEach(printToChat);
-				get_offset();
+				
 				function printToChat(item, index) {
 					chat_box = chat_dom;
-					msg  = "["+item[2]+"] ";
-					msg += item[0]+": "+item[1];
+					let tzoffset = (new Date()).getTimezoneOffset() * 60000;
+					let usertime = new Date(item[2]*1000);
+					usertime     = usertime.toLocaleTimeString();
+					msg          = "["+usertime+"] ";
+					msg         += item[0]+": "+item[1];
 					chat_box.innerHTML += msg+"<br>";
 					var textarea = chat_box;
 					if(textarea.selectionStart === textarea.selectionEnd) {
