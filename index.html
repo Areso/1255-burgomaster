@@ -440,9 +440,9 @@
 		</div>
 		<div id="Settings" class="tabcontent">
 			<h3><div id="labelSettings">Settings</div></h3>
-			<!--<button id="btnReg">REG</button>  <button id="btnLogin">LOGIN</button><br>-->
-			Nickname: <input id="login"    type="text"    value=""><br>
-			Password: <input id="password" type="pasword" value=""><br>
+			<button id="btnReg" onclick="setReg()">REG</button>  <button id="btnLogin" onclick="setLogin()">LOGIN</button><br>
+			Nickname: <input id="login"    type="text"     value=""><br>
+			Password: <input id="password" type="password" value=""><br>
 			<button id="btnRegLogin" onclick="game.remoteRegLogin()">REG/LOGIN</button><br><hr>
 			<select id="selectLng" size="1" onchange="reloadLang()">
 				<option id="optionLngEn" selected value="en-US">English</option>
@@ -1085,6 +1085,7 @@
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
+<!--WINDOW TITLE-->
 <script>
 			var url = window.location.pathname;
 			var filename = url.substring(url.lastIndexOf('/')+1);
@@ -1102,6 +1103,7 @@
 			}
 			*/
 </script>
+<!--TOWN CANVAS-->
 <script>
 	//TOWN
 	canvas  = document.getElementById("canvas");
@@ -1582,6 +1584,7 @@
 	}
 	//composite();
 </script>
+<!--ADVENTURE MAP-->
 <script>
 	//THE ADVENTURE MAP
 	var canvas_map      = document.getElementById("canvasMap");
@@ -1784,8 +1787,17 @@
 		}
 	}
 </script>
+<!--THE GAME-->
 <script>
 //THE GAME
+
+reglogin = "reg";
+function setReg(){
+    reglogin = "reg";
+};
+function setLogin(){
+    reglogin = "login";
+};
 
 /*-- New --*/
 
@@ -2069,24 +2081,38 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			xhttp.send(lastHope_str);
 		},
 		remoteRegLogin : function () {
-		    var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 201) {
-					msg = "registered successfully";
-					postEventLog(msg);
-				}
-				if (this.readyState === 4 && this.status === 200) {
-					msg = "logged successfully";
-					postEventLog(msg);
-				}
-			};
-			login     = document.getElementById("login").value;
-			password  = document.getElementById("password").value;
-			dataToParse = login+delimiter+password;
-			endpoint  = webserver + "/api/v1.1/register_user";
-			xhttp.open("POST", endpoint, true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
+		    if (reglogin==="reg"){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 201) {
+						msg = "registered successfully";
+						postEventLog(msg);
+					}
+				};
+				login     = document.getElementById("login").value;
+				password  = document.getElementById("password").value;
+				dataToParse = login+delimiter+password;
+				endpoint  = webserver + "/api/v1.1/register_user";
+				xhttp.open("POST", endpoint, true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(dataToParse);
+			}
+			if (reglogin==="login"){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 200) {
+						msg = "login successfull";
+						postEventLog(msg);
+					}
+				};
+				login     = document.getElementById("login").value;
+				password  = document.getElementById("password").value;
+				dataToParse = login+delimiter+password;
+				endpoint  = webserver + "/api/v1.1/login_user";
+				xhttp.open("POST", endpoint, true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(dataToParse);
+			}
 		},
 		eventItemCollected : function () {
 			back_response_ItemCollected = null;
