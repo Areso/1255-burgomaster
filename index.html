@@ -1876,6 +1876,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		this.coordx = coordx;
 		this.coordy = coordy;
 	}
+	//gameconfig
 	var config = {
 		startPop: 6,
 		costWall:2,
@@ -1924,7 +1925,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		maxLevelStable: 3,
 		maxLevelArchery: 3,
 		pullMessages: true,
-		pullMessagesMS: 1000
+		pullMessagesMS: 10000
 	};
 
 	var game = {
@@ -5594,7 +5595,38 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		openTab(null, 'tabAutocampaignJournal');
 		scrollDown();
 	}
+	function fpullMessages() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				messages = JSON.parse(this.responseText);
+				console.log(messages)
+				chat_dom.innerHTML = "";
+				messages.forEach(printToChat);
+			}
+		};
+		session_id = readCookie("session");
+		console.log(session_id);
+		endpoint  = webserver + "/api/v1.1/pull_messages";
+		xhttp.open("GET", endpoint, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send();
 
+	}
+	function printToChat(item) {
+		chat_box = chat_dom;
+		
+		let tzoffset = (new Date()).getTimezoneOffset() * 60000;
+		let usertime = new Date(item[2]*1000);
+		usertime     = usertime.toLocaleTimeString();
+		msg          = "["+usertime+"] ";
+		msg         += item[0]+": "+item[1];
+		chat_box.innerHTML += msg+"<br>";
+		var textarea = chat_box;
+		if(textarea.selectionStart === textarea.selectionEnd) {
+			textarea.scrollTop = textarea.scrollHeight;
+		}
+	}
 	function openTabAutocampaignBattle() {
 		openTab(null, 'tabAutocampaignBattle');
 		scrollDown();
@@ -7635,9 +7667,7 @@ function send2(){
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(dataToParse);
 }
-function fpullMessages(){
 
-}
 </script>
 <script>
 	log_dom   = document.getElementById("console_n_chat");
