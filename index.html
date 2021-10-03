@@ -2086,11 +2086,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			xhttp.send(lastHope_str);
 		},
 		remoteRegLogin : function () {
-		    if (reglogin==="reg"){
+			if (reglogin==="reg"){
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState === 4 && this.status === 201) {
-						msg = "registered successfully";
+						resp_data = JSON.parse(this.responseText);
+						session   = resp_data["session"];
+						console.log(session);
+						msg       = "registered successfully";
 						postEventLog(msg);
 					}
 				};
@@ -2106,6 +2109,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState === 4 && this.status === 200) {
+						resp_data = JSON.parse(this.responseText);
+						session   = resp_data["session"];
+						console.log(session);
 						msg = "login successfull";
 						postEventLog(msg);
 					}
@@ -7656,12 +7662,13 @@ function send2(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState === 4 && this.status === 200) {
-			console.log("message sent")
+			console.log("message sent");
+			fpullMessages();
 		}
 	};
-    session_id = readCookie("session");
-    console.log(session_id);
-	dataToParse = sending_auth+delimiter+password;
+	target = 0;
+	dataToParse = sending_auth+delimiter+session+delimiter;
+	dataToParse+= sending_msg+delimiter+target;
 	endpoint  = webserver + "/api/v1.1/send_message";
 	xhttp.open("POST", endpoint, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
