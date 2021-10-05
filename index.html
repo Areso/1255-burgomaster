@@ -6960,7 +6960,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
 			for (tabBldElem of tabBldElements){
 				tabBldElem.style = "visibility: hidden;"
-				console.log(tabBldElements);
 			}
 		} else {
 			if (game.buildLevelD === 3) {
@@ -6969,7 +6968,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
 				for (tabBldElem of tabBldElements){
 					tabBldElem.style = "";
-					console.log(tabBldElements);
 				}
 			}
 		}
@@ -7280,6 +7278,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 </script>
 <!--ONLINE OPTIONS-->
 <script>
+	session   = "";
 	log_dom   = document.getElementById("console_n_chat");
 	chat_dom  = document.getElementById("chat");
 	nick_dom  = document.getElementById("inp_nickname");
@@ -7289,7 +7288,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	if (config.online && config.pullMessages){
 		setInterval(fpullMessages, config.pullMessagesMS);
 	}
-		function fpullMessages() {
+	function fpullMessages() {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
@@ -7299,13 +7298,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				messages.forEach(printToChat);
 			}
 		};
-		session_id = readCookie("session");
-		console.log(session_id);
 		endpoint  = webserver + "/api/v1.1/pull_messages";
 		xhttp.open("GET", endpoint, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();
-
 	}
 	function printToChat(item) {
 		chat_box = chat_dom;
@@ -7315,7 +7311,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		usertime       = usertime.toLocaleTimeString();
 		line_to_print  = "["+usertime+"] ";
 		role           = item[4];
-		nickname       = "<span onclick='banUser(this.id)'>"+item[0]+"</span>";
+		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
 		if (role==="admin"){
 			nickname = "<span style='color:#DCAA07'>"+item[0]+"</span>";
 		}
@@ -7328,7 +7324,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		msg_id         = item[3];
 		msg_text       = item[1];
 		line_to_print += nickname+": ";
-		line_to_print +="<span id="+msg_id+" onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
+		line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
 		chat_box.innerHTML += line_to_print+"<br>";
 		var textarea = chat_box;
 		if(textarea.selectionStart === textarea.selectionEnd) {
@@ -7373,6 +7369,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		xhttp.open("POST", endpoint, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(dataToParse);
+	}
+	function deleteMsg(id){
+		
+	}
+	function banUser(name){
+		
 	}
 </script>
 <!--WS-->
