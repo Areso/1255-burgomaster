@@ -1906,7 +1906,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		maxLevelArchery: 3,
 		online: true,
 		pullMessages: true,
-		pullMessagesMS: 10000
+		pullMessagesMS: 10000,
+		debug: true
 	};
 
 	var game = {
@@ -7374,14 +7375,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
-				console.log("message sent");
+				if (config.debug){
+					console.log("message sent");
+				}
 				fpullMessages();
 			}
 		};
 		target = 0;
-		dataToParse = sending_auth+delimiter+session+delimiter;
-		dataToParse+= sending_msg+delimiter+target;
-		endpoint  = webserver + "/api/v1.1/send_message";
+		dataToParse = session+delimiter+id;
+		endpoint  = webserver + "/api/v1.1/delete_message";
 		xhttp.open("POST", endpoint, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(dataToParse);
