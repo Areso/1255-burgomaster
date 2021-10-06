@@ -7371,25 +7371,48 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(dataToParse);
 	}
-	function deleteMsg(id){
+	msgid_to_del = -1;
+	function deleteMsg(msgid){
+		msgid_to_del = msgid;
+		showModal(1, '', deleteMsgPost, "Do you wanna delete the message?", "Yes", "No")
+	}
+	function deleteMsgPost(){
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				if (config.debug){
-					console.log("message sent");
+					console.log("message deleted");
 				}
 				fpullMessages();
 			}
 		};
 		target = 0;
-		dataToParse = session+delimiter+id;
-		endpoint  = webserver + "/api/v1.1/delete_message";
+		dataToParse = session+delimiter+msgid_to_del;
+		endpoint    = webserver + "/api/v1.1/delete_message";
 		xhttp.open("POST", endpoint, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(dataToParse);
 	}
+	user_to_ban = "";
 	function banUser(name){
-		
+		user_to_del = name;
+		showModal(1, '', banUserPost, "Do you wanna ban the user?", "Yes", "No")
+	}
+	function banUserPost(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				if (config.debug){
+					console.log("user banned");
+				}
+			}
+		};
+		target = 0;
+		dataToParse = session+delimiter+user_to_ban;
+		endpoint    = webserver + "/api/v1.1/ban_user";
+		xhttp.open("POST", endpoint, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(dataToParse);
 	}
 </script>
 <!--WS-->
@@ -7405,11 +7428,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function sendOnClick() {
 		send();
 	}
+	/*
 	msg_dom.onkeypress = function(e) {
 		if(e.keyCode === 13) {
 			send();
 		}
 	}
+	*/
 	function send(){
 		sending_msg  = msg_dom.value;
 		sending_auth = nick_dom.value;
