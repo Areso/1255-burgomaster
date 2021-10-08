@@ -1,0 +1,298 @@
+		msg = "version 1.0.327";
+		writeToTextArea(msg);
+		msg = "added a link to download game to play it offline";
+		writeToTextArea(msg);
+        
+                msg = "version 1.0.326";
+		writeToTextArea(msg);
+		msg = "Fixed bug with dismissed hero";
+		writeToTextArea(msg);
+        
+		msg = "version 1.0.325";
+		writeToTextArea(msg);
+		msg = "Now you could resize the event log";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.245";
+		writeToTextArea(msg);
+		msg = "Now you could see what hero is doing right now";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.244";
+		writeToTextArea(msg);
+		msg = "Added French translation";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.243";
+		writeToTextArea(msg);
+		msg = "Made labels with current population and gold limits";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.238";
+		writeToTextArea(msg);
+		msg = "Made onhover, onclick tips in the Buildings tab";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.234";
+		writeToTextArea(msg);
+		msg = "Update German translation; enabled 'thieves' feature. They are now in the game!";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.233";
+		writeToTextArea(msg);
+		msg = "Now kind ruler could place festivals!";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.232";
+		writeToTextArea(msg);
+		msg = "There is a confirmation dialog now, when the player is about to choose kind or cruel path.";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.231";
+		writeToTextArea(msg);
+		msg = "action required messages shown in bold font";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.230";
+		writeToTextArea(msg);
+		msg = "Now hero stats shows as text, not as JSON. Made eventlog resizeable";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.229";
+		writeToTextArea(msg);
+		msg = "Made Inn tab. Hero could be hired. Added alignment. Fix annoying autosave messages";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.225";
+		writeToTextArea(msg);
+		msg = "when city on fire, there are no newborns. Also, deleted annoying cap messages";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.224";
+		writeToTextArea(msg);
+		msg = "added Esperanto language (draft)";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.223";
+		writeToTextArea(msg);
+		msg = "fixed bugs on stats screens";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.222";
+		writeToTextArea(msg);
+		msg = "fixed bugs on stats screens";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.219";
+		writeToTextArea(msg);
+		msg = "fixed imbalance of execution citizens";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.217";
+		writeToTextArea(msg);
+		msg = "now added a screen for viewing gold statistics";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.214";
+		writeToTextArea(msg);
+		msg = "added night mode in the game";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.211";
+		writeToTextArea(msg);
+		msg = "now added a screen for viewing pop statistics";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.207";
+		writeToTextArea(msg);
+		msg = "now population and gold statistics are recorded";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.206";
+		writeToTextArea(msg);
+		msg = "now population and gold statistics are recorded";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.205";
+		writeToTextArea(msg);
+		msg = "all objects on the city tab now is clickable";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.199";
+		writeToTextArea(msg);
+		msg = "now the game generate the adventure map";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.198";
+		writeToTextArea(msg);
+		msg = "done German translation";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.191";
+		writeToTextArea(msg);
+		msg = "hiring guardsmen now done with dialogue.js";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.190";
+		writeToTextArea(msg);
+		msg = "imported dialogue.js";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.189";
+		writeToTextArea(msg);
+		msg = "made a language selector in Settings tab";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.186";
+		writeToTextArea(msg);
+		msg = "made Russian translation";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.180";
+		writeToTextArea(msg);
+		msg = "clean mess with version numeration. somewhat";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.179";
+		writeToTextArea(msg);
+		msg = "fixed a bug with lottey. Added Discord widget. Added periods counter";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.178";
+		writeToTextArea(msg);
+		msg = "a few minor labels\' corrections";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.177";
+		writeToTextArea(msg);
+		msg = "fixed bug with About tab";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.176";
+		writeToTextArea(msg);
+		msg = "due to the author\'s error, the version now is 1.0.175. Do not git push with --force!";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.125";
+		writeToTextArea(msg);
+		msg = "fixed the bug, then player can't afford treasury upgrade and it's already full";
+		writeToTextArea(msg);
+		msg = "renamed About to How to Play";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.124";
+		writeToTextArea(msg);
+		msg = "finnally, my game running by the object under the hood";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.124";
+		writeToTextArea(msg);
+		msg = "finnaly, my game running by the object under the hood";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.102";
+		writeToTextArea(msg);
+		msg = "added tab About game"+"\n"+
+				"thus close #107";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.99";
+		writeToTextArea(msg);
+		msg = "added Yandex Metrica"+"\n"+
+				"fix #105 close #103 #70 #102 #85 #101 ";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.95";
+		writeToTextArea(msg);
+		msg = "added Google analytics. Tuned gold limit";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.94";
+		writeToTextArea(msg);
+		msg = "treasury limit now fixed from bug (close #80)";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.93";
+		writeToTextArea(msg);
+		msg = "another bug with stash/treasury loading from save";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.92";
+		writeToTextArea(msg);
+		msg = "another bug with fire in the city";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.91";
+		writeToTextArea(msg);
+		msg = "compress resources close #73, tried singleton (hope it work), and fix #75";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.89";
+		writeToTextArea(msg);
+		msg = "now with shiny messages in chat about execution";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.88";
+		writeToTextArea(msg);
+		msg = "execution button";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.87";
+		writeToTextArea(msg);
+		msg = "set build buttons invisible for Gallows-Fountain when Fountain-Gallows is built";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.79";
+		writeToTextArea(msg);
+		msg = "gallows prevent building fountain, fountain prevent building gallows and stash requires treasury";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.78";
+		writeToTextArea(msg);
+		msg = "bugfix #34 Autosave now implemented"+"\n"+
+				"bugfix #59 new variables don't brick old saves";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.76";
+		writeToTextArea(msg);
+		msg = "bugfix #39 Save/Load doesn't apply on fire in the city"+"\n"+
+				"bugfix #42 Prevent load game if there no saves around"+"\n"+
+				"bugfix #51 Save and Load with confirmation"+"\n"+
+				"bugfix #54 Hiring treasury guards available only if treasury is built"+"\n"+
+				"close #55 Added image of treasury guard";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.72";
+		writeToTextArea(msg);
+		msg = "bugfix #29, #47, #48. No defence button after load"
+		writeToTextArea(msg);
+
+		msg = "version 1.0.70";
+		writeToTextArea(msg);
+		msg = "bugfix #44. Now it indicates if gold increased, decreased or not changed"
+		writeToTextArea(msg);
+
+		msg = "version 1.0.69";
+		writeToTextArea(msg);
+		msg = "bugfix #43 (word 'gold' appears after variable, when thieves stole some gold. fix #40"
+		writeToTextArea(msg);
+
+		msg = "version 1.0.68";
+		writeToTextArea(msg);
+		msg = "Bug fixes #35";
+		writeToTextArea(msg);
+
+		msg = "version 1.0.66";
+		writeToTextArea(msg);
+		msg = "You now can fire guardsmen"
+		writeToTextArea(msg);
+
+		msg = "version 1.0.65";
+		writeToTextArea(msg);
+		msg = "Bug fix #30. You're need to hire your treasury guards again, because save file is partially broken"
+		writeToTextArea(msg);
+
+		msg = "version 1.0.64";
+		writeToTextArea(msg);
+		msg = "Added new tab 'Building'. All building buttons move to 'Building' tab. Added firing procedure for treasury guardsmen (not only hiring for now). Added treasury building. As for now it does nothing, but it exists now."
+		writeToTextArea(msg);
