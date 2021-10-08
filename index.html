@@ -394,6 +394,13 @@
         }
       }
     </script>
+    <script>
+		if (window.location.href.substring("file")==-1){
+			webserver = "http://51.68.172.115:6699";
+		} else {
+			webserver = "http://localhost:6699";
+		} 
+    </script>
 </head>
 <body>
 <div id="htmlGame">
@@ -1833,7 +1840,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	flag_event_started = "";
 	allowMvt = 1;
 	curObjId = "";
-	webserver = "http://localhost:6699";
+	
 
 	//OTHERWISE RECORDS ONLY ADDS AND STACKS IN THE SAME OBJECT FOR DIFFERENT HEROES
 	//CANDIDATE FOR DELETING
@@ -1895,7 +1902,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		maxLevelArchery: 3,
 		online: true,
 		pullMessages: true,
-		pullMessagesMS: 10000,
+		pullMessagesMS: 1000,
 		debug: true
 	};
 
@@ -7256,6 +7263,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState === 4 && this.status === 201) {
+					if (config.debug){
+						
+						console.log(this.responseText)
+					}
 					resp_data = JSON.parse(this.responseText);
 					session   = resp_data["session"];
 					console.log(session);
@@ -7275,6 +7286,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState === 4 && this.status === 200) {
+					if (config.debug){
+						
+						console.log(this.responseText)
+					}
 					resp_data = JSON.parse(this.responseText);
 					session   = resp_data["session"];
 					game.role = resp_data["role"];
@@ -7317,13 +7332,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		role           = item[4];
 		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
 		if (role==="admin"){
-			nickname = "<span style='color:#DCAA07'>"+item[0]+"</span>";
+			nickname = "<span style='color:#DCAA07'><abbr title='The admin'>"+item[0]+"</abbr></span>";
 		}
 		if (role==="mod"){
-			nickname ="<span style='color:#319F0D'>"+item[0]+"</span>";
+			nickname ="<span style='color:#319F0D'><abbr title='A moderator'>"+item[0]+"</abbr></span>";
 		}
 		if (role==="bot"){
-			nickname ="<span style='color:#133bd2'>"+item[0]+"</span>";
+			nickname ="<span style='color:#133bd2'><abbr title='The bot'>"+item[0]+"</abbr></span>";
 		}
 		msg_id         = item[3];
 		msg_text       = item[1];
@@ -7363,6 +7378,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				console.log("message sent");
+				answ_session = JSON.parse(this.responseText);
+				answ_session = answ_session.session;
+				if (session===""){
+					session = answ_session;
+				}
 				fpullMessages();
 			}
 		};
@@ -7382,22 +7402,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 	}
 	function deleteMsgPost(){
-		if (game.role==="admin" || game.role ==="mod"){
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					if (config.debug){
-						console.log("message deleted");
+		if (answer === 2) {
+			if (game.role==="admin" || game.role ==="mod"){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 200) {
+						if (config.debug){
+							console.log("message deleted");
+						}
+						fpullMessages();
 					}
-					fpullMessages();
-				}
-			};
-			target = 0;
-			dataToParse = session+delimiter+msgid_to_del;
-			endpoint    = webserver + "/api/v1.1/delete_message";
-			xhttp.open("POST", endpoint, true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
+				};
+				target = 0;
+				dataToParse = session+delimiter+msgid_to_del;
+				endpoint    = webserver + "/api/v1.1/delete_message";
+				xhttp.open("POST", endpoint, true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(dataToParse);
+			}
 		}
 	}
 	user_to_ban = "";
@@ -7408,21 +7430,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 	}
 	function banUserPost(){
-		if (game.role==="admin" || game.role ==="mod"){
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					if (config.debug){
-						console.log("user banned");
+		if (answer === 2) {
+			if (game.role==="admin" || game.role ==="mod"){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 200) {
+						if (config.debug){
+							console.log("user banned");
+						}
 					}
-				}
-			};
-			target = 0;
-			dataToParse = session+delimiter+user_to_ban;
-			endpoint    = webserver + "/api/v1.1/ban_user";
-			xhttp.open("POST", endpoint, true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
+				};
+				target = 0;
+				dataToParse = session+delimiter+user_to_ban;
+				endpoint    = webserver + "/api/v1.1/ban_user";
+				xhttp.open("POST", endpoint, true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(dataToParse);
+			}
 		}
 	}
 </script>
