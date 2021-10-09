@@ -1903,7 +1903,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		online: true,
 		pullMessages: true,
 		pullMessagesMS: 1000,
-		debug: true
+		debug: false
 	};
 
 	var game = {
@@ -7312,7 +7312,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				messages = JSON.parse(this.responseText);
-				console.log(messages)
+				if (config.debug){
+					console.log(messages);
+				}
 				chat_dom.innerHTML = "";
 				messages.forEach(printToChat);
 			}
