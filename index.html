@@ -373,7 +373,7 @@
 
 	</style>
 	<script id="chatBroEmbedCode">
-		if (window.location.href.substring("file")==-1){
+		if (window.location.href.indexOf("file")==-1){
 			/* Chatbro Widget Embed Code Start */
 			function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','//www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
 			/* Chatbro Widget Embed Code End */
@@ -383,7 +383,7 @@
 	<script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
     <script>
       'use strict';
-      if (window.location.href.substring("file")==-1){
+      if (window.location.href.indexOf("file")==-1){
 	   
       Sentry.init({ dsn: 'https://84a2a9b7436b40a6868d8493ee91c6dd@o1014630.ingest.sentry.io/5979860' });
       
@@ -395,7 +395,7 @@
       }
     </script>
     <script>
-		if (window.location.href.substring("file")==-1){
+		if (window.location.href.indexOf("file")==-1){
 			webserver = "http://51.68.172.115:6699";
 		} else {
 			webserver = "http://localhost:6699";
