@@ -1902,7 +1902,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		maxLevelArchery: 3,
 		online: true,
 		pullMessages: true,
-		pullMessagesMS: 1000,
+		pullMessagesMS: 1500,
 		debug: false
 	};
 
@@ -7264,16 +7264,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			xhttp.onreadystatechange = function() {
 				if (this.readyState === 4 && this.status === 201) {
 					if (config.debug){
-						
+						console.log(session);
 						console.log(this.responseText)
 					}
 					resp_data = JSON.parse(this.responseText);
 					session   = resp_data["session"];
-					console.log(session);
 					msg       = "registered successfully";
 					postEventLog(msg);
 				}
 			};
+			fpullMessages();
 			login     = document.getElementById("login").value;
 			password  = document.getElementById("password").value;
 			dataToParse = login+delimiter+password;
@@ -7287,15 +7287,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			xhttp.onreadystatechange = function() {
 				if (this.readyState === 4 && this.status === 200) {
 					if (config.debug){
-						
-						console.log(this.responseText)
+						console.log(session);
+						console.log(this.responseText);
 					}
 					resp_data = JSON.parse(this.responseText);
 					session   = resp_data["session"];
 					game.role = resp_data["role"];
-					console.log(session);
 					msg = "login successfull";
 					postEventLog(msg);
+					fpullMessages()
 				}
 			};
 			login     = document.getElementById("login").value;
@@ -7345,7 +7345,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		msg_id         = item[3];
 		msg_text       = item[1];
 		line_to_print += nickname+": ";
-		line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
+		line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id, role)'>"+msg_text+"</span>";
 		chat_box.innerHTML += line_to_print+"<br>";
 		var textarea = chat_box;
 		if(textarea.selectionStart === textarea.selectionEnd) {
@@ -7397,10 +7397,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		xhttp.send(dataToParse);
 	}
 	msgid_to_del = -1;
-	function deleteMsg(msgid){
+	function deleteMsg(msgid, role_to_del){
 		if (game.role==="admin" || game.role ==="mod"){
-			msgid_to_del = msgid;
-			showModal(1, '', deleteMsgPost, "Do you wanna delete the message?", "Yes", "No");
+			if (role_to_del !=="admin" && role_to_del !=="mod"){
+				msgid_to_del = msgid;
+				showModal(1, '', deleteMsgPost, "Do you wanna delete the message?", "Yes", "No");
+			}
 		}
 	}
 	function deleteMsgPost(){
