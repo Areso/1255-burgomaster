@@ -7429,7 +7429,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	user_to_ban = "";
 	function banUser(name){
 		if (game.role==="admin" || game.role ==="mod"){
-			user_to_del = name;
+			user_to_ban = name;
 			showModal(1, '', banUserPost, "Do you wanna ban the user?", "Yes", "No")
 		}
 	}
