@@ -29,25 +29,25 @@ localeStrings.push("traición");//25
 localeStrings.push("espionaje");
 localeStrings.push("corrupción");
 localeStrings.push("soborno");
-localeStrings.push("graft and theft");
-localeStrings.push("embezzlement");//30
-localeStrings.push("Yes, in the most bloody way!");
-localeStrings.push("Yes");
+localeStrings.push("graft and robo");
+localeStrings.push("malversación");//30
+localeStrings.push("Sí ¡De la manera más sangrienta!");
+localeStrings.push("Sí");
 localeStrings.push("No");
-localeStrings.push("you executed a citizen for %arg1");
-localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
-localeStrings.push("too few citizens");
-localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
-localeStrings.push("fire in the city!");
-localeStrings.push("Call firemen? It will cost you %arg1 gold!");
-localeStrings.push("firemen put end to the fire!");//40
-localeStrings.push("it will burn to ashes!");
-localeStrings.push("shit happens: thieves stole %arg1 gold from your treasury");
-localeStrings.push("You won in a lottery %arg1 gold prize");
-localeStrings.push("Save game");
-localeStrings.push("Load game");//45
-localeStrings.push("City");
-localeStrings.push("Explore");
+localeStrings.push("Ejecutaste a un ciudadano por %arg1.");
+localeStrings.push("Tu tesoro se repuso con %arg1 de oro de la propiedad confiscada al ciudadano ejecutado.");//35
+localeStrings.push("Tienes muy pocos ciudadanos.");
+localeStrings.push("¡Algunos guardias se fueron porque no les puedes pagar!");
+localeStrings.push("¡Fuego en la ciudad!");
+localeStrings.push("¿Deberíamos llamar a los bomberos? Te costará %arg1 de oro.");
+localeStrings.push("Tus bomberos extinguieron el fuego.");//40
+localeStrings.push("!Todo quedará en cenizas!");
+localeStrings.push("Así es la vida: ¡Ladrones robaron %arg1 de oro de tu tesoro!");
+localeStrings.push("Ganaste %arg1 de oro en las apuestas.");
+localeStrings.push("Guardar juego");
+localeStrings.push("Gargar juego");//45
+localeStrings.push("Ciudad");
+localeStrings.push("Explorar");
 localeStrings.push("Settings");
 localeStrings.push("Garrison");
 localeStrings.push("Building");//50
