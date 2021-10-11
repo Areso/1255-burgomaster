@@ -17,7 +17,7 @@ localeStrings.push("¿Cargar juego? Perderás cualquier avance no guardado");
 localeStrings.push("¡Perdón¡ ¡No hay un juego guardado para cargar!");
 localeStrings.push("¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas! ");//15
 localeStrings.push("Por favor ingresa el código de guardado");
-localeStrings.push("very long string");
+localeStrings.push("código muy largo");
 localeStrings.push("Do you want to hire a guardsman? He will cost you %arg1 gold and then %arg2 gold per each season!");
 localeStrings.push("You hired a guardsman!");
 localeStrings.push("Not enough gold to do that!");//20
