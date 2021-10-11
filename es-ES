@@ -98,12 +98,12 @@ localeStrings.push("Amber are most valued currency");//90
 localeStrings.push("Guarnición");
 localeStrings.push("Fuego");
 localeStrings.push("Contratar");
-localeStrings.push("Hiring and managing troops");
-localeStrings.push("Castellan");//95
-localeStrings.push("Hero");
-localeStrings.push("Train brother-sergeant<br/>%arg1 gold");
-localeStrings.push("Hire turkopol<br/>%arg1 gold");
-localeStrings.push("Train brother-knight<br/>%arg1 gold");
+localeStrings.push("Reclutar tropas");
+localeStrings.push("Castellán");//95
+localeStrings.push("Héroe");
+localeStrings.push("Entrenar hermano-sargento<br/>%arg1 gold");
+localeStrings.push("Contratar turkopolo<br/>%arg1 gold");
+localeStrings.push("Entrenar hermano-caballero<br/>%arg1 gold");
 localeStrings.push("brothers-sergeants: ");//100
 localeStrings.push("turkopols: ");
 localeStrings.push("brothers-knights: ");
