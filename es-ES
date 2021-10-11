@@ -23,12 +23,12 @@ localeStrings.push("Contrataste un guardia. ");
 localeStrings.push("No tienes suficiente oro para hacer eso.");//20
 localeStrings.push("Se requiere una Tesorería para contratar un guardia. ");
 localeStrings.push("¿Quieres despedir al guardia?");
-localeStrings.push("You dismissed a guardsman!");
-localeStrings.push("You don't have any guardsmen!");
-localeStrings.push("treachery");//25
-localeStrings.push("betrayal");
-localeStrings.push("corruption");
-localeStrings.push("bribery");
+localeStrings.push("Despediste al guardia.");
+localeStrings.push("No tienes ningún guardia.");
+localeStrings.push("traición");//25
+localeStrings.push("espionaje");
+localeStrings.push("corrupción");
+localeStrings.push("soborno");
 localeStrings.push("graft and theft");
 localeStrings.push("embezzlement");//30
 localeStrings.push("Yes, in the most bloody way!");
