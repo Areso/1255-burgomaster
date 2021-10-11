@@ -6063,7 +6063,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		console.log("the length is "+disabledElements.length);
 
 		if (answer === 3) {
-			tutorialState = false;
+			isTutorialState = false;
 			document.getElementById("tabBuilding").style.visibility = "visible"
 			for (var i=0; i<disabledElements.length; i++) {
 				document.getElementById(disabledElements[i]).disabled = false;
