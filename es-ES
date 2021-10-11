@@ -68,36 +68,36 @@ localeStrings.push("Okey");//60
 localeStrings.push("¡Ya tienes un héroe!");
 localeStrings.push("Autoguardado encendido");
 localeStrings.push("Autoguardado apagado");
-localeStrings.push("You are about to build %arg1.\nIf the object is built, you wouldn't be allow to build %arg2.\nAre you sure in your choice?");
-localeStrings.push("Nothing to show yet, come here later.");//65
-localeStrings.push("Settings");
-localeStrings.push("Export Game");
-localeStrings.push("Import Game");
-localeStrings.push("Autosave");
-localeStrings.push("Change color mode");//70
-localeStrings.push("Option");
-localeStrings.push("On");
-localeStrings.push("Off");
-localeStrings.push("All sound effects");
-localeStrings.push("Effects on all events");//75
-localeStrings.push("Effects on action required events");
-localeStrings.push("All music");
-localeStrings.push("Lore and script music");
-localeStrings.push("Back");
-localeStrings.push("Sound effects and music");//80
-localeStrings.push("Open sound settings");
-localeStrings.push("Mobile UI");
-localeStrings.push("Event log size");
-localeStrings.push("lines");
+localeStrings.push("Estás apunto de construir %arg1.\n Si el objeto es construído, no podrás construir %arg2.\n ¿Estás seguro de tu decisión?");
+localeStrings.push("Nada que mostrar aún, vuelve después.");//65
+localeStrings.push("Configuración");
+localeStrings.push("Exportar Juego");
+localeStrings.push("Importar Juego");
+localeStrings.push("Autoguardado");
+localeStrings.push("Cambiar modo de color");//70
+localeStrings.push("Opción");
+localeStrings.push("Encendido");
+localeStrings.push("Apagado");
+localeStrings.push("Todos los efectos de sonido");
+localeStrings.push("Efectos en todos los eventos");//75
+localeStrings.push("Efectos en eventos que requieren una acción");
+localeStrings.push("Toda la música");
+localeStrings.push("Música de conocimiento y diálogos");
+localeStrings.push("Volver");
+localeStrings.push("Configuraciones de efectos de sonido y música");//80
+localeStrings.push("Abrir configuraciones de sonido");
+localeStrings.push("Interfaz Móvil");
+localeStrings.push("Tamaño del registro de eventos");
+localeStrings.push("líneas");
 localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
 localeStrings.push("%arg1 gold has been added to your treasury");
 localeStrings.push("Amber are most valued currency");//90
-localeStrings.push("Garrison");
-localeStrings.push("Fire");
-localeStrings.push("Hire");
+localeStrings.push("Guarnición");
+localeStrings.push("Fuego");
+localeStrings.push("Contratar");
 localeStrings.push("Hiring and managing troops");
 localeStrings.push("Castellan");//95
 localeStrings.push("Hero");
