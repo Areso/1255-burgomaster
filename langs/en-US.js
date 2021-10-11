@@ -416,6 +416,7 @@ locObj.welcome0 = {"txt":"Hello player in this incremental game!", "loc":"Once g
 locObj.welcome1 = {"txt":"Your task is simple - manage the city as mayor of the city!", "loc":"same"};
 locObj.welcome2 = {"txt":"Citizen will pay taxes each season (30 secs) and population will grow each season", "loc":"same"};
 locObj.okay = {"txt":"Okay", "loc":"Mostly used in information dialogues"}
+locObj.skipTutorial = {"txt": "I don't need any advices!", "loc": "Dont show tutorial messages"}
 
 locObj.tutorial0_w0 = {"txt":"Your uncle, the landmaster of Teutonic order,\nsent you to build a city on the pagan frontier.\nYou have found a suituable place with a hill, river, forest.\nYour peasants already cleared the place and ready for building", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Sir Commander, you need to build houses to keep your population growing", "loc":"tutorial0_w0"};
