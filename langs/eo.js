@@ -414,6 +414,7 @@ locObj.welcome0 = {"txt":"Saluton ludanto en ĉi tiu pliiga ludo!", "loc":"Once 
 locObj.welcome1 = {"txt":"Via tasko estas simpla - administru la urbon kiel urbestro de la urbo!", "loc":"same"};
 locObj.welcome2 = {"txt":"Civitanoj pagos impostojn ĉiun sezonon (30 sekojn) kaj ankaŭ populacio kreskos ĉiun sezonon", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
+locObj.skipTutorial = {"txt": "I don't need any advices!", "loc": "Dont show tutorial messages"}; // TODO: Translate it
 
 locObj.tutorial0_w0 = {"txt":"Via onklo, la landestro de teŭtona ordo, sendis vin konstrui urbon sur la pagana limo.\nVi trovis taŭgan lokon kun monteto, rivero, arbaro.\nViaj kamparanoj jam liberigis la lokon kaj pretas konstrui", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Sinjoro Komtur, vi bezonas konstrui domojn por kreskigi vian loĝantaron ", "loc":"tutorial0_w0"};

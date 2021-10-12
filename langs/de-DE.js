@@ -413,7 +413,8 @@ locObj = {};
 locObj.welcome0 = {"txt":"Seid gegrüßt, edler Spieler.", "loc":"Once game initted, those strings are put to the gamelog"};
 locObj.welcome1 = {"txt":"Eure Aufgabe ist einfach - verwaltet die Stadt als ihr Bürgermeister.", "loc":"same"};
 locObj.welcome2 = {"txt":"Bürger zahlen jede Saison (30 Sekunden) Steuern. Außerdem wird die Bevölkerung jede Saison wachsen.", "loc":"same"};
-locObj.okay = {"txt":"Gut", "loc":"Mostly used in information dialogues"}
+locObj.okay = {"txt":"Gut", "loc":"Mostly used in information dialogues"};
+locObj.skipTutorial = {"txt": "I don't need any advices!", "loc": "Dont show tutorial messages"}; // TODO: Translate it
 
 locObj.tutorial0_w0 = {"txt":"Ihr Onkel, der Landmeister des Deutschen Ordens, hat Sie geschickt,\num eine Stadt an der heidnischen Grenze zu bauen.\nSie haben einen geeigneten Ort mit einem Hügel, einem Fluss und einem Wald gefunden.\nIhre Bauern haben den Platz bereits geräumt und sind bereit zum Bauen", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Herr Komtur, Sie müssen Häuser bauen,\num Ihre Bevölkerung wachsen zu lassen", "loc":"tutorial0_w0"};
