@@ -97,7 +97,7 @@
 		msg_id         = item[3];
 		msg_text       = item[1];
 		line_to_print += nickname+": ";
-		line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id, role)'>"+msg_text+"</span>";
+		line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
 		chat_box.innerHTML += line_to_print+"<br>";
 		var textarea = chat_box;
 		if(textarea.selectionStart === textarea.selectionEnd) {
@@ -149,12 +149,13 @@
 		xhttp.send(dataToParse);
 	}
 	msgid_to_del = -1;
-	function deleteMsg(msgid, role_to_del){
+	function deleteMsg(msgid){
 		if (game.role==="admin" || game.role ==="mod"){
-			if (role_to_del !=="admin" && role_to_del !=="mod"){
+				console.log("we are deleting")
+				console.log(msgid);
 				msgid_to_del = msgid;
 				showModal(1, '', deleteMsgPost, "Do you wanna delete the message?", "Yes", "No");
-			}
+			
 		}
 	}
 	function deleteMsgPost(){
@@ -170,6 +171,8 @@
 					}
 				};
 				target = 0;
+				console.log("POST query to delete with msgid_to_del");
+				console.log(msgid_to_del);
 				dataToParse = session+delimiter+msgid_to_del;
 				endpoint    = webserver + "/api/v1.1/delete_message";
 				xhttp.open("POST", endpoint, true);
