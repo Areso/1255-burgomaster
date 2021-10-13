@@ -4694,8 +4694,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
 		},
 		popLimit : function () {
-			if (game.buildLevelH>1){
-				return 2*Math.pow((game.buildLevelH*1+3),2);
+			if (game.buildLevelH >= 1){
+				return 2*Math.pow((game.buildLevelH*1+2),2);
 			} else {
 				return 6;
 			}
