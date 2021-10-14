@@ -414,6 +414,7 @@ locObj.welcome0 = {"txt":"Bonjour nouveau joueur et bienvenue dans mon jeux", "l
 locObj.welcome1 = {"txt":"Ta mission est simple - gérer cette cité en tant que maire.", "loc":"same"};
 locObj.welcome2 = {"txt":"Les citoyens payent des impôts chaque saison (30 sec.) et la population grandit chaque saison", "loc":"same"};
 locObj.okay = {"txt":"OK", "loc":"Mostly used in information dialogues"}
+locObj.skipTutorial = {"txt": "Je n'ai pas besoin de conseils!", "loc": "Dont show tutorial messages"};
 
 locObj.tutorial0_w0 = {"txt":"Votre oncle, le maître foncier de l'ordre teutonique,\nvous a envoyé construire une ville sur la frontière païenne.\nVous avez trouvé un endroit convenable avec une colline, une rivière, une forêt.\nVos paysans ont déjà dégagé l'endroit et prêt à construire", "loc":"tutorial0_w0"};
 locObj.tutorial1_pop0 = {"txt":"Monseigneur Commandeur, vous devez construire des maisons\npour maintenir la croissance de votre population", "loc":"tutorial0_w0"};
