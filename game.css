@@ -1,0 +1,364 @@
+/* *canvas*/
+		.canvas {
+			left:0px;
+			top:-6px;
+			position:relative;
+		}
+		/*background*/
+		.background {
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:-1;
+		}
+		/*wall rear*/
+		.over1 {
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:1;
+		}
+		/*buildings*/
+		.over2 {
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:2;
+		}
+		/*wall front*/
+		.over3 {
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:3;
+		}
+		.tables {
+			
+		}
+		/*fire*/
+		.fire {
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:4;
+		}
+		.interface {
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:99;
+		}
+		.dynamicCells {
+			
+		}
+		.dynamicCellsDay {
+			color: rgb(0,0,0);
+		}
+		.dynamicCellsNight {
+			color: rgb(64,64,64);
+		}
+		.resources{
+			position: relative;
+			left:0px;
+		}
+		/*
+		#defence, #homes, #treasury {
+			width: 180px;
+		}
+		#buttonBldGallows, #buttonBldFountain, #buttonBldStash {
+			width: 180px;
+		}*/
+		#console_n_chat, #chat, #lblAutocampaignJournal, #lblAutocampaignBattle {
+			/*resize: none;*/
+			overflow: auto;
+		}
+
+		#lblAutocampaignJournal,
+		#lblAutocampaignBattle {
+			width: 800px;
+			height: 420px;
+			top: 60px;
+			left: 10px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		/* Style the tab */
+		div.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			width: 800px;
+			background-color: #f1f1f1;
+		}
+		div {
+			color: #2f3236;
+		}
+		/* Style the buttons inside the tab */
+		div.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+		td.building {
+			width:180px;
+		}
+		button.building {
+			width:180px;
+		}
+		/* Change background color of buttons on hover */
+		div.tab button:hover {
+			background-color: #ddd;
+		}
+
+		/* Create an active/current tablink class */
+		div.tab button.active {
+			background-color: #ccc;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			padding: 16px 0 6px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			border-top: none;
+			height: 470px;
+			width: 800px;/*800-12*2*/
+		}
+		
+		.tabcontent > div:not(#lblAboutGame) {
+			margin-top: 20px;
+		}
+		
+		/* Style the close button */
+		.topright {
+			float: right;
+			cursor: pointer;
+			font-size: 20px;
+		}
+		.topright:hover {color: red;}
+		#lblAboutGame {
+			width: 795px;
+			height: 475px;
+			border: thin solid black;
+			overflow:scroll;
+			/*
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
+		}
+		#lblEventLBDetails {
+			width: 795px;
+			height: 425px;
+			border: thin solid black;
+			overflow:scroll;
+			/*
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
+		}
+		#htmlGame {
+			margin: auto;
+		}
+		#theBuildingDiv {
+			width: 793px;
+			height: 415px;
+			border: thin solid black;
+			overflow:scroll;
+			/*
+			overflow-x: hidden;
+			overflow-y: scroll;
+			*/
+		}
+
+		/*-- Some new styles --*/
+
+		.btn-hire {
+			width: 200px;
+			height: 45px;
+		}
+
+		.btnArrow {
+			padding-left: 1px;
+			padding-right: 1px;
+		}
+		.lblHiringTroops {
+			font-size: 12px;
+		}
+
+		.btnDismiss {
+			padding: 0 1px;
+			height: 22px;
+		}
+
+		.accordion,
+		.accordion-battle {
+			box-sizing: border-box;
+			width: 100%;
+			padding: 0 20px;
+			margin-bottom: 6px;
+		}
+
+		.accordion-header,
+		.accordion-battle-header {
+			padding: 8px 10px;
+			border: 1px solid #333;
+			background-color: #f1f1f1;
+		}
+
+		.accordion-body,
+		.accordion-battle-body {
+			display: none;
+			padding: 10px;
+		}
+
+		.accordion.active > .accordion-body,
+		.accordion-battle.active > .accordion-battle-body {
+			display: block;
+		}
+
+		.unit-main {
+			display: flex;
+		}
+
+		.unit-info {
+			margin-left: 10px;
+		}
+
+		.unit-info > p {
+			margin-top: 0;
+			margin-bottom: 4px;
+		}
+
+		.resource-panel {
+			width: 800px;
+			padding: 6px 10px;
+			background-color: #f1f1f1;
+			position: absolute;
+			border: 1px solid #ccc;
+			border-top: 0;
+			z-index: 999;
+			box-sizing: border-box;
+			display: flex;
+		}
+
+		.resource-icon {
+			width: 20px;
+			margin-right: 5px;
+		}
+
+
+		#pop_img {
+			width: 17px;
+		}
+
+		#gems_img {
+			width: 22px;
+		}
+
+		.gold-val,
+		.population-val,
+		.gems-val,
+		.time-val {
+			display: flex;
+			align-items: center;
+			margin-right: 12px;
+		}
+
+		.gold-val,
+		.population-val,
+		.gems-val,
+		.time-val > span {
+			color: inherit;
+		}
+
+		.inventory-item {
+			box-sizing: border-box;
+			padding: 10px;
+			margin: 0 10px 6px;
+			display: flex;
+			max-width: 761px;
+			border: 1px solid #333;
+			background-color: #f1f1f1;
+			font-size: 15px;
+		}
+
+		.inventory-item__wrapper-img {
+			flex: 0 0 40px;
+			height: 40px;
+			border: 1px solid #333;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #9f9f9f;
+		}
+
+		.inventory-item__wrapper-desc {
+			display: flex;
+			flex-direction: column;
+			margin-left: 15px;
+			margin-right: 15px;
+			flex: 1 1 100%;
+		}
+
+		.inventory-item__name {
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 4px;
+			margin-top: 0;
+		}
+
+		.inventory-item__btn {
+			width: 120px;
+			height: 21px;
+			align-self: center;
+		}
+
+		#marketList,
+		#heroMarketList {
+			overflow-y: auto;
+			height: 100%;
+			max-height: 140px;
+		}
+
+
+		.price-val {
+			background-color: #b9b9b9;
+			padding: 2px 8px;
+			margin-left: 12px;
+			font-size: 15px;
+			display: inline-block;
+		}
+
+		.shop-title {
+			margin: 0 10px 6px;
+		}
+
+		.dark-theme.inventory-item {
+			background-color: #202020;
+		}
+
+		.dark-theme.inventory-item__name {
+			color: #fff !important;
+		}
+
+		#heroEquipment {
+			margin-top: 10px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		#heroEquipment > .inventory-item__wrapper-img {
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+
+		#tabInn {
+			padding: 10px;
+		}

@@ -67,8 +67,12 @@
 				if (config.debug){
 					console.log(messages);
 				}
+				document.getElementById("server-status").innerHTML="Up";
 				chat_dom.innerHTML = "";
 				messages.forEach(printToChat);
+			}
+			if (this.readyState === 4 && this.status !== 200) {
+				document.getElementById("server-status").innerHTML="Down";
 			}
 		};
 		endpoint  = webserver + "/api/v1.1/pull_messages";
