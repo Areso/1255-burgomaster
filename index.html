@@ -69,6 +69,10 @@
 			<div class="server-val">
 				Server: <span id="server-status">n/d</span>
 			</div>
+			<div class="event-val" style="margin-left: 20px;">
+				<span id="event-label"></span>
+				<span id="event-value"></span>
+			</div>
 		</div>
 		<div id="Main" class="tabcontent">
 			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
@@ -1763,40 +1767,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					openTab(null, 'tabEvent');
 				}
 			}
-		},
-		getNearestEventTime : function () {
-			back_response = null;
-			eventHelpMsg  = null;
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					back_response = JSON.parse(this.responseText);
-					console.log(back_response);
-					cntdwn = back_response["countdown"];
-					cntdwn = cntdwn.replace("(","");
-					cntdwn = cntdwn.replace(")","");
-					cntdwn = cntdwn.split(",");
-					console.log(cntdwn);
-					flag_event_started = parseInt(back_response["event_started"]);
-					if (flag_event_started===0){
-						eventHelpMsg = localeStrings[166];
-					} else {
-						game.getEventDetails();
-						eventHelpMsg = localeStrings[167];
-					}
-					console.log(eventHelpMsg);
-					lblMsg  = cntdwn[0]+localeStrings[165][0];
-					lblMsg += " "+cntdwn[1]+localeStrings[165][1];
-					lblMsg += " "+cntdwn[2]+localeStrings[165][2];
-					document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
-					document.getElementById("lblEventCountdownValue").disabled = false;
-				} else {
-					document.getElementById("lblEventCountdownValue").disabled = true;
-				}
-			};
-			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/event_countdown", true);
-			//xhttp.setRequestHeader("Content-type", "application/json");
-			xhttp.send();
 		},
 		getEventDetails : function () {
 			back_response_evt_details = null;
@@ -5234,7 +5204,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			heroAttributesRandomizer.addEntry('def', hero.curveDef);
 			heroAttributesRandomizer.addEntry('int', hero.curveInt);
 			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
-			console.log(heroAttributesRandomizer.entries);
+			//console.log(heroAttributesRandomizer.entries);
 
 			for (i=0; i<game.buildLevelInn-1;i++){
 				var rndAttrName    = heroAttributesRandomizer.getRandom();

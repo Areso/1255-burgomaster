@@ -8,6 +8,7 @@
 	//init timers
 	if (config.online && config.pullMessages){
 		setInterval(fpullMessages, config.pullMessagesMS);
+		setInterval(getNearestEventTime, 10000);
 	}
 	//functions
 	function remoteRegLogin() {
@@ -211,4 +212,44 @@
 				xhttp.send(dataToParse);
 			}
 		}
+	}
+	function getNearestEventTime () {
+		back_response = null;
+		eventHelpMsg  = null;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				back_response = JSON.parse(this.responseText);
+				//console.log(back_response);
+				cntdwn = back_response["countdown"];
+				cntdwn = cntdwn.replace("(","");
+				cntdwn = cntdwn.replace(")","");
+				cntdwn = cntdwn.split(",");
+				//console.log(cntdwn);
+				flag_event_started = parseInt(back_response["event_started"]);
+				event_timer_lbl = document.getElementById("event-label");
+				event_timer_val = document.getElementById("event-value");
+				eventTimerVal  =     cntdwn[0]+localeStrings[165][0];
+				eventTimerVal += " "+cntdwn[1]+localeStrings[165][1];
+				eventTimerVal += " "+cntdwn[2]+localeStrings[165][2];
+				if (flag_event_started===0){
+					event_timer_lbl.innerHTML="Halloween event will start in ";
+					event_timer_val.innerHTML=eventTimerVal;
+					
+				} else {
+					//TODO THAT URGENT!
+					game.getEventDetails();
+					event_timer_lbl.innerHTML="Halloween event will end in ";
+					event_timer_val.innerHTML=eventTimerVal;
+				}
+				console.log(eventHelpMsg);
+				//document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
+				//document.getElementById("lblEventCountdownValue").disabled = false;
+			} else {
+				//document.getElementById("lblEventCountdownValue").disabled = true;
+			}
+		};
+		endpoint    = webserver + "/api/v1.1/event_countdown";
+		xhttp.open("GET", endpoint, true);
+		xhttp.send();
 	}
