@@ -1152,9 +1152,11 @@
 			checkPop();
 		}
 		if (buildingName==='castle') {
+			showAlert = false;
 			alertMsg = localeStrings[136];
 		}
 		if (buildingName==='stone_castle') {
+			showAlert = false;
 			alertMsg = localeStrings[137];
 		}
 		if (buildingName==='inn') {
@@ -1197,12 +1199,13 @@
 		}
 		if (buildingName==='archery') {
 			showAlert = false;
-			alertMsg = localeStrings[146];
 			if (game.checkAudio('sfx', 'all')===true) {
 				var arnd = Math.floor(Math.random() * 3);
 				var Audio = 'archeryAudio'+arnd;
 				document.getElementById(Audio).play();
 			}
+			updateUI();
+			openTab(null, 'tabTroopsHiring');
 		}
 		if (buildingName==='chest') {
 			showAlert = false;
