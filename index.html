@@ -23,8 +23,10 @@
     <script>
 		if (window.location.href.indexOf("file")===-1){
 			webserver = "http://51.68.172.115:6699";
+			ws_server = "ws://51.68.172.115:6698";
 		} else {
 			webserver = "http://localhost:6699";
+			ws_server = "ws://localhost:6698";
 		} 
     </script>
 </head>
@@ -708,6 +710,8 @@
 		<div id="chat_log_box">
 			<button id="log_btn"  onclick="openLog()" >log</button>
 			<button id="chat_btn" onclick="openChat()">chat</button>
+			<label id="lbl_online" style="margin-left:20px">Online: </label>
+			<label id="lbl_online_value" style="margin-left:10px">n/d</label>
 			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
 			
 		
