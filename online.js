@@ -253,3 +253,17 @@
 		xhttp.open("GET", endpoint, true);
 		xhttp.send();
 	}
+	users_online = document.getElementById("lbl_online_value");
+	websocket = new WebSocket(ws_server);
+	websocket.onmessage = function (event) {
+		data = JSON.parse(event.data);
+		switch (data.type) {
+			case 'users':
+				users_online.textContent = (
+				data.count.toString() + " user" +
+				(data.count == 1 ? "" : "s"));
+				break;
+			default:
+				console.error("unsupported event", data);
+		}
+	};
