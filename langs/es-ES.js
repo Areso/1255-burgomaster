@@ -409,6 +409,7 @@ localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
 localeStrings.push("knights(%arg1)");
+localeStrings.push("Your troops were defeated and the hero is forced to retreat to the city.");
 
 locObj = {};
 //locObj.welcome2 = {"txt":"", "loc":""};
