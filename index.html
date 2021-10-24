@@ -6,6 +6,7 @@
 		1255 Burgomaster
 	</title>
 	<link rel="stylesheet"  type="text/css" href="game.css"/>
+	<link rel="stylesheet"  type="text/css" href="hire.css"/>
 	<script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
     <script>
       'use strict';
@@ -29,6 +30,7 @@
 			ws_server = "ws://localhost:6698";
 		} 
     </script>
+	<script src="dom.js"></script>
 </head>
 <body>
 <div id="htmlGame">
@@ -479,44 +481,70 @@
 			<div id="lblAutocampaignBattle" class="interface"></div>
 			<button id="btnToInn1" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
 		</div>
-		<div id="tabTroopsHiring2" class="tabcontent">
-		<div class="grid-container" style="width: 800px; height: 480px">
-		  <div class="grid-item" id="grid-hire11">1</div>
-		  <div class="grid-item" id="grid-hire12">2</div>
-		  <div class="grid-item" id="grid-hire13">3</div>
-		  <div class="grid-item" id="grid-hire21">4</div>
-		  <div class="grid-item" id="grid-hire22">5</div>
-		  <div class="grid-item" id="grid-hire23">6</div>
-		  <div class="grid-item" id="grid-info">info</div>
-		  <div class="grid-item" id="grid-castellan">castellan</div>
-		  <div class="grid-item" id="grid-garrison1">garrison1</div>
-		  <div class="grid-item" id="grid-garrison1v">10</div>
-		  <div class="grid-item" id="grid-garrison2">garrison2</div>
-		  <div class="grid-item" id="grid-garrison2v">200</div>
-		  <div class="grid-item" id="grid-garrison3">garrison3</div>
-		  <div class="grid-item" id="grid-garrison3v">300</div>
-		  <div class="grid-item" id="grid-garrison4">garrison4</div>
-		  <div class="grid-item" id="grid-garrison4v">400</div>  '
-		  <div class="grid-item" id="grid-garrison5">garrison5</div>
-		  <div class="grid-item" id="grid-garrison5v">500</div>
-		  <div class="grid-item" id="grid-garrison6">garrison6</div>
-		  <div class="grid-item" id="grid-garrison6v">600</div>  
-		  <div class="grid-item" id="grid-hero">hero</div>
-		  <div class="grid-item" id="grid-hero1">hero1</div>
-		  <div class="grid-item" id="grid-hero1v">100</div>
-		  <div class="grid-item" id="grid-hero2">hero2</div>
-		  <div class="grid-item" id="grid-hero2v">200</div>
-		  <div class="grid-item" id="grid-hero3">hero3</div>
-		  <div class="grid-item" id="grid-hero3v">300</div>
-		  <div class="grid-item" id="grid-hero4">hero4</div>
-		  <div class="grid-item" id="grid-hero4v">400</div>
-		  <div class="grid-item" id="grid-hero5">hero5</div>
-		  <div class="grid-item" id="grid-hero5v">500</div>
-		  <div class="grid-item" id="grid-hero6">hero6</div>
-		  <div class="grid-item" id="grid-hero6v">600</div>
-		</div>
-		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
+			<div class="grid-container" style="width: 800px; height: 480px">
+				<div class="grid-item hire" id="grid-hire11">
+					<img id="imgHiringScreenSergeantToHire"   src="resources/sergeant.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item hire" id="grid-hire12">
+					<img id="imgHiringScreenTurkopolToHire" src="resources/turkopol.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item hire" id="grid-hire13">
+					<img id="imgHiringScreenKnightToHire" src="resources/knight.png" class="unit-img"
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item hire not-implemented" id="grid-hire21">4</div>
+				<div class="grid-item hire not-implemented" id="grid-hire22">5</div>
+				<div class="grid-item hire not-implemented" id="grid-hire23">6</div>
+				<div class="grid-item" id="grid-info">info</div>
+				<div class="grid-item" id="grid-castellan">
+					<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
+				</div>
+				<div class="grid-item" id="grid-garrison1">
+					<img id="imgHiringScreenSergeant1" src="resources/sergeant.png">
+				</div>
+				<div class="grid-item" id="grid-garrison1v">10</div>
+				<div class="grid-item" id="grid-garrison2">
+					<img id="imgHiringScreenTurkopol2" src="resources/turkopol.png">
+				</div>
+				<div class="grid-item" id="grid-garrison2v">200</div>
+				<div class="grid-item" id="grid-garrison3">
+					<img id="imgHiringScreenKnight3" src="resources/knight.png">
+				</div>
+				<div class="grid-item" id="grid-garrison3v">300</div>
+				<div class="grid-item" id="grid-garrison4">garrison4</div>
+				<div class="grid-item" id="grid-garrison4v">400</div>
+				<div class="grid-item" id="grid-garrison5">garrison5</div>
+				<div class="grid-item" id="grid-garrison5v">500</div>
+				<div class="grid-item" id="grid-garrison6">garrison6</div>
+				<div class="grid-item" id="grid-garrison6v">600</div>  
+				<div class="grid-item" id="grid-hero">
+					<img id="imgHeroInHiringScreenKnight" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
+					<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
+				</div>
+				<div class="grid-item" id="grid-hero1">
+					<img id="imgHiringScreenSergeant1" src="resources/sergeant.png">
+				</div>
+				<div class="grid-item" id="grid-hero1v">100</div>
+				<div class="grid-item" id="grid-hero2">
+					<img id="imgHiringScreenTurkopol2" src="resources/turkopol.png">
+				</div>
+				<div class="grid-item" id="grid-hero2v">200</div>
+				<div class="grid-item" id="grid-hero3">
+					<img id="imgHiringScreenKnight3" src="resources/knight.png">
+				</div>
+				<div class="grid-item" id="grid-hero3v">300</div>
+				<div class="grid-item" id="grid-hero4">hero4</div>
+				<div class="grid-item" id="grid-hero4v">400</div>
+				<div class="grid-item" id="grid-hero5">hero5</div>
+				<div class="grid-item" id="grid-hero5v">500</div>
+				<div class="grid-item" id="grid-hero6">hero6</div>
+				<div class="grid-item" id="grid-hero6v">600</div>
+			</div>
+		</div>
+		<div id="tabTroopsHiringOld" class="tabcontent">
 			<label id="lblTroopsHiring">Hiring troops</label><br>
 			<div id="lblTroopsHelp" style="height: 80px; width: 780px;">
 			</div>
@@ -3349,14 +3377,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[240]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
 				}
 			}
-			if (myobject.id==="imgHiringScreenSergeant") {
-				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
+			if (myobject.id==="imgHiringScreenSergeantToHire") {
+				document.getElementById("grid-info").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
 			}
-			if (myobject.id==="imgHiringScreenTurkopol") {
-				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[309].replace("%arg1", config.turkopolHiring).replace("%arg2", config.turkopolUpkeep);
+			if (myobject.id==="imgHiringScreenTurkopolToHire") {
+				document.getElementById("grid-info").innerHTML=localeStrings[309].replace("%arg1", config.turkopolHiring).replace("%arg2", config.turkopolUpkeep);
 			}
-			if (myobject.id==="imgHiringScreenKnight") {
-				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[310].replace("%arg1", config.knightHiring).replace("%arg2", config.knightUpkeep);
+			if (myobject.id==="imgHiringScreenKnightToHire") {
+				document.getElementById("grid-info").innerHTML=localeStrings[310].replace("%arg1", config.knightHiring).replace("%arg2", config.knightUpkeep);
 			}
 			if (myobject.id==="btnHireSergeant") {
 				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
