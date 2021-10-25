@@ -975,6 +975,16 @@
 	  health: 15,
 	};
 
+	var grolinWorker = {
+		name: 'Grolin worker',
+		minDmg: 1,
+		maxDmg: 2,
+		attack: 4,
+		defence: 2,
+		count: 1,
+		health: 6
+	};
+
 	var isTutorialState = true;
 
 	function inArray (arrayToCheck, valueToCheck) {
@@ -1554,10 +1564,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	//var heroAttributesRandomizer = new WeightedRandom();
 	
 	var enemyRandomizer = new WeightedRandom();
-	function Monster(monster, coordx, coordy) {
+	function Monster(monster, coordx, coordy, monsterData) {
 		this.monster = monster;
 		this.coordx = coordx;
 		this.coordy = coordy;
+		this.name   	= monsterData.name;
+		this.minDmg 	= monsterData.minDmg;
+		this.maxDmg 	= monsterData.maxDmg;
+		this.attack 	= monsterData.attack;
+		this.defence	= monsterData.defence;
+		this.count 		= monsterData.defence;
+		this.health 	= monsterData.health;
 	}
 	//gameconfig
 	var config = {
@@ -1690,6 +1707,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		difficultyModifier: 0,
 		attacker: 1,
 		isAutoBattle: false,
+		isDefeated: false,
 		nightMode: false,
 		monstersOnAdvMap: [],
 		role: "player",
@@ -2262,8 +2280,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
 							//prepare for battle!
 							//generate enemy squad
-							game.generateEnemyUnitsForBattle();
 
+							if (Object.keys(game.enemyHeroArmy.units).length === 0) {
+								game.generateEnemyUnitsForBattle("AdvMap");
+							}
 							game.isAutoBattle = true;
 
 							while(game.isAutoBattle) {
@@ -2321,7 +2341,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							if (castleEntranceFound === false) {
 								mobPlaced = true;
 								game.myMapRemObjects[neighbor_x][neighbor_y]=3;
-								mymonster = new Monster("monster", neighbor_x, neighbor_y);
+								mymonster = new Monster("monster", neighbor_x, neighbor_y, grolinWorker);
 								game.monstersOnAdvMap.push(mymonster);
 							}
 						}
@@ -2687,29 +2707,52 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		  }
 		},
 
-		generateEnemyUnitsForBattle: function() {
+		generateEnemyUnitsForBattle: function(campaignType) {
 
 			game.goldReward = 0;
 			game.expReward = 0;
 
 			var myheroTotalUnits = game.myhero.turkopols + game.myhero.sergeants + game.myhero.knights;
-			var enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
+			var enemyMaxCount = null;
 
-			if (game.myhero.stance === 0) {
+			// TODO: Refactor this section later
 
-				game.difficultyModifier = 1.05;
+			if (campaignType === "AdvMap") {
+				console.log('GEN for advmap')
+				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
 
-				enemyRandomizer.addEntry(banditWarrior, 35.0);
-				enemyRandomizer.addEntry(banditArcher,  35.0);
-				enemyRandomizer.addEntry(mercSwordman,  15.0);
-				enemyRandomizer.addEntry(mercSpearmen,  15.0);
+				if (game.myhero.stance === 0) {
+					game.difficultyModifier = 1.05;
+					// TEMP SECTION just for adv map with autobattle
 
-			} else if (game.myhero.stance === 1) {
+					grolinWorker.health = Math.round(1.25 * grolinWorker.health);
+					grolinWorker.minDmg = Math.round(1.25 * grolinWorker.minDmg);
+					grolinWorker.maxDmg = Math.round(1.25 * grolinWorker.maxDmg);
+					enemyRandomizer.addEntry(grolinWorker, 100.0);
+				} else {
+					game.difficultyModifier = 0.35;
+					enemyRandomizer.addEntry(grolinWorker, 100.0);
+				}
 
-				game.difficultyModifier = 0.35;
+			} else {
+				console.log('GEN for autocampaign')
+				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2)
 
-				enemyRandomizer.addEntry(banditWarrior, 50.0);
-				enemyRandomizer.addEntry(banditArcher, 50.0);
+				if (game.myhero.stance === 0) {
+
+					game.difficultyModifier = 1.05;
+
+					enemyRandomizer.addEntry(banditWarrior, 35.0);
+					enemyRandomizer.addEntry(banditArcher,  35.0);
+					enemyRandomizer.addEntry(mercSwordman,  15.0);
+					enemyRandomizer.addEntry(mercSpearmen,  15.0);
+
+				} else {
+					game.difficultyModifier = 0.35;
+					enemyRandomizer.addEntry(banditWarrior, 50.0);
+					enemyRandomizer.addEntry(banditArcher, 50.0);
+				}
+
 			}
 
 			for (var i = 0; i < enemyMaxCount; i++) {
@@ -2751,11 +2794,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						}
 					}
 
+					console.log('123: ', campaignType)
+
 					console.log("The player is the winner");
 					game.myhero.gold += game.goldReward;
 					game.myhero.exp += game.expReward;
 					game.restoreHealth();
-					game.generateEnemyUnitsForBattle();
+					game.generateEnemyUnitsForBattle(campaignType);
 
 					if (campaignType !== "AutoCampaign") {
 						game.heroLvlUp("AdvMap");
@@ -2764,9 +2809,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 				} else {
 					if (campaignType === "AutoCampaign") {
-						postJournalLog(localeStrings[172]);
+						if (game.myhero.stance === 0) {
+							postJournalLog(localeStrings[172]);
+							game.heroDie();
+						} else {
+							game.myhero.aCampaignForward   = 0;
+							game.myhero.aCampaignBackward  = 1;
+							game.myhero.gold 			   = 0;
+							game.myheroArmy = {};
+							game.isDefeated = true;
+						}
 					}
-					game.heroDie();
 					console.log("The PC opponent is the Winner");
 				}
 		},
@@ -2892,11 +2945,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 		calcAttackPhase: function (campaignType) {
-			if (campaignType==="AdvMap"){
-				game.attacker = game.myheroArmy.armyID;
-			} else {
-				game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
-			}
 			var attackVal = 0;
 			var defenceVal = 0;
 			
@@ -3171,8 +3219,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.heroLvlUp("AutoCampaign");
 			}
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
+				console.log("%c CHECK IF IS DEFEATED: ", "bakcground: #31b5e7; color: #fff");
 				if (game.myhero.aCampaignLong-1>0){
 					game.myhero.aCampaignLong     -= 1;
+					if (game.isDefeated) {
+						postJournalLog(localeStrings[378]);
+						game.isDefeated = false;
+						return
+					}
 					game.myhero.aCampaignTotalLong+= 1;
 					postJournalLog(localeStrings[175]);
 				} else {
@@ -6935,7 +6989,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	})(document, window, "yandex_metrika_callbacks");
 </script>
 <!--ONLINE OPTIONS-->
-<script async src='online.js'></script>
+<!-- <script async src='online.js'></script> -->
 <noscript>
 	<div>
 	<img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" />
