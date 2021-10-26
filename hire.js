@@ -1,3 +1,4 @@
+selectedToHire = ""; 
 function selectObj (myobject) {
 	const matches = document.querySelectorAll("img.unit-img");
 	for (mi=0;mi<matches.length;mi++){
@@ -16,6 +17,7 @@ function selectObj (myobject) {
 								oninput="hireNumberValue.value = this.value">';
 		infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"><br>';
 		infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
+		selectedToHire       = "sergeant";
 	}
 	if (myobject.id==="imgHiringScreenTurkopolToHire") {
 		document.getElementById("imgHiringScreenTurkopolToHire").style.background="yellow";
@@ -30,6 +32,7 @@ function selectObj (myobject) {
 									oninput="hireNumberValue.value = this.value">';
 			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"><br>';
 			infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
+			selectedToHire       = "turkopol";
 		} else {
 			msg = "<b>%arg1</b>";
 			infoblock.innerHTML += msg.replace("%arg1", localeStrings[317]);
@@ -48,6 +51,7 @@ function selectObj (myobject) {
 									oninput="hireNumberValue.value = this.value">';
 			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"><br>';
 			infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
+			selectedToHire       = "knight";
 		} else {
 			msg = "<b>%arg1</b>";
 			msg = msg.replace("%arg1",localeStrings[318].replace("%arg1", 2));
@@ -126,7 +130,7 @@ function updateHeroStatusHire() {
 		document.getElementById("imgHeroInHiringScreenMonk2").style.display="none";
 	}
 }
-function updateGarrisonStatus() {
+function updateGarrisonStatusHire() {
 	
 }
 function updateTroopsNumbers() {
@@ -134,19 +138,19 @@ function updateTroopsNumbers() {
 	document.getElementById("lblGarnisonTurkopols").innerHTML  = game.turkopols;
 	document.getElementById("lblGarnisonKnights").innerHTML    = game.knights;
 	if (game.heroExists() === true) {
-		document.getElementById("lblHeroSergeants").innerHTML = game.myhero.sergeants;
-		document.getElementById("lblHeroTurkopols").innerHTML = game.myhero.turkopols;
-		document.getElementById("lblHeroKnights").innerHTML = game.myhero.knights;
+		document.getElementById("grid-hero1v").innerHTML      = game.myhero.sergeants;
+		document.getElementById("grid-hero2v").innerHTML      = game.myhero.turkopols;
+		document.getElementById("grid-hero3v").innerHTML      = game.myhero.knights;
 	}
 }
 function updateUnitsStats() {
-	document.getElementById("sergeantsAttack").innerText = sergeantsData.attack;
+	document.getElementById("sergeantsAttack").innerText  = sergeantsData.attack;
 	document.getElementById("sergeantsDefence").innerText = sergeantsData.defence;
-	document.getElementById("sergeantsHealth").innerText = sergeantsData.health;
-	document.getElementById("turkopolsAttack").innerText = turkopolsData.attack;
+	document.getElementById("sergeantsHealth").innerText  = sergeantsData.health;
+	document.getElementById("turkopolsAttack").innerText  = turkopolsData.attack;
 	document.getElementById("turkopolsDefence").innerText = turkopolsData.defence;
-	document.getElementById("turkopolsHealth").innerText = turkopolsData.health;
-	document.getElementById("knightsAttack").innerText = knightsData.attack;
-	document.getElementById("knightsDefence").innerText = knightsData.defence;
-	document.getElementById("knightsHealth").innerText = knightsData.health;
+	document.getElementById("turkopolsHealth").innerText  = turkopolsData.health;
+	document.getElementById("knightsAttack").innerText    = knightsData.attack;
+	document.getElementById("knightsDefence").innerText   = knightsData.defence;
+	document.getElementById("knightsHealth").innerText    = knightsData.health;
 }
