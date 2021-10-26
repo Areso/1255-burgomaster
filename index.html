@@ -3515,33 +3515,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			updateHeroStatus();
 			writeSave();
 		},
-		hireUnits : function () {
-			if (selectedUnitToHire==="sergeant"){
-				if (game.buildLevelStable>=1) {
-					if (game.gold >= numberToHire*config.sergeantHiring) {
-						game.sergeants += numberToHire;
-						game.gold      -= numberToHire*config.sergeantHiring;
-						updateTroopsNumbers();
-						updateResources();
-					} else {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[20]);
-						postEventLog(msg);
-					}
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[316]);
-					postEventLog(msg);
-				}
-			}
-		},
-		hireTroopsSergeant : function () {
+		hireSergeants : function () {
 			if (game.buildLevelStable>=1) {
-				if (game.gold > 20) {
-					game.sergeants += 1;
-					game.gold      -= 20;
+				if (game.gold >= numberToHire*config.sergeantHiring) {
+					game.sergeants += parseInt(numberToHire);
+					game.gold      -= numberToHire*config.sergeantHiring;
 					updateTroopsNumbers();
-                    updateResources();
+					updateResources();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[20]);
@@ -3553,14 +3533,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(msg);
 			}
 		},
-		hireTroopsTurkopol : function () {
+		hireTurkopols : function () {
 			if (game.buildLevelStable>=1) {
 				if (game.buildLevelArchery >= 1) {
-					if (game.gold > 20) {
-						game.turkopols += 1;
-						game.gold -= 20;
+					if (game.gold >= numberToHire*config.turkopolHiring) {
+						game.turkopols += parseInt(numberToHire);
+						game.gold      -= numberToHire*config.turkopolHiring;
 						updateTroopsNumbers();
-                        updateResources();
+						updateResources();
 					} else {
 						msg = "<b>%arg1</b>";
 						msg = msg.replace("%arg1", localeStrings[20]);
@@ -3570,20 +3550,20 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[317]);
 					postEventLog(msg);
-				}
+				} 
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1",localeStrings[316]);
 				postEventLog(msg);
 			}
 		},
-		hireTroopsKnight : function () {
+		hireKnights : function () {
 			if (game.buildLevelStable>=2) {
-				if (game.gold > 40){
-					game.knights   += 1;
-					game.gold      -= 40;
+				if (game.gold >= numberToHire*config.knightHiring) {
+					game.knights   += parseInt(numberToHire);
+					game.gold      -= numberToHire*config.knightHiring;
 					updateTroopsNumbers();
-                    updateResources();
+					updateResources();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1", localeStrings[20]);
@@ -3591,8 +3571,19 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			} else {
 				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[318].replace("%arg1", 2));
+				msg = msg.replace("%arg1",localeStrings[318]);
 				postEventLog(msg);
+			}
+		},
+		hireUnits : function () {
+			if (selectedUnitToHire==="sergeant"){
+				game.hireSergeants();
+			}
+			if (selectedUnitToHire==="turkopol"){
+				game.hireTurkopols();
+			}
+			if (selectedUnitToHire==="knight"){
+				game.hireKnights();
 			}
 		},
 		moveSergeantsToHero : function () {

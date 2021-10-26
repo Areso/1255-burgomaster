@@ -15,7 +15,7 @@ function selectObj (myobject) {
 								<p>Dmg: 3-4</p>\
 								<p>HP: <span id="sergeantsHealth">15</span></p></div>';
 		infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-								oninput="hireNumberValue.value = this.value; numberToHire = this.value ">';
+								oninput="hireNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
 		infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
 								onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 								"value="1"><br>';
@@ -32,7 +32,7 @@ function selectObj (myobject) {
 								<p>HP: <span id="turkopolsHealth">12</span></p></div>';
 		if (game.buildLevelArchery>0){
 			infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-									oninput="hireNumberValue.value = this.value; numberToHire = this.value ">';
+									oninput="hireNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
 			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
 									onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 									"value="1"><br>';
@@ -53,7 +53,7 @@ function selectObj (myobject) {
 								<p>HP: <span id="knightsHealth">20</span></p></div>';
 		if (game.buildLevelStables>1){
 			infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-									oninput="hireNumberValue.value = this.value; numberToHire = this.value ">';
+									oninput="hireNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
 			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
 									onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 									"value="1"><br>';
@@ -141,9 +141,9 @@ function updateGarrisonStatusHire() {
 	
 }
 function updateTroopsNumbers() {
-	document.getElementById("lblGarnisonSergeants").innerHTML  = game.sergeants;
-	document.getElementById("lblGarnisonTurkopols").innerHTML  = game.turkopols;
-	document.getElementById("lblGarnisonKnights").innerHTML    = game.knights;
+	document.getElementById("grid-garrison1v").innerHTML      = game.sergeants;
+	document.getElementById("grid-garrison2v").innerHTML      = game.turkopols;
+	document.getElementById("grid-garrison3v").innerHTML      = game.knights;
 	if (game.heroExists() === true) {
 		document.getElementById("grid-hero1v").innerHTML      = game.myhero.sergeants;
 		document.getElementById("grid-hero2v").innerHTML      = game.myhero.turkopols;
