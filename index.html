@@ -506,15 +506,18 @@
 					<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
 				</div>
 				<div class="grid-item" id="grid-garrison1">
-					<img id="imgHiringScreenSergeant1" src="resources/sergeant.png">
+					<img id="imgHiringScreenSergeant1" src="resources/sergeant.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
 				</div>
 				<div class="grid-item" id="grid-garrison1v">10</div>
 				<div class="grid-item" id="grid-garrison2">
-					<img id="imgHiringScreenTurkopol2" src="resources/turkopol.png">
+					<img id="imgHiringScreenTurkopol2" src="resources/turkopol.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
 				</div>
 				<div class="grid-item" id="grid-garrison2v">200</div>
 				<div class="grid-item" id="grid-garrison3">
-					<img id="imgHiringScreenKnight3" src="resources/knight.png">
+					<img id="imgHiringScreenKnight3" src="resources/knight.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
 				</div>
 				<div class="grid-item" id="grid-garrison3v">300</div>
 				<div class="grid-item not-implemented" id="grid-garrison4">garrison4</div>
@@ -1206,6 +1209,7 @@
 	//composite();
 </script>
 <!--ADVENTURE MAP-->
+<script src="advmap.js"></script>
 <!--THE GAME-->
 <script>
 //THE GAME
@@ -3584,6 +3588,27 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 			if (selectedUnitToHire==="knight"){
 				game.hireKnights();
+			}
+		},
+		moveSergeants() {
+			if (moveFromGarrison===true) {
+				if (game.sergeants >= numberToMove) {
+					game.sergeants -= numberToMove;
+					console.log(game.myhero.sergeants);
+					game.myhero.sergeants += numberToMove;
+					console.log(game.myhero.sergeants);
+					updateHeroStatus();
+					updateTroopsNumbers();
+					updateResources();
+				}
+			} else {
+				
+			}
+		},
+		moveUnits : function () {
+			console.log(numberToMove);
+			if (selectedUnitToMove==="sergeant"){
+				game.moveSergeants();
 			}
 		},
 		moveSergeantsToHero : function () {

@@ -1,5 +1,9 @@
 selectedUnitToHire = "";
-numberToHire       =  1; 
+selectedUnitToMove = "";
+moveFromGarrison   = false;
+moveFromHero       = false;
+numberToHire       =  1;
+numberToMove       =  1; 
 function selectObj (myobject) {
 	const matches = document.querySelectorAll("img.unit-img");
 	for (mi=0;mi<matches.length;mi++){
@@ -15,13 +19,16 @@ function selectObj (myobject) {
 								<p>Def.: <span id="sergeantsDefence">8</span></p>\
 								<p>Dmg: 3-4</p>\
 								<p>HP: <span id="sergeantsHealth">15</span></p></div>';
-		infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-								oninput="hireNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
-		infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
-								onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
+		infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
+								oninput="unitNumberRange.value = this.value; numberToHire = parseInt(this.value)">';
+		infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
+								onchange="unitNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 								"value="1"><br>';
 		infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
 		selectedUnitToHire   = "sergeant";
+		selectedUnitToMove   = "";
+		moveFromGarrison     = false;
+		moveFromHero         = false;
 	}
 	if (myobject.id==="imgHiringScreenTurkopolToHire") {
 		numberToHire = 1;
@@ -33,10 +40,10 @@ function selectObj (myobject) {
 								<p>Dmg: 2-3</p>\
 								<p>HP: <span id="turkopolsHealth">12</span></p></div>';
 		if (game.buildLevelArchery>0){
-			infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-									oninput="hireNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
-			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
-									onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
+			infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
+									oninput="unitNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
+			infoblock.innerHTML += '<input type="text"  id="unitNumberValue" value="1"\
+									onchange="unitNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 									"value="1"><br>';
 			infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
 			selectedUnitToHire  = "turkopol";
@@ -44,6 +51,9 @@ function selectObj (myobject) {
 			msg = "<b>%arg1</b>";
 			infoblock.innerHTML += msg.replace("%arg1", localeStrings[317]);
 		}
+		selectedUnitToMove   = "";
+		moveFromGarrison     = false;
+		moveFromHero         = false;
 	}
 	if (myobject.id==="imgHiringScreenKnightToHire") {
 		numberToHire = 1;
@@ -55,18 +65,46 @@ function selectObj (myobject) {
 								<p>Dmg: 5-10</p>\
 								<p>HP: <span id="knightsHealth">20</span></p></div>';
 		if (game.buildLevelStables>1){
-			infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-									oninput="hireNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
-			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
-									onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
+			infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
+									oninput="unitNumberRange.value = this.value; numberToHire = parseInt(this.value)">';
+			infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
+									onchange="unitNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 									"value="1"><br>';
 			infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
-			selectedUnitToHire   = "knight";
+			selectedUnitToMove   = "knight";
 		} else {
 			msg = "<b>%arg1</b>";
 			msg = msg.replace("%arg1",localeStrings[318].replace("%arg1", 2));
 			infoblock.innerHTML += msg;
 		}
+		selectedUnitToMove   = "";
+		moveFromGarrison     = false;
+		moveFromHero         = false;
+	}
+	if (myobject.id==="imgHiringScreenSergeant1") {
+		document.getElementById("imgHiringScreenSergeant1").style.background="yellow";
+		infoblock.innerHTML  = localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
+		infoblock.innerHTML += '<div class="unit-info">\
+								<p>Atk.: <span id="sergeantsAttack">5</span></p>\
+								<p>Def.: <span id="sergeantsDefence">8</span></p>\
+								<p>Dmg: 3-4</p>\
+								<p>HP: <span id="sergeantsHealth">15</span></p></div>';
+		//TODO SHOW UPKEEP COST OF THE STACK!
+		if (game.heroExists()===true) {
+			//check whether the hero is in town
+			if (game.myhero.status===0){
+				infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
+								oninput="unitNumberRange.value = this.value; numberToMove = parseInt(this.value)">';
+				infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
+										onchange="unitNumberRange.value=parseInt(this.value); numberToMove=parseInt(this.value)"\
+										"value="1"><br>';
+				infoblock.innerHTML += '<button onclick="game.moveUnits()">Move to hero</button>';
+				selectedUnitToMove   = "sergeant";
+				moveFromGarrison     = true;
+				moveFromHero         = false;
+			}
+		}
+		selectedUnitToHire   = "";
 	}
 }
 function hoverOutObj(myobject) {
