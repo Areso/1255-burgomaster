@@ -1,4 +1,5 @@
-selectedToHire = ""; 
+selectedUnitToHire = "";
+numberToHire       =  1; 
 function selectObj (myobject) {
 	const matches = document.querySelectorAll("img.unit-img");
 	for (mi=0;mi<matches.length;mi++){
@@ -14,10 +15,12 @@ function selectObj (myobject) {
 								<p>Dmg: 3-4</p>\
 								<p>HP: <span id="sergeantsHealth">15</span></p></div>';
 		infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-								oninput="hireNumberValue.value = this.value">';
-		infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"><br>';
+								oninput="hireNumberValue.value = this.value; numberToHire = this.value ">';
+		infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
+								onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
+								"value="1"><br>';
 		infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
-		selectedToHire       = "sergeant";
+		selectedUnitToHire   = "sergeant";
 	}
 	if (myobject.id==="imgHiringScreenTurkopolToHire") {
 		document.getElementById("imgHiringScreenTurkopolToHire").style.background="yellow";
@@ -29,10 +32,12 @@ function selectObj (myobject) {
 								<p>HP: <span id="turkopolsHealth">12</span></p></div>';
 		if (game.buildLevelArchery>0){
 			infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-									oninput="hireNumberValue.value = this.value">';
-			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"><br>';
+									oninput="hireNumberValue.value = this.value; numberToHire = this.value ">';
+			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
+									onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
+									"value="1"><br>';
 			infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
-			selectedToHire       = "turkopol";
+			selectedUnitToHire  = "turkopol";
 		} else {
 			msg = "<b>%arg1</b>";
 			infoblock.innerHTML += msg.replace("%arg1", localeStrings[317]);
@@ -48,10 +53,12 @@ function selectObj (myobject) {
 								<p>HP: <span id="knightsHealth">20</span></p></div>';
 		if (game.buildLevelStables>1){
 			infoblock.innerHTML += '<input type="range" id="hireNumberRange" value="1" min="1" max="100"\
-									oninput="hireNumberValue.value = this.value">';
-			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"><br>';
+									oninput="hireNumberValue.value = this.value; numberToHire = this.value ">';
+			infoblock.innerHTML += '<input type="text"  id="hireNumberValue" value="1"\
+									onchange="hireNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
+									"value="1"><br>';
 			infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
-			selectedToHire       = "knight";
+			selectedUnitToHire   = "knight";
 		} else {
 			msg = "<b>%arg1</b>";
 			msg = msg.replace("%arg1",localeStrings[318].replace("%arg1", 2));

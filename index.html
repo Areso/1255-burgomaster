@@ -3515,6 +3515,26 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			updateHeroStatus();
 			writeSave();
 		},
+		hireUnits : function () {
+			if (selectedUnitToHire==="sergeant"){
+				if (game.buildLevelStable>=1) {
+					if (game.gold >= numberToHire*config.sergeantHiring) {
+						game.sergeants += numberToHire;
+						game.gold      -= numberToHire*config.sergeantHiring;
+						updateTroopsNumbers();
+						updateResources();
+					} else {
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1",localeStrings[20]);
+						postEventLog(msg);
+					}
+				} else {
+					msg = "<b>%arg1</b>";
+					msg = msg.replace("%arg1",localeStrings[316]);
+					postEventLog(msg);
+				}
+			}
+		},
 		hireTroopsSergeant : function () {
 			if (game.buildLevelStable>=1) {
 				if (game.gold > 20) {
