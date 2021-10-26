@@ -7,6 +7,7 @@ function selectObj (myobject) {
 	}
 	infoblock = document.getElementById("grid-info"); 
 	if (myobject.id==="imgHiringScreenSergeantToHire") {
+		numberToHire = 1;
 		document.getElementById("imgHiringScreenSergeantToHire").style.background="yellow";
 		infoblock.innerHTML  = localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
 		infoblock.innerHTML += '<div class="unit-info">\
@@ -23,6 +24,7 @@ function selectObj (myobject) {
 		selectedUnitToHire   = "sergeant";
 	}
 	if (myobject.id==="imgHiringScreenTurkopolToHire") {
+		numberToHire = 1;
 		document.getElementById("imgHiringScreenTurkopolToHire").style.background="yellow";
 		infoblock.innerHTML  = localeStrings[309].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
 		infoblock.innerHTML += '<div class="unit-info">\
@@ -44,6 +46,7 @@ function selectObj (myobject) {
 		}
 	}
 	if (myobject.id==="imgHiringScreenKnightToHire") {
+		numberToHire = 1;
 		document.getElementById("imgHiringScreenKnightToHire").style.background="yellow";
 		infoblock.innerHTML  = localeStrings[310].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
 		infoblock.innerHTML += '<div class="unit-info">\
@@ -92,7 +95,7 @@ function hoverInObj(myobject) {
 	}
 }
 function updateHeroStatusHire() {
-	if ( game.heroExists() === true) {
+	if (game.heroExists() === true) {
 		if (game.myhero.status===0) {
 			if (game.myhero.class===0) {
 				document.getElementById("imgHeroInHiringScreenKnight2").style.display="block";
@@ -138,9 +141,35 @@ function updateHeroStatusHire() {
 	}
 }
 function updateGarrisonStatusHire() {
-	
+	if (game.sergeants+game.turkopols+game.knights===0){
+		document.getElementById("grid-castellan").style.display="none";
+	} else {
+		document.getElementById("grid-castellan").style.display="block";
+	}
+	if (game.sergeants>0) {
+		document.getElementById("grid-garrison1").style.display="block";
+		document.getElementById("grid-garrison1v").style.display="block";
+	} else {
+		document.getElementById("grid-garrison1").style.display="none";
+		document.getElementById("grid-garrison1v").style.display="none";
+	}
+	if (game.turkopols>0) {
+		document.getElementById("grid-garrison2").style.display="block";
+		document.getElementById("grid-garrison2v").style.display="block";
+	} else {
+		document.getElementById("grid-garrison2").style.display="none";
+		document.getElementById("grid-garrison2v").style.display="none";
+	}
+	if (game.knights>0) {
+		document.getElementById("grid-garrison3").style.display="block";
+		document.getElementById("grid-garrison3v").style.display="block";
+	} else {
+		document.getElementById("grid-garrison3").style.display="none";
+		document.getElementById("grid-garrison3v").style.display="none";
+	}
 }
 function updateTroopsNumbers() {
+	updateGarrisonStatusHire();
 	document.getElementById("grid-garrison1v").innerHTML      = game.sergeants;
 	document.getElementById("grid-garrison2v").innerHTML      = game.turkopols;
 	document.getElementById("grid-garrison3v").innerHTML      = game.knights;
