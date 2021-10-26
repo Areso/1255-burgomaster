@@ -1,6 +1,3 @@
-function updateGarrisonStatus() {
-	
-}
 function updateHeroStatus() {
 	updateHeroStatusInn();
 	updateHeroStatusHire();
