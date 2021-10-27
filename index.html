@@ -506,17 +506,17 @@
 					<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
 				</div>
 				<div class="grid-item" id="grid-garrison1">
-					<img id="imgHiringScreenSergeant1" src="resources/sergeant.png" class="unit-img" 
+					<img id="imgHiringScreenGarrisonSergeant1" src="resources/sergeant.png" class="unit-img" 
 					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
 				</div>
 				<div class="grid-item" id="grid-garrison1v">10</div>
 				<div class="grid-item" id="grid-garrison2">
-					<img id="imgHiringScreenTurkopol2" src="resources/turkopol.png" class="unit-img" 
+					<img id="imgHiringScreenGarrisonTurkopol2" src="resources/turkopol.png" class="unit-img" 
 					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
 				</div>
 				<div class="grid-item" id="grid-garrison2v">200</div>
 				<div class="grid-item" id="grid-garrison3">
-					<img id="imgHiringScreenKnight3" src="resources/knight.png" class="unit-img" 
+					<img id="imgHiringScreenGarrisonKnight3" src="resources/knight.png" class="unit-img" 
 					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
 				</div>
 				<div class="grid-item" id="grid-garrison3v">300</div>
@@ -526,20 +526,21 @@
 				<div class="grid-item not-implemented" id="grid-garrison5v">500</div>
 				<div class="grid-item not-implemented" id="grid-garrison6">garrison6</div>
 				<div class="grid-item not-implemented" id="grid-garrison6v">600</div>  
+
 				<div class="grid-item visiting-hero" id="grid-hero">
 					<img id="imgHeroInHiringScreenKnight2" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
 					<img id="imgHeroInHiringScreenMonk2" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
 				</div>
 				<div class="grid-item visiting-hero" id="grid-hero1">
-					<img id="imgHiringScreenSergeant1" src="resources/sergeant.png">
+					<img id="imgHiringScreenHeroSergeant1" src="resources/sergeant.png">
 				</div>
 				<div class="grid-item visiting-hero" id="grid-hero1v">100</div>
 				<div class="grid-item visiting-hero" id="grid-hero2">
-					<img id="imgHiringScreenTurkopol2" src="resources/turkopol.png">
+					<img id="imgHiringScreenHeroTurkopol2" src="resources/turkopol.png">
 				</div>
 				<div class="grid-item visiting-hero" id="grid-hero2v">200</div>
 				<div class="grid-item visiting-hero" id="grid-hero3">
-					<img id="imgHiringScreenKnight3" src="resources/knight.png">
+					<img id="imgHiringScreenHeroKnight3"   src="resources/knight.png"  >
 				</div>
 				<div class="grid-item visiting-hero" id="grid-hero3v">300</div>
 				<div class="grid-item not-implemented" id="grid-hero4">hero4</div>
@@ -778,23 +779,19 @@
 			</div>
 		</div>
 		<br>
-		<div id="chat_log_box">
+		<br>
+		<div id="chat_log_box" style="margin-top:10px;">
 			<button id="log_btn"  onclick="openLog()" >log</button>
 			<button id="chat_btn" onclick="openChat()">chat</button>
 			<label id="lbl_online" style="margin-left:20px">Online: </label>
 			<label id="lbl_online_value" style="margin-left:10px">n/d</label>
-			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
-			
-		
-			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
+			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 598px; left: 10px"></div>
+
+			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 598px; left: 10px"></div>
 			<input id="inp_nickname"  style="position: absolute; top: 725px; left:  10px; width: 100px;" value="Nickname" ></input>
 			<input id="msg_out"       style="position: absolute; top: 725px; left: 120px; width: 500px;" value=""         ></input>
 			<button id="btnSend" onclick="sendOnClick2()"   style="position: absolute; top: 725px; left: 700px; width: 100px;"          >send</button>
-		
 		</div>
-		
-		
-		
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
@@ -3605,142 +3602,47 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				
 			}
 		},
+		moveTurkopols() {
+			if (moveFromGarrison===true) {
+				if (game.turkopols >= numberToMove) {
+					game.turkopols -= numberToMove;
+					console.log(game.myhero.turkopols);
+					game.myhero.turkopols += numberToMove;
+					console.log(game.myhero.turkopols);
+					updateHeroStatus();
+					updateTroopsNumbers();
+					updateResources();
+				}
+			} else {
+				
+			}
+		},
+		moveKnights() {
+			if (moveFromGarrison===true) {
+				if (game.knights >= numberToMove) {
+					game.knights -= numberToMove;
+					console.log(game.myhero.knights);
+					game.myhero.knights += numberToMove;
+					console.log(game.myhero.knights);
+					updateHeroStatus();
+					updateTroopsNumbers();
+					updateResources();
+				}
+			} else {
+				
+			}
+		},
 		moveUnits : function () {
-			console.log(numberToMove);
-			if (selectedUnitToMove==="sergeant"){
+ 			if (selectedUnitToMove==="sergeant"){
 				game.moveSergeants();
 			}
-		},
-		moveSergeantsToHero : function () {
-			if (game.myhero.status===0){
-				if (game.sergeants>0) {
-					game.sergeants -= 1;
-					game.myhero.sergeants += 1;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
+			if (selectedUnitToMove==="turkopol"){
+				game.moveTurkopols();
 			}
-			console.group("%c Garrison sergeants", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: #090;", game.sergeants);
-			console.groupEnd();
-
-			console.group("%c Hero sergeants", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: blue;", game.myhero.sergeants);
-			console.groupEnd();
-		},
-		moveTurkopolsToHero : function () {
-			if (game.myhero.status===0){
-				if (game.turkopols>0) {
-					game.turkopols -= 1;
-					game.myhero.turkopols += 1;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
+			if (selectedUnitToMove==="knight"){
+				game.moveKnights();
 			}
-			console.group("%c Garrison turkopols", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: #090;", game.turkopols);
-			console.groupEnd();
-
-			console.group("%c Hero turkopols", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: blue;", game.myhero.turkopols);
-			console.groupEnd();
 		},
-		moveKnightsToHero : function () {
-			if (game.myhero.status===0){
-				if (game.knights>0) {
-					game.knights -= 1;
-					game.myhero.knights += 1;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
-			}
-			
-			console.group("%c Garrison knights", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: #090;", game.knights);
-			console.groupEnd();
-
-			console.group("%c Hero knights", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: blue;", game.myhero.knights);
-			console.groupEnd();
-		},
-
-		//--- Move troops to hero by type functionality: Start ---//
-		moveAllSergeantsToHero: function () {
-			if (game.myhero.status === 0) {
-				if (game.sergeants>0) {
-					var sergantsCount = game.sergeants;
-					game.sergeants -= sergantsCount;
-					game.myhero.sergeants += sergantsCount;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
-			}
-			console.group("%c Garrison sergeants", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: #090;", game.sergeants);
-			console.groupEnd();
-
-			console.group("%c Hero sergeants", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: blue;", game.myhero.sergeants);
-			console.groupEnd();
-		},
-		moveAllTurkopolsToHero: function () {
-			if (game.myhero.status===0){
-				if (game.turkopols>0) {
-					var turkopolsCount = game.turkopols;
-					game.turkopols -= turkopolsCount;
-					game.myhero.turkopols += turkopolsCount;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
-			}
-
-			console.group("%c Garrison turkopols", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: #090;", game.turkopols);
-			console.groupEnd();
-
-			console.group("%c Hero turkopols", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: blue;", game.myhero.turkopols);
-			console.groupEnd();
-
-		},
-		moveAllKnightsToHero: function () {
-			if (game.myhero.status===0){
-				if (game.knights>0) {
-					var knightsCount = game.knights;
-					game.knights -= knightsCount;
-					game.myhero.knights += knightsCount;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
-			}
-
-			console.group("%c Garrison knights", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: #090;", game.knights);
-			console.groupEnd();
-
-			console.group("%c Hero knights", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: blue;", game.myhero.knights);
-			console.groupEnd();
-		},
-		//--- Move troops to hero by type functionality: End ---//
 
 		moveSergeantsToGarnison : function () {
 			if (game.myhero.status===0){
@@ -6605,7 +6507,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	})(document, window, "yandex_metrika_callbacks");
 </script>
 <!--ONLINE OPTIONS-->
-<!-- <script async src='online.js'></script> -->
+<script async src='online.js'></script>
 <noscript>
 	<div>
 	<img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" />

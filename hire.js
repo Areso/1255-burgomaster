@@ -33,7 +33,7 @@ function selectObj (myobject) {
 	if (myobject.id==="imgHiringScreenTurkopolToHire") {
 		numberToHire = 1;
 		document.getElementById("imgHiringScreenTurkopolToHire").style.background="yellow";
-		infoblock.innerHTML  = localeStrings[309].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
+		infoblock.innerHTML  = localeStrings[309].replace("%arg1", config.sergeantHiring).replace("%arg2", config.turkopolUpkeep);
 		infoblock.innerHTML += '<div class="unit-info">\
 								<p>Atk.: <span id="turkopolsAttack">5</span></p>\
 								<p>Def.: <span id="turkopolsDefence">5</span></p>\
@@ -58,20 +58,20 @@ function selectObj (myobject) {
 	if (myobject.id==="imgHiringScreenKnightToHire") {
 		numberToHire = 1;
 		document.getElementById("imgHiringScreenKnightToHire").style.background="yellow";
-		infoblock.innerHTML  = localeStrings[310].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
+		infoblock.innerHTML  = localeStrings[310].replace("%arg1", config.sergeantHiring).replace("%arg2", config.knightUpkeep);
 		infoblock.innerHTML += '<div class="unit-info">\
 								<p>Atk.: <span id="knightsAttack">10</span></p>\
 								<p>Def.: <span id="knightsDefence">9</span></p>\
 								<p>Dmg: 5-10</p>\
 								<p>HP: <span id="knightsHealth">20</span></p></div>';
-		if (game.buildLevelStables>1){
+		if (game.buildLevelStable>1){
 			infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
 									oninput="unitNumberRange.value = this.value; numberToHire = parseInt(this.value)">';
 			infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
 									onchange="unitNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 									"value="1"><br>';
 			infoblock.innerHTML += '<button onclick="game.hireUnits()">Hire</button>';
-			selectedUnitToMove   = "knight";
+			selectedUnitToHire   = "knight";
 		} else {
 			msg = "<b>%arg1</b>";
 			msg = msg.replace("%arg1",localeStrings[318].replace("%arg1", 2));
@@ -81,8 +81,8 @@ function selectObj (myobject) {
 		moveFromGarrison     = false;
 		moveFromHero         = false;
 	}
-	if (myobject.id==="imgHiringScreenSergeant1") {
-		document.getElementById("imgHiringScreenSergeant1").style.background="yellow";
+	if (myobject.id==="imgHiringScreenGarrisonSergeant1") {
+		document.getElementById("imgHiringScreenGarrisonSergeant1").style.background="yellow";
 		infoblock.innerHTML  = localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
 		infoblock.innerHTML += '<div class="unit-info">\
 								<p>Atk.: <span id="sergeantsAttack">5</span></p>\
@@ -94,12 +94,62 @@ function selectObj (myobject) {
 			//check whether the hero is in town
 			if (game.myhero.status===0){
 				infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
-								oninput="unitNumberRange.value = this.value; numberToMove = parseInt(this.value)">';
+										oninput="unitNumberRange.value = this.value; numberToMove = parseInt(this.value)">';
 				infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
 										onchange="unitNumberRange.value=parseInt(this.value); numberToMove=parseInt(this.value)"\
 										"value="1"><br>';
 				infoblock.innerHTML += '<button onclick="game.moveUnits()">Move to hero</button>';
 				selectedUnitToMove   = "sergeant";
+				moveFromGarrison     = true;
+				moveFromHero         = false;
+			}
+		}
+		selectedUnitToHire   = "";
+	}
+	if (myobject.id==="imgHiringScreenGarrisonTurkopol2") {
+		document.getElementById("imgHiringScreenGarrisonTurkopol2").style.background="yellow";
+		infoblock.innerHTML  = localeStrings[309].replace("%arg1", config.sergeantHiring).replace("%arg2", config.turkopolUpkeep);
+		infoblock.innerHTML += '<div class="unit-info">\
+								<p>Atk.: <span id="turkopolsAttack">5</span></p>\
+								<p>Def.: <span id="turkopolsDefence">5</span></p>\
+								<p>Dmg: 2-3</p>\
+								<p>HP: <span id="turkopolsHealth">12</span></p></div>';
+		//TODO SHOW UPKEEP COST OF THE STACK!
+		if (game.heroExists()===true) {
+			//check whether the hero is in town
+			if (game.myhero.status===0){
+				infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
+										oninput="unitNumberRange.value = this.value; numberToMove = parseInt(this.value)">';
+				infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
+										onchange="unitNumberRange.value=parseInt(this.value); numberToMove=parseInt(this.value)"\
+										"value="1"><br>';
+				infoblock.innerHTML += '<button onclick="game.moveUnits()">Move to hero</button>';
+				selectedUnitToMove   = "turkopol";
+				moveFromGarrison     = true;
+				moveFromHero         = false;
+			}
+		}
+		selectedUnitToHire   = "";
+	}
+	if (myobject.id==="imgHiringScreenGarrisonKnight3") {
+		document.getElementById("imgHiringScreenGarrisonKnight3").style.background="yellow";
+		infoblock.innerHTML  = localeStrings[310].replace("%arg1", config.sergeantHiring).replace("%arg2", config.knightUpkeep);
+		infoblock.innerHTML += '<div class="unit-info">\
+								<p>Atk.: <span id="knightsAttack">10</span></p>\
+								<p>Def.: <span id="knightsDefence">9</span></p>\
+								<p>Dmg: 5-10</p>\
+								<p>HP: <span id="knightsHealth">20</span></p></div>';
+		//TODO SHOW UPKEEP COST OF THE STACK!
+		if (game.heroExists()===true) {
+			//check whether the hero is in town
+			if (game.myhero.status===0){
+				infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
+								oninput="unitNumberRange.value = this.value; numberToMove = parseInt(this.value)">';
+				infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
+										onchange="unitNumberRange.value=parseInt(this.value); numberToMove=parseInt(this.value)"\
+										"value="1"><br>';
+				infoblock.innerHTML += '<button onclick="game.moveUnits()">Move to hero</button>';
+				selectedUnitToMove   = "knight";
 				moveFromGarrison     = true;
 				moveFromHero         = false;
 			}
