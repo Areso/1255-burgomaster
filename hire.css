@@ -1,0 +1,224 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(160, 1fr);
+  background-color: #2196F3;
+  grid-template-rows: repeat(96, 1fr);
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 10px;
+  text-align: center;
+  position: relative;
+}
+.grid-item-fr {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+.not-implemented {
+  display: none;
+}
+.unit-img {
+  padding: 2px;
+  background: black;
+  transform: scale(1);
+}
+#grid-hire11 {
+  grid-column-start: 8;
+  grid-column-end: 28;
+  grid-row-start: 2;
+  grid-row-end: 22;
+}
+#grid-hire12 {
+  grid-column-start: 32;
+  grid-column-end: 52;
+  grid-row-start: 2;
+  grid-row-end: 22;
+}
+#grid-hire13 {
+  grid-column-start: 56;
+  grid-column-end: 76;
+  grid-row-start: 2;
+  grid-row-end: 22;
+}
+#grid-hire21 {
+  grid-column-start: 8;
+  grid-column-end: 28;
+  grid-row-start: 24;
+  grid-row-end: 44;
+}
+#grid-hire22 {
+  grid-column-start: 32;
+  grid-column-end: 52;
+  grid-row-start: 24;
+  grid-row-end: 44;
+}
+#grid-hire23 {
+  grid-column-start: 56;
+  grid-column-end: 76;
+  grid-row-start: 24;
+  grid-row-end: 44;
+}
+#grid-info {
+  grid-column-start: 80;
+  grid-column-end: 156;
+  grid-row-start: 2;
+  grid-row-end: 44;
+}
+#grid-castellan {
+  grid-column-start: 2;
+  grid-column-end: 22;
+  grid-row-start: 49;
+  grid-row-end: 69;
+}
+#grid-garrison1 {
+  grid-column-start: 24;
+  grid-column-end: 44;
+  grid-row-start: 49;
+  grid-row-end: 69;
+}
+#grid-garrison1v {
+  grid-column-start: 30;
+  grid-column-end: 38;
+  grid-row-start: 70;
+  grid-row-end: 71;
+}
+#grid-garrison2 {
+  grid-column-start: 47;
+  grid-column-end: 67;
+  grid-row-start: 49;
+  grid-row-end: 69;
+}
+#grid-garrison2v {
+  grid-column-start: 53;
+  grid-column-end: 61;
+  grid-row-start: 70;
+  grid-row-end: 71;
+}
+#grid-garrison3 {
+  grid-column-start: 70;
+  grid-column-end: 90;
+  grid-row-start: 49;
+  grid-row-end: 69;
+}
+#grid-garrison3v {
+  grid-column-start: 76;
+  grid-column-end: 85;
+  grid-row-start: 70;
+  grid-row-end: 71;
+}
+#grid-garrison4 {
+  grid-column-start: 93;
+  grid-column-end: 113;
+  grid-row-start: 49;
+  grid-row-end: 69;
+}
+#grid-garrison4v {
+  grid-column-start: 99;
+  grid-column-end: 107;
+  grid-row-start: 70;
+  grid-row-end: 71;
+}
+#grid-garrison5 {
+  grid-column-start: 116;
+  grid-column-end: 136;
+  grid-row-start: 49;
+  grid-row-end: 69;
+}
+#grid-garrison5v {
+  grid-column-start: 122;
+  grid-column-end: 130;
+  grid-row-start: 70;
+  grid-row-end: 71;
+}
+#grid-garrison6 {
+  grid-column-start: 139;
+  grid-column-end: 159;
+  grid-row-start: 49;
+  grid-row-end: 69;
+}
+#grid-garrison6v {
+  grid-column-start: 145;
+  grid-column-end: 153;
+  grid-row-start: 70;
+  grid-row-end: 71;
+}
+#grid-hero {
+  grid-column-start: 2;
+  grid-column-end: 22;
+  grid-row-start: 73;
+  grid-row-end: 93;
+}
+#grid-hero1 {
+  grid-column-start: 24;
+  grid-column-end: 44;
+  grid-row-start: 73;
+  grid-row-end: 93;
+}
+#grid-hero1v {
+  grid-column-start: 30;
+  grid-column-end: 38;
+  grid-row-start: 94;
+  grid-row-end: 95;
+}
+#grid-hero2 {
+  grid-column-start: 47;
+  grid-column-end: 67;
+  grid-row-start: 73;
+  grid-row-end: 93;
+}
+#grid-hero2v {
+  grid-column-start: 53;
+  grid-column-end: 61;
+  grid-row-start: 94;
+  grid-row-end: 95;
+}
+#grid-hero3 {
+  grid-column-start: 70;
+  grid-column-end: 90;
+  grid-row-start: 73;
+  grid-row-end: 93;
+}
+#grid-hero3v {
+  grid-column-start: 76;
+  grid-column-end: 85;
+  grid-row-start: 94;
+  grid-row-end: 95;
+}
+#grid-hero4 {
+  grid-column-start: 93;
+  grid-column-end: 113;
+  grid-row-start: 73;
+  grid-row-end: 93;
+}
+#grid-hero4v {
+  grid-column-start: 99;
+  grid-column-end: 107;
+  grid-row-start: 94;
+  grid-row-end: 95;
+}
+#grid-hero5 {
+  grid-column-start: 116;
+  grid-column-end: 136;
+  grid-row-start: 73;
+  grid-row-end: 94;
+}
+#grid-hero5v {
+  grid-column-start: 122;
+  grid-column-end: 130;
+  grid-row-start: 94;
+  grid-row-end: 95;
+}
+#grid-hero6 {
+  grid-column-start: 139;
+  grid-column-end: 159;
+  grid-row-start: 73;
+  grid-row-end: 93;
+}
+#grid-hero6v {
+  grid-column-start: 145;
+  grid-column-end: 153;
+  grid-row-start: 94;
+  grid-row-end: 95;
+}
+

@@ -6,6 +6,8 @@
 		1255 Burgomaster
 	</title>
 	<link rel="stylesheet"  type="text/css" href="game.css"/>
+	<link rel="stylesheet"  type="text/css" href="hire.css"/>
+	<link rel="stylesheet"  type="text/css" href="inn.css" />
 	<script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
     <script>
       'use strict';
@@ -29,6 +31,9 @@
 			ws_server = "ws://localhost:6698";
 		} 
     </script>
+	<script src="hire.js"></script>
+	<script src="inn.js" ></script>
+	<script src="dom.js" ></script>
 </head>
 <body>
 <div id="htmlGame">
@@ -480,6 +485,73 @@
 			<button id="btnToInn1" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
 		</div>
 		<div id="tabTroopsHiring" class="tabcontent">
+			<div class="grid-container" style="width: 800px; height: 480px">
+				<div class="grid-item hire" id="grid-hire11">
+					<img id="imgHiringScreenSergeantToHire"   src="resources/sergeant.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item hire" id="grid-hire12">
+					<img id="imgHiringScreenTurkopolToHire" src="resources/turkopol.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item hire" id="grid-hire13">
+					<img id="imgHiringScreenKnightToHire" src="resources/knight.png" class="unit-img"
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item hire not-implemented" id="grid-hire21">4</div>
+				<div class="grid-item hire not-implemented" id="grid-hire22">5</div>
+				<div class="grid-item hire not-implemented" id="grid-hire23">6</div>
+				<div class="grid-item" id="grid-info">info</div>
+				<div class="grid-item" id="grid-castellan">
+					<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
+				</div>
+				<div class="grid-item" id="grid-garrison1">
+					<img id="imgHiringScreenGarrisonSergeant1" src="resources/sergeant.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item" id="grid-garrison1v">10</div>
+				<div class="grid-item" id="grid-garrison2">
+					<img id="imgHiringScreenGarrisonTurkopol2" src="resources/turkopol.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item" id="grid-garrison2v">200</div>
+				<div class="grid-item" id="grid-garrison3">
+					<img id="imgHiringScreenGarrisonKnight3" src="resources/knight.png" class="unit-img" 
+					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+				</div>
+				<div class="grid-item" id="grid-garrison3v">300</div>
+				<div class="grid-item not-implemented" id="grid-garrison4">garrison4</div>
+				<div class="grid-item not-implemented" id="grid-garrison4v">400</div>
+				<div class="grid-item not-implemented" id="grid-garrison5">garrison5</div>
+				<div class="grid-item not-implemented" id="grid-garrison5v">500</div>
+				<div class="grid-item not-implemented" id="grid-garrison6">garrison6</div>
+				<div class="grid-item not-implemented" id="grid-garrison6v">600</div>  
+
+				<div class="grid-item visiting-hero" id="grid-hero">
+					<img id="imgHeroInHiringScreenKnight2" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
+					<img id="imgHeroInHiringScreenMonk2" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
+				</div>
+				<div class="grid-item visiting-hero" id="grid-hero1">
+					<img id="imgHiringScreenHeroSergeant1" src="resources/sergeant.png">
+				</div>
+				<div class="grid-item visiting-hero" id="grid-hero1v">100</div>
+				<div class="grid-item visiting-hero" id="grid-hero2">
+					<img id="imgHiringScreenHeroTurkopol2" src="resources/turkopol.png">
+				</div>
+				<div class="grid-item visiting-hero" id="grid-hero2v">200</div>
+				<div class="grid-item visiting-hero" id="grid-hero3">
+					<img id="imgHiringScreenHeroKnight3"   src="resources/knight.png"  >
+				</div>
+				<div class="grid-item visiting-hero" id="grid-hero3v">300</div>
+				<div class="grid-item not-implemented" id="grid-hero4">hero4</div>
+				<div class="grid-item not-implemented" id="grid-hero4v">400</div>
+				<div class="grid-item not-implemented" id="grid-hero5">hero5</div>
+				<div class="grid-item not-implemented" id="grid-hero5v">500</div>
+				<div class="grid-item not-implemented" id="grid-hero6">hero6</div>
+				<div class="grid-item not-implemented" id="grid-hero6v">600</div>
+			</div>
+		</div>
+		<div id="tabTroopsHiringOld" class="tabcontent">
 			<label id="lblTroopsHiring">Hiring troops</label><br>
 			<div id="lblTroopsHelp" style="height: 80px; width: 780px;">
 			</div>
@@ -707,23 +779,19 @@
 			</div>
 		</div>
 		<br>
-		<div id="chat_log_box">
+		<br>
+		<div id="chat_log_box" style="margin-top:10px;">
 			<button id="log_btn"  onclick="openLog()" >log</button>
 			<button id="chat_btn" onclick="openChat()">chat</button>
 			<label id="lbl_online" style="margin-left:20px">Online: </label>
 			<label id="lbl_online_value" style="margin-left:10px">n/d</label>
-			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
-			
-		
-			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 578px; left: 10px"></div>
+			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 598px; left: 10px"></div>
+
+			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 598px; left: 10px"></div>
 			<input id="inp_nickname"  style="position: absolute; top: 725px; left:  10px; width: 100px;" value="Nickname" ></input>
 			<input id="msg_out"       style="position: absolute; top: 725px; left: 120px; width: 500px;" value=""         ></input>
 			<button id="btnSend" onclick="sendOnClick2()"   style="position: absolute; top: 725px; left: 700px; width: 100px;"          >send</button>
-		
 		</div>
-		
-		
-		
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
@@ -836,82 +904,6 @@
 	buildingsInTownY=[];
 	buildingsInTownW=[];
 	buildingsInTownH=[];
-
-
-	/*-- New: Units data --*/
-
-	var sergeantsData = {
-	  name: 'sergeants',
-	  minDmg: 3,
-	  maxDmg: 4,
-	  attack: 5,
-	  defence: 8,
-	  health: 15,
-	  count: 1
-	};
-
-	var turkopolsData = {
-	  name: 'turkopols',
-	  minDmg: 2,
-	  maxDmg: 3,
-	  attack: 5,
-	  defence: 5,
-	  health: 12,
-	  count: 1
-	};
-
-	var knightsData = {
-	  name: 'knights',
-	  minDmg: 5,
-	  maxDmg: 10,
-	  attack: 10,
-	  defence: 9,
-	  health: 20,
-	  count: 1
-	};
-
-	var banditWarrior = {
-	  name: 'bandit',
-	  minDmg: 1,
-	  maxDmg: 3,
-	  attack: 5,
-	  defence: 3,
-	  count: 1,
-	  health: 10
-	};
-
-	var banditArcher = {
-	  name: 'banditArcher',
-	  minDmg: 2,
-	  maxDmg: 3,
-	  attack: 5,
-	  defence: 2,
-	  count: 1,
-	  health: 8,
-	};
-
-	var mercSpearmen = {
-	  name: 'mercenarySpearmen',
-	  minDmg: 4,
-	  maxDmg: 6,
-	  attack: 6,
-	  defence: 7,
-	  count: 1,
-	  health: 10
-	};
-
-	var mercSwordman = {
-	  name: 'mercenarySwordman',
-	  minDmg: 5,
-	  maxDmg: 7,
-	  attack: 7,
-	  defence: 9,
-	  count: 1,
-	  health: 15,
-	};
-
-	var isTutorialState = true;
-
 	function inArray (arrayToCheck, valueToCheck) {
 		 return arrayToCheck.indexOf(valueToCheck) > -1;
 	}
@@ -1214,211 +1206,93 @@
 	//composite();
 </script>
 <!--ADVENTURE MAP-->
-<script>
-	//THE ADVENTURE MAP
-	var canvas_map      = document.getElementById("canvasMap");
-	canvas_map.addEventListener("touchstart", tap_map);
-	canvas_map.addEventListener("mousedown", tap_map);
-	var ctx_map         = canvas_map.getContext("2d");
-	var tile_grass      = loadImage('tiles/grass1.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
-	var tile_sand       = loadImage('tiles/sand.png');
-	var tile_snow       = loadImage('tiles/snow.png');
-	var tile_water      = loadImage('tiles/water.png');
-	var castle_tile     = loadImage('resources/castle_big.png');
-	var blackmarket_tile= loadImage('resources/black_market.png');
-	var bmarket_burned_tile= loadImage('resources/black_market_burned.png');
-	var hero_tile       = loadImage('resources/someKnight3.png');
-	var hero_atk_tile   = loadImage('resources/someKnightAttacked2.png');
-	var chest_tile      = loadImage('resources/chest.png');
-	var pumpkin_tile    = loadImage('resources/pumpkin.png');
-	var monster_tile    = loadImage('resources/monster_redpeople.png');
-	var tree_tile       = loadImage('resources/tree2.png');
-	var tree_tile2		= loadImage('resources/tree.png');
-	var arrow_l         = loadImage('resources/pointer_l.png');
-	var arrow_r         = loadImage('resources/pointer_r.png');
-	var arrow_u         = loadImage('resources/pointer_u.png');
-	var arrow_d         = loadImage('resources/pointer_d.png');
-	ctx_map.globalAlpha=1;
-	function composite_gm() {
-		ctx_map.clearRect(0, 0, 800, 480);
-		// try place hero at center of screen
-		camXL = game.heroX - Math.floor(config.sizeScrX/2);
-		camXH = camXL + config.sizeScrX;
-		//console.log('game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
-		if (camXL < 0) {
-			camXL = 0;
-			camXH = config.sizeMapX-config.sizeScrX;
-			//console.log('override XL<0! game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
-		}
-		if (camXH > config.sizeMapX) {
-			camXL = config.sizeMapX-config.sizeScrX;
-			camXH = config.sizeMapX;
-			//console.log('override XH>SizeMapX! game.heroX, camXL, camXH are '+game.heroX+', '+camXL+', '+camXH);
-		}
-		camYL = game.heroY - Math.floor(config.sizeScrY/2);
-		camYH = camYL + config.sizeScrY;
-		if (camYL < 0) {
-			camYL = 0;
-			camYH = config.sizeMapY-config.sizeScrY;
-		}
-		if (camYH > config.sizeMapY) {
-			camYL = config.sizeMapY-config.sizeScrY;
-			camYH = config.sizeMapY;
-		}
-		for (i = 0; i < config.sizeScrX; i++) {
-			for (j = 0; j < config.sizeScrY; j++) {
-				if (game.myMapLand[i+camXL][j+camYL]===0) {
-					ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
-				}
-			}
-		}
-		already_draw = false;
-		for (i = 0; i < config.sizeScrX; i++) {
-			for (j = 0; j < config.sizeScrY; j++) {
-				if (game.myMapLand[i+camXL][j+camYL]===0) {
-					//ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
-				}
-				if (game.myMapObjects[i+camXL][j+camYL]===1) {
-					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);
-				}
-				if (game.myMapObjects[i+camXL][j+camYL]===2) {
-					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile2, i * 48, j * 48);
-				}
-				if (game.myMapObjects[i+camXL][j+camYL]===3) {
-					//console.log("draw tree");
-					ctx_map.drawImage(tree_tile, i * 48, j * 48);
-				}
-				if (game.myMapObjects[i+camXL][j+camYL]===4) {
-					//console.log("draw blackmarket");
-					ctx_map.drawImage(blackmarket_tile, i * 48, j * 48);
-				}
-				if (game.myMapObjects[i+camXL][j+camYL]===41) {
-					//console.log("draw burned blackmarket");
-					ctx_map.drawImage(bmarket_burned_tile, i * 48, j * 48);
-				}
-				if (game.myMapObjects[i+camXL][j+camYL]===12) {
-					//console.log("draw castle");
-					ctx_map.drawImage(castle_tile, i * 48, j * 48);   //draw castle entrance
-					already_draw = true;
-				} else {
-					if (already_draw === false){
-						if (j+camYL-1>0){
-							if (game.myMapObjects[i + camXL][j + camYL -1] === 12) {
-								//console.log("draw castle");
-								ctx_map.drawImage(castle_tile, i * 48, (j-1) * 48);   //draw castle entrance
-								already_draw = true;
-							}
-						}
-						if (j+camYL+1<config.sizeMapY) {
-							if (game.myMapObjects[i + camXL][j + camYL + 1] === 12) {
-								//console.log("draw castle");
-								ctx_map.drawImage(castle_tile, i * 48, (j + 1) * 48);   //draw castle entrance
-								already_draw = true;
-							}
-						}
-						if (i+camXL-1>0) {
-							if (game.myMapObjects[i + camXL - 1][j + camYL] === 12) {
-								//console.log("draw castle");
-								ctx_map.drawImage(castle_tile, (i - 1) * 48, j * 48);   //draw castle entrance
-								already_draw = true;
-							}
-						}
-						if (i+camXL+1<config.sizeMapX) {
-							if (game.myMapObjects[i + camXL + 1][j + camYL] === 12) {
-								//console.log("draw castle");
-								ctx_map.drawImage(castle_tile, (i + 1) * 48, j * 48);   //draw castle entrance
-								already_draw = true;
-							}
-						}
-						if (i+camXL-2>0) {
-							if (game.myMapObjects[i + camXL - 2][j + camYL] === 12) {
-								//console.log("draw castle");
-								ctx_map.drawImage(castle_tile, (i - 2) * 48, j * 48);   //draw castle entrance
-								already_draw = true;
-							}
-						}
-						if (i+camXL+2<config.sizeMapX) {
-							if (game.myMapObjects[i + camXL + 2][j + camYL] === 12) {
-								//console.log("draw castle");
-								ctx_map.drawImage(castle_tile, (i + 2) * 48, j * 48);   //draw castle entrance
-								already_draw = true;
-							}
-						}
-					}
-				}
-				if (game.myMapRemObjects[i+camXL][j+camYL]===1) {
-					ctx_map.drawImage(chest_tile, i * 48, j * 48);
-				}
-				if (game.myMapRemObjects[i+camXL][j+camYL]===2) {
-					ctx_map.drawImage(pumpkin_tile, i * 48, j * 48);
-				}
-				if (game.myMapRemObjects[i+camXL][j+camYL]===3) {
-					ctx_map.drawImage(monster_tile, i * 48, j * 48);
-				}
-				if (game.myMapRemObjects[i+camXL][j+camYL]===40) {
-					ctx_map.drawImage(hero_tile, i * 48, j * 48);   //draw hero
-				}
-				if (game.myMapRemObjects[i+camXL][j+camYL]===41) {
-					ctx_map.drawImage(hero_atk_tile, i * 48, j * 48);   //draw hero being attacked
-				}
-			}
-		}
-		//overlay buttons for mobile clients
-		if (game.isMobile===1){
-			arrow_lx = 100;
-			arrow_ly = 200;
-			arrow_ux = 200;
-			arrow_uy = 100;
-			arrow_dx = 200;
-			arrow_dy = 300;
-			arrow_rx = 300;
-			arrow_ry = 200;
-			arrow_size=80;
-			ctx_map.globalAlpha=0.5;
-			ctx_map.drawImage(arrow_l, arrow_lx, arrow_ly);
-			ctx_map.drawImage(arrow_u, arrow_ux, arrow_uy);
-			ctx_map.drawImage(arrow_d, arrow_dx, arrow_dy);
-			ctx_map.drawImage(arrow_r, arrow_rx, arrow_ry);
-			ctx_map.globalAlpha=1;
-		}
-	}
-	function tap_map (e) {
-		pos = getElementPosition(canvasMap);
-		loc = {};
-		tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
-		tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
-		canvasScaleRatio = canvas.width / canvas.offsetWidth;
-		loc.x = (tapX - 9) * canvasScaleRatio;
-		loc.y = (tapY - 58) * canvasScaleRatio;
-		if (game.isMobile===1 && allowMvt===1) {
-			if (loc.x >= arrow_lx && loc.x <= arrow_lx + arrow_size) {
-				if (loc.y >= arrow_ly && loc.y <= arrow_ly + arrow_size) {
-					game.tryHeroMovement(-1, 0);//LEFT
-				}
-			}
-			if (loc.x >= arrow_ux && loc.x <= arrow_ux + arrow_size) {
-				if (loc.y >= arrow_uy && loc.y <= arrow_uy + arrow_size) {
-					game.tryHeroMovement(0, -1);//UP
-				}
-			}
-			if (loc.x >= arrow_dx && loc.x <= arrow_dx + arrow_size) {
-				if (loc.y >= arrow_dy && loc.y <= arrow_dy + arrow_size) {
-					game.tryHeroMovement(0, 1);//DOWN
-				}
-			}
-			if (loc.x >= arrow_rx && loc.x <= arrow_rx + arrow_size) {
-				if (loc.y >= arrow_ry && loc.y <= arrow_ry + arrow_size) {
-					game.tryHeroMovement(1, 0);//LEFT
-				}
-			}
-		}
-	}
-</script>
+<script src="advmap.js"></script>
 <!--THE GAME-->
 <script>
 //THE GAME
+	/*-- New: Units data --*/
+	var sergeantsData = {
+	  name: 'sergeants',
+	  minDmg: 3,
+	  maxDmg: 4,
+	  attack: 5,
+	  defence: 8,
+	  health: 15,
+	  count: 1
+	};
+
+	var turkopolsData = {
+	  name: 'turkopols',
+	  minDmg: 2,
+	  maxDmg: 3,
+	  attack: 5,
+	  defence: 5,
+	  health: 12,
+	  count: 1
+	};
+
+	var knightsData = {
+	  name: 'knights',
+	  minDmg: 5,
+	  maxDmg: 10,
+	  attack: 10,
+	  defence: 9,
+	  health: 20,
+	  count: 1
+	};
+
+	var banditWarrior = {
+	  name: 'bandit',
+	  minDmg: 1,
+	  maxDmg: 3,
+	  attack: 5,
+	  defence: 3,
+	  count: 1,
+	  health: 10
+	};
+
+	var banditArcher = {
+	  name: 'banditArcher',
+	  minDmg: 2,
+	  maxDmg: 3,
+	  attack: 5,
+	  defence: 2,
+	  count: 1,
+	  health: 8,
+	};
+
+	var mercSpearmen = {
+	  name: 'mercenarySpearmen',
+	  minDmg: 4,
+	  maxDmg: 6,
+	  attack: 6,
+	  defence: 7,
+	  count: 1,
+	  health: 10
+	};
+
+	var mercSwordman = {
+	  name: 'mercenarySwordman',
+	  minDmg: 5,
+	  maxDmg: 7,
+	  attack: 7,
+	  defence: 9,
+	  count: 1,
+	  health: 15,
+	};
+
+	var grolinWorker = {
+		name: 'Grolin worker',
+		minDmg: 1,
+		maxDmg: 2,
+		attack: 4,
+		defence: 2,
+		count: 1,
+		health: 6
+	};
+
+	var isTutorialState = true;
+
 /*-- New --*/
 
 var WeightedRandom = function() {
@@ -1489,10 +1363,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	//var heroAttributesRandomizer = new WeightedRandom();
 	
 	var enemyRandomizer = new WeightedRandom();
-	function Monster(monster, coordx, coordy) {
+	function Monster(monster, coordx, coordy, monsterData) {
 		this.monster = monster;
 		this.coordx = coordx;
 		this.coordy = coordy;
+		this.name   	= monsterData.name;
+		this.minDmg 	= monsterData.minDmg;
+		this.maxDmg 	= monsterData.maxDmg;
+		this.attack 	= monsterData.attack;
+		this.defence	= monsterData.defence;
+		this.count 		= monsterData.defence;
+		this.health 	= monsterData.health;
 	}
 	//gameconfig
 	var config = {
@@ -1625,6 +1506,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		difficultyModifier: 0,
 		attacker: 1,
 		isAutoBattle: false,
+		isDefeated: false,
 		nightMode: false,
 		monstersOnAdvMap: [],
 		role: "player",
@@ -2197,8 +2079,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
 							//prepare for battle!
 							//generate enemy squad
-							game.generateEnemyUnitsForBattle();
 
+							if (Object.keys(game.enemyHeroArmy.units).length === 0) {
+								game.generateEnemyUnitsForBattle("AdvMap");
+							}
 							game.isAutoBattle = true;
 
 							while(game.isAutoBattle) {
@@ -2256,7 +2140,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							if (castleEntranceFound === false) {
 								mobPlaced = true;
 								game.myMapRemObjects[neighbor_x][neighbor_y]=3;
-								mymonster = new Monster("monster", neighbor_x, neighbor_y);
+								mymonster = new Monster("monster", neighbor_x, neighbor_y, grolinWorker);
 								game.monstersOnAdvMap.push(mymonster);
 							}
 						}
@@ -2622,29 +2506,52 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		  }
 		},
 
-		generateEnemyUnitsForBattle: function() {
+		generateEnemyUnitsForBattle: function(campaignType) {
 
 			game.goldReward = 0;
 			game.expReward = 0;
 
 			var myheroTotalUnits = game.myhero.turkopols + game.myhero.sergeants + game.myhero.knights;
-			var enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
+			var enemyMaxCount = null;
 
-			if (game.myhero.stance === 0) {
+			// TODO: Refactor this section later
 
-				game.difficultyModifier = 1.05;
+			if (campaignType === "AdvMap") {
+				console.log('GEN for advmap')
+				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
 
-				enemyRandomizer.addEntry(banditWarrior, 35.0);
-				enemyRandomizer.addEntry(banditArcher,  35.0);
-				enemyRandomizer.addEntry(mercSwordman,  15.0);
-				enemyRandomizer.addEntry(mercSpearmen,  15.0);
+				if (game.myhero.stance === 0) {
+					game.difficultyModifier = 1.05;
+					// TEMP SECTION just for adv map with autobattle
 
-			} else if (game.myhero.stance === 1) {
+					grolinWorker.health = Math.round(1.25 * grolinWorker.health);
+					grolinWorker.minDmg = Math.round(1.25 * grolinWorker.minDmg);
+					grolinWorker.maxDmg = Math.round(1.25 * grolinWorker.maxDmg);
+					enemyRandomizer.addEntry(grolinWorker, 100.0);
+				} else {
+					game.difficultyModifier = 0.35;
+					enemyRandomizer.addEntry(grolinWorker, 100.0);
+				}
 
-				game.difficultyModifier = 0.35;
+			} else {
+				console.log('GEN for autocampaign')
+				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2)
 
-				enemyRandomizer.addEntry(banditWarrior, 50.0);
-				enemyRandomizer.addEntry(banditArcher, 50.0);
+				if (game.myhero.stance === 0) {
+
+					game.difficultyModifier = 1.05;
+
+					enemyRandomizer.addEntry(banditWarrior, 35.0);
+					enemyRandomizer.addEntry(banditArcher,  35.0);
+					enemyRandomizer.addEntry(mercSwordman,  15.0);
+					enemyRandomizer.addEntry(mercSpearmen,  15.0);
+
+				} else {
+					game.difficultyModifier = 0.35;
+					enemyRandomizer.addEntry(banditWarrior, 50.0);
+					enemyRandomizer.addEntry(banditArcher, 50.0);
+				}
+
 			}
 
 			for (var i = 0; i < enemyMaxCount; i++) {
@@ -2686,11 +2593,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						}
 					}
 
+					console.log('123: ', campaignType)
+
 					console.log("The player is the winner");
 					game.myhero.gold += game.goldReward;
 					game.myhero.exp += game.expReward;
 					game.restoreHealth();
-					game.generateEnemyUnitsForBattle();
+					game.generateEnemyUnitsForBattle(campaignType);
 
 					if (campaignType !== "AutoCampaign") {
 						game.heroLvlUp("AdvMap");
@@ -2699,9 +2608,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 				} else {
 					if (campaignType === "AutoCampaign") {
-						postJournalLog(localeStrings[172]);
+						if (game.myhero.stance === 0) {
+							postJournalLog(localeStrings[172]);
+							game.heroDie();
+						} else {
+							game.myhero.aCampaignForward   = 0;
+							game.myhero.aCampaignBackward  = 1;
+							game.myhero.gold 			   = 0;
+							game.myheroArmy = {};
+							game.isDefeated = true;
+						}
 					}
-					game.heroDie();
 					console.log("The PC opponent is the Winner");
 				}
 		},
@@ -2827,11 +2744,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 		calcAttackPhase: function (campaignType) {
-			if (campaignType==="AdvMap"){
-				game.attacker = game.myheroArmy.armyID;
-			} else {
-				game.attacker = randomFromRange(game.myheroArmy.armyID, game.enemyHeroArmy.armyID);
-			}
 			var attackVal = 0;
 			var defenceVal = 0;
 			
@@ -3106,8 +3018,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.heroLvlUp("AutoCampaign");
 			}
 			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
+				console.log("%c CHECK IF IS DEFEATED: ", "bakcground: #31b5e7; color: #fff");
 				if (game.myhero.aCampaignLong-1>0){
 					game.myhero.aCampaignLong     -= 1;
+					if (game.isDefeated) {
+						postJournalLog(locObj.advmapHeroLose.txt);
+						game.isDefeated = false;
+						return
+					}
 					game.myhero.aCampaignTotalLong+= 1;
 					postJournalLog(localeStrings[175]);
 				} else {
@@ -3312,14 +3230,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[240]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
 				}
 			}
-			if (myobject.id==="imgHiringScreenSergeant") {
-				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
+			if (myobject.id==="imgHiringScreenSergeantToHire") {
+				document.getElementById("grid-info").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
 			}
-			if (myobject.id==="imgHiringScreenTurkopol") {
-				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[309].replace("%arg1", config.turkopolHiring).replace("%arg2", config.turkopolUpkeep);
+			if (myobject.id==="imgHiringScreenTurkopolToHire") {
+				document.getElementById("grid-info").innerHTML=localeStrings[309].replace("%arg1", config.turkopolHiring).replace("%arg2", config.turkopolUpkeep);
 			}
-			if (myobject.id==="imgHiringScreenKnight") {
-				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[310].replace("%arg1", config.knightHiring).replace("%arg2", config.knightUpkeep);
+			if (myobject.id==="imgHiringScreenKnightToHire") {
+				document.getElementById("grid-info").innerHTML=localeStrings[310].replace("%arg1", config.knightHiring).replace("%arg2", config.knightUpkeep);
 			}
 			if (myobject.id==="btnHireSergeant") {
 				document.getElementById("lblTroopsHelp").innerHTML=localeStrings[308].replace("%arg1", config.sergeantHiring).replace("%arg2", config.sergeantUpkeep);
@@ -3598,13 +3516,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			updateHeroStatus();
 			writeSave();
 		},
-		hireTroopsSergeant : function () {
+		hireSergeants : function () {
 			if (game.buildLevelStable>=1) {
-				if (game.gold > 20) {
-					game.sergeants += 1;
-					game.gold      -= 20;
+				if (game.gold >= numberToHire*config.sergeantHiring) {
+					game.sergeants += parseInt(numberToHire);
+					game.gold      -= numberToHire*config.sergeantHiring;
 					updateTroopsNumbers();
-                    updateResources();
+					updateResources();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[20]);
@@ -3616,14 +3534,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(msg);
 			}
 		},
-		hireTroopsTurkopol : function () {
+		hireTurkopols : function () {
 			if (game.buildLevelStable>=1) {
 				if (game.buildLevelArchery >= 1) {
-					if (game.gold > 20) {
-						game.turkopols += 1;
-						game.gold -= 20;
+					if (game.gold >= numberToHire*config.turkopolHiring) {
+						game.turkopols += parseInt(numberToHire);
+						game.gold      -= numberToHire*config.turkopolHiring;
 						updateTroopsNumbers();
-                        updateResources();
+						updateResources();
 					} else {
 						msg = "<b>%arg1</b>";
 						msg = msg.replace("%arg1", localeStrings[20]);
@@ -3633,20 +3551,20 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[317]);
 					postEventLog(msg);
-				}
+				} 
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1",localeStrings[316]);
 				postEventLog(msg);
 			}
 		},
-		hireTroopsKnight : function () {
+		hireKnights : function () {
 			if (game.buildLevelStable>=2) {
-				if (game.gold > 40){
-					game.knights   += 1;
-					game.gold      -= 40;
+				if (game.gold >= numberToHire*config.knightHiring) {
+					game.knights   += parseInt(numberToHire);
+					game.gold      -= numberToHire*config.knightHiring;
 					updateTroopsNumbers();
-                    updateResources();
+					updateResources();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1", localeStrings[20]);
@@ -3654,140 +3572,77 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			} else {
 				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[318].replace("%arg1", 2));
+				msg = msg.replace("%arg1",localeStrings[318]);
 				postEventLog(msg);
 			}
 		},
-		moveSergeantsToHero : function () {
-			if (game.myhero.status===0){
-				if (game.sergeants>0) {
-					game.sergeants -= 1;
-					game.myhero.sergeants += 1;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
+		hireUnits : function () {
+			if (selectedUnitToHire==="sergeant"){
+				game.hireSergeants();
 			}
-			console.group("%c Garrison sergeants", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: #090;", game.sergeants);
-			console.groupEnd();
-
-			console.group("%c Hero sergeants", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: blue;", game.myhero.sergeants);
-			console.groupEnd();
-		},
-		moveTurkopolsToHero : function () {
-			if (game.myhero.status===0){
-				if (game.turkopols>0) {
-					game.turkopols -= 1;
-					game.myhero.turkopols += 1;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
+			if (selectedUnitToHire==="turkopol"){
+				game.hireTurkopols();
 			}
-			console.group("%c Garrison turkopols", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: #090;", game.turkopols);
-			console.groupEnd();
-
-			console.group("%c Hero turkopols", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: blue;", game.myhero.turkopols);
-			console.groupEnd();
-		},
-		moveKnightsToHero : function () {
-			if (game.myhero.status===0){
-				if (game.knights>0) {
-					game.knights -= 1;
-					game.myhero.knights += 1;
-					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
-				}
+			if (selectedUnitToHire==="knight"){
+				game.hireKnights();
 			}
-			
-			console.group("%c Garrison knights", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: #090;", game.knights);
-			console.groupEnd();
-
-			console.group("%c Hero knights", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: blue;", game.myhero.knights);
-			console.groupEnd();
 		},
-
-		//--- Move troops to hero by type functionality: Start ---//
-		moveAllSergeantsToHero: function () {
-			if (game.myhero.status === 0) {
-				if (game.sergeants>0) {
-					var sergantsCount = game.sergeants;
-					game.sergeants -= sergantsCount;
-					game.myhero.sergeants += sergantsCount;
+		moveSergeants() {
+			if (moveFromGarrison===true) {
+				if (game.sergeants >= numberToMove) {
+					game.sergeants -= numberToMove;
+					console.log(game.myhero.sergeants);
+					game.myhero.sergeants += numberToMove;
+					console.log(game.myhero.sergeants);
+					updateHeroStatus();
 					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
+					updateResources();
 				}
+			} else {
+				
 			}
-			console.group("%c Garrison sergeants", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: #090;", game.sergeants);
-			console.groupEnd();
-
-			console.group("%c Hero sergeants", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Sergeants: ", "color: blue;", game.myhero.sergeants);
-			console.groupEnd();
 		},
-		moveAllTurkopolsToHero: function () {
-			if (game.myhero.status===0){
-				if (game.turkopols>0) {
-					var turkopolsCount = game.turkopols;
-					game.turkopols -= turkopolsCount;
-					game.myhero.turkopols += turkopolsCount;
+		moveTurkopols() {
+			if (moveFromGarrison===true) {
+				if (game.turkopols >= numberToMove) {
+					game.turkopols -= numberToMove;
+					console.log(game.myhero.turkopols);
+					game.myhero.turkopols += numberToMove;
+					console.log(game.myhero.turkopols);
+					updateHeroStatus();
 					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
+					updateResources();
 				}
+			} else {
+				
 			}
-
-			console.group("%c Garrison turkopols", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: #090;", game.turkopols);
-			console.groupEnd();
-
-			console.group("%c Hero turkopols", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Turkopols: ", "color: blue;", game.myhero.turkopols);
-			console.groupEnd();
-
 		},
-		moveAllKnightsToHero: function () {
-			if (game.myhero.status===0){
-				if (game.knights>0) {
-					var knightsCount = game.knights;
-					game.knights -= knightsCount;
-					game.myhero.knights += knightsCount;
+		moveKnights() {
+			if (moveFromGarrison===true) {
+				if (game.knights >= numberToMove) {
+					game.knights -= numberToMove;
+					console.log(game.myhero.knights);
+					game.myhero.knights += numberToMove;
+					console.log(game.myhero.knights);
+					updateHeroStatus();
 					updateTroopsNumbers();
-				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[315]);
-					postEventLog(msg);
+					updateResources();
 				}
+			} else {
+				
 			}
-
-			console.group("%c Garrison knights", "background-color: #090; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: #090;", game.knights);
-			console.groupEnd();
-
-			console.group("%c Hero knights", "background-color: blue; color: #fff; padding: 0 10px;");
-			console.log("%c Knights: ", "color: blue;", game.myhero.knights);
-			console.groupEnd();
 		},
-		//--- Move troops to hero by type functionality: End ---//
+		moveUnits : function () {
+ 			if (selectedUnitToMove==="sergeant"){
+				game.moveSergeants();
+			}
+			if (selectedUnitToMove==="turkopol"){
+				game.moveTurkopols();
+			}
+			if (selectedUnitToMove==="knight"){
+				game.moveKnights();
+			}
+		},
 
 		moveSergeantsToGarnison : function () {
 			if (game.myhero.status===0){
@@ -6234,224 +6089,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 
 		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
-	}
-
-	function updateUnitsStats() {
-		document.getElementById("sergeantsAttack").innerText = sergeantsData.attack;
-		document.getElementById("sergeantsDefence").innerText = sergeantsData.defence;
-		document.getElementById("sergeantsHealth").innerText = sergeantsData.health;
-
-		document.getElementById("turkopolsAttack").innerText = turkopolsData.attack;
-		document.getElementById("turkopolsDefence").innerText = turkopolsData.defence;
-		document.getElementById("turkopolsHealth").innerText = turkopolsData.health;
-
-		document.getElementById("knightsAttack").innerText = knightsData.attack;
-		document.getElementById("knightsDefence").innerText = knightsData.defence;
-		document.getElementById("knightsHealth").innerText = knightsData.health;
-	}
-
-	function updateHeroStatus() {
-		if ( game.heroExists() === true) {
-			var lblHeroClass    = localeStrings[204][game.myhero.class];
-			var lblAlignment    = game.heroAlignment("text");
-			var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
-			var heroStatusNeedsUpdate = true;
-		    document.getElementById("btnDismissHero").style.visibility = "visible";
-			document.getElementById("btnAutocampaign").style.visibility = "visible";
-			document.getElementById("btnLeaveCity").style.visibility = "visible";
-			document.getElementById("hireHeroBlock").style.display = "none";
-			document.getElementById("heroUpkeep").style.display = "inline";
-			if (game.myhero.upkeepsrc === 0) {
-				if (document.getElementById("selectUpkeepSrc").selectedIndex !==0) {
-					document.getElementById("selectUpkeepSrc").selectedIndex = 0;
-				}
-			} else {
-				if (document.getElementById("selectUpkeepSrc").selectedIndex !==1) {
-					document.getElementById("selectUpkeepSrc").selectedIndex = 1;
-				}
-			}
-			if (game.myhero.class==="knight"){
-				game.myhero.class = 0;
-			}
-			if (game.myhero.class==="monk"){
-				game.myhero.class = 1;
-			}
-			if (game.myhero.cmana === undefined){
-				game.myhero.cmana = game.myhero.mana;
-			}
-			if (game.myhero.sergeants === undefined){
-				game.myhero.sergeants = 0;
-			}
-			if (game.myhero.turkopols === undefined){
-				game.myhero.turkopols = 0;
-			}
-			if (game.myhero.knights === undefined){
-				game.myhero.knights = 0;
-			}
-			if (game.myhero.status===0){
-				var rnd = Math.floor(Math.random() * localeStrings[210].length);
-				console.log("in town, activity is "+rnd);
-				var heroActivity = localeStrings[206]+localeStrings[210][rnd]+localeStrings[207];
-				heroStatusNeedsUpdate = false;
-				document.getElementById("btnAutocampaign").innerText=localeStrings[218];
-				document.getElementById("btnAutocampaign").style.visibility="visible";
-                document.getElementById("btnAutocampaign").disabled = false;
-                document.getElementById("btnAutocampaign").style.visibility="visible";
-				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
-				document.getElementById("trHeroHiringTroops").style.visibility="visible";
-				document.getElementById("btnMoveSergeantToHero").style.visibility="visible";
-				document.getElementById("btnMoveTurkopolToHero").style.visibility="visible";
-				document.getElementById("btnMoveKnightToHero").style.visibility="visible";
-
-				//--- Move troops to hero buttons visible: Start ---//
-				document.getElementById("btnMoveAllSergeantsToHero").style.visibility="visible";
-				document.getElementById("btnMoveAllTurkopolsToHero").style.visibility="visible";
-				document.getElementById("btnMoveAllKnightsToHero").style.visibility="visible";
-				document.getElementById("btnMoveAllTroopsToHero").style.visibility="visible";
-				//--- Move troops to hero buttons visible: End ---//
-                
-				if (game.myhero.class===0) {
-					document.getElementById("imgHeroInHiringScreenKnight").style.display="block";
-					document.getElementById("imgHeroInHiringScreenMonk").style.display="none";
-				} else {
-					document.getElementById("imgHeroInHiringScreenKnight").style.display="none";
-					document.getElementById("imgHeroInHiringScreenMonk").style.display="block";
-				}
-				document.getElementById("btnLeaveCity").style.visibility="visible";
-				document.getElementById("btnTowngate").style.visibility="hidden";
-			}
-			if (game.myhero.status===1){
-				var rnd = Math.floor(Math.random() * localeStrings[211].length);
-				while (rnd===0) {
-					var rnd = Math.floor(Math.random() * localeStrings[211].length);
-				}
-				console.log("in autocampaign, activity is "+rnd);
-				var heroActivity = localeStrings[206]+localeStrings[211][rnd]+localeStrings[208];
-				heroStatusNeedsUpdate = false;
-				document.getElementById("btnAutocampaign").innerText=localeStrings[219];
-				document.getElementById("btnAutocampaign").style.visibility="visible";
-				document.getElementById("btnAutocampaignJournal").style.visibility="visible";
-				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
-				document.getElementById("btnLeaveCity").style.visibility="hidden";
-				document.getElementById("btnTowngate").style.visibility="visible";
-				document.getElementById("btnMoveSergeantToHero").style.visibility="hidden";
-				document.getElementById("btnMoveTurkopolToHero").style.visibility="hidden";
-				document.getElementById("btnMoveKnightToHero").style.visibility="hidden";
-
-				//--- Move troops to hero buttons hidden: Start ---//
-				document.getElementById("btnMoveAllSergeantsToHero").style.visibility="hidden";
-				document.getElementById("btnMoveAllTurkopolsToHero").style.visibility="hidden";
-				document.getElementById("btnMoveAllKnightsToHero").style.visibility="hidden";
-				document.getElementById("btnMoveAllTroopsToHero").style.visibility="hidden";
-				//--- Move troops to hero buttons hidden: End ---//
-
-			}
-			if (game.myhero.status===2){
-				var rnd = Math.floor(Math.random() * localeStrings[212].length);
-				console.log("in manual ampaign, activity is "+rnd);
-				var heroActivity = localeStrings[206]+localeStrings[212][rnd]+localeStrings[209];
-				heroStatusNeedsUpdate = false;
-				document.getElementById("btnAutocampaign").style.visibility="hidden";
-				document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
-				document.getElementById("trHeroHiringTroops").style.visibility="collapse";
-				document.getElementById("btnLeaveCity").style.visibility="visible";
-				document.getElementById("btnTowngate").style.visibility="hidden";
-				document.getElementById("btnMoveSergeantToHero").style.visibility="hidden";
-				document.getElementById("btnMoveTurkopolToHero").style.visibility="hidden";
-				document.getElementById("btnMoveKnightToHero").style.visibility="hidden";
-
-				//--- Move troops to hero buttons hidden: Start ---//
-				document.getElementById("btnMoveAllSergeantsToHero").style.visibility="hidden";
-				document.getElementById("btnMoveAllTurkopolsToHero").style.visibility="hidden";
-				document.getElementById("btnMoveAllKnightsToHero").style.visibility="hidden";
-				document.getElementById("btnMoveAllTroopsToHero").style.visibility="hidden";
-				//--- Move troops to hero buttons hidden: End ---//
-			}
-			if (heroStatusNeedsUpdate === true) {
-				game.myhero.status = 0;
-			}
-			HTMLofHeroStats    += localeStrings[189]+": "+game.myhero.level+"<br>";
-			HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
-			HTMLofHeroStats    += localeStrings[195]+": "+game.myhero.exp+" | ";
-			HTMLofHeroStats    += localeStrings[196]+": "+game.heroNextLvlExpLimit()+"<br>";
-			HTMLofHeroStats    += localeStrings[190]+": "+game.myhero.atk+" | ";
-			HTMLofHeroStats    += localeStrings[191]+": "+game.myhero.def+"<br>";
-			HTMLofHeroStats    += localeStrings[187]+": "+game.myhero.int+"<br>";
-			HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
-			HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
-			HTMLofHeroStats    += heroActivity+"<br>";
-			if (game.myhero.status===1) {
-				HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";
-				if (game.myhero.aCampaignForward === 1) {
-					HTMLofHeroStats += localeStrings[254] + localeStrings[214] + "<br>";
-				} else {
-					HTMLofHeroStats += localeStrings[254] + localeStrings[215] + "<br>";
-				}
-				HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
-			}
-
-			var heroStatsElem = document.getElementById("heroStats"); 
-			heroStatsElem.innerHTML = HTMLofHeroStats;
-			
-			var equipmentTitleElem = document.createElement("div");
-			var equipmentListElem = document.createElement("div");
-			equipmentListElem.setAttribute("id", "heroEquipment");
-			equipmentTitleElem.innerText = "Equiped:";
-			heroStatsElem.appendChild(equipmentTitleElem);
-			heroStatsElem.appendChild(equipmentListElem);
-
-			for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {
-				var wrapper = document.getElementById('heroEquipment');
-				var imgWrapperElement = document.createElement("div");
-				var imgElement = document.createElement("img");
-
-				var imgSrc = "resources/" + game.myhero.inventoryWorn[i].img;
-				imgElement.setAttribute("src", imgSrc);
-
-				imgWrapperElement.classList.add("inventory-item__wrapper-img");
-				imgWrapperElement.appendChild(imgElement)
-
-				wrapper.appendChild(imgWrapperElement);
-			}
-
-		} else {
-			document.getElementById("heroStats").innerHTML = "";
-			document.getElementById("hireHeroBlock").style.display = "inline";
-			document.getElementById("heroUpkeep").style.display = "none";
-			document.getElementById("btnDismissHero").style.visibility = "hidden";
-			document.getElementById("btnAutocampaign").style.visibility = "hidden";
-			document.getElementById("btnLeaveCity").style.visibility = "hidden";
-			document.getElementById("btnTowngate").style.visibility = "hidden";
-			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
-			document.getElementById("btnMoveSergeantToHero").style.visibility="hidden";
-			document.getElementById("btnMoveTurkopolToHero").style.visibility="hidden";
-			document.getElementById("btnMoveKnightToHero").style.visibility="hidden";
-
-			//--- Move troops to hero buttons hidden: Start ---//
-			document.getElementById("btnMoveAllSergeantsToHero").style.visibility="hidden";
-			document.getElementById("btnMoveAllTurkopolsToHero").style.visibility="hidden";
-			document.getElementById("btnMoveAllKnightsToHero").style.visibility="hidden";
-			document.getElementById("btnMoveAllTroopsToHero").style.visibility="hidden";
-			//--- Move troops to hero buttons hidden: End ---//
-		}
-	}
-	function updateTroopsNumbers() {
-		document.getElementById("lblGarnisonSergeants").innerHTML  = game.sergeants;
-		document.getElementById("lblGarnisonTurkopols").innerHTML  = game.turkopols;
-		document.getElementById("lblGarnisonKnights").innerHTML    = game.knights;
-		if (game.heroExists() === true) {
-			document.getElementById("lblHeroSergeants").innerHTML = game.myhero.sergeants;
-			document.getElementById("lblHeroTurkopols").innerHTML = game.myhero.turkopols;
-			document.getElementById("lblHeroKnights").innerHTML = game.myhero.knights;
-		}
-	}
-	function updateResources() {
-		document.getElementById("gold").innerHTML          = game.gold;
-		// document.getElementById("gold_bm").innerHTML       = game.gold;
-		// document.getElementById("gold_bt").innerHTML       = game.gold;
-		document.getElementById("pop").innerHTML           = game.pop;
-		document.getElementById("gems").innerHTML          = game.gems;
-		document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
 

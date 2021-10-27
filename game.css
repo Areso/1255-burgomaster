@@ -326,7 +326,9 @@
 			height: 100%;
 			max-height: 140px;
 		}
-
+		.hiring-grid {
+			grid-template-columns: repeat(80, 1.25%);
+		}
 
 		.price-val {
 			background-color: #b9b9b9;
