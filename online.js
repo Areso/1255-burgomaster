@@ -51,7 +51,16 @@
 					game.role = resp_data["role"];
 					msg = "login successfull";
 					postEventLog(msg);
-					fpullMessages()
+					fpullMessages();
+				}
+				if (this.readyState === 4 && this.status !== 200) {
+					if (config.debug){
+						console.log(session);
+						console.log(this.responseText);
+					}
+					resp_data = JSON.parse(this.responseText);
+					msg = "login unsuccessfull, please try again";
+					postEventLog(msg);
 				}
 			};
 			login       = document.getElementById("login").value;
