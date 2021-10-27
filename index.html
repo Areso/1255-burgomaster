@@ -5077,24 +5077,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		theStats   += locObj.heroStatsIntLbl.txt  +": " + heroesForHire[heroClassId]["int"]+" ";
 		document.getElementById("lblPrimaryStats").innerHTML    = theStats;
 	}
-	function prevHero(){
-		if (curHeroForHire===0) {
-			curHeroForHire = heroesForHire.length - 1;
-			updateHeroAvForHire(curHeroForHire);
-		} else {
-			curHeroForHire = curHeroForHire - 1;
-			updateHeroAvForHire(curHeroForHire);
-		}
-	}
-	function nextHero(){
-		if (curHeroForHire===heroesForHire.length - 1) {
-			curHeroForHire = 0
-			updateHeroAvForHire(curHeroForHire);
-		} else {
-			curHeroForHire = curHeroForHire + 1;
-			updateHeroAvForHire(curHeroForHire);
-		}
-	}
 	popPage = 0;
 	function checkFirebrigade() {
 		document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();

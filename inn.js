@@ -127,4 +127,22 @@ function updateHeroStatusInn() {
 		document.getElementById("grid-hero").style.display="none";
 	}
 }
+function prevHero(){
+	if (curHeroForHire===0) {
+		curHeroForHire = heroesForHire.length - 1;
+		updateHeroAvForHire(curHeroForHire);
+	} else {
+		curHeroForHire = curHeroForHire - 1;
+		updateHeroAvForHire(curHeroForHire);
+	}
+}
+function nextHero(){
+	if (curHeroForHire===heroesForHire.length - 1) {
+		curHeroForHire = 0
+		updateHeroAvForHire(curHeroForHire);
+	} else {
+		curHeroForHire = curHeroForHire + 1;
+		updateHeroAvForHire(curHeroForHire);
+	}
+}
 
