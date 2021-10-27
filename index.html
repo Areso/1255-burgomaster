@@ -89,9 +89,11 @@
 		</div>
 		<div id="Settings" class="tabcontent">
 			<h3><div id="labelSettings">Settings</div></h3>
-			<button id="btnReg" onclick="setReg()">REG</button>  <button id="btnLogin" onclick="setLogin()">LOGIN</button><br>
+			<button id="btnReg"   onclick="setReg()"                             >REG</button>
+			<button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
 			Nickname: <input id="login"    type="text"     value=""><br>
 			Password: <input id="password" type="password" value=""><br>
+			<span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
 			<button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
 			<select id="selectLng" size="1" onchange="reloadLang()">
 				<option id="optionLngEn" selected value="en-US">English</option>
@@ -785,12 +787,11 @@
 			<button id="chat_btn" onclick="openChat()">chat</button>
 			<label id="lbl_online" style="margin-left:20px">Online: </label>
 			<label id="lbl_online_value" style="margin-left:10px">n/d</label>
-			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 598px; left: 10px"></div>
-
-			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 598px; left: 10px"></div>
-			<input id="inp_nickname"  style="position: absolute; top: 745px; left:  10px; width: 100px;" value="Nickname" ></input>
-			<input id="msg_out"       style="position: absolute; top: 745px; left: 120px; width: 500px;" value=""         ></input>
-			<button id="btnSend" onclick="sendOnClick2()"   style="position: absolute; top: 745px; left: 650px; width: 100px;"          >send</button>
+			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
+			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
+			<input id="inp_nickname"  style="position: absolute; top: 750px; left:  10px; width: 100px;" value="Nickname" ></input>
+			<input id="msg_out"       style="position: absolute; top: 750px; left: 120px; width: 500px;" value=""         ></input>
+			<button id="btnSend" onclick="sendOnClick2()"   style="position: absolute; top: 750px; left: 640px; width: 100px;"          >send</button>
 		</div>
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
 		Your browser does not support the HTML5 canvas tag.</canvas>
@@ -4996,14 +4997,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		console.log('we are in first level include after loadStartLocale()');
 	});
 	//functions
-	function setReg(){
-		reglogin = "reg";
-		document.getElementById("btnRegLogin").innerText = "Register";
-	};
-	function setLogin(){
-		reglogin = "login";
-		document.getElementById("btnRegLogin").innerText = "Login";
-	};
 	function openTabAutocampaignJournal() {
 		openTab(null, 'tabAutocampaignJournal');
 		scrollDown();

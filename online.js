@@ -29,8 +29,11 @@
 			fpullMessages();
 			login     = document.getElementById("login").value;
 			password  = document.getElementById("password").value;
-			dataToParse = login+delimiter+password;
-			endpoint  = webserver + "/api/v1.1/register_user";
+			email     = document.getElementById("password").value;
+			dataToParse  = login    + delimiter;
+			dataToParse += password + delimiter;
+			dataToParse += email;
+			endpoint    = webserver + "/api/v1.1/register_user";
 			xhttp.open("POST", endpoint, true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(dataToParse);
@@ -51,10 +54,10 @@
 					fpullMessages()
 				}
 			};
-			login     = document.getElementById("login").value;
-			password  = document.getElementById("password").value;
+			login       = document.getElementById("login").value;
+			password    = document.getElementById("password").value;
 			dataToParse = login+delimiter+password;
-			endpoint  = webserver + "/api/v1.1/login_user";
+			endpoint    = webserver + "/api/v1.1/login_user";
 			xhttp.open("POST", endpoint, true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(dataToParse);
@@ -83,7 +86,6 @@
 	}
 	function printToChat(item) {
 		chat_box = chat_dom;
-		
 		let tzoffset   = (new Date()).getTimezoneOffset() * 60000;
 		let usertime   = new Date(item[2]*1000);
 		usertime       = usertime.toLocaleTimeString();
@@ -104,10 +106,12 @@
 		line_to_print += nickname+": ";
 		line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
 		chat_box.innerHTML += line_to_print+"<br>";
+		//temporarily disabled
+		/*
 		var textarea = chat_box;
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
-		}
+		}*/
 	}
 	function sendOnClick2() {
 		send2();
