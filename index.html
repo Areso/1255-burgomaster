@@ -3022,7 +3022,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.myhero.aCampaignLong-1>0){
 					game.myhero.aCampaignLong     -= 1;
 					if (game.isDefeated) {
-						postJournalLog(localeStrings[378]);
+						postJournalLog(locObj.advmapHeroLose.txt);
 						game.isDefeated = false;
 						return
 					}
