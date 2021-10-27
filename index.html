@@ -1495,6 +1495,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		alias: "",
 		UID: getUID(),
 		tips: [],
+		story: [],
 		chestCity: 0,
 		ticks: 0,
 		autocampaignCounter: 0,
@@ -2416,9 +2417,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					composite_gm();
 					game.adv_steps += 1;
 					if (game.adv_steps === 2) {
-						if (isTutorialState && !game.tips.includes("tutorial_two_steps")){
-							game.tips.push("tutorial_two_steps");
-							showModal(0, '', getAck, locObj.tutorial_two_steps.txt, locObj.okay.txt, '');
+						//STORY
+						if (!game.story.includes("story_two_steps")){
+							game.story.push("story_two_steps");
+							showModal(0, '', getAck, locObj.story2_two_steps.txt, locObj.okay.txt, '');
 						}
 					}
 					allowMvt = 0;
@@ -4514,15 +4516,15 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Inn") {
-				//TUTORIAL
+				//STORY
 				if (game.gold >= Math.pow(config.costInn,(game.buildLevelInn*1 + 1)) && game.buildLevelInn < config.maxLevelInn) {
 					game.gold               = game.gold - Math.pow(config.costInn,(game.buildLevelInn*1 + 1));
 					game.buildLevelInn      = game.buildLevelInn*1 + 1;
 					if (game.buildLevelInn===1) {
 						game.generateMapCallback(true);
-						if (isTutorialState && !game.tips.includes("tutorial_catastrophe")){
-							game.tips.push("tutorial_catastrophe");
-							showModal(0, '', getAck, locObj.tutorial_catastrophe.txt, locObj.okay.txt, '')
+						if (!game.story.includes("story_catastrophe")){
+							game.story.push("story_catastrophe");
+							showModal(0, '', getAck, locObj.story1_catastrophe.txt, locObj.okay.txt, '')
 						}
 					}
 					populateHeroesForHire();
