@@ -6033,30 +6033,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			game.festival_cooldown = 0;
 		}
 	}
-	function openChat() {
-		log_dom   = document.getElementById("console_n_chat");
-		chat_dom  = document.getElementById("chat");
-		nick_dom  = document.getElementById("inp_nickname");
-		msg_dom   = document.getElementById("msg_out");
-		btn_send  = document.getElementById("btnSend");
-		log_dom.style.visibility  = "hidden";
-		chat_dom.style.visibility = "visible";
-		nick_dom.style.visibility = "visible";
-		msg_dom.style.visibility  = "visible";
-		btn_send.style.visibility = "visible";
-	}
-	function openLog() {
-		log_dom   = document.getElementById("console_n_chat");
-		chat_dom  = document.getElementById("chat");
-		nick_dom  = document.getElementById("inp_nickname");
-		msg_dom   = document.getElementById("msg_out");
-		btn_send  = document.getElementById("btnSend");
-		log_dom.style.visibility  = "visible";
-		chat_dom.style.visibility = "hidden";
-		nick_dom.style.visibility = "hidden";
-		msg_dom.style.visibility  = "hidden";
-		btn_send.style.visibility = "hidden";
-	}
 </script>
 <!--JS FOR POPULATION, GOLD STATS SCREENS-->
 <script async src="stats.js"></script>
