@@ -4604,7 +4604,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var heroesForHire = [];
 	
 	updateResources();
-	populatePatchnotes();
 	var autosaveObject;
 	//setupAutosave();//DEBUG
 	composite();
@@ -4965,8 +4964,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		targetCampaignLogElement.innerHTML += localeStrings[169]+game.myhero.aCampaignTotalLong;
 		targetCampaignLogElement.innerHTML += ": "+msgEventLog+"<br>";
 		scrollDown();
-	}
-	function populatePatchnotes() {
 	}
 	function writeToTextArea(msg) {
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
