@@ -5063,7 +5063,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 		updateHeroAvForHire(0);
 	}
-	
 	function updateHeroAvForHire(heroClassId){
 		console.log("heroClassId is "+heroClassId);
 		document.getElementById("lblClassForHire").innerText    = heroesForHire[heroClassId].heroClassLbl;
@@ -5077,295 +5076,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		theStats   += locObj.heroStatsIntLbl.txt  +": " + heroesForHire[heroClassId]["int"]+" ";
 		document.getElementById("lblPrimaryStats").innerHTML    = theStats;
 	}
-	popPage = 0;
 	function checkFirebrigade() {
 		document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();
 		openTab(null, 'tabFirebrigade');
-	}
-	function checkPop() {
-		var year = document.getElementById("popStatK");
-		var pop  = document.getElementById("popStatV");
-		year.innerHTML = "";
-		pop.innerHTML  = "";
-		popPage  = Math.round(game.years.length)/10;
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-10+i] +'</span></td>';
-				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-10+i]  +'</span></td>';
-			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabPopulation');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
-					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
-				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabPopulation');
-			} else {
-				// nothing to show
-				var alertMsg = localeStrings[65];
-				disabledElements.push("saveGameButton");
-				disabledElements.push("loadGameButton");
-				document.getElementById("saveGameButton").disabled = true;
-				document.getElementById("loadGameButton").disabled = true;
-				showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
-			}
-		}
-	}
-	function popAtStart() { 
-		var year = document.getElementById("popStatK");
-		var pop  = document.getElementById("popStatV");
-		year.innerHTML = "";
-		pop.innerHTML  = "";
-		popPage  = 0;
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i] +'</span></td>';
-				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[i]  +'</span></td>';
-			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabPopulation');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i] +'</span></td>';
-					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[i]  +'</span></td>';
-				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabPopulation');
-			} else {
-				// TODO show something!
-			}
-		}
-	}
-	function popPrev() {
-		var year = document.getElementById("popStatK");
-		var pop  = document.getElementById("popStatV");
-		year.innerHTML = "";
-		pop.innerHTML  = "";
-		if (popPage - 1 > 0) {
-			popPage  = popPage-1;
-		} else {
-			popPage = 0;
-		}
-		popPage  = Math.round(popPage*10)/10;
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[popPage*10+i] +'</span></td>';
-				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[popPage*10+i]  +'</span></td>';
-			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabPopulation');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
-					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
-				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabPopulation');
-			} else {
-				// nothing to show
-			}
-		}
-	}
-	function popNext() {
-		var year = document.getElementById("popStatK");
-		var pop  = document.getElementById("popStatV");
-		year.innerHTML = "";
-		pop.innerHTML  = "";
-		if (popPage + 1 < Math.round(game.years.length)/10-1 ) {
-			popPage  = popPage+1;
-		} else {
-			popPage  = Math.round(game.years.length)/10-1;
-		}
-		popPage  = Math.round(popPage*10)/10;
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[popPage*10+i] +'</span></td>';
-				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[popPage*10+i]  +'</span></td>';
-			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabPopulation');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
-					pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
-				}
-				document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabPopulation');
-			} else {
-				// nothing to show
-			}
-		}
-	}
-	function popAtEnd() {
-		checkPop();
-	}
-	goldPage = 0;
-	function checkGold() {
-		var year = document.getElementById("goldStatK");
-		var gold = document.getElementById("goldStatV");
-		year.innerHTML = "";
-		gold.innerHTML  = "";
-		goldPage = Math.round(game.years.length)/10;
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-10+i]    +'</span></td>';
-				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-10+i]  +'</span></td>';
-				//console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
-			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabGold');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
-					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
-					//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
-				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabGold');
-			} else {
-				// nothing to show
-				var alertMsg = localeStrings[65];
-				disabledElements.push("saveGameButton");
-				disabledElements.push("loadGameButton");
-				document.getElementById("saveGameButton").disabled = true;
-				document.getElementById("loadGameButton").disabled = true;
-				showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
-			}
-		}		
-	}
-	function goldAtStart() {
-		var year = document.getElementById("goldStatK");
-		var gold = document.getElementById("goldStatV");
-		year.innerHTML = "";
-		gold.innerHTML  = "";
-		goldPage  = 0;
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i]    +'</span></td>';
-				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[i]  +'</span></td>';
-				//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
-			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabGold');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i]    +'</span></td>';
-					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[i]  +'</span></td>';
-					//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
-				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabGold');
-			} else {
-				// nothing to show
-			}
-		}
-	}
-	function goldPrev() {
-		var year = document.getElementById("goldStatK");
-		var gold = document.getElementById("goldStatV");
-		year.innerHTML = "";
-		gold.innerHTML  = "";
-		if (goldPage - 1 > 0) {
-			goldPage  = goldPage-1;
-		} else {
-			goldPage  = 0;
-		}
-		goldPage  = Math.round(goldPage*10)/10;
-		//console.log(goldPage);
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[goldPage*10+i]    +'</span></td>';
-				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[goldPage*10+i]  +'</span></td>';
-			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabGold');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
-					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
-				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabGold');
-			} else {
-				// nothing to show
-			}
-		}
-	}
-	function goldNext() {
-		var year = document.getElementById("goldStatK");
-		var gold  = document.getElementById("goldStatV");
-		year.innerHTML = "";
-		gold.innerHTML  = "";
-		if (goldPage + 1 < Math.round(game.years.length)/10-1 ) {
-			goldPage  = goldPage+1;
-		} else {
-			goldPage  = Math.round(game.years.length)/10-1;
-		}
-		goldPage  = Math.round(goldPage*10)/10;
-		//console.log(goldPage);
-		if (game.years.length > 10) {
-			//select the latest 10
-			for (i=0;i<10;i++) {
-				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[goldPage*10+i]    +'</span></td>';
-				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[goldPage*10+i]  +'</span></td>';
-			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-			dynamicCellsSetStyle();
-			openTab(null, 'tabGold');
-		} else {
-			if (game.years.length > 0) 
-			{
-				for (i=0;i<game.years.length;i++) {
-					year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
-					gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
-				}
-				document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
-				dynamicCellsSetStyle();
-				openTab(null, 'tabGold');
-			} else {
-				// nothing to show
-			}
-		}
-	}
-	function goldAtEnd() {
-		checkGold();
 	}
 	function checkSaves() {
 		if (localStorage.getItem('game')!==null) {
@@ -5739,8 +5452,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblAutocampaignBattle").appendChild(accordionContainerElement);
 
 	}
-
-
 	function postBattleLog(msgBattleLog) {
 		var id = 'accordionBattleBody-' + game.autocampaignBattlesCounter;
 		var accordionBattleElement = document.getElementById(id);
@@ -5758,54 +5469,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		scrollDown();
 	}
 	function populatePatchnotes() {
-
 	}
 	function writeToTextArea(msg) {
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
-	}
-	function setupAudioUI() {
-		if (game.sfx_all===1){
-			document.getElementById("sfx_on").checked  = true;
-			document.getElementById("sfx_off").checked = false;
-		} else {
-			document.getElementById("sfx_on").checked  = false;
-			document.getElementById("sfx_off").checked = true;
-		}
-		if (game.sfx_events===1){
-			document.getElementById("sfx_events_on").checked  = true;
-			document.getElementById("sfx_events_off").checked = false;
-		} else {
-			document.getElementById("sfx_events_on").checked  = false;
-			document.getElementById("sfx_events_off").checked = true;
-		}
-		if (game.sfx_actions===1){
-			document.getElementById("sfx_actions_on").checked  = true;
-			document.getElementById("sfx_actions_off").checked = false;
-		} else {
-			document.getElementById("sfx_actions_on").checked  = false;
-			document.getElementById("sfx_actions_off").checked = true;
-		}
-		if (game.music_all===1){
-			document.getElementById("music_on").checked  = true;
-			document.getElementById("music_off").checked = false;
-		} else {
-			document.getElementById("music_on").checked  = false;
-			document.getElementById("music_off").checked = true;
-		}
-		if (game.music_scripts===1){
-			document.getElementById("music_scripts_on").checked  = true;
-			document.getElementById("music_scripts_off").checked = false;
-		} else {
-			document.getElementById("music_scripts_on").checked  = false;
-			document.getElementById("music_scripts_off").checked = true;
-		}
-	}
-	function setupMobileUI() {
-		if (game.isMobile === 1) {
-		    document.getElementById("cbMobileUI").checked = true;
-		} else {
-			document.getElementById("cbMobileUI").checked = false;
-		}
 	}
 	function setupFirebrigadeUI () {
 		if (game.fireGuard === 1) {
@@ -6394,6 +6060,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		btn_send.style.visibility = "hidden";
 	}
 </script>
+<script async src="stats.js"></script>
+<script       src="settings.js"></script>
+<script async src="sound_settings.js"></script>
+<script async src="dialogue.js"></script>
+<script async src="shop.js"></script>
 <script>
 	function openTab(evt, tabName) {
 		var i, tabcontent, tablinks;
@@ -6448,8 +6119,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	accordion('.accordion-battle', '.accordion-battle-header');
 
 </script>
-<script async src="dialogue.js"></script>
-<script async src="shop.js"></script>
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
 <script async>
