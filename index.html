@@ -5074,10 +5074,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		theStats   += locObj.heroStatsIntLbl.txt  +": " + heroesForHire[heroClassId]["int"]+" ";
 		document.getElementById("lblPrimaryStats").innerHTML    = theStats;
 	}
-	function checkFirebrigade() {
-		document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();
-		openTab(null, 'tabFirebrigade');
-	}
 	function checkSaves() {
 		if (localStorage.getItem('game')!==null) {
 			document.getElementById("loadGameButton").style.visibility = "visible";
