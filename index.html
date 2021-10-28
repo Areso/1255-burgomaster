@@ -5,9 +5,9 @@
 	<title>
 		1255 Burgomaster
 	</title>
-	<link rel="stylesheet"  type="text/css" href="game.css"/>
-	<link rel="stylesheet"  type="text/css" href="hire.css"/>
-	<link rel="stylesheet"  type="text/css" href="inn.css" />
+	<link rel="stylesheet"  type="text/css" href="css/game.css"/>
+	<link rel="stylesheet"  type="text/css" href="css/hire.css"/>
+	<link rel="stylesheet"  type="text/css" href="css/inn.css" />
 	<script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
     <script>
       'use strict';
@@ -31,9 +31,9 @@
 			ws_server = "ws://localhost:6698";
 		} 
     </script>
-	<script src="hire.js"></script>
-	<script src="inn.js" ></script>
-	<script src="dom.js" ></script>
+	<script src="js/hire.js"></script>
+	<script src="js/inn.js" ></script>
+	<script src="js/dom.js" ></script>
 </head>
 <body>
 <div id="htmlGame">
@@ -4883,7 +4883,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		updateUI();
 	}
 	function loadArtifacts(){
-		include('artifacts.js',function(){
+		include('js/artifacts.js',function(){
 			console.log('we are loading the artifacts');
 		});
 	}
@@ -5327,21 +5327,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 </script>
 <!--JS FOR POPULATION, GOLD STATS SCREENS-->
-<script async src="stats.js"></script>
+<script async src="js/stats.js"></script>
 <!--JS FOR SETTINGS SCREEN-->
-<script async src="settings.js"></script>
+<script async src="js/settings.js"></script>
 <!--JS FOR SOUND SETTINGS SCREEN-->
-<script async src="sound_settings.js"></script>
+<script async src="js/sound_settings.js"></script>
 <!--JS FOR SHOP SCREEN-->
-<script async src="shop.js"></script>
+<script async src="js/shop.js"></script>
 <!--JS FOR BUILDINGS SCREEN-->
-<script async src="building.js"></script>
+<script async src="js/building.js"></script>
 <!--JS LIBRARY FOR MODAL DIALOGUES-->
-<script async src="dialogue.js"></script>
+<script async src="js/dialogue.js"></script>
 <!--ADVENTURE GENERATOR MAP-->
-<script async src="advmapgen.js"></script>
+<script async src="js/advmapgen.js"></script>
 <!--ADVENTURE RENDERER  MAP-->
-<script async src="advmap.js"></script>
+<script async src="js/advmaprender.js"></script>
+<!--ONLINE OPTIONS-->
+<script async src="js/online.js"></script>
 <script>
 	function openTab(evt, tabName) {
 		var i, tabcontent, tablinks;
@@ -5429,8 +5431,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		} else { f(); }
 	})(document, window, "yandex_metrika_callbacks");
 </script>
-<!--ONLINE OPTIONS-->
-<script async src='online.js'></script>
 <noscript>
 	<div>
 	<img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" />
