@@ -20,7 +20,7 @@ function selectObj (myobject) {
 								<p>Dmg: 3-4</p>\
 								<p>HP: <span id="sergeantsHealth">15</span></p></div>';
 		infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
-								oninput="unitNumberRange.value = this.value; numberToHire = parseInt(this.value)">';
+								oninput="unitNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
 		infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
 								onchange="unitNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 								"value="1"><br>';
@@ -66,7 +66,7 @@ function selectObj (myobject) {
 								<p>HP: <span id="knightsHealth">20</span></p></div>';
 		if (game.buildLevelStable>1){
 			infoblock.innerHTML += '<input type="range" id="unitNumberRange" value="1" min="1" max="100"\
-									oninput="unitNumberRange.value = this.value; numberToHire = parseInt(this.value)">';
+									oninput="unitNumberValue.value = this.value; numberToHire = parseInt(this.value)">';
 			infoblock.innerHTML += '<input type="text"  id="unitNumberRange" value="1"\
 									onchange="unitNumberRange.value=parseInt(this.value); numberToHire=parseInt(this.value)"\
 									"value="1"><br>';
