@@ -116,3 +116,24 @@ function updateButtonCaptions(){
 		}
 		document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 }
+function dynamicCellsSetStyle() {
+	if (game.nightMode === true){
+		var dynElementsDay = document.getElementsByClassName('dynamicCellsDay');
+		while(dynElementsDay.length) {
+			dynElementsDay[0].className = 'dynamicCellsNight';
+		}
+		var dynElements = document.getElementsByClassName('dynamicCells');
+		while(dynElements.length) {
+			dynElements[0].className = 'dynamicCellsNight';
+		}
+	} else {
+		var dynElementsNight = document.getElementsByClassName('dynamicCellsNight');
+		while(dynElementsNight.length) {
+			dynElementsNight[0].className = 'dynamicCellsDay';
+		}
+		var dynElements = document.getElementsByClassName('dynamicCells');
+		while(dynElements.length) {
+			dynElements[0].className = 'dynamicCellsDay';
+		}
+	}
+}
