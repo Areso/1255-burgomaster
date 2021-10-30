@@ -7,7 +7,7 @@
 	btn_send  = document.getElementById("btnSend");
 	//init timers
 	if (config.online && config.pullMessages){
-		//setInterval(fpullMessages, config.pullMessagesMS);
+		setInterval(fpullMessages, config.pullMessagesMS);
 		setInterval(getNearestEventTime, 10000);
 		setInterval(pullAmber, 3000);
 	}
@@ -373,6 +373,11 @@ function eventItemCollected () {
 	xhttp.open("POST", endpoint, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(dataToParse);
+}
+function getEventHelp(){
+	if (flag_event_started===1){
+		showModal(0, '', getAck, locObj.eventHalloween.txt,  localeStrings[60], '')
+	}
 }
 
 
