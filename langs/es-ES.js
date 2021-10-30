@@ -2,118 +2,122 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("build or upgrade your Treasury");
-localeStrings.push("amount of money is increased");
-localeStrings.push("amount of money is decreased");//5
-localeStrings.push("amount of money is not changed");
-localeStrings.push("population is increased");
-localeStrings.push("population is decreased");
-localeStrings.push("population is not changed");
-localeStrings.push("your city is reached population limit. Build new houses or upgrade existing ones");//10
-localeStrings.push("game saved successfully");
-localeStrings.push("game loaded successfully");
-localeStrings.push("Load game? You will lose any unsaved progress!");
-localeStrings.push("Sorry! There is no save to load from!");
-localeStrings.push("Save game? You will rewrite any save you already have!");//15
-localeStrings.push("Please insert save string");
-localeStrings.push("very long string");
-localeStrings.push("Do you want to hire a guardsman? He will cost you %arg1 gold and then %arg2 gold per each season!");
-localeStrings.push("You hired a guardsman!");
-localeStrings.push("Not enough gold to do that!");//20
-localeStrings.push("Treasury is required to hiring a guardsman!");
-localeStrings.push("Would you like to dismiss a guardsman?");
-localeStrings.push("You dismissed a guardsman!");
-localeStrings.push("You don't have any guardsmen!");
-localeStrings.push("treachery");//25
-localeStrings.push("betrayal");
-localeStrings.push("corruption");
-localeStrings.push("bribery");
-localeStrings.push("graft and theft");
-localeStrings.push("embezzlement");//30
-localeStrings.push("Yes, in the most bloody way!");
-localeStrings.push("Yes");
+localeStrings.push("Construye o mejora tu Tesorería");
+localeStrings.push("Tu riqueza incrementadó");
+localeStrings.push("Tu riqueza se redujo.");//5
+localeStrings.push("Tu riqueza se mantuvo.");
+localeStrings.push("La población creció.");
+localeStrings.push("La población se redujo.");
+localeStrings.push("La población se mantuvo constante.");
+localeStrings.push("Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes.");//10
+localeStrings.push("Juego guardado exitosamente.");
+localeStrings.push("Juego cargado exitosamente.");
+localeStrings.push("¿Cargar juego? Perderás cualquier avance no guardado");
+localeStrings.push("¡Perdón¡ ¡No hay un juego guardado para cargar!");
+localeStrings.push("¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas! ");//15
+localeStrings.push("Por favor ingresa el código de guardado");
+localeStrings.push("código muy largo");
+localeStrings.push("¿Quieres contratar un guardia? Te costará %arg1 de oro y luego %arg2 de oro por cada estación.");
+localeStrings.push("Contrataste un guardia. ");
+localeStrings.push("No tienes suficiente oro para hacer eso.");//20
+localeStrings.push("Se requiere una Tesorería para contratar un guardia. ");
+localeStrings.push("¿Quieres despedir al guardia?");
+localeStrings.push("Despediste al guardia.");
+localeStrings.push("No tienes ningún guardia.");
+localeStrings.push("traición");//25
+localeStrings.push("espionaje");
+localeStrings.push("corrupción");
+localeStrings.push("soborno");
+localeStrings.push("graft and robo");
+localeStrings.push("malversación");//30
+localeStrings.push("Sí ¡De la manera más sangrienta!");
+localeStrings.push("Sí");
 localeStrings.push("No");
-localeStrings.push("you executed a citizen for %arg1");
-localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
-localeStrings.push("too few citizens");
-localeStrings.push("treasury guard(s) dismissed because you are cannot pay to them!");
-localeStrings.push("fire in the city!");
-localeStrings.push("Call firemen? It will cost you %arg1 gold!");
-localeStrings.push("firemen put end to the fire!");//40
-localeStrings.push("it will burn to ashes!");
-localeStrings.push("shit happens: thieves stole %arg1 gold from your treasury");
-localeStrings.push("You won in a lottery %arg1 gold prize");
-localeStrings.push("Save game");
-localeStrings.push("Load game");//45
-localeStrings.push("City");
-localeStrings.push("Explore");
-localeStrings.push("Settings");
-localeStrings.push("Garrison");
-localeStrings.push("Building");//50
-localeStrings.push("How To Play");
+localeStrings.push("Ejecutaste a un ciudadano por %arg1.");
+localeStrings.push("Tu tesoro se repuso con %arg1 de oro de la propiedad confiscada al ciudadano ejecutado.");//35
+localeStrings.push("Tienes muy pocos ciudadanos.");
+localeStrings.push("¡Algunos guardias se fueron porque no les puedes pagar!");
+localeStrings.push("¡Fuego en la ciudad!");
+localeStrings.push("¿Deberíamos llamar a los bomberos? Te costará %arg1 de oro.");
+localeStrings.push("Tus bomberos extinguieron el fuego.");//40
+localeStrings.push("!Todo quedará en cenizas!");
+localeStrings.push("Así es la vida: ¡Ladrones robaron %arg1 de oro de tu tesoro!");
+localeStrings.push("Ganaste %arg1 de oro en las apuestas.");
+localeStrings.push("Guardar juego");
+localeStrings.push("Gargar juego");//45
+localeStrings.push("Ciudad");
+localeStrings.push("Explorar");
+localeStrings.push("Configuración");
+localeStrings.push("Guarnición");
+localeStrings.push("Contrucción");//50
+localeStrings.push("Cómo Jugar");
 localeStrings.push("Discord");
-localeStrings.push("Put out the fire");
-localeStrings.push("Execute somebody");
+localeStrings.push("Apagar el fuego");
+localeStrings.push("Ejecutar a alguien");
 localeStrings.push("placeholder");//55
-localeStrings.push("Do you want to place a festival?\nIt would cost to you %arg1 gold!\n");
-localeStrings.push("Festival was placed not so long ago.\nThe effect from festival would be weaken.\n");
+localeStrings.push("¿Quieres hacer un festival?\n 
+¡Te costará  %arg1 de oro!\n
+");
+localeStrings.push("Ya se hizo un festival hace poco.\n
+El efecto de un festival sería menor.\n
+");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Your gain because of the festival is %arg1","Your loss because of the festival is %arg1"]);
-localeStrings.push("Okay");//60
-localeStrings.push("You already have a hero!");
-localeStrings.push("Autosave is turned on");
-localeStrings.push("Autosave is turned off");
-localeStrings.push("You are about to build %arg1.\nIf the object is built, you wouldn't be allow to build %arg2.\nAre you sure in your choice?");
-localeStrings.push("Nothing to show yet, come here later.");//65
-localeStrings.push("Settings");
-localeStrings.push("Export Game");
-localeStrings.push("Import Game");
-localeStrings.push("Autosave");
-localeStrings.push("Change color mode");//70
-localeStrings.push("Option");
-localeStrings.push("On");
-localeStrings.push("Off");
-localeStrings.push("All sound effects");
-localeStrings.push("Effects on all events");//75
-localeStrings.push("Effects on action required events");
-localeStrings.push("All music");
-localeStrings.push("Lore and script music");
-localeStrings.push("Back");
-localeStrings.push("Sound effects and music");//80
-localeStrings.push("Open sound settings");
-localeStrings.push("Mobile UI");
-localeStrings.push("Event log size");
-localeStrings.push("lines");
+localeStrings.push(["Tus ganancias por el destival son %arg1","Tus pérdidas por el festival son %arg1"]);
+localeStrings.push("Okey");//60
+localeStrings.push("¡Ya tienes un héroe!");
+localeStrings.push("Autoguardado encendido");
+localeStrings.push("Autoguardado apagado");
+localeStrings.push("Estás apunto de construir %arg1.\n Si el objeto es construído, no podrás construir %arg2.\n ¿Estás seguro de tu decisión?");
+localeStrings.push("Nada que mostrar aún, vuelve después.");//65
+localeStrings.push("Configuración");
+localeStrings.push("Exportar Juego");
+localeStrings.push("Importar Juego");
+localeStrings.push("Autoguardado");
+localeStrings.push("Cambiar modo de color");//70
+localeStrings.push("Opción");
+localeStrings.push("Encendido");
+localeStrings.push("Apagado");
+localeStrings.push("Todos los efectos de sonido");
+localeStrings.push("Efectos en todos los eventos");//75
+localeStrings.push("Efectos en eventos que requieren una acción");
+localeStrings.push("Toda la música");
+localeStrings.push("Música de conocimiento y diálogos");
+localeStrings.push("Volver");
+localeStrings.push("Configuraciones de efectos de sonido y música");//80
+localeStrings.push("Abrir configuraciones de sonido");
+localeStrings.push("Interfaz Móvil");
+localeStrings.push("Tamaño del registro de eventos");
+localeStrings.push("líneas");
 localeStrings.push("Your UID");//85
 localeStrings.push("Your nickname");
 localeStrings.push("Update");
 localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
 localeStrings.push("%arg1 gold has been added to your treasury");
 localeStrings.push("Amber are most valued currency");//90
-localeStrings.push("Garrison");
-localeStrings.push("Fire");
-localeStrings.push("Hire");
-localeStrings.push("Hiring and managing troops");
-localeStrings.push("Castellan");//95
-localeStrings.push("Hero");
-localeStrings.push("Train brother-sergeant<br/>%arg1 gold");
-localeStrings.push("Hire turkopol<br/>%arg1 gold");
-localeStrings.push("Train brother-knight<br/>%arg1 gold");
+localeStrings.push("Guarnición");
+localeStrings.push("Fuego");
+localeStrings.push("Contratar");
+localeStrings.push("Reclutar tropas");
+localeStrings.push("Castellán");//95
+localeStrings.push("Héroe");
+localeStrings.push("Entrenar hermano-sargento<br/>%arg1 gold");
+localeStrings.push("Contratar turkopolo<br/>%arg1 gold");
+localeStrings.push("Entrenar hermano-caballero<br/>%arg1 gold");
 localeStrings.push("brothers-sergeants: ");//100
-localeStrings.push("turkopols: ");
-localeStrings.push("brothers-knights: ");
-localeStrings.push("move a unit to the hero squad");
-localeStrings.push("move a unit to the hero garrison");
+localeStrings.push("turkopolos: ");
+localeStrings.push("hermano-caballeros: ");
+localeStrings.push("mover una unidad al escuadrón del héroe");
+localeStrings.push("mover una unidad a la guarnición");
 localeStrings.push("placeholder");//105
-localeStrings.push("Building");
-localeStrings.push("Build Home<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Wall<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Tower<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Treasury<br/>lvl %arg1<br/>%arg2 gold");//110
-localeStrings.push("Build Gallows<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Fountain<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("Construcción");
+localeStrings.push("Construir Casa<br/>nvl %arg1<br/>%arg2 de oro");
+localeStrings.push("Construir Casa<br/>nvl %arg1<br/>%arg2 de oro");
+localeStrings.push("Construir Torre<br/>nvl %arg1<br/>%arg2 de oro");
+localeStrings.push("Construir Tesorería<br/>nvl %arg1<br/>%arg2 de oro");//110
+localeStrings.push("Construir Horca<br/>nvl %arg1<br/>%arg2 de oro");
+localeStrings.push("Construir Fuente<br/>nvl %arg1<br/>%arg2 de oro");
+localeStrings.push("Construir Escondite<br/>nvl %arg1<br/>%arg2 de oro");
+localeStrings.push("Construir Posada<br/>nvl %arg1<br/>%arg2 de oro");
 localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
 localeStrings.push("Build Archery range<br/>lvl %arg1<br/>%arg2 gold");
 localeStrings.push("Build Castle<br/>lvl %arg1<br/>%arg2 gold");//117
@@ -131,43 +135,43 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
 localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>How to play</h2>" +
+    "<h2>Cómo Jugar</h2>" +
    'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
      'feedback <a href="https://form.jotform.com/211014175318041">https://form.jotform.com/211014175318041</a><br>' +
-    "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
-    "After each clock turn your population is paying taxes to you and growing.<br>" +
-    "Normally, each citizen pays to you one gold piece per tick.<br>" +
-    "This behavior could be changed by player decisions.<br>" +
-    "You need to build Homes to continue growth of your city population.<br>" +
-    "Each lvl of Houses allows you to have more population.<br>" +
-    "You need to build Walls and Tower (Keep) to keep your city safe against intruders.<br>" +
-    "You need to build a Treasury to store your gold.<br>" +
-    "Each lvl of the treasury allows you to store more gold.<br>" +
-    "Also, Treasury allows you to hire treasury guards.<br>" +
-    "Treasury guards significantly decrease chance of gold being stolen from your treasury.<br>" +
-    "Hiring a guard will cost you %arg1 gold.<br>" +
-    "Each guard requires regular payment (each tick), it also costs %arg2 gold.<br>" +
-    "If you do not have enough money, they will leave their work permanently.<br>" +
-    "You can build Fountain OR Gallows. You cannot change your choice after building is done.<br>" +
-    "Fountains will increase happiness and speed of population growth<br>" +
-    "Gallows will decrease population, increase taxes, and allow you to execute townsfolk.<br>" +
-    "Executing any townsperson will add his property as confiscated gold.<br>" +
-    "Stash is required to lower your losses from stealing. You cannot build Stash without Treasury.<br>"+
-    "This is a single-player game.<br>"+
+    "Este juego se basa en tics. Un tic del reloj ocurre cada 30 segundos.<br>" +
+    "Después de cada vuelta del reloj tu población te paga impuestos y crece.<br>" +
+    "Normalmente, cada ciudadano te paga una pieza de oro por tic.<br>" +
+    "Este comportamiento puede cambiar por decisiones del jugador.<br>" +
+    "Necesitas construir Casas para permitir el crecimiento de la población de tu ciudad.<br>" +
+    "Cada nivel de Casas te permite tener más población.<br>" +
+    "Necesitas crear Muros y una Torre para mantener tu ciudad a salvo de intrusos.<br>" +
+    "Necesitas contruir una Tesorería para almacenar tu oro.<br>" +
+    "Cada nivel de la Tesorería te permite almacenar más oro.<br>" +
+    "Además, la Tesorería te permite contratar guardias del tesoro.<br>" +
+    "Los guardias del tesoro disminuyen significativamente la probabilidad de que tu oro sea robado de tu tesoro.<br>" +
+    "Contratar un guarda te costará %arg1 de oro.<br>" +
+    "Cada guardia requiere un pago regular (en cada tic), te costará %arg2 de oro.<br>" +
+    "Si no tienes suficiente dinero, dejarán su trabajo de forma permanente.<br>" +
+    "Puedes construir una Fuente O una Horca. No puedes cambiar tu decisión después de que se construya.<br>" +
+    "Las Fuentes incrementarán la felicidad y la velocidad de crecimiento de la población<br>" +
+    "Las Horcas reducirán la felicidad y el crecimiento de la población, aumentarán los impuestos y te permitirán ejecutar pobladores.<br>" +
+    "Ejecutar un poblador confiscará su propiedad y la agregará a tu tesoro en forma de oro.<br>" +
+    "Se requiere un Escondite para disminuir tus pérdidas por robo. No puedes construir un Escondite sin una Tesorería.<br>"+
+    "Este es un juego de un jugador.<br>"+
     "<br>" +
-    "Supported Languages(SL): English, Russian (Русский).<br>"+
-    "Community Supported Languages(CSL): German (Deutsch), Esperanto, French (le français).<br>"+
-    "CSL means that the author doesn't provide any help or answers asked in the CSL,<br>"+
-    "though parts of the game or game in whole could be provided in the CSL.<br>"+
-    "Also, any CSL translation could have mistakes or untranslated parts<br>"+
-    "or parts of translation which are partly outdated.<br>"+
-    "You could help with translations for the game here:<br>"+
+    "Idiomas Soportados (IS): Inglés (English), Ruso (Русский).<br>"+
+    "Idiomas Soportados por la Comunidad (ISC): Alemán (Deutsch), Castellano.<br>"+
+    "El autor no puede proveer ayuda ni respuestas a preguntas realizadas en los ISC,<br>"+
+    "aún cuando (partes de) el juego están en ISC.<br>"+
+    "Además, cualquier traducción de ISC puede tener errores o partes sin traducir<br>"+
+    "o partes de la traducción parcialmente desactualizadas.<br>"+
+    "Puedes ayudar con las traducciones del juego acá:<br>"+
     "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("wishing well");
-localeStrings.push("sawmill");
-localeStrings.push("wall");
-localeStrings.push("stone wall");//135
-localeStrings.push("tower");
+localeStrings.push("pozo de los deseos");
+localeStrings.push("aserradero");
+localeStrings.push("muro");
+localeStrings.push("muro de piedra");//135
+localeStrings.push("torre");
 localeStrings.push("stone tower");
 localeStrings.push("home");
 localeStrings.push("homes");
@@ -494,3 +498,7 @@ locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe'
 locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
 locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};
 locObj.advmapHeroLose = {"txt": "Your troops were defeated and the hero is forced to retreat to the city.", "loc":"When hero loses battle on advmap"}
+
+locObj.eventHalloween = {"txt": "Halloween is about collecting pumpkins!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"help"}
+locObj.couldntRecordPledge = {"txt": "It seems you are not logged it. Your pledge will not be recorded","loc":"happens when collected event item while being not logged in"}
+
