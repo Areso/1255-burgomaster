@@ -1870,7 +1870,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				if (game.myhero.status !== 2) {
 					var question      = localeStrings[179];
 					question          = question.replace("%arg1", genMapPriceFinal);
-					showModal(1, '', game.enerateMapCallback, question, localeStrings[32], localeStrings[33])
+					showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
 				} else {
 					alertMsg = localeStrings[180];
 					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
