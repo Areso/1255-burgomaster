@@ -1650,38 +1650,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 		},
-		getEventDetails : function () {
-			back_response_evt_details = null;
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					back_response_evt_details = JSON.parse(this.responseText);
-					console.log(back_response_evt_details);
-					textToTab = back_response_evt_details["msgToPlayer"];
-					document.getElementById("lblEventDetails").innerHTML = textToTab;
-				} else {
-					//
-				}
-			};
-			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_details?uid="+game.UID, true);
-			xhttp.send();
-		},
-		getEventLeaderboard : function () {
-			back_response_evt_details = null;
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					back_response_evt_details = JSON.parse(this.responseText);
-					console.log(back_response_evt_details);
-					textToTab = back_response_evt_details["msgToPlayer"];
-					document.getElementById("lblEventLBDetails").innerHTML = textToTab;
-				} else {
-					//
-				}
-			};
-			xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_leaderboard?uid="+game.UID, true);
-			xhttp.send();
-		},
 		setupEventLogSize : function () {
 			game.log_size = document.getElementById("inpStnEventLogSize").value;
 			document.getElementById("console_n_chat").style.height = game.log_size * 20;

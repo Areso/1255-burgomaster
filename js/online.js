@@ -7,8 +7,9 @@
 	btn_send  = document.getElementById("btnSend");
 	//init timers
 	if (config.online && config.pullMessages){
-		setInterval(fpullMessages, config.pullMessagesMS);
+		//setInterval(fpullMessages, config.pullMessagesMS);
 		setInterval(getNearestEventTime, 10000);
+		setInterval(pullAmber, 3000);
 	}
 	//functions
 	function remoteRegLogin() {
@@ -23,6 +24,8 @@
 					resp_data = JSON.parse(this.responseText);
 					session   = resp_data["session"];
 					msg       = "registered successfully";
+					postEventLog(msg);
+					msg       = "you got a 'registered user' badge and 5 ambers";
 					postEventLog(msg);
 				}
 			};
@@ -92,6 +95,24 @@
 		xhttp.open("GET", endpoint, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();
+	}
+	function pullAmber() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				the_resp = JSON.parse(this.responseText);
+				console.log(the_resp);
+				document.getElementById("gems").innerHTML = the_resp.amber;
+			}
+			if (this.readyState === 4 && this.status !== 200) {
+				document.getElementById("gems").innerHTML = 0
+			}
+		};
+		endpoint    = webserver + "/api/v1.1/get_user_amber";
+		dataToParse = session+delimiter;
+		xhttp.open("POST", endpoint, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(dataToParse);
 	}
 	function printToChat(item) {
 		chat_box = chat_dom;
@@ -251,7 +272,8 @@
 					
 				} else {
 					//TODO THAT URGENT!
-					game.getEventDetails();
+					//BUT NOT TODAY
+					//game.getEventDetails();
 					event_timer_lbl.innerHTML="Halloween event will end in ";
 					event_timer_val.innerHTML=eventTimerVal;
 				}
@@ -279,4 +301,52 @@
 			default:
 				console.error("unsupported event", data);
 		}
+	}
+function send_gen_items(items_no){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			console.log("items sent");
+			answ_session = JSON.parse(this.responseText);
+			answ_session = answ_session.session;
+		}
 	};
+	dataToParse = session+delimiter;
+	dataToParse+= items_no;
+	endpoint  = webserver + "/api/v1.1/record_new_map_details";
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
+function getEventDetails () {
+	back_response_evt_details = null;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			back_response_evt_details = JSON.parse(this.responseText);
+			console.log(back_response_evt_details);
+			textToTab = back_response_evt_details["msgToPlayer"];
+			document.getElementById("lblEventDetails").innerHTML = textToTab;
+		} else {
+			//
+		}
+	};
+	xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_details?uid="+game.UID, true);
+	xhttp.send();
+}
+function getEventLeaderboard () {
+	back_response_evt_details = null;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			back_response_evt_details = JSON.parse(this.responseText);
+			console.log(back_response_evt_details);
+			textToTab = back_response_evt_details["msgToPlayer"];
+			document.getElementById("lblEventLBDetails").innerHTML = textToTab;
+		} else {
+			//
+		}
+	};
+	xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_leaderboard?uid="+game.UID, true);
+	xhttp.send();
+}

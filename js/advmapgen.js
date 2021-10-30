@@ -85,6 +85,7 @@ function genMap(priceOfMapGen){
 	game.myMapRemObjects[game.castleX][game.castleY+1]=40;
 	game.heroX = game.castleX;
 	game.heroY = game.castleY+1;
+	let generated_items = 0;
 	for (i = 0; i < config.sizeMapX; i++) {
 		for (j = 0; j < config.sizeMapY; j++) {
 			if (game.myMapObjects[i][j]===0) {//to place removable objects, we should the place is free from non-removable objects
@@ -93,11 +94,17 @@ function genMap(priceOfMapGen){
 					if (rnd >= 3) {
 						rnd = 0
 					}
+					if (rnd === 2) {
+						generated_items += 1;
+					}
 				} else {
 					if (rnd >= 2) {
 						rnd = 0
 					}
 				}
+				if (rnd===3){
+					generated_items += 1;
+				} 
 				game.myMapRemObjects[i][j] = rnd;
 			}
 		}
@@ -111,6 +118,9 @@ function genMap(priceOfMapGen){
 		//QC is passed!
 		game.mapCreated = 1;
 		composite_gm();
+		if (flag_event_started===1){
+			if (typeof send_gen_items === "function") { send_gen_items(generated_items) };
+		}
 	} else {
 		console.log("qc of newly generated map failed. regen the map");
 		genMap(0);
