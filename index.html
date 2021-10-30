@@ -1589,23 +1589,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(lastHope_str);
 		},
-		eventItemCollected : function () {
-			back_response_ItemCollected = null;
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					back_response_ItemCollected = JSON.parse(this.responseText);
-					console.log(back_response_ItemCollected);
-					if (back_response_ItemCollected["content"]===200) {
-						postEventLog(localeStrings[58][1]);
-					}
-				}
-			};
-			dataToParse = game.UID;
-			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/make_event_pledge", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
-		},
 		updateAlias : function () {
 			proposedAlias = document.getElementById("inpStnAliasValue").value;
 			console.log(proposedAlias);
@@ -1987,7 +1970,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
 				postEventLog(localeStrings[58][0]);
-				game.eventItemCollected();
+				eventItemCollected();
 			}
 		},
 		tryHeroMovement : function (changeX, changeY) {

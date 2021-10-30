@@ -319,6 +319,7 @@ function send_gen_items(items_no){
 	xhttp.send(dataToParse);
 }
 function getEventDetails () {
+	/*
 	back_response_evt_details = null;
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -333,8 +334,10 @@ function getEventDetails () {
 	};
 	xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_details?uid="+game.UID, true);
 	xhttp.send();
+	*/
 }
 function getEventLeaderboard () {
+	/*
 	back_response_evt_details = null;
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -349,4 +352,27 @@ function getEventLeaderboard () {
 	};
 	xhttp.open("GET", "http://armata.ga:5000/api/v1.0/get_event_leaderboard?uid="+game.UID, true);
 	xhttp.send();
+	*/
 }
+function eventItemCollected () {
+	console.log("item collected");
+	back_response_ItemCollected = null;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			back_response_ItemCollected = JSON.parse(this.responseText);
+			console.log(back_response_ItemCollected);
+			postEventLog(localeStrings[58][1]);
+		}
+		if (this.readyState === 4 && this.status !== 200) {
+			postEventLog(locObj.couldntRecordPledge.txt);
+		}
+	};
+	endpoint  = webserver + "/api/v1.1/event_item_collected";
+	dataToParse = session;
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
+
+
