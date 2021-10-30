@@ -11,6 +11,7 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
     img1sizeY     = 0;
     imageOffsetX  = 10;
     imageOffsetY  = 30;
+    console.log(thefunction);
     if (imageName !== '') {
         var src   = imageName;
         img1      = loadImage(src, composite);
