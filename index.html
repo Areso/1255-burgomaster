@@ -1865,7 +1865,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 		generateMap : function () {
 			game.blackMarketGoods = [];
-			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
+			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
 					var question      = localeStrings[179];
@@ -1883,7 +1883,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 		generateMapCallback : function (silent) {
 			//generate landscape
-			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic;
+			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
 			if (silent===true) {
 				genMap(0);
 			} else {
