@@ -163,6 +163,7 @@
 	}
 	function send2(){
 		sending_msg  = msg_dom.value;
+                if (sending_msg.length>0){
 		sending_auth = nick_dom.value;
 		msg_dom.value = "";
 		console.log("the message out values is "+sending_msg);
@@ -186,6 +187,7 @@
 		xhttp.open("POST", endpoint, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(dataToParse);
+                }
 	}
 	msgid_to_del = -1;
 	function deleteMsg(msgid){
