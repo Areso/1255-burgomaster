@@ -137,3 +137,10 @@ function dynamicCellsSetStyle() {
 		}
 	}
 }
+function setupFirebrigadeUI () {
+	if (game.fireGuard === 1) {
+		document.getElementById("fb_on").checked = true;
+	} else {
+		document.getElementById("fb_off").checked = true;
+	}
+}
