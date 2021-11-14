@@ -110,6 +110,9 @@ function updateButtonCaptions(){
 	if (game.buildLevelFountain > 0) {
 		document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
 	}
+	if (game.buildLevelGallows === 0) {
+		document.getElementById("buttonDeathPenalty").style.display="none";
+	}
 	if (game.buildLevelGallows > 0) {
 		document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
 		document.getElementById("buttonDeathPenalty").setAttribute("style", "top:430px; left: 20px");

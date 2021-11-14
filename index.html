@@ -3840,37 +3840,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(msg);
 			};
 			//TUTORIALS
-			
-			if (game.ticks === 3){
-				if (isTutorialState && !game.tips.includes("tutorial_defense")){
-					game.tips.push("tutorial_defense");
-					showModal(0, '', getAck, locObj.tutorial_defense.txt, locObj.okay.txt, '')
-				}
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_treasury") && game.gold>=200 && !dialogShown){
-				game.tips.push("tutorial_treasury");
-				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_autosave") && game.ticks>=10 && !dialogShown){
-				game.tips.push("tutorial_autosave");
-				showModal(0, '', getAck, locObj.tutorial_autosave.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_stable") && game.pop>=50 && !dialogShown){
-				game.tips.push("tutorial_stable");
-				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_archery") && game.pop>=70 && !dialogShown){
-				game.tips.push("tutorial_archery");
-				showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_inn") && game.pop>=100 && !dialogShown){
-				game.tips.push("tutorial_inn");
-				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_social") && game.pop>=120 && !dialogShown){
-				game.tips.push("tutorial_social");
-				showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
-			}
+			gameTips();
+			gameStory();
+			gameChangePath();
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//TODO
@@ -5085,6 +5057,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 <script asyn src="js/units.js"></script>
 <!--ONLINE OPTIONS-->
 <script async src="js/online.js"></script>
+<!--TIPS, STORYTELLING, STUFF-->
+<script src="js/tips_story.js"></script>
 <script>
 	function openTab(evt, tabName) {
 		var i, tabcontent, tablinks;
