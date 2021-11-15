@@ -145,4 +145,55 @@ function nextHero(){
 		updateHeroAvForHire(curHeroForHire);
 	}
 }
-
+function heroForHire(heroClass, level, heroStats, heroCurve, heroLearnCurve, image) {
+	this.heroClassLbl    = heroClass;
+	this.heroStatsArr    = heroStats;
+	this.level           = level;
+	this.atk             = heroStats[0];
+	this.def             = heroStats[1];
+	this.mpow            = heroStats[2];
+	this.int             = heroStats[3];
+	this.heroCurveArr    = heroCurve;
+	this.curveAtk        = heroCurve[0];
+	this.curveDef        = heroCurve[1];
+	this.curveMpow       = heroCurve[2];
+	this.curveInt        = heroCurve[3];
+	this.heroLearnCurve  = heroLearnCurve;
+	this.image           = image;
+}
+function populateHeroesForHire(){
+	heroesForHire = [];
+	knight = new heroForHire(locObj.heroClassKnight.txt, 1, [2,2,0,0], [60,40,0,0],
+							locObj.knightLearnCurve.txt, 'hero-knight.png');
+	monk   = new heroForHire(locObj.heroClassMonk.txt, 1, [0,0,2,2], [45,55,0,0],
+							locObj.monkLearnCurve.txt, 'hero-monk.png');
+	heroesForHire.push(knight);
+	heroesForHire.push(monk);
+	for (hero of heroesForHire){
+		var heroAttributesRandomizer = new WeightedRandom();
+		heroAttributesRandomizer.addEntry('atk', hero.curveAtk);
+		heroAttributesRandomizer.addEntry('def', hero.curveDef);
+		heroAttributesRandomizer.addEntry('int', hero.curveInt);
+		heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
+		//console.log(heroAttributesRandomizer.entries);
+		for (i=0; i<game.buildLevelInn-1;i++){
+			var rndAttrName    = heroAttributesRandomizer.getRandom();
+			hero[rndAttrName]++;
+			hero["level"]++;
+		}
+	}
+	updateHeroAvForHire(0);
+}
+function updateHeroAvForHire(heroClassId){
+	console.log("heroClassId is "+heroClassId);
+	document.getElementById("lblClassForHire").innerText    = heroesForHire[heroClassId].heroClassLbl;
+	document.getElementById("lblSpeciality").innerText      = heroesForHire[heroClassId].heroLearnCurve;
+	document.getElementById("imgHeroForHire").src           = 'resources/'+heroesForHire[heroClassId].image;
+	document.getElementById("lblLevelForHire").innerText    = heroesForHire[heroClassId].level;
+	theStats    = locObj.heroStatsAtkLbl.txt  +": " + heroesForHire[heroClassId]["atk"]+"; ";
+	theStats   += locObj.heroStatsDefLbl.txt  +": " + heroesForHire[heroClassId]["def"]+" ";
+	theStats   += "<br>"
+	theStats   += locObj.heroStatsMpowLbl.txt +": " + heroesForHire[heroClassId]["mpow"]+"; ";
+	theStats   += locObj.heroStatsIntLbl.txt  +": " + heroesForHire[heroClassId]["int"]+" ";
+	document.getElementById("lblPrimaryStats").innerHTML    = theStats;
+}

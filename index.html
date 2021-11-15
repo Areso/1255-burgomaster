@@ -1210,88 +1210,7 @@
 <!--THE GAME-->
 <script>
 //THE GAME
-	/*-- New: Units data --*/
-	var sergeantsData = {
-	  name: 'sergeants',
-	  minDmg: 3,
-	  maxDmg: 4,
-	  attack: 5,
-	  defence: 8,
-	  health: 15,
-	  count: 1
-	};
-
-	var turkopolsData = {
-	  name: 'turkopols',
-	  minDmg: 2,
-	  maxDmg: 3,
-	  attack: 5,
-	  defence: 5,
-	  health: 12,
-	  count: 1
-	};
-
-	var knightsData = {
-	  name: 'knights',
-	  minDmg: 5,
-	  maxDmg: 10,
-	  attack: 10,
-	  defence: 9,
-	  health: 20,
-	  count: 1
-	};
-
-	var banditWarrior = {
-	  name: 'bandit',
-	  minDmg: 1,
-	  maxDmg: 3,
-	  attack: 5,
-	  defence: 3,
-	  count: 1,
-	  health: 10
-	};
-
-	var banditArcher = {
-	  name: 'banditArcher',
-	  minDmg: 2,
-	  maxDmg: 3,
-	  attack: 5,
-	  defence: 2,
-	  count: 1,
-	  health: 8,
-	};
-
-	var mercSpearmen = {
-	  name: 'mercenarySpearmen',
-	  minDmg: 4,
-	  maxDmg: 6,
-	  attack: 6,
-	  defence: 7,
-	  count: 1,
-	  health: 10
-	};
-
-	var mercSwordman = {
-	  name: 'mercenarySwordman',
-	  minDmg: 5,
-	  maxDmg: 7,
-	  attack: 7,
-	  defence: 9,
-	  count: 1,
-	  health: 15,
-	};
-
-	var grolinWorker = {
-		name: 'Grolin worker',
-		minDmg: 1,
-		maxDmg: 2,
-		attack: 4,
-		defence: 2,
-		count: 1,
-		health: 6
-	};
-
-	var isTutorialState = true;
+var isTutorialState = true;
 
 /*-- New --*/
 
@@ -3921,37 +3840,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(msg);
 			};
 			//TUTORIALS
-			
-			if (game.ticks === 3){
-				if (isTutorialState && !game.tips.includes("tutorial_defense")){
-					game.tips.push("tutorial_defense");
-					showModal(0, '', getAck, locObj.tutorial_defense.txt, locObj.okay.txt, '')
-				}
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_treasury") && game.gold>=200 && !dialogShown){
-				game.tips.push("tutorial_treasury");
-				showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_autosave") && game.ticks>=10 && !dialogShown){
-				game.tips.push("tutorial_autosave");
-				showModal(0, '', getAck, locObj.tutorial_autosave.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_stable") && game.pop>=50 && !dialogShown){
-				game.tips.push("tutorial_stable");
-				showModal(0, '', getAck, locObj.tutorial_stable.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_archery") && game.pop>=70 && !dialogShown){
-				game.tips.push("tutorial_archery");
-				showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_inn") && game.pop>=100 && !dialogShown){
-				game.tips.push("tutorial_inn");
-				showModal(0, '', getAck, locObj.tutorial_inn.txt, locObj.okay.txt, '')
-			}
-			if (isTutorialState && !game.tips.includes("tutorial_social") && game.pop>=120 && !dialogShown){
-				game.tips.push("tutorial_social");
-				showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
-			}
+			gameTips();
+			gameStory();
+			gameChangePath();
 			cnt_cursession = cnt_cursession+1;
 			if (cnt_cursession===10) {
 				//TODO
@@ -4554,18 +4445,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var dcounter      = dcounter_def;
 	var curHeroForHire= 0;
 	var heroesForHire = [];
-	
-	updateResources();
+	if (typeof updateResources === "function") { updateResources() }
 	var autosaveObject;
 	//setupAutosave();//DEBUG
 	composite();
 	openLog();
 	//setupNickname();
-	
-
 	setInterval(cooldown, config.oneSecMS);
 	setInterval(endOfTurnTimer, config.oneSecMS);
-	setInterval(rndEvents, 100000);
 	include('localisation.js',function(){
 		loadStartLocale();
 		console.log('we are in first level include after loadStartLocale()');
@@ -4594,59 +4481,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		} else {
 			return Date.now();
 		}
-	}
-	function heroForHire(heroClass, level, heroStats, heroCurve, heroLearnCurve, image) {
-		this.heroClassLbl    = heroClass;
-		this.heroStatsArr    = heroStats;
-		this.level           = level;
-		this.atk             = heroStats[0];
-		this.def             = heroStats[1];
-		this.mpow            = heroStats[2];
-		this.int             = heroStats[3];
-		this.heroCurveArr    = heroCurve;
-		this.curveAtk        = heroCurve[0];
-		this.curveDef        = heroCurve[1];
-		this.curveMpow       = heroCurve[2];
-		this.curveInt        = heroCurve[3];
-		this.heroLearnCurve  = heroLearnCurve;
-		this.image           = image;
-	}
-	function populateHeroesForHire(){
-		heroesForHire = [];
-		knight = new heroForHire(locObj.heroClassKnight.txt, 1, [2,2,0,0], [60,40,0,0],
-								locObj.knightLearnCurve.txt, 'hero-knight.png');
-		monk   = new heroForHire(locObj.heroClassMonk.txt, 1, [0,0,2,2], [45,55,0,0],
-								locObj.monkLearnCurve.txt, 'hero-monk.png');
-		heroesForHire.push(knight);
-		heroesForHire.push(monk);
-		for (hero of heroesForHire){
-			var heroAttributesRandomizer = new WeightedRandom();
-			heroAttributesRandomizer.addEntry('atk', hero.curveAtk);
-			heroAttributesRandomizer.addEntry('def', hero.curveDef);
-			heroAttributesRandomizer.addEntry('int', hero.curveInt);
-			heroAttributesRandomizer.addEntry('mpow', hero.curveMpow);
-			//console.log(heroAttributesRandomizer.entries);
-
-			for (i=0; i<game.buildLevelInn-1;i++){
-				var rndAttrName    = heroAttributesRandomizer.getRandom();
-				hero[rndAttrName]++;
-				hero["level"]++;
-			}
-		}
-		updateHeroAvForHire(0);
-	}
-	function updateHeroAvForHire(heroClassId){
-		console.log("heroClassId is "+heroClassId);
-		document.getElementById("lblClassForHire").innerText    = heroesForHire[heroClassId].heroClassLbl;
-		document.getElementById("lblSpeciality").innerText      = heroesForHire[heroClassId].heroLearnCurve;
-		document.getElementById("imgHeroForHire").src           = 'resources/'+heroesForHire[heroClassId].image;
-		document.getElementById("lblLevelForHire").innerText    = heroesForHire[heroClassId].level;
-		theStats    = locObj.heroStatsAtkLbl.txt  +": " + heroesForHire[heroClassId]["atk"]+"; ";
-		theStats   += locObj.heroStatsDefLbl.txt  +": " + heroesForHire[heroClassId]["def"]+" ";
-		theStats   += "<br>"
-		theStats   += locObj.heroStatsMpowLbl.txt +": " + heroesForHire[heroClassId]["mpow"]+"; ";
-		theStats   += locObj.heroStatsIntLbl.txt  +": " + heroesForHire[heroClassId]["int"]+" ";
-		document.getElementById("lblPrimaryStats").innerHTML    = theStats;
 	}
 	function checkSaves() {
 		if (localStorage.getItem('game')!==null) {
@@ -4920,13 +4754,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function writeToTextArea(msg) {
 		document.getElementById("patchnotes").value = document.getElementById("patchnotes").value+"\r\n"+msg;
 	}
-	function setupFirebrigadeUI () {
-		if (game.fireGuard === 1) {
-			document.getElementById("fb_on").checked = true;
-		} else {
-			document.getElementById("fb_off").checked = true;
-		}
-	}
 	function autosaveGame() {
 		saveGame("silent");
 	}
@@ -5047,8 +4874,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		buildingsInTownW=[];
 		buildingsInTownH=[];
 		setupMobileUI();
-		setupFirebrigadeUI();
-		setupAudioUI();
+		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
+		if (typeof setupAudioUI === "function") { setupAudioUI() };
 		setupAutosave();
 		setupNickname();
 		setupEventLogSizeUI();
@@ -5191,50 +5018,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function cooldownMvt(){
 		allowMvt = 1;
 	}
-	function rndEvents() {
-		var rnd = Math.floor((Math.random() * 12) + 1);
-		//rnd = 2;//debug
-		switch (rnd) {
-			case 1:
-				game.theftFromTreasury();
-				break;
-			case 2:
-				game.startFire();
-				break;
-			case 3:
-				game.startPlague();
-				break;
-			case 4:
-				game.chestCityAppear();
-				break;
-			case 5:
-				//
-				break;
-			case 6:
-				//
-				break;
-			case 7:
-				//
-				break;
-			case 8:
-				//
-				break;
-			case 9:
-				//
-				break;
-			case 10:
-				//
-				break;
-			case 11:
-				//
-				break;
-			case 12:
-				game.winLottery();
-				break;
-			default:
-				alert("error on switch/case function");
-		}
-	}
 	function endOfTurnTimer() {
 		if (dcounter - 1 === 0) {
 			dcounter = dcounter_def;
@@ -5268,8 +5051,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 <script async src="js/advmapgen.js"></script>
 <!--ADVENTURE RENDERER  MAP-->
 <script async src="js/advmaprender.js"></script>
+<!--RANDOM EVENTS-->
+<script asyn src="js/random_events.js"></script>
+<!--UNITS STATS-->
+<script asyn src="js/units.js"></script>
 <!--ONLINE OPTIONS-->
 <script async src="js/online.js"></script>
+<!--TIPS, STORYTELLING, STUFF-->
+<script src="js/tips_story.js"></script>
 <script>
 	function openTab(evt, tabName) {
 		var i, tabcontent, tablinks;

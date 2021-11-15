@@ -110,6 +110,9 @@ function updateButtonCaptions(){
 	if (game.buildLevelFountain > 0) {
 		document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
 	}
+	if (game.buildLevelGallows === 0) {
+		document.getElementById("buttonDeathPenalty").style.display="none";
+	}
 	if (game.buildLevelGallows > 0) {
 		document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
 		document.getElementById("buttonDeathPenalty").setAttribute("style", "top:430px; left: 20px");
@@ -135,5 +138,12 @@ function dynamicCellsSetStyle() {
 		while(dynElements.length) {
 			dynElements[0].className = 'dynamicCellsDay';
 		}
+	}
+}
+function setupFirebrigadeUI () {
+	if (game.fireGuard === 1) {
+		document.getElementById("fb_on").checked = true;
+	} else {
+		document.getElementById("fb_off").checked = true;
 	}
 }

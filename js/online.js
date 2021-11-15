@@ -25,7 +25,7 @@
 					session   = resp_data["session"];
 					msg       = "registered successfully";
 					postEventLog(msg);
-					msg       = "you got a 'registered user' badge and 5 ambers";
+					msg       = "you got a 'registered user' badge and 10 ambers";
 					postEventLog(msg);
 				}
 			};
