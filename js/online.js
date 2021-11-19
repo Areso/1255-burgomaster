@@ -320,6 +320,23 @@ function send_gen_items(items_no){
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(dataToParse);
 }
+//TODO ToDo To Do
+function save_to_cloud(items_no){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			console.log("items sent");
+			answ_session = JSON.parse(this.responseText);
+			answ_session = answ_session.session;
+		}
+	};
+	dataToParse = session+delimiter;
+	dataToParse+= items_no;
+	endpoint  = webserver + "/api/v1.1/record_new_map_details";
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
 function getEventDetails () {
 	/*
 	back_response_evt_details = null;
