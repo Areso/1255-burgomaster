@@ -789,8 +789,10 @@
 			<label id="lbl_online_value" style="margin-left:10px">n/d</label>
 			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
 			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
-			<input id="inp_nickname"  style="position: absolute; top: 750px; left:  10px; width: 100px;" value="Nickname" ></input>
-			<input id="msg_out"       style="position: absolute; top: 750px; left: 120px; width: 500px;" value=""         ></input>
+			<input id="inp_nickname"  style="position: absolute; top: 750px; left:  10px; width: 100px;" value="" ></input>
+			<!--<input id="inp_nickname2"  style="position: absolute; top: 750px; left:  10px; width: 100px;" value="" ></input>
+			-->
+			<input id="msg_out"       style="position: absolute; top: 750px; left: 120px; width: 500px;" value="" ></input>
 			<button id="btnSend" onclick="sendOnClick2()"   style="position: absolute; top: 750px; left: 640px; width: 100px;"          >send</button>
 		</div>
 		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
@@ -798,7 +800,6 @@
 </div>
 <!--TOWN CANVAS-->
 <script>
-
 	//TOWN
 	canvas  = document.getElementById("canvas");
 	canvas.addEventListener("touchstart", tap);
@@ -1412,6 +1413,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		log_size: 8,
 		alias: "",
 		UID: getUID(),
+		nickname: genNick(),
 		tips: [],
 		story: [],
 		chestCity: 0,
@@ -4450,7 +4452,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	//setupAutosave();//DEBUG
 	composite();
 	openLog();
-	//setupNickname();
+	
 	setInterval(cooldown, config.oneSecMS);
 	setInterval(endOfTurnTimer, config.oneSecMS);
 	include('localisation.js',function(){
@@ -4472,6 +4474,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			rnd = "0"+rnd;
 		}
 		return getCurrentDate().toString()+rnd;
+	}
+	function genNick() {
+		var rnd = Math.floor((Math.random() * 10000) + 1);
+		while (rnd.toString().length < 4) {
+			rnd = "0"+rnd;
+		}
+		nickName = "Guest"+rnd;
+		return nickName;
 	}
 	function getCurrentDate() {
 		if (!Date.now) {
@@ -4877,7 +4887,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };
 		setupAutosave();
-		setupNickname();
+		if (typeof setupNickname === "function") { setupNickname() };
 		setupEventLogSizeUI();
 		updateImagesBuildingTab()
 		composite();
@@ -4887,18 +4897,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		scrollDown();
 	}
 	function updateUI() {
-		if (typeof updateResources === "function") { updateResources() }
-		//updateResources();
-		if (typeof updateTroopsNumbers === "function") { updateTroopsNumbers() }
-		//updateTroopsNumbers()
+		if (typeof updateResources      === "function") { updateResources() }
+		if (typeof updateTroopsNumbers  === "function") { updateTroopsNumbers() }
 		if (typeof updateButtonCaptions === "function") { updateButtonCaptions() }
-		//updateButtonCaptions();
-		if (typeof updateHeroStatus === "function") { updateHeroStatus() }
-		//updateHeroStatus();
-		if (typeof updateBlackMarket === "function") { updateBlackMarket() }
-		//updateBlackMarket();
+		if (typeof updateHeroStatus     === "function") { updateHeroStatus() }
+		if (typeof updateBlackMarket    === "function") { updateBlackMarket() }
 		if (typeof updateImagesBuildingTab === "function") { updateImagesBuildingTab() }
-		//updateImagesBuildingTab();
+		if (document.getElementById("inp_nickname").value === "" || 
+			document.getElementById("inp_nickname").value === "undefined"){
+			if (typeof setupNickname    === "function") { setupNickname() }
+		}
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
 
