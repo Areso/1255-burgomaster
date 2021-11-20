@@ -9,11 +9,17 @@ function setupMobileUI() {
 		document.getElementById("inpStnEventLogSize").value    = game.log_size;
 		document.getElementById("console_n_chat").style.height = game.log_size * 20;
 	}
+	/*
 	function setupNickname() {
 		//console.log("setup a nickname");
 		if (game.alias.length===0) {
 			game.alias = game.UID.slice(-5);
 		}
+	}*/
+	function setupNickname() {
+		console.log(game.nickname);
+		console.log("setup nickname");
+		document.getElementById("inp_nickname").value = game.nickname;
 	}
 	function setupAutosave() {
 		game.userASaveAck = 0;
