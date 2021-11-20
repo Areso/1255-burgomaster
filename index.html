@@ -106,11 +106,13 @@
 			<tr>
 				<td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
 				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
-				<td><button id="buttonLastHope" onclick="lastHope()" >Last hope</button></td>
 				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
 			</tr>
 			</table>
-            <br>
+            <button id="buttonSaveToCloud" onclick="cloudQuickSave()" >Save to Cloud</button>
+            <button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px">Load save from Cloud</button>
+            
+		    <br>
 			<input id="savestring" name="savestring" value="" style="width:600px">
             <br>
             <a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>

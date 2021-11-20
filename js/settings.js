@@ -168,9 +168,11 @@ function importGame() {
 		postEventLog(localeStrings[326],"bold");
 	}
 }
-function lastHope(){
-	stringSavegame = JSON.stringify(localStorage.getItem('game'));
-	document.getElementById("savestring").value = btoa(stringSavegame);
-	savehope_str = btoa(stringSavegame);
-	game.sendSaveToTheCloud(savehope_str);
+function cloudQuickSave(){
+	tmpExportGame = game;
+	tmpExportGame.pops = [];
+	tmpExportGame.budgets = [];
+	tmpExportGame.years = [];
+	stringSavegame = JSON.stringify(tmpExportGame);
+	save_to_cloud(btoa(stringSavegame));
 }

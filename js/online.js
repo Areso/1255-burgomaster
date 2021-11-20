@@ -321,18 +321,52 @@ function send_gen_items(items_no){
 	xhttp.send(dataToParse);
 }
 //TODO ToDo To Do
-function save_to_cloud(items_no){
+function save_to_cloud(savegame_to_cloud){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState === 4 && this.status === 200) {
-			console.log("items sent");
-			answ_session = JSON.parse(this.responseText);
-			answ_session = answ_session.session;
+			console.log("game saved to the cloud successfully");
+			msg       = "game saved to the cloud successfully";
+			postEventLog(msg);
+		}
+		if (this.readyState === 4 && this.status !== 200) {
+			msg       = "game didn't saved to the cloud. You should be logined to the game before you could save the game";
+			postEventLog(msg);
 		}
 	};
 	dataToParse = session+delimiter;
-	dataToParse+= items_no;
-	endpoint  = webserver + "/api/v1.1/record_new_map_details";
+	dataToParse+= savegame_to_cloud;
+	endpoint  = webserver + "/api/v1.1/save_game";
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
+function cloudQuickLoad(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			console.log("got the savegame, trying to load it");
+			try {
+				resp      = JSON.parse(this.responseText);
+				save64    = resp.content;
+				console.log(save64);
+				console.log("we try to load the imported save");
+				saveLine  = atob(save64);
+				saveArray = saveLine.split(delimiter);
+				gameTemp  = JSON.parse(saveArray[0]);
+				overrideGame(gameTemp);
+			} catch(err) {
+				postEventLog(localeStrings[327],"bold,red");
+				console.log(err);
+			}
+		}
+		if (this.readyState === 4 && this.status !== 200) {
+			msg       = "game didn't saved to the cloud. You should be logined to the game before you could save the game";
+			postEventLog(msg);
+		}
+	};
+	dataToParse = session+delimiter;
+	endpoint    = webserver + "/api/v1.1/get_savegame";
 	xhttp.open("POST", endpoint, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(dataToParse);
