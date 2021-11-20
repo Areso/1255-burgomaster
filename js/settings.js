@@ -142,3 +142,35 @@ function setupMobileUI() {
 			dynamicCellsSetStyle();
 		}
 	}
+function exportGame() {
+	tmpExportGame = game;
+	tmpExportGame.pops = [];
+	tmpExportGame.budgets = [];
+	tmpExportGame.years = [];
+	stringSavegame = JSON.stringify(tmpExportGame);
+	document.getElementById("savestring").value = btoa(stringSavegame);
+}
+function importGame() {
+	save64 = document.getElementById("savestring").value;
+	if (save64 !== "" ) {
+		try {
+			console.log("we try to load the imported save");
+			saveLine  = atob(save64);
+			saveArray = saveLine.split(delimiter);
+			gameTemp  = JSON.parse(saveArray[0]);
+			overrideGame(gameTemp);
+		}
+		catch(err) {
+			postEventLog(localeStrings[327],"bold,red");
+			console.log(err);
+		}
+	} else {
+		postEventLog(localeStrings[326],"bold");
+	}
+}
+function lastHope(){
+	stringSavegame = JSON.stringify(localStorage.getItem('game'));
+	document.getElementById("savestring").value = btoa(stringSavegame);
+	savehope_str = btoa(stringSavegame);
+	game.sendSaveToTheCloud(savehope_str);
+}
