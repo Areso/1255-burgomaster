@@ -4448,6 +4448,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var dcounter      = dcounter_def;
 	var curHeroForHire= 0;
 	var heroesForHire = [];
+	var dialogShown   = false;
 	if (typeof updateResources === "function") { updateResources() }
 	var autosaveObject;
 	//setupAutosave();//DEBUG
