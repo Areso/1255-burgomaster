@@ -134,7 +134,11 @@
 		msg_id         = item[3];
 		msg_text       = item[1];
 		line_to_print += nickname+": ";
-		line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
+		if (role !=="admin" && role !=="mod") {
+			line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
+		} else {
+			line_to_print +=msg_text;
+		}
 		chat_box.innerHTML += line_to_print+"<br>";
 		//temporarily disabled
 		/*
