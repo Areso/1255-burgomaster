@@ -120,7 +120,7 @@
 		let usertime   = new Date(item[2]*1000);
 		usertime       = usertime.toLocaleTimeString();
 		line_to_print  = "["+usertime+"] ";
-		role           = item[4];
+		role           = item[5];
 		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
 		if (role==="admin"){
 			nickname = "<span style='color:#DCAA07'><abbr title='The admin'>"+item[0]+"</abbr></span>";
@@ -130,6 +130,9 @@
 		}
 		if (role==="bot"){
 			nickname ="<span style='color:#133bd2'><abbr title='The bot'>"+item[0]+"</abbr></span>";
+		}
+		if (role==="contributor"){
+                        nickname ="span style'color:#ff1100'><abrr title='A Contibutor'>"+item[0]+"</abbr></span>";
 		}
 		msg_id         = item[3];
 		msg_text       = item[1];
