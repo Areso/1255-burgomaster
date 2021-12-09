@@ -120,7 +120,7 @@
 		let usertime   = new Date(item[2]*1000);
 		usertime       = usertime.toLocaleTimeString();
 		line_to_print  = "["+usertime+"] ";
-		role           = item[5];
+		role           = item[4];
 		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
 		if (role==="admin"){
 			nickname = "<span style='color:#DCAA07'><abbr title='The admin'>"+item[0]+"</abbr></span>";
