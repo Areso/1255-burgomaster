@@ -131,6 +131,9 @@
 		if (role==="bot"){
 			nickname ="<span style='color:#133bd2'><abbr title='The bot'>"+item[0]+"</abbr></span>";
 		}
+		if (role==="contributor"){
+                        nickname ="span style'color:#ff1100'><abrr title='A Contibutor'>"+item[0]+"</abbr></span>";
+		}
 		msg_id         = item[3];
 		msg_text       = item[1];
 		line_to_print += nickname+": ";
