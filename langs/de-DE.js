@@ -429,7 +429,7 @@ locObj.tutorial_social = {"txt":"Herr Komtur, Jetzt könnten Sie Galgen oder Bru
 locObj.tutorial_firebrigade = {"txt":"Herr Komtur, Sie können eine Feuerwehr mieten, indem Sie auf den Brunnen klicken\nDie Feuerwehr wird das Feuer irgendwann löschen\nDer Unterhalt der Feuerwehr hängt davon ab, wie viele Gebäude Sie gebaut und aufgerüstet haben", "loc":"tutorial msg when fire, pop>50, year>1260"};
 locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
 locObj.tutorial_moving_troops = {"txt":"Sir Commander, buttons near the number of units allow you to manage units\nSingle arrow moves a unit, double arrow moves a stack,\nX button fires a unit, XX button fires a stack", "loc":"triggered by first enter into Hiring tab"};
-
+locObj.tutorial_new_buildings = {"txt":"New buildings will unlock as your population grows","loc":"tutorial"}
 
 locObj.story1_catastrophe = {"txt":"Deine Streitkräfte haben eine Hexe gefangen genommen. Der Prozess war schnell und kurz\nWährend sich die Leute versammelten, um die Hinrichtung zu beobachten, begann sie zu singen\nAls Flammen ihre nackten Füße leckten, schrie sie. In diesem Moment traf aus dem Nichts\nein Blitz mit titanischer Kraft. Mitten im Feuer...", "loc":"tutorial msg catastrophe"};
 locObj.story2_two_steps = {"txt":"You saw a few peasants, running from ugly monsters you have never seen\nYou killed monsters and asked peasants what happened\nThey told you that trolls were mad because they don't paid for passing by...", "loc":"tutorial. when you step 2 times from city"};

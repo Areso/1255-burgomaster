@@ -26,9 +26,11 @@
 		if (window.location.href.indexOf("file")===-1){
 			webserver = "http://51.68.172.115:6699";
 			ws_server = "ws://51.68.172.115:6698";
+			dev_flag  = false;
 		} else {
 			webserver = "http://localhost:6699";
 			ws_server = "ws://localhost:6698";
+			dev_flag  = true;
 		} 
     </script>
 	<script src="js/hire.js"></script>
@@ -1344,6 +1346,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		maxLevelInn: 10,
 		maxLevelStable: 3,
 		maxLevelArchery: 3,
+		tutorialDefenseEventTicks: 3,
+		tutNewBuildingsT: 5,
+		tutTreasuryG: 200,
+		tutAutoSaveT: 10,
+		tutStablesP: 40,
+		tutArcheryP: 60,
+		tutInnP: 80,
+		tutSocialP: 100,
 		online: true,
 		pullMessages: true,
 		pullMessagesMS: 1500,
