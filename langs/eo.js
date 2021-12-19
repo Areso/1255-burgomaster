@@ -429,7 +429,7 @@ locObj.tutorial_social = {"txt":"Sinjoro Komtur, nun vi povus konstrui Pendilon 
 locObj.tutorial_firebrigade = {"txt":"Sinjoro Komtur, vi povus dungi fajroŝirmilon alklakante la puton\nLa fajrobrigado estingos la fajron eventuale\nLa prizorgado de la fajrobrigado dependas de kiom\nda konstruaĵoj vi konstruis kaj plibonigis", "loc":"tutorial msg when fire, pop>50, year>1260"};
 locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
 locObj.tutorial_moving_troops = {"txt":"Sir Commander, buttons near the number of units allow you to manage units\nSingle arrow moves a unit, double arrow moves a stack,\nX button fires a unit, XX button fires a stack", "loc":"triggered by first enter into Hiring tab"};
-
+locObj.tutorial_new_buildings = {"txt":"New buildings will unlock as your population grows","loc":"tutorial"}
 
 locObj.story1_catastrophe = {"txt":"Viaj fortoj kaptis sorĉistinon. La proceso estis rapida kaj mallonga\nDum homoj kolektiĝis por spekti la ekzekuton, ŝi ekĉantis. Kiam flamoj lekis\nŝiajn nudajn piedojn, ŝi kriegis. Ĝuste en ĉi tiu momento el nenio ekbrilis\nfulmo kun titana potenco. Ĝuste en la centro de la fajro...", "loc":"tutorial msg catastrophe"};
 locObj.story2_two_steps = {"txt":"You saw a few peasants, running from ugly monsters you have never seen\nYou killed monsters and asked peasants what happened\nThey told you that trolls were mad because they don't paid for passing by...", "loc":"tutorial. when you step 2 times from city"};
