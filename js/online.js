@@ -203,7 +203,6 @@
 				console.log(msgid);
 				msgid_to_del = msgid;
 				showModal(1, '', deleteMsgPost, "Do you wanna delete the message?", "Yes", "No");
-			
 		}
 	}
 	function deleteMsgPost(){
