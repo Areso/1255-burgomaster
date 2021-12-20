@@ -275,14 +275,14 @@
 				eventTimerVal += " "+cntdwn[1]+localeStrings[165][1];
 				eventTimerVal += " "+cntdwn[2]+localeStrings[165][2];
 				if (flag_event_started===0){
-					event_timer_lbl.innerHTML="Halloween event will start in ";
+					event_timer_lbl.innerHTML="New Year event will start in ";
 					event_timer_val.innerHTML=eventTimerVal;
 					
 				} else {
 					//TODO THAT URGENT!
 					//BUT NOT TODAY
 					//game.getEventDetails();
-					event_timer_lbl.innerHTML="Halloween event will end in ";
+					event_timer_lbl.innerHTML="New Year event will end in ";
 					event_timer_val.innerHTML=eventTimerVal;
 				}
 				console.log(eventHelpMsg);
