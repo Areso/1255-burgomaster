@@ -3,20 +3,31 @@ var canvas_map      = document.getElementById("canvasMap");
 canvas_map.addEventListener("touchstart", tap_map);
 canvas_map.addEventListener("mousedown", tap_map);
 var ctx_map         = canvas_map.getContext("2d");
-var tile_grass      = loadImage('tiles/grass1.png');//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
+theme = "winter";
+//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
+var tile_grass      = loadImage('tiles/grass1.png');
 var tile_sand       = loadImage('tiles/sand.png');
-var tile_snow       = loadImage('tiles/snow.png');
+var tile_snow       = loadImage('tiles/snow1.png');
 var tile_water      = loadImage('tiles/water.png');
-var castle_tile     = loadImage('resources/castle_big.png');
-var blackmarket_tile= loadImage('resources/black_market.png');
-var bmarket_burned_tile= loadImage('resources/black_market_burned.png');
+if (theme === "winter") {
+	var castle_tile     = loadImage('resources/castle_big_w.png');
+	var blackmarket_tile= loadImage('resources/black_market_w.png');
+	var bmarket_burned_tile= loadImage('resources/black_market_burned_w.png');
+	var tree_tile       = loadImage('resources/tree2_w.png');
+	var tree_tile2      = loadImage('resources/tree_w.png');
+	var chest_tile      = loadImage('resources/chest_w.png');
+} else {
+	var castle_tile     = loadImage('resources/castle_big.png');
+	var blackmarket_tile= loadImage('resources/black_market.png');
+	var bmarket_burned_tile= loadImage('resources/black_market_burned.png');
+	var tree_tile       = loadImage('resources/tree2.png');
+	var tree_tile2      = loadImage('resources/tree.png');
+	var chest_tile      = loadImage('resources/chest.png');
+}
 var hero_tile       = loadImage('resources/someKnight3.png');
 var hero_atk_tile   = loadImage('resources/someKnightAttacked2.png');
-var chest_tile      = loadImage('resources/chest.png');
 var pumpkin_tile    = loadImage('resources/pumpkin.png');
 var monster_tile    = loadImage('resources/monster_redpeople.png');
-var tree_tile       = loadImage('resources/tree2.png');
-var tree_tile2      = loadImage('resources/tree.png');
 var arrow_l         = loadImage('resources/pointer_l.png');
 var arrow_r         = loadImage('resources/pointer_r.png');
 var arrow_u         = loadImage('resources/pointer_u.png');
@@ -48,7 +59,11 @@ function composite_gm() {
 	for (i = 0; i < config.sizeScrX; i++) {
 		for (j = 0; j < config.sizeScrY; j++) {
 			if (game.myMapLand[i+camXL][j+camYL]===0) {
-				ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
+				if (theme==="winter") {
+					ctx_map.drawImage(tile_snow, i * 48, j * 48);   //draw background
+				} else {
+					ctx_map.drawImage(tile_grass, i * 48, j * 48);   //draw background
+				}
 			}
 		}
 	}
