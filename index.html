@@ -1909,8 +1909,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (game.checkCollisionWithBordersOfMap(changeX, changeY)===false) {
 				if (game.checkCollisionWithNonRemovableObstacles(changeX, changeY)===false) {
 					postEventLog("make a step", "BOLD");
-					allowMvt = 0;
-					setTimeout(cooldownMvt, 250);
 					game.myMapRemObjects[game.heroX][game.heroY] = 0;
 					game.heroX = game.heroX + changeX;
 					game.heroY = game.heroY + changeY;
@@ -4984,22 +4982,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 		if (typeofModal===2) {
 			//TODO PROMTS
-		}
-	}
-	document.onkeyup = function(e) {
-		if (game.active_tab==="Explore"){
-			if(e.keyCode === 38 || e.keyCode === 87) {
-				game.tryHeroMovement(0,-1);//UP
-			}
-			if(e.keyCode === 37 || e.keyCode === 65) {
-				game.tryHeroMovement(-1,0);//LEFT
-			}
-			if(e.keyCode === 40 || e.keyCode === 83) {
-				game.tryHeroMovement(0,1);//DOWN
-			}
-			if(e.keyCode === 68 || e.keyCode === 39) {
-				game.tryHeroMovement(+1,0);//RIGHT
-			}
 		}
 	}
 	//timers
