@@ -176,7 +176,7 @@ function tap_map (e) {
 	if (game.isMobile===1 && allowMvt===1) {
 		allowMvt = 0;
 		postEventLog("disable movement "+allowMvt, "BOLD");
-		console.log("disable movement "+AllowMvt);
+		console.log("disable movement "+allowMvt);
 		setTimeout(cooldownMvt, 300);
 		if (loc.x >= arrow_lx && loc.x <= arrow_lx + arrow_size) {
 			if (loc.y >= arrow_ly && loc.y <= arrow_ly + arrow_size) {
