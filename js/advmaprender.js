@@ -175,7 +175,8 @@ function tap_map (e) {
 	postEventLog(allowMvt, "BOLD");
 	if (game.isMobile===1 && allowMvt===1) {
 		allowMvt = 0;
-		setTimeout(cooldownMvt, 250);
+		postEventLog("disable movement "+allowMvt, "BOLD");
+		setTimeout(cooldownMvt, 300);
 		if (loc.x >= arrow_lx && loc.x <= arrow_lx + arrow_size) {
 			if (loc.y >= arrow_ly && loc.y <= arrow_ly + arrow_size) {
 				game.tryHeroMovement(-1, 0);//LEFT
