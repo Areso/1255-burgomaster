@@ -61,6 +61,7 @@
 		<li>placing festivals</li>
 		<li>random events: stealings from the treasury, fires and plagues</li>
 		<li>time-limited events: Halloween</li>
+		<li>two decoration themes: Summer and Winter</li>
 		<li>a record table</li>
 		</ul>
 		<div style="color:red">You will explore wild territories near your city.</div><br>
