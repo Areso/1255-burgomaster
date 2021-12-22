@@ -172,7 +172,10 @@ function tap_map (e) {
 	canvasScaleRatio = canvas.width / canvas.offsetWidth;
 	loc.x = (tapX - 9)  * canvasScaleRatio;
 	loc.y = (tapY - 58) * canvasScaleRatio;
+	postEventLog(allowMvt, "BOLD");
 	if (game.isMobile===1 && allowMvt===1) {
+		allowMvt = 0;
+		setTimeout(cooldownMvt, 250);
 		if (loc.x >= arrow_lx && loc.x <= arrow_lx + arrow_size) {
 			if (loc.y >= arrow_ly && loc.y <= arrow_ly + arrow_size) {
 				game.tryHeroMovement(-1, 0);//LEFT
@@ -190,8 +193,24 @@ function tap_map (e) {
 		}
 		if (loc.x >= arrow_rx && loc.x <= arrow_rx + arrow_size) {
 			if (loc.y >= arrow_ry && loc.y <= arrow_ry + arrow_size) {
-				game.tryHeroMovement(1, 0);//LEFT
+				game.tryHeroMovement(1, 0);//RIGHT
 			}
+		}
+	}
+}
+document.onkeyup = function(e) {
+	if (game.active_tab==="Explore"){
+		if(e.keyCode === 38 || e.keyCode === 87) {
+			game.tryHeroMovement(0,-1);//UP
+		}
+		if(e.keyCode === 37 || e.keyCode === 65) {
+			game.tryHeroMovement(-1,0);//LEFT
+		}
+		if(e.keyCode === 40 || e.keyCode === 83) {
+			game.tryHeroMovement(0,1);//DOWN
+		}
+		if(e.keyCode === 68 || e.keyCode === 39) {
+			game.tryHeroMovement(+1,0);//RIGHT
 		}
 	}
 }
