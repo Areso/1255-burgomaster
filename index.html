@@ -1908,7 +1908,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		tryHeroMovement : function (changeX, changeY) {
 			if (game.checkCollisionWithBordersOfMap(changeX, changeY)===false) {
 				if (game.checkCollisionWithNonRemovableObstacles(changeX, changeY)===false) {
-					postEventLog("make a step", "BOLD");
 					game.myMapRemObjects[game.heroX][game.heroY] = 0;
 					game.heroX = game.heroX + changeX;
 					game.heroY = game.heroY + changeY;
