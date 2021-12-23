@@ -27,6 +27,7 @@ if (theme === "winter") {
 var hero_tile       = loadImage('resources/someKnight3.png');
 var hero_atk_tile   = loadImage('resources/someKnightAttacked2.png');
 var pumpkin_tile    = loadImage('resources/pumpkin.png');
+var snowman_tile    = loadImage('resources/snowman.png');
 var monster_tile    = loadImage('resources/monster_redpeople.png');
 var arrow_l         = loadImage('resources/pointer_l.png');
 var arrow_r         = loadImage('resources/pointer_r.png');
@@ -147,7 +148,11 @@ function composite_gm() {
 				ctx_map.drawImage(chest_tile, i * 48, j * 48);
 			}
 			if (game.myMapRemObjects[i+camXL][j+camYL]===2) {
-				ctx_map.drawImage(pumpkin_tile, i * 48, j * 48);
+				if (theme==="winter"){
+					ctx_map.drawImage(snowman_tile, i * 48, j * 48);
+				} else {
+					ctx_map.drawImage(pumpkin_tile, i * 48, j * 48);
+				}
 			}
 			if (game.myMapRemObjects[i+camXL][j+camYL]===3) {
 				ctx_map.drawImage(monster_tile, i * 48, j * 48);
