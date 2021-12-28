@@ -435,7 +435,7 @@ function eventItemCollected () {
 }
 function getEventHelp(){
 	if (flag_event_started===1){
-		showModal(0, '', getAck, locObj.eventHalloween.txt,  localeStrings[60], '')
+		showModal(0, '', getAck, locObj.eventNewYear.txt,  localeStrings[60], '')
 	}
 }
 

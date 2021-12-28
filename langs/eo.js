@@ -494,6 +494,7 @@ locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 
 locObj.advmapHeroLose = {"txt": "Your troops were defeated and the hero is forced to retreat to the city.", "loc":"When hero loses battle on advmap"}
 
 locObj.eventHalloween = {"txt": "Halloween is about collecting pumpkins!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"help"}
+locObj.eventNewYear   = {"txt": "New Year is about collecting snowmen!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"eventhelp"}
 locObj.couldntRecordPledge = {"txt": "It seems you are not logged it. Your pledge will not be recorded","loc":"happens when collected event item while being not logged in"}
 
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
