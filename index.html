@@ -1856,7 +1856,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			console.log(game.blackMarketGoods);
 		},
 		generateMap : function () {
-			game.blackMarketGoods = [];
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
@@ -1874,6 +1873,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		generateMapCallback : function (silent) {
+			game.blackMarketGoods = [];
+			game.genBlackMarketGoods();
 			//generate landscape
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
 			if (silent===true) {
@@ -4229,6 +4230,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						citizensOfClass = Math.floor(shareOfClass*game.pop,0);
 					}
 					moneyToSeize    = Math.floor(game.gold*wealthShare*game.pop/game.popLimit()/8,0)+1;
+					if (moneyToSeize > 5000){
+						moneyToSeize = 5000;
+					} 
 					rnd             = Math.floor((Math.random() * 6) + 1);
 					reason          = localeStrings[24+rnd]
 					msg             = localeStrings[34].replace("%arg1", reason);
