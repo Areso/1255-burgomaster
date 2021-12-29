@@ -11,7 +11,7 @@ function gameTips() {
 		showModal(0, '', getAck, locObj.tutorial_new_buildings.txt, locObj.okay.txt, '')
 	}
 	if (isTutorialState && !game.tips.includes("tutorial_treasury") 
-	&& game.gold>=config.tutTreasuryGold && !dialogShown){
+	&& game.gold>=config.tutTreasuryG && !dialogShown){
 		game.tips.push("tutorial_treasury");
 		showModal(0, '', getAck, locObj.tutorial_treasury.txt, locObj.okay.txt, '')
 	}
