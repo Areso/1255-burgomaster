@@ -93,7 +93,7 @@ function createElementUI(item, targetListId) {
 
 	var id = item.id;
 	if (targetListId === "marketList") {
-		actionBtnElement.innerText = "Купить";
+		actionBtnElement.innerText = locObj.buy.txt;
 		actionBtnElement.onclick = function (e) {
 		e.preventDefault();
 
@@ -118,7 +118,7 @@ function createElementUI(item, targetListId) {
 
 
 	} else {
-		actionBtnElement.innerText = "Продать";
+		actionBtnElement.innerText = locObj.sell.txt;
 		actionBtnElement.onclick = function (e) {
 			e.preventDefault();
 
