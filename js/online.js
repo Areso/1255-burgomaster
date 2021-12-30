@@ -168,34 +168,42 @@
 		}
 		return null;
 	}
+	allowMsg = 1;
+	function cooldownMsg(){
+		allowMsg = 1;
+	}
 	function send2(){
-		sending_msg  = msg_dom.value;
-		sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9.-]/g, '');
-		if (sending_msg.length>0){
-			sending_auth = nick_dom.value;
-			msg_dom.value = "";
-			console.log("the message out values is "+sending_msg);
-			console.log("the author out values is "+sending_auth);
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					console.log("message sent");
-					answ_session = JSON.parse(this.responseText);
-					answ_session = answ_session.session;
-					if (session===""){
-						session = answ_session;
+		if (allowMsg===1){
+			sending_msg  = msg_dom.value;
+			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9.-]/g, '');
+			if (sending_msg.length>0){
+				allowMsg = 0;
+				setInterval(cooldownMsg, 5000);
+				sending_auth = nick_dom.value;
+				msg_dom.value = "";
+				console.log("the message out values is "+sending_msg);
+				console.log("the author out values is "+sending_auth);
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 200) {
+						console.log("message sent");
+						answ_session = JSON.parse(this.responseText);
+						answ_session = answ_session.session;
+						if (session===""){
+							session = answ_session;
+						}
+						fpullMessages();
 					}
-					fpullMessages();
-				}
-			};
-			target = 0;
-			dataToParse = sending_auth+delimiter+session+delimiter;
-			dataToParse+= sending_msg+delimiter+target;
-			endpoint  = webserver + "/api/v1.1/send_message";
-			xhttp.open("POST", endpoint, true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
-		}
+				};
+				target = 0;
+				dataToParse = sending_auth+delimiter+session+delimiter;
+				dataToParse+= sending_msg+delimiter+target;
+				endpoint  = webserver + "/api/v1.1/send_message";
+				xhttp.open("POST", endpoint, true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(dataToParse);
+			}
+		} 
 	}
 	msgid_to_del = -1;
 	function deleteMsg(msgid){
