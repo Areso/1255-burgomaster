@@ -24,8 +24,9 @@
     </script>
     <script>
 		if (window.location.href.indexOf("file")===-1){
-			webserver = "http://51.68.172.115:6699";
-			ws_server = "ws://51.68.172.115:6698";
+			webserver = "https://1255.areso.pro:7001";
+			ws_server = "ws://1255.areso.pro:7000";
+			//ws_server = "ws://51.68.172.115:7000";
 			dev_flag  = false;
 		} else {
 			webserver = "http://localhost:6699";
@@ -705,6 +706,9 @@
 			</lbl>
 			<br>
 			<button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()">Open Leaderboard</button>
+		</div>
+		<div id="feedbackForm" class="tabcontent">
+		
 		</div>
 		<div id="tabEventLeaderboard" class="tabcontent">
 			<div id="lblEventLBDetails">

@@ -134,6 +134,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>Comment jouer</h2>" +
     "Ce jeu se joue en tours. Une horloge décompte un tour toutes les 30 secondes.<br>" +
     "A la fin de chaque tour votre population paye des impôts and s'agrandit.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
     "Normalement, chaque citoyen vous paye un or par tour.<br>" +
     "Ce comportement vient à changer en fonction de vos choix.<br>" +
     "Vous devez construire des Maisons pour poursuivre la croissance de votre population.<br>" +
