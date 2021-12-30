@@ -120,7 +120,7 @@ localeStrings.push("Построить Замок<br/>ур. %arg1<br/>%arg2 зо
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
-localeStrings.push("placeholder");c
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
