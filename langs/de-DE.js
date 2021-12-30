@@ -134,6 +134,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>Anleitung</h2>" +
     "Dieses Spiel ist rundenbasiert. Jede Runde dauert 30 Sekunden.<br>" +
     "Nach jeder Runde zahlt deine Bevölkerung Steuern an Euch und wächst.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>"+
     "Normalerweise bringt Euch jeder Bürger ein Goldstück pro Runde ein.<br>" +
     "Dieses Verhalten kann durch Eure Entscheidungen geändert werden.<br>" +
     "Ihr müsst Häuser bauen, um das Wachstum Eurer Stadtbevölkerung zu ermöglichen.<br>" +

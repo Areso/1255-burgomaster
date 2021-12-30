@@ -134,6 +134,7 @@ localeStrings.push("<h1>1255 Burgomaster</h1>" +
     "<h2>Kiel ludi</h2>" +
     "Ĉi tiu ludo havas horloĝon sub la kapuĉo. Ĉiu tiklo de la horloĝo okazas en 30 sekundoj.<br>" +
     "Post ĉiu horloĝo turnu vian loĝantaron pagos impostojn al vi kaj kreskos.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
     "Normale, ĉiu civitano pagas al vi unu oran pecon laŭ tiktaĵo.<br>" +
     "Ĉi tiu konduto povus esti ŝanĝita per ludantodecidoj.<br>" +
     "Vi devas konstrui domojn por daŭrigi la kreskadon de via urba loĝantaro.<br>" +
