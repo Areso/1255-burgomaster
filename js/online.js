@@ -175,8 +175,12 @@
 	function send2(){
 		if (allowMsg===1){
 			sending_msg  = msg_dom.value;
-			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9.-]/g, '');
-			if (sending_msg.length>0){
+			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9 .?-]/g, '');
+			stop = false;
+			if (sending_msg.toUpperCase=="NIGGERS"){
+				stop = true
+			}
+			if (sending_msg.length>0  and stop===false){
 				allowMsg = 0;
 				setInterval(cooldownMsg, 5000);
 				sending_auth = nick_dom.value;
