@@ -180,6 +180,9 @@
 			if (sending_msg.toUpperCase=="NIGGERS"){
 				stop = true
 			}
+			if (sending_msg.toUpperCase.indexOf("NIG") !== -1){
+				stop = true
+			}
 			if (sending_msg.length>0 && stop===false){
 				allowMsg = 0;
 				setInterval(cooldownMsg, 5000);
