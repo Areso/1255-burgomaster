@@ -170,6 +170,7 @@
 	}
 	function send2(){
 		sending_msg  = msg_dom.value;
+		sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9.-]/g, '');
 		if (sending_msg.length>0){
 			sending_auth = nick_dom.value;
 			msg_dom.value = "";
