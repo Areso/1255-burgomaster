@@ -180,7 +180,7 @@
 			if (sending_msg.toUpperCase=="NIGGERS"){
 				stop = true
 			}
-			if (sending_msg.length>0  and stop===false){
+			if (sending_msg.length>0 && stop===false){
 				allowMsg = 0;
 				setInterval(cooldownMsg, 5000);
 				sending_auth = nick_dom.value;
