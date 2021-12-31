@@ -445,6 +445,7 @@ locObj.unit_bandit = {"txt": "Бандиты", "loc": "Лог автобоя, п
 locObj.unit_bandit_archer = {"txt": "Бандиты лучники", "loc": "Лог автобоя, противник"};
 locObj.unit_merc_swordman = {"txt": "Наемники мечники", "loc": "Лог автобоя, противник более высокого уровня"};
 locObj.unit_merc_spearman = {"txt": "Наемники копейщики", "loc": "Лог автобоя, противник более высокого уровня"};
+locObj.unit_goblin = {"txt": "Гоблины", "loc": "Лог автобоя, противник"};
 
 locObj.autobattle_journal_btn = {"txt": "Журнал битв", "loc": "В окне таверны, показывает ход битвы по раундам"};
 locObj.autobattle_journal_log_start = {"txt": "Начало раунда", "loc": "Показывает начало раунда"};

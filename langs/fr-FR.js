@@ -442,8 +442,9 @@ locObj.unit_knights = {"txt": "Brother-knights", "loc": "Autbattle log, player u
 
 locObj.unit_bandit = {"txt": "Bandits", "loc": "Autbattle log, enemy unit"};
 locObj.unit_bandit_archer = {"txt": "Bandits archers", "loc": "Autbattle log, enemy unit"};
-locObj.unit_merc_swordman = {"txt": "Mercenary swordman", "loc": "Autbattle log, highlevel enemy unit"};
-locObj.unit_merc_spearman = {"txt": "Mercenary spearman", "loc": "Autbattle log, highlevel enemy unit"};
+locObj.unit_merc_swordman = {"txt": "Mercenary swordmen", "loc": "Autbattle log, highlevel enemy unit"};
+locObj.unit_merc_spearman = {"txt": "Mercenary spearmen", "loc": "Autbattle log, highlevel enemy unit"};
+locObj.unit_goblin = {"txt": "Goblins", "loc": "Autbattle log, enemy unit"};
 
 locObj.autobattle_journal_btn = {"txt": "Battle journal", "loc": "Inn window. Battle report by round moves"};
 locObj.autobattle_journal_log_start = {"txt": "Round started", "loc": "Start round title"};

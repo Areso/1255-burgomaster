@@ -2069,9 +2069,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				updateUI();
 			}
 		},
-
-		/*-- New: Used for adding troops to squands on autocamp. start and after recalc of enemy troops when autobattle is over (if gamer is won the battle of course) --*/
-
+		/*-- New: Used for adding troops to squads on autocamp. start and after recalc of enemy troops when autobattle is over (if gamer is won the battle of course) --*/
 		genUnitStack: function(unit, count, squad) {
 			var stackName = unit.name;
 			if (squad && squad.hasOwnProperty(stackName)) {
@@ -2083,25 +2081,18 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				Object.defineProperty(squad[stackName], 'stackHealth', {value: squad[stackName].health * squad[stackName].count, writable: true, configurable: true, enumerable: true})
 		  }
 		},
-
 		generateEnemyUnitsForBattle: function(campaignType) {
-
 			game.goldReward = 0;
 			game.expReward = 0;
-
 			var myheroTotalUnits = game.myhero.turkopols + game.myhero.sergeants + game.myhero.knights;
 			var enemyMaxCount = null;
-
 			// TODO: Refactor this section later
-
 			if (campaignType === "AdvMap") {
 				console.log('GEN for advmap')
 				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
-
 				if (game.myhero.stance === 0) {
 					game.difficultyModifier = 1.05;
 					// TEMP SECTION just for adv map with autobattle
-
 					grolinWorker.health = Math.round(1.25 * grolinWorker.health);
 					grolinWorker.minDmg = Math.round(1.25 * grolinWorker.minDmg);
 					grolinWorker.maxDmg = Math.round(1.25 * grolinWorker.maxDmg);
@@ -2110,35 +2101,27 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.difficultyModifier = 0.35;
 					enemyRandomizer.addEntry(grolinWorker, 100.0);
 				}
-
 			} else {
 				console.log('GEN for autocampaign')
 				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2)
-
 				if (game.myhero.stance === 0) {
-
 					game.difficultyModifier = 1.05;
-
 					enemyRandomizer.addEntry(banditWarrior, 35.0);
 					enemyRandomizer.addEntry(banditArcher,  35.0);
 					enemyRandomizer.addEntry(mercSwordman,  15.0);
 					enemyRandomizer.addEntry(mercSpearmen,  15.0);
-
 				} else {
 					game.difficultyModifier = 0.35;
 					enemyRandomizer.addEntry(banditWarrior, 50.0);
 					enemyRandomizer.addEntry(banditArcher, 50.0);
 				}
-
 			}
-
 			for (var i = 0; i < enemyMaxCount; i++) {
 				var unit = enemyRandomizer.getRandom();
 				game.expReward += Math.round(unit.health * game.difficultyModifier);
 				game.goldReward += Math.round(randomFromRange(4, unit.health) * game.difficultyModifier);
 				game.genUnitStack(unit, 1, game.enemyHeroArmy.units);
 			}
-
 			if (game.myhero.inventory.length) {
 				for (var i = 0; i < game.myhero.inventory.length; i++) {
 					if (game.myhero.inventory[i].id === "artid13") {
@@ -2147,11 +2130,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 				}
 			}
-
 			console.log("%c NEW ENEMY ARMY: ", "color: red;", game.enemyHeroArmy)
-
 		},
-
 		restoreHealth: function() {
 			for (unitKey in game.myheroArmy.units) {
 				if (game.myheroArmy.units.hasOwnProperty(unitKey)) {
@@ -2159,59 +2139,69 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 		},
-
 		checkWinner: function(campaignType) {
 			console.log("%c CHECKING WINNER!", "color: #333; background: red");
-				if (game.attacker === 1 && !game.isAutoBattle) {
-					if (campaignType === "AutoCampaign") {
-						if (game.myhero.stance === 1) {
-							postJournalLog(localeStrings[174]);
-						} else {
-							postJournalLog(localeStrings[173]);
-						}
+			if (game.attacker === 1 && !game.isAutoBattle) {
+				if (campaignType === "AutoCampaign") {
+					if (game.myhero.stance === 1) {
+						postJournalLog(localeStrings[174]);
+					} else {
+						postJournalLog(localeStrings[173]);
 					}
-
-					console.log('123: ', campaignType)
-
-					console.log("The player is the winner");
-					game.myhero.gold += game.goldReward;
-					game.myhero.exp += game.expReward;
-					game.restoreHealth();
-					game.generateEnemyUnitsForBattle(campaignType);
-
-					if (campaignType !== "AutoCampaign") {
-						game.heroLvlUp("AdvMap");
-						updateUI();
-					}
-
-				} else {
-					if (campaignType === "AutoCampaign") {
-						if (game.myhero.stance === 0) {
-							postJournalLog(localeStrings[172]);
-							game.heroDie();
-						} else {
-							game.myhero.aCampaignForward   = 0;
-							game.myhero.aCampaignBackward  = 1;
-							game.myhero.gold 			   = 0;
-							game.myheroArmy = {};
-							game.isDefeated = true;
-						}
-					}
-					console.log("The PC opponent is the Winner");
 				}
+				console.log('123: ', campaignType)
+				console.log("The player is the winner");
+				game.myhero.gold += game.goldReward;
+				game.myhero.exp += game.expReward;
+				game.restoreHealth();
+				game.generateEnemyUnitsForBattle(campaignType);
+				if (campaignType !== "AutoCampaign") {
+					game.heroLvlUp("AdvMap");
+					updateUI();
+				}
+			} else {
+				if (campaignType === "AutoCampaign") {
+					if (game.myhero.stance === 0) {
+						postJournalLog(localeStrings[172]);
+						game.heroDie();
+						game.myheroArmy = {armyID: 1, units: {}};
+					} else {
+						game.myhero.aCampaignForward   = 0;
+						game.myhero.aCampaignBackward  = 1;
+						game.myheroArmy = {armyID: 1, units: {}};
+						game.myhero.knights   = 0;
+						game.myhero.sergeants = 0;
+						game.myhero.turkopols = 0;
+						game.isDefeated = true;
+					}
+				} else {
+					if (game.myhero.stance === 0) {
+						game.heroDie();
+						game.myheroArmy = {armyID: 1, units: {}};
+						postEventLog("The hero has been defeated", "bold");
+						openTab(event, 'Main');
+					} else {
+						//!BUG!
+						game.myheroArmy = {armyID: 1, units: {}};
+						game.myhero.knights   = 0;
+						game.myhero.sergeants = 0;
+						game.myhero.turkopols = 0;
+						game.myhero.status    = 0;
+						postEventLog("The hero has been defeated, but managed out to flee from the battlefield", "bold");
+						openTab(event, 'Main');
+						game.isDefeated = true;
+					}
+				}
+				console.log("The PC opponent is the Winner");
+			}
 		},
-
 		calcDmg: function(attackerSquad, attackerHeroAttack, defenderSquad, defenderHeroDefence) {
-  
 			var attackVal = attackerHeroAttack + attackerSquad.attack;
 			var defenceVal = defenderHeroDefence + defenderSquad.defence;
-
 			console.log(attackVal);
 			console.log(defenceVal);
-
 			var battleDiff = attackVal - defenceVal;
 			var totalDMG = 0;
-
 			if (battleDiff >= 0) {
 				if (battleDiff > 20) battleDiff = 20;
 				for (var i = 0; i < attackerSquad.count; i++) {
@@ -2219,7 +2209,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				  console.log("RAND DMG: ", randDMG);
 				  totalDMG += randDMG;
 				}
-
 			} else {
 				if (battleDiff < -17) battleDiff = -17;
 				for (var i = 0; i < attackerSquad.count; i++) {
@@ -2227,15 +2216,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				  console.log("RAND DMG: ", randDMG);
 				  totalDMG += randDMG;
 				}
-				
 			}
-
 			console.log("TOTAL DMG test: ", totalDMG);
-
 			return totalDMG
-
 		},
-
 		unitNameLoc: function (name) {
 			switch (name) {
 				case "sergeants": return locObj.unit_sergeants.txt;
@@ -2245,115 +2229,88 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				case "banditArcher": return locObj.unit_bandit_archer.txt;
 				case "mercSwordman": return locObj.unit_merc_swordman.txt;
 				case "mercSpearmen": return locObj.unit_merc_spearman.txt;
+				case "Grolin worker": return locObj.unit_goblin.txt;
 				default: return "Unknown unit name";
 			}
 		},
-
 		calcAutoBattle: function(attackerStack, attackerHeroAttack, defenderStack, defenderHeroDefence, campaignType) {
-
-		  console.log('--Attack start --');
-
-		  var startRoundStr = locObj.autobattle_journal_log_start.txt;
-		  var endRoundStr = locObj.autobattle_journal_log_end.txt;
-		  if (campaignType==="AutoCampaign") {
-		    postBattleLog(startRoundStr);
-		  }
-		  for (var attackerKey  in attackerStack.units) {
-
-		    if (attackerStack.units.hasOwnProperty(attackerKey)) {
-
-		    	console.log('Attacker: ', attackerStack.units[attackerKey]);
-
-		      for (var defenderKey in defenderStack.units) {
-
-		        if (defenderStack.units.hasOwnProperty(defenderKey)) {
-
-					var target = defenderStack.units[defenderKey];
-
-					var dmg = game.calcDmg(attackerStack.units[attackerKey], attackerHeroAttack, defenderStack.units[defenderKey], defenderHeroDefence);
-					console.log('DMG before round: ', dmg);
-					dmg = Math.round(dmg);
-					console.log(dmg);
-
-					var attackerStr = locObj.autobattle_journal_log_dmg.txt.replace("%arg1", game.unitNameLoc(attackerStack.units[attackerKey].name)).replace("%arg2", dmg).replace("%arg3", game.unitNameLoc(target.name));
-					
-
-		          if (dmg >= target.stackHealth) {
-		            console.log(`${target.name} is dying`);
-		            delete defenderStack.units[defenderKey];
-		            console.log("%c DEFENDER UNITS LIST: ", "background: purple; color: #ededed", defenderStack.units);
-					attackerStr += ' '  + locObj.autobattle_journal_log_destroyed.txt.replace("%arg1", game.unitNameLoc(target.name));
-					if (campaignType==="AutoCampaign") {
-						postBattleLog(attackerStr);
-					}
-		            if (isEmptyObj(defenderStack.units)) {
-						game.isAutoBattle = false;
-						game.checkWinner(campaignType);
-						if (campaignType === "AutoCampaign") {
-							game.attacker = 0;
+			console.log('--Attack start --');
+			var startRoundStr = locObj.autobattle_journal_log_start.txt;
+			var endRoundStr = locObj.autobattle_journal_log_end.txt;
+			if (campaignType==="AutoCampaign") {
+				postBattleLog(startRoundStr);
+			}
+			for (var attackerKey  in attackerStack.units) {
+				if (attackerStack.units.hasOwnProperty(attackerKey)) {
+					console.log('Attacker: ', attackerStack.units[attackerKey]);
+					for (var defenderKey in defenderStack.units) {
+						if (defenderStack.units.hasOwnProperty(defenderKey)) {
+							var target = defenderStack.units[defenderKey];
+							var dmg = game.calcDmg(attackerStack.units[attackerKey], attackerHeroAttack, defenderStack.units[defenderKey], defenderHeroDefence);
+							console.log('DMG before round: ', dmg);
+							dmg = Math.round(dmg);
+							console.log(dmg);
+							var attackerStr = locObj.autobattle_journal_log_dmg.txt.replace("%arg1", game.unitNameLoc(attackerStack.units[attackerKey].name)).replace("%arg2", dmg).replace("%arg3", game.unitNameLoc(target.name));
+							if (dmg >= target.stackHealth) {
+								console.log(`${target.name} is dying`);
+								delete defenderStack.units[defenderKey];
+								console.log("%c DEFENDER UNITS LIST: ", "background: purple; color: #ededed", defenderStack.units);
+								attackerStr += ' '  + locObj.autobattle_journal_log_destroyed.txt.replace("%arg1", game.unitNameLoc(target.name));
+								if (campaignType==="AutoCampaign") {
+									postBattleLog(attackerStr);
+								}
+								if (isEmptyObj(defenderStack.units)) {
+									game.isAutoBattle = false;
+									game.checkWinner(campaignType);
+									if (campaignType === "AutoCampaign") {
+										game.attacker = 0;
+									}
+								}
+							} else {
+								var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
+								defenderStack.units[defenderKey].count -= defenderLooses;
+								target.stackHealth -= dmg;
+								if (defenderLooses > 0) {
+									attackerStr += ' ' + locObj.autobattle_journal_log_dead.txt.replace("%arg1", defenderLooses).replace("%arg2", game.unitNameLoc(target.name));
+								}
+								if (campaignType==="AutoCampaign") {
+									postBattleLog(attackerStr);
+								}
+							}
 						}
-		            }
-		          } else {
-		            var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
-		            defenderStack.units[defenderKey].count -= defenderLooses;
-		            target.stackHealth -= dmg;
-		            if (defenderLooses > 0) {
-		            	attackerStr += ' ' + locObj.autobattle_journal_log_dead.txt.replace("%arg1", defenderLooses).replace("%arg2", game.unitNameLoc(target.name));
-		            }
-		            if (campaignType==="AutoCampaign") {
-		              postBattleLog(attackerStr);
-		            }
-		          }
-
-		        }
-		      }
-
-		      
-
-		    }
-
-		  }
-		  if (campaignType==="AutoCampaign") {
-		    postBattleLog(endRoundStr);
-		  }
-		  console.log('-- Attack turn ended --');
-		  console.log('-----------------------');
-
+					}
+				}
+			}
+			if (campaignType==="AutoCampaign") {
+				postBattleLog(endRoundStr);
+			}
+			console.log('-- Attack turn ended --');
+			console.log('-----------------------');
 		},
-
 		calcAttackPhase: function (campaignType) {
 			var attackVal = 0;
 			var defenceVal = 0;
-			
 			if (game.attacker === 1) {
-				
 				if (game.myhero.atk) {
 					attackVal = game.myhero.atk;
 				}
-
 				if (game.enemyHero && game.enemyHero.def) {
 					defenceVal = game.enemyHero.def
 				}
-
 				console.log("%cENEMY ARMY FROM MAP: ", 'color: #333; background: #fc3; padding: 6px;', game.enemyHeroArmy);
-
 				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
 				game.attacker = 2;
 			} else if (game.attacker === 2) {
-
 				if (game.enemyHero && game.enemyHero.atk) {
 					attackVal = game.enemyHero.atk;
 				}
-
 				if (game.myhero.def) {
 					defenceVal = game.myhero.def
 				}
-
 				game.calcAutoBattle(game.enemyHeroArmy, attackVal, game.myheroArmy, defenceVal, campaignType);
 				game.attacker = 1;
 			}
 		},
-
 		heroDismiss: function () {
 			if (game.heroExists()===true){
 				if (game.isHeroHaveTroops()) {
@@ -2628,22 +2585,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (game.heroExists() === true) {
 				var heroSergeantsCount = game.myhero.sergeants;
 				var heroTurkopolsCount = game.myhero.turkopols;
-				var heroKnightsCount = game.myhero.knights;
-
+				var heroKnightsCount   = game.myhero.knights;
 				var totalCount = game.myhero.sergeants+game.myhero.turkopols+game.myhero.knights;
-
 				if (game.myhero.sergeants > 0) {
 					game.genUnitStack(sergeantsData, heroSergeantsCount, game.myheroArmy.units);
 				}
-
 				if (game.myhero.turkopols > 0) {
 					game.genUnitStack(turkopolsData, heroTurkopolsCount, game.myheroArmy.units);	
 				}
-
 				if (game.myhero.knights > 0) {
 					game.genUnitStack(knightsData, heroKnightsCount, game.myheroArmy.units);	
 				}
-
 				if (totalCount>0) {
 					heroTroopsFlag = true;
 				}
@@ -2989,7 +2941,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					if (game.myhero.class===0){
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 50;
-						/*-- New --*/
 						var heroAttributesRandomizer = new WeightedRandom();
 						heroAttributesRandomizer.addEntry('atk', 60.0);
 						heroAttributesRandomizer.addEntry('def', 40.0);
@@ -2999,7 +2950,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					if (game.myhero.class===1){
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 70;
-						/*-- New --*/
 						var heroAttributesRandomizer = new WeightedRandom();
 						heroAttributesRandomizer.addEntry('atk', 45.0);  //Temp logic for monk, until there is no magic mechanics in autocampaign
 						heroAttributesRandomizer.addEntry('def', 55.0); //Temp logic for monk, until there is no magic mechanics in autocampaign
@@ -3036,9 +2986,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
 					updateHeroStatus();
-
 					game.gold -= config.costHero;
-
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[20]);
