@@ -4030,28 +4030,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (Structure==="Stable") {
 				if (game.gold >= Math.pow(config.costStable,(game.buildLevelStable*1 + 1)) && game.buildLevelStable < config.maxLevelStable) {
 					game.gold               = game.gold - Math.pow(config.costStable,(game.buildLevelStable*1 + 1));
-
 					if (game.buildLevelStable >= 1) {
 						sergeantsData.attack++;
 						sergeantsData.defence++;
 						sergeantsData.health = Math.round(sergeantsData.health * 1.1);
 						updateUnitsStats();
 					}
-
 					if (game.buildLevelArchery >= 1) {
 						turkopolsData.attack++;
 						turkopolsData.defence++;
 						turkopolsData.health = Math.round(turkopolsData.health * 1.1);
 						updateUnitsStats();
 					}
-
 					if (game.buildLevelStable >= 2) {
 						knightsData.attack++;
 						knightsData.defence++;
 						knightsData.health = Math.round(knightsData.health * 1.2);
 						updateUnitsStats();
 					}
-
 					game.buildLevelStable   = game.buildLevelStable*1 + 1;
 					commonBuild();
 					return true;
@@ -4062,15 +4058,19 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 			if (Structure==="Archery") {
-				if (game.gold >= Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1)) && game.buildLevelArchery < config.maxLevelArchery) {
-					game.gold                = game.gold - Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1));
-					game.buildLevelArchery   = game.buildLevelArchery*1 + 1;
-					commonBuild();
-					return true;
+				if (game.buildLevelStable>0){
+					if (game.gold >= Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1)) && game.buildLevelArchery < config.maxLevelArchery) {
+						game.gold                = game.gold - Math.pow(config.costArchery,(game.buildLevelArchery*1 + 1));
+						game.buildLevelArchery   = game.buildLevelArchery*1 + 1;
+						commonBuild();
+						return true;
+					} else {
+						msg = "<b>%arg1</b>";
+						msg = msg.replace("%arg1",localeStrings[20]);
+						postEventLog(msg);
+					} 
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.buildArchery.txt, "bold");
 				}
 			}
 			function commonBuild() {

@@ -506,3 +506,5 @@ locObj.deadCounselorDemolish = {"txt":"Ваш советник умер.\nНов
 locObj.deadCounselorDemolishAnsYes = {"txt":"Да, сносим это здание", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
+locObj.buildArchery = {"txt":"Стрельбище позволяет нанимать конных лучников. Сначала нужно построить конюшни", "loc":"ошибка при постройке стрельбища"};
+
