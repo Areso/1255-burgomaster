@@ -2071,6 +2071,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 		/*-- New: Used for adding troops to squads on autocamp. start and after recalc of enemy troops when autobattle is over (if gamer is won the battle of course) --*/
 		genUnitStack: function(unit, count, squad) {
+			if (squad == null) {
+				game.myheroArmy = {armyID: 1, units: {}};
+			}
 			var stackName = unit.name;
 			if (squad && squad.hasOwnProperty(stackName)) {
 				squad[stackName].count += count;
