@@ -16,7 +16,7 @@ function rndEvents() {
 			game.chestCityAppear();
 			break;
 		case 5:
-			//
+			game.migration();
 			break;
 		case 6:
 			//
