@@ -1421,7 +1421,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		pullMessages: true,
 		pullMessagesMS: 1500,
 		debug: false,
-		theme: "winter"
+		theme: "winter",
+		popIncRate: 2
 	};
 
 	var game = {
@@ -3705,9 +3706,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			pop_limit = game.popLimit();
 			if (game.fire ===0) {
 				if (game.pop < pop_limit) {
-					pop_incr = Math.round((game.pop*20/1000)*(1+game.buildLevelFountain*1/10),0)
-					if (pop_incr == 0) {
-						game.pop = game.pop*1+1;
+					pop_incr = Math.round((game.pop*20/1000)*(config.popIncRate+game.buildLevelFountain*1/10),0)
+					if (pop_incr === 0) {
+						game.pop = game.pop*1+config.popIncRate;
 					} else {
 						game.pop = game.pop*1+pop_incr*1;
 						if (game.pop > pop_limit) {
