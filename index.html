@@ -4240,6 +4240,30 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 		},
+		migration : function () {
+			if (game.popLimit() > game.pop){
+				rndPopPlus = Math.floor((Math.random() * 4) + 1);
+				rnd        = Math.floor((Math.random() * 3) + 1);
+				if (rndPopPlus > game.popLimit - game.pop) {
+					rndPopPlus = game.popLimit - game.pop;
+				}
+				if (rnd === 1 && rndPopPlus > 0){
+					game.pop += rndPopPlus;
+					postEventLog(locObj.new_adepts.txt.replace("%arg1", rndPopPlus), "bold");
+				}
+				if (rnd === 2 && rndPopPlus > 0 && game.buildLevelFountain > 0){
+					game.pop += rndPopPlus;
+					postEventLog(locObj.people_arrive.txt.replace("%arg1", rndPopPlus), "bold");
+				}
+				if (rnd === 3 && game.buildLevelGallows  > 0){
+					rndPopMinus = Math.floor((Math.random() * 3) + 1);
+					if (game.pop - rndPopMinus > 2){
+						game.pop -= rndPopMinus;
+						postEventLog(locObj.people_leave.txt.replace("%arg1", rndPopMinus), "bold");
+					}
+				}
+			}
+		},
 		startFire : function () {
 			if (game.year > 1260) {
 				if (game.fire === 0) {
