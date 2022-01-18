@@ -5,6 +5,7 @@
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
+	btn_mod   = document.getElementById("mod_btn");
 	//init timers
 	if (config.online && config.pullMessages){
 		setInterval(fpullMessages, config.pullMessagesMS);
@@ -132,7 +133,7 @@
 			nickname ="<span style='color:#133bd2'><abbr title='The bot'>"+item[0]+"</abbr></span>";
 		}
 		if (role==="contributor"){
-                        nickname ="span style'color:#ff1100'><abrr title='A Contibutor'>"+item[0]+"</abbr></span>";
+			nickname ="span style'color:#ff1100'><abrr title='A Contibutor'>"+item[0]+"</abbr></span>";
 		}
 		msg_id         = item[3];
 		msg_text       = item[1];
@@ -149,6 +150,13 @@
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 		}*/
+		if (btn_mod.style.visibility!=="visible" && (role==="admin" || role==="mod")) {
+			btn_mod.style.visibility="visible";
+		} else {
+			if (btn_mod.style.visibility!=="hidden"){
+				btn_mod.style.visibility="hidden";
+			}
+		}
 	}
 	function sendOnClick2() {
 		send2();
@@ -177,12 +185,6 @@
 			sending_msg  = msg_dom.value;
 			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9 .?-]/g, '');
 			stop = false;
-			if (sending_msg.toUpperCase=="NIGGERS"){
-				stop = true
-			}
-			if (sending_msg.toUpperCase.indexOf("NIG") !== -1){
-				stop = true
-			}
 			if (sending_msg.length>0 && stop===false){
 				allowMsg = 0;
 				setInterval(cooldownMsg, 5000);

@@ -24,11 +24,27 @@ function openChat() {
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
+	mod_area  = document.getElementById("moderation");
 	log_dom.style.visibility  = "hidden";
+	mod_area.style.visibility = "hidden";
 	chat_dom.style.visibility = "visible";
 	nick_dom.style.visibility = "visible";
 	msg_dom.style.visibility  = "visible";
 	btn_send.style.visibility = "visible";
+}
+function openMod() {
+	log_dom   = document.getElementById("console_n_chat");
+	chat_dom  = document.getElementById("chat");
+	nick_dom  = document.getElementById("inp_nickname");
+	msg_dom   = document.getElementById("msg_out");
+	btn_send  = document.getElementById("btnSend");
+	mod_area  = document.getElementById("moderation");
+	log_dom.style.visibility  = "hidden";
+	mod_area.style.visibility = "visible";
+	chat_dom.style.visibility = "hidden";
+	nick_dom.style.visibility = "hidden";
+	msg_dom.style.visibility  = "hidden";
+	btn_send.style.visibility = "hidden";
 }
 function openLog() {
 	log_dom   = document.getElementById("console_n_chat");
@@ -36,7 +52,9 @@ function openLog() {
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
+	mod_area  = document.getElementById("moderation");
 	log_dom.style.visibility  = "visible";
+	mod_area.style.visibility = "hidden";
 	chat_dom.style.visibility = "hidden";
 	nick_dom.style.visibility = "hidden";
 	msg_dom.style.visibility  = "hidden";
