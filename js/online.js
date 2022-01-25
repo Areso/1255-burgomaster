@@ -115,6 +115,34 @@
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(dataToParse);
 	}
+function reloadSettings() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			the_resp = JSON.parse(this.responseText);
+			console.log("settings reloaded");
+		}
+	};
+	endpoint    = webserver + "/api/v1.1/reload_settings";
+	dataToParse = session+delimiter;
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
+function reloadBanned() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			the_resp = JSON.parse(this.responseText);
+			console.log("banned users reloaded");
+		}
+	};
+	endpoint    = webserver + "/api/v1.1/reload_banned_users";
+	dataToParse = session+delimiter;
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
 	function printToChat(item) {
 		chat_box = chat_dom;
 		let tzoffset   = (new Date()).getTimezoneOffset() * 60000;
