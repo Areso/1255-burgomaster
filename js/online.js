@@ -1,4 +1,4 @@
-	reglogin = "reg";
+	reglogin  = "reg";
 	session   = "";
 	log_dom   = document.getElementById("console_n_chat");
 	chat_dom  = document.getElementById("chat");
@@ -115,6 +115,34 @@
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(dataToParse);
 	}
+function reloadSettings() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			the_resp = JSON.parse(this.responseText);
+			console.log("settings reloaded");
+		}
+	};
+	endpoint    = webserver + "/api/v1.1/reload_settings";
+	dataToParse = session+delimiter;
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
+function reloadBanned() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			the_resp = JSON.parse(this.responseText);
+			console.log("banned users reloaded");
+		}
+	};
+	endpoint    = webserver + "/api/v1.1/reload_banned_users";
+	dataToParse = session+delimiter;
+	xhttp.open("POST", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(dataToParse);
+}
 	function printToChat(item) {
 		chat_box = chat_dom;
 		let tzoffset   = (new Date()).getTimezoneOffset() * 60000;
@@ -124,7 +152,7 @@
 		role           = item[4];
 		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
 		if (role==="admin"){
-			nickname = "<span style='color:#DCAA07'><abbr title='The admin'>"+item[0]+"</abbr></span>";
+			nickname = "<span style='color:#DCAA07'><abbr title='The Admin'>"+item[0]+"</abbr></span>";
 		}
 		if (role==="mod"){
 			nickname ="<span style='color:#319F0D'><abbr title='A moderator'>"+item[0]+"</abbr></span>";
@@ -133,7 +161,7 @@
 			nickname ="<span style='color:#133bd2'><abbr title='The bot'>"+item[0]+"</abbr></span>";
 		}
 		if (role==="contributor"){
-			nickname ="span style'color:#ff1100'><abrr title='A Contibutor'>"+item[0]+"</abbr></span>";
+			nickname ="<span style='color:#ff1100'><abrr title='A contibutor'>"+item[0]+"</abbr></span>";
 		}
 		msg_id         = item[3];
 		msg_text       = item[1];
@@ -150,11 +178,15 @@
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 		}*/
-		if (btn_mod.style.visibility!=="visible" && (role==="admin" || role==="mod")) {
-			btn_mod.style.visibility="visible";
+		if (game.role==="admin" || game.role==="mod") {
+			if (btn_mod.style.visibility!=="visible"){
+				btn_mod.style.visibility="visible";
+				console.log("make visible");
+			}
 		} else {
 			if (btn_mod.style.visibility!=="hidden"){
 				btn_mod.style.visibility="hidden";
+				console.log("make it hidden");
 			}
 		}
 	}
