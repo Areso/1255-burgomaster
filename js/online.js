@@ -1,4 +1,4 @@
-	reglogin = "reg";
+	reglogin  = "reg";
 	session   = "";
 	log_dom   = document.getElementById("console_n_chat");
 	chat_dom  = document.getElementById("chat");
@@ -152,7 +152,7 @@ function reloadBanned() {
 		role           = item[4];
 		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
 		if (role==="admin"){
-			nickname = "<span style='color:#DCAA07'><abbr title='The admin'>"+item[0]+"</abbr></span>";
+			nickname = "<span style='color:#DCAA07'><abbr title='The Admin'>"+item[0]+"</abbr></span>";
 		}
 		if (role==="mod"){
 			nickname ="<span style='color:#319F0D'><abbr title='A moderator'>"+item[0]+"</abbr></span>";
@@ -161,7 +161,7 @@ function reloadBanned() {
 			nickname ="<span style='color:#133bd2'><abbr title='The bot'>"+item[0]+"</abbr></span>";
 		}
 		if (role==="contributor"){
-			nickname ="span style'color:#ff1100'><abrr title='A Contibutor'>"+item[0]+"</abbr></span>";
+			nickname ="<span style='color:#ff1100'><abrr title='A contibutor'>"+item[0]+"</abbr></span>";
 		}
 		msg_id         = item[3];
 		msg_text       = item[1];
@@ -178,11 +178,15 @@ function reloadBanned() {
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 		}*/
-		if (btn_mod.style.visibility!=="visible" && (role==="admin" || role==="mod")) {
-			btn_mod.style.visibility="visible";
+		if (game.role==="admin" || game.role==="mod") {
+			if (btn_mod.style.visibility!=="visible"){
+				btn_mod.style.visibility="visible";
+				console.log("make visible");
+			}
 		} else {
 			if (btn_mod.style.visibility!=="hidden"){
 				btn_mod.style.visibility="hidden";
+				console.log("make it hidden");
 			}
 		}
 	}
