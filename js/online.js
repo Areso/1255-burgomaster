@@ -9,6 +9,7 @@
 	//init timers
 	if (config.online && config.pullMessages){
 		setInterval(fpullMessages, config.pullMessagesMS);
+		setInterval(pullPremodMessages, 5000);
 		setInterval(getNearestEventTime, 10000);
 		setInterval(pullAmber, 3000);
 	}
@@ -97,6 +98,30 @@
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();
 	}
+function pullPremodMessages() {
+	if (game.role==="mod" || game.role==="admin"){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				messages = JSON.parse(this.responseText);
+				if (config.debug){
+					console.log(messages);
+				}
+				document.getElementById("server-status").innerHTML="Up";
+				chat_dom.innerHTML = "";
+				messages.forEach(printToMod);
+			}
+			if (this.readyState === 4 && this.status !== 200) {
+				document.getElementById("server-status").innerHTML="Down";
+			}
+		};
+		endpoint  = webserver + "/api/v1.1/pull_premod_messages";
+		dataToParse = session+delimiter;
+		xhttp.open("POST", endpoint, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(dataToParse);
+	}
+}
 	function pullAmber() {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {

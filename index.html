@@ -42,14 +42,12 @@
 <div id="htmlGame">
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-			<!--<button class="tablinks" onclick="openTab(event, 'Explore')" id="tabExplore" style="display:none">Explore</button>-->
 			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
-			<!--<button class="tablinks" onclick="openTab(event, 'Garrison')" id="tabGarrison">Garrison</button>-->
 			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
 			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
 			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
 			<div id="lblEventCountdownValue" style="margin-left:20px;" onclick="game.getEventHelp()"></div>
-			<!--<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>-->
+			<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>
 		</div>
 		<div class="resource-panel">
 			<div class="gold-val" onclick="checkGold()">
@@ -116,14 +114,14 @@
 			<button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;">Load save from Cloud</button>
 			<br>
 			<input id="savestring" name="savestring" value="" style="width:600px">
-            <br>
-            <a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
 			<br>
-            <br>
+			<a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
+			<br>
+			<br>
 			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
 			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
-            <br>
-            <br>
+			<br>
+			<br>
 			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
 			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
 			<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
@@ -135,6 +133,11 @@
 			<br>
 			<label id="lblStnAliasResult"></label><br>
 			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
+		</div>
+		<div id="tabModTools" class="tabcontent">
+			<button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden">reload settings</button>
+			<button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden">reload banned</button>
+			<div id="moderation"     name="moderation"     class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
 		</div>
 		<div id="tabSettingsSound" class="tabcontent">
 			<label id="lblSoundMenu">Sound effects and music</label><br>
@@ -792,17 +795,12 @@
 		<div id="chat_log_box" style="margin-top:10px;">
 			<button id="log_btn"  onclick="openLog()" >log</button>
 			<button id="chat_btn" onclick="openChat()">chat</button>
-			<button id="mod_btn"  onclick="openMod()" style="visibility: hidden">mod</button>
-			<button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden">reload settings</button>
-			<button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden">reload banned</button>
+			<button id="mod_btn"  onclick="openTab(null, 'tabModTools')" style="visibility: hidden">mod</button>
 			<label id="lbl_online" style="margin-left:20px">Online: </label>
 			<label id="lbl_online_value" style="margin-left:10px">n/d</label>
 			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
 			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
-			<div id="moderation"     name="moderation"     class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
 			<input id="inp_nickname"  style="position: absolute; top: 750px; left:  10px; width: 100px;" value="" ></input>
-			<!--<input id="inp_nickname2"  style="position: absolute; top: 750px; left:  10px; width: 100px;" value="" ></input>
-			-->
 			<input id="msg_out"       style="position: absolute; top: 750px; left: 120px; width: 500px;" value="" ></input>
 			<button id="btnSend" onclick="sendOnClick2()"   style="position: absolute; top: 750px; left: 640px; width: 100px;"          >send</button>
 		</div>
