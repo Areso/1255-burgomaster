@@ -24,7 +24,7 @@ function openChat() {
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
-	mod_area  = document.getElementById("moderation");
+	mod_area  = document.getElementById("moderation_area");
 	log_dom.style.visibility  = "hidden";
 	mod_area.style.visibility = "hidden";
 	chat_dom.style.visibility = "visible";
@@ -38,7 +38,7 @@ function openMod() {
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
-	mod_area  = document.getElementById("moderation");
+	mod_area  = document.getElementById("moderation_area");
 	log_dom.style.visibility  = "hidden";
 	mod_area.style.visibility = "visible";
 	chat_dom.style.visibility = "hidden";
@@ -52,7 +52,7 @@ function openLog() {
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
-	mod_area  = document.getElementById("moderation");
+	mod_area  = document.getElementById("moderation_area");
 	log_dom.style.visibility  = "visible";
 	mod_area.style.visibility = "hidden";
 	chat_dom.style.visibility = "hidden";

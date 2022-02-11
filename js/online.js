@@ -2,16 +2,17 @@
 	session   = "";
 	log_dom   = document.getElementById("console_n_chat");
 	chat_dom  = document.getElementById("chat");
+	mod_dom   = document.getElementById("moderation_area");
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
 	btn_mod   = document.getElementById("mod_btn");
 	//init timers
 	if (config.online && config.pullMessages){
-		setInterval(fpullMessages, config.pullMessagesMS);
-		setInterval(pullPremodMessages, 5000);
-		setInterval(getNearestEventTime, 10000);
-		setInterval(pullAmber, 3000);
+		//setInterval(fpullMessages, config.pullMessagesMS);
+		//setInterval(pullPremodMessages, 5000);
+		//setInterval(getNearestEventTime, 10000);
+		//setInterval(pullAmber, 3000);
 	}
 	//functions
 	function remoteRegLogin() {
@@ -108,7 +109,7 @@ function pullPremodMessages() {
 					console.log(messages);
 				}
 				document.getElementById("server-status").innerHTML="Up";
-				chat_dom.innerHTML = "";
+				mod_dom.innerHTML = "";
 				messages.forEach(printToMod);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
@@ -122,6 +123,24 @@ function pullPremodMessages() {
 		xhttp.send(dataToParse);
 	}
 }
+	function printToMod(item) {
+		mod_box = chat_dom;
+		let tzoffset   = (new Date()).getTimezoneOffset() * 60000;
+		let usertime   = new Date(item[2]*1000);
+		usertime       = usertime.toLocaleTimeString();
+		line_to_print  = "["+usertime+"] ";
+		role           = item[4];
+		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
+		msg_id         = item[3];
+		msg_text       = item[1];
+		line_to_print += nickname+": ";
+		if (role !=="admin" && role !=="mod") {
+			line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
+		} else {
+			line_to_print +=msg_text;
+		}
+		mod_box.innerHTML += line_to_print+"<br>";
+	}
 	function pullAmber() {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
