@@ -101,19 +101,20 @@
 	}
 function pullPremodMessages() {
 	if (game.role==="mod" || game.role==="admin"){
+		console.log("the role is OK");
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
+			console.log(this.status);
+			console.log(this.readyState);
 			if (this.readyState === 4 && this.status === 200) {
+				console.log("GOT THE ANSWER")
 				messages = JSON.parse(this.responseText);
+				console.log(messages)
 				if (config.debug){
 					console.log(messages);
 				}
-				document.getElementById("server-status").innerHTML="Up";
 				mod_dom.innerHTML = "";
 				messages.forEach(printToMod);
-			}
-			if (this.readyState === 4 && this.status !== 200) {
-				document.getElementById("server-status").innerHTML="Down";
 			}
 		};
 		endpoint  = webserver + "/api/v1.1/pull_premod_messages";
