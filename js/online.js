@@ -9,10 +9,10 @@
 	btn_mod   = document.getElementById("mod_btn");
 	//init timers
 	if (config.online && config.pullMessages){
-		//setInterval(fpullMessages, config.pullMessagesMS);
-		//setInterval(pullPremodMessages, 5000);
-		//setInterval(getNearestEventTime, 10000);
-		//setInterval(pullAmber, 3000);
+		setInterval(fpullMessages, config.pullMessagesMS);
+		setInterval(pullPremodMessages, 5000);
+		setInterval(getNearestEventTime, 10000);
+		setInterval(pullAmber, 3000);
 	}
 	//functions
 	function remoteRegLogin() {
@@ -125,7 +125,7 @@ function pullPremodMessages() {
 	}
 }
 	function printToMod(item) {
-		mod_box = chat_dom;
+		mod_box = mod_dom;
 		let tzoffset   = (new Date()).getTimezoneOffset() * 60000;
 		let usertime   = new Date(item[2]*1000);
 		usertime       = usertime.toLocaleTimeString();

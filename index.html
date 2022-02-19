@@ -9,20 +9,13 @@
 	<link rel="stylesheet"  type="text/css" href="css/hire.css"/>
 	<link rel="stylesheet"  type="text/css" href="css/inn.css" />
 	<script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
-    <script>
-      'use strict';
-      if (window.location.href.indexOf("file")===-1){
-	   
-      Sentry.init({ dsn: 'https://84a2a9b7436b40a6868d8493ee91c6dd@o1014630.ingest.sentry.io/5979860' });
-      
-        try {
-          throw new Error('Caught');
-        } catch (err) {
-          Sentry.captureException(err);
-        }
-      }
-    </script>
-    <script>
+	<script>
+		'use strict';
+		if (window.location.href.indexOf("file")===-1){
+			Sentry.init({ dsn: 'https://84a2a9b7436b40a6868d8493ee91c6dd@o1014630.ingest.sentry.io/5979860' });
+		}
+	</script>
+	<script>
 		if (window.location.href.indexOf("file")===-1){
 			webserver = "https://navi.areso.pro:7001";
 			ws_server = "wss://navi.areso.pro:7000";
@@ -33,7 +26,7 @@
 			ws_server = "ws://localhost:6698";
 			dev_flag  = true;
 		} 
-    </script>
+	</script>
 	<script src="js/hire.js"></script>
 	<script src="js/inn.js" ></script>
 	<script src="js/dom.js" ></script>
