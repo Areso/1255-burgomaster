@@ -131,12 +131,12 @@ function pullPremodMessages() {
 		usertime       = usertime.toLocaleTimeString();
 		line_to_print  = "["+usertime+"] ";
 		role           = item[4];
-		nickname       = "<span id='"+item[0]+"' onclick='banUser(this.id)'>"+item[0]+"</span>";
+		nickname       = "<span id='"+item[0]+"' onclick='ruleOverUser(this.id)'>"+item[0]+"</span>";
 		msg_id         = item[3];
 		msg_text       = item[1];
 		line_to_print += nickname+": ";
 		if (role !=="admin" && role !=="mod") {
-			line_to_print +="<span id='"+msg_id+"' onclick='deleteMsg(this.id)'>"+msg_text+"</span>";
+			line_to_print +="<span id='"+msg_id+"' onclick='ruleOverMsg(this.id)'>"+msg_text+"</span>";
 		} else {
 			line_to_print +=msg_text;
 		}
@@ -226,6 +226,7 @@ function reloadBanned() {
 		if (game.role==="admin" || game.role==="mod") {
 			if (btn_mod.style.visibility!=="visible"){
 				btn_mod.style.visibility="visible";
+				mod_dom.style.visibility="visible";
 				console.log("make visible");
 			}
 		} else {
@@ -292,6 +293,65 @@ function reloadBanned() {
 		} 
 	}
 	msgid_to_del = -1;
+	function ruleOverUser(name){
+		if (game.role==="admin" || game.role ==="mod"){
+				console.log("we are deciding the further faith of ")
+				console.log(name);
+				user_to_allow = name;
+				showModal(1, '', allowUser, "Do you allow this user write directly?", "Yes, allow", "No");
+		}
+	}
+	function allowUser(){
+		if (answer === 2) {
+			if (game.role==="admin" || game.role ==="mod"){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 200) {
+						if (config.debug){
+							console.log("user allowed");
+						}
+						fpullMessages();
+					}
+				};
+				target      = 0;
+				dataToParse = session+delimiter+user_to_allow;
+				endpoint    = webserver + "/api/v1.1/allow_user";
+				xhttp.open("POST", endpoint, true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(dataToParse);
+			}
+		}
+	}
+	function ruleOverMsg(msgid){
+		if (game.role==="admin" || game.role ==="mod"){
+				console.log("we are deciding the further faith of ")
+				console.log(msgid);
+				msgid_to_allow = msgid;
+				showModal(1, '', allowMessage, "Do you allow this msg?", "Yes, allow", "No");
+		}
+	}
+	function allowMessage(){
+		if (answer === 2) {
+			if (game.role==="admin" || game.role ==="mod"){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 200) {
+						if (config.debug){
+							console.log("message deleted");
+						}
+						fpullMessages();
+					}
+				};
+				console.log("POST query to allow with msgid_to_allow");
+				console.log(msgid_to_del);
+				dataToParse = session+delimiter+msgid_to_allow;
+				endpoint    = webserver + "/api/v1.1/allow_message";
+				xhttp.open("POST", endpoint, true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(dataToParse);
+			}
+		}
+	}
 	function deleteMsg(msgid){
 		if (game.role==="admin" || game.role ==="mod"){
 				console.log("we are deleting")
