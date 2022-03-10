@@ -6,9 +6,9 @@
 		<a href="https://areso.github.io/1255-burgomaster">Play the game in web</a><br>
 		<a href="http://cosmodream.ga/1255-burgomaster">Play the game in web (reserve link)</a><br><br>
 		<h2>About the project</h2><br>
-		Hello there! My name is Gladyshev Anton, and I'm the author of the project. 
+		Hello there! My name is  Anton Gladyshev, and I'm the author of this project. 
 		The homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a>. 
-		This pet-project is dedicated to create a playable game, written in vanilla JavaScript, without using even jQuery and modern whistlers and jugglers, such as JS frameworks, TS->JS compilators, Node.js, web servers and so on. 
+		This pet-project is dedicated to create a playable game, written in vanilla JavaScript, without even using jQuery and modern whistlers and jugglers, such as JS frameworks, TS->JS compilators, Node.js, web servers and so on. 
 		Thus, to play the game, you need only a modern browser. To edit the game, you need only a text editor and imagination.
 		The project oriented to be compact (in terms of the source code and the resources), blazing fast to download, fast enough to run even on aging devices with limited horsepower under the hood.<br>
 		It runs well even on low-powered tablets and phones, let alone old PCs and laptops.<br>
