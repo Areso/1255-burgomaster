@@ -3,8 +3,8 @@
 		<h1>1255 Burgomaster</h1><br>
 		<img src="https://img.shields.io/github/issues/Areso/1255-burgomaster"><img src="https://img.shields.io/github/issues-closed/Areso/1255-burgomaster"><img src="https://img.shields.io/github/commit-activity/m/Areso/1255-burgomaster?foo=bar"><img src="https://img.shields.io/discord/564554640755130409?label=Discord&logo=Discord">
 		<h2>Play the game</h2><br>
-		<a href="https://areso.github.io/1255-burgomaster">Play the game in web</a><br>
-		<a href="http://cosmodream.ga/1255-burgomaster">Play the game in web (reserve link)</a><br><br>
+		<!--<a href="https://areso.github.io/1255-burgomaster">Play the game in web</a><br>-->
+		<a href="https://1255.areso.pro">Play the game in web (reserve link)</a><br><br>
 		<h2>About the project</h2><br>
 		Hello there! My name is Gladyshev Anton, and I'm the author of the project. 
 		The homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a>. 
