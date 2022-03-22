@@ -125,7 +125,7 @@ function tap (e) {
     if (loc.x >= buttonOneOffsetX && loc.x <= buttonOneOffsetX+buttonOneLength) {
         if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
             console.log("first button pressed");
-            document.getElementById("myDCanvas").style=mystyle+' border:0px; z-index:-2;  visible:none';
+            document.getElementById("myDCanvas").style=mystyle+' border:0px; z-index:-2;  display:none';
             answer = 2;
             clearCanvas();
         }
