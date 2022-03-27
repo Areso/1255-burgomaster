@@ -7,7 +7,7 @@ function setupMobileUI() {
 }
 	function setupEventLogSizeUI () {
 		document.getElementById("inpStnEventLogSize").value    = game.log_size;
-		document.getElementById("console_n_chat").style.height = game.log_size * 20;
+		document.getElementById("log").style.height = game.log_size * 20;
 	}
 	/*
 	function setupNickname() {

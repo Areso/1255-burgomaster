@@ -21,7 +21,7 @@ function updateImagesBuildingTab() {
 		}
 	} else {
 		if (game.buildLevelD === 3) {
-			document.getElementById("defencies_img").style.visibility="visible";
+			document.getElementById("defences_img").style.visibility="visible";
 		} else {
 			var tabBldElements = document.getElementsByClassName("bld_tab_defense_class");
 			for (tabBldElem of tabBldElements){
@@ -97,21 +97,17 @@ function updateImagesBuildingTab() {
 		}
 	}
 	if (game.buildLevelD === 1) {
-		elementText = document.getElementById("defences_img").innerHTML;
-		if (elementText.indexOf("btab_w_castle.png") === -1) {
-			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_w_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
-		}
+		var defenceImgElement = document.getElementById('defences_img');
+		defenceImgElement.setAttribute('src', './resources/btab_w_castle.png');
+		defenceImgElement.setAttribute('alt', 'btab_w_castle.png');
 	}
 	if (game.buildLevelD === 2) {
-		elementText = document.getElementById("defences_img").innerHTML;
-		if (elementText.indexOf("btab_st_castle.png") === -1) {
-			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
-		}
-	}
-	if (game.buildLevelD === 3) {
-		elementText = document.getElementById("defences_img").innerHTML;
-		if (elementText.indexOf("btab_st_castle.png") === -1) {
-			document.getElementById("defences_img").innerHTML= '<img id="defencies_img" src="resources/btab_st_castle.png" onmouseover="game.help(this)" onclick="game.help(this)">';
-		}
-	}
+		var defenceImgElement = document.getElementById('defences_img');
+		defenceImgElement.setAttribute('src', './resources/btab_st_castle.png');
+		defenceImgElement.setAttribute('alt', 'btab_st_castle.png');
+}
+	// if (game.buildLevelD === 3) {
+	// 	var defenceImgElement = document.getElementById('defences_img');
+	// 	defenceImgElement.setAttribute('src', './resources/btab_st_castle.png');
+	// }
 }

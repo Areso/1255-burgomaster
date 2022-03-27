@@ -19,19 +19,15 @@ function setLogin(){
 	document.getElementById("btnRegLogin").innerText   = "Login";
 };
 function openChat() {
-	log_dom   = document.getElementById("console_n_chat");
-	chat_dom  = document.getElementById("chat");
-	nick_dom  = document.getElementById("inp_nickname");
-	msg_dom   = document.getElementById("msg_out");
-	btn_send  = document.getElementById("btnSend");
-	log_dom.style.visibility  = "hidden";
-	chat_dom.style.visibility = "visible";
-	nick_dom.style.visibility = "visible";
-	msg_dom.style.visibility  = "visible";
-	btn_send.style.visibility = "visible";
+	var log_dom   = document.getElementById("log");
+	var chat_dom  = document.getElementById("chat");
+	var chat_form_dom  = document.getElementById("chatForm");
+	log_dom.style.display  = "none";
+	chat_dom.style.display = "block";
+	chat_form_dom.style.visibility = "visible";
 }
 function openMod() {
-	log_dom   = document.getElementById("console_n_chat");
+	log_dom   = document.getElementById("log");
 	chat_dom  = document.getElementById("chat");
 	nick_dom  = document.getElementById("inp_nickname");
 	msg_dom   = document.getElementById("msg_out");
@@ -45,16 +41,19 @@ function openMod() {
 	btn_send.style.visibility = "hidden";
 }
 function openLog() {
-	log_dom   = document.getElementById("console_n_chat");
-	chat_dom  = document.getElementById("chat");
-	nick_dom  = document.getElementById("inp_nickname");
-	msg_dom   = document.getElementById("msg_out");
-	btn_send  = document.getElementById("btnSend");
-	log_dom.style.visibility  = "visible";
-	chat_dom.style.visibility = "hidden";
-	nick_dom.style.visibility = "hidden";
-	msg_dom.style.visibility  = "hidden";
-	btn_send.style.visibility = "hidden";
+	var log_dom   = document.getElementById("log");
+	var chat_dom  = document.getElementById("chat");
+	var chat_form_dom  = document.getElementById("chatForm");
+
+	// nick_dom  = document.getElementById("inp_nickname");
+	// msg_dom   = document.getElementById("msg_out");
+	// btn_send  = document.getElementById("btnSend");
+	log_dom.style.display  = "block";
+	chat_dom.style.display = "none";
+	chat_form_dom.style.visibility = "hidden";
+	// nick_dom.style.visibility = "hidden";
+	// msg_dom.style.visibility  = "hidden";
+	// btn_send.style.visibility = "hidden";
 }
 function checkFirebrigade() {
 	document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();
@@ -124,12 +123,12 @@ function updateButtonCaptions(){
 	if (game.buildLevelFountain > 0) {
 		document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
 	}
-	if (game.buildLevelGallows === 0) {
-		document.getElementById("buttonDeathPenalty").style.display="none";
-	}
+	// if (game.buildLevelGallows === 0) {
+	// 	document.getElementById("buttonDeathPenalty").style.display="none";
+	// }
 	if (game.buildLevelGallows > 0) {
 		document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
-		document.getElementById("buttonDeathPenalty").setAttribute("style", "top:430px; left: 20px");
+		document.getElementById("buttonDeathPenalty").style.display = 'block';
 	}
 	document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 }

@@ -1,6 +1,6 @@
 	reglogin  = "reg";
 	session   = "";
-	log_dom   = document.getElementById("console_n_chat");
+	log_dom   = document.getElementById("log");
 	chat_dom  = document.getElementById("chat");
 	mod_dom   = document.getElementById("moderation_area");
 	nick_dom  = document.getElementById("inp_nickname");
