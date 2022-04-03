@@ -185,13 +185,17 @@ function composite_gm() {
 	}
 }
 function tap_map (e) {
-	pos  = getElementPosition(canvasMap);
-	loc  = {};
-	tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
-	tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
-	canvasScaleRatio = canvas.width / canvas.offsetWidth;
-	loc.x = (tapX - 9)  * canvasScaleRatio;
-	loc.y = (tapY - 58) * canvasScaleRatio;
+	var pos  = getElementPosition(canvasMap);
+	var loc = {};
+	loc.x = e.pageX - pos.x;
+	loc.y = e.pageY - pos.y;
+
+	// tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
+	// tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
+	// loc.x = (tapX - 9)  * canvasScaleRatio;
+	// loc.y = (tapY - 58) * canvasScaleRatio;
+
+
 	if (game.isMobile===1 && allowMvt===1) {
 		allowMvt = 0;
 		setTimeout(cooldownMvt, 300);

@@ -35,7 +35,7 @@
 <div id="htmlGame">
 		<div class="menu-panel">
 			<button class="tab-link" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-			<button class="tab-link" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
+			<button class="tab-link is-tutorial" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
 			<button class="tab-link" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
 			<button class="tab-link" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
 			<button class="tab-link" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
@@ -274,10 +274,11 @@
 					<div class="building-wrapper">
 						<div class="building-list">
 
-							<div class="building-card">
+							<div id="bldHome" class="building-card">
 								<div class="building-card__img">
 									<img
 										id="home_img"
+										class="is-tutorial"
 										src="./resources/home_as.png"
 										alt="home_as.png"
 										onmouseover="game.help(this)"
@@ -285,79 +286,127 @@
 									/>
 								</div>
 								<div class="building-card__action">
-									<button id="homes" class="btn" onclick="game.Build('Home')">Build Home</button>
+									<button id="homes" class="btn is-tutorial" onclick="game.Build('Home')">Build Home</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldDefence" class="building-card">
 								<div class="building-card__img">
-									<img id="defences_img" src="./resources/wallsf_as2.png" alt="wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="defences_img"
+										class="is-tutorial"
+										src="./resources/wallsf_as2.png"
+										alt="wallsf_as2.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="defence" class="btn" onclick="game.Build('Wall')">Build Walls</button>
+									<button id="defence" class="btn is-tutorial" onclick="game.Build('Wall')">Build Walls</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldTreasury" class="building-card">
 								<div class="building-card__img">
-									<img id="treasury_img" src="./resources/treasury_as.png" alt="treasury_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="treasury_img"
+										class="is-tutorial"
+										src="./resources/treasury_as.png"
+										alt="treasury_as.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="treasury" class="btn" onclick="game.Build('Treasury')">Build Treasury</button>
+									<button id="treasury" class="btn is-tutorial" onclick="game.Build('Treasury')">Build Treasury</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldGallows" class="building-card">
 								<div class="building-card__img">
-									<img id="gallows_img" src="./resources/gallows.png" alt="gallows.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="gallows_img"
+										class="is-tutorial"
+										src="./resources/gallows.png"
+										alt="gallows.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="buttonBldGallows" class="btn" onclick="game.buildGallowsOrFountain('Gallows')">Build Gallows</button>
+									<button id="buttonBldGallows" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Gallows</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldFountain" class="building-card">
 								<div class="building-card__img">
-									<img id="fountain_img" src="./resources/fountain.png" alt="fountain.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="fountain_img"
+										class="is-tutorial"
+										src="./resources/fountain.png"
+										alt="fountain.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="buttonBldFountain" class="btn" onclick="game.buildGallowsOrFountain('Gallows')">Build Fountain</button>
+									<button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Fountain</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldStash" class="building-card">
 								<div class="building-card__img">
-									<img id="moneystash_img" src="./resources/trapdoor.png" alt="trapdoor.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="moneystash_img"
+										class="is-tutorial"
+										src="./resources/trapdoor.png"
+										alt="trapdoor.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="buttonBldStash" class="btn" onclick="game.Build('Stash')">Build Stash</button>
+									<button id="buttonBldStash" class="btn is-tutorial" onclick="game.Build('Stash')">Build Stash</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldStable" class="building-card">
 								<div class="building-card__img">
-									<img id="stable_img" src="./resources/stable.png" alt="stable.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="stable_img"
+										class="is-tutorial"
+										src="./resources/stable.png"
+										alt="stable.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="buttonBldStable" class="btn" onclick="game.Build('Stable')">Build Stable</button>
+									<button id="buttonBldStable" class="btn is-tutorial" onclick="game.Build('Stable')">Build Stable</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldArchery" class="building-card">
 								<div class="building-card__img">
-									<img id="archery_img" src="./resources/archery_range.png" alt="archery_range.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="archery_img"
+										class="is-tutorial"
+										src="./resources/archery_range.png"
+										alt="archery_range.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="buttonBldArchery" class="btn" onclick="game.Build('Archery')">Build Archery range</button>
+									<button id="buttonBldArchery" class="btn is-tutorial" onclick="game.Build('Archery')">Build Archery range</button>
 								</div>
 							</div>
 
-							<div class="building-card">
+							<div id="bldInn" class="building-card">
 								<div class="building-card__img">
-									<img id="inn_img" src="./resources/inn.png" alt="tavern.png" onmouseover="game.help(this)" onclick="game.help(this)">
+									<img
+										id="inn_img"
+										class="is-tutorial"
+										src="./resources/inn.png"
+										alt="tavern.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="buttonBldInn" class="btn" onclick="game.Build('Inn')">Build Inn</button>
+									<button id="buttonBldInn" class="btn is-tutorial" onclick="game.Build('Inn')">Build Inn</button>
 								</div>
 							</div>
 
@@ -412,10 +461,7 @@
 				<div id="lblCurrentGoldLimit"></div>
 			</div>
 			<div id="tabInn" class="tab">
-				<div id="lblTabInn">Welcome to Inn!</div>
-				<br>
-				<br>
-
+				<h3 id="lblTabInn">Welcome to Inn!</h3>
 				<div id="hireHeroBlock">
 					<label id="lblAvailableForHire">Hero for hire</label>
 					<table>
@@ -442,7 +488,7 @@
 							</td>
 						</tr>
 					</table>
-					<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+					<button id="btnHireHero" class="btn" onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
 				</div>
 				<div id="heroUpkeep">
 					<label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
@@ -451,30 +497,26 @@
 						<option id="optionTreasury"       value="1">Treasury</option>
 					</select>
 				</div>
+				<div id="heroStats"></div>
+				<button id="btnDismissHero" class="btn"   onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
+				<button id="btnAutocampaign"  class="btn"   onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
+				<button id="btnAutocampaignJournal" class="btn"   onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
+				<button id="btnTowngate" class="btn" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
 				<br>
 				<br>
-				<div id="heroStats">
-				</div>
-				<br>
-				<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
-				<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
-				<button id="btnAutocampaignJournal"    onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
-				<button id="btnTowngate" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
-				<br>
-				<br>
-				<button id="btnLeaveCity"    onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
-				<button id="btnGenerateMap"    onclick="game.generateMap()" style="width:160px">Regenerate map</button>
+				<button id="btnLeaveCity" class="btn"   onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
+				<button id="btnGenerateMap" class="btn"  onclick="game.generateMap()" style="width:160px">Regenerate map</button>
 
-				<button id="btnAutobattlesList" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
+				<button id="btnAutobattlesList" class="btn" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
 
 			</div>
 			<div id="tabAutocampaignJournal" class="tab">
-				<div id="lblAutocampaignJournal" class="interface"></div>
-				<button id="btnToInn" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
+				<div id="lblAutocampaignJournal"></div>
+				<button id="btnToInn" class="btn"  style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
 			</div>
 			<div id="tabAutocampaignBattle" class="tab">
-				<div id="lblAutocampaignBattle" class="interface"></div>
-				<button id="btnToInn1" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
+				<div id="lblAutocampaignBattle"></div>
+				<button id="btnToInn1" class="btn" style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
 			</div>
 			<div id="tabTroopsHiring" class="tab">
 				<div class="grid-container" style="width: 800px; height: 480px">
@@ -782,7 +824,7 @@
 			<div class="info-panel__actions">
 				<button id="log_btn"  class="btn" onclick="openLog()">log</button>
 				<button id="chat_btn" class="btn" onclick="openChat()">chat</button>
-				<button id="mod_btn"  class="btn" onclick="openTab(null, 'tabModTools')">mod</button>
+				<button id="mod_btn"  class="btn" onclick="openTab(null, 'tabModTools')" style="visibility: hidden">mod</button>
 				<div id="lbl_online">Online: <span id="lbl_online_value">n/d</span></div>
 			</div>
 			<div id="log"  name="log"		class="info-panel__history"></div>
@@ -3387,6 +3429,7 @@
 			}
 		},
 		Build : function (Structure) {
+
 			if (Structure==="Wall" || Structure ==="Tower" || Structure ==="Castle") {
 				//WALL
 				if (game.buildLevelD === 0) {
@@ -4030,167 +4073,168 @@
 	canvas.addEventListener("touchstart", tap);
 	canvas.addEventListener("mousedown", tap);
 	languageDefined = 0;
-	theme = "winter";
+
 	var ctx     = canvas.getContext("2d");
 	//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
-	if (theme === "winter") {
-		var img1    = loadImage('resources/background_a_w.png', composite);
-		var img2    = loadImage('resources/sawmill_a_w.png', composite);
-	} else {
-		var img1    = loadImage('resources/background_a.png', composite);
-		var img2    = loadImage('resources/sawmill_a.png', composite);
-	}
-	var sawmillX     = 670;
-	var sawmillY     = 65;
-	var sawmillW     = 110;
-	var sawmillH     = 56;
-	var img3    = loadImage('resources/gold_a.png', composite);
-	var goldX        = 10;
-	var goldY        = 40;
-	var goldW        = 28;
-	var goldH        = 22;
-	var img4    = loadImage('resources/pop_a.png', composite);
-	var popX         = 10;
-	var popY         = 80;
-	var popW         = 29;
-	var popH         = 22;
-	var amber_ico = loadImage('resources/amber_ico.png', composite);
-	var amberX       = 10;
-	var amberY       = 120;
-	var amberW       = 30;
-	var amberH       = 22;
-	if (theme === "winter") {
-		var img5    = loadImage('resources/home_as_w.png', composite);
-	} else {
-		var img5    = loadImage('resources/home_as.png', composite);
-	}
-	var homeX        = 90;
-	var homeY        = 160;
-	var homeW        = 80;
-	var homeH        = 90;
-	if (theme === "winter") {
-		var img5_1  = loadImage('resources/house_as_w.png', composite);
-	} else {
-		var img5_1  = loadImage('resources/house_as.png', composite);
-	}
-	var houseX       = 90;
-	var houseY       = 160;
-	var houseW       = 113;
-	var houseH       = 125;
-	if (theme === "winter") {
-		var img6_1  = loadImage('resources/wallsr_a_w.png', composite);
-		var img6_2  = loadImage('resources/wallsf_a_w.png', composite);
-	} else {
-		var img6_1  = loadImage('resources/wallsr_a.png', composite);
-		var img6_2  = loadImage('resources/wallsf_a.png', composite);
-	}
-	var wallX        = 330;
-	var wallY        = 400;
-	var wallW        = 110;
-	var wallH        = 65;
-	if (theme === "winter") {
-		var img7    = loadImage('resources/castle_as_w.png', composite);
-	} else {
-		var img7    = loadImage('resources/castle_as.png', composite);
-	}
-	var castleX      = 300;
-	var castleY      = 160;
-	var castleW      = 180;
-	var castleH      = 160;
-	if (theme === "winter") {
-		var img71   = loadImage('resources/castle_st_w.png', composite);
-	} else {
-		var img71   = loadImage('resources/castle_st.png', composite);
-	}
-	var castle_st_X  = 300;
-	var castle_st_Y  = 160;
-	var castle_st_W  = 195;
-	var castle_st_H  = 175;
-	if (theme === "winter") {
-		var img8    = loadImage('resources/wishing_well_builded_w.png', composite);
-	} else {
-		var img8    = loadImage('resources/wishing_well_builded.png', composite);
-	}
-	var wellX        = 230;
-	var wellY        = 200;
-	var wellW        = 41;
-	var wellH        = 47;
-	if (theme === "winter") {
-		var img9    = loadImage('resources/treasury_as_w.png', composite);
-	} else {
-		var img9    = loadImage('resources/treasury_as.png', composite);
-	}
-	var treasuryX    = 200;
-	var treasuryY    = 270;
-	var treasuryW    = 125;
-	var treasuryH    = 120;
-	if (theme === "winter") {
-		var img10   = loadImage('resources/gallows_w.png', composite);
-	} else {
-		var img10   = loadImage('resources/gallows.png', composite);
-	}
-	var gallowsX     = 485;
-	var gallowsY     = 270;
-	var gallowsW     = 50;
-	var gallowsH     = 75;
-	if (theme === "winter") {
-		var img11   = loadImage('resources/fountain_w.png', composite);
-	} else {
-		var img11   = loadImage('resources/fountain.png', composite);
-	}
-	var fountainX    = 485;
-	var fountainY    = 290;
-	var fountainW    = 70;
-	var fountainH    = 55;
-	//var img13 is already used in fire singleton
-	if (theme === "winter") {
-		var img14   = loadImage('resources/inn_w.png', composite);
-	} else {
-		var img14   = loadImage('resources/inn.png', composite);
-	}
-	var innX = 270;
-	var innY = 80;
-	var innW = 87;
-	var innH = 79;
-	var img15   = loadImage('resources/fire_a.gif', composite);
-	img15.id      = "fire_graphics";
-	if (theme === "winter") {
-		var img16   = loadImage('resources/stable_w.png', composite);
-	} else {
-		var img16   = loadImage('resources/stable.png', composite);
-	}
-	var stableX = 480;
-	var stableY = 100;
-	var stableW = 160;
-	var stableH = 120;
-	if (theme === "winter") {
-		var img17   = loadImage('resources/archery_range_w.png', composite);
-	} else {
-		var img17   = loadImage('resources/archery_range.png', composite);
-	}
-	var archeryX = 390;
-	var archeryY = 90;
-	var archeryW = 80;
-	var archeryH = 80;
-	var smoke_anm   = loadImage('resources/smoke.gif', composite);
-	var smoke_anm2  = loadImage('resources/smoke.gif', composite);
-	//smoke_and.id      = "smoke_graphics";
-	var smokeX = 90;
-	var smokeY = 260;
-	var smokeW = 100;
-	var smokeH = 100;
-	if (theme === "winter") {
-		var chest_img   = loadImage('resources/chest_w.png', composite);
-	} else {
-		var chest_img   = loadImage('resources/chest.png', composite);
-	}
-	var chest_imgW = 48;
-	var chest_imgH = 48;
-	buildingsInTownB=[];
-	buildingsInTownX=[];
-	buildingsInTownY=[];
-	buildingsInTownW=[];
-	buildingsInTownH=[];
+	// if (theme === "winter") {
+	// 	var img1    = loadImage('resources/background_a_w.png', composite);
+	// 	var img2    = loadImage('resources/sawmill_a_w.png', composite);
+	// } else {
+	// 	var img1    = loadImage('resources/background_a.png', composite);
+	// 	var img2    = loadImage('resources/sawmill_a.png', composite);
+	// }
+	// var sawmillX     = 670;
+	// var sawmillY     = 65;
+	// var sawmillW     = 110;
+	// var sawmillH     = 56;
+	// var img3    = loadImage('resources/gold_a.png', composite);
+	// var goldX        = 10;
+	// var goldY        = 40;
+	// var goldW        = 28;
+	// var goldH        = 22;
+	// var img4    = loadImage('resources/pop_a.png', composite);
+	// var popX         = 10;
+	// var popY         = 80;
+	// var popW         = 29;
+	// var popH         = 22;
+	// var amber_ico = loadImage('resources/amber_ico.png', composite);
+	// var amberX       = 10;
+	// var amberY       = 120;
+	// var amberW       = 30;
+	// var amberH       = 22;
+	// if (theme === "winter") {
+	// 	var img5    = loadImage('resources/home_as_w.png', composite);
+	// } else {
+	// 	var img5    = loadImage('resources/home_as.png', composite);
+	// }
+	// var homeX        = 90;
+	// var homeY        = 160;
+	// var homeW        = 80;
+	// var homeH        = 90;
+	// if (theme === "winter") {
+	// 	var img5_1  = loadImage('resources/house_as_w.png', composite);
+	// } else {
+	// 	var img5_1  = loadImage('resources/house_as.png', composite);
+	// }
+	// var houseX       = 90;
+	// var houseY       = 160;
+	// var houseW       = 113;
+	// var houseH       = 125;
+	// if (theme === "winter") {
+	// 	var img6_1  = loadImage('resources/wallsr_a_w.png', composite);
+	// 	var img6_2  = loadImage('resources/wallsf_a_w.png', composite);
+	// } else {
+	// 	var img6_1  = loadImage('resources/wallsr_a.png', composite);
+	// 	var img6_2  = loadImage('resources/wallsf_a.png', composite);
+	// }
+	// var wallX        = 330;
+	// var wallY        = 400;
+	// var wallW        = 110;
+	// var wallH        = 65;
+	// if (theme === "winter") {
+	// 	var img7    = loadImage('resources/castle_as_w.png', composite);
+	// } else {
+	// 	var img7    = loadImage('resources/castle_as.png', composite);
+	// }
+	// var castleX      = 300;
+	// var castleY      = 160;
+	// var castleW      = 180;
+	// var castleH      = 160;
+	// if (theme === "winter") {
+	// 	var img71   = loadImage('resources/castle_st_w.png', composite);
+	// } else {
+	// 	var img71   = loadImage('resources/castle_st.png', composite);
+	// }
+	// var castle_st_X  = 300;
+	// var castle_st_Y  = 160;
+	// var castle_st_W  = 195;
+	// var castle_st_H  = 175;
+	// if (theme === "winter") {
+	// 	var img8    = loadImage('resources/wishing_well_builded_w.png', composite);
+	// } else {
+	// 	var img8    = loadImage('resources/wishing_well_builded.png', composite);
+	// }
+	// var wellX        = 230;
+	// var wellY        = 200;
+	// var wellW        = 41;
+	// var wellH        = 47;
+	// if (theme === "winter") {
+	// 	var img9    = loadImage('resources/treasury_as_w.png', composite);
+	// } else {
+	// 	var img9    = loadImage('resources/treasury_as.png', composite);
+	// }
+	// var treasuryX    = 200;
+	// var treasuryY    = 270;
+	// var treasuryW    = 125;
+	// var treasuryH    = 120;
+	// if (theme === "winter") {
+	// 	var img10   = loadImage('resources/gallows_w.png', composite);
+	// } else {
+	// 	var img10   = loadImage('resources/gallows.png', composite);
+	// }
+	// var gallowsX     = 485;
+	// var gallowsY     = 270;
+	// var gallowsW     = 50;
+	// var gallowsH     = 75;
+	// if (theme === "winter") {
+	// 	var img11   = loadImage('resources/fountain_w.png', composite);
+	// } else {
+	// 	var img11   = loadImage('resources/fountain.png', composite);
+	// }
+	// var fountainX    = 485;
+	// var fountainY    = 290;
+	// var fountainW    = 70;
+	// var fountainH    = 55;
+	// //var img13 is already used in fire singleton
+	// if (theme === "winter") {
+	// 	var img14   = loadImage('resources/inn_w.png', composite);
+	// } else {
+	// 	var img14   = loadImage('resources/inn.png', composite);
+	// }
+	// var innX = 270;
+	// var innY = 80;
+	// var innW = 87;
+	// var innH = 79;
+	// var img15   = loadImage('resources/fire_a.gif', composite);
+	// img15.id      = "fire_graphics";
+	// if (theme === "winter") {
+	// 	var img16   = loadImage('resources/stable_w.png', composite);
+	// } else {
+	// 	var img16   = loadImage('resources/stable.png', composite);
+	// }
+	// var stableX = 480;
+	// var stableY = 100;
+	// var stableW = 160;
+	// var stableH = 120;
+	// if (theme === "winter") {
+	// 	var img17   = loadImage('resources/archery_range_w.png', composite);
+	// } else {
+	// 	var img17   = loadImage('resources/archery_range.png', composite);
+	// }
+	// var archeryX = 390;
+	// var archeryY = 90;
+	// var archeryW = 80;
+	// var archeryH = 80;
+	// var smoke_anm   = loadImage('resources/smoke.gif', composite);
+	// var smoke_anm2  = loadImage('resources/smoke.gif', composite);
+	// //smoke_and.id      = "smoke_graphics";
+	// var smokeX = 90;
+	// var smokeY = 260;
+	// var smokeW = 100;
+	// var smokeH = 100;
+	// if (theme === "winter") {
+	// 	var chest_img   = loadImage('resources/chest_w.png', composite);
+	// } else {
+	// 	var chest_img   = loadImage('resources/chest.png', composite);
+	// }
+	// var chest_imgW = 48;
+	// var chest_imgH = 48;
+
+	// buildingsInTownB=[];
+	// buildingsInTownX=[];
+	// buildingsInTownY=[];
+	// buildingsInTownW=[];
+	// buildingsInTownH=[];
 
 	var resourceDir = './resources/'
 
@@ -4203,7 +4247,7 @@
 	Object.freeze(RES_NAME_SUFFIX);
 
 	function prepareResPath(resourceName) {
-		switch(theme) {
+		switch(config.theme) {
 			case 'autumn'	: return resourceDir + resourceName + RES_NAME_SUFFIX.AUTUMN + '.png';
 			case 'winter'	: return resourceDir + resourceName + RES_NAME_SUFFIX.WINTER + '.png';
 			case 'spring'	: return resourceDir + resourceName + RES_NAME_SUFFIX.SPRING + '.png';
@@ -4348,6 +4392,13 @@
 		h: 79
 	};
 
+	var chest = {
+		name: 'chest',
+		x: 0,
+		y: 0,
+		w: 48,
+		h: 48,
+	}
 
 	var buildingsInTown = [];
 
@@ -4519,11 +4570,11 @@
 		}
 		if (game.chestCity === 1) {
 			console.log("try to draw a chest of gold");
-			var chest_imgX = Math.floor(Math.random() * (800-chest_imgW*2)+chest_imgW);
-			var chest_imgY = Math.floor(Math.random() * (480-chest_imgH*2)+chest_imgH);
-			console.log("locX is "+chest_imgX+" and locY is "+chest_imgY);
-			ctx.drawImage(chest_img, chest_imgX, chest_imgY);
-			pushBuilding('chest', chest_imgX, chest_imgY, chest_imgW, chest_imgH);
+			chest.x = Math.floor(Math.random() * (800-chest_imgW*2)+chest_imgW);
+			chest.y = Math.floor(Math.random() * (480-chest_imgH*2)+chest_imgH);
+			console.log("locX is "+chest.x+" and locY is "+chest.y);
+			ctx.drawImage(chest_img, chest.x, chest.y);
+			pushBuilding(chest);
 		}
 	}
 	function loadImage(src, onload) {
@@ -4548,8 +4599,8 @@
 	}
 
 	function tap (e) {
-		var x = e.pageX - canvasPos.x;
-		var y = e.pageY - canvasPos.y;
+		var x = (e.pageX - canvasPos.x) * canvasScaleRatio;
+		var y = (e.pageY - canvasPos.y) * canvasScaleRatio;
 
 		buildingsInTown.forEach(function(element) {
 			if (y > element.y && y < element.y + element.h && x > element.x && x < element.x + element.w) {
@@ -4672,7 +4723,7 @@
 			updateUI();
 			openTab(null, 'tabTroopsHiring');
 		}
-		if (buildingName==='chest') {
+		if (buildingName === chest.name) {
 			showAlert = false;
 			game.chestCityOpen();
 		}
@@ -4817,19 +4868,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 		if (answer === 3) {
 			isTutorialState = false;
-			document.getElementById("tabBuilding").style.visibility = "visible"
+			document.getElementById("tabBuilding").classList.remove('is-tutorial');
 			for (var i=0; i<disabledElements.length; i++) {
 				document.getElementById(disabledElements[i]).disabled = false;
 			}
 
-			var buildings = document.querySelectorAll('.building');
-			var imgs = document.querySelectorAll('.building img');
-			for (var i =0; i < buildings.length; i++) {
-				buildings[i].style.visibility = "visible";
-			}
-
-			for (var j = 0; j < imgs.length; j++) {
-				imgs[j].style.visibility = "visible";
+			var hiddenElements = document.querySelectorAll('.is-tutorial');
+			if (hiddenElements.length) {
+				hiddenElements.forEach(function (el) {
+					el.classList.remove('is-tutorial');
+				})
 			}
 		}
 

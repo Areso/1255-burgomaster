@@ -338,7 +338,7 @@ body {
 #heroMarketList {
   overflow-y: auto;
   height: 100%;
-  max-height: 140px;
+  max-height: 175px;
 }
 .hiring-grid {
   grid-template-columns: repeat(80, 1.25%);
@@ -373,4 +373,51 @@ body {
 #heroEquipment > .inventory-item__wrapper-img {
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+.is-tutorial {
+  visibility: hidden !important;
+}
+
+#tabInn button.btn {
+  font-size: 13px;
+}
+
+#heroUpkeep {
+  margin-top: 10px;
+}
+
+#heroStats {
+  margin: 10px 0;
+}
+
+#tabAutocampaignJournal,
+#tabAutocampaignBattle {
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.accordion,
+.accordion-battle {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.accordion-header,
+.accordion-battle-header {
+  padding: 8px 10px;
+  border: 1px solid #333;
+  background-color: #f1f1f1;
+}
+
+.accordion-body,
+.accordion-battle-body {
+  display: none;
+  padding: 10px;
+}
+
+.accordion.active > .accordion-body,
+.accordion-battle.active > .accordion-battle-body {
+  display: block;
 }
