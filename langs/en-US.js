@@ -6,8 +6,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//5
 localeStrings.push("placeholder");
-localeStrings.push("population is increased");
-localeStrings.push("population is decreased");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("your city is reached population limit. Build new houses or upgrade existing ones");//10
 localeStrings.push("game saved successfully");
@@ -511,3 +511,5 @@ locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables fi
 locObj.buildUpgradeTreasury = {"txt":"build or upgrade your Treasury", "loc":"the endturn tip in case of overflowing gold amount"}
 locObj.moneyIncreased = {"txt":"amount of money is increased", "loc":"happens when s-to-s money value increased"};
 locObj.moneyDecreased = {"txt":"amount of money is decreased", "loc":"happens when s-to-s money value decreased"};
+locObj.popIncreased = {"txt":"population is increased", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"population is decreased", "loc":"happens when s-to-s population value decreased"};

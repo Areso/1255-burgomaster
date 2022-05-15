@@ -3362,9 +3362,7 @@
 					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1",fireProgress);
 				}
 			}
-
 			//console.log("%c GOLD AFTER UPKEEP PAYMENTS: ", "color: blue", game.gold);
-
 			taxes = Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
 			game.addMoneyToTreasury(taxes);
 			if (game.gold !== gold_was) {
@@ -3377,9 +3375,9 @@
 			}
 			if (game.pop !== pop_was) {
 				if (game.pop > pop_was) {
-					msg = localeStrings[7];
+					msg = locObj.popIncreased.txt;
 				} else {
-					msg = localeStrings[8];
+					msg = locObj.popDecreased.txt;
 				}
 				postEventLog(msg);
 			};

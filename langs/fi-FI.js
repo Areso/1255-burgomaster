@@ -6,8 +6,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//5
 localeStrings.push("placeholder");
-localeStrings.push("Väkiluku kasvoi.");
-localeStrings.push("Väkiluku pieneni.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placehodler");
 localeStrings.push("Kaupungissasi ei ole tarpeeksi tilaa uusille kansalaisille. Rakenna tai päivitä taloja.");//10
 localeStrings.push("Peli tallennettu onnistuneesti.");
@@ -425,3 +425,5 @@ locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 
 locObj.buildUpgradeTreasury = {"txt":"Rakenna tai päivitä Rahasto", "loc":"the endturn tip in case of overflowing gold amount"}
 locObj.moneyIncreased = {"txt":"Raha lisääntyi", "loc":"happens when s-to-s money value increased"};
 locObj.moneyDecreased = {"txt":"Raha lisääntyi", "loc":"happens when s-to-s money value decreased"};
+locObj.popIncreased = {"txt":"Väkiluku kasvoi", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"Väkiluku pieneni", "loc":"happens when s-to-s population value decreased"};

@@ -5,9 +5,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//5
-localeStrings.push("placehodler");
-localeStrings.push("loĝantaro pliiĝas");
-localeStrings.push("loĝantaro malpliiĝas");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn");//10
 localeStrings.push("ludo konservis sukcese");
@@ -510,4 +510,6 @@ locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables fi
 locObj.buildUpgradeTreasury = {"txt":"konstruu aŭ plibonigu vian trezorejon", "loc":"the endturn tip in case of overflowing gold amount"}
 locObj.moneyIncreased = {"txt":"kvanto da mono pliiĝas", "loc":"happens when s-to-s money value increased"};
 locObj.moneyDecreased = {"txt":"kvanto da mono malpliiĝas", "loc":"happens when s-to-s money value decreased"};
+locObj.popIncreased = {"txt":"loĝantaro pliiĝas", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"loĝantaro malpliiĝas", "loc":"happens when s-to-s population value decreased"};
 

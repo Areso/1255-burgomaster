@@ -6,8 +6,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//5
 localeStrings.push("placehodler");
-localeStrings.push("население растет!");
-localeStrings.push("население убывает");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("ваш город достиг максимальной численности; постройте или улучшите дома");//10
 localeStrings.push("игра сохранена успешно");
@@ -513,4 +513,5 @@ locObj.buildArchery = {"txt":"Стрельбище позволяет наним
 locObj.buildUpgradeTreasury = {"txt":"постройте или улучшите вашу Сокровищницу", "loc":"the endturn tip in case of overflowing gold amount"}
 locObj.moneyIncreased = {"txt":"казна пополняется, милорд!", "loc":"happens when s-to-s money value increased"};
 locObj.moneyDecreased = {"txt":"казна пустеет, милорд", "loc":"happens when s-to-s money value decreased"};
-
+locObj.popIncreased = {"txt":"население растет!", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"население убывает", "loc":"happens when s-to-s population value decreased"};
