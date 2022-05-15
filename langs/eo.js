@@ -9,7 +9,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn");//10
+localeStrings.push("placeholder");//10
 localeStrings.push("ludo konservis sukcese");
 localeStrings.push("ludo ŝarĝis sukcese");
 localeStrings.push("Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!");
@@ -512,4 +512,4 @@ locObj.moneyIncreased = {"txt":"kvanto da mono pliiĝas", "loc":"happens when s-
 locObj.moneyDecreased = {"txt":"kvanto da mono malpliiĝas", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"loĝantaro pliiĝas", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"loĝantaro malpliiĝas", "loc":"happens when s-to-s population value decreased"};
-
+locObj.buildUpgradeHouse = {"txt":"via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn", "loc":"the endturn tip in case of overpopulating"};

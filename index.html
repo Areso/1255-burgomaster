@@ -3236,9 +3236,7 @@
 				} else {
 					game.pop = pop_limit;
 					if (game.userPopAck === 0) {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[10]);
-						postEventLog(msg);
+						postEventLog(locObj.buildUpgradeHouse.txt, "bold");
 						game.userPopAck = 1;
 					}
 					//TUTORIALS

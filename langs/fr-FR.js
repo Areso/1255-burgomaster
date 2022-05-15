@@ -9,7 +9,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Votre cité a atteint sa limite de population. Construisez de nouvelles maisons ou améliorez celles qui existent.");//10
+localeStrings.push("placeholder");//10
 localeStrings.push("Sauvegarde réussie.");
 localeStrings.push("Chargement réussi.");
 localeStrings.push("Voulez-vous charger une partie ? Tout changement non sauvegardé sera perdu.");
@@ -512,3 +512,4 @@ locObj.moneyIncreased = {"txt":"Votre richesse augmente", "loc":"happens when s-
 locObj.moneyDecreased = {"txt":"Votre richesse diminue", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"La population augmente", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"La population diminue", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"Votre cité a atteint sa limite de population. Construisez de nouvelles maisons ou améliorez celles qui existent", "loc":"the endturn tip in case of overpopulating"};

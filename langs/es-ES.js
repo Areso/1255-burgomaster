@@ -9,7 +9,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes.");//10
+localeStrings.push("placeholder");//10
 localeStrings.push("Juego guardado exitosamente.");
 localeStrings.push("Juego cargado exitosamente.");
 localeStrings.push("¿Cargar juego? Perderás cualquier avance no guardado");
@@ -509,3 +509,4 @@ locObj.moneyIncreased = {"txt":"Tu riqueza incrementadó", "loc":"happens when s
 locObj.moneyDecreased = {"txt":"Tu riqueza se redujo", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"La población creció", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"La población se redujo", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes", "loc":"the endturn tip in case of overpopulating"};

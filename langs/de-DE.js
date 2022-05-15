@@ -9,7 +9,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Eure Stadt ist am Bevölkerungslimit. Errichtet neue Häuser oder rüstet bestehende auf.");//10
+localeStrings.push("placeholder");//10
 localeStrings.push("Spiel erfolgreich gespeichert.");
 localeStrings.push("Spiel erfolgreich geladen.");
 localeStrings.push("Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!");
@@ -513,4 +513,4 @@ locObj.moneyIncreased = {"txt":"Euer Reichtum vergrößerte sich", "loc":"happen
 locObj.moneyDecreased = {"txt":"Euer Reichtum verringerte sich", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"Die Bevölkerung wuchs", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"Die Bevölkerung ging zurück", "loc":"happens when s-to-s population value decreased"};
-
+locObj.buildUpgradeHouse = {"txt":"Eure Stadt ist am Bevölkerungslimit. Errichtet neue Häuser oder rüstet bestehende auf", "loc":"the endturn tip in case of overpopulating"};

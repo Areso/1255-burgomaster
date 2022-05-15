@@ -9,7 +9,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("your city is reached population limit. Build new houses or upgrade existing ones");//10
+localeStrings.push("placeholder");//10
 localeStrings.push("game saved successfully");
 localeStrings.push("game loaded successfully");
 localeStrings.push("Load game? You will lose any unsaved progress!");
@@ -513,3 +513,4 @@ locObj.moneyIncreased = {"txt":"amount of money is increased", "loc":"happens wh
 locObj.moneyDecreased = {"txt":"amount of money is decreased", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"population is increased", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"population is decreased", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"your city is reached population limit. Build new houses or upgrade existing ones", "loc":"the endturn tip in case of overpopulating"};

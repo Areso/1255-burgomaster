@@ -8,8 +8,8 @@ localeStrings.push("placeholder");//5
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placehodler");
-localeStrings.push("Kaupungissasi ei ole tarpeeksi tilaa uusille kansalaisille. Rakenna tai päivitä taloja.");//10
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//10
 localeStrings.push("Peli tallennettu onnistuneesti.");
 localeStrings.push("Peli ladattu onnistuneesti.");
 localeStrings.push("Lataa peli? Kaikki tallentamaton kehityksesi katoaa!");
@@ -427,3 +427,4 @@ locObj.moneyIncreased = {"txt":"Raha lisääntyi", "loc":"happens when s-to-s mo
 locObj.moneyDecreased = {"txt":"Raha lisääntyi", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"Väkiluku kasvoi", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"Väkiluku pieneni", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"Kaupungissasi ei ole tarpeeksi tilaa uusille kansalaisille. Rakenna tai päivitä taloja", "loc":"the endturn tip in case of overpopulating"};
