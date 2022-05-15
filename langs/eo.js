@@ -10,8 +10,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
-localeStrings.push("ludo konservis sukcese");
-localeStrings.push("ludo ŝarĝis sukcese");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!");
 localeStrings.push("Pardonu! Ne ekzistas konserva dosiero!");
 localeStrings.push("Konservu ludon? Vi reskribos ian ajn konservitan!");//15
@@ -513,3 +513,5 @@ locObj.moneyDecreased = {"txt":"kvanto da mono malpliiĝas", "loc":"happens when
 locObj.popIncreased = {"txt":"loĝantaro pliiĝas", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"loĝantaro malpliiĝas", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"ludo konservis sukcese", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"ludo ŝarĝis sukcese", "loc":"when loaded completed successfully"};

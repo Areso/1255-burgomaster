@@ -10,8 +10,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
-localeStrings.push("Peli tallennettu onnistuneesti.");
-localeStrings.push("Peli ladattu onnistuneesti.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Lataa peli? Kaikki tallentamaton kehityksesi katoaa!");
 localeStrings.push("Ei tallennusta ladattavaksi.");
 localeStrings.push("Tallenna peli? Syrjäytät edellisen tallennuksen!");//15
@@ -428,3 +428,5 @@ locObj.moneyDecreased = {"txt":"Raha lisääntyi", "loc":"happens when s-to-s mo
 locObj.popIncreased = {"txt":"Väkiluku kasvoi", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"Väkiluku pieneni", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"Kaupungissasi ei ole tarpeeksi tilaa uusille kansalaisille. Rakenna tai päivitä taloja", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"Peli tallennettu onnistuneesti", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"Peli ladattu onnistuneesti", "loc":"when loaded completed successfully"};

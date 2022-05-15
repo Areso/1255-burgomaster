@@ -10,8 +10,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
-localeStrings.push("Juego guardado exitosamente.");
-localeStrings.push("Juego cargado exitosamente.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("¿Cargar juego? Perderás cualquier avance no guardado");
 localeStrings.push("¡Perdón¡ ¡No hay un juego guardado para cargar!");
 localeStrings.push("¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas! ");//15
@@ -510,3 +510,5 @@ locObj.moneyDecreased = {"txt":"Tu riqueza se redujo", "loc":"happens when s-to-
 locObj.popIncreased = {"txt":"La población creció", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"La población se redujo", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"Juego guardado exitosamente", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"Juego cargado exitosamente", "loc":"when loaded completed successfully"};

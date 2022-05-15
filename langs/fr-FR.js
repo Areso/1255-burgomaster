@@ -10,8 +10,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
-localeStrings.push("Sauvegarde réussie.");
-localeStrings.push("Chargement réussi.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Voulez-vous charger une partie ? Tout changement non sauvegardé sera perdu.");
 localeStrings.push("Désolé, vous n'avez aucune sauvegarde.");
 localeStrings.push("Voulez-vous sauvegarder ? La sauvegarde précédente sera ecrasée.");//15
@@ -513,3 +513,5 @@ locObj.moneyDecreased = {"txt":"Votre richesse diminue", "loc":"happens when s-t
 locObj.popIncreased = {"txt":"La population augmente", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"La population diminue", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"Votre cité a atteint sa limite de population. Construisez de nouvelles maisons ou améliorez celles qui existent", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"Sauvegarde réussie", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"Chargement réussi", "loc":"when loaded completed successfully"};

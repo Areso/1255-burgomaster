@@ -10,8 +10,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
-localeStrings.push("game saved successfully");
-localeStrings.push("game loaded successfully");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Load game? You will lose any unsaved progress!");
 localeStrings.push("Sorry! There is no save to load from!");
 localeStrings.push("Save game? You will rewrite any save you already have!");//15
@@ -514,3 +514,5 @@ locObj.moneyDecreased = {"txt":"amount of money is decreased", "loc":"happens wh
 locObj.popIncreased = {"txt":"population is increased", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"population is decreased", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"your city is reached population limit. Build new houses or upgrade existing ones", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"game saved successfully", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"game loaded successfully", "loc":"when loaded completed successfully"};

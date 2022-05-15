@@ -10,8 +10,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
-localeStrings.push("Spiel erfolgreich gespeichert.");
-localeStrings.push("Spiel erfolgreich geladen.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!");
 localeStrings.push("Verzeiht! Es wurde kein gespeicherter Spielstand gefunden.");
 localeStrings.push("Spiel speichern? Alte Spielstände werden dabei überschrieben!");//15
@@ -514,3 +514,5 @@ locObj.moneyDecreased = {"txt":"Euer Reichtum verringerte sich", "loc":"happens 
 locObj.popIncreased = {"txt":"Die Bevölkerung wuchs", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"Die Bevölkerung ging zurück", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"Eure Stadt ist am Bevölkerungslimit. Errichtet neue Häuser oder rüstet bestehende auf", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"Spiel erfolgreich gespeichert", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"Spiel erfolgreich geladen", "loc":"when loaded completed successfully"};

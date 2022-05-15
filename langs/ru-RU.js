@@ -10,8 +10,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
-localeStrings.push("игра сохранена успешно");
-localeStrings.push("игра загружена успешно");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Загрузить игру? Вы потеряете весь несохраненный прогресс!");
 localeStrings.push("Извините, но сохраненных игр нет!");
 localeStrings.push("Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть");//15
@@ -516,3 +516,5 @@ locObj.moneyDecreased = {"txt":"казна пустеет, милорд", "loc":
 locObj.popIncreased = {"txt":"население растет!", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"население убывает", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"ваш город достиг максимальной численности; постройте или улучшите дома", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"игра сохранена успешно", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"игра загружена успешно", "loc":"when loaded completed successfully"};

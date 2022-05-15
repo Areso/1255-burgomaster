@@ -5141,11 +5141,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (SaveType === "silent") {
 			if (game.userASaveAck === 0) {
 				game.userASaveAck = 1;
-				document.getElementById("log").value = document.getElementById("log").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+				postEventLog(locObj.savedSuccessfully.txt, "bold");
 				scrollDown();
 			}
 		} else {
-			document.getElementById("log").value = document.getElementById("log").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+			postEventLog(locObj.savedSuccessfully.txt, "bold");
 			scrollDown();
 		}
 	}
@@ -5212,7 +5212,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		composite();
 		enforceColorMode();
 		updateUI();
-		document.getElementById("log").value = document.getElementById("log").value+"\r\n"+getTime(0)+": "+localeStrings[12];
+		postEventLog(locObj.loadedSuccessfully.txt, "bold");
 		scrollDown();
 	}
 	function updateUI() {
