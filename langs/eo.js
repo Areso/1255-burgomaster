@@ -2,13 +2,13 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("konstruu aŭ plibonigu vian trezorejon");
-localeStrings.push("kvanto da mono pliiĝas");
-localeStrings.push("kvanto da mono malpliiĝas");//5
-localeStrings.push("kvanto da mono ne ŝanĝiĝis");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placehodler");
 localeStrings.push("loĝantaro pliiĝas");
 localeStrings.push("loĝantaro malpliiĝas");
-localeStrings.push("loĝantaro ne ŝanĝiĝis");
+localeStrings.push("placeholder");
 localeStrings.push("via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn");//10
 localeStrings.push("ludo konservis sukcese");
 localeStrings.push("ludo ŝarĝis sukcese");
@@ -507,4 +507,7 @@ locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive 
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
 locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables first", "loc":"error msg bulding archery"};
+locObj.buildUpgradeTreasury = {"txt":"konstruu aŭ plibonigu vian trezorejon", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"kvanto da mono pliiĝas", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"kvanto da mono malpliiĝas", "loc":"happens when s-to-s money value decreased"};
 

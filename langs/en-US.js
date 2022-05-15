@@ -2,13 +2,13 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("build or upgrade your Treasury");
-localeStrings.push("amount of money is increased");
-localeStrings.push("amount of money is decreased");//5
-localeStrings.push("amount of money is not changed");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placeholder");
 localeStrings.push("population is increased");
 localeStrings.push("population is decreased");
-localeStrings.push("population is not changed");
+localeStrings.push("placeholder");
 localeStrings.push("your city is reached population limit. Build new houses or upgrade existing ones");//10
 localeStrings.push("game saved successfully");
 localeStrings.push("game loaded successfully");
@@ -508,3 +508,6 @@ locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive 
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
 locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables first", "loc":"error msg bulding archery"};
+locObj.buildUpgradeTreasury = {"txt":"build or upgrade your Treasury", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"amount of money is increased", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"amount of money is decreased", "loc":"happens when s-to-s money value decreased"};

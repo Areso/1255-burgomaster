@@ -2,13 +2,13 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Construye o mejora tu Tesorería");
-localeStrings.push("Tu riqueza incrementadó");
-localeStrings.push("Tu riqueza se redujo.");//5
-localeStrings.push("Tu riqueza se mantuvo.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placehodler");
 localeStrings.push("La población creció.");
 localeStrings.push("La población se redujo.");
-localeStrings.push("La población se mantuvo constante.");
+localeStrings.push("placeholder");
 localeStrings.push("Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes.");//10
 localeStrings.push("Juego guardado exitosamente.");
 localeStrings.push("Juego cargado exitosamente.");
@@ -500,3 +500,10 @@ locObj.couldntRecordPledge = {"txt": "It seems you are not logged it. Your pledg
 
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
+
+locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
+locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
+locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables first", "loc":"error msg bulding archery"};
+locObj.buildUpgradeTreasury = {"txt":"Construye o mejora tu Tesorería", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"Tu riqueza incrementadó", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"Tu riqueza se redujo", "loc":"happens when s-to-s money value decreased"};

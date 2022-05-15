@@ -1060,9 +1060,7 @@
 			if (gold_possible > gold_limit) {
 				game.gold      = gold_limit;
 				if (game.userGoldAck === 0) {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[3]);
-					postEventLog(msg);
+					postEventLog(locObj.buildUpgradeTreasury.txt, "bold");
 					game.userGoldAck = 1;
 				}
 			} else {
@@ -3371,9 +3369,9 @@
 			game.addMoneyToTreasury(taxes);
 			if (game.gold !== gold_was) {
 				if (game.gold > gold_was) {
-					msg = localeStrings[4];
+					msg = locObj.moneyIncreased.txt;
 				} else {
-					msg = localeStrings[5];
+					msg = locObj.moneyDecreased.txt;
 				}
 				postEventLog(msg);
 			}

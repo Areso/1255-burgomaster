@@ -2,13 +2,13 @@ var localeStrings = [];
 localeStrings.push("Tervetuloa peliin!");
 localeStrings.push("Tehtäväsi on yksinkertainen; hallitse kaupunkia sen johtajana.");
 localeStrings.push("Joka vuodenaika (30 sec), kansalaisesi maksavat veroja ja väkilukusi kasvaa.");
-localeStrings.push("Rakenna tai päivitä Rahasto.");
-localeStrings.push("Raha lisääntyi.");
-localeStrings.push("Raha lisääntyi.");//5
-localeStrings.push("Raha pysyi samana.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placeholder");
 localeStrings.push("Väkiluku kasvoi.");
 localeStrings.push("Väkiluku pieneni.");
-localeStrings.push("Väkiluku pysyi samana.");
+localeStrings.push("placehodler");
 localeStrings.push("Kaupungissasi ei ole tarpeeksi tilaa uusille kansalaisille. Rakenna tai päivitä taloja.");//10
 localeStrings.push("Peli tallennettu onnistuneesti.");
 localeStrings.push("Peli ladattu onnistuneesti.");
@@ -419,3 +419,9 @@ locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe'
 
 locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
 locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};
+
+
+
+locObj.buildUpgradeTreasury = {"txt":"Rakenna tai päivitä Rahasto", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"Raha lisääntyi", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"Raha lisääntyi", "loc":"happens when s-to-s money value decreased"};

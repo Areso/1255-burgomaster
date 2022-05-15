@@ -2,13 +2,13 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("постройте или улучшите вашу Сокровищницу");
-localeStrings.push("казна пополняется, милорд!");
-localeStrings.push("казна пустеет, милорд");//5
-localeStrings.push("количество злата не изменилось");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placehodler");
 localeStrings.push("население растет!");
 localeStrings.push("население убывает");
-localeStrings.push("количество подданных не изменилось");
+localeStrings.push("placeholder");
 localeStrings.push("ваш город достиг максимальной численности; постройте или улучшите дома");//10
 localeStrings.push("игра сохранена успешно");
 localeStrings.push("игра загружена успешно");
@@ -510,4 +510,7 @@ locObj.deadCounselorDemolishAnsYes = {"txt":"Да, сносим это здан�
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
 locObj.buildArchery = {"txt":"Стрельбище позволяет нанимать конных лучников. Сначала нужно построить конюшни", "loc":"ошибка при постройке стрельбища"};
+locObj.buildUpgradeTreasury = {"txt":"постройте или улучшите вашу Сокровищницу", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"казна пополняется, милорд!", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"казна пустеет, милорд", "loc":"happens when s-to-s money value decreased"};
 
