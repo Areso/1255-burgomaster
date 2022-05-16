@@ -12,12 +12,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("¿Cargar juego? Perderás cualquier avance no guardado");
-localeStrings.push("¡Perdón¡ ¡No hay un juego guardado para cargar!");
-localeStrings.push("¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas! ");//15
-localeStrings.push("Por favor ingresa el código de guardado");
-localeStrings.push("código muy largo");
-localeStrings.push("¿Quieres contratar un guardia? Te costará %arg1 de oro y luego %arg2 de oro por cada estación.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Contrataste un guardia. ");
 localeStrings.push("No tienes suficiente oro para hacer eso.");//20
 localeStrings.push("Se requiere una Tesorería para contratar un guardia. ");
@@ -512,3 +512,9 @@ locObj.popDecreased = {"txt":"La población se redujo", "loc":"happens when s-to
 locObj.buildUpgradeHouse = {"txt":"Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"Juego guardado exitosamente", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"Juego cargado exitosamente", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"¿Cargar juego? Perderás cualquier avance no guardado", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"¡Perdón¡ ¡No hay un juego guardado para cargar!", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Por favor ingresa el código de guardado", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"código muy largo", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"¿Quieres contratar un guardia? Te costará %arg1 de oro y luego %arg2 de oro por cada estación", "loc":"hiring treasury guard confirmation dialogue"};

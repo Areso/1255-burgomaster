@@ -12,12 +12,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Загрузить игру? Вы потеряете весь несохраненный прогресс!");
-localeStrings.push("Извините, но сохраненных игр нет!");
-localeStrings.push("Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть");//15
-localeStrings.push("Пожалуйста, вставьте сохранение");
-localeStrings.push("очень длинная строка");
-localeStrings.push("Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу\nи %arg2 золотых за каждый сезон");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Вы наняли охранника");
 localeStrings.push("Недостаточно золота!");//20
 localeStrings.push("Для найма охранника необходима Сокровищница!");
@@ -518,3 +518,9 @@ locObj.popDecreased = {"txt":"население убывает", "loc":"happens
 locObj.buildUpgradeHouse = {"txt":"ваш город достиг максимальной численности; постройте или улучшите дома", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"игра сохранена успешно", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"игра загружена успешно", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Загрузить игру? Вы потеряете весь несохраненный прогресс!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Извините, но сохраненных игр нет!", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Пожалуйста, вставьте сохранение", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"очень длинная строка", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу\nи %arg2 золотых за каждый сезон", "loc":"hiring treasury guard confirmation dialogue"};

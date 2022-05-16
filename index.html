@@ -5123,7 +5123,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			writeSave("silent");
 		} else {
 			if (localStorage.getItem('game')!==null) {
-				question = localeStrings[15];
+				question = locObj.dialogSaveGame.txt;
 				showModal(1, '', saveGameCallback, question, localeStrings[32], localeStrings[33])
 			} else {
 				writeSave();
@@ -5150,7 +5150,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 	}
 	function loadGame() {
-		question = localeStrings[13];
+		question = locObj.dialogLoadGame.txt;
 		showModal(1, '', loadGameCallback, question,  localeStrings[32], localeStrings[33])
 	}
 	function loadGameCallback() {
@@ -5162,7 +5162,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				overrideGame(gameTemp);
 			} else {
 				//TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
-				alert(localeStrings[14]);
+				alert(localeStrings[locObj.noSaveGame.txt]);
 			}
 		}
 	}

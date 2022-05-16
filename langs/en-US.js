@@ -12,12 +12,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Load game? You will lose any unsaved progress!");
-localeStrings.push("Sorry! There is no save to load from!");
-localeStrings.push("Save game? You will rewrite any save you already have!");//15
-localeStrings.push("Please insert save string");
-localeStrings.push("very long string");
-localeStrings.push("Do you want to hire a guardsman? He will cost you %arg1 gold\nand then %arg2 gold per each season!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("You hired a guardsman!");
 localeStrings.push("Not enough gold to do that!");//20
 localeStrings.push("Treasury is required to hiring a guardsman!");
@@ -516,3 +516,10 @@ locObj.popDecreased = {"txt":"population is decreased", "loc":"happens when s-to
 locObj.buildUpgradeHouse = {"txt":"your city is reached population limit. Build new houses or upgrade existing ones", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"game saved successfully", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"game loaded successfully", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Load game? You will lose any unsaved progress!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Sorry! There is no save to load from!", "loc":"in case there is no savegame"};
+//TODO check only in case of overwrite or every savegame dialog! 
+locObj.dialogSaveGame = {"txt":"Save game? You will rewrite any save you already have!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Please insert save string", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"very long string", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Do you want to hire a guardsman? He will cost you %arg1 gold\nand then %arg2 gold per each season!", "loc":"hiring treasury guard confirmation dialogue"};

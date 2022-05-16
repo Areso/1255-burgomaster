@@ -12,12 +12,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!");
-localeStrings.push("Pardonu! Ne ekzistas konserva dosiero!");
-localeStrings.push("Konservu ludon? Vi reskribos ian ajn konservitan!");//15
-localeStrings.push("Bonvolu enigi konservan ĉenon");
-localeStrings.push("tre longa ĉeno");
-localeStrings.push("Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Vi dungis gardiston!");
 localeStrings.push("Ne sufiĉe da oro por fari tion!");//20
 localeStrings.push("Trezorejo necesas por dungi gardiston!");
@@ -515,3 +515,9 @@ locObj.popDecreased = {"txt":"loĝantaro malpliiĝas", "loc":"happens when s-to-
 locObj.buildUpgradeHouse = {"txt":"via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"ludo konservis sukcese", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"ludo ŝarĝis sukcese", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Pardonu! Ne ekzistas konserva dosiero!", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"Konservu ludon? Vi reskribos ian ajn konservitan!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Bonvolu enigi konservan ĉenon", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"tre longa ĉeno", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!", "loc":"hiring treasury guard confirmation dialogue"};

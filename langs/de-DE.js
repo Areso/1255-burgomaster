@@ -12,12 +12,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!");
-localeStrings.push("Verzeiht! Es wurde kein gespeicherter Spielstand gefunden.");
-localeStrings.push("Spiel speichern? Alte Spielstände werden dabei überschrieben!");//15
-localeStrings.push("Bitte fügt Euren Spielstand ein.");
-localeStrings.push("sehr lange Zeichenkette");
-localeStrings.push("Möchtet Ihr einen Wachmann einstellen? Er wird Euch einmalig %arg1 Gold und danach %arg2 Gold pro Saison kosten.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Ihr habt einen Wachmann angeheuert.");
 localeStrings.push("Ihr besitzt leider nicht genug Gold dafür.");//20
 localeStrings.push("Ihr benötigt eine Schatzkammer, um einen Wachmann anheuern zu können.");
@@ -516,3 +516,9 @@ locObj.popDecreased = {"txt":"Die Bevölkerung ging zurück", "loc":"happens whe
 locObj.buildUpgradeHouse = {"txt":"Eure Stadt ist am Bevölkerungslimit. Errichtet neue Häuser oder rüstet bestehende auf", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"Spiel erfolgreich gespeichert", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"Spiel erfolgreich geladen", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Verzeiht! Es wurde kein gespeicherter Spielstand gefunden", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"Spiel speichern? Alte Spielstände werden dabei überschrieben!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Bitte fügt Euren Spielstand ein", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"sehr lange Zeichenkette", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Möchtet Ihr einen Wachmann einstellen? Er wird Euch einmalig %arg1 Gold und danach %arg2 Gold pro Saison kosten", "loc":"hiring treasury guard confirmation dialogue"};

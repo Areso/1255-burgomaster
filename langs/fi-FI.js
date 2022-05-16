@@ -12,12 +12,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//10
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Lataa peli? Kaikki tallentamaton kehityksesi katoaa!");
-localeStrings.push("Ei tallennusta ladattavaksi.");
-localeStrings.push("Tallenna peli? Syrjäytät edellisen tallennuksen!");//15
-localeStrings.push("Liitä tallennussarja.");
-localeStrings.push("todella pitkä sarja");
-localeStrings.push("Haluatko palkata vartijan? Se maksaa %arg1 rahaa ja sitten %arg2 rahaa joka vuodenaika.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Palkkasit vartijan.");
 localeStrings.push("Ei tarpeeksi rahaa.");//20
 localeStrings.push("Tarvitset Rahaston vartijan palkkaamiseen.");
@@ -430,3 +430,9 @@ locObj.popDecreased = {"txt":"Väkiluku pieneni", "loc":"happens when s-to-s pop
 locObj.buildUpgradeHouse = {"txt":"Kaupungissasi ei ole tarpeeksi tilaa uusille kansalaisille. Rakenna tai päivitä taloja", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"Peli tallennettu onnistuneesti", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"Peli ladattu onnistuneesti", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Lataa peli? Kaikki tallentamaton kehityksesi katoaa!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Ei tallennusta ladattavaksi", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"Tallenna peli? Syrjäytät edellisen tallennuksen!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Liitä tallennussarja", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"todella pitkä sarja", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Haluatko palkata vartijan? Se maksaa %arg1 rahaa ja sitten %arg2 rahaa joka vuodenaika", "loc":"hiring treasury guard confirmation dialogue"};
