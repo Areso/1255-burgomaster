@@ -18,12 +18,12 @@ localeStrings.push("placeholder");//15
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Ihr habt einen Wachmann angeheuert.");
-localeStrings.push("Ihr besitzt leider nicht genug Gold dafür.");//20
-localeStrings.push("Ihr benötigt eine Schatzkammer, um einen Wachmann anheuern zu können.");
-localeStrings.push("Möchtet Ihr einen Wachmann entlassen?");
-localeStrings.push("Ihr habt einen Wachmann entlassen.");
-localeStrings.push("Ihr beschäftigt zur Zeit keine Wachleute.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Verrats");//25
 localeStrings.push("Spionage");
 localeStrings.push("Korruption");
@@ -522,3 +522,9 @@ locObj.dialogSaveGame = {"txt":"Spiel speichern? Alte Spielstände werden dabei 
 locObj.loadGameFromStringError = {"txt":"Bitte fügt Euren Spielstand ein", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"sehr lange Zeichenkette", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Möchtet Ihr einen Wachmann einstellen? Er wird Euch einmalig %arg1 Gold und danach %arg2 Gold pro Saison kosten", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Ihr habt einen Wachmann angeheuert", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Ihr besitzt leider nicht genug Gold dafür", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Ihr benötigt eine Schatzkammer, um einen Wachmann anheuern zu können", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Möchtet Ihr einen Wachmann entlassen?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Ihr habt einen Wachmann entlassen", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"Ihr beschäftigt zur Zeit keine Wachleute", "loc":"happens when trying to dismiss guardsman when there are none of them"};

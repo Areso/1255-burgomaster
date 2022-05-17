@@ -18,12 +18,12 @@ localeStrings.push("placeholder");//15
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("You hired a guardsman!");
-localeStrings.push("Not enough gold to do that!");//20
-localeStrings.push("Treasury is required to hiring a guardsman!");
-localeStrings.push("Would you like to dismiss a guardsman?");
-localeStrings.push("You dismissed a guardsman!");
-localeStrings.push("You don't have any guardsmen!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("treachery");//25
 localeStrings.push("betrayal");
 localeStrings.push("corruption");
@@ -523,3 +523,9 @@ locObj.dialogSaveGame = {"txt":"Save game? You will rewrite any save you already
 locObj.loadGameFromStringError = {"txt":"Please insert save string", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"very long string", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Do you want to hire a guardsman? He will cost you %arg1 gold\nand then %arg2 gold per each season!", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"You hired a guardsman!", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Not enough gold to do that!", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Treasury is required to hiring a guardsman!", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Would you like to dismiss a guardsman?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"You dismissed a guardsman!", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"You don't have any guardsmen!", "loc":"happens when trying to dismiss guardsman when there are none of them"};

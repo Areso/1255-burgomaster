@@ -18,12 +18,12 @@ localeStrings.push("placeholder");//15
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Contrataste un guardia. ");
-localeStrings.push("No tienes suficiente oro para hacer eso.");//20
-localeStrings.push("Se requiere una Tesorería para contratar un guardia. ");
-localeStrings.push("¿Quieres despedir al guardia?");
-localeStrings.push("Despediste al guardia.");
-localeStrings.push("No tienes ningún guardia.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placehodler");
+localeStrings.push("placeholder");
 localeStrings.push("traición");//25
 localeStrings.push("espionaje");
 localeStrings.push("corrupción");
@@ -518,3 +518,9 @@ locObj.dialogSaveGame = {"txt":"¿Guardar juego? ¡Sobreescribirás cualquier gu
 locObj.loadGameFromStringError = {"txt":"Por favor ingresa el código de guardado", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"código muy largo", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"¿Quieres contratar un guardia? Te costará %arg1 de oro y luego %arg2 de oro por cada estación", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Contrataste un guardia", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"No tienes suficiente oro para hacer eso", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Se requiere una Tesorería para contratar un guardia", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"¿Quieres despedir al guardia?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Despediste al guardia", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"No tienes ningún guardia", "loc":"happens when trying to dismiss guardsman when there are none of them"};

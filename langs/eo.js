@@ -18,12 +18,12 @@ localeStrings.push("placeholder");//15
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Vi dungis gardiston!");
-localeStrings.push("Ne sufiĉe da oro por fari tion!");//20
-localeStrings.push("Trezorejo necesas por dungi gardiston!");
-localeStrings.push("Ĉu vi volas forĵeti gardiston?");
-localeStrings.push("Vi forĵetis gardiston!");
-localeStrings.push("Vi ne havas gardistojn!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("misuzo");//25
 localeStrings.push("perfido");
 localeStrings.push("korupto");
@@ -521,3 +521,9 @@ locObj.dialogSaveGame = {"txt":"Konservu ludon? Vi reskribos ian ajn konservitan
 locObj.loadGameFromStringError = {"txt":"Bonvolu enigi konservan ĉenon", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"tre longa ĉeno", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Vi dungis gardiston!", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Ne sufiĉe da oro por fari tion!", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Trezorejo necesas por dungi gardiston!", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Ĉu vi volas forĵeti gardiston?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Vi forĵetis gardiston!", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"Vi ne havas gardistojn!", "loc":"happens when trying to dismiss guardsman when there are none of them"};

@@ -5,7 +5,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//5
-localeStrings.push("placehodler");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -18,12 +18,12 @@ localeStrings.push("placeholder");//15
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Вы наняли охранника");
-localeStrings.push("Недостаточно золота!");//20
-localeStrings.push("Для найма охранника необходима Сокровищница!");
-localeStrings.push("Уволить охранника?");
-localeStrings.push("Вы уволили охранника");
-localeStrings.push("У вас нет охранников");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("предательство");//25
 localeStrings.push("шпионаж");
 localeStrings.push("коррупцию");
@@ -524,3 +524,9 @@ locObj.dialogSaveGame = {"txt":"Сохранить игру? Это переза
 locObj.loadGameFromStringError = {"txt":"Пожалуйста, вставьте сохранение", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"очень длинная строка", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу\nи %arg2 золотых за каждый сезон", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Вы наняли охранника", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Недостаточно золота!", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Для найма охранника необходима Сокровищница!", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Уволить охранника?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Вы уволили охранника", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"У вас нет охранников", "loc":"happens when trying to dismiss guardsman when there are none of them"};

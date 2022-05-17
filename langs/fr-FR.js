@@ -17,13 +17,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//15
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placehodler");
-localeStrings.push("Vous avez embauché un garde.");
-localeStrings.push("Vous n'avez pas assez d'or pour faire ça.");//20
-localeStrings.push("Une Trésorerie est requise pour embaucher un garde.");
-localeStrings.push("Voulez-vous licencier un garde ?");
-localeStrings.push("Vous avez licencié un garde.");
-localeStrings.push("Vous n'avez aucun garde.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("traitrise");//25
 localeStrings.push("espionnage");
 localeStrings.push("corruption");
@@ -521,3 +521,9 @@ locObj.dialogSaveGame = {"txt":"Voulez-vous sauvegarder ? La sauvegarde précéd
 locObj.loadGameFromStringError = {"txt":"Veuillez insérer la ligne de caractères composant la sauvegarde", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"Une très longue chaine de caractères", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Voulez-vous embaucher un garde ? Il vous en coutera %arg1 or puis %arg2 or par saison", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Vous avez embauché un garde", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Vous n'avez pas assez d'or pour faire ça", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Une Trésorerie est requise pour embaucher un garde", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Voulez-vous licencier un garde ?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Vous avez licencié un garde.", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"Vous n'avez aucun garde", "loc":"happens when trying to dismiss guardsman when there are none of them"};

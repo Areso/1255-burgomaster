@@ -18,12 +18,12 @@ localeStrings.push("placeholder");//15
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Palkkasit vartijan.");
-localeStrings.push("Ei tarpeeksi rahaa.");//20
-localeStrings.push("Tarvitset Rahaston vartijan palkkaamiseen.");
-localeStrings.push("Haluatko erottaa vartijan?");
-localeStrings.push("Erotit vartijan.");
-localeStrings.push("Sinulla ei ole vartijoita.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("maanpetos");//25
 localeStrings.push("vakoilu");
 localeStrings.push("korruptio");
@@ -436,3 +436,9 @@ locObj.dialogSaveGame = {"txt":"Tallenna peli? Syrjäytät edellisen tallennukse
 locObj.loadGameFromStringError = {"txt":"Liitä tallennussarja", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"todella pitkä sarja", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Haluatko palkata vartijan? Se maksaa %arg1 rahaa ja sitten %arg2 rahaa joka vuodenaika", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Palkkasit vartijan", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Ei tarpeeksi rahaa", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Tarvitset Rahaston vartijan palkkaamiseen", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Haluatko erottaa vartijan?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Erotit vartijan", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"Sinulla ei ole vartijoita", "loc":"happens when trying to dismiss guardsman when there are none of them"};

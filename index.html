@@ -1224,9 +1224,7 @@
 				postEventLog(msg);
 				updateUI();
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[20]);
-				postEventLog(msg);
+				postEventLog(locObj.notEnoughGold.txt, "bold");
 			}
 		},
 		artefact_gain : function (artefact, target) {
@@ -1406,7 +1404,7 @@
 						postEventLog(localeStrings[168]);
 						updateUI();
 					} else {
-						alertMsg = localeStrings[20];
+						alertMsg = locObj.notEnoughGold.txt;
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				}
@@ -2508,9 +2506,7 @@
 					updateHeroStatus();
 					game.gold -= config.costHero;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				disabledElements.push("btnHireHero");
@@ -2570,9 +2566,7 @@
 					updateTroopsNumbers();
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				msg = "<b>%arg1</b>";
@@ -2589,9 +2583,7 @@
 						updateTroopsNumbers();
 						updateResources();
 					} else {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1", localeStrings[20]);
-						postEventLog(msg);
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				} else {
 					msg = "<b>%arg1</b>";
@@ -2612,9 +2604,7 @@
 					updateTroopsNumbers();
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1", localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				msg = "<b>%arg1</b>";
@@ -3416,9 +3406,7 @@
 					game.festival_cooldown  = config.festCooldown;
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 		},
@@ -3433,7 +3421,7 @@
 						commonBuild();
 						return true;
 					} else {
-						postEventLog(localeStrings[20], "bold");
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				}
 				//WOODEN TOWER
@@ -3444,7 +3432,7 @@
 						commonBuild();
 						return true;
 					} else {
-						postEventLog(localeStrings[20], "bold");
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				}
 				//STONE CASTLE
@@ -3455,7 +3443,7 @@
 						commonBuild();
 						return true;
 					} else {
-						postEventLog(localeStrings[20], "bold");
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				}
 			}
@@ -3466,9 +3454,7 @@
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Treasury") {
@@ -3483,9 +3469,7 @@
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Gallows") {
@@ -3495,9 +3479,7 @@
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Fountain") {
@@ -3515,9 +3497,7 @@
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Inn") {
@@ -3536,9 +3516,7 @@
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Stable") {
@@ -3566,9 +3544,7 @@
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Archery") {
@@ -3579,7 +3555,7 @@
 						commonBuild();
 						return true;
 					} else {
-						postEventLog(localeStrings[20], 'bold');
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				} else {
 					postEventLog(locObj.buildArchery.txt, "bold");
@@ -3608,9 +3584,7 @@
 					game.Build(objectToBuild);
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[20]);
-				postEventLog(msg);
+				postEventLog(locObj.notEnoughGold.txt, "bold");
 			}
 		},
 		buildGallowsOrFountainCallback() {
@@ -3627,7 +3601,7 @@
 				question = localeStrings[18].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);;
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
-				alertMsg = localeStrings[21];
+				alertMsg = locObj.treasuryRequired.txt;
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 			}
 		},
@@ -3636,13 +3610,10 @@
 				if (game.gold >= config.treasuryGuardPriceHire) {
 					game.treasuryGuard = game.treasuryGuard*1 + 1;
 					game.gold          = game.gold - config.treasuryGuardPriceHire;
-					msg = localeStrings[19];
-					postEventLog(msg);
+					postEventLog(locObj.hiredGuardsman.txt);
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			getAck();
@@ -3653,17 +3624,16 @@
 				disabledElements.push("buttonHireGuard");
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
-				showModal(1, '', game.fireTreasuryGuardCallback, localeStrings[22],  localeStrings[32], localeStrings[33])
+				qst = locObj.dialogConfirmDismssGuardsman.txt;
+				showModal(1, '', game.fireTreasuryGuardCallback, qst,  localeStrings[32], localeStrings[33])
 			} else {
-				msg = localeStrings[24];
-				postEventLog(msg);
+				postEventLog(locObj.noGuardsman.txt, "bold");
 			}
 		},
 		fireTreasuryGuardCallback : function () {
 			if (answer === 2) {
 				game.treasuryGuard      = game.treasuryGuard*1 - 1;
-				msg = localeStrings[23];
-				postEventLog(msg);
+				postEventLog(locObj.dismissedGuardsman.txt);
 				updateResources();
 			}
 			getAck();
@@ -3838,8 +3808,7 @@
 					game.putOutFireUI();
 				}
 				else {
-					msg = localeStrings[20];
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				msg = localeStrings[41];
