@@ -10,7 +10,8 @@
 		The homepage of the project is <a href="https://github.com/Areso/1255-burgomaster">https://github.com/Areso/1255-burgomaster</a>. 
 		This pet-project is dedicated to create a playable game, written in vanilla JavaScript, without even using jQuery and modern whistlers and jugglers, such as JS frameworks, TS->JS compilators, Node.js, web servers and so on. 
 		Thus, to play the game, you need only a modern browser. To edit the game, you need only a text editor and imagination.
-		The project oriented to be compact (in terms of the source code and the resources), blazing fast to download, fast enough to run even on aging devices with limited horsepower under the hood.<br>
+		The project is oriented to be compact (in terms of the source code and the resources), blazing fast to download, fast enough to run even on aging devices with limited horsepower under the hood.<br>
+		<!---consider removing the "with limited horsepower under the hood."--->
 		It runs well even on low-powered tablets and phones, let alone old PCs and laptops.<br>
 		It heavily uses JS technologies as HTML5.Canvas, EcmaScript5 localStorage, <span style="color:red"><font color="red">JSON.parse()</font></span>, and so on. So it requires a somewhat modern browser, with ES5/ES6 standarts support.<br>
 		<br>				
