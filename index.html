@@ -4541,8 +4541,8 @@
 		}
 		if (game.chestCity === 1) {
 			console.log("try to draw a chest of gold");
-			chest.x = Math.floor(Math.random() * (800-chest_imgW*2)+chest_imgW);
-			chest.y = Math.floor(Math.random() * (480-chest_imgH*2)+chest_imgH);
+			chest.x = Math.floor(Math.random() * (800-chest.w*2)+chest.w);
+			chest.y = Math.floor(Math.random() * (480-chest.h*2)+chest.h);
 			console.log("locX is "+chest.x+" and locY is "+chest.y);
 			ctx.drawImage(chest_img, chest.x, chest.y);
 			pushBuilding(chest);
