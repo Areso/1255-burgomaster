@@ -3670,8 +3670,8 @@
 					if (moneyToSeize > 5000){
 						moneyToSeize = 5000;
 					}
-					rnd             = Math.floor((Math.random() * 6) + 1);
-					reason          = localeStrings[24+rnd]
+					rnd             = Math.floor((Math.random() * 6));
+					reason          = locObj.execReasons[rnd].txt;
 					msg             = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
 					msg             = localeStrings[35].replace("%arg1", moneyToSeize);
@@ -4347,6 +4347,14 @@
 		h: 120
 	};
 
+	var archery = {
+		name: 'archery',
+		x: 390,
+		y: 90,
+		w: 80,
+		h: 80
+	};
+
 	var inn = {
 		name: 'inn',
 		x: 270,
@@ -4816,15 +4824,18 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 
 	function checkSaves() {
+
 		if (localStorage.getItem('game')!==null) {
-			document.getElementById("loadGameButton").style.visibility = "visible";
+			document.getElementById("loadGameButton").style.display = "block";
 		} else {
 			if (isTutorialState && !game.tips.includes("tutorial0-welcome0")){
 				game.tips.push("tutorial0-welcome0");
 				showModal(0, '', getAck, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
 			}
 		}
+
 	}
+
 	function getAck() {
 		console.log('we are at getAck method');
 		console.log("the length is "+disabledElements.length);

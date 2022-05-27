@@ -24,12 +24,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("misuzo");//25
-localeStrings.push("perfido");
-localeStrings.push("korupto");
-localeStrings.push("subaĉeto");
-localeStrings.push("greftaĵo kaj ŝtelo");
-localeStrings.push("malversación");//30
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Jes, plej sange!");
 localeStrings.push("Jes");
 localeStrings.push("No");
@@ -527,3 +527,9 @@ locObj.treasuryRequired = {"txt":"Trezorejo necesas por dungi gardiston!", "loc"
 locObj.dialogConfirmDismssGuardsman = {"txt":"Ĉu vi volas forĵeti gardiston?", "loc":"happens when try to dismiss one guardsman"};
 locObj.dismissedGuardsman = {"txt":"Vi forĵetis gardiston!", "loc":"happens after dismissing a guardsman"}; 
 locObj.noGuardsman = {"txt":"Vi ne havas gardistojn!", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"misuzo", "loc":"when executing a person"},
+	{"txt":"perfido", "loc":""},
+	{"txt":"korupto", "loc":""},
+	{"txt":"subaĉeto", "loc":""},
+	{"txt":"greftaĵo kaj ŝtelo", "loc":""},
+	{"txt":"malversación", "loc":""}];

@@ -29,8 +29,24 @@ function updateImagesBuildingTab() {
 	if (game.tips.includes("tutorial_social") && game.buildLevelFountain===0 && game.buildLevelGallows===0 ){
 		var tabBldGallows = document.querySelectorAll('#bldGallows .is-tutorial');
 		var tabBldFountain = document.querySelectorAll('#bldFountain .is-tutorial');
-		var tabBldElements = tabBldGallows.concat(tabBldFountain);
-		for (tabBldElem of tabBldElements){
+		//var tabBldElements = tabBldGallows.concat(tabBldFountain);
+		//sorry, concat not found
+		var tabBldElements = []
+		tabBldElements.push(tabBldGallows)
+		tabBldElements.push(tabBldFountain);
+		//for (tabBldElem of tabBldElements){
+		//	tabBldElem.classList.remove('is-tutorial');
+		//}
+		//sorry, tabBldElements not iterable this way.
+		
+		//tabBldGallows.classList.remove('is-tutorial');
+		//tabBldFountain.classList.remove('is-tutorial');
+		//doesn't work too
+		
+		for (tabBldElem of tabBldGallows){
+			tabBldElem.classList.remove('is-tutorial');
+		} 
+		for (tabBldElem of tabBldFountain){
 			tabBldElem.classList.remove('is-tutorial');
 		}
 		updateButtonCaptions();

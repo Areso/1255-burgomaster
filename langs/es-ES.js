@@ -22,14 +22,14 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//20
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placehodler");
 localeStrings.push("placeholder");
-localeStrings.push("traición");//25
-localeStrings.push("espionaje");
-localeStrings.push("corrupción");
-localeStrings.push("soborno");
-localeStrings.push("graft and robo");
-localeStrings.push("malversación");//30
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Sí ¡De la manera más sangrienta!");
 localeStrings.push("Sí");
 localeStrings.push("No");
@@ -524,3 +524,9 @@ locObj.treasuryRequired = {"txt":"Se requiere una Tesorería para contratar un g
 locObj.dialogConfirmDismssGuardsman = {"txt":"¿Quieres despedir al guardia?", "loc":"happens when try to dismiss one guardsman"};
 locObj.dismissedGuardsman = {"txt":"Despediste al guardia", "loc":"happens after dismissing a guardsman"}; 
 locObj.noGuardsman = {"txt":"No tienes ningún guardia", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"traición", "loc":"when executing a person"},
+	{"txt":"espionaje", "loc":""},
+	{"txt":"corrupción", "loc":""},
+	{"txt":"soborno", "loc":""},
+	{"txt":"graft and robo", "loc":""},
+	{"txt":"malversación", "loc":""}];

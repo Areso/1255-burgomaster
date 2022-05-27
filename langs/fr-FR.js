@@ -24,12 +24,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("traitrise");//25
-localeStrings.push("espionnage");
-localeStrings.push("corruption");
-localeStrings.push("corruption");
-localeStrings.push("détournement de fonds");
-localeStrings.push("vol");//30
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Assurément, de la façon la plus barbare!");
 localeStrings.push("Oui");
 localeStrings.push("Non");
@@ -527,3 +527,9 @@ locObj.treasuryRequired = {"txt":"Une Trésorerie est requise pour embaucher un 
 locObj.dialogConfirmDismssGuardsman = {"txt":"Voulez-vous licencier un garde ?", "loc":"happens when try to dismiss one guardsman"};
 locObj.dismissedGuardsman = {"txt":"Vous avez licencié un garde.", "loc":"happens after dismissing a guardsman"}; 
 locObj.noGuardsman = {"txt":"Vous n'avez aucun garde", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"traitrise", "loc":"when executing a person"},
+	{"txt":"espionnage", "loc":""},
+	{"txt":"corruption", "loc":""},
+	{"txt":"corruption", "loc":""},
+	{"txt":"détournement de fonds", "loc":""},
+	{"txt":"vol", "loc":""}];

@@ -24,12 +24,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("предательство");//25
-localeStrings.push("шпионаж");
-localeStrings.push("коррупцию");
-localeStrings.push("подкуп");
-localeStrings.push("казнокрадство");
-localeStrings.push("кражи");//30
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Да, и как можно кроважаднее!");
 localeStrings.push("Да");
 localeStrings.push("Нет");
@@ -530,3 +530,9 @@ locObj.treasuryRequired = {"txt":"Для найма охранника необ�
 locObj.dialogConfirmDismssGuardsman = {"txt":"Уволить охранника?", "loc":"happens when try to dismiss one guardsman"};
 locObj.dismissedGuardsman = {"txt":"Вы уволили охранника", "loc":"happens after dismissing a guardsman"}; 
 locObj.noGuardsman = {"txt":"У вас нет охранников", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"предательство", "loc":"when executing a person"},
+	{"txt":"шпионаж", "loc":""},
+	{"txt":"коррупцию", "loc":""},
+	{"txt":"подкуп", "loc":""},
+	{"txt":"казнокрадство", "loc":""},
+	{"txt":"кражи", "loc":""}];

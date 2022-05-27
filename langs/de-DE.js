@@ -24,12 +24,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Verrats");//25
-localeStrings.push("Spionage");
-localeStrings.push("Korruption");
-localeStrings.push("Bestechung");
-localeStrings.push("Unterschlagung");
-localeStrings.push("Diebstahls");//30
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Ja, auf die blutigste Weise!");
 localeStrings.push("Ja");
 localeStrings.push("Nein");
@@ -528,3 +528,9 @@ locObj.treasuryRequired = {"txt":"Ihr benötigt eine Schatzkammer, um einen Wach
 locObj.dialogConfirmDismssGuardsman = {"txt":"Möchtet Ihr einen Wachmann entlassen?", "loc":"happens when try to dismiss one guardsman"};
 locObj.dismissedGuardsman = {"txt":"Ihr habt einen Wachmann entlassen", "loc":"happens after dismissing a guardsman"}; 
 locObj.noGuardsman = {"txt":"Ihr beschäftigt zur Zeit keine Wachleute", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"Verrats", "loc":"when executing a person"},
+	{"txt":"Spionage", "loc":""},
+	{"txt":"Korruption", "loc":""},
+	{"txt":"Bestechung", "loc":""},
+	{"txt":"Unterschlagung", "loc":""},
+	{"txt":"Diebstahls", "loc":""}];
