@@ -534,3 +534,6 @@ locObj.execReasons = [{"txt":"Verrats", "loc":"when executing a person"},
 	{"txt":"Bestechung", "loc":""},
 	{"txt":"Unterschlagung", "loc":""},
 	{"txt":"Diebstahls", "loc":""}];
+locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
+locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};

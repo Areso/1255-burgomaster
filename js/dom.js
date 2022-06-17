@@ -84,6 +84,8 @@ function updateButtonCaptions(){
 	nextLvlArchery         = game.buildLevelArchery*1+1;
 	nextLvlPriceArchery    = Math.pow(config.costArchery,(game.buildLevelArchery*1+1));
 	document.getElementById("buttonBldArchery").innerHTML=localeStrings[116].replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
+	nextLvlPriceUniversity = config.bldUniversityCost;
+	document.getElementById("buttonBuildUniversity").innerHTML=locObj.bldUniversityButton.txt.replace("%arg2",nextLvlPriceUniversity);
 	if (game.buildLevelD === 0) {
 		document.getElementById("defence").innerHTML=localeStrings[108].replace("%arg1",game.buildLevelD+1).replace("%arg2",config.costWall);
 		var towerClick = "game.Build("+"\'Wall\'"+")";
@@ -120,12 +122,12 @@ function updateButtonCaptions(){
 	if (game.buildLevelArchery === config.maxLevelArchery) {
 		document.getElementById("buttonBldArchery").setAttribute("style", "display:none");
 	}
+	if (game.buildLevelUniversity === config.maxLevelUniversity) {
+		document.getElementById("buttonBuildUniversity").setAttribute("style", "display:none");
+	}
 	if (game.buildLevelFountain > 0) {
 		document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
 	}
-	// if (game.buildLevelGallows === 0) {
-	// 	document.getElementById("buttonDeathPenalty").style.display="none";
-	// }
 	if (game.buildLevelGallows > 0) {
 		document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
 		document.getElementById("buttonDeathPenalty").style.display = 'block';

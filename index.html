@@ -79,6 +79,9 @@
 			<div id="Explore" class="tab">
 				<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
 			</div>
+			<div id="tabUniversity" class="tab">
+				<img src="resources/serpentine.png" onclick="game.research('artillery')">
+			</div>
 			<div id="Settings" class="tab">
 				<h3><div id="labelSettings">Settings</div></h3>
 				<button id="btnReg"   onclick="setReg()"                             >REG</button>
@@ -409,7 +412,20 @@
 									<button id="buttonBldInn" class="btn is-tutorial" onclick="game.Build('Inn')">Build Inn</button>
 								</div>
 							</div>
-
+							<!--UNIVERSITY-->
+							<div id="bldUniversity" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="university_img"
+										src="./resources/university2.png"
+										alt="university image"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBuildUniversity" class="btn" onclick="game.Build('University')">Build University</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				<div id="lblBuildHelp" class="building-description"></div>
@@ -894,6 +910,7 @@
 		costStable:50,
 		costSmith:50,
 		costArchery:50,
+		bldUniversityCost: 200,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:10,
@@ -927,6 +944,7 @@
 		maxLevelInn: 10,
 		maxLevelStable: 3,
 		maxLevelArchery: 3,
+		maxLevelUniversity: 1,
 		tutorialDefenseEventTicks: 3,
 		tutNewBuildingsT: 5,
 		tutTreasuryG: 200,
@@ -940,7 +958,9 @@
 		pullMessagesMS: 1500,
 		debug: false,
 		theme: "winter",
-		popIncRate: 2
+		artilleryResearchCost: 200,
+		popIncRate: 2,
+		
 	};
 	var game = {
 		gold: 30,
@@ -960,6 +980,7 @@
 		buildLevelStable: 0,
 		buildLevelArchery: 0,
 		buildLevelSmith: 0,
+		buildLevelUniversity: 0,
 		fire: 0,
 		fireSteps: 0,
 		fireGuard: 0,
@@ -1024,6 +1045,7 @@
 		isDefeated: false,
 		nightMode: false,
 		monstersOnAdvMap: [],
+		techArtillery: 0,
 		role: "player",
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
@@ -1299,6 +1321,23 @@
 					} else {
 						return false;
 					}
+				}
+			}
+		},
+		//WIP
+		research : function (techName) {
+			if (techName==="artillery"){
+				if (game.techArtillery===0) {
+					if (game.gold >= config.artilleryResearchCost) {
+						game.gold -= config.artilleryResearchCost;
+						game.techArtillery = 1;
+						postEventLog(locObj.techArtilleryResearched.txt, "BOLD");
+						updateUI();
+					} else {
+						//WE NEED MORE MONEY
+					}
+				} else {
+					//ALREADY LEARNED
 				}
 			}
 		},
@@ -2184,7 +2223,6 @@
 			}
 		},
 		help(myobject) {
-
 			if (myobject.id==="defences_img") {
 				nextDefPrice = 0;
 				blMaxLvlDef = 0;
@@ -2232,6 +2270,9 @@
 				} else {
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
 				}
+			}
+			if (myobject.id==="university_img") {
+				document.getElementById("lblBuildHelp").innerHTML=locObj.bldUniversityHelp.txt+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost);
 			}
 			if (myobject.id==="fountain_img") {
 				nextLvlFountain       = game.buildLevelFountain*1+1;
@@ -3411,7 +3452,6 @@
 			}
 		},
 		Build : function (Structure) {
-
 			if (Structure==="Wall" || Structure ==="Tower" || Structure ==="Castle") {
 				//WALL
 				if (game.buildLevelD === 0) {
@@ -3488,12 +3528,23 @@
 					game.buildLevelFountain = game.buildLevelFountain*1 + 1;
 					commonBuild();
 					return true;
-				}
+				}//TODO make else 
 			}
 			if (Structure==="Stash") {
 				if (game.gold >= Math.pow(config.costStash,(game.buildLevelStash*1 + 1)) && game.buildLevelTreasury*1 > 0) {
 					game.gold               = game.gold - Math.pow(config.costStash,(game.buildLevelStash*1 + 1));
 					game.buildLevelStash    = game.buildLevelStash*1 + 1;
+					commonBuild();
+					return true;
+				} else {
+					postEventLog(locObj.notEnoughGold.txt, "bold");
+				}
+			}
+			//WIP
+			if (Structure==="University") {
+				if (game.gold >= Math.pow(config.bldUniversityCost,(game.buildLevelUniversity*1 + 1))) {
+					game.gold                 = game.gold - Math.pow(config.bldUniversityCost,(game.buildLevelUniversity*1 + 1));
+					game.buildLevelUniversity = game.buildLevelUniversity*1 + 1;
 					commonBuild();
 					return true;
 				} else {
@@ -4247,10 +4298,17 @@
 	var img16   = loadImage(prepareResPath('stable'), composite);
 	var img17   = loadImage(prepareResPath('archery_range'), composite);
 
-	var smoke_anm   = loadImage('resources/smoke.gif', composite);
-	var smoke_anm2  = loadImage('resources/smoke.gif', composite);
-	var chest_img   = loadImage(prepareResPath('chest'), composite);
-
+	var smoke_anm      = loadImage('resources/smoke.gif', composite);
+	var smoke_anm2     = loadImage('resources/smoke.gif', composite);
+	var chest_img      = loadImage(prepareResPath('chest'), composite);
+	var university_img = loadImage(prepareResPath('university2'), composite);
+	var university   = {
+		name: 'university',
+		x: 570,
+		y: 300,
+		w: 96,
+		h: 96
+	}
 	var sawmill = {
 		name: 'sawmill',
 		x: 670,
@@ -4527,6 +4585,11 @@
 			pushBuilding(stable);
 		}
 
+		if (game.buildLevelUniversity > 0) {
+			ctx.drawImage(university_img, university.x, university.y);
+			pushBuilding(university);
+		}
+
 		if (game.buildLevelArchery > 0) {
 			ctx.drawImage(img17, archery.x, archery.y);
 			pushBuilding(archery);
@@ -4626,6 +4689,11 @@
 		}
 		if (buildingName==='wall') {
 			//alertMsg = localeStrings[134];
+		}
+		if (buildingName==='university') {
+			showAlert = false;
+			updateUI();
+			openTab(null, 'tabUniversity');
 		}
 		if (buildingName==='swall') {
 			//alertMsg = localeStrings[135];
