@@ -86,7 +86,7 @@
 				<h3><div id="labelSettings">Settings</div></h3>
 				<button id="btnReg"   onclick="setReg()"                             >REG</button>
 				<button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
-				Nickname: <input id="login"    type="text"     value=""><br>
+				 Nickname: <input id="login"    type="text"     value=""><br> 
 				Password: <input id="password" type="password" value=""><br>
 				<span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
 				<button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
@@ -349,7 +349,7 @@
 										onclick="game.help(this)">
 								</div>
 								<div class="building-card__action">
-									<button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Fountain</button>
+									<button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Fountain')">Build Fountain</button>
 								</div>
 							</div>
 
@@ -4304,8 +4304,8 @@
 	var university_img = loadImage(prepareResPath('university2'), composite);
 	var university   = {
 		name: 'university',
-		x: 570,
-		y: 300,
+		x: 550,
+		y: 250,
 		w: 96,
 		h: 96
 	}
