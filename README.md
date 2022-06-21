@@ -1,7 +1,11 @@
 <html>
 	<body>
 		<h1>1255 Burgomaster</h1><br>
-		<img src="https://img.shields.io/github/issues/Areso/1255-burgomaster"><img src="https://img.shields.io/github/issues-closed/Areso/1255-burgomaster"><img src="https://img.shields.io/github/commit-activity/m/Areso/1255-burgomaster?foo=bar"><img src="https://img.shields.io/discord/564554640755130409?label=Discord&logo=Discord">
+		<img src="https://img.shields.io/github/issues/Areso/1255-burgomaster">
+                <img src="https://img.shields.io/github/issues-closed/Areso/1255-burgomaster">
+                <img src="https://img.shields.io/github/commit-activity/m/Areso/1255-burgomaster?foo=bar">
+                <a href="https://discord.com/invite/gHzurTMa?utm_source=Discord%20Widget&utm_medium=Connect">
+                  <img src="https://img.shields.io/discord/564554640755130409?label=Discord&logo=Discord"></a>
 		<h2>Play the game</h2><br>
 		<!--<a href="https://areso.github.io/1255-burgomaster">Play the game in web</a><br>-->
 		<a href="https://1255.areso.pro">Play the game in web (reserve link)</a><br><br>
@@ -15,19 +19,12 @@
 		It heavily uses JS technologies as HTML5.Canvas, EcmaScript5 localStorage, <span style="color:red"><font color="red">JSON.parse()</font></span>, and so on. So it requires a somewhat modern browser, with ES5/ES6 standarts support.<br>
 		<br>				
 		<h2>Minimum System Requirements</h2>
-		Browsers:<br> 
-		Internet Explorer 10, Internet Explorer Mobile 10 - some functions may not work<br>
-		Mozilla Firefox 20 or newer, Firefox Android All<br>
-		Google Chrome 20 or newer, Chrome Android All<br>
-		Safari 5, iOS Safari 5<br>
-		Opera 12, Opera Mobile 12 - some functions may not work<br> 
-		Blackberry Browser 7 - some functions may not work<br>
-		*Please note, Opera Mini is NOT SUPPORTED!<br>
-		Data about Browser support provided by <a href="https://caniuse.com/">https://caniuse.com/</a> service<br>
+		Browsers:<br>
+                Any modern browser, but the game tested only on Firefox and Google Chrome<br>
 		<br>
-		512MB RAM<br>
-		600MHz 1 Core CPU<br>
-		1MB of data plan to download the game itself, analytics, and chat. 
+		1024MB RAM<br>
+		800MHz 1 Core CPU<br>
+		5MB of data plan to download the game itself, analytics, and chat. 
 		And some traffic will be used with in-game chat and usage statistics, though the game will work perfectly even if a connection is lost after the download is complete. 
 		You also may download the game, to run it in offline (check options offline game).<br> 
 		<br>
@@ -51,7 +48,7 @@
 		Straight management, which means, you need place management by clicking here and there and you will get what you clicked.</br>
 		What game offers now:<br>
 		<ul>
-		<li>12 buildings to build of 9 types</li>
+		<li>13 buildings to build of 10 types</li>
 		<li>maps to explore (HoMM3-like)</li>
 		<li>autocampaigns (Fallout Shelter-like)</li>
 		<li>a hero managemenet</li>
