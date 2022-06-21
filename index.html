@@ -86,7 +86,7 @@
 				<h3><div id="labelSettings">Settings</div></h3>
 				<button id="btnReg"   onclick="setReg()"                             >REG</button>
 				<button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
-				 Nickname: <input id="login"    type="text"     value=""><br> 
+				 Nickname: <input id="login"    type="text"     value=""><br>
 				Password: <input id="password" type="password" value=""><br>
 				<span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
 				<button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
@@ -960,7 +960,7 @@
 		theme: "winter",
 		artilleryResearchCost: 200,
 		popIncRate: 2,
-		
+
 	};
 	var game = {
 		gold: 30,
@@ -1397,20 +1397,17 @@
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			//var rnd = Math.floor((Math.random() * 8) + 1);
-			//game.blackMarketGoods.push("artid00");
-			//game.blackMarketGoods.push("artid"+rnd);
-			var rnd = randomFromRange(11, 13);
-			if (rnd.toString().length < 2) {
-				rnd = "0"+rnd;
-			}
-			var scroll = getItem("artid00");
-			addItem("trader", scroll);
+			return new Promise(function (resolve) {
+				var artefactIds = ['artid00']; // Always set artid00 as default market item. For now...
+				var rnd = randomFromRange(11, 13);
+				if (rnd.toString().length < 2) {
+					rnd = "0"+rnd;
+				}
+				var id = "artid" + rnd;
 
-			var id = "artid" + rnd;
-			var randomItem = getItem(id);
-			addItem("trader", randomItem);
-			console.log(game.blackMarketGoods);
+				artefactIds.push(id);
+				setTimeout(() => { resolve(artefactIds) }, 2500);
+			});
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
@@ -1430,8 +1427,6 @@
 			}
 		},
 		generateMapCallback : function (silent) {
-			game.blackMarketGoods = [];
-			game.genBlackMarketGoods();
 			//generate landscape
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
 			if (silent===true) {
@@ -3528,7 +3523,7 @@
 					game.buildLevelFountain = game.buildLevelFountain*1 + 1;
 					commonBuild();
 					return true;
-				}//TODO make else 
+				}//TODO make else
 			}
 			if (Structure==="Stash") {
 				if (game.gold >= Math.pow(config.costStash,(game.buildLevelStash*1 + 1)) && game.buildLevelTreasury*1 > 0) {
