@@ -3894,8 +3894,8 @@
 		},
 		chestCityDisappear : function () {
 			game.chestCity = 0;
-			removeIndex = buildingsInTownB.indexOf('chest');
-			removeFromArrays(removeIndex);
+			removeIndex = buildingsInTown.indexOf('chest');
+			deleteFromArray(buildingsInTown, removeIndex);
 			composite();
 		},
 		chestCityOpen : function () {
@@ -4085,6 +4085,7 @@
 
 	canvas.addEventListener("touchstart", tap);
 	canvas.addEventListener("mousedown", tap);
+	canvasScaleRatio = canvas.width / canvas.offsetWidth;
 	languageDefined = 0;
 
 	var ctx     = canvas.getContext("2d");
@@ -4645,7 +4646,7 @@
 		// loc = {};
 		// tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
 		// tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
-		// canvasScaleRatio = canvas.width / canvas.offsetWidth;
+		
 		// loc.x = (tapX - 9) * canvasScaleRatio;
 		// loc.y = (tapY - 58) * canvasScaleRatio;
 		// for (bi=0;bi<buildingsInTownB.length;bi++){
@@ -5244,11 +5245,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		game.userPopAck   = 0;
 		game.userGoldAck  = 0;
 		game.userASaveAck = 0;
+		/*
 		buildingsInTownB=[];
 		buildingsInTownX=[];
 		buildingsInTownY=[];
 		buildingsInTownW=[];
 		buildingsInTownH=[];
+		*/
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };
