@@ -368,6 +368,8 @@ body {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
+  max-height: 100px;
+  overflow: auto;
 }
 
 #heroEquipment > .inventory-item__wrapper-img {
