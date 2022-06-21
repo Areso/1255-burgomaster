@@ -4,7 +4,14 @@ function genMap(priceOfMapGen){
 	if (game.tips.includes("blackmarket")){
 		game.tips.pop("blackmarket");
 	}
-	game.genBlackMarketGoods();
+	game.genBlackMarketGoods().then(function (artefactIds) {
+		if (artefactIds && artefactIds.length > 0) {
+			artefactIds.forEach(function (id) {
+				var marketItem = getItem(id);
+				addItem('trader', marketItem);
+			})
+		}
+	});
 	game.gold = game.gold - priceOfMapGen;
 	game.myMapLand=[];
 	for (i=0;i<config.sizeMapX;i++) {
@@ -104,7 +111,7 @@ function genMap(priceOfMapGen){
 				}
 				if (rnd===3){
 					generated_items += 1;
-				} 
+				}
 				game.myMapRemObjects[i][j] = rnd;
 			}
 		}
@@ -171,7 +178,7 @@ function prepareMap () {
 		for (j=0; j<config.sizeMapX; j++){
 			if (game.myMapObjects[i][j] == 10){//city entrance
 				preparedMap[i][j] = 1;
-			} 
+			}
 			else if (game.myMapObjects[i][j] == 4){//blackmarket
 				preparedMap[i][j] = 1;
 			}
@@ -317,7 +324,7 @@ function placeMobsOnTheMap (elemsToDefend) {
 			neighbor_x = everyPoint[0]*1+neighbor_offset[0]*1;
 			neighbor_y = everyPoint[1]*1+neighbor_offset[1]*1;
 			//if there is no such condition we would end out of the range
-			if (neighbor_x >= 0 && neighbor_y >= 0 && 
+			if (neighbor_x >= 0 && neighbor_y >= 0 &&
 				neighbor_x < config.sizeMapX && neighbor_y < config.sizeMapY) {
 				if (game.myMapObjects[neighbor_x][neighbor_y]===0 &&
 					game.myMapRemObjects[neighbor_x][neighbor_y]===0) {
@@ -328,7 +335,7 @@ function placeMobsOnTheMap (elemsToDefend) {
 						castle_neighbor_x = neighbor_x*1+neighbor_offset_castle[0]*1;
 						castle_neighbor_y = neighbor_y*1+neighbor_offset_castle[1]*1;
 						//if there is no such condition we would end out of the range
-						if (castle_neighbor_x >= 0 && castle_neighbor_y >= 0 && 
+						if (castle_neighbor_x >= 0 && castle_neighbor_y >= 0 &&
 							castle_neighbor_x < config.sizeMapX && castle_neighbor_y < config.sizeMapY) {
 							if (game.myMapRemObjects[castle_neighbor_x][castle_neighbor_y]===40) {//40 means hero
 								castleEntranceFound = true;
