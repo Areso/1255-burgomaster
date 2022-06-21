@@ -1406,7 +1406,7 @@
 				var id = "artid" + rnd;
 
 				artefactIds.push(id);
-				setTimeout(() => { resolve(artefactIds) }, 2500);
+				resolve(artefactIds);
 			});
 		},
 		generateMap : function () {
@@ -4641,7 +4641,7 @@
 		// loc = {};
 		// tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
 		// tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
-		
+
 		// loc.x = (tapX - 9) * canvasScaleRatio;
 		// loc.y = (tapY - 58) * canvasScaleRatio;
 		// for (bi=0;bi<buildingsInTownB.length;bi++){
