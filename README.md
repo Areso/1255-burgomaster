@@ -19,9 +19,7 @@
 		It heavily uses JS technologies as HTML5.Canvas, EcmaScript5 localStorage, <span style="color:red"><font color="red">JSON.parse()</font></span>, and so on. So it requires a somewhat modern browser, with ES5/ES6 standarts support.<br>
 		<br>				
 		<h2>Minimum System Requirements</h2>
-		Browsers:<br>
-                Any modern browser, but the game tested only on Firefox and Google Chrome<br>
-		<br>
+		Browsers: any modern browser, but the game tested only on Firefox and Google Chrome<br>
 		1024MB RAM<br>
 		800MHz 1 Core CPU<br>
 		5MB of data plan to download the game itself, analytics, and chat. 
