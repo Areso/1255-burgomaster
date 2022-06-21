@@ -205,3 +205,9 @@ template {
 [hidden] {
   display: none
 }
+input#email{
+  margin-left:31
+   }
+input#password{
+  margin-left:1
+              }
