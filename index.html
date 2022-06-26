@@ -1047,6 +1047,7 @@
 		monstersOnAdvMap: [],
 		techArtillery: 0,
 		role: "player",
+		isTutorialState: true,
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -3266,7 +3267,7 @@
 						game.userPopAck = 1;
 					}
 					//TUTORIALS
-					if (isTutorialState && !game.tips.includes("tutorial1_pop0")){
+					if (game.isTutorialState && !game.tips.includes("tutorial1_pop0")){
 						game.tips.push("tutorial1_pop0");
 						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
 					}
@@ -3496,7 +3497,7 @@
 				if (game.gold >= Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1))) {
 					game.gold               = game.gold - Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1));
 					game.buildLevelTreasury = game.buildLevelTreasury*1 + 1;
-					if (isTutorialState && !game.tips.includes("tutorial_treasury_guards")){
+					if (game.isTutorialState && !game.tips.includes("tutorial_treasury_guards")){
 						game.tips.push("tutorial_treasury_guards");
 						showModal(0, '', getAck, locObj.tutorial_treasury_guards.txt, locObj.okay.txt, '')
 						updateImagesBuildingTab();
@@ -3757,7 +3758,7 @@
 					msg = localeStrings[42].replace("%arg1", goldLost);
 					postEventLog(msg);
 					updateResources();
-					if (isTutorialState && !game.tips.includes("tutorial_stash")){
+					if (game.isTutorialState && !game.tips.includes("tutorial_stash")){
 						game.tips.push("tutorial_stash");
 						showModal(0, '', getAck, locObj.tutorial_stash.txt, locObj.okay.txt, '')
 					}
@@ -3811,7 +3812,7 @@
 						}
 						document.getElementById("gameIcon").href="resources/favicon-flame.png";
 						//TUTORIALS
-						if (isTutorialState && !game.tips.includes("tutorial_firebrigade") && game.pop>=50){
+						if (game.isTutorialState && !game.tips.includes("tutorial_firebrigade") && game.pop>=50){
 							game.tips.push("tutorial_firebrigade");
 							showModal(0, '', getAck, locObj.tutorial_firebrigade.txt, locObj.okay.txt, '')
 						}
@@ -4056,7 +4057,7 @@
 			evt.currentTarget.classList.add('active');
 		}
 		if (tabName==="tabTroopsHiring"){
-			if (isTutorialState && !game.tips.includes("tutorial_moving_troops") && game.heroExists()){
+			if (game.isTutorialState && !game.tips.includes("tutorial_moving_troops") && game.heroExists()){
 				game.tips.push("tutorial_moving_troops");
 				showModal(0, '', getAck, locObj.tutorial_moving_troops.txt, locObj.okay.txt, '');
 			}
@@ -4770,7 +4771,7 @@
 <!--THE GAME-->
 <script>
 //THE GAME
-var isTutorialState = true;
+
 
 /*-- New --*/
 
@@ -4825,7 +4826,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		return array;
 	}
 	//init variables
-	disabledElements = [];
+	var disabledElements = [];
+	var hiddenElements = []; // Cache for hidden UI elements; NOTE: Do not clear it, temp fix for tutorial elements.
 	flag_event_started = "";
 	allowMvt = 1;
 	curObjId = "";
@@ -4891,7 +4893,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (localStorage.getItem('game')!==null) {
 			document.getElementById("loadGameButton").style.display = "block";
 		} else {
-			if (isTutorialState && !game.tips.includes("tutorial0-welcome0")){
+			if (game.isTutorialState && !game.tips.includes("tutorial0-welcome0")){
 				game.tips.push("tutorial0-welcome0");
 				showModal(0, '', getAck, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
 			}
@@ -4904,13 +4906,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		console.log("the length is "+disabledElements.length);
 
 		if (answer === 3) {
-			isTutorialState = false;
-			document.getElementById("tabBuilding").classList.remove('is-tutorial');
+			game.isTutorialState = false;
+			// document.getElementById("tabBuilding").classList.remove('is-tutorial');
 			for (var i=0; i<disabledElements.length; i++) {
 				document.getElementById(disabledElements[i]).disabled = false;
 			}
 
-			var hiddenElements = document.querySelectorAll('.is-tutorial');
+			hiddenElements = document.querySelectorAll('.is-tutorial');
 			if (hiddenElements.length) {
 				hiddenElements.forEach(function (el) {
 					el.classList.remove('is-tutorial');
@@ -5209,6 +5211,18 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		}
 	}
+
+
+function setTutorialAfterSaveRestore(gameTemp) {
+	if (gameTemp.isTutorialState || gameTemp.tips.length > 0) {
+		hiddenElements.forEach(function (el) {
+			if (!el.classList.contains('is-tutorial')) {
+				el.classList.add('is-tutorial')
+			}
+		});
+	}
+}
+
 	function overrideGame(gameTemp){
 		game.myhero = {};
 		game.heroHire(true);
@@ -5247,6 +5261,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		buildingsInTownW=[];
 		buildingsInTownH=[];
 		*/
+
+		setTutorialAfterSaveRestore(gameTemp);
+
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };
