@@ -28,7 +28,7 @@
 		<br>
 		<h2>About the game</h2>
 		<br>
-		<img src="game-preview-slides.gif" alt="Screenshots">
+		<img src="game_preview.jpg" alt="Screenshots">
 		<br>
 		Supported Languages(SL): English, Russian (Русский).<br>
 		Community Supported Languages(CSL): German (Deutsch), Esperanto, French (Français)<br>
