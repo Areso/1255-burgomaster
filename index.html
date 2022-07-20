@@ -1045,6 +1045,7 @@
 		isDefeated: false,
 		nightMode: false,
 		monstersOnAdvMap: [],
+		techLearned: [],
 		techArtillery: 0,
 		role: "player",
 		isTutorialState: true,
@@ -3638,13 +3639,21 @@
 				game.Build(the_objectToBuild);
 			}
 		},
+		hireTreasuryGuardCost : function () {
+			hireCost =  config.treasuryGuardPriceHire;
+			if (game.techLearned.includes("war_propaganda")){
+				hireCost = hireCost*techs.war_propaganda.attrs["hire cost"];
+				hireCost = Math.ceil(hireCost);
+			}
+			return hireCost;
+		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
 				disabledElements.push("buttonFireGuard");
 				disabledElements.push("buttonHireGuard");
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
-				question = localeStrings[18].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);;
+				question = localeStrings[18].replace("%arg1",game.hireTreasuryGuardCost()).replace("%arg2",config.treasuryGuardPricePayroll);;
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
 				alertMsg = locObj.treasuryRequired.txt;
@@ -3655,7 +3664,7 @@
 			if (answer === 2) {
 				if (game.gold >= config.treasuryGuardPriceHire) {
 					game.treasuryGuard = game.treasuryGuard*1 + 1;
-					game.gold          = game.gold - config.treasuryGuardPriceHire;
+					game.gold          = game.gold - game.hireTreasuryGuardCost();
 					postEventLog(locObj.hiredGuardsman.txt);
 					updateResources();
 				} else {
@@ -5425,12 +5434,14 @@ function setTutorialAfterSaveRestore(gameTemp) {
 <!--ADVENTURE RENDERER  MAP-->
 <script async src="js/advmaprender.js"></script>
 <!--RANDOM EVENTS-->
-<script asyn src="js/random_events.js"></script>
+<script async src="js/random_events.js"></script>
+<!--TECH TREE-->
+<script src="js/technology_tree.js"></script>
 <!--UNITS STATS-->
-<script asyn src="js/units.js"></script>
+<script async src="js/units.js"></script>
 <!--ONLINE OPTIONS-->
 <script async src="js/online.js"></script>
-<!--TIPS, STORYTELLING, STUFF-->
+<!--TIPS, STORYTELLING, STUFF-->	1 
 <script src="js/tips_story.js"></script>
 <script>
 
