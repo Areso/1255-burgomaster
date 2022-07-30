@@ -83,7 +83,8 @@
 				<div id="available_researches">
 				
 				</div>
-				<img src="resources/serpentine.png" onclick="game.research('artillery')">
+				<!--<img src="resources/serpentine.png" onclick="game.research('artillery')">-->
+				<div id="lblReseachHelp" class="building-description"></div>
 			</div>
 			<div id="Settings" class="tab">
 				<h3><div id="labelSettings">Settings</div></h3>
@@ -120,7 +121,7 @@
 				<br>
 				<br>
 				<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
-				<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
+	Research			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
 				<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
 				<label id="lblStnLines">lines</label>
 				<br>
