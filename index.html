@@ -1050,6 +1050,8 @@
 		nightMode: false,
 		monstersOnAdvMap: [],
 		techLearned: [],
+		techEnabled: [],
+		techDisabled: [],
 		techArtillery: 0,
 		role: "player",
 		isTutorialState: true,
@@ -5301,6 +5303,7 @@ function setTutorialAfterSaveRestore(gameTemp) {
 			document.getElementById("inp_nickname").value === "undefined"){
 			if (typeof setupNickname    === "function") { setupNickname() }
 		}
+		if (typeof drawTabUniversity === "function" ) { drawTabUniversity() }
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
 
