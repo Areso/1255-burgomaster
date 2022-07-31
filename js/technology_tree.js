@@ -57,6 +57,64 @@ var tech_list = {
         upkeep: 5,
         switchable: true,
     },
+    grant_system: {
+        id: "grant_system",
+        type: "hire",
+        img: "grant_system.png",
+        year: 1261,
+        season: 1,
+        prereqs: [],
+        name: {
+			"default":"grant system",
+        	"en-US":"grant system",
+        	"ru-RU":"система грантов",
+        },
+        descr: {
+			"default":"allow bright mind, but poor people get education",
+        	"en-US":"allow bright mind, but poor people get education",
+        	"ru-RU":"позволяет выдающимся, но малоимущим людям получать образование",
+        },
+        attrs: {
+        "hire cost":0.7,
+        "upkeep cost":0.7,
+        },
+     	attrs_type: {
+     	"hire_cost":"relative",
+     	"upkeep_cost":"relative"
+     	},  
+        priceResearch: 200,
+        upkeep: 5,
+        switchable: true,
+    },
+    smm_faculty: {
+        id: "smm_faculty",
+        type: "hire",
+        img: "smm_faculty.png",
+        year: 1260,
+        season: 1,
+        prereqs: ["civil_propaganda", "grant_system"],
+        name: {
+			"default":"smm faculty",
+        	"en-US":"smm faculty",
+        	"ru-RU":"факультет SMM",
+        },
+        descr: {
+			"default":"decrease price for military and civilpropaganda",
+        	"en-US":"decrease price for military and civilpropaganda",
+        	"ru-RU":"уменьшает цену работы гражданской и военной агитации",
+        },
+        attrs: {
+        "hire cost":0.7,
+        "upkeep cost":0.7,
+        },
+     	attrs_type: {
+     	"hire_cost":"relative",
+     	"upkeep_cost":"relative"
+     	},  
+        priceResearch: 200,
+        upkeep: 5,
+        switchable: true,
+    },
 };
 
 function researchTech (){
@@ -104,16 +162,32 @@ function drawTabUniversity(){
 	
 	for (tech in tech_list) {
 		console.log(tech);
+		//check whether we already learned (we shouldn't)
 		if (!game.techLearned.includes(tech_list[tech]["id"])) {
 			console.log("continue with");
 			console.log(tech);
-			if (game.year>=tech_list[tech]["year"] && game.season>=tech_list[tech]["season"]){ 
-				src = 'resources/techs/'+tech_list[tech]["img"];
-				let id = tech_list[tech]["id"]
-				id = "\""+id+"\"";
-				//let obj = '<img src="'+src+'"'+"onclick='researchHelp("+id+")'"+"onmouseover='researchHelp("+id+")'"+">";
-				let obj = '<img id='+id+' src="'+src+'"'+"onclick='researchHelp(this)'"+"onmouseover='researchHelp(this)'"+">";
-				tech_tree_area.innerHTML += obj;
+			//check whether we already advanced in the timeline far enough
+			if (game.year>=tech_list[tech]["year"] && game.season>=tech_list[tech]["season"]){
+				//finally, check whether all prereqs are learned
+				unlocked = true;
+				if (tech_list[tech]["prereqs"].length>0){
+					for (let i=0; i<tech_list[tech]["prereqs"].length; i++){
+						console.log("the_prereq")
+						the_prereq = tech_list[tech]["prereqs"][i]
+						console.log(the_prereq)
+						if (!game.techLearned.includes(the_prereq)){
+							unlocked = false;
+						}
+					}
+				}
+				if (unlocked){
+					src = 'resources/techs/'+tech_list[tech]["img"];
+					let id = tech_list[tech]["id"]
+					id = "\""+id+"\"";
+					//let obj = '<img src="'+src+'"'+"onclick='researchHelp("+id+")'"+"onmouseover='researchHelp("+id+")'"+">";
+					let obj = '<img id='+id+' src="'+src+'"'+"onclick='researchHelp(this)'"+"onmouseover='researchHelp(this)'"+">";
+					tech_tree_area.innerHTML += obj;
+				}
 			}
 		}
 	}
