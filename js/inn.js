@@ -1,3 +1,9 @@
+//let curHeroForHire = 0;
+//for every hero class, see populate heroes
+let startHeroPortraitId = [];
+let endHeroPortraitId = [];
+let curHeroPortraitId = [];
+
 function updateHeroStatusInn() {
 	if ( game.heroExists() === true) {
 		var lblHeroClass    = localeStrings[204][game.myhero.class];
@@ -145,7 +151,7 @@ function nextHero(){
 		updateHeroAvForHire(curHeroForHire);
 	}
 }
-function heroForHire(heroClass, level, heroStats, heroCurve, heroLearnCurve, image) {
+function heroForHire(heroClass, level, heroStats, heroCurve, heroLearnCurve, image, portrait_id) {
 	this.heroClassLbl    = heroClass;
 	this.heroStatsArr    = heroStats;
 	this.level           = level;
@@ -160,15 +166,24 @@ function heroForHire(heroClass, level, heroStats, heroCurve, heroLearnCurve, ima
 	this.curveInt        = heroCurve[3];
 	this.heroLearnCurve  = heroLearnCurve;
 	this.image           = image;
+	this.portrait_id     = portrait_id;
 }
 function populateHeroesForHire(){
-	heroesForHire = [];
+    heroesForHire = [];
+	knight_portraits = [1,2,3,4,5,6,7,8,9,10];
+	monk_portraits = [1,2,3,4,5,6,7,8,9,10];
 	knight = new heroForHire(locObj.heroClassKnight.txt, 1, [2,2,0,0], [60,40,0,0],
-							locObj.knightLearnCurve.txt, 'hero-knight.png');
+							locObj.knightLearnCurve.txt, 'hero-knight.png', 1);
 	monk   = new heroForHire(locObj.heroClassMonk.txt, 1, [0,0,2,2], [45,55,0,0],
-							locObj.monkLearnCurve.txt, 'hero-monk.png');
+							locObj.monkLearnCurve.txt, 'hero-monk.png', 1);
 	heroesForHire.push(knight);
+	startHeroPortraitId.push(1);
+	endHeroPortraitId.push(10);
+	curHeroPortraitId.push(1);
 	heroesForHire.push(monk);
+	startHeroPortraitId.push(1);
+	endHeroPortraitId.push(10);
+	curHeroPortraitId.push(1);
 	for (hero of heroesForHire){
 		var heroAttributesRandomizer = new WeightedRandom();
 		heroAttributesRandomizer.addEntry('atk', hero.curveAtk);
@@ -188,7 +203,14 @@ function updateHeroAvForHire(heroClassId){
 	console.log("heroClassId is "+heroClassId);
 	document.getElementById("lblClassForHire").innerText    = heroesForHire[heroClassId].heroClassLbl;
 	document.getElementById("lblSpeciality").innerText      = heroesForHire[heroClassId].heroLearnCurve;
-	document.getElementById("imgHeroForHire").src           = 'resources/'+heroesForHire[heroClassId].image;
+	if (curHeroPortraitId[heroClassId]+1<=endHeroPortraitId[heroClassId]) {
+		curHeroPortraitId[heroClassId] += 1;
+	} else {
+		curHeroPortraitId[heroClassId] = startHeroPortraitId[heroClassId];
+	}
+	heroesForHire[heroClassId].portrait_id = curHeroPortraitId[heroClassId];
+	heroImg = document.getElementById("imgHeroForHire")
+	heroImg.src = 'resources/heroes/'+heroesForHire[heroClassId].portrait_id+".png";
 	document.getElementById("lblLevelForHire").innerText    = heroesForHire[heroClassId].level;
 	theStats    = locObj.heroStatsAtkLbl.txt  +": " + heroesForHire[heroClassId]["atk"]+"; ";
 	theStats   += locObj.heroStatsDefLbl.txt  +": " + heroesForHire[heroClassId]["def"]+" ";

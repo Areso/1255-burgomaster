@@ -582,6 +582,7 @@
 					<div class="grid-item not-implemented" id="grid-garrison6v">600</div>
 
 					<div class="grid-item visiting-hero" id="grid-hero">
+						<img id="imgHeroInHiringScreen" width="90px" height="90px" style="display: none" src="" >
 						<img id="imgHeroInHiringScreenKnight2" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
 						<img id="imgHeroInHiringScreenMonk2" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
 					</div>
@@ -2549,6 +2550,7 @@
 					game.myhero.aCampaignTotalLong = 0;
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
+					game.myhero.portrait_id        = heroesForHire[curHeroForHire].portrait_id;
 					updateHeroStatus();
 					game.gold -= config.costHero;
 				} else {
