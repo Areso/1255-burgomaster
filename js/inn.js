@@ -203,7 +203,7 @@ function updateHeroAvForHire(heroClassId){
 	console.log("heroClassId is "+heroClassId);
 	document.getElementById("lblClassForHire").innerText    = heroesForHire[heroClassId].heroClassLbl;
 	document.getElementById("lblSpeciality").innerText      = heroesForHire[heroClassId].heroLearnCurve;
-	if (curHeroPortraitId[heroClassId]+1<=endHeroPortraitId[heroClassId]) {
+	if (curHeroPortraitId[heroClassId]+1<endHeroPortraitId[heroClassId]) {
 		curHeroPortraitId[heroClassId] += 1;
 	} else {
 		curHeroPortraitId[heroClassId] = startHeroPortraitId[heroClassId];
