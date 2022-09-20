@@ -38,11 +38,11 @@
 		<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>
 		This is a single-player game. There is built-in chat but it is not currently available to chat in.<br> 
 		Also, the game now has global goals, which are usually activated for a limited time.<br>
-		In those events, all players work together to achieve a high global goal, and in case of the achievement, they all got a reward, according to their pledge in the achievement.<br> 
-		The game itself is about building a city. You with with a set amount of gold and a few citizens.<br>
-		This is an IDLE game, which means, every minute your citizens will spawn new citizens and pay taxes to you.<br>
-		You can construct buildings as well as upgrade buildings, but upgrading existing ones will require each time more gold.<br>
-		As for now, constructing building does not require time, only resources.<br> 
+		In those events, all players can work together to achieve a high global goal, and in case of the achievement, they all got a reward, according to their pledge in the achievement.<br> 
+		The game itself is about building a city. You start with a set amount of gold and a few citizens.<br>
+		This is an IDLE game, which means, every minute your city will spawn new citizens who will pay taxes to you.<br>
+		You can construct as well as upgrade buildings, but upgrading existing ones will require more gold each time .<br>
+		As of now, constructing building does not require time, only resources.<br> 
 		Straight management, which means, you need place management by clicking here and there and you will get what you clicked.</br>
 		What game offers now:<br>
 		<ul>
@@ -61,7 +61,7 @@
 		</ul>
 		<div style="color:red">You will explore wild territories near your city.</div><br>
 		Regarding your choices, you could get a boost in taxes, birthrate, happiness and so on.<br>
-		The game could become a Clicker game if you build the Gallows, and like to execute you citizens.<br>
+		The game could become a clicker game if you build the Gallows, and like to execute your citizens.<br>
 		This game created and new features right now in development inspired by Travian, Townsmen, Stronghold and Stronghold Crusaders, HoMM (Heroes of Might and Magic), Lord of Realm, Anno series.<br> 
 		You can export and import save to transfer your progress between different browsers and PCs.<br><br>
 		<h2>License</h2><br>
