@@ -275,14 +275,3 @@ function updateTroopsNumbers() {
 		document.getElementById("grid-hero3v").innerHTML      = game.myhero.knights;
 	}
 }
-function updateUnitsStats() {
-	document.getElementById("sergeantsAttack").innerText  = sergeantsData.attack;
-	document.getElementById("sergeantsDefence").innerText = sergeantsData.defence;
-	document.getElementById("sergeantsHealth").innerText  = sergeantsData.health;
-	document.getElementById("turkopolsAttack").innerText  = turkopolsData.attack;
-	document.getElementById("turkopolsDefence").innerText = turkopolsData.defence;
-	document.getElementById("turkopolsHealth").innerText  = turkopolsData.health;
-	document.getElementById("knightsAttack").innerText    = knightsData.attack;
-	document.getElementById("knightsDefence").innerText   = knightsData.defence;
-	document.getElementById("knightsHealth").innerText    = knightsData.health;
-}

@@ -3583,19 +3583,16 @@
 						sergeantsData.attack++;
 						sergeantsData.defence++;
 						sergeantsData.health = Math.round(sergeantsData.health * 1.1);
-						updateUnitsStats();
 					}
 					if (game.buildLevelArchery >= 1) {
 						turkopolsData.attack++;
 						turkopolsData.defence++;
 						turkopolsData.health = Math.round(turkopolsData.health * 1.1);
-						updateUnitsStats();
 					}
 					if (game.buildLevelStable >= 2) {
 						knightsData.attack++;
 						knightsData.defence++;
 						knightsData.health = Math.round(knightsData.health * 1.2);
-						updateUnitsStats();
 					}
 					game.buildLevelStable   = game.buildLevelStable*1 + 1;
 					commonBuild();
