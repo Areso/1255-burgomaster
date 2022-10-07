@@ -1,6 +1,6 @@
 	reglogin  = "reg";
 	session   = "";
-	log_dom   = document.getElementById("console_n_chat");
+	log_dom   = document.getElementById("log");
 	chat_dom  = document.getElementById("chat");
 	mod_dom   = document.getElementById("moderation_area");
 	nick_dom  = document.getElementById("inp_nickname");
@@ -452,17 +452,19 @@ function reloadBanned() {
 		xhttp.send();
 	}
 	users_online = document.getElementById("lbl_online_value");
-	websocket = new WebSocket(ws_server);
-	websocket.onmessage = function (event) {
-		data = JSON.parse(event.data);
-		switch (data.type) {
-			case 'users':
-				users_online.textContent = (
-				data.count.toString() + " user" +
-				(data.count == 1 ? "" : "s"));
-				break;
-			default:
-				console.error("unsupported event", data);
+	if (config.online) {
+		websocket = new WebSocket(ws_server);
+		websocket.onmessage = function (event) {
+			data = JSON.parse(event.data);
+			switch (data.type) {
+				case 'users':
+					users_online.textContent = (
+					data.count.toString() + " user" +
+					(data.count == 1 ? "" : "s"));
+					break;
+				default:
+					console.error("unsupported event", data);
+			}
 		}
 	}
 function send_gen_items(items_no){

@@ -2,34 +2,34 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Baut oder verbessert Eure Schatzkammer.");
-localeStrings.push("Euer Reichtum vergrößerte sich.");
-localeStrings.push("Euer Reichtum verringerte sich.");//5
-localeStrings.push("Euer Reichtum ist unverändert.");
-localeStrings.push("Die Bevölkerung wuchs.");
-localeStrings.push("Die Bevölkerung ging zurück.");
-localeStrings.push("Die Bevölkerung blieb konstant.");
-localeStrings.push("Eure Stadt ist am Bevölkerungslimit. Errichtet neue Häuser oder rüstet bestehende auf.");//10
-localeStrings.push("Spiel erfolgreich gespeichert.");
-localeStrings.push("Spiel erfolgreich geladen.");
-localeStrings.push("Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!");
-localeStrings.push("Verzeiht! Es wurde kein gespeicherter Spielstand gefunden.");
-localeStrings.push("Spiel speichern? Alte Spielstände werden dabei überschrieben!");//15
-localeStrings.push("Bitte fügt Euren Spielstand ein.");
-localeStrings.push("sehr lange Zeichenkette");
-localeStrings.push("Möchtet Ihr einen Wachmann einstellen? Er wird Euch einmalig %arg1 Gold und danach %arg2 Gold pro Saison kosten.");
-localeStrings.push("Ihr habt einen Wachmann angeheuert.");
-localeStrings.push("Ihr besitzt leider nicht genug Gold dafür.");//20
-localeStrings.push("Ihr benötigt eine Schatzkammer, um einen Wachmann anheuern zu können.");
-localeStrings.push("Möchtet Ihr einen Wachmann entlassen?");
-localeStrings.push("Ihr habt einen Wachmann entlassen.");
-localeStrings.push("Ihr beschäftigt zur Zeit keine Wachleute.");
-localeStrings.push("Verrats");//25
-localeStrings.push("Spionage");
-localeStrings.push("Korruption");
-localeStrings.push("Bestechung");
-localeStrings.push("Unterschlagung");
-localeStrings.push("Diebstahls");//30
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//10
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Ja, auf die blutigste Weise!");
 localeStrings.push("Ja");
 localeStrings.push("Nein");
@@ -508,4 +508,32 @@ locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive 
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
 locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables first", "loc":"error msg bulding archery"};
-
+locObj.buildUpgradeTreasury = {"txt":"Baut oder verbessert Eure Schatzkammer", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"Euer Reichtum vergrößerte sich", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"Euer Reichtum verringerte sich", "loc":"happens when s-to-s money value decreased"};
+locObj.popIncreased = {"txt":"Die Bevölkerung wuchs", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"Die Bevölkerung ging zurück", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"Eure Stadt ist am Bevölkerungslimit. Errichtet neue Häuser oder rüstet bestehende auf", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"Spiel erfolgreich gespeichert", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"Spiel erfolgreich geladen", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Verzeiht! Es wurde kein gespeicherter Spielstand gefunden", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"Spiel speichern? Alte Spielstände werden dabei überschrieben!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Bitte fügt Euren Spielstand ein", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"sehr lange Zeichenkette", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Möchtet Ihr einen Wachmann einstellen? Er wird Euch einmalig %arg1 Gold und danach %arg2 Gold pro Saison kosten", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Ihr habt einen Wachmann angeheuert", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Ihr besitzt leider nicht genug Gold dafür", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Ihr benötigt eine Schatzkammer, um einen Wachmann anheuern zu können", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Möchtet Ihr einen Wachmann entlassen?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Ihr habt einen Wachmann entlassen", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"Ihr beschäftigt zur Zeit keine Wachleute", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"Verrats", "loc":"when executing a person"},
+	{"txt":"Spionage", "loc":""},
+	{"txt":"Korruption", "loc":""},
+	{"txt":"Bestechung", "loc":""},
+	{"txt":"Unterschlagung", "loc":""},
+	{"txt":"Diebstahls", "loc":""}];
+locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
+locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};

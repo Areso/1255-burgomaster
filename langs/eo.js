@@ -2,34 +2,34 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("konstruu aŭ plibonigu vian trezorejon");
-localeStrings.push("kvanto da mono pliiĝas");
-localeStrings.push("kvanto da mono malpliiĝas");//5
-localeStrings.push("kvanto da mono ne ŝanĝiĝis");
-localeStrings.push("loĝantaro pliiĝas");
-localeStrings.push("loĝantaro malpliiĝas");
-localeStrings.push("loĝantaro ne ŝanĝiĝis");
-localeStrings.push("via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn");//10
-localeStrings.push("ludo konservis sukcese");
-localeStrings.push("ludo ŝarĝis sukcese");
-localeStrings.push("Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!");
-localeStrings.push("Pardonu! Ne ekzistas konserva dosiero!");
-localeStrings.push("Konservu ludon? Vi reskribos ian ajn konservitan!");//15
-localeStrings.push("Bonvolu enigi konservan ĉenon");
-localeStrings.push("tre longa ĉeno");
-localeStrings.push("Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!");
-localeStrings.push("Vi dungis gardiston!");
-localeStrings.push("Ne sufiĉe da oro por fari tion!");//20
-localeStrings.push("Trezorejo necesas por dungi gardiston!");
-localeStrings.push("Ĉu vi volas forĵeti gardiston?");
-localeStrings.push("Vi forĵetis gardiston!");
-localeStrings.push("Vi ne havas gardistojn!");
-localeStrings.push("misuzo");//25
-localeStrings.push("perfido");
-localeStrings.push("korupto");
-localeStrings.push("subaĉeto");
-localeStrings.push("greftaĵo kaj ŝtelo");
-localeStrings.push("malversación");//30
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//10
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Jes, plej sange!");
 localeStrings.push("Jes");
 localeStrings.push("No");
@@ -507,4 +507,32 @@ locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive 
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
 locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables first", "loc":"error msg bulding archery"};
-
+locObj.buildUpgradeTreasury = {"txt":"konstruu aŭ plibonigu vian trezorejon", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"kvanto da mono pliiĝas", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"kvanto da mono malpliiĝas", "loc":"happens when s-to-s money value decreased"};
+locObj.popIncreased = {"txt":"loĝantaro pliiĝas", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"loĝantaro malpliiĝas", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"ludo konservis sukcese", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"ludo ŝarĝis sukcese", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Pardonu! Ne ekzistas konserva dosiero!", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"Konservu ludon? Vi reskribos ian ajn konservitan!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Bonvolu enigi konservan ĉenon", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"tre longa ĉeno", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Vi dungis gardiston!", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Ne sufiĉe da oro por fari tion!", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Trezorejo necesas por dungi gardiston!", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Ĉu vi volas forĵeti gardiston?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Vi forĵetis gardiston!", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"Vi ne havas gardistojn!", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"misuzo", "loc":"when executing a person"},
+	{"txt":"perfido", "loc":""},
+	{"txt":"korupto", "loc":""},
+	{"txt":"subaĉeto", "loc":""},
+	{"txt":"greftaĵo kaj ŝtelo", "loc":""},
+	{"txt":"malversación", "loc":""}];
+locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
+locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};

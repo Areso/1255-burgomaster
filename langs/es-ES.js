@@ -2,34 +2,34 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Construye o mejora tu Tesorería");
-localeStrings.push("Tu riqueza incrementadó");
-localeStrings.push("Tu riqueza se redujo.");//5
-localeStrings.push("Tu riqueza se mantuvo.");
-localeStrings.push("La población creció.");
-localeStrings.push("La población se redujo.");
-localeStrings.push("La población se mantuvo constante.");
-localeStrings.push("Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes.");//10
-localeStrings.push("Juego guardado exitosamente.");
-localeStrings.push("Juego cargado exitosamente.");
-localeStrings.push("¿Cargar juego? Perderás cualquier avance no guardado");
-localeStrings.push("¡Perdón¡ ¡No hay un juego guardado para cargar!");
-localeStrings.push("¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas! ");//15
-localeStrings.push("Por favor ingresa el código de guardado");
-localeStrings.push("código muy largo");
-localeStrings.push("¿Quieres contratar un guardia? Te costará %arg1 de oro y luego %arg2 de oro por cada estación.");
-localeStrings.push("Contrataste un guardia. ");
-localeStrings.push("No tienes suficiente oro para hacer eso.");//20
-localeStrings.push("Se requiere una Tesorería para contratar un guardia. ");
-localeStrings.push("¿Quieres despedir al guardia?");
-localeStrings.push("Despediste al guardia.");
-localeStrings.push("No tienes ningún guardia.");
-localeStrings.push("traición");//25
-localeStrings.push("espionaje");
-localeStrings.push("corrupción");
-localeStrings.push("soborno");
-localeStrings.push("graft and robo");
-localeStrings.push("malversación");//30
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//10
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Sí ¡De la manera más sangrienta!");
 localeStrings.push("Sí");
 localeStrings.push("No");
@@ -500,3 +500,36 @@ locObj.couldntRecordPledge = {"txt": "It seems you are not logged it. Your pledg
 
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
+
+locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
+locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
+locObj.buildArchery = {"txt":"Archery provides mounted archers. Build stables first", "loc":"error msg bulding archery"};
+locObj.buildUpgradeTreasury = {"txt":"Construye o mejora tu Tesorería", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"Tu riqueza incrementadó", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"Tu riqueza se redujo", "loc":"happens when s-to-s money value decreased"};
+locObj.popIncreased = {"txt":"La población creció", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"La población se redujo", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"Juego guardado exitosamente", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"Juego cargado exitosamente", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"¿Cargar juego? Perderás cualquier avance no guardado", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"¡Perdón¡ ¡No hay un juego guardado para cargar!", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas!", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Por favor ingresa el código de guardado", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"código muy largo", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"¿Quieres contratar un guardia? Te costará %arg1 de oro y luego %arg2 de oro por cada estación", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Contrataste un guardia", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"No tienes suficiente oro para hacer eso", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Se requiere una Tesorería para contratar un guardia", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"¿Quieres despedir al guardia?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Despediste al guardia", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"No tienes ningún guardia", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"traición", "loc":"when executing a person"},
+	{"txt":"espionaje", "loc":""},
+	{"txt":"corrupción", "loc":""},
+	{"txt":"soborno", "loc":""},
+	{"txt":"graft and robo", "loc":""},
+	{"txt":"malversación", "loc":""}];
+locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
+locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};

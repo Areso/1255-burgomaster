@@ -1,0 +1,225 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: "Arial", sans-serif;
+	line-height: 1.45;
+}
+
+button {
+	background: linear-gradient(#FDFDFD, #F0F0F0);
+	border: 1px solid #999;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+button:hover {
+	background: #F1F1F1;
+}
+
+button:active {
+	box-shadow: inset 0px 0px 6px 1px rgba(99, 99, 99, 0.5);
+}
+
+#htmlGame {
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.menu-panel {
+	display: flex;
+	border:  1px solid #ccc;
+	border-bottom: none;
+	background: #f1f1f1;
+}
+
+.resource-panel {
+	display: flex;
+	border:  1px solid #ccc;
+	background: #f1f1f1;
+	padding: 6px 12px;
+}
+
+.resource {
+	display: flex;
+	align-items: center;
+	margin-right: 12px;
+}
+
+.resource > img {
+	margin-right: 5px;
+	width: 20px;
+}
+
+#Discord {
+	padding: 0;
+}
+
+#popImg {
+	width: 17px;
+}
+
+#amberImg {
+	width: 22px;
+}
+
+.content-panel {
+	height: 480px;
+	border: 1px solid #ccc;
+	border-top: none;
+	overflow: hidden;
+}
+
+.info-panel {
+	border: 1px solid #ccc;
+	border-top: 0;
+}
+
+.info-panel__actions {
+	padding: 2px;
+}
+
+.info-panel__actions > button {
+	padding: 4px;
+	min-width: 40px;
+}
+
+.info-panel__history {
+	min-height: 100px;
+	max-height: 150px;
+	height: 100%;
+	overflow-y: auto;
+	border-top: 1px solid #ccc;
+}
+
+.info-panel__form {
+	padding: 2px;
+	border-top: 1px solid #ccc;
+	display: flex;
+}
+
+.info-panel__form-msg {
+	flex: 1 1 auto;
+	margin: 0 10px;
+}
+
+#inp_nickname,
+#btnSend {
+	width: 100px;
+}
+
+#msg_out {
+	width: 100%;
+}
+
+
+.tab-link {
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+.tab-link:hover {
+	background-color: #ddd;
+}
+
+.tab-link.active {
+	background: #ccc;
+}
+
+.tab {
+	display: none;
+	height: 100%;
+}
+
+.tab.active {
+	display: block;
+}
+
+
+.garrison-tab {
+	margin-top: 20px;
+}
+
+
+#tabBuilding.active {
+	display: flex;
+	flex-direction: column;
+}
+
+.building-wrapper {
+	flex: 0 0 82%;
+	overflow-y: auto;
+}
+
+.building-list {
+	display: flex;
+	flex-wrap: wrap;
+	width: 80%;
+	justify-content: space-between;
+	padding: 10px 10px 0;
+	margin: 0 auto;
+}
+
+.building-card {
+	max-width: 184px;
+	width: 100%;
+	height: 182px;
+	margin-bottom: 10px;
+}
+
+.building-card__img {
+	height: 124px;
+	background-color: #f7f7f7;
+	border: 1px solid #999;
+	display: flex;
+}
+
+.building-card__img > img {
+	margin: auto;
+}
+
+.building-card__action {
+	height: 56px;
+	margin-top: 3px;
+	border: 1px solid #999;
+	background-color: #f7f7f7;
+}
+
+.building-card__action > button {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+.building-description {
+	flex: 0 0 18%;
+	border-top: 1px solid #ccc;
+	padding: 10px;
+	font-size: 14px;
+}
+
+#tabInn {
+	padding: 12px;
+}
+
+#lblAvailableForHire {
+	margin-top: 20px;
+}
+
+#btnHireHero {
+	width: 160px;
+	margin: 0 auto;
+	display: block;
+}
+
+#pop_img {
+	width: 17px;
+}
+
+#gems_img {
+	width: 22px;
+}

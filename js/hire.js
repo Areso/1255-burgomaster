@@ -184,48 +184,56 @@ function hoverInObj(myobject) {
 }
 function updateHeroStatusHire() {
 	if (game.heroExists() === true) {
-		if (game.myhero.status===0) {
-			if (game.myhero.class===0) {
-				document.getElementById("imgHeroInHiringScreenKnight2").style.display="block";
-				document.getElementById("imgHeroInHiringScreenMonk2").style.display="none";
+		if (game.myhero.status === 0) {
+			if (game.myhero.hasOwnProperty('portrait_id')) {
+				visitingHeroImg = document.getElementById("imgHeroInHiringScreen");
+				visitingHeroImg.style.display = "block";
+				visitingHeroImg.src = "resources/heroes/" + game.myhero.portrait_id + ".png";
 			} else {
-				document.getElementById("imgHeroInHiringScreenKnight2").style.display="none";
-				document.getElementById("imgHeroInHiringScreenMonk2").style.display="block";
+				if (game.myhero.class === 0) {
+					document.getElementById("imgHeroInHiringScreenKnight2").style.display = "block";
+					document.getElementById("imgHeroInHiringScreenMonk2").style.display = "none";
+				} else {
+					document.getElementById("imgHeroInHiringScreenKnight2").style.display = "none";
+					document.getElementById("imgHeroInHiringScreenMonk2").style.display = "block";
+				}
 			}
-			if (game.myhero.sergeants>0) {
-				document.getElementById("grid-hero1").style.display="block";
-				document.getElementById("grid-hero1v").style.display="block";
+			if (game.myhero.sergeants > 0) {
+				document.getElementById("grid-hero1").style.display = "block";
+				document.getElementById("grid-hero1v").style.display = "block";
 			} else {
-				document.getElementById("grid-hero1").style.display="none";
-				document.getElementById("grid-hero1v").style.display="none";
+				document.getElementById("grid-hero1").style.display = "none";
+				document.getElementById("grid-hero1v").style.display = "none";
 			}
-			if (game.myhero.turkopols>0) {
-				document.getElementById("grid-hero2").style.display="block";
-				document.getElementById("grid-hero2v").style.display="block";
+			if (game.myhero.turkopols > 0) {
+				document.getElementById("grid-hero2").style.display = "block";
+				document.getElementById("grid-hero2v").style.display = "block";
 			} else {
-				document.getElementById("grid-hero2").style.display="none";
-				document.getElementById("grid-hero2v").style.display="none";
+				document.getElementById("grid-hero2").style.display = "none";
+				document.getElementById("grid-hero2v").style.display = "none";
 			}
-			if (game.myhero.knights>0) {
-				document.getElementById("grid-hero3").style.display="block";
-				document.getElementById("grid-hero3v").style.display="block";
+			if (game.myhero.knights > 0) {
+				document.getElementById("grid-hero3").style.display = "block";
+				document.getElementById("grid-hero3v").style.display = "block";
 			} else {
-				document.getElementById("grid-hero3").style.display="none";
-				document.getElementById("grid-hero3v").style.display="none";
+				document.getElementById("grid-hero3").style.display = "none";
+					document.getElementById("grid-hero3v").style.display = "none";
 			}
 		} else {
-			document.getElementById("imgHeroInHiringScreenKnight2").style.display="none";
-			document.getElementById("imgHeroInHiringScreenMonk2").style.display="none";
-			document.getElementById("grid-hero1").style.display="none";
-			document.getElementById("grid-hero1v").style.display="none";
-			document.getElementById("grid-hero2").style.display="none";
-			document.getElementById("grid-hero2v").style.display="none";
-			document.getElementById("grid-hero3").style.display="none";
-			document.getElementById("grid-hero3v").style.display="none";
+			document.getElementById("imgHeroInHiringScreen").style.display = "none";
+			document.getElementById("imgHeroInHiringScreenKnight2").style.display = "none";
+			document.getElementById("imgHeroInHiringScreenMonk2").style.display = "none";
+			document.getElementById("grid-hero1").style.display = "none";
+			document.getElementById("grid-hero1v").style.display = "none";
+			document.getElementById("grid-hero2").style.display = "none";
+			document.getElementById("grid-hero2v").style.display = "none";
+			document.getElementById("grid-hero3").style.display = "none";
+			document.getElementById("grid-hero3v").style.display = "none";
 		}
 	} else {
-		document.getElementById("imgHeroInHiringScreenKnight2").style.display="none";
-		document.getElementById("imgHeroInHiringScreenMonk2").style.display="none";
+		document.getElementById("imgHeroInHiringScreen").style.display = "none";
+		document.getElementById("imgHeroInHiringScreenKnight2").style.display = "none";
+		document.getElementById("imgHeroInHiringScreenMonk2").style.display = "none";
 	}
 }
 function updateGarrisonStatusHire() {
@@ -266,15 +274,4 @@ function updateTroopsNumbers() {
 		document.getElementById("grid-hero2v").innerHTML      = game.myhero.turkopols;
 		document.getElementById("grid-hero3v").innerHTML      = game.myhero.knights;
 	}
-}
-function updateUnitsStats() {
-	document.getElementById("sergeantsAttack").innerText  = sergeantsData.attack;
-	document.getElementById("sergeantsDefence").innerText = sergeantsData.defence;
-	document.getElementById("sergeantsHealth").innerText  = sergeantsData.health;
-	document.getElementById("turkopolsAttack").innerText  = turkopolsData.attack;
-	document.getElementById("turkopolsDefence").innerText = turkopolsData.defence;
-	document.getElementById("turkopolsHealth").innerText  = turkopolsData.health;
-	document.getElementById("knightsAttack").innerText    = knightsData.attack;
-	document.getElementById("knightsDefence").innerText   = knightsData.defence;
-	document.getElementById("knightsHealth").innerText    = knightsData.health;
 }

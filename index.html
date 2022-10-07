@@ -5,9 +5,10 @@
 	<title>
 		1255 Burgomaster
 	</title>
-	<link rel="stylesheet"  type="text/css" href="css/game.css"/>
-	<link rel="stylesheet"  type="text/css" href="css/hire.css"/>
-	<link rel="stylesheet"  type="text/css" href="css/inn.css" />
+	<link rel="stylesheet"  type="text/css" href="./css/normalize.min.css"/>
+	<link rel="stylesheet"  type="text/css" href="./css/game.css"/>
+	<link rel="stylesheet"  type="text/css" href="./css/hire.css"/>
+	<link rel="stylesheet"  type="text/css" href="./css/inn.css" />
 	<script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
 	<script>
 		'use strict';
@@ -25,20 +26,19 @@
 			webserver = "http://localhost:6699";
 			ws_server = "ws://localhost:6698";
 			dev_flag  = true;
-		} 
+		}
 	</script>
-	<script src="js/hire.js"></script>
-	<script src="js/inn.js" ></script>
 	<script src="js/dom.js" ></script>
 </head>
 <body>
+
 <div id="htmlGame">
-		<div class="tab">
-			<button class="tablinks" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-			<button class="tablinks" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
-			<button class="tablinks" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
-			<button class="tablinks" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
-			<button class="tablinks" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
+		<div class="menu-panel">
+			<button class="tab-link" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
+			<button class="tab-link is-tutorial" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
+			<button class="tab-link" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
+			<button class="tab-link" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
+			<button class="tab-link" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
 			<div id="lblEventCountdownValue" style="margin-left:20px;" onclick="game.getEventHelp()"></div>
 			<a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>
 		</div>
@@ -67,1296 +67,841 @@
 				<span id="event-value" onclick="getEventHelp()"></span>
 			</div>
 		</div>
-		<div id="Main" class="tabcontent">
-			<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
-			<br>
-			<p id="events_graphics" style="z-index: 8">
-			</p>
-			<button id="saveGameButton"   onclick="saveGame()" class="interface" style="top:250px; left: 20px">Save game</button>
-			<button id="loadGameButton"   onclick="loadGame()" class="interface" style="display: inline; top:310px; left: 20px; visibility:hidden">Load game</button>
-			<button id="buttonPutOutFire"   onclick="game.putOutFire()" class="interface" style="top:370px; left: 20px; display:none">Put out fire</button>
-			<button id="buttonDeathPenalty"   onclick="game.deathPenalty()" class="interface" style="top:460px; left: 20px; display:none">Execute smb</button>
-			<button id="buttonDebug"   onclick="ym(47225574, 'reachGoal', 'min5'); return true;" class="interface" style="top:190px; left: 20px; display:none">X</button>
-		</div>
-		<div id="Explore" class="tabcontent">
-			<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
-		</div>
-		<div id="Settings" class="tabcontent">
-			<h3><div id="labelSettings">Settings</div></h3>
-			<button id="btnReg"   onclick="setReg()"                             >REG</button>
-			<button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
-			Nickname: <input id="login"    type="text"     value=""><br>
-			Password: <input id="password" type="password" value=""><br>
-			<span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
-			<button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
-			<select id="selectLng" size="1" onchange="reloadLang()">
-				<option id="optionLngEn" selected value="en-US">English</option>
-				<option id="optionLngRu"          value="ru-RU">Русский</option>
-				<option id="optionLngGe"          value="de-DE">Deutsch</option>
-				<option id="optionLngEo"          value="eo">Esperanto</option>
-				<option id="optionLngFr"          value="fr-FR">Français</option>
-			</select>
-			<table>
-			<tr>
-				<td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
-				<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
-				<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
-			</tr>
-			</table>
-			<button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" >Save to Cloud</button>
-			<button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;">Load save from Cloud</button>
-			<br>
-			<input id="savestring" name="savestring" value="" style="width:600px">
-			<br>
-			<a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
-			<br>
-			<br>
-			<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
-			<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
-			<br>
-			<br>
-			<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
-			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
-			<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
-			<label id="lblStnLines">lines</label>
-			<br>
-			<lable id="lblStnUID" style="visibility:hidden;">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px; visibility:hidden;"></label>
-			<label id="lblStnAlias" style="display: none" >Your nickname</label>
-			<input id="inpStnAliasValue" style="display: none" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
-			<br>
-			<label id="lblStnAliasResult"></label><br>
-			<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
-		</div>
-		<div id="tabModTools" class="tabcontent">
-			<button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden">reload settings</button>
-			<button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden">reload banned</button>
-			<div id="moderation_area"   name="moderation"    class="interface" value="" style="width:800px; height:150px; top: 80px; left: 10px"></div>
-		</div>
-		<div id="tabSettingsSound" class="tabcontent">
-			<label id="lblSoundMenu">Sound effects and music</label><br>
-			<!--Note, those above overwrite those below-->
-			<table border="0" width="100%">
-				<tr>
-					<td width="60%"><label id="lblOption">Option</label></td>
-					<td width="20%"><label id="lblOn">On</label></td>
-					<td width="20%"><label id="lblOff">Off</label></td>
-				</tr>
-				<tr>
-					<td width="60%"><label id="lblSfxAll">All sound effects</label></td>
-					<td width="20%"><input type = "radio"
-										   name = "sfx"
-										   id = "sfx_on"
-										   value = "on"
-										   onchange="game.setupAudio('sfx','all',1)"/></td>
-					<td width="20%"><input type = "radio"
-										   name = "sfx"
-										   id = "sfx_off"
-										   value = "off"
-										   onchange="game.setupAudio('sfx','all',0)"
-										   checked = "checked" /></td>
-				</tr>
-				<tr>
-					<td width="60%"><label id="lblSfxEvt">Effects on all events</label></td>
-					<td width="20%"><input type = "radio"
-										   name = "sfx_events"
-										   id = "sfx_events_on"
-										   value = "on"
-										   onchange="game.setupAudio('sfx','events',1)"/></td>
-					<td width="20%"><input type = "radio"
-										   name = "sfx_events"
-										   id = "sfx_events_off"
-										   value = "off"
-										   onchange="game.setupAudio('sfx','events',0)"
-										   checked = "checked" /></td>
-				</tr>
-				<tr>
-					<td width="60%"><label id="lblSfxEvtAR">Effects on action required events</label></td>
-					<td width="20%"><input type = "radio"
-										   name = "sfx_actions"
-										   id = "sfx_actions_on"
-										   value = "on"
-										   onchange="game.setupAudio('sfx','actions',1)"/></td>
-					<td width="20%"><input type = "radio"
-										   name = "sfx_actions"
-										   id = "sfx_actions_off"
-										   value = "off"
-										   onchange="game.setupAudio('sfx','actions',0)"
-										   checked = "checked" /></td>
-				</tr>
-				<tr>
-					<td width="60%">-----</td>
-					<td width="20%">-----</td>
-					<td width="20%">-----</td>
-				</tr>
-				<tr>
-					<td width="60%"><label id="lblMscAll">Music all</label></td>
-					<td width="20%"><input type = "radio"
-										   name = "music_all"
-										   id = "music_on"
-										   value = "on"
-										   onchange="game.setupAudio('music','all',1)"/></td>
-					<td width="20%"><input type = "radio"
-										   name = "music_all"
-										   id = "music_off"
-										   value = "off"
-										   onchange="game.setupAudio('music','all',0)"
-										   checked = "checked" /></td>
-				</tr>
-				<tr>
-					<td width="60%"><label id="lblMscScr">Lore and scenery music</label></td>
-					<td width="20%"><input type = "radio"
-										   name = "music_script"
-										   id = "music_scripts_on"
-										   onchange="game.setupAudio('music','scripts',1)"
-										   value = "on" /></td>
-					<td width="20%"><input type = "radio"
-										   name = "music_script"
-										   id = "music_scripts_off"
-										   value = "off"
-										   onchange="game.setupAudio('music','scripts',0)"
-										   checked = "checked" /></td>
-				</tr>
-			</table>
-			<br>
-			<hr>
-			<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
-		</div>
-		<div id="tabGarrison" class="tabcontent">
-			<h3><div id="labelGarrison">Garrison</div></h3>
-			<div id="divtreasuryGuard">
-			<table border="1">
-				<tr>
-					<td>
-						<div id="treasury_guard_div" align="center">
-							<img src="resources/knight6.png">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
-						<span id="treasuryGuard">0</span>
-						<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
-					</td>
-				</tr>
-			</table>
+		<div class="content-panel">
+			<div id="Main" class="tab">
+				<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
+				<div id="events_graphics"></div>
+				<button id="saveGameButton" onclick="saveGame()" class="btn">Save game</button>
+				<button id="loadGameButton" onclick="loadGame()" class="btn">Load game</button>
+				<button id="buttonPutOutFire" onclick="game.putOutFire()" class="btn">Put out fire</button>
+				<button id="buttonDeathPenalty" onclick="game.deathPenalty()" class="btn">Execute smb</button>
 			</div>
-		</div>
-		<div id="tabFirebrigade" class="tabcontent">
-			<h3><label id="lblFirebrigade">Fire brigade</label></h3>
-			<table border="0" width="100%">
-			<tr>
-				<td width="60%"><label id="lblFBOption">The fire service is</label></td>
-				<td width="20%"><label id="lblFBOn">on duty</label></td>
-				<td width="20%"><label id="lblFBOff">off duty</label></td>
-			</tr>
-			<tr>
-				<td width="60%"></td>
-				<td width="20%"><input type = "radio"
-									   name = "inp_fb"
-									   id = "fb_on"
-									   value = "on"
-									   onchange="game.setupFirebrigade(1)"/></td>
-				<td width="20%"><input type = "radio"
-									   name = "inp_fb"
-									   id = "fb_off"
-									   value = "off"
-									   onchange="game.setupFirebrigade(0)"
-									   checked = "checked" /></td>
-			</tr>
-			</table>
-			<br>
-			<label id="lblFBUpKeepPrice">The price of sustain of the service is:</label><label id="lblFBUpkeepPriceValue" style="margin-left:20px;">0</label>
-			<br>
-			<div id="divFBProgress" style="display: none">0% of fire extinguished</div>
-			<br>
-		</div>
-		<div id="Building" class="tabcontent building_tab">
-			<div id="labelBuilding" style="display: none;">Building</div>
-			<div id="theBuildingDiv">
-				<table>
-					<tr>
-						<td>
-							<table border="1">
-								<tr>
-									<td class="building">
-										<div align="center" class="bld_tab_house_class">
-											<img id="home_img" src="resources/home_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-										
-									</td>
-									<td class="building">
-										<div id="defences_img" align="center" class="bld_tab_defense_class">
-											<img id="defencies_img" src="resources/wallsf_as2.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-									<td class="building">
-										<div align="center" class="bld_tab_treasury_class">
-											<img id="treasury_img" src="resources/treasury_as.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="building">
-										<button id="homes" onclick="game.Build('Home')" class="building bld_tab_house_class">Build home</button>
-										
-									</td>
-									<td class="building">
-										<button id="defence" onclick="game.Build('Wall')" class="building bld_tab_defense_class">Build walls</button>
-									</td>
-									<td class="building">
-										<button id="treasury" onclick="game.Build('Treasury')" class="building bld_tab_treasury_class">Build treasury</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="building">
-										<div align="center" class="bld_tab_social_class">
-											<img id="gallows_img" src="resources/gallows.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-									<td class="building">
-										<div align="center" class="bld_tab_social_class">
-											<img id="fountain_img" src="resources/fountain.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-									<td class="building">
-										<div align="center" class="bld_tab_stash_class">
-											<img id="moneystash_img" src="resources/trapdoor.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="building">
-										<button id="buttonBldGallows" onclick="game.buildGallowsOrFountain('Gallows')" class="building bld_tab_social_class">Build gallows</button>
-									</td>
-									<td class="building">
-										<button id="buttonBldFountain" onclick="game.buildGallowsOrFountain('Fountain')" class="building bld_tab_social_class">Build fountain</button>
-									</td>
-									<td class="building">
-										<button id="buttonBldStash" onclick="game.Build('Stash')" class="building bld_tab_stash_class">Build stash</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="building">
-										<div align="center" class="bld_tab_stable_class">
-											<img id="stable_img" src="resources/stable.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-									<td class="building">
-										<div align="center" class="bld_tab_archery_class">
-											<img id="archery_img" src="resources/archery_range.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-									<td class="building">
-										<div align="center" class="bld_tab_inn_class">
-											<img id="inn_img" src="resources/inn.png" onmouseover="game.help(this)" onclick="game.help(this)">
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="building">
-										<button id="buttonBldStable" onclick="game.Build('Stable')" class="building bld_tab_stable_class">Build Stable</button>
-									</td>
-									<td class="building">
-										<button id="buttonBldArchery" onclick="game.Build('Archery')" class="building bld_tab_archery_class">Build Archery range</button>
-									</td>
-									<td class="building">
-										<button id="buttonBldInn" onclick="game.Build('Inn')" class="building bld_tab_inn_class">Build Inn</button>
-									</td>
-								</tr>
-							</table>
-						</td>
-						<td>
-							<div id="lblBuildHelp">
-
-							</div>
-						</td>
-					</tr>
-				</table>
+			<div id="Explore" class="tab">
+				<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
 			</div>
-		</div>
-		<div id="About" class="tabcontent">
-			<div id="lblAboutGame">
-			<h1>1255 Burgomaster</h1><br>
-			<h2>How to play</h2>
+			<div id="tabUniversity" class="tab">
+				<div id="available_researches">
+				
+				</div>
+				<!--<img src="resources/serpentine.png" onclick="game.research('artillery')">-->
+				<div id="lblReseachHelp" class="building-description"></div>
 			</div>
-		</div>
-		<div id="tabPopulation" class="tabcontent">
-			<div id="lblTabPop">Population history tab</div>
-			<br>
-			<table border="1">
-			<tbody>
-			<tr id="popStatK">
-			</tr>
-			<tr id="popStatV">
-			</tr>
-			</tbody>
-			</table>
-			<br>
-			<button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px">To the beginning</button>
-			<button id="btnPopPrev"     onclick="popPrev()" style="width:160px">Earlier</button>
-			<button id="btnPopNext"     onclick="popNext()" style="width:160px">Later</button>
-			<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px">To the end</button>
-			<br>
-			<br>
-			<div id="lblCurrentPopLimit"></div>
-		</div>
-		<div id="tabGold" class="tabcontent">
-			<div id="lblTabGold">Gold history tab</div>
-			<br>
-			<table border="1">
-			<tbody>
-			<tr id="goldStatK">
-			</tr>
-			<tr id="goldStatV">
-			</tr>
-			</tbody>
-			</table>
-			<br>
-			<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px">To the beginning</button>
-			<button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px">Earlier</button>
-			<button id="btnGoldNext"     onclick="goldNext()" style="width:160px">Later</button>
-			<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px">To the end</button>
-			<br>
-			<br>
-			<div id="lblCurrentGoldLimit"></div>
-		</div>
-		<div id="tabInn" class="tabcontent">
-			<div id="lblTabInn">Welcome to Inn!</div>
-			<br>
-			<br>
-			
-			<div id="hireHeroBlock">
-				<label id="lblAvailableForHire">Hero for hire</label>
-				<table>
-					<tr>
-						<td>
-							<!--HRP-->
-						<img id="imgPrevHero" src="resources/pointer_l.png" onclick="prevHero()">
-						<img id="imgHeroForHire" src="resources/hero-knight.png">
-						<img id="imgNextHero" src="resources/pointer_r.png" onclick="nextHero()">
-						</td>
-						<td>
-						<div>
-							<label id="lblClassForHire">Knight</label>
-							<label>,  </label>
-							<label id="lblLevelForHireLbl">level </label>
-							<label id="lblLevelForHire">1</label>
-						</div>
-						<div>
-							<label id="lblPrimaryStats">ATK:2, DEF:2, INT: 2, MP: 20</label>
-						</div>
-						<div>
-							<label id="lblSpeciality">Get high chances to increase ATK when level up</label>
-						</div>
-						</td>
-					</tr>
-				</table>
-				<button id="btnHireHero"    onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
-			</div>
-			<div id="heroUpkeep">
-				<label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
-				<select id="selectUpkeepSrc" size="1" onchange="game.changeUpkeepSrc()">
-					<option id="optionPurse" selected value="0">Hero's purse</option>
-					<option id="optionTreasury"       value="1">Treasury</option>
+			<div id="Settings" class="tab">
+				<h3><div id="labelSettings">Settings</div></h3>
+				<button id="btnReg"   onclick="setReg()"                             >REG</button>
+				<button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
+				 Nickname: <input id="login"    type="text"     value=""><br>
+				Password: <input id="password" type="password" value=""><br>
+				<span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
+				<button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
+				<select id="selectLng" size="1" onchange="reloadLang()">
+					<option id="optionLngEn" selected value="en-US">English</option>
+					<option id="optionLngRu"          value="ru-RU">Русский</option>
+					<option id="optionLngGe"          value="de-DE">Deutsch</option>
+					<option id="optionLngEo"          value="eo">Esperanto</option>
+					<option id="optionLngFr"          value="fr-FR">Français</option>
 				</select>
+				<table>
+					<tr>
+						<td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
+						<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
+						<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
+					</tr>
+				</table>
+				<button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" >Save to Cloud</button>
+				<button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;">Load save from Cloud</button>
+				<br>
+				<input id="savestring" name="savestring" value="" style="width:600px">
+				<br>
+				<a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
+				<br>
+				<br>
+				<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
+				<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
+				<br>
+				<br>
+				<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
+	Research			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
+				<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
+				<label id="lblStnLines">lines</label>
+				<br>
+				<lable id="lblStnUID" style="visibility:hidden;">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px; visibility:hidden;"></label>
+				<label id="lblStnAlias" style="display: none" >Your nickname</label>
+				<input id="inpStnAliasValue" style="display: none" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
+				<br>
+				<label id="lblStnAliasResult"></label><br>
+				<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
 			</div>
-			<br>
-			<br>
-			<div id="heroStats">
+			<div id="tabModTools" class="tab">
+				<button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden">reload settings</button>
+				<button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden">reload banned</button>
+				<div id="moderation_area"   name="moderation"    class="interface" value="" style="width:800px; height:150px; top: 80px; left: 10px"></div>
 			</div>
-			<br>
-			<button id="btnDismissHero"    onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
-			<button id="btnAutocampaign"    onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
-			<button id="btnAutocampaignJournal"    onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
-			<button id="btnTowngate" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
-			<br>
-			<br>
-			<button id="btnLeaveCity"    onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
-			<button id="btnGenerateMap"    onclick="game.generateMap()" style="width:160px">Regenerate map</button>
-
-			<button id="btnAutobattlesList" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
-
-		</div>
-		<div id="tabAutocampaignJournal" class="tabcontent">
-			<div id="lblAutocampaignJournal" class="interface"></div>
-			<button id="btnToInn" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
-		</div>
-		<div id="tabAutocampaignBattle" class="tabcontent">
-			<div id="lblAutocampaignBattle" class="interface"></div>
-			<button id="btnToInn1" class="interface" style="width:160px; top: 480px; left:50px;" onclick="openTab(null, 'tabInn')">Back</button>
-		</div>
-		<div id="tabTroopsHiring" class="tabcontent">
-			<div class="grid-container" style="width: 800px; height: 480px">
-				<div class="grid-item hire" id="grid-hire11">
-					<img id="imgHiringScreenSergeantToHire"   src="resources/sergeant.png" class="unit-img" 
-					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-				</div>
-				<div class="grid-item hire" id="grid-hire12">
-					<img id="imgHiringScreenTurkopolToHire" src="resources/turkopol.png" class="unit-img" 
-					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-				</div>
-				<div class="grid-item hire" id="grid-hire13">
-					<img id="imgHiringScreenKnightToHire" src="resources/knight.png" class="unit-img"
-					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-				</div>
-				<div class="grid-item hire not-implemented" id="grid-hire21">4</div>
-				<div class="grid-item hire not-implemented" id="grid-hire22">5</div>
-				<div class="grid-item hire not-implemented" id="grid-hire23">6</div>
-				<div class="grid-item" id="grid-info">info</div>
-				<div class="grid-item" id="grid-castellan">
-					<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
-				</div>
-				<div class="grid-item" id="grid-garrison1">
-					<img id="imgHiringScreenGarrisonSergeant1" src="resources/sergeant.png" class="unit-img" 
-					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-				</div>
-				<div class="grid-item" id="grid-garrison1v">10</div>
-				<div class="grid-item" id="grid-garrison2">
-					<img id="imgHiringScreenGarrisonTurkopol2" src="resources/turkopol.png" class="unit-img" 
-					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-				</div>
-				<div class="grid-item" id="grid-garrison2v">200</div>
-				<div class="grid-item" id="grid-garrison3">
-					<img id="imgHiringScreenGarrisonKnight3" src="resources/knight.png" class="unit-img" 
-					onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-				</div>
-				<div class="grid-item" id="grid-garrison3v">300</div>
-				<div class="grid-item not-implemented" id="grid-garrison4">garrison4</div>
-				<div class="grid-item not-implemented" id="grid-garrison4v">400</div>
-				<div class="grid-item not-implemented" id="grid-garrison5">garrison5</div>
-				<div class="grid-item not-implemented" id="grid-garrison5v">500</div>
-				<div class="grid-item not-implemented" id="grid-garrison6">garrison6</div>
-				<div class="grid-item not-implemented" id="grid-garrison6v">600</div>  
-
-				<div class="grid-item visiting-hero" id="grid-hero">
-					<img id="imgHeroInHiringScreenKnight2" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
-					<img id="imgHeroInHiringScreenMonk2" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
-				</div>
-				<div class="grid-item visiting-hero" id="grid-hero1">
-					<img id="imgHiringScreenHeroSergeant1" src="resources/sergeant.png">
-				</div>
-				<div class="grid-item visiting-hero" id="grid-hero1v">100</div>
-				<div class="grid-item visiting-hero" id="grid-hero2">
-					<img id="imgHiringScreenHeroTurkopol2" src="resources/turkopol.png">
-				</div>
-				<div class="grid-item visiting-hero" id="grid-hero2v">200</div>
-				<div class="grid-item visiting-hero" id="grid-hero3">
-					<img id="imgHiringScreenHeroKnight3"   src="resources/knight.png"  >
-				</div>
-				<div class="grid-item visiting-hero" id="grid-hero3v">300</div>
-				<div class="grid-item not-implemented" id="grid-hero4">hero4</div>
-				<div class="grid-item not-implemented" id="grid-hero4v">400</div>
-				<div class="grid-item not-implemented" id="grid-hero5">hero5</div>
-				<div class="grid-item not-implemented" id="grid-hero5v">500</div>
-				<div class="grid-item not-implemented" id="grid-hero6">hero6</div>
-				<div class="grid-item not-implemented" id="grid-hero6v">600</div>
+			<div id="tabSettingsSound" class="tab">
+				<label id="lblSoundMenu">Sound effects and music</label><br>
+				<!--Note, those above overwrite those below-->
+				<table border="0" width="100%">
+					<tr>
+						<td width="60%"><label id="lblOption">Option</label></td>
+						<td width="20%"><label id="lblOn">On</label></td>
+						<td width="20%"><label id="lblOff">Off</label></td>
+					</tr>
+					<tr>
+						<td width="60%"><label id="lblSfxAll">All sound effects</label></td>
+						<td width="20%"><input type = "radio"
+																	 name = "sfx"
+																	 id = "sfx_on"
+																	 value = "on"
+																	 onchange="game.setupAudio('sfx','all',1)"/></td>
+						<td width="20%"><input type = "radio"
+																	 name = "sfx"
+																	 id = "sfx_off"
+																	 value = "off"
+																	 onchange="game.setupAudio('sfx','all',0)"
+																	 checked = "checked" /></td>
+					</tr>
+					<tr>
+						<td width="60%"><label id="lblSfxEvt">Effects on all events</label></td>
+						<td width="20%"><input type = "radio"
+																	 name = "sfx_events"
+																	 id = "sfx_events_on"
+																	 value = "on"
+																	 onchange="game.setupAudio('sfx','events',1)"/></td>
+						<td width="20%"><input type = "radio"
+																	 name = "sfx_events"
+																	 id = "sfx_events_off"
+																	 value = "off"
+																	 onchange="game.setupAudio('sfx','events',0)"
+																	 checked = "checked" /></td>
+					</tr>
+					<tr>
+						<td width="60%"><label id="lblSfxEvtAR">Effects on action required events</label></td>
+						<td width="20%"><input type = "radio"
+																	 name = "sfx_actions"
+																	 id = "sfx_actions_on"
+																	 value = "on"
+																	 onchange="game.setupAudio('sfx','actions',1)"/></td>
+						<td width="20%"><input type = "radio"
+																	 name = "sfx_actions"
+																	 id = "sfx_actions_off"
+																	 value = "off"
+																	 onchange="game.setupAudio('sfx','actions',0)"
+																	 checked = "checked" /></td>
+					</tr>
+					<tr>
+						<td width="60%">-----</td>
+						<td width="20%">-----</td>
+						<td width="20%">-----</td>
+					</tr>
+					<tr>
+						<td width="60%"><label id="lblMscAll">Music all</label></td>
+						<td width="20%"><input type = "radio"
+																	 name = "music_all"
+																	 id = "music_on"
+																	 value = "on"
+																	 onchange="game.setupAudio('music','all',1)"/></td>
+						<td width="20%"><input type = "radio"
+																	 name = "music_all"
+																	 id = "music_off"
+																	 value = "off"
+																	 onchange="game.setupAudio('music','all',0)"
+																	 checked = "checked" /></td>
+					</tr>
+					<tr>
+						<td width="60%"><label id="lblMscScr">Lore and scenery music</label></td>
+						<td width="20%"><input type = "radio"
+																	 name = "music_script"
+																	 id = "music_scripts_on"
+																	 onchange="game.setupAudio('music','scripts',1)"
+																	 value = "on" /></td>
+						<td width="20%"><input type = "radio"
+																	 name = "music_script"
+																	 id = "music_scripts_off"
+																	 value = "off"
+																	 onchange="game.setupAudio('music','scripts',0)"
+																	 checked = "checked" /></td>
+					</tr>
+				</table>
+				<br>
+				<hr>
+				<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
 			</div>
-		</div>
-		<div id="tabTroopsHiringOld" class="tabcontent">
-			<label id="lblTroopsHiring">Hiring troops</label><br>
-			<div id="lblTroopsHelp" style="height: 80px; width: 780px;">
+			<div id="tabGarrison" class="tab">
+				<h3><div id="labelGarrison">Garrison</div></h3>
+				<div id="divtreasuryGuard">
+					<table border="1">
+						<tr>
+							<td>
+								<div id="treasury_guard_div" align="center">
+									<img src="resources/knight6.png">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
+								<span id="treasuryGuard">0</span>
+								<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
-			<table border="1px">
-				<tr>
-					<td>
+			<div id="tabFirebrigade" class="tab">
+				<h3><label id="lblFirebrigade">Fire brigade</label></h3>
+				<table border="0" width="100%">
+					<tr>
+						<td width="60%"><label id="lblFBOption">The fire service is</label></td>
+						<td width="20%"><label id="lblFBOn">on duty</label></td>
+						<td width="20%"><label id="lblFBOff">off duty</label></td>
+					</tr>
+					<tr>
+						<td width="60%"></td>
+						<td width="20%"><input type = "radio"
+																	 name = "inp_fb"
+																	 id = "fb_on"
+																	 value = "on"
+																	 onchange="game.setupFirebrigade(1)"/></td>
+						<td width="20%"><input type = "radio"
+																	 name = "inp_fb"
+																	 id = "fb_off"
+																	 value = "off"
+																	 onchange="game.setupFirebrigade(0)"
+																	 checked = "checked" /></td>
+					</tr>
+				</table>
+				<br>
+				<label id="lblFBUpKeepPrice">The price of sustain of the service is:</label><label id="lblFBUpkeepPriceValue" style="margin-left:20px;">0</label>
+				<br>
+				<div id="divFBProgress" style="display: none">0% of fire extinguished</div>
+				<br>
+			</div>
+			<div id="Building" class="tab">
+				<div id="labelBuilding" style="display: none;">Building</div>
+					<div class="building-wrapper">
+						<div class="building-list">
 
-					</td>
-					<td>
-						<div class="unit-main">
-							<img id="imgHiringScreenSergeant" src="resources/sergeant.png" onmouseover="game.help(this)">
-							<div class="unit-info">
-								<p>Atk.: <span id="sergeantsAttack">5</span></p>
-								<p>Def.: <span id="sergeantsDefence">8</span></p>
-								<p>Dmg: 3-4</p>
-								<p>HP: <span id="sergeantsHealth">15</span></p>
-							</div>		
-						</div>
-					</td>
-					<td>
-						<div class="unit-main">
-							<img id="imgHiringScreenTurkopol" src="resources/turkopol.png" onmouseover="game.help(this)">
-							<div class="unit-info">
-								<p>Atk.: <span id="turkopolsAttack">5</span></p>
-								<p>Def.: <span id="turkopolsDefence">5</span></p>
-								<p>Dmg: 2-3</p>
-								<p>HP: <span id="turkopolsHealth">12</span></p>
+							<div id="bldHome" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="home_img"
+										class="is-tutorial"
+										src="./resources/home_as.png"
+										alt="home_as.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)"
+									/>
+								</div>
+								<div class="building-card__action">
+									<button id="homes" class="btn is-tutorial" onclick="game.Build('Home')">Build Home</button>
+								</div>
+							</div>
+
+							<div id="bldDefence" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="defences_img"
+										class="is-tutorial"
+										src="./resources/wallsf_as2.png"
+										alt="wallsf_as2.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="defence" class="btn is-tutorial" onclick="game.Build('Wall')">Build Walls</button>
+								</div>
+							</div>
+
+							<div id="bldTreasury" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="treasury_img"
+										class="is-tutorial"
+										src="./resources/treasury_as.png"
+										alt="treasury_as.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="treasury" class="btn is-tutorial" onclick="game.Build('Treasury')">Build Treasury</button>
+								</div>
+							</div>
+
+							<div id="bldGallows" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="gallows_img"
+										class="is-tutorial"
+										src="./resources/gallows.png"
+										alt="gallows.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBldGallows" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Gallows</button>
+								</div>
+							</div>
+
+							<div id="bldFountain" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="fountain_img"
+										class="is-tutorial"
+										src="./resources/fountain.png"
+										alt="fountain.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Fountain')">Build Fountain</button>
+								</div>
+							</div>
+
+							<div id="bldStash" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="moneystash_img"
+										class="is-tutorial"
+										src="./resources/trapdoor.png"
+										alt="trapdoor.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBldStash" class="btn is-tutorial" onclick="game.Build('Stash')">Build Stash</button>
+								</div>
+							</div>
+
+							<div id="bldStable" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="stable_img"
+										class="is-tutorial"
+										src="./resources/stable.png"
+										alt="stable.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBldStable" class="btn is-tutorial" onclick="game.Build('Stable')">Build Stable</button>
+								</div>
+							</div>
+
+							<div id="bldArchery" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="archery_img"
+										class="is-tutorial"
+										src="./resources/archery_range.png"
+										alt="archery_range.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBldArchery" class="btn is-tutorial" onclick="game.Build('Archery')">Build Archery range</button>
+								</div>
+							</div>
+
+							<div id="bldInn" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="inn_img"
+										class="is-tutorial"
+										src="./resources/inn.png"
+										alt="tavern.png"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBldInn" class="btn is-tutorial" onclick="game.Build('Inn')">Build Inn</button>
+								</div>
+							</div>
+							<!--UNIVERSITY-->
+							<div id="bldUniversity" class="building-card">
+								<div class="building-card__img">
+									<img
+										id="university_img"
+										src="./resources/university2.png"
+										alt="university image"
+										onmouseover="game.help(this)"
+										onclick="game.help(this)">
+								</div>
+								<div class="building-card__action">
+									<button id="buttonBuildUniversity" class="btn" onclick="game.Build('University')">Build University</button>
+								</div>
 							</div>
 						</div>
+					</div>
+				<div id="lblBuildHelp" class="building-description"></div>
+			</div>
+			<div id="About" class="tab">
+				<div id="lblAboutGame">
+					<h1>1255 Burgomaster</h1><br>
+					<h2>How to play</h2>
+				</div>
+			</div>
+			<div id="tabPopulation" class="tab">
+				<div id="lblTabPop">Population history tab</div>
+				<br>
+				<table border="1">
+					<tbody>
+					<tr id="popStatK">
+					</tr>
+					<tr id="popStatV">
+					</tr>
+					</tbody>
+				</table>
+				<br>
+				<button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px">To the beginning</button>
+				<button id="btnPopPrev"     onclick="popPrev()" style="width:160px">Earlier</button>
+				<button id="btnPopNext"     onclick="popNext()" style="width:160px">Later</button>
+				<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px">To the end</button>
+				<br>
+				<br>
+				<div id="lblCurrentPopLimit"></div>
+			</div>
+			<div id="tabGold" class="tab">
+				<div id="lblTabGold">Gold history tab</div>
+				<br>
+				<table border="1">
+					<tbody>
+					<tr id="goldStatK">
+					</tr>
+					<tr id="goldStatV">
+					</tr>
+					</tbody>
+				</table>
+				<br>
+				<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px">To the beginning</button>
+				<button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px">Earlier</button>
+				<button id="btnGoldNext"     onclick="goldNext()" style="width:160px">Later</button>
+				<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px">To the end</button>
+				<br>
+				<br>
+				<div id="lblCurrentGoldLimit"></div>
+			</div>
+			<div id="tabInn" class="tab">
+				<h3 id="lblTabInn">Welcome to Inn!</h3>
+				<div id="hireHeroBlock">
+					<label id="lblAvailableForHire">Hero for hire</label>
+					<table>
+						<tr>
+							<td>
+								<!--HRP-->
+								<img id="imgPrevHero" src="resources/pointer_l.png" onclick="prevHero()">
+								<img id="imgHeroForHire" src="resources/hero-knight.png">
+								<img id="imgNextHero" src="resources/pointer_r.png" onclick="nextHero()">
+							</td>
+							<td>
+								<div>
+									<label id="lblClassForHire">Knight</label>
+									<label>,  </label>
+									<label id="lblLevelForHireLbl">level </label>
+									<label id="lblLevelForHire">1</label>
+								</div>
+								<div>
+									<label id="lblPrimaryStats">ATK:2, DEF:2, INT: 2, MP: 20</label>
+								</div>
+								<div>
+									<label id="lblSpeciality">Get high chances to increase ATK when level up</label>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<button id="btnHireHero" class="btn" onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+				</div>
+				<div id="heroUpkeep">
+					<label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
+					<select id="selectUpkeepSrc" size="1" onchange="game.changeUpkeepSrc()">
+						<option id="optionPurse" selected value="0">Hero's purse</option>
+						<option id="optionTreasury"       value="1">Treasury</option>
+					</select>
+				</div>
+				<div id="heroStats"></div>
+				<button id="btnDismissHero" class="btn"   onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
+				<button id="btnAutocampaign"  class="btn"   onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
+				<button id="btnAutocampaignJournal" class="btn"   onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
+				<button id="btnTowngate" class="btn" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
+				<br>
+				<br>
+				<button id="btnLeaveCity" class="btn"   onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
+				<button id="btnGenerateMap" class="btn"  onclick="game.generateMap()" style="width:160px">Regenerate map</button>
 
-					</td>
-					<td>
-						<div class="unit-main">
-							<img id="imgHiringScreenKnight" src="resources/knight.png" onmouseover="game.help(this)">
-							<div class="unit-info">
-								<p>Atk.: <span id="knightsAttack">10</span></p>
-								<p>Def.: <span id="knightsDefence">9</span></p>
-								<p>Dmg: 5-10</p>
-								<p>HP: <span id="knightsHealth">20</span></p>
+				<button id="btnAutobattlesList" class="btn" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
+
+			</div>
+			<div id="tabAutocampaignJournal" class="tab">
+				<div id="lblAutocampaignJournal"></div>
+				<button id="btnToInn" class="btn"  style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
+			</div>
+			<div id="tabAutocampaignBattle" class="tab">
+				<div id="lblAutocampaignBattle"></div>
+				<button id="btnToInn1" class="btn" style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
+			</div>
+			<div id="tabTroopsHiring" class="tab">
+				<div class="grid-container" style="width: 800px; height: 480px">
+					<div class="grid-item hire" id="grid-hire11">
+						<img id="imgHiringScreenSergeantToHire"   src="resources/sergeant.png" class="unit-img"
+								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+					</div>
+					<div class="grid-item hire" id="grid-hire12">
+						<img id="imgHiringScreenTurkopolToHire" src="resources/turkopol.png" class="unit-img"
+								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+					</div>
+					<div class="grid-item hire" id="grid-hire13">
+						<img id="imgHiringScreenKnightToHire" src="resources/knight.png" class="unit-img"
+								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+					</div>
+					<div class="grid-item hire not-implemented" id="grid-hire21">4</div>
+					<div class="grid-item hire not-implemented" id="grid-hire22">5</div>
+					<div class="grid-item hire not-implemented" id="grid-hire23">6</div>
+					<div class="grid-item" id="grid-info">info</div>
+					<div class="grid-item" id="grid-castellan">
+						<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
+					</div>
+					<div class="grid-item" id="grid-garrison1">
+						<img id="imgHiringScreenGarrisonSergeant1" src="resources/sergeant.png" class="unit-img"
+								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+					</div>
+					<div class="grid-item" id="grid-garrison1v">10</div>
+					<div class="grid-item" id="grid-garrison2">
+						<img id="imgHiringScreenGarrisonTurkopol2" src="resources/turkopol.png" class="unit-img"
+								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+					</div>
+					<div class="grid-item" id="grid-garrison2v">200</div>
+					<div class="grid-item" id="grid-garrison3">
+						<img id="imgHiringScreenGarrisonKnight3" src="resources/knight.png" class="unit-img"
+								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+					</div>
+					<div class="grid-item" id="grid-garrison3v">300</div>
+					<div class="grid-item not-implemented" id="grid-garrison4">garrison4</div>
+					<div class="grid-item not-implemented" id="grid-garrison4v">400</div>
+					<div class="grid-item not-implemented" id="grid-garrison5">garrison5</div>
+					<div class="grid-item not-implemented" id="grid-garrison5v">500</div>
+					<div class="grid-item not-implemented" id="grid-garrison6">garrison6</div>
+					<div class="grid-item not-implemented" id="grid-garrison6v">600</div>
+
+					<div class="grid-item visiting-hero" id="grid-hero">
+						<img id="imgHeroInHiringScreen" width="90px" height="90px" style="display: none" src="" >
+						<img id="imgHeroInHiringScreenKnight2" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
+						<img id="imgHeroInHiringScreenMonk2" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
+					</div>
+					<div class="grid-item visiting-hero" id="grid-hero1">
+						<img id="imgHiringScreenHeroSergeant1" src="resources/sergeant.png">
+					</div>
+					<div class="grid-item visiting-hero" id="grid-hero1v">100</div>
+					<div class="grid-item visiting-hero" id="grid-hero2">
+						<img id="imgHiringScreenHeroTurkopol2" src="resources/turkopol.png">
+					</div>
+					<div class="grid-item visiting-hero" id="grid-hero2v">200</div>
+					<div class="grid-item visiting-hero" id="grid-hero3">
+						<img id="imgHiringScreenHeroKnight3"   src="resources/knight.png"  >
+					</div>
+					<div class="grid-item visiting-hero" id="grid-hero3v">300</div>
+					<div class="grid-item not-implemented" id="grid-hero4">hero4</div>
+					<div class="grid-item not-implemented" id="grid-hero4v">400</div>
+					<div class="grid-item not-implemented" id="grid-hero5">hero5</div>
+					<div class="grid-item not-implemented" id="grid-hero5v">500</div>
+					<div class="grid-item not-implemented" id="grid-hero6">hero6</div>
+					<div class="grid-item not-implemented" id="grid-hero6v">600</div>
+				</div>
+			</div>
+			<!--
+			<div id="tabTroopsHiringOld" class="tab">
+				<label id="lblTroopsHiring">Hiring troops</label><br>
+				<div id="lblTroopsHelp" style="height: 80px; width: 780px;">
+				</div>
+				<table border="1px">
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							<div class="unit-main">
+								<img id="imgHiringScreenSergeant" src="resources/sergeant.png" onmouseover="game.help(this)">
+								<div class="unit-info">
+									<p>Atk.: <span id="sergeantsAttack">5</span></p>
+									<p>Def.: <span id="sergeantsDefence">8</span></p>
+									<p>Dmg: 3-4</p>
+									<p>HP: <span id="sergeantsHealth">15</span></p>
+								</div>
 							</div>
-						</div>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
+						</td>
+						<td>
+							<div class="unit-main">
+								<img id="imgHiringScreenTurkopol" src="resources/turkopol.png" onmouseover="game.help(this)">
+								<div class="unit-info">
+									<p>Atk.: <span id="turkopolsAttack">5</span></p>
+									<p>Def.: <span id="turkopolsDefence">5</span></p>
+									<p>Dmg: 2-3</p>
+									<p>HP: <span id="turkopolsHealth">12</span></p>
+								</div>
+							</div>
 
-					</td>
-					<td>
-						<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" onmouseover="game.help(this)" class="btn-hire">Hire sergeant</button>
-					</td>
-					<td>
-						<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" onmouseover="game.help(this)" class="btn-hire">Hire turkopol</button>
-					</td>
-					<td>
-						<button id="btnHireKnight" onclick="game.hireTroopsKnight()" onmouseover="game.help(this)" class="btn-hire">Hire knight</button>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<img id="imgCastellanInHiringScreen" src="resources/castellan.png" onmouseover="game.help(this)">
-					</td>
-					<td>
-						<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label></div><div id="lblGarnisonSergeants" style="display: inline">0</div>
-						<button class="btnArrow" id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
-						<button class="btnArrow" id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">⇓</button>
-						<br>
-						<button id="btnDismissGarrisonSergeant" class="btnDismiss" onclick="game.dismissGarrisonSergeant()" onmouseover="game.help(this)">X</button>
-						<button id="btnDismissAllGarrisonSergeants" class="btnDismiss" onclick="game.dismissAllGarrisonSergenats()" onmouseover="game.help(this)">XX</button>
-					</td>
-					<td>
-						<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label></div><div id="lblGarnisonTurkopols" style="display: inline">0</div>
-						<button class="btnArrow" id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
-						<button class="btnArrow" id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">⇓</button>
-						<br>
-						<button id="btnDismissGarrisonTurkopol" class="btnDismiss" onclick="game.dismissGarrisonTurkopol()" onmouseover="game.help(this)">X</button>
-						<button id="btnDismissAllGarrisonTurkopols" class="btnDismiss" onclick="game.dismissAllGarrisonTurkopols()" onmouseover="game.help(this)">XX</button>
-					</td>
-					<td>
-						<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label></div><div id="lblGarnisonKnights" style="display: inline">0</div>
-						<button class="btnArrow" id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
-						<button class="btnArrow" id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">⇓</button>
-						<br>
-						<button id="btnDismissGarrisonKnight" class="btnDismiss" onclick="game.dismissGarrisonKnight()" onmouseover="game.help(this)">X</button>
-						<button id="btnDismissAllGarrisonKnights" class="btnDismiss" onclick="game.dismissAllGarrisonKnights()" onmouseover="game.help(this)">XX</button>
-					</td>
-					<td>
-						<button class="btnArrow"  id="btnMoveAllTroopsToHero" onclick="game.moveAllTroopsToHero()" onmouseover="game.help(this)">⤋</button>
-						<br>
-						<button id="btnDismissAllGarrisonForces" class="btnDismiss" onclick="game.dismissAllGarrisonForces()" onmouseover="game.help(this)">XXX</button>
-					</td>
-				</tr>
-				<tr id="trHeroHiringTroops" style="visibility: collapse">
-					<td>
-						<img id="imgHeroInHiringScreenKnight" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
-						<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
-					</td>
-					<td>
-						<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label></div><div id="lblHeroSergeants" style="display: inline">0</div>
-						<button class="btnArrow" id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
-						<button class="btnArrow" id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">⇑</button>
-						<br>
-						<button id="btnDismissHeroSergeant" class="btnDismiss" onclick="game.dismissHeroSergeant()" onmouseover="game.help(this)">X</button>
-						<button id="btnDismissAllHeroSergeants" class="btnDismiss" onclick="game.dismissAllHeroSergeants()" onmouseover="game.help(this)">XX</button>
-					</td>
-					<td>
-						<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label></div><div id="lblHeroTurkopols" style="display: inline">0</div>
-						<button class="btnArrow" id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
-						<button class="btnArrow" id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">⇑</button>
-						<br>
-						<button id="btnDismissHeroTurkopol" class="btnDismiss" onclick="game.dismissHeroTurkopol()" onmouseover="game.help(this)">X</button>
-						<button id="btnDismissAllHeroTurkopols" class="btnDismiss" onclick="game.dismissAllHeroTurkopols()" onmouseover="game.help(this)">XX</button>
-					</td>
-					<td>
-						<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label></div><div id="lblHeroKnights" style="display: inline">0</div>
-						<button class="btnArrow" id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
-						<button class="btnArrow" id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">⇑</button>
-						<br>
-						<button id="btnDismissHeroKnight" class="btnDismiss" onclick="game.dismissHeroKnight()" onmouseover="game.help(this)">X</button>
-						<button id="btnDismissAllHeroKnights" class="btnDismiss" onclick="game.dismissAllHeroKnights()" onmouseover="game.help(this)">XX</button>
-					</td>
-					<td>
-						<button class="btnArrow" id="btnMoveAllTroopsToGarrison" onclick="game.moveAllTroopsToGarrison()" onmouseover="game.help(this)">⤊</button>
-						<br>
-						<button id="btnDismissAllHeroForces" class="btnDismiss" onclick="game.dismissAllHeroForces()" onmouseover="game.help(this)">XXX</button>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div id="tabBlackmarket" class="tabcontent">
-			<br>
-			<div>
-				<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
-				<div id="marketList"></div>
-			</div>
-			<div>
-				<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
-				<div id="heroMarketList"></div>
-			</div>
-			<button id="btnLeaveBlackmarket"    onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
-		</div>
-		<div id="tabEvent" class="tabcontent">
-			<lbl id="lblEventDetails">
+						</td>
+						<td>
+							<div class="unit-main">
+								<img id="imgHiringScreenKnight" src="resources/knight.png" onmouseover="game.help(this)">
+								<div class="unit-info">
+									<p>Atk.: <span id="knightsAttack">10</span></p>
+									<p>Def.: <span id="knightsDefence">9</span></p>
+									<p>Dmg: 5-10</p>
+									<p>HP: <span id="knightsHealth">20</span></p>
+								</div>
+							</div>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
 
-			</lbl>
-			<br>
-			<button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()">Open Leaderboard</button>
-		</div>
-		<div id="feedbackForm" class="tabcontent">
-		
-		</div>
-		<div id="tabEventLeaderboard" class="tabcontent">
-			<div id="lblEventLBDetails">
+						</td>
+						<td>
+							<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" onmouseover="game.help(this)" class="btn-hire">Hire sergeant</button>
+						</td>
+						<td>
+							<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" onmouseover="game.help(this)" class="btn-hire">Hire turkopol</button>
+						</td>
+						<td>
+							<button id="btnHireKnight" onclick="game.hireTroopsKnight()" onmouseover="game.help(this)" class="btn-hire">Hire knight</button>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<img id="imgCastellanInHiringScreen" src="resources/castellan.png" onmouseover="game.help(this)">
+						</td>
+						<td>
+							<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label></div><div id="lblGarnisonSergeants" style="display: inline">0</div>
+							<button class="btnArrow" id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
+							<button class="btnArrow" id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">⇓</button>
+							<br>
+							<button id="btnDismissGarrisonSergeant" class="btnDismiss" onclick="game.dismissGarrisonSergeant()" onmouseover="game.help(this)">X</button>
+							<button id="btnDismissAllGarrisonSergeants" class="btnDismiss" onclick="game.dismissAllGarrisonSergenats()" onmouseover="game.help(this)">XX</button>
+						</td>
+						<td>
+							<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label></div><div id="lblGarnisonTurkopols" style="display: inline">0</div>
+							<button class="btnArrow" id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
+							<button class="btnArrow" id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">⇓</button>
+							<br>
+							<button id="btnDismissGarrisonTurkopol" class="btnDismiss" onclick="game.dismissGarrisonTurkopol()" onmouseover="game.help(this)">X</button>
+							<button id="btnDismissAllGarrisonTurkopols" class="btnDismiss" onclick="game.dismissAllGarrisonTurkopols()" onmouseover="game.help(this)">XX</button>
+						</td>
+						<td>
+							<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label></div><div id="lblGarnisonKnights" style="display: inline">0</div>
+							<button class="btnArrow" id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
+							<button class="btnArrow" id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">⇓</button>
+							<br>
+							<button id="btnDismissGarrisonKnight" class="btnDismiss" onclick="game.dismissGarrisonKnight()" onmouseover="game.help(this)">X</button>
+							<button id="btnDismissAllGarrisonKnights" class="btnDismiss" onclick="game.dismissAllGarrisonKnights()" onmouseover="game.help(this)">XX</button>
+						</td>
+						<td>
+							<button class="btnArrow"  id="btnMoveAllTroopsToHero" onclick="game.moveAllTroopsToHero()" onmouseover="game.help(this)">⤋</button>
+							<br>
+							<button id="btnDismissAllGarrisonForces" class="btnDismiss" onclick="game.dismissAllGarrisonForces()" onmouseover="game.help(this)">XXX</button>
+						</td>
+					</tr>
+					<tr id="trHeroHiringTroops" style="visibility: collapse">
+						<td>
+							<img id="imgHeroInHiringScreenKnight" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
+							<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
+						</td>
+						<td>
+							<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label></div><div id="lblHeroSergeants" style="display: inline">0</div>
+							<button class="btnArrow" id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
+							<button class="btnArrow" id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">⇑</button>
+							<br>
+							<button id="btnDismissHeroSergeant" class="btnDismiss" onclick="game.dismissHeroSergeant()" onmouseover="game.help(this)">X</button>
+							<button id="btnDismissAllHeroSergeants" class="btnDismiss" onclick="game.dismissAllHeroSergeants()" onmouseover="game.help(this)">XX</button>
+						</td>
+						<td>
+							<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label></div><div id="lblHeroTurkopols" style="display: inline">0</div>
+							<button class="btnArrow" id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
+							<button class="btnArrow" id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">⇑</button>
+							<br>
+							<button id="btnDismissHeroTurkopol" class="btnDismiss" onclick="game.dismissHeroTurkopol()" onmouseover="game.help(this)">X</button>
+							<button id="btnDismissAllHeroTurkopols" class="btnDismiss" onclick="game.dismissAllHeroTurkopols()" onmouseover="game.help(this)">XX</button>
+						</td>
+						<td>
+							<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label></div><div id="lblHeroKnights" style="display: inline">0</div>
+							<button class="btnArrow" id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
+							<button class="btnArrow" id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">⇑</button>
+							<br>
+							<button id="btnDismissHeroKnight" class="btnDismiss" onclick="game.dismissHeroKnight()" onmouseover="game.help(this)">X</button>
+							<button id="btnDismissAllHeroKnights" class="btnDismiss" onclick="game.dismissAllHeroKnights()" onmouseover="game.help(this)">XX</button>
+						</td>
+						<td>
+							<button class="btnArrow" id="btnMoveAllTroopsToGarrison" onclick="game.moveAllTroopsToGarrison()" onmouseover="game.help(this)">⤊</button>
+							<br>
+							<button id="btnDismissAllHeroForces" class="btnDismiss" onclick="game.dismissAllHeroForces()" onmouseover="game.help(this)">XXX</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			-->
+			<div id="tabBlackmarket" class="tab">
+				<div>
+					<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
+					<div id="marketList"></div>
+				</div>
+				<div>
+					<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
+					<div id="heroMarketList"></div>
+				</div>
+				<button id="btnLeaveBlackmarket" onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
+			</div>
+			<div id="tabEvent" class="tab">
+				<lbl id="lblEventDetails">
+
+				</lbl>
+				<br>
+				<button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()">Open Leaderboard</button>
+			</div>
+			<div id="feedbackForm" class="tab">
 
 			</div>
-			<button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')">Back</button>
-		</div>
-		<div id="tabEventReward" class="tabcontent">
-			<lbl id="lblEventReward">
+			<div id="tabEventLeaderboard" class="tab">
+				<div id="lblEventLBDetails">
 
-			</lbl>
-		</div>
-		<div id="Discord" class="tabcontent">
-			<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="470" allowtransparency="true" frameborder="0"></iframe>
-		</div>
-		<div id="audio" class="tabcontent">
-			<audio id="fireAudio0">
-				<source src="sounds/sfx/3_sound_of_fire_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="stableAudio0">
-				<source src="sounds/sfx/16_sound_of_horse_neighing_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="stableAudio1">
-				<source src="sounds/sfx/16_sound_of_horse_neighing_1.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="stableAudio2">
-				<source src="sounds/sfx/16_sound_of_horse_neighing_2.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="treasuryAudio0">
-				<source src="sounds/sfx/10_sound_of_treasury_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="treasuryAudio1">
-				<source src="sounds/sfx/10_sound_of_treasury_1.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="treasuryAudio2">
-				<source src="sounds/sfx/10_sound_of_treasury_2.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="archeryAudio0">
-				<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="archeryAudio1">
-				<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_1.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="archeryAudio2">
-				<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_2.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="fountainAudio0">
-				<source src="sounds/sfx/1_sound_of_fountain_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="innAudio0">
-				<source src="sounds/sfx/9_sound_of_inn_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="gallowsAudio0">
-				<source src="sounds/sfx/2_sound_of_gallows_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="sawmillAudio0">
-				<source src="sounds/sfx/11_sawmill_sound_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="sawmillAudio1">
-				<source src="sounds/sfx/11_sawmill_sound_1.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="sawmillAudio2">
-				<source src="sounds/sfx/11_sawmill_sound_2.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="plagueAudio0">
-				<source src="sounds/sfx/7_sound_of_dying_people_0.mp3" type="audio/mpeg">
-			</audio>
-			<audio id="stealingAudio0">
-				<source src="sounds/sfx/6_sound_of_stealing_gold_0.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div id="tabDebugging" class="tabcontent">
-			<div id="inpTable">
-			
+				</div>
+				<button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')">Back</button>
 			</div>
-			<div id="outTable">
+			<div id="tabEventReward" class="tab">
+				<lbl id="lblEventReward">
+
+				</lbl>
+			</div>
+			<div id="Discord" class="tab">
+				<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="480" allowtransparency="true" frameborder="0"></iframe>
+			</div>
+			<div id="audio" class="tab">
+				<audio id="fireAudio0">
+					<source src="sounds/sfx/3_sound_of_fire_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="stableAudio0">
+					<source src="sounds/sfx/16_sound_of_horse_neighing_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="stableAudio1">
+					<source src="sounds/sfx/16_sound_of_horse_neighing_1.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="stableAudio2">
+					<source src="sounds/sfx/16_sound_of_horse_neighing_2.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="treasuryAudio0">
+					<source src="sounds/sfx/10_sound_of_treasury_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="treasuryAudio1">
+					<source src="sounds/sfx/10_sound_of_treasury_1.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="treasuryAudio2">
+					<source src="sounds/sfx/10_sound_of_treasury_2.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="archeryAudio0">
+					<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="archeryAudio1">
+					<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_1.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="archeryAudio2">
+					<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_2.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="fountainAudio0">
+					<source src="sounds/sfx/1_sound_of_fountain_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="innAudio0">
+					<source src="sounds/sfx/9_sound_of_inn_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="gallowsAudio0">
+					<source src="sounds/sfx/2_sound_of_gallows_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="sawmillAudio0">
+					<source src="sounds/sfx/11_sawmill_sound_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="sawmillAudio1">
+					<source src="sounds/sfx/11_sawmill_sound_1.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="sawmillAudio2">
+					<source src="sounds/sfx/11_sawmill_sound_2.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="plagueAudio0">
+					<source src="sounds/sfx/7_sound_of_dying_people_0.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="stealingAudio0">
+					<source src="sounds/sfx/6_sound_of_stealing_gold_0.mp3" type="audio/mpeg">
+				</audio>
+			</div>
+			<div id="tabDebugging" class="tab">
+				<div id="inpTable">
+
+				</div>
+				<div id="outTable">
+				</div>
+			</div>
+			<!-- Canvas modal -->
+			<canvas id="myDCanvas" width="700" height="200" class="canvas-modal">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+		</div>
+
+		<div class="info-panel">
+			<div class="info-panel__actions">
+				<button id="log_btn"  class="btn" onclick="openLog()">log</button>
+				<button id="chat_btn" class="btn" onclick="openChat()">chat</button>
+				<button id="mod_btn"  class="btn" onclick="openTab(null, 'tabModTools')" style="visibility: hidden">mod</button>
+				<div id="lbl_online">Online: <span id="lbl_online_value">n/d</span></div>
+			</div>
+			<div id="log"  name="log"		class="info-panel__history"></div>
+			<div id="chat" name="chat" 	class="info-panel__history"></div>
+			<div id="chatForm" class="info-panel__form">
+				<input id="inp_nickname"/>
+				<div class="info-panel__form-msg">
+					<input id="msg_out"/>
+				</div>
+				<button id="btnSend" onclick="sendOnClick2()" class="btn">Send</button>
 			</div>
 		</div>
-		<br>
-		<br>
-		<div id="chat_log_box" style="margin-top:10px;">
-			<button id="log_btn"  onclick="openLog()" >log</button>
-			<button id="chat_btn" onclick="openChat()">chat</button>
-			<button id="mod_btn"  onclick="openTab(null, 'tabModTools')" style="visibility: hidden">mod</button>
-			<button id="chat_btn" onclick="openInmail()" style="visibility: hidden">inmail</button>
-			<label id="lbl_online" style="margin-left:20px">Online: </label>
-			<label id="lbl_online_value" style="margin-left:10px">n/d</label>
-			<div id="console_n_chat" name="console_n_chat" class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
-			<div id="chat"           name="chat"           class="interface" value="" style="width:800px; height:150px; top: 600px; left: 10px"></div>
-			<input id="inp_nickname"  style="position: absolute; top: 750px; left:  10px; width: 100px;" value="" ></input>
-			<input id="msg_out"       style="position: absolute; top: 750px; left: 120px; width: 500px;" value="" ></input>
-			<button id="btnSend" onclick="sendOnClick2()"   style="position: absolute; top: 750px; left: 640px; width: 100px;"          >send</button>
-		</div>
-		<canvas id="myDCanvas" width="700" height="200" style="position: absolute; left: 20px; top: 100px; z-index: -2; visible:none">
-		Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
 <!--TOWN CANVAS-->
+
 <script>
-	//TOWN
-	canvas  = document.getElementById("canvas");
-	canvas.addEventListener("touchstart", tap);
-	canvas.addEventListener("mousedown", tap);
-	languageDefined = 0;
-	theme = "winter";
-	var ctx     = canvas.getContext("2d");
-	//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
-	if (theme === "winter") {
-		var img1    = loadImage('resources/background_a_w.png', composite);
-		var img2    = loadImage('resources/sawmill_a_w.png', composite);
-	} else {
-		var img1    = loadImage('resources/background_a.png', composite);
-		var img2    = loadImage('resources/sawmill_a.png', composite);
-	}
-	var sawmillX     = 670;
-	var sawmillY     = 65;
-	var sawmillW     = 110;
-	var sawmillH     = 56;
-	var img3    = loadImage('resources/gold_a.png', composite);
-	var goldX        = 10;
-	var goldY        = 40;
-	var goldW        = 28;
-	var goldH        = 22;
-	var img4    = loadImage('resources/pop_a.png', composite);
-	var popX         = 10;
-	var popY         = 80;
-	var popW         = 29;
-	var popH         = 22;
-	var amber_ico = loadImage('resources/amber_ico.png', composite);
-	var amberX       = 10;
-	var amberY       = 120;
-	var amberW       = 30;
-	var amberH       = 22;
-	if (theme === "winter") {
-		var img5    = loadImage('resources/home_as_w.png', composite);
-	} else {
-		var img5    = loadImage('resources/home_as.png', composite);
-	}
-	var homeX        = 90;
-	var homeY        = 160;
-	var homeW        = 80;
-	var homeH        = 90;
-	if (theme === "winter") {
-		var img5_1  = loadImage('resources/house_as_w.png', composite);
-	} else {
-		var img5_1  = loadImage('resources/house_as.png', composite);
-	}
-	var houseX       = 90;
-	var houseY       = 160;
-	var houseW       = 113;
-	var houseH       = 125;
-	if (theme === "winter") {
-		var img6_1  = loadImage('resources/wallsr_a_w.png', composite);
-		var img6_2  = loadImage('resources/wallsf_a_w.png', composite);
-	} else {
-		var img6_1  = loadImage('resources/wallsr_a.png', composite);
-		var img6_2  = loadImage('resources/wallsf_a.png', composite);
-	}
-	var wallX        = 330;
-	var wallY        = 400;
-	var wallW        = 110;
-	var wallH        = 65;
-	if (theme === "winter") {
-		var img7    = loadImage('resources/castle_as_w.png', composite);
-	} else {
-		var img7    = loadImage('resources/castle_as.png', composite);
-	}
-	var castleX      = 300;
-	var castleY      = 160;
-	var castleW      = 180;
-	var castleH      = 160;
-	if (theme === "winter") {
-		var img71   = loadImage('resources/castle_st_w.png', composite);
-	} else {
-		var img71   = loadImage('resources/castle_st.png', composite);
-	}
-	var castle_st_X  = 300;
-	var castle_st_Y  = 160;
-	var castle_st_W  = 195;
-	var castle_st_H  = 175;
-	if (theme === "winter") {
-		var img8    = loadImage('resources/wishing_well_builded_w.png', composite);
-	} else {
-		var img8    = loadImage('resources/wishing_well_builded.png', composite);
-	}
-	var wellX        = 230;
-	var wellY        = 200;
-	var wellW        = 41;
-	var wellH        = 47;
-	if (theme === "winter") {
-		var img9    = loadImage('resources/treasury_as_w.png', composite);
-	} else {
-		var img9    = loadImage('resources/treasury_as.png', composite);
-	} 
-	var treasuryX    = 200;
-	var treasuryY    = 270;
-	var treasuryW    = 125;
-	var treasuryH    = 120;
-	if (theme === "winter") {
-		var img10   = loadImage('resources/gallows_w.png', composite);
-	} else {
-		var img10   = loadImage('resources/gallows.png', composite);
-	}
-	var gallowsX     = 485;
-	var gallowsY     = 270;
-	var gallowsW     = 50;
-	var gallowsH     = 75;
-	if (theme === "winter") {
-		var img11   = loadImage('resources/fountain_w.png', composite);
-	} else {
-		var img11   = loadImage('resources/fountain.png', composite);
-	}
-	var fountainX    = 485;
-	var fountainY    = 290;
-	var fountainW    = 70;
-	var fountainH    = 55;
-	//var img13 is already used in fire singleton
-	if (theme === "winter") {
-		var img14   = loadImage('resources/inn_w.png', composite);
-	} else {
-		var img14   = loadImage('resources/inn.png', composite);
-	}
-	var innX = 270;
-	var innY = 80;
-	var innW = 87;
-	var innH = 79;
-	var img15   = loadImage('resources/fire_a.gif', composite);
-	img15.id      = "fire_graphics";
-	if (theme === "winter") {
-		var img16   = loadImage('resources/stable_w.png', composite);
-	} else {
-		var img16   = loadImage('resources/stable.png', composite);
-	}
-	var stableX = 480;
-	var stableY = 100;
-	var stableW = 160;
-	var stableH = 120;
-	if (theme === "winter") {
-		var img17   = loadImage('resources/archery_range_w.png', composite);
-	} else {
-		var img17   = loadImage('resources/archery_range.png', composite);
-	}
-	var archeryX = 390;
-	var archeryY = 90;
-	var archeryW = 80;
-	var archeryH = 80;
-	var smoke_anm   = loadImage('resources/smoke.gif', composite);
-	var smoke_anm2  = loadImage('resources/smoke.gif', composite);
-	//smoke_and.id      = "smoke_graphics";
-	var smokeX = 90;
-	var smokeY = 260;
-	var smokeW = 100;
-	var smokeH = 100;
-	if (theme === "winter") {
-		var chest_img   = loadImage('resources/chest_w.png', composite);
-	} else {
-		var chest_img   = loadImage('resources/chest.png', composite);
-	}
-	var chest_imgW = 48;
-	var chest_imgH = 48;
-	buildingsInTownB=[];
-	buildingsInTownX=[];
-	buildingsInTownY=[];
-	buildingsInTownW=[];
-	buildingsInTownH=[];
-	function inArray (arrayToCheck, valueToCheck) {
-		 return arrayToCheck.indexOf(valueToCheck) > -1;
-	}
-	function deleteFromArray (arrayToMod, indexToDelete) {
-		arrayLenght                = arrayToMod.length;
-		tArrayBeforeDeletedElement = arrayToMod.slice(0,indexToDelete);
-		tArrayAfterDeletedElement  = arrayToMod.slice(indexToDelete+1,arrayToMod.length);
-		tResultArray               = tArrayBeforeDeletedElement.concat(tArrayAfterDeletedElement);
-		return tResultArray;
-	}
-	function removeFromArrays (elementIndex) {
-		buildingsInTownB = deleteFromArray(buildingsInTownB, elementIndex);
-		buildingsInTownX = deleteFromArray(buildingsInTownX, elementIndex);
-		buildingsInTownY = deleteFromArray(buildingsInTownY, elementIndex);
-		buildingsInTownW = deleteFromArray(buildingsInTownW, elementIndex);
-		buildingsInTownH = deleteFromArray(buildingsInTownH, elementIndex);
-	}
-	var Singleton = (function () {
-		var instance;
-		function createInstance() {
-			var object = loadImage('resources/fire_static.png');
-			return object;
-		}
-		return {
-			getInstance: function () {
-				if (!instance) {
-					instance = createInstance();
-				}
-				return instance;
-			}
-		};
-	})();
-	//var imagesLoaded = 0;
-	function pushBuilding(buildingName, buildingX, buildingY, buildingW, buildingH){
-		if (buildingsInTownB.indexOf(buildingName)==-1) {
-			if (buildingName==='house') {
-				removeIndex = buildingsInTownB.indexOf('home');
-				removeFromArrays(removeIndex);
-			}
-			if (buildingName==='swall') {
-				removeIndex = buildingsInTownB.indexOf('wall');
-				removeFromArrays(removeIndex);
-			}
-			if (buildingName==='stone_castle') {
-				removeIndex = buildingsInTownB.indexOf('castle');
-				removeFromArrays(removeIndex);
-			}
-			buildingsInTownB.push(buildingName);
-			buildingsInTownX.push(buildingX);
-			buildingsInTownY.push(buildingY);
-			buildingsInTownW.push(buildingW);
-			buildingsInTownH.push(buildingH);
-		}
-	}
-	function composite() {
-		ctx.clearRect(0, 0, 800, 480);
-		ctx.drawImage(img1, 0, 0);   //draw background
-		ctx.drawImage(img2, sawmillX, sawmillY);//draw sawmill
-		pushBuilding('sawmill', sawmillX, sawmillY, sawmillW, sawmillH);
-		// ctx.drawImage(img3, goldX, goldY); //draw gold icon
-		// pushBuilding('gold', goldX, goldY, goldW, goldH);
-		// ctx.drawImage(img4, popX, popY); //draw pop  icon
-		// pushBuilding('amber', amberX, amberY, amberW, amberH);
-		// ctx.drawImage(amber_ico, amberX, amberY); //draw pop  icon
-		pushBuilding('pop', popX, popY, popW, popH);
-		ctx.drawImage(img8, wellX, wellY); //draw wishing well
-		pushBuilding('well', wellX, wellY, wellW, wellH);
-		if (game.buildLevelD > 0) {
-			// draw back piece of wall
-			ctx.drawImage(img6_1, 0, 0);
-		}
-		if (game.buildLevelH > 0 && game.buildLevelH < 10) {
-			// draw homes
-			ctx.drawImage(img5, homeX, homeY);
-			pushBuilding('home', homeX, homeY, homeW, homeH);
-			smoke_anm.style   = 'position:absolute; top:135px; left:120px; z-index:8';
-			document.getElementById("events_graphics").appendChild(smoke_anm);
-			
-		}
-		if (game.buildLevelH >= 10) {
-			// draw more houses
-			ctx.drawImage(img5_1, houseX, houseY);
-			pushBuilding('house', houseX, houseY, houseW, houseH);
-			smoke_anm.style   = 'position:absolute; top:135px; left:150px; z-index:8';
-			document.getElementById("events_graphics").appendChild(smoke_anm);
-			smoke_anm2.style   = 'position:absolute; top:170px; left:120px; z-index:8';
-			document.getElementById("events_graphics").appendChild(smoke_anm2);
-		}
-		if (game.buildLevelD === 2) {
-			// draw castle
-			ctx.drawImage(img7, castleX, castleY);
-			pushBuilding('castle', castleX, castleY, castleW, castleH);
-		}
-		if (game.buildLevelD === 3) {
-			// draw castle
-			ctx.drawImage(img71, castle_st_X, castle_st_Y);
-			pushBuilding('stone_castle', castle_st_X, castle_st_Y, castle_st_W, castle_st_H);
-		}
-		if (game.buildLevelTreasury > 0) {
-			// draw treasury
-			ctx.drawImage(img9, treasuryX, treasuryY);
-			pushBuilding('treasury', treasuryX, treasuryY, treasuryW, treasuryH);
-		}
-		if (game.buildLevelGallows > 0) {
-			// draw gallows
-			ctx.drawImage(img10, gallowsX, gallowsY);
-			pushBuilding('gallows', gallowsX, gallowsY, gallowsW, gallowsH);
-		}
-		if (game.buildLevelFountain > 0) {
-			// draw fountain
-			ctx.drawImage(img11, fountainX, fountainY);
-			pushBuilding('fountain', fountainX, fountainY, fountainW, fountainH);
-		}
-		if (game.buildLevelStash > 0) {
-			// draw stash
-			//We do not draw a secret Stash under the Treasury. It's a secret, are you understand?!
-			//ctx.drawImage(img12, 0, 0);
-		}
-		if (game.buildLevelInn > 0) {
-			ctx.drawImage(img14, innX, innY);
-			pushBuilding('inn', innX, innY, innW, innH);
-		}
-		if (game.buildLevelD > 0) {
-			// draw front piece of wall
-			ctx.drawImage(img6_2, 0, 0);
-			//pushing gatehouse of the wall
-			pushBuilding('wall', wallX, wallY, wallW, wallH);
-		}
-		if (game.buildLevelStable > 0) {
-			// draw front piece of wall
-			ctx.drawImage(img16, stableX, stableY);
-			//pushing gatehouse of the wall
-			pushBuilding('stable', stableX, stableY, stableW, stableH);
-		}
-		if (game.buildLevelArchery > 0) {
-			// draw front piece of wall
-			ctx.drawImage(img17, archeryX, archeryY);
-			//pushing gatehouse of the wall
-			pushBuilding('archery', archeryX, archeryY, archeryW, archeryH);
-		}
-		if (game.fire === 1) {
-			img15.style   = 'position:absolute; top:370px; left:200px; z-index:8';
-			document.getElementById("events_graphics").appendChild(img15);
-			//img15.style   = 'position:absolute; top:170px; left:0px; z-index:8';
-			document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
-			document.getElementById("buttonPutOutFire").setAttribute("style", "top:390px; left: 20px; display:true");
-		}
-		if (game.chestCity === 1) {
-			console.log("try to draw a chest of gold");
-			var chest_imgX = Math.floor(Math.random() * (800-chest_imgW*2)+chest_imgW);
-			var chest_imgY = Math.floor(Math.random() * (480-chest_imgH*2)+chest_imgH);
-			console.log("locX is "+chest_imgX+" and locY is "+chest_imgY);
-			ctx.drawImage(chest_img, chest_imgX, chest_imgY);
-			pushBuilding('chest', chest_imgX, chest_imgY, chest_imgW, chest_imgH);
-		}
-	}
-	function loadImage(src, onload) {
-		var img = new Image();
-		img.onload = onload;
-		img.src = src;
-		return img;
-	}
-	function getElementPosition (element) {
-		//thanks to William Alone
-		var parentOffset,
-				pos = {
-					x: element.offsetLeft,
-					y: element.offsetTop
-				};
-		if (element.offsetParent) {
-			parentOffset = getElementPosition(element.offsetParent);
-			pos.x += parentOffset.x;
-			pos.y += parentOffset.y;
-		}
-		return pos;
-	}
-	function tap (e) {
-		pos = getElementPosition(canvas);
-		loc = {};
-		tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
-		tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
-		canvasScaleRatio = canvas.width / canvas.offsetWidth;
-		loc.x = (tapX - 9) * canvasScaleRatio;
-		loc.y = (tapY - 58) * canvasScaleRatio;
-		for (bi=0;bi<buildingsInTownB.length;bi++){
-			if (loc.x >= buildingsInTownX[bi] && loc.x <= buildingsInTownX[bi]+buildingsInTownW[bi]) {
-				if (loc.y >= buildingsInTownY[bi] && loc.y <= buildingsInTownY[bi]+buildingsInTownH[bi]) {
-					console.log(buildingsInTownB[bi]);
-					buildingClick(buildingsInTownB[bi]);
-				}
-			}
-		}
-	}
-	function buildingClick(buildingName){
-		var showAlert = true;
-		alertMsg = "";
-		if (buildingName==='amber'){
-			alertMsg = localeStrings[90];
-		}
-		if (buildingName==='well') {
-			showAlert = false;
-			checkFirebrigade();
-		}
-		if (buildingName==='gold') {
-			showAlert = false;
-			checkGold();
-		}
-		if (buildingName==='pop') {
-			//alertMsg = localeStrings[145];
-			showAlert = false;
-			checkPop();
-		}
-		if (buildingName==='sawmill') {
-			showAlert = false;
-			if (game.checkAudio('sfx', 'all')===true) {
-				var arnd = Math.floor(Math.random() * 3);
-				var Audio = 'sawmillAudio'+arnd;
-				document.getElementById(Audio).play();
-			}
-			//alertMsg = localeStrings[133];
-		}
-		if (buildingName==='wall') {
-			//alertMsg = localeStrings[134];
-		}
-		if (buildingName==='swall') {
-			//alertMsg = localeStrings[135];
-		}
-		if (buildingName==='home') {
-			showAlert = false;
-			checkPop();
-		}
-		if (buildingName==='house') {
-			showAlert = false;
-			checkPop();
-		}
-		if (buildingName==='castle') {
-			showAlert = false;
-			alertMsg = localeStrings[136];
-		}
-		if (buildingName==='stone_castle') {
-			showAlert = false;
-			alertMsg = localeStrings[137];
-		}
-		if (buildingName==='inn') {
-			//alertMsg = localeStrings[140];
-			showAlert = false;
-			if (game.checkAudio('sfx', 'all')===true) {
-				document.getElementById('innAudio0').play();
-			}
-			openTab(null, 'tabInn');
-		}
-		if (buildingName==='gallows') {
-			//alertMsg = localeStrings[141];
-			showAlert = false;
-			game.deathPenalty();
-		}
-		if (buildingName==='fountain') {
-			showAlert = false;
-			if (game.checkAudio('sfx', 'all')===true) {
-				document.getElementById('fountainAudio0').play();
-			}
-			game.makeFestival();
-		}
-		if (buildingName==='treasury') {
-			openTab(null, 'tabGarrison');
-			if (game.checkAudio('sfx', 'all')===true) {
-				var arnd = Math.floor(Math.random() * 3);
-				var Audio = 'treasuryAudio'+arnd;
-				document.getElementById(Audio).play();
-			}
-		}
-		if (buildingName==='stable') {
-			showAlert = false;
-			if (game.checkAudio('sfx', 'all')===true) {
-				var arnd = Math.floor(Math.random() * 3);
-				var Audio = 'stableAudio'+arnd;
-				document.getElementById(Audio).play();
-			}
-			updateUI();
-			openTab(null, 'tabTroopsHiring');
-		}
-		if (buildingName==='archery') {
-			showAlert = false;
-			if (game.checkAudio('sfx', 'all')===true) {
-				var arnd = Math.floor(Math.random() * 3);
-				var Audio = 'archeryAudio'+arnd;
-				document.getElementById(Audio).play();
-			}
-			updateUI();
-			openTab(null, 'tabTroopsHiring');
-		}
-		if (buildingName==='chest') {
-			showAlert = false;
-			game.chestCityOpen();
-		}
-		if (showAlert === true &&  alertMsg !=="" ) {
-			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
-		}
-	}
-	//composite();
-</script>
-<!--THE GAME-->
-<script>
-//THE GAME
-var isTutorialState = true;
+	// 1. Выносим сюда utils функции
 
-/*-- New --*/
+	function getCurrentDate() {
+		if (!Date.now) {
+			Date.now = function now() {
+				return new Date().getTime();
+			};
+		} else {
+			return Date.now();
+		}
+	}
 
-var WeightedRandom = function() {
-  this.entries = [];
-  this.accumulatedWeight = 0.0;  
-};
+	function getUID() {
+		var rnd = Math.floor((Math.random() * 100000) + 1);
+		while (rnd.toString().length < 5) {
+			rnd = "0"+rnd;
+		}
+		return getCurrentDate().toString()+rnd;
+	}
 
-WeightedRandom.prototype.addEntry = function(object, weight) {
-  this.accumulatedWeight += weight;
-  this.entries.push( { object: object, accumulatedWeight: this.accumulatedWeight });
-}
-
-WeightedRandom.prototype.getRandom = function() {
-  var r = Math.random() * this.accumulatedWeight;
-  return this.entries.find(function(entry) {
-    return entry.accumulatedWeight >= r;
-  }).object;
-};
-
-WeightedRandom.prototype.clearEntriesList = function() {
-	this.entries = [];
-};
+	function genNick() {
+		var rnd = Math.floor((Math.random() * 10000) + 1);
+		while (rnd.toString().length < 4) {
+			rnd = "0"+rnd;
+		}
+		nickName = "Guest"+rnd;
+		return nickName;
+	}
 
 
-	function randomFromRange(min, max) {
-	  let rand = min - 0.5 + Math.random() * (max - min + 1);
-	  return Math.round(rand);
-	};
-
-	function isEmptyObj(obj) {
-		for (var key in obj) return false;
-		return true;
-	};
-
-	function objSize(obj) {
-		var size = 0, key;
-		for (key in obj) {
-			if (obj.hasOwnProperty(key)) size++;
-		}
-		return size;
-	};
-
-	include = function (url, fn) {
+	function include (url, fn) {
 		var e = document.createElement("script");
 		e.onload = fn;
 		e.src = url;
 		e.async=true;
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
-	function shuffleArray(array) {
-		for (var i = array.length - 1; i > 0; i--) {
-			var j = Math.floor(Math.random() * (i + 1));
-			var temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-		}
-		return array;
-	}
-	//init variables
-	disabledElements = [];
-	flag_event_started = "";
-	allowMvt = 1;
-	curObjId = "";
-	
 
-	//OTHERWISE RECORDS ONLY ADDS AND STACKS IN THE SAME OBJECT FOR DIFFERENT HEROES
-	//CANDIDATE FOR DELETING
-	//var heroAttributesRandomizer = new WeightedRandom();
-	
-	var enemyRandomizer = new WeightedRandom();
-	function Monster(monster, coordx, coordy, monsterData) {
-		this.monster = monster;
-		this.coordx = coordx;
-		this.coordy = coordy;
-		this.name   	= monsterData.name;
-		this.minDmg 	= monsterData.minDmg;
-		this.maxDmg 	= monsterData.maxDmg;
-		this.attack 	= monsterData.attack;
-		this.defence	= monsterData.defence;
-		this.count 		= monsterData.defence;
-		this.health 	= monsterData.health;
-	}
 	//gameconfig
 	var config = {
 		startPop: 6,
@@ -1372,6 +917,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		costStable:50,
 		costSmith:50,
 		costArchery:50,
+		bldUniversityCost: 200,
 		lotteryPrize:50,
 		treasuryGuardPriceHire:20,
 		treasuryGuardPricePayroll:10,
@@ -1386,7 +932,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		festCooldown:30,
 		glSaveVersion:9,
 		genMapCostBasic:50,
-		fireStepsBasic:60,
+		// fireStepsBasic:60,
 		oneSecMS:1000,
 		sergeantHiring:20,
 		sergeantUpkeep:5,
@@ -1405,6 +951,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		maxLevelInn: 10,
 		maxLevelStable: 3,
 		maxLevelArchery: 3,
+		maxLevelUniversity: 1,
 		tutorialDefenseEventTicks: 3,
 		tutNewBuildingsT: 5,
 		tutTreasuryG: 200,
@@ -1418,9 +965,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		pullMessagesMS: 1500,
 		debug: false,
 		theme: "winter",
-		popIncRate: 2
-	};
+		artilleryResearchCost: 200,
+		popIncRate: 2,
 
+	};
 	var game = {
 		gold: 30,
 		gems: 0,
@@ -1439,6 +987,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		buildLevelStable: 0,
 		buildLevelArchery: 0,
 		buildLevelSmith: 0,
+		buildLevelUniversity: 0,
 		fire: 0,
 		fireSteps: 0,
 		fireGuard: 0,
@@ -1494,7 +1043,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		autocampaignBattlesCounter: 0,
 		enemyHero: null,
 		enemyHeroArmy: {armyID: 2, units: {}},
-		enemyMaxArmyCount: 3, 
+		enemyMaxArmyCount: 3,
 		expReward: 0,
 		goldReward: 0,
 		difficultyModifier: 0,
@@ -1503,7 +1052,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		isDefeated: false,
 		nightMode: false,
 		monstersOnAdvMap: [],
+		techLearned: [],
+		techEnabled: [],
+		techDisabled: [],
+		techArtillery: 0,
 		role: "player",
+		isTutorialState: true,
 		changeUpkeepSrc : function () {
 			var x         = document.getElementById("selectUpkeepSrc").selectedIndex;
 			var y         = document.getElementById("selectUpkeepSrc").options;
@@ -1539,9 +1093,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (gold_possible > gold_limit) {
 				game.gold      = gold_limit;
 				if (game.userGoldAck === 0) {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[3]);
-					postEventLog(msg);
+					postEventLog(locObj.buildUpgradeTreasury.txt, "bold");
 					game.userGoldAck = 1;
 				}
 			} else {
@@ -1628,7 +1180,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 		setupEventLogSize : function () {
 			game.log_size = document.getElementById("inpStnEventLogSize").value;
-			document.getElementById("console_n_chat").style.height = game.log_size * 20;
+			document.getElementById("log").style.height = game.log_size * 20;
 		},
 		mobileUI : function () {
 			if (document.getElementById("cbMobileUI").checked === true) {
@@ -1705,9 +1257,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				postEventLog(msg);
 				updateUI();
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[20]);
-				postEventLog(msg);
+				postEventLog(locObj.notEnoughGold.txt, "bold");
 			}
 		},
 		artefact_gain : function (artefact, target) {
@@ -1785,6 +1335,23 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				}
 			}
 		},
+		//WIP
+		research : function (techName) {
+			if (techName==="artillery"){
+				if (game.techArtillery===0) {
+					if (game.gold >= config.artilleryResearchCost) {
+						game.gold -= config.artilleryResearchCost;
+						game.techArtillery = 1;
+						postEventLog(locObj.techArtilleryResearched.txt, "BOLD");
+						updateUI();
+					} else {
+						//WE NEED MORE MONEY
+					}
+				} else {
+					//ALREADY LEARNED
+				}
+			}
+		},
 		setupAudio : function (typeAudio, target, dvalue) {
 			if (typeAudio==='sfx') {
 				if (target==='all') {
@@ -1841,20 +1408,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			//var rnd = Math.floor((Math.random() * 8) + 1);
-			//game.blackMarketGoods.push("artid00");
-			//game.blackMarketGoods.push("artid"+rnd);
-			var rnd = randomFromRange(11, 13);
-			if (rnd.toString().length < 2) {
-				rnd = "0"+rnd;
-			}
-			var scroll = getItem("artid00");
-			addItem("trader", scroll);
+			return new Promise(function (resolve) {
+				var artefactIds = ['artid00']; // Always set artid00 as default market item. For now...
+				var rnd = randomFromRange(11, 13);
+				if (rnd.toString().length < 2) {
+					rnd = "0"+rnd;
+				}
+				var id = "artid" + rnd;
 
-			var id = "artid" + rnd;
-			var randomItem = getItem(id);
-			addItem("trader", randomItem);
-			console.log(game.blackMarketGoods);
+				artefactIds.push(id);
+				resolve(artefactIds);
+			});
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
@@ -1874,8 +1438,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		generateMapCallback : function (silent) {
-			game.blackMarketGoods = [];
-			game.genBlackMarketGoods();
 			//generate landscape
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
 			if (silent===true) {
@@ -1887,7 +1449,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						postEventLog(localeStrings[168]);
 						updateUI();
 					} else {
-						alertMsg = localeStrings[20];
+						alertMsg = locObj.notEnoughGold.txt;
 						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
 					}
 				}
@@ -2076,7 +1638,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				squad[stackName] = Object.assign({}, unit);
 				Object.defineProperty(squad[stackName], 'count', {value: count, writable: true, configurable: true, enumerable: true});
 				Object.defineProperty(squad[stackName], 'stackHealth', {value: squad[stackName].health * squad[stackName].count, writable: true, configurable: true, enumerable: true})
-		  }
+			}
 		},
 		generateEnemyUnitsForBattle: function(campaignType) {
 			game.goldReward = 0;
@@ -2132,7 +1694,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		restoreHealth: function() {
 			for (unitKey in game.myheroArmy.units) {
 				if (game.myheroArmy.units.hasOwnProperty(unitKey)) {
-				  game.myheroArmy.units[unitKey].stackHealth = game.myheroArmy.units[unitKey].health * game.myheroArmy.units[unitKey].count;
+					game.myheroArmy.units[unitKey].stackHealth = game.myheroArmy.units[unitKey].health * game.myheroArmy.units[unitKey].count;
 				}
 			}
 		},
@@ -2202,16 +1764,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (battleDiff >= 0) {
 				if (battleDiff > 20) battleDiff = 20;
 				for (var i = 0; i < attackerSquad.count; i++) {
-				  var randDMG = randomFromRange(attackerSquad.minDmg, attackerSquad.maxDmg) * (1 + 0.1 * battleDiff);
-				  console.log("RAND DMG: ", randDMG);
-				  totalDMG += randDMG;
+					var randDMG = randomFromRange(attackerSquad.minDmg, attackerSquad.maxDmg) * (1 + 0.1 * battleDiff);
+					console.log("RAND DMG: ", randDMG);
+					totalDMG += randDMG;
 				}
 			} else {
 				if (battleDiff < -17) battleDiff = -17;
 				for (var i = 0; i < attackerSquad.count; i++) {
-				  var randDMG = randomFromRange(attackerSquad.minDmg, attackerSquad.maxDmg) * (1 + 0.05 * battleDiff); 
-				  console.log("RAND DMG: ", randDMG);
-				  totalDMG += randDMG;
+					var randDMG = randomFromRange(attackerSquad.minDmg, attackerSquad.maxDmg) * (1 + 0.05 * battleDiff);
+					console.log("RAND DMG: ", randDMG);
+					totalDMG += randDMG;
 				}
 			}
 			console.log("TOTAL DMG test: ", totalDMG);
@@ -2410,7 +1972,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 							UnPaidKnights -= 1;
 						}
 						game.gold -= game.hrKnghtsUpkp(UnPaidKnights);
-                        console.log('paid knights was '+paidKnights);//DEBUG
+						console.log('paid knights was '+paidKnights);//DEBUG
 						paidKnights += UnPaidKnights;
 						game.myhero.knights = paidKnights;
 					}
@@ -2451,13 +2013,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 								break;
 							}
 						}
-                        paidSergeants += UnPaidSergeants;
+						paidSergeants += UnPaidSergeants;
 						if (flagTreasuryToNull === true) {
 							game.gold = 0
 						} else {
 							game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
 						}
-                        game.myhero.sergeants = paidSergeants;
+						game.myhero.sergeants = paidSergeants;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
@@ -2524,7 +2086,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 						while (game.isAutoBattle) {
 							game.calcAttackPhase("AutoCampaign");
-						} 
+						}
 
 					}
 					if (rnd>12 && rnd<25) {
@@ -2540,7 +2102,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 						while (game.isAutoBattle) {
 							game.calcAttackPhase("AutoCampaign");
-						} 
+						}
 
 					}
 					if (rnd>12 && rnd<25) {
@@ -2591,10 +2153,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.genUnitStack(sergeantsData, heroSergeantsCount, game.myheroArmy.units);
 				}
 				if (game.myhero.turkopols > 0) {
-					game.genUnitStack(turkopolsData, heroTurkopolsCount, game.myheroArmy.units);	
+					game.genUnitStack(turkopolsData, heroTurkopolsCount, game.myheroArmy.units);
 				}
 				if (game.myhero.knights > 0) {
-					game.genUnitStack(knightsData, heroKnightsCount, game.myheroArmy.units);	
+					game.genUnitStack(knightsData, heroKnightsCount, game.myheroArmy.units);
 				}
 				if (totalCount>0) {
 					heroTroopsFlag = true;
@@ -2667,7 +2229,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		help(myobject) {
-			if (myobject.id==="defencies_img") {
+			if (myobject.id==="defences_img") {
 				nextDefPrice = 0;
 				blMaxLvlDef = 0;
 				if (game.buildLevelD === 0) {
@@ -2714,6 +2276,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				} else {
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
 				}
+			}
+			if (myobject.id==="university_img") {
+				document.getElementById("lblBuildHelp").innerHTML=locObj.bldUniversityHelp.txt+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost);
 			}
 			if (myobject.id==="fountain_img") {
 				nextLvlFountain       = game.buildLevelFountain*1+1;
@@ -2867,7 +2432,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 			if (myobject.id === "btnDismissAllHeroSergeants") {
 				document.getElementById("lblTroopsHelp").innerHTML = localeStrings[347];
-			}	
+			}
 
 			if (myobject.id === "btnDismissHeroTurkopol") {
 				document.getElementById("lblTroopsHelp").innerHTML = localeStrings[348];
@@ -2883,7 +2448,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 			if (myobject.id === "btnDismissAllHeroKnights") {
 				document.getElementById("lblTroopsHelp").innerHTML = localeStrings[351];
-			}			
+			}
 
 			if (myobject.id === "btnDismissAllHeroForces") {
 				document.getElementById("lblTroopsHelp").innerHTML = localeStrings[352];
@@ -2937,7 +2502,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.myhero.int       = heroesForHire[curHeroForHire].int;
 					game.myhero.mana      = heroesForHire[curHeroForHire].int*10;
 					game.myhero.cmana     = heroesForHire[curHeroForHire].int*10;
-					
+
 					if (game.myhero.class===0){
 						game.myhero.lawful    = 80;
 						game.myhero.kindness  = 50;
@@ -2985,12 +2550,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.myhero.aCampaignTotalLong = 0;
 					game.myhero.aCampaignForward   = 0;
 					game.myhero.aCampaignBackward  = 0;
+					game.myhero.portrait_id        = heroesForHire[curHeroForHire].portrait_id;
 					updateHeroStatus();
 					game.gold -= config.costHero;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				disabledElements.push("btnHireHero");
@@ -3050,9 +2614,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					updateTroopsNumbers();
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				msg = "<b>%arg1</b>";
@@ -3069,15 +2631,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						updateTroopsNumbers();
 						updateResources();
 					} else {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1", localeStrings[20]);
-						postEventLog(msg);
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[317]);
 					postEventLog(msg);
-				} 
+				}
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1",localeStrings[316]);
@@ -3092,9 +2652,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					updateTroopsNumbers();
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1", localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				msg = "<b>%arg1</b>";
@@ -3123,7 +2681,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					updateResources();
 				}
 			} else {
-				
+
 			}
 		},
 		moveTurkopols() {
@@ -3136,7 +2694,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					updateResources();
 				}
 			} else {
-				
+
 			}
 		},
 		moveKnights() {
@@ -3149,11 +2707,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					updateResources();
 				}
 			} else {
-				
+
 			}
 		},
 		moveUnits : function () {
- 			if (selectedUnitToMove==="sergeant"){
+			if (selectedUnitToMove==="sergeant"){
 				game.moveSergeants();
 			}
 			if (selectedUnitToMove==="turkopol"){
@@ -3307,14 +2865,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						turkopolsCount = game.turkopols,
 						knightsCount = game.knights;
 
-						game.myhero.sergeants += sergeantsCount
-						game.myhero.turkopols += turkopolsCount;	
-						game.myhero.knights	+= knightsCount;	
+					game.myhero.sergeants += sergeantsCount
+					game.myhero.turkopols += turkopolsCount;
+					game.myhero.knights	+= knightsCount;
 
-						game.sergeants -= sergeantsCount;
-						game.turkopols -= turkopolsCount;
-						game.knights -= knightsCount;
-						updateTroopsNumbers();
+					game.sergeants -= sergeantsCount;
+					game.turkopols -= turkopolsCount;
+					game.knights -= knightsCount;
+					updateTroopsNumbers();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[315]);
@@ -3345,14 +2903,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						turkopolsCount = game.myhero.turkopols,
 						knightsCount = game.myhero.knights;
 
-						game.sergeants += sergeantsCount
-						game.turkopols += turkopolsCount;	
-						game.knights	+= knightsCount;	
+					game.sergeants += sergeantsCount
+					game.turkopols += turkopolsCount;
+					game.knights	+= knightsCount;
 
-						game.myhero.sergeants -= sergeantsCount;
-						game.myhero.turkopols -= turkopolsCount;
-						game.myhero.knights -= knightsCount;
-						updateTroopsNumbers();
+					game.myhero.sergeants -= sergeantsCount;
+					game.myhero.turkopols -= turkopolsCount;
+					game.myhero.knights -= knightsCount;
+					updateTroopsNumbers();
 				} else {
 					msg = "<b>%arg1</b>";
 					msg = msg.replace("%arg1",localeStrings[315]);
@@ -3375,7 +2933,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 
-		
+
 		//-- Dismiss garrison troops by one  --//
 		dismissGarrisonSergeant: function() {
 			if (game.sergeants > 0) {
@@ -3605,7 +3163,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 
 		//-- /Dismiss heroe's troops by type --//
-		
+
 
 		//-- Dismiss all forces --//
 		dismissAllGarrisonForces: function () {
@@ -3668,7 +3226,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			}
 		},
 		//-- /Dismiss all forces --//
-		
+
 
 		goldLimit : function () {
 			return Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1))*2+500;
@@ -3716,13 +3274,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				} else {
 					game.pop = pop_limit;
 					if (game.userPopAck === 0) {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[10]);
-						postEventLog(msg);
+						postEventLog(locObj.buildUpgradeHouse.txt, "bold");
 						game.userPopAck = 1;
 					}
 					//TUTORIALS
-					if (isTutorialState && !game.tips.includes("tutorial1_pop0")){
+					if (game.isTutorialState && !game.tips.includes("tutorial1_pop0")){
 						game.tips.push("tutorial1_pop0");
 						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
 					}
@@ -3758,7 +3314,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					//fire guards which we cannot afford
 					//for now fire all guards!
 					//TODO fire only those who we cannot afford
-					
+
 					var canUpkeep = Math.floor(game.gold/config.sergeantUpkeep);
 					var dismissedSergeants = game.sergeants - canUpkeep;
 					game.sergeants = canUpkeep;
@@ -3842,24 +3398,22 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1",fireProgress);
 				}
 			}
-
 			//console.log("%c GOLD AFTER UPKEEP PAYMENTS: ", "color: blue", game.gold);
-
 			taxes = Math.round(game.pop*(1+game.buildLevelGallows*1/10),0);
 			game.addMoneyToTreasury(taxes);
 			if (game.gold !== gold_was) {
 				if (game.gold > gold_was) {
-					msg = localeStrings[4];
+					msg = locObj.moneyIncreased.txt;
 				} else {
-					msg = localeStrings[5];
+					msg = locObj.moneyDecreased.txt;
 				}
 				postEventLog(msg);
 			}
 			if (game.pop !== pop_was) {
 				if (game.pop > pop_was) {
-					msg = localeStrings[7];
+					msg = locObj.popIncreased.txt;
 				} else {
-					msg = localeStrings[8];
+					msg = locObj.popDecreased.txt;
 				}
 				postEventLog(msg);
 			};
@@ -3900,9 +3454,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.festival_cooldown  = config.festCooldown;
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 		},
@@ -3916,7 +3468,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						commonBuild();
 						return true;
 					} else {
-						postEventLog(localeStrings[20], "bold");
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				}
 				//WOODEN TOWER
@@ -3927,7 +3479,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						commonBuild();
 						return true;
 					} else {
-						postEventLog(localeStrings[20], "bold");
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				}
 				//STONE CASTLE
@@ -3938,7 +3490,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						commonBuild();
 						return true;
 					} else {
-						postEventLog(localeStrings[20], "bold");
+						postEventLog(locObj.notEnoughGold.txt, "bold");
 					}
 				}
 			}
@@ -3949,16 +3501,14 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Treasury") {
 				if (game.gold >= Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1))) {
 					game.gold               = game.gold - Math.pow(config.costTreasury,(game.buildLevelTreasury*1 + 1));
 					game.buildLevelTreasury = game.buildLevelTreasury*1 + 1;
-					if (isTutorialState && !game.tips.includes("tutorial_treasury_guards")){
+					if (game.isTutorialState && !game.tips.includes("tutorial_treasury_guards")){
 						game.tips.push("tutorial_treasury_guards");
 						showModal(0, '', getAck, locObj.tutorial_treasury_guards.txt, locObj.okay.txt, '')
 						updateImagesBuildingTab();
@@ -3966,9 +3516,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Gallows") {
@@ -3978,9 +3526,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Fountain") {
@@ -3989,7 +3535,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.buildLevelFountain = game.buildLevelFountain*1 + 1;
 					commonBuild();
 					return true;
-				}
+				}//TODO make else
 			}
 			if (Structure==="Stash") {
 				if (game.gold >= Math.pow(config.costStash,(game.buildLevelStash*1 + 1)) && game.buildLevelTreasury*1 > 0) {
@@ -3998,9 +3544,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
+				}
+			}
+			if (Structure==="University") {
+				if (game.gold >= Math.pow(config.bldUniversityCost,(game.buildLevelUniversity*1 + 1))) {
+					game.gold                 = game.gold - Math.pow(config.bldUniversityCost,(game.buildLevelUniversity*1 + 1));
+					game.buildLevelUniversity = game.buildLevelUniversity*1 + 1;
+					commonBuild();
+					return true;
+				} else {
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Inn") {
@@ -4019,9 +3573,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Stable") {
@@ -4031,27 +3583,22 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						sergeantsData.attack++;
 						sergeantsData.defence++;
 						sergeantsData.health = Math.round(sergeantsData.health * 1.1);
-						updateUnitsStats();
 					}
 					if (game.buildLevelArchery >= 1) {
 						turkopolsData.attack++;
 						turkopolsData.defence++;
 						turkopolsData.health = Math.round(turkopolsData.health * 1.1);
-						updateUnitsStats();
 					}
 					if (game.buildLevelStable >= 2) {
 						knightsData.attack++;
 						knightsData.defence++;
 						knightsData.health = Math.round(knightsData.health * 1.2);
-						updateUnitsStats();
 					}
 					game.buildLevelStable   = game.buildLevelStable*1 + 1;
 					commonBuild();
 					return true;
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			if (Structure==="Archery") {
@@ -4062,10 +3609,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						commonBuild();
 						return true;
 					} else {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[20]);
-						postEventLog(msg);
-					} 
+						postEventLog(locObj.notEnoughGold.txt, "bold");
+					}
 				} else {
 					postEventLog(locObj.buildArchery.txt, "bold");
 				}
@@ -4093,9 +3638,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.Build(objectToBuild);
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[20]);
-				postEventLog(msg);
+				postEventLog(locObj.notEnoughGold.txt, "bold");
 			}
 		},
 		buildGallowsOrFountainCallback() {
@@ -4103,16 +3646,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				game.Build(the_objectToBuild);
 			}
 		},
+		hireTreasuryGuardCost : function () {
+			hireCost =  config.treasuryGuardPriceHire;
+			if (game.techLearned.includes("war_propaganda")){
+				hireCost = hireCost*techs.war_propaganda.attrs["hire cost"];
+				hireCost = Math.ceil(hireCost);
+			}
+			return hireCost;
+		},
 		hireTreasuryGuard : function () {
 			if (game.buildLevelTreasury >= 1) {
 				disabledElements.push("buttonFireGuard");
 				disabledElements.push("buttonHireGuard");
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
-				question = localeStrings[18].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);;
+				question = localeStrings[18].replace("%arg1",game.hireTreasuryGuardCost()).replace("%arg2",config.treasuryGuardPricePayroll);;
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
-				alertMsg = localeStrings[21];
+				alertMsg = locObj.treasuryRequired.txt;
 				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
 			}
 		},
@@ -4120,14 +3671,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			if (answer === 2) {
 				if (game.gold >= config.treasuryGuardPriceHire) {
 					game.treasuryGuard = game.treasuryGuard*1 + 1;
-					game.gold          = game.gold - config.treasuryGuardPriceHire;
-					msg = localeStrings[19];
-					postEventLog(msg);
+					game.gold          = game.gold - game.hireTreasuryGuardCost();
+					postEventLog(locObj.hiredGuardsman.txt);
 					updateResources();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[20]);
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			}
 			getAck();
@@ -4138,17 +3686,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				disabledElements.push("buttonHireGuard");
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
-				showModal(1, '', game.fireTreasuryGuardCallback, localeStrings[22],  localeStrings[32], localeStrings[33])
+				qst = locObj.dialogConfirmDismssGuardsman.txt;
+				showModal(1, '', game.fireTreasuryGuardCallback, qst,  localeStrings[32], localeStrings[33])
 			} else {
-				msg = localeStrings[24];
-				postEventLog(msg);
+				postEventLog(locObj.noGuardsman.txt, "bold");
 			}
 		},
 		fireTreasuryGuardCallback : function () {
 			if (answer === 2) {
 				game.treasuryGuard      = game.treasuryGuard*1 - 1;
-				msg = localeStrings[23];
-				postEventLog(msg);
+				postEventLog(locObj.dismissedGuardsman.txt);
 				updateResources();
 			}
 			getAck();
@@ -4184,9 +3731,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					moneyToSeize    = Math.floor(game.gold*wealthShare*game.pop/game.popLimit()/8,0)+1;
 					if (moneyToSeize > 5000){
 						moneyToSeize = 5000;
-					} 
-					rnd             = Math.floor((Math.random() * 6) + 1);
-					reason          = localeStrings[24+rnd]
+					}
+					rnd             = Math.floor((Math.random() * 6));
+					reason          = locObj.execReasons[rnd].txt;
 					msg             = localeStrings[34].replace("%arg1", reason);
 					postEventLog(msg);
 					msg             = localeStrings[35].replace("%arg1", moneyToSeize);
@@ -4227,7 +3774,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					msg = localeStrings[42].replace("%arg1", goldLost);
 					postEventLog(msg);
 					updateResources();
-					if (isTutorialState && !game.tips.includes("tutorial_stash")){
+					if (game.isTutorialState && !game.tips.includes("tutorial_stash")){
 						game.tips.push("tutorial_stash");
 						showModal(0, '', getAck, locObj.tutorial_stash.txt, locObj.okay.txt, '')
 					}
@@ -4263,7 +3810,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		startFire : function () {
 			if (game.year > 1260) {
 				if (game.fire === 0) {
-					rnd = Math.floor((Math.random() * 3) + 1);
+					var rnd = Math.floor((Math.random() * 3) + 1);
+					console.log('Fire rnd');
 					if (rnd === 1) {
 						msg = "<b>%arg1</b>";
 						msg = msg.replace("%arg1",localeStrings[38]);
@@ -4280,7 +3828,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 						}
 						document.getElementById("gameIcon").href="resources/favicon-flame.png";
 						//TUTORIALS
-						if (isTutorialState && !game.tips.includes("tutorial_firebrigade") && game.pop>=50){
+						if (game.isTutorialState && !game.tips.includes("tutorial_firebrigade") && game.pop>=50){
 							game.tips.push("tutorial_firebrigade");
 							showModal(0, '', getAck, locObj.tutorial_firebrigade.txt, locObj.okay.txt, '')
 						}
@@ -4322,8 +3870,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					game.putOutFireUI();
 				}
 				else {
-					msg = localeStrings[20];
-					postEventLog(msg);
+					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
 				msg = localeStrings[41];
@@ -4359,8 +3906,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		},
 		chestCityDisappear : function () {
 			game.chestCity = 0;
-			removeIndex = buildingsInTownB.indexOf('chest');
-			removeFromArrays(removeIndex);
+			removeIndex = buildingsInTown.indexOf('chest');
+			deleteFromArray(buildingsInTown, removeIndex);
 			composite();
 		},
 		chestCityOpen : function () {
@@ -4436,57 +3983,693 @@ WeightedRandom.prototype.clearEntriesList = function() {
 					}
 				}
 				if (rnd === 3) {
-				army_count = game.treasuryGuard+game.sergeants+game.knights;
-				if (army_count > 0) {
-					numberOfDied = Math.floor(Math.random() * (army_count*0.5)+1);
-					if (numberOfDied > army_count) {
-						numberOfDied = army_count
-					}
-					if (game.checkAudio('sfx', 'events')===true) {
-						document.getElementById('plagueAudio0').play();
-					}
-					deceased = 0;
-					while (deceased < numberOfDied && game.treasuryGuard>0){
-						game.treasuryGuard=game.treasuryGuard-1;
-						deceased = deceased+1;
-					}
-					if (deceased < numberOfDied){
-						while (deceased < numberOfDied && game.sergeants>0){
-							game.sergeants=game.sergeants-1;
-							deceased = deceased+1;
+					army_count = game.treasuryGuard+game.sergeants+game.knights;
+					if (army_count > 0) {
+						numberOfDied = Math.floor(Math.random() * (army_count*0.5)+1);
+						if (numberOfDied > army_count) {
+							numberOfDied = army_count
 						}
-					}
-					if (deceased < numberOfDied){
-						while (deceased < numberOfDied && game.knights>0){
-							game.knights=game.knights-1;
-							deceased = deceased+1;
-						}
-					}
-					console.log("so the random value of numberOfDied in the army is "+numberOfDied);
-					console.log("and number actually deceased troops is "+deceased);
-					postEventLog(locObj.plague_army.txt.replace("%arg1", numberOfDied));
-					updateTroopsNumbers();
-					updateResources();
-				} else {
-					if (game.pop > 2) {
-						numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
-						if (numberOfDied>game.pop-2){
-							numberOfDied = game.pop-2;
-						}
-						game.pop     = game.pop - numberOfDied;
-						msg = locObj.plague.txt.replace("%arg1", numberOfDied);
 						if (game.checkAudio('sfx', 'events')===true) {
 							document.getElementById('plagueAudio0').play();
 						}
-						postEventLog(msg);
+						deceased = 0;
+						while (deceased < numberOfDied && game.treasuryGuard>0){
+							game.treasuryGuard=game.treasuryGuard-1;
+							deceased = deceased+1;
+						}
+						if (deceased < numberOfDied){
+							while (deceased < numberOfDied && game.sergeants>0){
+								game.sergeants=game.sergeants-1;
+								deceased = deceased+1;
+							}
+						}
+						if (deceased < numberOfDied){
+							while (deceased < numberOfDied && game.knights>0){
+								game.knights=game.knights-1;
+								deceased = deceased+1;
+							}
+						}
+						console.log("so the random value of numberOfDied in the army is "+numberOfDied);
+						console.log("and number actually deceased troops is "+deceased);
+						postEventLog(locObj.plague_army.txt.replace("%arg1", numberOfDied));
+						updateTroopsNumbers();
 						updateResources();
+					} else {
+						if (game.pop > 2) {
+							numberOfDied = Math.floor(Math.random() * (game.pop*0.65)+game.pop*0.10+1);
+							if (numberOfDied>game.pop-2){
+								numberOfDied = game.pop-2;
+							}
+							game.pop     = game.pop - numberOfDied;
+							msg = locObj.plague.txt.replace("%arg1", numberOfDied);
+							if (game.checkAudio('sfx', 'events')===true) {
+								document.getElementById('plagueAudio0').play();
+							}
+							postEventLog(msg);
+							updateResources();
+						}
 					}
-				}
 				}
 			}
 		}
 	};
 	//init const-variables
+
+	var tabLinks 		= document.querySelectorAll('.tab-link');
+	var tabs = document.querySelectorAll('.tab');
+
+	function openTab(evt, tabName) {
+		if (tabName==="Explore"){
+			game.active_tab="Explore";
+		} else {
+			game.active_tab="";
+		}
+		if (tabName==="Settings"){
+			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
+			document.getElementById("inpStnAliasValue").value = game.alias;
+		}
+
+		tabs.forEach(tab => {
+			if (tab.classList.contains('active')) {
+				tab.classList.remove('active');
+			}
+
+			if (tab.getAttribute('id') === tabName) {
+				tab.classList.add('active');
+			}
+
+		});
+
+		tabLinks.forEach(tabLink => {
+			if (tabLink.classList.contains('active')) {
+				tabLink.classList.remove('active');
+			}
+		});
+
+
+		if (evt !== null) {
+			evt.currentTarget.classList.add('active');
+		}
+		if (tabName==="tabTroopsHiring"){
+			if (game.isTutorialState && !game.tips.includes("tutorial_moving_troops") && game.heroExists()){
+				game.tips.push("tutorial_moving_troops");
+				showModal(0, '', getAck, locObj.tutorial_moving_troops.txt, locObj.okay.txt, '');
+			}
+		}
+	}
+	document.getElementById("tabCity").click();
+
+
+	// 2. Выносим сюда config и game
+
+
+
+
+
+
+</script>
+<script>
+	//TOWN
+	var canvas  	= document.getElementById("canvas");
+	var canvasPos   = getElementPosition(canvas);
+
+	canvas.addEventListener("touchstart", tap);
+	canvas.addEventListener("mousedown", tap);
+	canvasScaleRatio = canvas.width / canvas.offsetWidth;
+	languageDefined = 0;
+
+	var ctx     = canvas.getContext("2d");
+	// use forward slashes for Linux and Windows compatible.
+
+	var resourceDir = './resources/'
+
+	var RES_NAME_SUFFIX = {
+		AUTUMN:	'_a',
+		WINTER: '_w',
+		SPRING:	'_s',
+	};
+
+	Object.freeze(RES_NAME_SUFFIX);
+
+	function prepareResPath(resourceName) {
+		switch(config.theme) {
+			case 'autumn'	: return resourceDir + resourceName + RES_NAME_SUFFIX.AUTUMN + '.png';
+			case 'winter'	: return resourceDir + resourceName + RES_NAME_SUFFIX.WINTER + '.png';
+			case 'spring'	: return resourceDir + resourceName + RES_NAME_SUFFIX.SPRING + '.png';
+			default				: return resourceDir + resourceName + '.png';
+		}
+	}
+
+	function loadImage(src, onload) {
+		var img = new Image();
+		img.onload = onload;
+		img.src = src;
+		return img;
+	}
+
+	//use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
+
+	var img1 		= loadImage(prepareResPath('background_a'), composite);
+	var img2 		= loadImage(prepareResPath('sawmill_a'), composite);
+	var img5 		= loadImage(prepareResPath('home_as'), composite);
+	var img5_1  = loadImage(prepareResPath('house_as'), composite);
+	var img6_1  = loadImage(prepareResPath('wallsr_a'), composite);
+	var img6_2  = loadImage(prepareResPath('wallsf_a'), composite);
+	var img7    = loadImage(prepareResPath('castle_as'), composite);
+	var img71   = loadImage(prepareResPath('castle_st'), composite);
+	var img8    = loadImage(prepareResPath('wishing_well_builded'), composite);
+	var img9    = loadImage(prepareResPath('treasury_as'), composite);
+	var img10   = loadImage(prepareResPath('gallows'), composite);
+	var img11   = loadImage(prepareResPath('fountain'), composite);
+	var img14   = loadImage(prepareResPath('inn'), composite);
+
+	var img15   = loadImage('resources/fire_a.gif', composite);
+	img15.id    = "fire_graphics";
+
+	var img16   = loadImage(prepareResPath('stable'), composite);
+	var img17   = loadImage(prepareResPath('archery_range'), composite);
+
+	var smoke_anm      = loadImage('resources/smoke.gif', composite);
+	var smoke_anm2     = loadImage('resources/smoke.gif', composite);
+	var chest_img      = loadImage(prepareResPath('chest'), composite);
+	var university_img = loadImage(prepareResPath('university2'), composite);
+	var university   = {
+		name: 'university',
+		x: 550,
+		y: 250,
+		w: 96,
+		h: 96
+	}
+	var sawmill = {
+		name: 'sawmill',
+		x: 670,
+		y: 65,
+		w: 110,
+		h: 56
+	};
+
+	var well = {
+		name: 'well',
+		x: 230,
+		y: 200,
+		w: 41,
+		h: 47
+	};
+
+	var home = {
+		name: 'home',
+		x: 90,
+		y: 160,
+		w: 80,
+		h: 90
+	};
+
+	var house = {
+		name: 'house',
+		x: 90,
+		y: 160,
+		w: 113,
+		h: 125,
+	};
+
+	var wall = {
+		name: 'wall',
+		x: 340,
+		y: 400,
+		w: 115,
+		h: 50
+	};
+
+	var tower = {
+		name: 'tower',
+		x: 300,
+		y: 160,
+		w: 180,
+		h: 160
+	};
+
+	var castle = {
+		name: 'castle',
+		x: 300,
+		y: 160,
+		w: 195,
+		h: 175
+	};
+
+	var castle_st = {
+		name: 'stone_castle',
+		x: 300,
+		y: 160,
+		w: 195,
+		h: 175
+	};
+
+	var treasury = {
+		name: 'treasury',
+		x: 200,
+		y: 270,
+		w: 125,
+		h: 120
+	};
+
+	var gallows = {
+		name: 'gallows',
+		x: 485,
+		y: 270,
+		w: 50,
+		h: 75
+	};
+
+	var fountain = {
+		name: 'fountain',
+		x: 485,
+		y: 290,
+		w: 70,
+		h: 55
+	};
+
+	var stable = {
+		name: 'stable',
+		x: 480,
+		y: 100,
+		w: 160,
+		h: 120
+	};
+
+	var archery = {
+		name: 'archery',
+		x: 390,
+		y: 90,
+		w: 80,
+		h: 80
+	};
+
+	var inn = {
+		name: 'inn',
+		x: 270,
+		y: 80,
+		w: 87,
+		h: 79
+	};
+
+	var chest = {
+		name: 'chest',
+		x: 0,
+		y: 0,
+		w: 48,
+		h: 48,
+	}
+
+	var buildingsInTown = [];
+
+	function inArray (arrayToCheck, valueToCheck) {
+		 return arrayToCheck.indexOf(valueToCheck) > -1;
+	}
+	function deleteFromArray (arrayToMod, indexToDelete) {
+		arrayLenght                = arrayToMod.length;
+		tArrayBeforeDeletedElement = arrayToMod.slice(0,indexToDelete);
+		tArrayAfterDeletedElement  = arrayToMod.slice(indexToDelete+1,arrayToMod.length);
+		tResultArray               = tArrayBeforeDeletedElement.concat(tArrayAfterDeletedElement);
+		return tResultArray;
+	}
+	function removeFromArrays (elementIndex) {
+		buildingsInTownB = deleteFromArray(buildingsInTownB, elementIndex);
+		buildingsInTownX = deleteFromArray(buildingsInTownX, elementIndex);
+		buildingsInTownY = deleteFromArray(buildingsInTownY, elementIndex);
+		buildingsInTownW = deleteFromArray(buildingsInTownW, elementIndex);
+		buildingsInTownH = deleteFromArray(buildingsInTownH, elementIndex);
+	}
+	var Singleton = (function () {
+		var instance;
+		function createInstance() {
+			var object = loadImage('resources/fire_static.png');
+			return object;
+		}
+		return {
+			getInstance: function () {
+				if (!instance) {
+					instance = createInstance();
+				}
+				return instance;
+			}
+		};
+	})();
+
+	function pushBuilding(buildingObj) {
+		if (buildingsInTown.includes(buildingObj)) {
+			return
+		}
+
+		if (buildingObj.name === house.name) {
+			const index = buildingsInTown.findIndex(function (building) {
+				return building.name === home.name;
+			});
+			if (index > -1) {
+				buildingsInTown.splice(index, 1);
+			}
+		}
+
+
+		if (buildingObj.name === castle_st.name) {
+			const index = buildingsInTown.findIndex(function (building) {
+				return building.name === castle.name;
+			});
+			if (index > -1) {
+				buildingsInTown.splice(index, 1);
+			}
+		}
+
+		buildingsInTown.push(buildingObj);
+	};
+
+	function composite() {
+		ctx.clearRect(0, 0, 800, 480);
+		ctx.drawImage(img1, 0, 0);   //draw background
+		ctx.drawImage(img2, sawmill.x, sawmill.y);//draw sawmill
+		pushBuilding(sawmill);
+
+		ctx.drawImage(img8, well.x, well.y); //draw wishing well
+		pushBuilding(well);
+		if (game.buildLevelD > 0) {
+			// draw back piece of wall
+			ctx.drawImage(img6_1, 0, 0);
+			// draw front piece of wall
+			ctx.drawImage(img6_2, 0, 0);
+			//pushing gatehouse of the wall
+			pushBuilding(wall);
+		}
+		if (game.buildLevelH > 0 && game.buildLevelH < 10) {
+			// draw homes
+			ctx.drawImage(img5, home.x, home.y);
+			pushBuilding(home);
+			smoke_anm.style   = 'position:absolute; top: 0; left: 0;';
+			document.getElementById("events_graphics").appendChild(smoke_anm);
+		}
+
+		if (game.buildLevelH >= 10) {
+			// draw more houses
+			ctx.drawImage(img5_1, house.x, house.y);
+			pushBuilding(house);
+			smoke_anm.style   = 'position:absolute; top: 0; left: 30px;';
+			document.getElementById("events_graphics").appendChild(smoke_anm);
+			smoke_anm2.style   = 'position:absolute; top: 30px; left: 0';
+			document.getElementById("events_graphics").appendChild(smoke_anm2);
+		}
+		if (game.buildLevelD === 2) {
+			// draw castle
+			ctx.drawImage(img7, castle.x, castle.y);
+			pushBuilding(castle);
+		}
+		if (game.buildLevelD === 3) {
+			// draw castle
+			ctx.drawImage(img71, castle_st.x, castle_st.y);
+			pushBuilding(castle_st);
+		}
+		if (game.buildLevelTreasury > 0) {
+			// draw treasury
+			ctx.drawImage(img9, treasury.x, treasury.y);
+			pushBuilding(treasury);
+		}
+		if (game.buildLevelGallows > 0) {
+			// draw gallows
+			ctx.drawImage(img10, gallows.x, gallows.y);
+			pushBuilding(gallows);
+		}
+		if (game.buildLevelFountain > 0) {
+			// draw fountain
+			ctx.drawImage(img11, fountain.x, fountain.y);
+			pushBuilding(fountain);
+		}
+		if (game.buildLevelStash > 0) {
+			//We do not draw a secret Stash under the Treasury. It's a secret, do you understand?!
+		}
+		if (game.buildLevelInn > 0) {
+			ctx.drawImage(img14, inn.x, inn.y);
+			pushBuilding(inn);
+		}
+
+		if (game.buildLevelStable > 0) {
+			ctx.drawImage(img16, stable.x, stable.y);
+			pushBuilding(stable);
+		}
+
+		if (game.buildLevelUniversity > 0) {
+			ctx.drawImage(university_img, university.x, university.y);
+			pushBuilding(university);
+		}
+
+		if (game.buildLevelArchery > 0) {
+			ctx.drawImage(img17, archery.x, archery.y);
+			pushBuilding(archery);
+		}
+
+		if (game.fire === 1) {
+			img15.style   = 'position:absolute; top:240px; left:80px; z-index:8';
+			document.getElementById("events_graphics").appendChild(img15);
+			//img15.style   = 'position:absolute; top:170px; left:0px; z-index:8';
+			// document.getElementById("fire_graphics").setAttribute("onclick", "game.putOutFire()");
+			document.getElementById("buttonPutOutFire").style.display="block";
+		}
+		if (game.chestCity === 1) {
+			console.log("try to draw a chest of gold");
+			chest.x = Math.floor(Math.random() * (800-chest.w*2)+chest.w);
+			chest.y = Math.floor(Math.random() * (480-chest.h*2)+chest.h);
+			console.log("locX is "+chest.x+" and locY is "+chest.y);
+			ctx.drawImage(chest_img, chest.x, chest.y);
+			pushBuilding(chest);
+		}
+	}
+	function loadImage(src, onload) {
+		var img = new Image();
+		img.onload = onload;
+		img.src = src;
+		return img;
+	}
+	function getElementPosition (element) {
+		//thanks to William Alone
+		var parentOffset,
+				pos = {
+					x: element.offsetLeft,
+					y: element.offsetTop
+				};
+		if (element.offsetParent) {
+			parentOffset = getElementPosition(element.offsetParent);
+			pos.x += parentOffset.x;
+			pos.y += parentOffset.y;
+		}
+		return pos;
+	}
+
+	function tap (e) {
+		var x = (e.pageX - canvasPos.x) * canvasScaleRatio;
+		var y = (e.pageY - canvasPos.y) * canvasScaleRatio;
+
+		buildingsInTown.forEach(function(element) {
+			if (y > element.y && y < element.y + element.h && x > element.x && x < element.x + element.w) {
+				buildingClick(element.name)
+			}
+		});
+
+	}
+	function buildingClick(buildingName){
+		console.log('buildingName: ', buildingName);
+		var showAlert = true;
+		alertMsg = "";
+		if (buildingName==='amber'){
+			alertMsg = localeStrings[90];
+		}
+		if (buildingName==='well') {
+			showAlert = false;
+			checkFirebrigade();
+		}
+		if (buildingName==='gold') {
+			showAlert = false;
+			checkGold();
+		}
+		if (buildingName==='pop') {
+			//alertMsg = localeStrings[145];
+			showAlert = false;
+			checkPop();
+		}
+		if (buildingName==='sawmill') {
+			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var Audio = 'sawmillAudio'+arnd;
+				document.getElementById(Audio).play();
+			}
+			//alertMsg = localeStrings[133];
+		}
+		if (buildingName==='wall') {
+			//alertMsg = localeStrings[134];
+		}
+		if (buildingName==='university') {
+			showAlert = false;
+			updateUI();
+			openTab(null, 'tabUniversity');
+		}
+		if (buildingName==='swall') {
+			//alertMsg = localeStrings[135];
+		}
+		if (buildingName==='home') {
+			showAlert = false;
+			checkPop();
+		}
+		if (buildingName==='house') {
+			showAlert = false;
+			checkPop();
+		}
+		if (buildingName==='castle') {
+			showAlert = false;
+			alertMsg = localeStrings[136];
+		}
+		if (buildingName==='stone_castle') {
+			showAlert = false;
+			alertMsg = localeStrings[137];
+		}
+		if (buildingName==='inn') {
+			//alertMsg = localeStrings[140];
+			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				document.getElementById('innAudio0').play();
+			}
+			openTab(null, 'tabInn');
+		}
+		if (buildingName==='gallows') {
+			//alertMsg = localeStrings[141];
+			showAlert = false;
+			game.deathPenalty();
+		}
+		if (buildingName==='fountain') {
+			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				document.getElementById('fountainAudio0').play();
+			}
+			game.makeFestival();
+		}
+		if (buildingName==='treasury') {
+			openTab(null, 'tabGarrison');
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var Audio = 'treasuryAudio'+arnd;
+				document.getElementById(Audio).play();
+			}
+		}
+		if (buildingName==='stable') {
+			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var Audio = 'stableAudio'+arnd;
+				document.getElementById(Audio).play();
+			}
+			updateUI();
+			openTab(null, 'tabTroopsHiring');
+		}
+		if (buildingName==='archery') {
+			showAlert = false;
+			if (game.checkAudio('sfx', 'all')===true) {
+				var arnd = Math.floor(Math.random() * 3);
+				var Audio = 'archeryAudio'+arnd;
+				document.getElementById(Audio).play();
+			}
+			updateUI();
+			openTab(null, 'tabTroopsHiring');
+		}
+		if (buildingName === chest.name) {
+			showAlert = false;
+			game.chestCityOpen();
+		}
+		if (showAlert === true &&  alertMsg !=="" ) {
+			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+		}
+	}
+	//composite();
+</script>
+<!--THE GAME-->
+<script>
+//THE GAME
+
+
+/*-- New --*/
+
+var WeightedRandom = function() {
+  this.entries = [];
+  this.accumulatedWeight = 0.0;
+};
+
+WeightedRandom.prototype.addEntry = function(object, weight) {
+  this.accumulatedWeight += weight;
+  this.entries.push( { object: object, accumulatedWeight: this.accumulatedWeight });
+}
+
+WeightedRandom.prototype.getRandom = function() {
+  var r = Math.random() * this.accumulatedWeight;
+  return this.entries.find(function(entry) {
+    return entry.accumulatedWeight >= r;
+  }).object;
+};
+
+WeightedRandom.prototype.clearEntriesList = function() {
+	this.entries = [];
+};
+
+
+	function randomFromRange(min, max) {
+	  let rand = min - 0.5 + Math.random() * (max - min + 1);
+	  return Math.round(rand);
+	};
+
+	function isEmptyObj(obj) {
+		for (var key in obj) return false;
+		return true;
+	};
+
+	function objSize(obj) {
+		var size = 0, key;
+		for (key in obj) {
+			if (obj.hasOwnProperty(key)) size++;
+		}
+		return size;
+	};
+
+
+	function shuffleArray(array) {
+		for (var i = array.length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
+	//init variables
+	var disabledElements = [];
+	var hiddenElements = []; // Cache for hidden UI elements; NOTE: Do not clear it, temp fix for tutorial elements.
+	flag_event_started = "";
+	allowMvt = 1;
+	curObjId = "";
+
+
+	//OTHERWISE RECORDS ONLY ADDS AND STACKS IN THE SAME OBJECT FOR DIFFERENT HEROES
+	//CANDIDATE FOR DELETING
+	//var heroAttributesRandomizer = new WeightedRandom();
+
+	var enemyRandomizer = new WeightedRandom();
+	function Monster(monster, coordx, coordy, monsterData) {
+		this.monster = monster;
+		this.coordx = coordx;
+		this.coordy = coordy;
+		this.name   	= monsterData.name;
+		this.minDmg 	= monsterData.minDmg;
+		this.maxDmg 	= monsterData.maxDmg;
+		this.attack 	= monsterData.attack;
+		this.defence	= monsterData.defence;
+		this.count 		= monsterData.defence;
+		this.health 	= monsterData.health;
+	}
+
+
+
 
 	//init service variables
 	var cnt_cursession= 0;
@@ -4500,14 +4683,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	if (typeof updateResources === "function") { updateResources() }
 	var autosaveObject;
 	//setupAutosave();//DEBUG
-	composite();
+	//composite();
+
+	include('localisation.js',function(){
+		loadStartLocale();
+	});
+
 	openLog();
 	setInterval(cooldown, config.oneSecMS);
 	setInterval(endOfTurnTimer, config.oneSecMS);
-	include('localisation.js',function(){
-		loadStartLocale();
-		console.log('we are in first level include after loadStartLocale()');
-	});
+
 	//functions
 	function openTabAutocampaignJournal() {
 		openTab(null, 'tabAutocampaignJournal');
@@ -4517,60 +4702,33 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		openTab(null, 'tabAutocampaignBattle');
 		scrollDown();
 	}
-	function getUID() {
-		var rnd = Math.floor((Math.random() * 100000) + 1);
-		while (rnd.toString().length < 5) {
-			rnd = "0"+rnd;
-		}
-		return getCurrentDate().toString()+rnd;
-	}
-	function genNick() {
-		var rnd = Math.floor((Math.random() * 10000) + 1);
-		while (rnd.toString().length < 4) {
-			rnd = "0"+rnd;
-		}
-		nickName = "Guest"+rnd;
-		return nickName;
-	}
-	function getCurrentDate() {
-		if (!Date.now) {
-			Date.now = function now() {
-				return new Date().getTime();
-			};
-		} else {
-			return Date.now();
-		}
-	}
+
 	function checkSaves() {
+
 		if (localStorage.getItem('game')!==null) {
-			document.getElementById("loadGameButton").style.visibility = "visible";
+			document.getElementById("loadGameButton").style.display = "block";
 		} else {
-			if (isTutorialState && !game.tips.includes("tutorial0-welcome0")){
+			if (game.isTutorialState && !game.tips.includes("tutorial0-welcome0")){
 				game.tips.push("tutorial0-welcome0");
 				showModal(0, '', getAck, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
 			}
 		}
-	}
-	function getAck() {
-		console.log('we are at getAck method');
-		console.log("the length is "+disabledElements.length);
 
+	}
+
+	function getAck() {
 		if (answer === 3) {
-			isTutorialState = false;
-			document.getElementById("tabBuilding").style.visibility = "visible"
+			game.isTutorialState = false;
+			// document.getElementById("tabBuilding").classList.remove('is-tutorial');
 			for (var i=0; i<disabledElements.length; i++) {
 				document.getElementById(disabledElements[i]).disabled = false;
 			}
-
-			var buildings = document.querySelectorAll('.building');
-			var imgs = document.querySelectorAll('.building img');
-			for (var i =0; i < buildings.length; i++) {
-				buildings[i].style.visibility = "visible";
+			hiddenElements = document.querySelectorAll('.is-tutorial');
+			if (hiddenElements.length) {
+				hiddenElements.forEach(function (el) {
+					el.classList.remove('is-tutorial');
+				})
 			}
-
-			for (var j = 0; j < imgs.length; j++) {
-				imgs[j].style.visibility = "visible";
-			} 
 		}
 
 		for (var i=0; i<disabledElements.length; i++) {
@@ -4652,7 +4810,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblMscAll").innerText           = localeStrings[77];
 		document.getElementById("lblMscScr").innerText           = localeStrings[78];
 		document.getElementById("btnToGeneralSettings").innerText= localeStrings[79];
-		
+
 		document.getElementById("btnToInn").innerText            = localeStrings[79];
 		document.getElementById("btnToInn1").innerText           = localeStrings[79];
 
@@ -4661,6 +4819,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblStnMobileUI").innerText      = localeStrings[82];
 		document.getElementById("lblStnEventLogSize").innerText  = localeStrings[83];
 		document.getElementById("lblStnLines").innerText         = localeStrings[84];
+		/*
 		document.getElementById("lblTroopsHiring").innerText     = localeStrings[94];
 		document.getElementById("btnHireSergeant").innerHTML     = localeStrings[97].replace("%arg1",config.sergeantHiring);
 		document.getElementById("btnHireTurkopol").innerHTML     = localeStrings[98].replace("%arg1",config.turkopolHiring);
@@ -4672,6 +4831,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblTabHiringTroopsTurkopolsHeroSquad").innerText      = localeStrings[101];
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
 		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
+		*/
 		document.getElementById("lblGoodsForSale").innerText     = localeStrings[260];
 
 		//document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
@@ -4695,7 +4855,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
 		document.getElementById("downloadGame").innerText        = localeStrings[328];
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
-		populateHeroesForHire();
+		if (typeof populateHeroesForHire === "function") { populateHeroesForHire() };
 		checkSaves();
 		welcomeMsg();
 		updateButtonCaptions();
@@ -4705,7 +4865,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 	function loadArtifacts(){
 		include('js/artifacts.js',function(){
-			console.log('we are loading the artifacts');
 		});
 	}
 	function welcomeMsg(){
@@ -4729,7 +4888,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
         if (styling.indexOf("RED")!==-1){
             msgEventLog = "<font color='red'>"+msgEventLog+"</font>";
         }
-		document.getElementById("console_n_chat").innerHTML += getTime(0)+": "+msgEventLog+"<br>";
+		document.getElementById("log").innerHTML += getTime(0)+": "+msgEventLog+"<br>";
 		scrollDown();
 	}
 	function clearJournalLog() {
@@ -4797,8 +4956,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function postBattleLog(msgBattleLog) {
 		var id = 'accordionBattleBody-' + game.autocampaignBattlesCounter;
 		var accordionBattleElement = document.getElementById(id);
-		var logStrElement = document.createElement('p');	
-		
+		var logStrElement = document.createElement('p');
+
 		logStrElement.innerText = msgBattleLog;
 		accordionBattleElement.appendChild(logStrElement);
 	}
@@ -4821,7 +4980,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			writeSave("silent");
 		} else {
 			if (localStorage.getItem('game')!==null) {
-				question = localeStrings[15];
+				question = locObj.dialogSaveGame.txt;
 				showModal(1, '', saveGameCallback, question, localeStrings[32], localeStrings[33])
 			} else {
 				writeSave();
@@ -4839,16 +4998,16 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (SaveType === "silent") {
 			if (game.userASaveAck === 0) {
 				game.userASaveAck = 1;
-				document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+				postEventLog(locObj.savedSuccessfully.txt, "bold");
 				scrollDown();
 			}
 		} else {
-			document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[11];
+			postEventLog(locObj.savedSuccessfully.txt, "bold");
 			scrollDown();
 		}
 	}
 	function loadGame() {
-		question = localeStrings[13];
+		question = locObj.dialogLoadGame.txt;
 		showModal(1, '', loadGameCallback, question,  localeStrings[32], localeStrings[33])
 	}
 	function loadGameCallback() {
@@ -4860,17 +5019,28 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				overrideGame(gameTemp);
 			} else {
 				//TODO DO NOT SHOW loadGame BUTTON UNTIL WE DO HAVE A SAVEGAME!!!!
-				alert(localeStrings[14]);
+				alert(localeStrings[locObj.noSaveGame.txt]);
 			}
 		}
 	}
+
+
+function setTutorialAfterSaveRestore(gameTemp) {
+	if (gameTemp.isTutorialState || gameTemp.tips.length > 0) {
+		hiddenElements.forEach(function (el) {
+			if (!el.classList.contains('is-tutorial')) {
+				el.classList.add('is-tutorial')
+			}
+		});
+	}
+}
+
 	function overrideGame(gameTemp){
 		game.myhero = {};
 		game.heroHire(true);
 		tmpHero = game.myhero;
 		game.myhero = {};
 		for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-		console.log(game.heroExists());
 		if (game.heroExists()){
 			for (var propertyName in tmpHero) {
 				if (game.myhero[propertyName]===undefined){
@@ -4895,11 +5065,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		game.userPopAck   = 0;
 		game.userGoldAck  = 0;
 		game.userASaveAck = 0;
-		buildingsInTownB=[];
-		buildingsInTownX=[];
-		buildingsInTownY=[];
-		buildingsInTownW=[];
-		buildingsInTownH=[];
+
+		setTutorialAfterSaveRestore(gameTemp);
+
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };
@@ -4910,7 +5078,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		composite();
 		enforceColorMode();
 		updateUI();
-		document.getElementById("console_n_chat").value = document.getElementById("console_n_chat").value+"\r\n"+getTime(0)+": "+localeStrings[12];
+		postEventLog(locObj.loadedSuccessfully.txt, "bold");
 		scrollDown();
 	}
 	function updateUI() {
@@ -4920,10 +5088,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		if (typeof updateHeroStatus     === "function") { updateHeroStatus() }
 		if (typeof updateBlackMarket    === "function") { updateBlackMarket() }
 		if (typeof updateImagesBuildingTab === "function") { updateImagesBuildingTab() }
-		if (document.getElementById("inp_nickname").value === "" || 
+		if (document.getElementById("inp_nickname").value === "" ||
 			document.getElementById("inp_nickname").value === "undefined"){
 			if (typeof setupNickname    === "function") { setupNickname() }
 		}
+		if (typeof drawTabUniversity === "function" ) { drawTabUniversity() }
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
 
@@ -4996,7 +5165,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		return n;
 	}
 	function scrollDown(){
-		var textarea = document.getElementById("console_n_chat");
+		var textarea = document.getElementById("log");
 		if(textarea.selectionStart === textarea.selectionEnd) {
 			textarea.scrollTop = textarea.scrollHeight;
 		}
@@ -5061,55 +5230,24 @@ WeightedRandom.prototype.clearEntriesList = function() {
 <!--ADVENTURE RENDERER  MAP-->
 <script async src="js/advmaprender.js"></script>
 <!--RANDOM EVENTS-->
-<script asyn src="js/random_events.js"></script>
+<script async src="js/random_events.js"></script>
+<!--TECH TREE-->
+<script src="js/technology_tree.js"></script>
 <!--UNITS STATS-->
-<script asyn src="js/units.js"></script>
+<script async src="js/units.js"></script>
 <!--ONLINE OPTIONS-->
 <script async src="js/online.js"></script>
 <!--TIPS, STORYTELLING, STUFF-->
 <script src="js/tips_story.js"></script>
 <script>
-	function openTab(evt, tabName) {
-		var i, tabcontent, tablinks;
-		if (tabName==="Explore"){
-			game.active_tab="Explore";
-			console.log('open Explore tab');
-		} else {
-			game.active_tab="";
-			console.log('close Explore tab');
-		}
-		if (tabName==="Settings"){
-			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
-			document.getElementById("inpStnAliasValue").value = game.alias;
-		}
-		
-		tabcontent = document.getElementsByClassName("tabcontent");
-		for (i = 0; i < tabcontent.length; i++) {
-			tabcontent[i].style.display = "none";
-		}
-		tablinks = document.getElementsByClassName("tablinks");
-		for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-		}
-		document.getElementById(tabName).style.display = "block";
-		if (evt !== null) {
-			evt.currentTarget.className += " active";
-		}
-		if (tabName==="tabTroopsHiring"){
-			if (isTutorialState && !game.tips.includes("tutorial_moving_troops") && game.heroExists()){
-				game.tips.push("tutorial_moving_troops");
-				showModal(0, '', getAck, locObj.tutorial_moving_troops.txt, locObj.okay.txt, '');
-			}
-		}
-	}
-	document.getElementById("tabCity").click();
+
 
 	function accordion(elem, targetClass){
 		document.addEventListener('click', function (e) {
 		var matchStr = elem + ' ' + targetClass;
 		if (!e.target.matches(matchStr)) return;
 		else{
-			if(!e.target.parentElement.classList.contains('active')){         
+			if(!e.target.parentElement.classList.contains('active')){
 				e.target.parentElement.classList.add('active');
 			}else{
 				e.target.parentElement.classList.remove('active');
@@ -5160,6 +5298,9 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	<img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" />
 	</div>
 </noscript>
+<script src="js/hire.js"></script>
+<script src="js/inn.js" ></script>
+
 <!-- /Yandex.Metrika counter -->
 </body>
 </html>

@@ -2,34 +2,34 @@ var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("постройте или улучшите вашу Сокровищницу");
-localeStrings.push("казна пополняется, милорд!");
-localeStrings.push("казна пустеет, милорд");//5
-localeStrings.push("количество злата не изменилось");
-localeStrings.push("население растет!");
-localeStrings.push("население убывает");
-localeStrings.push("количество подданных не изменилось");
-localeStrings.push("ваш город достиг максимальной численности; постройте или улучшите дома");//10
-localeStrings.push("игра сохранена успешно");
-localeStrings.push("игра загружена успешно");
-localeStrings.push("Загрузить игру? Вы потеряете весь несохраненный прогресс!");
-localeStrings.push("Извините, но сохраненных игр нет!");
-localeStrings.push("Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть");//15
-localeStrings.push("Пожалуйста, вставьте сохранение");
-localeStrings.push("очень длинная строка");
-localeStrings.push("Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу\nи %arg2 золотых за каждый сезон");
-localeStrings.push("Вы наняли охранника");
-localeStrings.push("Недостаточно золота!");//20
-localeStrings.push("Для найма охранника необходима Сокровищница!");
-localeStrings.push("Уволить охранника?");
-localeStrings.push("Вы уволили охранника");
-localeStrings.push("У вас нет охранников");
-localeStrings.push("предательство");//25
-localeStrings.push("шпионаж");
-localeStrings.push("коррупцию");
-localeStrings.push("подкуп");
-localeStrings.push("казнокрадство");
-localeStrings.push("кражи");//30
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//5
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//10
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//15
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//20
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//25
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//30
 localeStrings.push("Да, и как можно кроважаднее!");
 localeStrings.push("Да");
 localeStrings.push("Нет");
@@ -510,4 +510,32 @@ locObj.deadCounselorDemolishAnsYes = {"txt":"Да, сносим это здан�
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
 locObj.buildArchery = {"txt":"Стрельбище позволяет нанимать конных лучников. Сначала нужно построить конюшни", "loc":"ошибка при постройке стрельбища"};
-
+locObj.buildUpgradeTreasury = {"txt":"постройте или улучшите вашу Сокровищницу", "loc":"the endturn tip in case of overflowing gold amount"}
+locObj.moneyIncreased = {"txt":"казна пополняется, милорд!", "loc":"happens when s-to-s money value increased"};
+locObj.moneyDecreased = {"txt":"казна пустеет, милорд", "loc":"happens when s-to-s money value decreased"};
+locObj.popIncreased = {"txt":"население растет!", "loc":"happens when s-to-s population value increased"};
+locObj.popDecreased = {"txt":"население убывает", "loc":"happens when s-to-s population value decreased"};
+locObj.buildUpgradeHouse = {"txt":"ваш город достиг максимальной численности; постройте или улучшите дома", "loc":"the endturn tip in case of overpopulating"};
+locObj.savedSuccessfully = {"txt":"игра сохранена успешно", "loc":"when manual save completed successfully"};
+locObj.loadedSuccessfully = {"txt":"игра загружена успешно", "loc":"when loaded completed successfully"};
+locObj.dialogLoadGame = {"txt":"Загрузить игру? Вы потеряете весь несохраненный прогресс!", "loc":"confirmation dialogue over loading game"};
+locObj.noSaveGame = {"txt":"Извините, но сохраненных игр нет!", "loc":"in case there is no savegame"};
+locObj.dialogSaveGame = {"txt":"Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть", "loc":"when trying to save game or overwriting existing savegame"};
+locObj.loadGameFromStringError = {"txt":"Пожалуйста, вставьте сохранение", "loc":"happens when the loadgame input is empty"};
+locObj.lblLongSaveString = {"txt":"очень длинная строка", "loc":"label near input fielf for savegame string"};
+locObj.dialogConfirmHireGuard = {"txt":"Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу\nи %arg2 золотых за каждый сезон", "loc":"hiring treasury guard confirmation dialogue"};
+locObj.hiredGuardsman = {"txt":"Вы наняли охранника", "loc":"after succesfully hired a guardsman"};
+locObj.notEnoughGold = {"txt":"Недостаточно золота!", "loc":"not enough gold"};
+locObj.treasuryRequired = {"txt":"Для найма охранника необходима Сокровищница!", "loc":"happens when trying to hire gaurdsman without a treasury"};
+locObj.dialogConfirmDismssGuardsman = {"txt":"Уволить охранника?", "loc":"happens when try to dismiss one guardsman"};
+locObj.dismissedGuardsman = {"txt":"Вы уволили охранника", "loc":"happens after dismissing a guardsman"}; 
+locObj.noGuardsman = {"txt":"У вас нет охранников", "loc":"happens when trying to dismiss guardsman when there are none of them"};
+locObj.execReasons = [{"txt":"предательство", "loc":"when executing a person"},
+	{"txt":"шпионаж", "loc":""},
+	{"txt":"коррупцию", "loc":""},
+	{"txt":"подкуп", "loc":""},
+	{"txt":"казнокрадство", "loc":""},
+	{"txt":"кражи", "loc":""}];
+locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
+locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.bldUniversityButton = {"txt":"Построить университет<br>%arg2 золотых", "loc":"the label of the button of building the University on the building tab"};
