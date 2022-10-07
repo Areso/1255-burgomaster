@@ -10,6 +10,11 @@ function gameTips() {
 		game.tips.push("tutorial_new_buildings");
 		showModal(0, '', getAck, locObj.tutorial_new_buildings.txt, locObj.okay.txt, '')
 	}
+	// just in case, if a person messed [missed] with the first tip
+	if (game.isTutorialState && !game.tips.includes("tutorial_defense") && !dialogShown){
+		game.tips.push("tutorial_defense");
+		showModal(0, '', getAck, locObj.tutorial_defense.txt, locObj.okay.txt, '')
+	}
 	if (game.isTutorialState && !game.tips.includes("tutorial_treasury")
 	&& game.gold>=config.tutTreasuryG && !dialogShown){
 		game.tips.push("tutorial_treasury");
