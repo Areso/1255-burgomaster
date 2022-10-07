@@ -5051,7 +5051,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
 		document.getElementById("downloadGame").innerText        = localeStrings[328];
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
-		populateHeroesForHire();
+		if (typeof populateHeroesForHire === "function") { populateHeroesForHire() };
 		checkSaves();
 		welcomeMsg();
 		updateButtonCaptions();
@@ -5261,13 +5261,6 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		game.userPopAck   = 0;
 		game.userGoldAck  = 0;
 		game.userASaveAck = 0;
-		/*
-		buildingsInTownB=[];
-		buildingsInTownX=[];
-		buildingsInTownY=[];
-		buildingsInTownW=[];
-		buildingsInTownH=[];
-		*/
 
 		setTutorialAfterSaveRestore(gameTemp);
 
