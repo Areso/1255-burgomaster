@@ -1,7 +1,4 @@
 function updateImagesBuildingTab() {
-	//HIDING
-	console.log("update images building tab");
-
 	if (game.tips.includes('tutorial1_pop0') && game.isTutorialState) {
 		document.getElementById("tabBuilding").classList.remove('is-tutorial');
 	}

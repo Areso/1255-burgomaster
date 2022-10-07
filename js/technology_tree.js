@@ -159,22 +159,16 @@ tech_tree_area = document.getElementById("available_researches");
 drawTabUniversity();
 function drawTabUniversity(){
 	tech_tree_area.innerHTML = "";
-	
 	for (tech in tech_list) {
-		console.log(tech);
 		//check whether we already learned (we shouldn't)
 		if (!game.techLearned.includes(tech_list[tech]["id"])) {
-			console.log("continue with");
-			console.log(tech);
 			//check whether we already advanced in the timeline far enough
 			if (game.year>=tech_list[tech]["year"] && game.season>=tech_list[tech]["season"]){
 				//finally, check whether all prereqs are learned
 				unlocked = true;
 				if (tech_list[tech]["prereqs"].length>0){
 					for (let i=0; i<tech_list[tech]["prereqs"].length; i++){
-						console.log("the_prereq")
 						the_prereq = tech_list[tech]["prereqs"][i]
-						console.log(the_prereq)
 						if (!game.techLearned.includes(the_prereq)){
 							unlocked = false;
 						}

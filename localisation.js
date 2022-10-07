@@ -82,8 +82,6 @@ function checkLocalStorageSupport() {
 function loadLocale(language){
 	file = 'langs/'+language+'.js';
 	include(file,function(){
-		//document.getElementById('lblPlayGame').innerHTML=localeStrings[0];
-		console.log('we are in second level include');
 		localeCallback(language);
 	});
 	isLocalStorageSupport = checkLocalStorageSupport();

@@ -44,7 +44,6 @@ function updateHeroStatusInn() {
 		}
 		if (game.myhero.status===0){
 			var rnd = Math.floor(Math.random() * localeStrings[210].length);
-			console.log("in town, activity is "+rnd);
 			var heroActivity = localeStrings[206]+localeStrings[210][rnd]+localeStrings[207];
 			heroStatusNeedsUpdate = false;
 			document.getElementById("btnAutocampaign").innerText=localeStrings[218];
@@ -61,7 +60,6 @@ function updateHeroStatusInn() {
 			while (rnd===0) {
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
 			}
-			console.log("in autocampaign, activity is "+rnd);
 			var heroActivity = localeStrings[206]+localeStrings[211][rnd]+localeStrings[208];
 			heroStatusNeedsUpdate = false;
 			document.getElementById("btnAutocampaign").innerText=localeStrings[219];
@@ -200,7 +198,6 @@ function populateHeroesForHire(){
 	updateHeroAvForHire(0);
 }
 function updateHeroAvForHire(heroClassId){
-	console.log("heroClassId is "+heroClassId);
 	document.getElementById("lblClassForHire").innerText    = heroesForHire[heroClassId].heroClassLbl;
 	document.getElementById("lblSpeciality").innerText      = heroesForHire[heroClassId].heroLearnCurve;
 	if (curHeroPortraitId[heroClassId]+1<endHeroPortraitId[heroClassId]) {

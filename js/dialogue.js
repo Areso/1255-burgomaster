@@ -11,7 +11,6 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
     img1sizeY     = 0;
     imageOffsetX  = 10;
     imageOffsetY  = 30;
-    console.log(thefunction);
     if (imageName !== '') {
         var src   = imageName;
         img1      = loadImage(src, composite);
@@ -24,7 +23,6 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
         placeText();
     }
     function returnAnswer() {
-        console.log(answer);
         thefunction();
     }
     myCanvas.returnAnswer = returnAnswer;
@@ -121,10 +119,8 @@ function tap (e) {
     canvasScaleRatio = canvas.width / canvas.offsetWidth;
     loc.x = (tapX - pos.x) * canvasScaleRatio;
     loc.y = (tapY - pos.y) * canvasScaleRatio;
-    console.log(loc.x, loc.y);
     if (loc.x >= buttonOneOffsetX && loc.x <= buttonOneOffsetX+buttonOneLength) {
         if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
-            console.log("first button pressed");
             document.getElementById("myDCanvas").classList.remove('active-modal');
             answer = 2;
             clearCanvas();
@@ -132,7 +128,6 @@ function tap (e) {
     }
     if (loc.x >= buttonTwoOffsetX && loc.x <= buttonTwoOffsetX+buttonTwoLength) {
         if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
-            console.log("second button pressed");
             document.getElementById("myDCanvas").classList.remove('active-modal');
             answer = 3;
             clearCanvas();

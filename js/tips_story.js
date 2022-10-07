@@ -1,5 +1,4 @@
 function gameTips() {
-	console.log('GAME TIPS EXECUTED');
 	if (game.ticks === config.tutorialDefenseEventTicks){
 		if (game.isTutorialState && !game.tips.includes("tutorial_defense") && !dialogShown){
 			game.tips.push("tutorial_defense");

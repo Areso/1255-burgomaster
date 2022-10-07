@@ -960,7 +960,7 @@
 		tutArcheryP: 60,
 		tutInnP: 80,
 		tutSocialP: 100,
-		online: true,
+		online: false,
 		pullMessages: true,
 		pullMessagesMS: 1500,
 		debug: false,
@@ -4041,10 +4041,8 @@
 	function openTab(evt, tabName) {
 		if (tabName==="Explore"){
 			game.active_tab="Explore";
-			console.log('open Explore tab');
 		} else {
 			game.active_tab="";
-			console.log('close Explore tab');
 		}
 		if (tabName==="Settings"){
 			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
@@ -4523,7 +4521,6 @@
 		}
 
 		buildingsInTown.push(buildingObj);
-		console.log(buildingsInTown)
 	};
 
 	function composite() {
@@ -4885,9 +4882,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	//composite();
 
 	include('localisation.js',function(){
-		console.log('load1');
 		loadStartLocale();
-		console.log('we are in first level include after loadStartLocale()');
 	});
 
 	openLog();
@@ -4918,16 +4913,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 
 	function getAck() {
-		console.log('we are at getAck method');
-		console.log("the length is "+disabledElements.length);
-
 		if (answer === 3) {
 			game.isTutorialState = false;
 			// document.getElementById("tabBuilding").classList.remove('is-tutorial');
 			for (var i=0; i<disabledElements.length; i++) {
 				document.getElementById(disabledElements[i]).disabled = false;
 			}
-
 			hiddenElements = document.querySelectorAll('.is-tutorial');
 			if (hiddenElements.length) {
 				hiddenElements.forEach(function (el) {
@@ -5070,7 +5061,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 	function loadArtifacts(){
 		include('js/artifacts.js',function(){
-			console.log('we are loading the artifacts');
 		});
 	}
 	function welcomeMsg(){
@@ -5247,7 +5237,6 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		tmpHero = game.myhero;
 		game.myhero = {};
 		for (var propertyName in gameTemp) { game[propertyName] = gameTemp[propertyName]; }
-		console.log(game.heroExists());
 		if (game.heroExists()){
 			for (var propertyName in tmpHero) {
 				if (game.myhero[propertyName]===undefined){
