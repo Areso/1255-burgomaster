@@ -435,7 +435,7 @@
 				<div id="lblBuildHelp" class="building-description"></div>
 			</div>
 			<div id="About" class="tab">
-				<div id="lblAboutGame">
+				<div id="lblAboutGame" style="margin-left:20px">
 					<h1>1255 Burgomaster</h1><br>
 					<h2>How to play</h2>
 				</div>
@@ -3811,7 +3811,6 @@
 			if (game.year > 1260) {
 				if (game.fire === 0) {
 					var rnd = Math.floor((Math.random() * 3) + 1);
-					console.log('Fire rnd');
 					if (rnd === 1) {
 						msg = "<b>%arg1</b>";
 						msg = msg.replace("%arg1",localeStrings[38]);
@@ -4431,10 +4430,8 @@
 			document.getElementById("buttonPutOutFire").style.display="block";
 		}
 		if (game.chestCity === 1) {
-			console.log("try to draw a chest of gold");
 			chest.x = Math.floor(Math.random() * (800-chest.w*2)+chest.w);
 			chest.y = Math.floor(Math.random() * (480-chest.h*2)+chest.h);
-			console.log("locX is "+chest.x+" and locY is "+chest.y);
 			ctx.drawImage(chest_img, chest.x, chest.y);
 			pushBuilding(chest);
 		}
@@ -4718,6 +4715,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 	function getAck() {
 		if (answer === 3) {
+			console.log("before changing tutorial state");
 			game.isTutorialState = false;
 			// document.getElementById("tabBuilding").classList.remove('is-tutorial');
 			for (var i=0; i<disabledElements.length; i++) {
@@ -4741,7 +4739,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function reloadLang() {
 		var x = document.getElementById("selectLng").selectedIndex;
 		var y = document.getElementById("selectLng").options;
-		language = y[x].value; //y[x].id, text, index
+		language = escape(y[x].value); //y[x].id, text, index
 		loadLocale(language);
 	}
 	function localeCallback(returnLanguage) {
