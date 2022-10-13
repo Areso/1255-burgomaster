@@ -7,12 +7,18 @@
 	msg_dom   = document.getElementById("msg_out");
 	btn_send  = document.getElementById("btnSend");
 	btn_mod   = document.getElementById("mod_btn");
+
 	//init timers
+	var fpullMessagesTimer = null;
+	var pullPremodMessagesTimer = null;
+	var nearestEventTimer = null;
+	var pullAmberTimer = null;
+
 	if (config.online && config.pullMessages){
-		setInterval(fpullMessages, config.pullMessagesMS);
-		setInterval(pullPremodMessages, 5000);
-		setInterval(getNearestEventTime, 10000);
-		setInterval(pullAmber, 3000);
+		fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
+		pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
+		nearestEventTimer = setInterval(getNearestEventTime, 10000);
+		pullAmberTimer = setInterval(pullAmber, 3000);
 	}
 	//functions
 	function remoteRegLogin() {
@@ -89,6 +95,8 @@
 				document.getElementById("server-status").innerHTML="Up";
 				chat_dom.innerHTML = "";
 				messages.forEach(printToChat);
+			} else {
+				clearInterval(fpullMessagesTimer);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
 				document.getElementById("server-status").innerHTML="Down";
@@ -115,6 +123,8 @@ function pullPremodMessages() {
 				}
 				mod_dom.innerHTML = "";
 				messages.forEach(printToMod);
+			} else {
+				clearInterval(pullPremodMessagesTimer);
 			}
 		};
 		endpoint  = webserver + "/api/v1.1/pull_premod_messages";
@@ -149,6 +159,8 @@ function pullPremodMessages() {
 				the_resp = JSON.parse(this.responseText);
 				console.log(the_resp);
 				document.getElementById("gems").innerHTML = the_resp.amber;
+			} else {
+				clearInterval(pullAmberTimer);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
 				document.getElementById("gems").innerHTML = 0
@@ -290,7 +302,7 @@ function reloadBanned() {
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(dataToParse);
 			}
-		} 
+		}
 	}
 	msgid_to_del = -1;
 	function ruleOverUser(name){
@@ -432,7 +444,7 @@ function reloadBanned() {
 				if (flag_event_started===0){
 					event_timer_lbl.innerHTML="New Year event will start in ";
 					event_timer_val.innerHTML=eventTimerVal;
-					
+
 				} else {
 					//TODO THAT URGENT!
 					//BUT NOT TODAY
@@ -445,6 +457,7 @@ function reloadBanned() {
 				//document.getElementById("lblEventCountdownValue").disabled = false;
 			} else {
 				//document.getElementById("lblEventCountdownValue").disabled = true;
+				clearInterval(nearestEventTimer);
 			}
 		};
 		endpoint    = webserver + "/api/v1.1/event_countdown";

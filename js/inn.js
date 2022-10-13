@@ -5,7 +5,9 @@ let endHeroPortraitId = [];
 let curHeroPortraitId = [];
 
 function updateHeroStatusInn() {
-	if ( game.heroExists() === true) {
+	console.log('[updateHeroStatusInn::CALLED]');
+	// console.log('[updateHeroStatusInn::STATUS]: ', game.myhero.status);
+	if ( game.heroExists()) {
 		var lblHeroClass    = localeStrings[204][game.myhero.class];
 		var lblAlignment    = game.heroAlignment("text");
 		var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
@@ -42,9 +44,12 @@ function updateHeroStatusInn() {
 		if (game.myhero.knights === undefined){
 			game.myhero.knights = 0;
 		}
+
+		var heroActivity = localeStrings[206];
+
 		if (game.myhero.status===0){
 			var rnd = Math.floor(Math.random() * localeStrings[210].length);
-			var heroActivity = localeStrings[206]+localeStrings[210][rnd]+localeStrings[207];
+			heroActivity += localeStrings[210][rnd]+localeStrings[207];
 			heroStatusNeedsUpdate = false;
 			document.getElementById("btnAutocampaign").innerText=localeStrings[218];
 			document.getElementById("btnAutocampaign").style.visibility="visible";
@@ -57,26 +62,25 @@ function updateHeroStatusInn() {
 		}
 		if (game.myhero.status===1){
 			var rnd = Math.floor(Math.random() * localeStrings[211].length);
+			// console.log('[updateHeroStatusInn::STATUS::1]: manual autocampaign, activity is: ' + rnd);
 			while (rnd===0) {
 				var rnd = Math.floor(Math.random() * localeStrings[211].length);
 			}
-			var heroActivity = localeStrings[206]+localeStrings[211][rnd]+localeStrings[208];
+			heroActivity += localeStrings[211][rnd]+localeStrings[208];
 			heroStatusNeedsUpdate = false;
 			document.getElementById("btnAutocampaign").innerText=localeStrings[219];
 			document.getElementById("btnAutocampaign").style.visibility="visible";
 			document.getElementById("btnAutocampaignJournal").style.visibility="visible";
-			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 			document.getElementById("btnLeaveCity").style.visibility="hidden";
 			document.getElementById("btnTowngate").style.visibility="visible"
 		}
 		if (game.myhero.status===2){
 			var rnd = Math.floor(Math.random() * localeStrings[212].length);
-			console.log("in manual ampaign, activity is "+rnd);
-			var heroActivity = localeStrings[206]+localeStrings[212][rnd]+localeStrings[209];
+			// console.log('[updateHeroStatusInn::STATUS::2]: manual campaign, activity is: ' + rnd);
+			heroActivity += localeStrings[212][rnd]+localeStrings[209];
 			heroStatusNeedsUpdate = false;
 			document.getElementById("btnAutocampaign").style.visibility="hidden";
 			document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
-			document.getElementById("trHeroHiringTroops").style.visibility="collapse";
 			document.getElementById("btnLeaveCity").style.visibility="visible";
 			document.getElementById("btnTowngate").style.visibility="hidden";
 		}
@@ -102,7 +106,7 @@ function updateHeroStatusInn() {
 			}
 			HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
 		}
-		var heroStatsElem = document.getElementById("heroStats"); 
+		var heroStatsElem = document.getElementById("heroStats");
 		heroStatsElem.innerHTML = HTMLofHeroStats;
 		var equipmentTitleElem = document.createElement("div");
 		var equipmentListElem = document.createElement("div");
