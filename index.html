@@ -763,6 +763,10 @@
 		return nickName;
 	}
 
+	function isNil(value) {
+		return value === null || value === undefined;
+	}
+
 
 	function include (url, fn) {
 		var e = document.createElement("script");
@@ -3520,9 +3524,9 @@
 			}
 		},
 		hireTreasuryGuardCost : function () {
-			hireCost =  config.treasuryGuardPriceHire;
+			var hireCost =  config.treasuryGuardPriceHire;
 			if (game.techLearned.includes("war_propaganda")){
-				hireCost = hireCost*techs.war_propaganda.attrs["hire cost"];
+				hireCost = hireCost * tech_list.war_propaganda.attrs["hire cost"];
 				hireCost = Math.ceil(hireCost);
 			}
 			return hireCost;
@@ -3533,7 +3537,7 @@
 				disabledElements.push("buttonHireGuard");
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
-				question = localeStrings[18].replace("%arg1",game.hireTreasuryGuardCost()).replace("%arg2",config.treasuryGuardPricePayroll);;
+				var question = locObj.dialogConfirmHireGuard.txt.replace("%arg1",game.hireTreasuryGuardCost()).replace("%arg2",config.treasuryGuardPricePayroll);
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
 				alertMsg = locObj.treasuryRequired.txt;

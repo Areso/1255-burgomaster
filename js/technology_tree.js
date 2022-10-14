@@ -23,7 +23,7 @@ var tech_list = {
      	attrs_type: {
      	"hire_cost":"relative",
      	"upkeep_cost":"relative"
-     	},  
+     	},
         priceResearch: 200,
         upkeep: 5,
         switchable: true,
@@ -52,7 +52,7 @@ var tech_list = {
      	attrs_type: {
      	"hire_cost":"relative",
      	"upkeep_cost":"relative"
-     	},  
+     	},
         priceResearch: 200,
         upkeep: 5,
         switchable: true,
@@ -81,7 +81,7 @@ var tech_list = {
      	attrs_type: {
      	"hire_cost":"relative",
      	"upkeep_cost":"relative"
-     	},  
+     	},
         priceResearch: 200,
         upkeep: 5,
         switchable: true,
@@ -110,12 +110,14 @@ var tech_list = {
      	attrs_type: {
      	"hire_cost":"relative",
      	"upkeep_cost":"relative"
-     	},  
+     	},
         priceResearch: 200,
         upkeep: 5,
         switchable: true,
     },
 };
+
+Object.freeze(tech_list);
 
 function researchTech (){
 	if (game.gold >= tech_list[selectedTech]["priceResearch"]) {
@@ -132,20 +134,29 @@ function researchTech (){
 		lblResearchHelp.innerHTML = "";
 	}
 }
-Object.freeze(tech_list);
+
 function getTechName(techName){
-	if (tech_list[techName]["name"][language]===undefined) {
-		return tech_list[techName]["name"]["default"]; 
-	} else {
-		return tech_list[techName]["name"][language];
+	var tech = tech_list[techName];
+	if (isNil(tech)) {
+		throw new Error('Tech with name "' + techName + '" not found.');
 	}
+	if (tech["name"][language]) {
+		return tech["name"][language];
+	}
+	return tech["name"][language]['default'];
 }
+
 function getTechDescr(techName){
-	if (tech_list[techName]["descr"][language]===undefined) {
-		return tech_list[techName]["descr"]["default"]; 
-	} else {
-		return tech_list[techName]["descr"][language];
-	}	
+	var tech = tech_list[techName];
+	if (isNil(tech)) {
+		throw new Error('Tech with name "' + techName + '" not found.');
+	}
+
+	if (tech["descr"][language]) {
+		return tech["descr"][language];
+	}
+	return tech["descr"][language]['default'];
+
 }
 function researchHelp(myobject) {
 	selectedTech               = myobject.id;
