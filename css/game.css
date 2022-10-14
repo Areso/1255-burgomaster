@@ -377,6 +377,19 @@ body {
   margin-bottom: 10px;
 }
 
+
+#aboutGameWrapper {
+  height: 100%;
+  padding: 5px 20px 10px;
+  overflow-y: auto;
+}
+
+#lblAboutGame > h1,
+#lblAboutGame > h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
 .is-tutorial {
   visibility: hidden !important;
 }

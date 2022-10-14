@@ -435,9 +435,11 @@
 				<div id="lblBuildHelp" class="building-description"></div>
 			</div>
 			<div id="About" class="tab">
-				<div id="lblAboutGame" style="margin-left:20px">
-					<h1>1255 Burgomaster</h1><br>
-					<h2>How to play</h2>
+				<div id="aboutGameWrapper">
+					<div id="lblAboutGame">
+						<h1>1255 Burgomaster</h1>
+						<h2>How to play</h2>
+					</div>
 				</div>
 			</div>
 			<div id="tabPopulation" class="tab">
@@ -1276,17 +1278,19 @@
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			return new Promise(function (resolve) {
-				var artefactIds = ['artid00']; // Always set artid00 as default market item. For now...
-				var rnd = randomFromRange(11, 13);
-				if (rnd.toString().length < 2) {
-					rnd = "0"+rnd;
-				}
-				var id = "artid" + rnd;
+			// Just simple goods generation for now. Only two artefacts per adventure map.
+			var rnd = randomFromRange(11, 13);
+			if (rnd.toString().length < 2) {
+				rnd = "0"+rnd;
+			}
+			var id = "artid" + rnd;
+			addItem('trader', artefacts['artid00']);
+			addItem('trader', artefacts[id]);
 
-				artefactIds.push(id);
-				resolve(artefactIds);
-			});
+			// var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
+			// artefactIds.push(id); - Not used for now
+
+			// console.log('%c BLACK MARKET GOODS: ', 'background: #c00; color: #fff;', game.blackMarketGoods);
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;

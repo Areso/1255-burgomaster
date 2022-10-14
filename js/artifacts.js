@@ -154,7 +154,7 @@ var artefacts = {
         id: "artid13",
         img: "rune_gold.png",
         name: locObj.goldRuneTitle.txt,
-        desc: locObj.goldRuneTitle.txt,
+        desc: locObj.goldRuneDesc.txt,
         attr: [{name: "gold", type: "percentage", val: 1.07}],
         change: [],
         priceBuy: 5000000,

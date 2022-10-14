@@ -4,14 +4,7 @@ function genMap(priceOfMapGen){
 	if (game.tips.includes("blackmarket")){
 		game.tips.pop("blackmarket");
 	}
-	game.genBlackMarketGoods().then(function (artefactIds) {
-		if (artefactIds && artefactIds.length > 0) {
-			artefactIds.forEach(function (id) {
-				var marketItem = getItem(id);
-				addItem('trader', marketItem);
-			})
-		}
-	});
+
 	game.gold = game.gold - priceOfMapGen;
 	game.myMapLand=[];
 	for (i=0;i<config.sizeMapX;i++) {
@@ -124,6 +117,7 @@ function genMap(priceOfMapGen){
 	if (qc) {
 		//QC is passed!
 		game.mapCreated = 1;
+		game.genBlackMarketGoods();
 		composite_gm();
 		if (flag_event_started===1){
 			if (typeof send_gen_items === "function") { send_gen_items(generated_items) };
