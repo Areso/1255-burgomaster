@@ -81,7 +81,7 @@
 			</div>
 			<div id="tabUniversity" class="tab">
 				<div id="available_researches">
-				
+
 				</div>
 				<!--<img src="resources/serpentine.png" onclick="game.research('artillery')">-->
 				<div id="lblReseachHelp" class="building-description"></div>
@@ -435,9 +435,11 @@
 				<div id="lblBuildHelp" class="building-description"></div>
 			</div>
 			<div id="About" class="tab">
-				<div id="lblAboutGame" style="margin-left:20px">
-					<h1>1255 Burgomaster</h1><br>
-					<h2>How to play</h2>
+				<div id="aboutGameWrapper">
+					<div id="lblAboutGame">
+						<h1>1255 Burgomaster</h1>
+						<h2>How to play</h2>
+					</div>
 				</div>
 			</div>
 			<div id="tabPopulation" class="tab">
@@ -606,139 +608,7 @@
 					<div class="grid-item not-implemented" id="grid-hero6v">600</div>
 				</div>
 			</div>
-			<!--
-			<div id="tabTroopsHiringOld" class="tab">
-				<label id="lblTroopsHiring">Hiring troops</label><br>
-				<div id="lblTroopsHelp" style="height: 80px; width: 780px;">
-				</div>
-				<table border="1px">
-					<tr>
-						<td>
 
-						</td>
-						<td>
-							<div class="unit-main">
-								<img id="imgHiringScreenSergeant" src="resources/sergeant.png" onmouseover="game.help(this)">
-								<div class="unit-info">
-									<p>Atk.: <span id="sergeantsAttack">5</span></p>
-									<p>Def.: <span id="sergeantsDefence">8</span></p>
-									<p>Dmg: 3-4</p>
-									<p>HP: <span id="sergeantsHealth">15</span></p>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div class="unit-main">
-								<img id="imgHiringScreenTurkopol" src="resources/turkopol.png" onmouseover="game.help(this)">
-								<div class="unit-info">
-									<p>Atk.: <span id="turkopolsAttack">5</span></p>
-									<p>Def.: <span id="turkopolsDefence">5</span></p>
-									<p>Dmg: 2-3</p>
-									<p>HP: <span id="turkopolsHealth">12</span></p>
-								</div>
-							</div>
-
-						</td>
-						<td>
-							<div class="unit-main">
-								<img id="imgHiringScreenKnight" src="resources/knight.png" onmouseover="game.help(this)">
-								<div class="unit-info">
-									<p>Atk.: <span id="knightsAttack">10</span></p>
-									<p>Def.: <span id="knightsDefence">9</span></p>
-									<p>Dmg: 5-10</p>
-									<p>HP: <span id="knightsHealth">20</span></p>
-								</div>
-							</div>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>
-
-						</td>
-						<td>
-							<button id="btnHireSergeant" onclick="game.hireTroopsSergeant()" onmouseover="game.help(this)" class="btn-hire">Hire sergeant</button>
-						</td>
-						<td>
-							<button id="btnHireTurkopol" onclick="game.hireTroopsTurkopol()" onmouseover="game.help(this)" class="btn-hire">Hire turkopol</button>
-						</td>
-						<td>
-							<button id="btnHireKnight" onclick="game.hireTroopsKnight()" onmouseover="game.help(this)" class="btn-hire">Hire knight</button>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>
-							<img id="imgCastellanInHiringScreen" src="resources/castellan.png" onmouseover="game.help(this)">
-						</td>
-						<td>
-							<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsGarrison">sergeants: </label></div><div id="lblGarnisonSergeants" style="display: inline">0</div>
-							<button class="btnArrow" id="btnMoveSergeantToHero" onclick="game.moveSergeantsToHero()" onmouseover="game.help(this)">↓</button>
-							<button class="btnArrow" id="btnMoveAllSergeantsToHero" onclick="game.moveAllSergeantsToHero()" onmouseover="game.help(this)">⇓</button>
-							<br>
-							<button id="btnDismissGarrisonSergeant" class="btnDismiss" onclick="game.dismissGarrisonSergeant()" onmouseover="game.help(this)">X</button>
-							<button id="btnDismissAllGarrisonSergeants" class="btnDismiss" onclick="game.dismissAllGarrisonSergenats()" onmouseover="game.help(this)">XX</button>
-						</td>
-						<td>
-							<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsGarrison">turkopols: </label></div><div id="lblGarnisonTurkopols" style="display: inline">0</div>
-							<button class="btnArrow" id="btnMoveTurkopolToHero" onclick="game.moveTurkopolsToHero()" onmouseover="game.help(this)">↓</button>
-							<button class="btnArrow" id="btnMoveAllTurkopolsToHero" onclick="game.moveAllTurkopolsToHero()" onmouseover="game.help(this)">⇓</button>
-							<br>
-							<button id="btnDismissGarrisonTurkopol" class="btnDismiss" onclick="game.dismissGarrisonTurkopol()" onmouseover="game.help(this)">X</button>
-							<button id="btnDismissAllGarrisonTurkopols" class="btnDismiss" onclick="game.dismissAllGarrisonTurkopols()" onmouseover="game.help(this)">XX</button>
-						</td>
-						<td>
-							<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsGarrison">knights: </label></div><div id="lblGarnisonKnights" style="display: inline">0</div>
-							<button class="btnArrow" id="btnMoveKnightToHero" onclick="game.moveKnightsToHero()" onmouseover="game.help(this)">↓</button>
-							<button class="btnArrow" id="btnMoveAllKnightsToHero" onclick="game.moveAllKnightsToHero()" onmouseover="game.help(this)">⇓</button>
-							<br>
-							<button id="btnDismissGarrisonKnight" class="btnDismiss" onclick="game.dismissGarrisonKnight()" onmouseover="game.help(this)">X</button>
-							<button id="btnDismissAllGarrisonKnights" class="btnDismiss" onclick="game.dismissAllGarrisonKnights()" onmouseover="game.help(this)">XX</button>
-						</td>
-						<td>
-							<button class="btnArrow"  id="btnMoveAllTroopsToHero" onclick="game.moveAllTroopsToHero()" onmouseover="game.help(this)">⤋</button>
-							<br>
-							<button id="btnDismissAllGarrisonForces" class="btnDismiss" onclick="game.dismissAllGarrisonForces()" onmouseover="game.help(this)">XXX</button>
-						</td>
-					</tr>
-					<tr id="trHeroHiringTroops" style="visibility: collapse">
-						<td>
-							<img id="imgHeroInHiringScreenKnight" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
-							<img id="imgHeroInHiringScreenMonk" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
-						</td>
-						<td>
-							<div><label class="lblHiringTroops" id="lblTabHiringTroopsSergeantsHeroSquad">sergeants: </label></div><div id="lblHeroSergeants" style="display: inline">0</div>
-							<button class="btnArrow" id="btnMoveSergeantToGarrison" onclick="game.moveSergeantsToGarnison()" onmouseover="game.help(this)">↑</button>
-							<button class="btnArrow" id="btnMoveAllSergeantsToGarrison" onclick="game.moveAllSergeantsToGarrison()" onmouseover="game.help(this)">⇑</button>
-							<br>
-							<button id="btnDismissHeroSergeant" class="btnDismiss" onclick="game.dismissHeroSergeant()" onmouseover="game.help(this)">X</button>
-							<button id="btnDismissAllHeroSergeants" class="btnDismiss" onclick="game.dismissAllHeroSergeants()" onmouseover="game.help(this)">XX</button>
-						</td>
-						<td>
-							<div><label class="lblHiringTroops" id="lblTabHiringTroopsTurkopolsHeroSquad">turkopols: </label></div><div id="lblHeroTurkopols" style="display: inline">0</div>
-							<button class="btnArrow" id="btnMoveTurkopolToGarrison" onclick="game.moveTurkopolsToGarnison()" onmouseover="game.help(this)">↑</button>
-							<button class="btnArrow" id="btnMoveAllTurkopolsToGarrison" onclick="game.moveAllTurkopolsToGarrison()" onmouseover="game.help(this)">⇑</button>
-							<br>
-							<button id="btnDismissHeroTurkopol" class="btnDismiss" onclick="game.dismissHeroTurkopol()" onmouseover="game.help(this)">X</button>
-							<button id="btnDismissAllHeroTurkopols" class="btnDismiss" onclick="game.dismissAllHeroTurkopols()" onmouseover="game.help(this)">XX</button>
-						</td>
-						<td>
-							<div><label class="lblHiringTroops" id="lblTabHiringTroopsKnightsHeroSquad">knights: </label></div><div id="lblHeroKnights" style="display: inline">0</div>
-							<button class="btnArrow" id="btnMoveKnightToGarrison" onclick="game.moveKnightsToGarnison()" onmouseover="game.help(this)">↑</button>
-							<button class="btnArrow" id="btnMoveAllKnightsToGarrison" onclick="game.moveAllKnightsToGarrison()" onmouseover="game.help(this)">⇑</button>
-							<br>
-							<button id="btnDismissHeroKnight" class="btnDismiss" onclick="game.dismissHeroKnight()" onmouseover="game.help(this)">X</button>
-							<button id="btnDismissAllHeroKnights" class="btnDismiss" onclick="game.dismissAllHeroKnights()" onmouseover="game.help(this)">XX</button>
-						</td>
-						<td>
-							<button class="btnArrow" id="btnMoveAllTroopsToGarrison" onclick="game.moveAllTroopsToGarrison()" onmouseover="game.help(this)">⤊</button>
-							<br>
-							<button id="btnDismissAllHeroForces" class="btnDismiss" onclick="game.dismissAllHeroForces()" onmouseover="game.help(this)">XXX</button>
-						</td>
-					</tr>
-				</table>
-			</div>
-			-->
 			<div id="tabBlackmarket" class="tab">
 				<div>
 					<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
@@ -891,6 +761,10 @@
 		}
 		nickName = "Guest"+rnd;
 		return nickName;
+	}
+
+	function isNil(value) {
+		return value === null || value === undefined;
 	}
 
 
@@ -1408,17 +1282,19 @@
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			return new Promise(function (resolve) {
-				var artefactIds = ['artid00']; // Always set artid00 as default market item. For now...
-				var rnd = randomFromRange(11, 13);
-				if (rnd.toString().length < 2) {
-					rnd = "0"+rnd;
-				}
-				var id = "artid" + rnd;
+			// Just simple goods generation for now. Only two artefacts per adventure map.
+			var rnd = randomFromRange(11, 13);
+			if (rnd.toString().length < 2) {
+				rnd = "0"+rnd;
+			}
+			var id = "artid" + rnd;
+			addItem('trader', artefacts['artid00']);
+			addItem('trader', artefacts[id]);
 
-				artefactIds.push(id);
-				resolve(artefactIds);
-			});
+			// var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
+			// artefactIds.push(id); - Not used for now
+
+			// console.log('%c BLACK MARKET GOODS: ', 'background: #c00; color: #fff;', game.blackMarketGoods);
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
@@ -1609,6 +1485,7 @@
 			game.myMapRemObjects[game.heroX][game.heroY] = 40;
 			openTab(null, 'Explore');
 			updateUI();
+			// updateHeroStatus();
 			composite_gm();
 			if (!game.tips.includes("adventure_map")){
 				game.tips.push("adventure_map");
@@ -3647,9 +3524,9 @@
 			}
 		},
 		hireTreasuryGuardCost : function () {
-			hireCost =  config.treasuryGuardPriceHire;
+			var hireCost =  config.treasuryGuardPriceHire;
 			if (game.techLearned.includes("war_propaganda")){
-				hireCost = hireCost*techs.war_propaganda.attrs["hire cost"];
+				hireCost = hireCost * tech_list.war_propaganda.attrs["hire cost"];
 				hireCost = Math.ceil(hireCost);
 			}
 			return hireCost;
@@ -3660,7 +3537,7 @@
 				disabledElements.push("buttonHireGuard");
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
-				question = localeStrings[18].replace("%arg1",game.hireTreasuryGuardCost()).replace("%arg2",config.treasuryGuardPricePayroll);;
+				var question = locObj.dialogConfirmHireGuard.txt.replace("%arg1",game.hireTreasuryGuardCost()).replace("%arg2",config.treasuryGuardPricePayroll);
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
 				alertMsg = locObj.treasuryRequired.txt;
@@ -4857,7 +4734,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		checkSaves();
 		welcomeMsg();
 		updateButtonCaptions();
-		updateHeroStatus();
 		loadArtifacts();
 		updateUI();
 	}

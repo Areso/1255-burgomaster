@@ -404,7 +404,7 @@ localeStrings.push("У вас нет рыцарей в гарнизоне");
 localeStrings.push("У вас нет сержантов в отряде героя"); //370
 localeStrings.push("У вас нет туркополов в отряде героя");
 localeStrings.push("У вас нет рыцарей в отряде героя");
-localeStrings.push("У вас нет войск в гарнизоне"); 
+localeStrings.push("У вас нет войск в гарнизоне");
 localeStrings.push("У вас нет войск в отряде героя");
 localeStrings.push("сержанты(%arg1)"); // 375
 localeStrings.push("туркополы(%arg1)");
@@ -528,7 +528,7 @@ locObj.hiredGuardsman = {"txt":"Вы наняли охранника", "loc":"af
 locObj.notEnoughGold = {"txt":"Недостаточно золота!", "loc":"not enough gold"};
 locObj.treasuryRequired = {"txt":"Для найма охранника необходима Сокровищница!", "loc":"happens when trying to hire gaurdsman without a treasury"};
 locObj.dialogConfirmDismssGuardsman = {"txt":"Уволить охранника?", "loc":"happens when try to dismiss one guardsman"};
-locObj.dismissedGuardsman = {"txt":"Вы уволили охранника", "loc":"happens after dismissing a guardsman"}; 
+locObj.dismissedGuardsman = {"txt":"Вы уволили охранника", "loc":"happens after dismissing a guardsman"};
 locObj.noGuardsman = {"txt":"У вас нет охранников", "loc":"happens when trying to dismiss guardsman when there are none of them"};
 locObj.execReasons = [{"txt":"предательство", "loc":"when executing a person"},
 	{"txt":"шпионаж", "loc":""},
@@ -537,5 +537,5 @@ locObj.execReasons = [{"txt":"предательство", "loc":"when executing
 	{"txt":"казнокрадство", "loc":""},
 	{"txt":"кражи", "loc":""}];
 locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
-locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.bldUniversityHelp = {"txt":"Это здание необходимо для исследования новых технологий.", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Построить университет<br>%arg2 золотых", "loc":"the label of the button of building the University on the building tab"};
