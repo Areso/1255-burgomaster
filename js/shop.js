@@ -1,14 +1,3 @@
-function getItem(itemID) {
-	var targetArtefact = null;
-	for (artefactKey in artefacts) {
-		if (artefacts.hasOwnProperty(artefactKey) && artefactKey === itemID) {
-			targetArtefact = artefacts[itemID];
-			break;
-		}
-	}
-	return targetArtefact
-};
-
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -18,7 +7,7 @@ function uuidv4() {
 
 function addItem(target, item) {
 
-	if (target === "hero") {	
+	if (target === "hero") {
 		if (game.heroExists()) {
 			var newItem = Object.assign({}, item);
 			newItem.priceBuy = newItem.priceBuy / 2;
@@ -50,7 +39,7 @@ function removeItem(target, itemID) {
 					game.myhero.inventory = deleteFromArray(game.myhero.inventory, targetIndex);
 					console.log(game.myhero.inventory);
 					return
-					
+
 				}
 			}
 		}
@@ -70,7 +59,7 @@ function removeItem(target, itemID) {
 };
 
 function removeElementUI(elemUID) {
-	var selector = '[data-uid=' + '"' + elemUID + '"]'; 
+	var selector = '[data-uid=' + '"' + elemUID + '"]';
 	var element = document.querySelector(selector);
 	if (element) {
 		var parent = element.parentNode;
@@ -99,7 +88,7 @@ function createElementUI(item, targetListId) {
 
 
 		if (game.gold >= item.priceBuy) {
-			
+
 			game.gold -= item.priceBuy;
 			addItem("hero", item);
 			updateUI();
@@ -141,7 +130,7 @@ function createElementUI(item, targetListId) {
 		};
 	}
 
-	
+
 
 	var imgSrc = "resources/" + item.img;
 	imgElement.setAttribute("src", imgSrc);
@@ -159,7 +148,7 @@ function createElementUI(item, targetListId) {
 
 	imgWrapperElement.appendChild(imgElement);
 	imgWrapperElement.classList.add("inventory-item__wrapper-img");
-	descWrapperElement.appendChild(nameElement);	
+	descWrapperElement.appendChild(nameElement);
 	descWrapperElement.appendChild(descElement);
 	nameElement.classList.add("inventory-item__name")
 
@@ -170,7 +159,7 @@ function createElementUI(item, targetListId) {
 	wrapperElement.appendChild(actionBtnElement);
 	actionBtnElement.classList.add("inventory-item__btn");
 
-	wrapperElement.classList.add("inventory-item");	
+	wrapperElement.classList.add("inventory-item");
 	wrapperElement.setAttribute("data-uid", item.uid);
 
 	parent.appendChild(wrapperElement);
@@ -217,7 +206,7 @@ function unequipItem(itemUID) {
 
 	if (equipedItem) {
 		for (var i = 0; i < equipedItem.attr.length; i++) {
-			game.myhero[equipedItem.attr[i].name] -= equipedItem.attr[i].val; 
+			game.myhero[equipedItem.attr[i].name] -= equipedItem.attr[i].val;
 		}
 		game.myhero.inventoryWorn = deleteFromArray(game.myhero.inventoryWorn, game.myhero.inventoryWorn.indexOf(equipedItem));
 	}

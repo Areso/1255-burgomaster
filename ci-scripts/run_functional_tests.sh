@@ -1,0 +1,1 @@
+python -m unittest discover -v -s ./python/tests/func -p '*test*.py'
