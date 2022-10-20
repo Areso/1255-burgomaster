@@ -1,0 +1,25 @@
+name: "Python Smoke Tests"
+
+on:
+  pull_request:
+  push:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  smoke_job:
+    name: Smoke Actions Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install python requirements
+        run: pip install -r ./python/requirements.txt
+
+      - name: Start local game server
+        run: sh ./ci-scripts/start_server.sh &
+
+      - name: Run tests
+        run: sh ./ci-scripts/run_functional_tests.sh
