@@ -4565,7 +4565,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 
 	openLog();
 	setInterval(cooldown, config.oneSecMS);
-	setInterval(endOfTurnTimer, config.oneSecMS);
+	endOfTurnObj = setInterval(endOfTurnTimer, config.oneSecMS);
 
 	//functions
 	function openTabAutocampaignJournal() {
