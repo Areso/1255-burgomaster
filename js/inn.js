@@ -5,7 +5,7 @@ let endHeroPortraitId = [];
 let curHeroPortraitId = [];
 
 function updateHeroStatusInn() {
-	console.log('[updateHeroStatusInn::CALLED]');
+	// console.log('[updateHeroStatusInn::CALLED]');
 	// console.log('[updateHeroStatusInn::STATUS]: ', game.myhero.status);
 	if ( game.heroExists()) {
 		var lblHeroClass    = localeStrings[204][game.myhero.class];
