@@ -86,6 +86,18 @@ function createElementUI(item, targetListId) {
 		actionBtnElement.onclick = function (e) {
 		e.preventDefault();
 
+			// TODO: #SwordsRestriction remove it later
+			if ((item.id === 'artid15' || item.id === 'artid16')  && swordsCount === 2) {
+				showModal(0, '', getAck, locObj.swordsWarn.txt,  localeStrings[60], '');
+				return;
+			}
+
+			if ((item.id === 'artid17' || item.id === 'artid18')  && ringsCount === 2) {
+				showModal(0, '', getAck, locObj.ringsWarn.txt,  localeStrings[60], '');
+				return;
+			}
+
+
 
 		if (game.gold >= item.priceBuy) {
 
@@ -166,6 +178,13 @@ function createElementUI(item, targetListId) {
 
 }
 
+function clearTraderUI() {
+	document.getElementById('marketList').innerHTML = '';
+}
+
+var swordsCount = 0; // TODO: #SwordsRestriction Counter will be removed after hero inventory system rework. For now dummy fix.
+var ringsCount = 0; // TODO: Same as swords. For now...
+
 function equipItem(itemUID) {
 	var inventoryItem = null;
 	var equipedItem = null;
@@ -183,8 +202,18 @@ function equipItem(itemUID) {
 		}
 	}
 
+
 	if (inventoryItem && !equipedItem) {
 		var newItem = JSON.parse(JSON.stringify(inventoryItem));
+		// TODO: #SwordsRestriction remove it later
+		if (newItem.id === 'artid15' || newItem.id === 'artid16') {
+			swordsCount++;
+		}
+
+		if (newItem.id === 'artid17' || newItem.id === 'artid18') {
+			ringsCount++;
+		}
+
 		game.myhero.inventoryWorn.push(newItem);
 		recalcStats(newItem.attr);
 	}
@@ -201,12 +230,56 @@ function unequipItem(itemUID) {
 			break;
 		}
 	}
-
+	
 	if (equipedItem) {
-		for (var i = 0; i < equipedItem.attr.length; i++) {
-			game.myhero[equipedItem.attr[i].name] -= equipedItem.attr[i].val;
+		var substr = 'unit_';
+		var substrLength = substr.length;
+		var itemStats = equipedItem.attr;
+
+		for (var i = 0; i < itemStats.length; i++) {
+
+			if (itemStats[i].name.includes(substr)) {
+				var unitParam = itemStats[i].name.substring(substrLength);
+
+				switch(itemStats[i].type) {
+					case BONUS_VALUE_TYPES.INTEGER: {
+						for (var key in game.myheroArmy.units) {
+							game.myheroArmy.units[key][unitParam] -= itemStats[i].val;
+						}
+					} break;
+					case BONUS_VALUE_TYPES.PERCENT: {
+						for (var key in game.myheroArmy.units) {
+							game.myheroArmy.units[key][unitParam] = Math.round(game.myheroArmy.units[key][unitParam] / itemStats[i].val);
+						}
+					} break;
+					default: throw new Error('Unknown stat type. Unable to assign value to ' + itemStats[i].name + '. Correct types is: "flat" or "percentage"');
+				}
+			}
+
+			if (game.myhero && game.myhero[itemStats[i].name]) {
+				switch(itemStats[i].type) {
+					case BONUS_VALUE_TYPES.INTEGER:
+						game.myhero[itemStats[i].name] -= itemStats[i].val;
+						console.log(game.myhero[itemStats[i].name]);
+						break;
+					case BONUS_VALUE_TYPES.PERCENT:
+						game.myhero[itemStats[i].name] = Math.round(game.myhero[itemStats[i].name] / itemStats[i].val);
+						break;
+					default: throw new Error('Unknown stat type. Unable to assign value to ' + itemStats[i].name + '. Correct types is: "flat" or "percentage"');
+				}
+			}
 		}
+
 		game.myhero.inventoryWorn = deleteFromArray(game.myhero.inventoryWorn, game.myhero.inventoryWorn.indexOf(equipedItem));
+		// TODO: #SwordsRestriction remove it later
+		if (equipedItem.id === 'artid15' || equipedItem.id === 'artid16') {
+			swordsCount--;
+		}
+		// TODO: #RingsRestrictions remove it later
+		if (equipedItem.id === 'artid17' || equipedItem.id === 'artid18') {
+			ringsCount--;
+		}
+
 	}
 
 }
@@ -214,9 +287,39 @@ function unequipItem(itemUID) {
 
 function recalcStats(itemStats) {
 	if (itemStats.length) {
+		var substr = 'unit_';
+		var substrLength = substr.length;
+
 		for (var i = 0; i < itemStats.length; i++) {
-			if (itemStats[i].type === "flat") {
-				game.myhero[itemStats[i].name] += itemStats[i].val
+
+			if (itemStats[i].name.includes(substr)) {
+				var unitParam = itemStats[i].name.substring(substrLength);
+
+				switch(itemStats[i].type) {
+					case BONUS_VALUE_TYPES.INTEGER: {
+						for (var key in game.myheroArmy.units) {
+							game.myheroArmy.units[key][unitParam] += itemStats[i].val;
+						}
+					} break;
+					case BONUS_VALUE_TYPES.PERCENT: {
+						for (var key in game.myheroArmy.units) {
+							game.myheroArmy.units[key][unitParam] = Math.round(game.myheroArmy.units[key][unitParam] * itemStats[i].val);
+						}
+					} break;
+					default: throw new Error('Unknown stat type. Unable to assign value to ' + itemStats[i].name + '. Correct types is: "' + BONUS_VALUE_TYPES.INTEGER + '" or "' + BONUS_VALUE_TYPES.PERCENT + '"');
+				}
+			}
+
+			if (game.myhero && game.myhero[itemStats[i].name]) {
+				switch(itemStats[i].type) {
+					case BONUS_VALUE_TYPES.INTEGER:
+						game.myhero[itemStats[i].name] += itemStats[i].val;
+						break;
+					case BONUS_VALUE_TYPES.PERCENT:
+						game.myhero[itemStats[i].name] = Math.round(game.myhero[itemStats[i].name] * itemStats[i].val);
+						break;
+					default: throw new Error('Unknown stat type. Unable to assign value to ' + itemStats[i].name + '. Correct types is: "' + BONUS_VALUE_TYPES.INTEGER + '" or "' + BONUS_VALUE_TYPES.PERCENT + '"');
+				}
 			}
 		}
 	}

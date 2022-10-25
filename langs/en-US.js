@@ -404,7 +404,7 @@ localeStrings.push("You don't have any knights at the garrison");
 localeStrings.push("You don't have any sergeants at the hero's squad"); //370
 localeStrings.push("You don't have any turkopols at the hero's squad");
 localeStrings.push("You don't have any knights at the hero's squad");
-localeStrings.push("You don't have any forces at the garrison"); 
+localeStrings.push("You don't have any forces at the garrison");
 localeStrings.push("You don't have any forces at the hero's squad");
 localeStrings.push("sergeants(%arg1)"); //375
 localeStrings.push("turkopols(%arg1)");
@@ -489,14 +489,35 @@ locObj.equipmentTitle = {"txt": "Equiped", "loc": "Equiped items title"};
 
 locObj.moneyExceedsTreasury = {"txt":"Sir Commander, sum of money your treasury and your hero's purse had exceeds your treasury capacity. To avoid losing money, build or upgrade your treasury now", "loc":"checking function which indicated if player needs to upgrade his treasury"};
 
-locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Имя глифа"};
-locObj.glyphKnightDesc = {"txt": "Increases the hero's attack +10, increases heroe's defence +6.", "loc": "Glyph desc"};
+locObj.glyphKnightTile = {"txt": "Glyph of Knight's Valor", "loc": "Artifact name"};
+locObj.glyphKnightDesc = {"txt": "Increases the hero's attack by +10, increases hero's defence by +6.", "loc": "Artifact description"};
 
-locObj.glyphMonkTile = {"txt": "Glyph of Monk's Virtue", "loc": "Имя глифа"};
-locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe's defence +12.", "loc": "Glyph desc"};
+locObj.glyphMonkTile = {"txt": "Glyph of Monk's Virtue", "loc": "Artifact name"};
+locObj.glyphMonkDesc = {"txt": "Increases the hero's attack by +4, increases hero's defence by +12.", "loc": "Artifact description"};
 
-locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
-locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};
+locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Artifact name"};
+locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Artifact description"};
+
+locObj.lifebloodVialTitle = {"txt": "Vial of Lifeblood", "loc": "Artifact name"};
+locObj.lifebloodVialDesc = {"txt": "Increases the health of all units in the hero's army by +3", "loc": "Artifact description"};
+
+locObj.darkPactSwordTitle = { "txt": "Dark Pact Sword", "loc": "Artefact name" };
+locObj.darkPactSwordDesc = {"txt": "Increases the hero's attack by +15, reduces the health of all units in the hero's army by -35%", "loc": "Artefact description"};
+
+locObj.crusadersSwordTitle = { "txt": "Crusader's Sword", "loc": "Artifact name" };
+locObj.crusadersSwordDesc = {"txt": "Increases attack of all units in the hero's army by +20%", "loc": "Artifact description"};
+
+locObj.ringStrengthTitle = {"txt": "Ring of Strength", "loc": "Artifact name"};
+locObj.ringStrengthDesc = {"txt": "Increases the hero's attack by +5, increases attack of all units in the hero's army by +10%", "loc": "Artifact description"};
+
+locObj.ringProtectionTitle = {"txt": "Ring of Protection", "loc": "Artifact name"};
+locObj.ringProtectionDesc = {"txt": "Increases the hero's defence by +5, increases defence of all units in the hero's army by +10%", "loc": "Artifact description"};
+
+
+// TODO: #SwordRestriction remove it later
+locObj.swordsWarn = { "txt": 'A hero can carry only two swords!', "loc": 'Sword restriction' };
+locObj.ringsWarn = { "txt": 'A hero can wear only two rings!', "loc": 'Rings restriction' };
+
 locObj.advmapHeroLose = {"txt": "Your troops were defeated and the hero is forced to retreat to the city.", "loc":"When hero loses battle on advmap"}
 
 locObj.eventHalloween = {"txt": "Halloween is about collecting pumpkins!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"eventhelp"}
@@ -518,7 +539,7 @@ locObj.savedSuccessfully = {"txt":"game saved successfully", "loc":"when manual 
 locObj.loadedSuccessfully = {"txt":"game loaded successfully", "loc":"when loaded completed successfully"};
 locObj.dialogLoadGame = {"txt":"Load game? You will lose any unsaved progress!", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"Sorry! There is no save to load from!", "loc":"in case there is no savegame"};
-//TODO check only in case of overwrite or every savegame dialog! 
+//TODO check only in case of overwrite or every savegame dialog!
 locObj.dialogSaveGame = {"txt":"Save game? You will rewrite any save you already have!", "loc":"when trying to save game or overwriting existing savegame"};
 locObj.loadGameFromStringError = {"txt":"Please insert save string", "loc":"happens when the loadgame input is empty"};
 locObj.lblLongSaveString = {"txt":"very long string", "loc":"label near input fielf for savegame string"};
@@ -527,7 +548,7 @@ locObj.hiredGuardsman = {"txt":"You hired a guardsman!", "loc":"after succesfull
 locObj.notEnoughGold = {"txt":"Not enough gold to do that!", "loc":"not enough gold"};
 locObj.treasuryRequired = {"txt":"Treasury is required to hiring a guardsman!", "loc":"happens when trying to hire gaurdsman without a treasury"};
 locObj.dialogConfirmDismssGuardsman = {"txt":"Would you like to dismiss a guardsman?", "loc":"happens when try to dismiss one guardsman"};
-locObj.dismissedGuardsman = {"txt":"You dismissed a guardsman!", "loc":"happens after dismissing a guardsman"}; 
+locObj.dismissedGuardsman = {"txt":"You dismissed a guardsman!", "loc":"happens after dismissing a guardsman"};
 locObj.noGuardsman = {"txt":"You don't have any guardsmen!", "loc":"happens when trying to dismiss guardsman when there are none of them"};
 locObj.execReasons = [{"txt":"treachery", "loc":"when executing a person"},
 	{"txt":"betrayal", "loc":""},
