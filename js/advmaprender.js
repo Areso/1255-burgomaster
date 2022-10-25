@@ -3,7 +3,7 @@ var canvas_map      = document.getElementById("canvasMap");
 canvas_map.addEventListener("touchstart", tap_map);
 canvas_map.addEventListener("mousedown", tap_map);
 var ctx_map         = canvas_map.getContext("2d");
-theme = "winter";
+theme = config.theme;
 //use forward slashes for Linux and Windows compatible. \ this slash works only in Windows.
 var tile_grass      = loadImage('tiles/grass1.png');
 var tile_sand       = loadImage('tiles/sand.png');

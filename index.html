@@ -776,6 +776,14 @@
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
 
+	var HERO_STATUS = {
+		CITY: 0,
+		AUTOCAMPAIGN: 1,
+		ADVENTURE_MAP: 2
+	};
+
+	Object.freeze(HERO_STATUS);
+
 	//gameconfig
 	var config = {
 		startPop: 6,
@@ -1074,24 +1082,21 @@
 			return totalBGUpkeep;
 		},
 		towngate : function () {
-			if (game.myhero.aCampaignBackward===1){
-				var theTowngateIndex = game.myhero.inventory.indexOf("artid00");
-				if (theTowngateIndex!==-1){
-					game.artefact_loss(null, "hero", theTowngateIndex);
+			if (game.myhero.aCampaignBackward === 1){
+				var towngateScroll = game.myhero.inventory.find(function (item) {
+					if (item.id === 'artid00') { return item }
+				});
+				if (!isNil(towngateScroll)) {
+					unequipItem(towngateScroll.uid);
+					removeElementUI(towngateScroll.uid);
 					game.myhero.aCampaignLong = 1;
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[255]);
-					postEventLog(msg);
+					postEventLog(localeStrings[255], 'bold');
 					updateUI();
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[256]);
-					postEventLog(msg);
+					postEventLog(localeStrings[256], 'bold');
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[257]);
-				postEventLog(msg);
+				postEventLog(localeStrings[257], 'bold');
 			}
 		},
 		artefact_sell : function () {
@@ -1282,19 +1287,21 @@
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-			// Just simple goods generation for now. Only two artefacts per adventure map.
-			var rnd = randomFromRange(11, 13);
-			if (rnd.toString().length < 2) {
-				rnd = "0"+rnd;
-			}
-			var id = "artid" + rnd;
-			addItem('trader', artefacts['artid00']);
-			addItem('trader', artefacts[id]);
+      // Just simple goods generation for now. Only two artefacts per adventure map.
+      game.blackMarketGoods = [];
+      clearTraderUI();
+      var rnd = randomFromRange(11, 16);
+      // if (rnd.toString().length < 2) {
+      //   rnd = "0" + rnd;
+      // }
+      var id = "artid" + rnd;
+      addItem('trader', artefacts['artid00']);
+      addItem('trader', artefacts[id]);
 
-			// var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
-			// artefactIds.push(id); - Not used for now
+      // var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
+      // artefactIds.push(id); - Not used for now
 
-			// console.log('%c BLACK MARKET GOODS: ', 'background: #c00; color: #fff;', game.blackMarketGoods);
+      // console.log('%c BLACK MARKET GOODS: ', 'background: #c00; color: #fff;', game.blackMarketGoods);
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
@@ -1343,8 +1350,8 @@
 							game.myMapRemObjects[game.heroX][game.heroY]=41;//hero tile in attacked state
 							//prepare for battle!
 							//generate enemy squad
-							if (Object.keys(game.enemyHeroArmy.units).length === 0) {
-								game.generateEnemyUnitsForBattle("AdvMap");
+							if (Object.keys(game.enemyHeroArmy.units).length === 0 && game.myhero.status !== HERO_STATUS.CITY) {
+								game.generateEnemyUnitsForBattle();
 							}
 							game.isAutoBattle = true;
 							while(game.isAutoBattle) {
@@ -1450,24 +1457,26 @@
 				openTab(null, 'tabBlackmarket');
 			}
 		},
-		cityLeave : function () {
-			cityLeaveSmall();
-			function cityLeaveSmall() {
-				if (game.heroExists()===true && game.myhero.status === 0) {
-					if (game.isHeroHaveTroops() === true) {
+		cityLeave: function () {
+
+			if (game.heroExists()) {
+				if (game.myhero.status === 0) {
+					if (game.isHeroHaveTroops()) {
 						var question = localeStrings[225];
 						showModal(1, '', game.cityLeaveCallback, question, localeStrings[226], localeStrings[227]);
+						return;
 					} else {
-						alertMsg = localeStrings[228];
+						var alertMsg = localeStrings[228];
 						showModal(0, '', getAck, alertMsg, localeStrings[60], '');
+						return;
 					}
-				} else {
-					if (game.heroExists() === true && game.myhero.status === 2) {
-						console.log("just open the adv map, please!");
-						openTab(null, 'Explore');
-						updateUI();
-						composite_gm();
-					}
+				}
+
+				if (game.myhero.status === 2) {
+					console.log("[cityLeave]: Hero is on the adventure map, just open it!");
+					openTab(null, 'Explore');
+					updateUI();
+					composite_gm();
 				}
 			}
 		},
@@ -1478,14 +1487,14 @@
 			if (answer === 3) {
 				game.myhero.stance = 1;
 			}
-			game.myhero.status = 2;
+			game.myhero.status = HERO_STATUS.ADVENTURE_MAP;
 			game.myMapRemObjects[game.heroX][game.heroY] = 0;
 			game.heroX = game.castleX;
 			game.heroY = game.castleY + 1;
 			game.myMapRemObjects[game.heroX][game.heroY] = 40;
+			game.setEnemyRandomizerEntries('AdvMap');
 			openTab(null, 'Explore');
 			updateUI();
-			// updateHeroStatus();
 			composite_gm();
 			if (!game.tips.includes("adventure_map")){
 				game.tips.push("adventure_map");
@@ -1493,13 +1502,16 @@
 			}
 		},
 		cityEnter : function () {
-			if (game.heroExists()===true && game.myhero.status === 2) {
-				game.myhero.status = 0;
+			if (game.heroExists() && game.myhero.status === HERO_STATUS.ADVENTURE_MAP) {
+				game.myhero.status = HERO_STATUS.CITY;
+				game.attacker = 1; // TODO: Check problem with attacker after auto combat on adventure map
 				var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
-				if (gold_diff!==game.myhero.gold){
+				if ( gold_diff !== game.myhero.gold) {
 					postEventLog(localeStrings[89].replace("%arg1", gold_diff));
 				}
 				game.myhero.gold = 0;
+				enemyRandomizer.clearEntriesList();
+				game.enemyHeroArmy.units = {};
 				updateResources();
 				openTab(null, 'Main');
 				updateUI();
@@ -1517,46 +1529,45 @@
 				Object.defineProperty(squad[stackName], 'stackHealth', {value: squad[stackName].health * squad[stackName].count, writable: true, configurable: true, enumerable: true})
 			}
 		},
-		generateEnemyUnitsForBattle: function(campaignType) {
+
+		setEnemyRandomizerEntries: function (campaignType) {
+			game.difficultyModifier = 0.35;
+
+			if (campaignType === 'AdvMap') {
+				enemyRandomizer.addEntry(redGoblinWorker, 100.0);
+				return;
+			}
+
+			if (game.myhero.stance === 0) {
+				game.difficultyModifier = 1.05;
+				enemyRandomizer.addEntry(banditWarrior, 35.0);
+				enemyRandomizer.addEntry(banditArcher, 35.0);
+				enemyRandomizer.addEntry(mercenarySpearman, 15.0);
+				enemyRandomizer.addEntry(mercenarySwordsman, 15.0);
+			} else {
+				enemyRandomizer.addEntry(banditWarrior, 50.0);
+				enemyRandomizer.addEntry(banditArcher, 50.0);
+			}
+		},
+
+		generateEnemyUnitsForBattle: function() {
 			game.goldReward = 0;
 			game.expReward = 0;
 			var myheroTotalUnits = game.myhero.turkopols + game.myhero.sergeants + game.myhero.knights;
-			var enemyMaxCount = null;
-			// TODO: Refactor this section later
-			if (campaignType === "AdvMap") {
-				console.log('GEN for advmap')
-				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
-				if (game.myhero.stance === 0) {
-					game.difficultyModifier = 1.05;
-					// TEMP SECTION just for adv map with autobattle
-					grolinWorker.health = Math.round(1.25 * grolinWorker.health);
-					grolinWorker.minDmg = Math.round(1.25 * grolinWorker.minDmg);
-					grolinWorker.maxDmg = Math.round(1.25 * grolinWorker.maxDmg);
-					enemyRandomizer.addEntry(grolinWorker, 100.0);
-				} else {
-					game.difficultyModifier = 0.35;
-					enemyRandomizer.addEntry(grolinWorker, 100.0);
-				}
-			} else {
-				console.log('GEN for autocampaign')
-				enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2)
-				if (game.myhero.stance === 0) {
-					game.difficultyModifier = 1.05;
-					enemyRandomizer.addEntry(banditWarrior, 35.0);
-					enemyRandomizer.addEntry(banditArcher,  35.0);
-					enemyRandomizer.addEntry(mercSwordman,  15.0);
-					enemyRandomizer.addEntry(mercSpearmen,  15.0);
-				} else {
-					game.difficultyModifier = 0.35;
-					enemyRandomizer.addEntry(banditWarrior, 50.0);
-					enemyRandomizer.addEntry(banditArcher, 50.0);
-				}
-			}
+			var enemyMaxCount = randomFromRange(myheroTotalUnits, myheroTotalUnits * 2);
 			for (var i = 0; i < enemyMaxCount; i++) {
 				var unit = enemyRandomizer.getRandom();
-				game.expReward += Math.round(unit.health * game.difficultyModifier);
-				game.goldReward += Math.round(randomFromRange(4, unit.health) * game.difficultyModifier);
-				game.genUnitStack(unit, 1, game.enemyHeroArmy.units);
+				var unitTemp = JSON.parse(JSON.stringify(unit));
+
+				// TEMP section for Red Goblin from adventure map on hero aggressive stance
+				if (unitTemp.name === redGoblinWorker.name && game.myhero.stance === 0) {
+					unitTemp.health = Math.round(1.25 * unit.health);
+					unitTemp.maxDmg = Math.round(1.25 * unit.maxDmg);
+				}
+
+				game.expReward += Math.round(unitTemp.health * game.difficultyModifier);
+				game.goldReward += Math.round(randomFromRange(4, unitTemp.health) * game.difficultyModifier);
+				game.genUnitStack(unitTemp, 1, game.enemyHeroArmy.units);
 			}
 			if (game.myhero.inventory.length) {
 				for (var i = 0; i < game.myhero.inventory.length; i++) {
@@ -1569,10 +1580,9 @@
 			console.log("%c NEW ENEMY ARMY: ", "color: red;", game.enemyHeroArmy)
 		},
 		restoreHealth: function() {
-			for (unitKey in game.myheroArmy.units) {
-				if (game.myheroArmy.units.hasOwnProperty(unitKey)) {
-					game.myheroArmy.units[unitKey].stackHealth = game.myheroArmy.units[unitKey].health * game.myheroArmy.units[unitKey].count;
-				}
+			var myheroArmyUnits = game.myheroArmy.units;
+			for (var unitKey in myheroArmyUnits) {
+				myheroArmyUnits[unitKey].stackHealth = myheroArmyUnits[unitKey].health * myheroArmyUnits[unitKey].count;
 			}
 		},
 		checkWinner: function(campaignType) {
@@ -1585,12 +1595,11 @@
 						postJournalLog(localeStrings[173]);
 					}
 				}
-				console.log('123: ', campaignType)
 				console.log("The player is the winner");
 				game.myhero.gold += game.goldReward;
 				game.myhero.exp += game.expReward;
 				game.restoreHealth();
-				game.generateEnemyUnitsForBattle(campaignType);
+				game.generateEnemyUnitsForBattle();
 				if (campaignType !== "AutoCampaign") {
 					game.heroLvlUp("AdvMap");
 					updateUI();
@@ -1663,9 +1672,9 @@
 				case "knights": return locObj.unit_knights.txt;
 				case "bandit": return locObj.unit_bandit.txt;
 				case "banditArcher": return locObj.unit_bandit_archer.txt;
-				case "mercSwordman": return locObj.unit_merc_swordman.txt;
-				case "mercSpearmen": return locObj.unit_merc_spearman.txt;
-				case "Grolin worker": return locObj.unit_goblin.txt;
+				case "mercenarySwordsman": return locObj.unit_merc_swordman.txt;
+				case "mercenarySpearman": return locObj.unit_merc_spearman.txt;
+				case "redGoblinWorker": return locObj.unit_goblin.txt;
 				default: return "Unknown unit name";
 			}
 		},
@@ -1690,6 +1699,7 @@
 							if (dmg >= target.stackHealth) {
 								console.log(`${target.name} is dying`);
 								delete defenderStack.units[defenderKey];
+								game.myhero[target.name] = 0;
 								console.log("%c DEFENDER UNITS LIST: ", "background: purple; color: #ededed", defenderStack.units);
 								attackerStr += ' '  + locObj.autobattle_journal_log_destroyed.txt.replace("%arg1", game.unitNameLoc(target.name));
 								if (campaignType==="AutoCampaign") {
@@ -1705,6 +1715,7 @@
 							} else {
 								var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
 								defenderStack.units[defenderKey].count -= defenderLooses;
+								game.myhero[defenderKey] -= defenderLooses;
 								target.stackHealth -= dmg;
 								if (defenderLooses > 0) {
 									attackerStr += ' ' + locObj.autobattle_journal_log_dead.txt.replace("%arg1", defenderLooses).replace("%arg2", game.unitNameLoc(target.name));
@@ -1777,15 +1788,12 @@
 		heroSquadUpkeep : function () {
 			if (game.heroExists()) {
 				if (game.myhero.upkeepsrc === 0) {
-					paidTurkopols = 0;
-					UnPaidTurkopols = 0;
-					paidSergeants = 0;
-					UnPaidSergeants = 0;
-					paidKnights = 0;
-					UnPaidKnights = 0;
-					UnPaidTurkopols = game.myhero.turkopols;
-					UnPaidSergeants = game.myhero.sergeants;
-					UnPaidKnights = game.myhero.knights;
+					var paidTurkopols = 0;
+					var paidSergeants = 0;
+					var paidKnights = 0;
+					var UnPaidTurkopols = game.myhero.turkopols;
+					var UnPaidSergeants = game.myhero.sergeants;
+					var UnPaidKnights = game.myhero.knights;
 					/*------------------------------------------*/
 					var gold_was_purse = game.myhero.gold;
 					if (game.myhero.gold >= game.hrTrkplsUpkp(UnPaidTurkopols)) {
@@ -1815,6 +1823,7 @@
 						game.gold -= game.hrTrkplsUpkp(UnPaidTurkopols);
 						paidTurkopols += UnPaidTurkopols;
 						game.myhero.turkopols = paidTurkopols;
+						game.myheroArmy.units[turkopolsData.name].count = paidTurkopols;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
@@ -1852,6 +1861,7 @@
 						console.log('paid knights was '+paidKnights);//DEBUG
 						paidKnights += UnPaidKnights;
 						game.myhero.knights = paidKnights;
+						game.myheroArmy.units[knightsData.name].count = paidKnights;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
@@ -1897,6 +1907,7 @@
 							game.gold -= game.hrSrgntsUpkp(UnPaidSergeants);
 						}
 						game.myhero.sergeants = paidSergeants;
+						game.myheroArmy.units[sergeantsData.name].count = paidSergeants;
 					}
 					var treasury_diff = gold_was_treasury - game.gold;
 					if (treasury_diff !== 0) {
@@ -1942,104 +1953,84 @@
 			}
 		},
 		calculateAutocampaign : function () {
-			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignForward===1) {
-				game.myhero.aCampaignLong         += 1;
-				game.myhero.aCampaignTotalLong    += 1;
-				game.ac_steps                     += 1;
-				if (game.ac_steps === 2) {
-					if (!game.story.includes("story_two_steps")){
-						game.story.push("story_two_steps");
-						showModal(0, '', getAck, locObj.story2_two_steps.txt, locObj.okay.txt, '');
+
+			if (game.heroExists() && game.myhero.status === HERO_STATUS.AUTOCAMPAIGN) {
+
+				if (game.myhero.aCampaignForward === 1) {
+					game.myhero.aCampaignLong         += 1;
+					game.myhero.aCampaignTotalLong    += 1;
+					game.ac_steps                     += 1;
+
+					if (game.ac_steps === 2 && game.myhero.aCampaignLong === 2) {
+						if (!game.story.includes("story_two_steps")){
+							game.story.push("story_two_steps");
+							postJournalLog(locObj.story2_two_steps.txt);
+							return;
+							// showModal(0, '', getAck, locObj.story2_two_steps.txt, locObj.okay.txt, '');
+						}
 					}
-				}
-				var heroTroopsPrice = game.heroTroopsPrice();
-				var rnd = Math.floor((Math.random() * 24) + 1);
-				if (game.myhero.stance === 0) {//aggressive stance
 
-					if (rnd<=12) {
+					var rnd = randomFromRange(1, 25);
 
+					if (rnd <= 12) {
 						game.isAutoBattle = true;
 						createBattleAccordion();
 
 						while (game.isAutoBattle) {
 							game.calcAttackPhase("AutoCampaign");
 						}
-
-					}
-					if (rnd>12 && rnd<25) {
+					} else {
 						postJournalLog(localeStrings[175]);
 					}
+
+					game.heroLvlUp("AutoCampaign");
+					return;
 				}
-				if (game.myhero.stance === 1) {//cautious stance
 
-					if (rnd>1 && rnd<=12) {
-
-						game.isAutoBattle = true;
-						createBattleAccordion();
-
-						while (game.isAutoBattle) {
-							game.calcAttackPhase("AutoCampaign");
+				if (game.myhero.aCampaignBackward === 1) {
+					if (game.myhero.aCampaignLong - 1 > 0){
+						game.myhero.aCampaignLong     -= 1;
+						if (game.isDefeated) {
+							postJournalLog(locObj.advmapHeroLose.txt);
+							game.isDefeated = false;
+							return;
 						}
-
-					}
-					if (rnd>12 && rnd<25) {
+						game.myhero.aCampaignTotalLong += 1;
 						postJournalLog(localeStrings[175]);
+					} else {
+						document.getElementById("btnAutocampaign").disabled = false;
+						enemyRandomizer.clearEntriesList();
+						game.myhero.status             = HERO_STATUS.CITY;
+						game.myhero.aCampaignLong      = 0;
+						game.myhero.aCampaignTotalLong = 0;
+						game.myhero.aCampaignForward   = 0;
+						game.myhero.aCampaignBackward  = 0;
+						postEventLog(localeStrings[176] + game.myhero.gold);
+						var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
+						if (gold_diff !== game.myhero.gold){
+							postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+						}
+						game.myhero.gold               = 0;
 					}
+					game.heroLvlUp("AutoCampaign");
 				}
-				game.heroLvlUp("AutoCampaign");
+
 			}
-			if (game.heroExists() && game.myhero.status===1 && game.myhero.aCampaignBackward===1) {
-				console.log("%c CHECK IF IS DEFEATED: ", "bakcground: #31b5e7; color: #fff");
-				if (game.myhero.aCampaignLong-1>0){
-					game.myhero.aCampaignLong     -= 1;
-					if (game.isDefeated) {
-						postJournalLog(locObj.advmapHeroLose.txt);
-						game.isDefeated = false;
-						return
-					}
-					game.myhero.aCampaignTotalLong+= 1;
-					postJournalLog(localeStrings[175]);
-				} else {
-					document.getElementById("btnAutocampaign").disabled = false;
-					game.myhero.aCampaignLong      = 0;
-					game.myhero.aCampaignTotalLong = 0;
-					game.myhero.status             = 0;
-					game.myhero.aCampaignForward   = 0;
-					game.myhero.aCampaignBackward  = 0;
-					postEventLog(localeStrings[176]+game.myhero.gold);
-					var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
-					if (gold_diff!==game.myhero.gold){
-						postEventLog(localeStrings[89].replace("%arg1", gold_diff));
-					}
-					game.myhero.gold               = 0;
-				}
-				game.heroLvlUp("AutoCampaign");
-			}
+
+
 		},
 		isHeroHaveTroops : function () {
-			var heroTroopsFlag = false;
-			if (game.heroExists() === true) {
+			var totalCount = 0;
+			if (game.heroExists()) {
 				var heroSergeantsCount = game.myhero.sergeants;
 				var heroTurkopolsCount = game.myhero.turkopols;
 				var heroKnightsCount   = game.myhero.knights;
-				var totalCount = game.myhero.sergeants+game.myhero.turkopols+game.myhero.knights;
+				totalCount = heroSergeantsCount + heroTurkopolsCount + heroKnightsCount;
 				if (game.myheroArmy.units == null) {
 					game.myheroArmy = {armyID: 1, units: {}};
 				}
-				if (game.myhero.sergeants > 0) {
-					game.genUnitStack(sergeantsData, heroSergeantsCount, game.myheroArmy.units);
-				}
-				if (game.myhero.turkopols > 0) {
-					game.genUnitStack(turkopolsData, heroTurkopolsCount, game.myheroArmy.units);
-				}
-				if (game.myhero.knights > 0) {
-					game.genUnitStack(knightsData, heroKnightsCount, game.myheroArmy.units);
-				}
-				if (totalCount>0) {
-					heroTroopsFlag = true;
-				}
 			}
-			return heroTroopsFlag;
+			return totalCount > 0;
 		},
 		heroTroopsPrice : function () {
 			var price = 0;
@@ -2049,44 +2040,38 @@
 			return price;
 		},
 		autocampaign : function () {
-			if (game.heroExists()===true){
-				if (game.myhero.status===0) {
+			if (game.heroExists()){
+				if (game.myhero.status === HERO_STATUS.CITY) {
 					if (game.isHeroHaveTroops()) {
-						var question      = localeStrings[225];
-						showModal(1, '', game.autocampaignLaunchCallback, question, localeStrings[226], localeStrings[227]);
+						showModal(1, '', game.autocampaignLaunchCallback, localeStrings[225], localeStrings[226], localeStrings[227]);
 					} else {
-						alertMsg = localeStrings[228];
-						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+						showModal(0, '', getAck, localeStrings[228],  localeStrings[60], '');
 					}
-				} else {
-					if (game.myhero.status===1) {
-						var question      = localeStrings[171];
-						showModal(1, '', game.autocampaignWithdrawCallback, question, localeStrings[32],  localeStrings[33]);
-					} else {
-						alertMsg = localeStrings[170];
-						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
-					}
+					return;
 				}
+
+				if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN) {
+					showModal(1, '', game.autocampaignWithdrawCallback, localeStrings[171], localeStrings[32],  localeStrings[33]);
+				} else {
+					showModal(0, '', getAck, localeStrings[170],  localeStrings[60], '');
+				}
+
 			} else {
-				alertMsg = localeStrings[229];
-				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				showModal(0, '', getAck, localeStrings[229],  localeStrings[60], '');
 			}
 		},
 		autocampaignLaunchCallback : function () {
 			if (answer === 2) {
 				game.myhero.stance = 0;
-				game.generateEnemyUnitsForBattle();
 			}
 			if (answer === 3) {
 				game.myhero.stance = 1;
-				game.generateEnemyUnitsForBattle();
 			}
-			game.myhero.status = 1;
+			game.setEnemyRandomizerEntries();
+			game.generateEnemyUnitsForBattle();
+			game.myhero.status = HERO_STATUS.AUTOCAMPAIGN;
 			game.myhero.aCampaignForward   = 1;
 			game.myhero.aCampaignBackward  = 0;
-
-			console.log(game.myheroArmy);
-			console.log(game.enemyHeroArmy);
 
 			createJournalAccordion();
 			postJournalLog("------------------------");
@@ -2095,7 +2080,7 @@
 		autocampaignWithdrawCallback : function () {
 			if (answer === 2) {
 				if (game.myhero.aCampaignLong === 0) {
-					game.myhero.status = 0;
+					game.myhero.status = HERO_STATUS.CITY;
 					updateUI();
 				} else {
 					game.myhero.aCampaignForward   = 0;
@@ -2403,7 +2388,7 @@
 					game.myhero.knights    = 0;
 					game.myhero.inventory    = [];//should the list contain objects?
 					game.myhero.inventoryWorn= [];//should the list contain objects?
-					game.myhero.status     = 0;
+					game.myhero.status     = HERO_STATUS.CITY;
 					game.myhero.gold       = 0;
 					game.myhero.upkeepsrc  = 0;//0 from the hero's purse, 1 from the treasury
 					game.myhero.statLuck           = 0;
@@ -2549,42 +2534,61 @@
 			}
 		},
 		moveSergeants() {
-			if (moveFromGarrison===true) {
+			if (moveFromGarrison) {
 				if (game.sergeants >= numberToMove) {
 					game.sergeants -= numberToMove;
 					game.myhero.sergeants += numberToMove;
+
+					if (!game.myheroArmy.units[sergeantsData.name]) {
+						game.genUnitStack(sergeantsData, numberToMove, game.myheroArmy.units);
+					} else {
+						game.myheroArmy.units[sergeantsData.name].count += numberToMove;
+						game.myheroArmy.units[sergeantsData.name].stackHealth = game.myheroArmy.units[sergeantsData.name].health * game.myheroArmy.units[sergeantsData.name].count;
+
+					}
+
 					updateHeroStatus();
 					updateTroopsNumbers();
 					updateResources();
 				}
-			} else {
-
 			}
 		},
 		moveTurkopols() {
-			if (moveFromGarrison===true) {
+			if (moveFromGarrison) {
 				if (game.turkopols >= numberToMove) {
 					game.turkopols -= numberToMove;
 					game.myhero.turkopols += numberToMove;
+
+					if (!game.myheroArmy.units[turkopolsData.name]) {
+						game.genUnitStack(turkopolsData, numberToMove, game.myheroArmy.units);
+					} else {
+						game.myheroArmy.units[turkopolsData.name].count += numberToMove;
+						game.myheroArmy.units[turkopolsData.name].stackHealth = game.myheroArmy.units[turkopolsData.name].health * game.myheroArmy.units[turkopolsData.name].count;
+					}
+
 					updateHeroStatus();
 					updateTroopsNumbers();
 					updateResources();
 				}
-			} else {
-
 			}
 		},
 		moveKnights() {
-			if (moveFromGarrison===true) {
+			if (moveFromGarrison) {
 				if (game.knights >= numberToMove) {
 					game.knights -= numberToMove;
 					game.myhero.knights += numberToMove;
+
+					if (!game.myheroArmy.units[knightsData.name]) {
+						game.genUnitStack(knightsData, numberToMove, game.myheroArmy.units);
+					} else {
+						game.myheroArmy.units[knightsData.name].count += numberToMove;
+						game.myheroArmy.units[knightsData.name].stackHealth = game.myheroArmy.units[knightsData.name].health * game.myheroArmy.units[knightsData.name].count;
+					}
+
 					updateHeroStatus();
 					updateTroopsNumbers();
 					updateResources();
 				}
-			} else {
-
 			}
 		},
 		moveUnits : function () {
@@ -4483,13 +4487,24 @@ WeightedRandom.prototype.getRandom = function() {
   }).object;
 };
 
+WeightedRandom.prototype.hasEntry = function (name) {
+	var index = this.entries.findIndex(function (item) {
+		if (item.object && item.object.name === name) {
+			return item;
+		}
+	});
+	return index > -1;
+};
+
 WeightedRandom.prototype.clearEntriesList = function() {
 	this.entries = [];
+	this.accumulatedWeight = 0.0;
 };
 
 
 	function randomFromRange(min, max) {
 	  let rand = min - 0.5 + Math.random() * (max - min + 1);
+	  if (rand < 0) { rand *= -1 };
 	  return Math.round(rand);
 	};
 
@@ -4519,7 +4534,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	//init variables
 	var disabledElements = [];
 	var hiddenElements = []; // Cache for hidden UI elements; NOTE: Do not clear it, temp fix for tutorial elements.
-	flag_event_started = "";
+	flag_event_started = 0;
 	allowMvt = 1;
 	curObjId = "";
 

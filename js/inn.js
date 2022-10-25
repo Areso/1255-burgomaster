@@ -5,8 +5,6 @@ let endHeroPortraitId = [];
 let curHeroPortraitId = [];
 
 function updateHeroStatusInn() {
-	// console.log('[updateHeroStatusInn::CALLED]');
-	// console.log('[updateHeroStatusInn::STATUS]: ', game.myhero.status);
 	if ( game.heroExists()) {
 		var lblHeroClass    = localeStrings[204][game.myhero.class];
 		var lblAlignment    = game.heroAlignment("text");
@@ -62,9 +60,8 @@ function updateHeroStatusInn() {
 		}
 		if (game.myhero.status===1){
 			var rnd = Math.floor(Math.random() * localeStrings[211].length);
-			// console.log('[updateHeroStatusInn::STATUS::1]: manual autocampaign, activity is: ' + rnd);
-			while (rnd===0) {
-				var rnd = Math.floor(Math.random() * localeStrings[211].length);
+			while (rnd === 0) {
+				rnd = Math.floor(Math.random() * localeStrings[211].length);
 			}
 			heroActivity += localeStrings[211][rnd]+localeStrings[208];
 			heroStatusNeedsUpdate = false;
