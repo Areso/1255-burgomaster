@@ -1,3 +1,10 @@
+var BONUS_VALUE_TYPES = {
+  INTEGER: 'integer',
+  PERCENT: 'percent'
+};
+
+Object.freeze(BONUS_VALUE_TYPES);
+
 var artefacts = {
     artid00: {
         id: "artid00",
@@ -126,8 +133,8 @@ var artefacts = {
         name: locObj.glyphKnightTile.txt,
         desc: locObj.glyphKnightDesc.txt,
         attr: [
-            { name: "atk", type: "flat", val: 10 },
-            { name: "def", type: "flat", val: 6 }
+            { name: "atk", type: BONUS_VALUE_TYPES.INTEGER, val: 10 },
+            { name: "def", type: BONUS_VALUE_TYPES.INTEGER, val: 6 }
         ],
         change: [],
         priceBuy: 5000000,
@@ -141,8 +148,8 @@ var artefacts = {
         name: locObj.glyphMonkTile.txt,
         desc: locObj.glyphMonkDesc.txt,
         attr: [
-            { name: "atk", type: "flat", val: 4 },
-            { name: "def", type: "flat", val: 12 }
+            { name: "atk", type: BONUS_VALUE_TYPES.INTEGER, val: 4 },
+            { name: "def", type: BONUS_VALUE_TYPES.INTEGER, val: 12 }
         ],
         change: [],
         priceBuy: 5000000,
@@ -155,9 +162,80 @@ var artefacts = {
         img: "rune_gold.png",
         name: locObj.goldRuneTitle.txt,
         desc: locObj.goldRuneDesc.txt,
-        attr: [{name: "gold", type: "percentage", val: 1.07}],
+        attr: [{name: "gold", type: BONUS_VALUE_TYPES.PERCENT, val: 1.07}],
         change: [],
         priceBuy: 5000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1
+    },
+    artid14: {
+        id: "artid14",
+        img: "lifeblood_vial.png",
+        name: locObj.lifebloodVialTitle.txt,
+        desc: locObj.lifebloodVialDesc.txt,
+        attr: [{ name: "unit_health", type: BONUS_VALUE_TYPES.INTEGER, val: 3 }],
+        change: [],
+        priceBuy: 1000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1
+    },
+    artid15: {
+        id: "artid15",
+        img: "darkpact_sword.png",
+        name: locObj.darkPactSwordTitle.txt,
+        desc: locObj.darkPactSwordDesc.txt,
+        attr: [
+            { name: "atk", type: BONUS_VALUE_TYPES.INTEGER, val: 15 },
+            { name: "unit_health", type: BONUS_VALUE_TYPES.PERCENT, val: (1 - 0.35) },
+        ],
+        change: [],
+        priceBuy: 7000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1
+    },
+    artid16: {
+        id: "artid16",
+        img: "crusaders_sword.png",
+        name: locObj.crusadersSwordTitle.txt,
+        desc: locObj.crusadersSwordDesc.txt,
+        attr: [
+            { name: "unit_attack", type: BONUS_VALUE_TYPES.PERCENT, val: 1.2 },
+        ],
+        change: [],
+        priceBuy: 7000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1
+    },
+    artid17: {
+        id: "artid17",
+        img: 'ring_strength.png',
+        name: locObj.ringStrengthTitle.txt,
+        desc: locObj.ringStrengthDesc.txt,
+        attr: [
+            { name: "atk", type: BONUS_VALUE_TYPES.INTEGER, val: 5 },
+            { name: "unit_attack", type: BONUS_VALUE_TYPES.PERCENT, val: 1.1 },
+        ],
+        change: [],
+        priceBuy: 3000000,
+        chance: 1,
+        type: "artefactsWorn",
+        artefactsWorn: 1
+    },
+    artid18: {
+        id: "artid18",
+        img: 'ring_protection.png',
+        name: locObj.ringProtectionTitle.txt,
+        desc: locObj.ringProtectionDesc.txt,
+        attr: [
+            { name: "def", type: BONUS_VALUE_TYPES.INTEGER, val: 5 },
+            { name: "unit_defence", type: BONUS_VALUE_TYPES.PERCENT, val: 1.1 },
+        ],
+        change: [],
+        priceBuy: 3000000,
         chance: 1,
         type: "artefactsWorn",
         artefactsWorn: 1

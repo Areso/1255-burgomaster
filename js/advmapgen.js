@@ -339,7 +339,7 @@ function placeMobsOnTheMap (elemsToDefend) {
 					if (castleEntranceFound === false) {
 						mobPlaced = true;
 						game.myMapRemObjects[neighbor_x][neighbor_y]=3;
-						mymonster = new Monster("monster", neighbor_x, neighbor_y, grolinWorker);
+						mymonster = new Monster("monster", neighbor_x, neighbor_y, redGoblinWorker);
 						game.monstersOnAdvMap.push(mymonster);
 					}
 				}
