@@ -202,8 +202,6 @@ function unequipItem(itemUID) {
 		}
 	}
 
-	console.log(equipedItem);
-
 	if (equipedItem) {
 		for (var i = 0; i < equipedItem.attr.length; i++) {
 			game.myhero[equipedItem.attr[i].name] -= equipedItem.attr[i].val;
@@ -211,7 +209,6 @@ function unequipItem(itemUID) {
 		game.myhero.inventoryWorn = deleteFromArray(game.myhero.inventoryWorn, game.myhero.inventoryWorn.indexOf(equipedItem));
 	}
 
-	return
 }
 
 

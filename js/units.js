@@ -49,8 +49,8 @@
 	  health: 8,
 	};
 
-	var mercSpearmen = {
-	  name: 'mercenarySpearmen',
+	var mercenarySpearman = {
+	  name: 'mercenarySpearman',
 	  minDmg: 4,
 	  maxDmg: 6,
 	  attack: 6,
@@ -59,8 +59,8 @@
 	  health: 10
 	};
 
-	var mercSwordman = {
-	  name: 'mercenarySwordman',
+	var mercenarySwordsman = {
+	  name: 'mercenarySwordsman',
 	  minDmg: 5,
 	  maxDmg: 7,
 	  attack: 7,
@@ -69,8 +69,8 @@
 	  health: 15,
 	};
 
-	var grolinWorker = {
-		name: 'Grolin worker',
+	var redGoblinWorker = {
+		name: 'redGoblinWorker',
 		minDmg: 1,
 		maxDmg: 2,
 		attack: 4,
