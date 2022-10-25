@@ -217,7 +217,7 @@ function updateHeroStatusHire() {
 				document.getElementById("grid-hero3v").style.display = "block";
 			} else {
 				document.getElementById("grid-hero3").style.display = "none";
-					document.getElementById("grid-hero3v").style.display = "none";
+				document.getElementById("grid-hero3v").style.display = "none";
 			}
 		} else {
 			document.getElementById("imgHeroInHiringScreen").style.display = "none";
@@ -234,6 +234,15 @@ function updateHeroStatusHire() {
 		document.getElementById("imgHeroInHiringScreen").style.display = "none";
 		document.getElementById("imgHeroInHiringScreenKnight2").style.display = "none";
 		document.getElementById("imgHeroInHiringScreenMonk2").style.display = "none";
+	    document.getElementById("imgHeroInHiringScreen").style.display = "none";
+		document.getElementById("imgHeroInHiringScreenKnight2").style.display = "none";
+		document.getElementById("imgHeroInHiringScreenMonk2").style.display = "none";
+		document.getElementById("grid-hero1").style.display = "none";
+		document.getElementById("grid-hero1v").style.display = "none";
+		document.getElementById("grid-hero2").style.display = "none";
+		document.getElementById("grid-hero2v").style.display = "none";
+		document.getElementById("grid-hero3").style.display = "none";
+		document.getElementById("grid-hero3v").style.display = "none";
 	}
 }
 function updateGarrisonStatusHire() {
