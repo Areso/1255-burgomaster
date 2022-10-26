@@ -1,3 +1,4 @@
+techTreeLoaded = false;
 function researchTech (){
 	if (game.gold >= tech_list[selectedTech]["priceResearch"]) {
 		game.gold = game.gold-tech_list[selectedTech]["priceResearch"];
@@ -48,6 +49,11 @@ function researchHelp(myobject) {
 tech_tree_area = document.getElementById("available_researches");
 drawTabUniversity();
 function drawTabUniversity(){
+    if (!techTreeLoaded){
+        include('js/artifacts.js',function(){
+		});
+		techTreeLoaded = true;
+    }
 	tech_tree_area.innerHTML = "";
 	for (tech in tech_list) {
 		//check whether we already learned (we shouldn't)
