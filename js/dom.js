@@ -5,7 +5,6 @@ function updateHeroStatus() {
 function updateResources() {
 	document.getElementById("gold").innerHTML          = game.gold;
 	document.getElementById("pop").innerHTML           = game.pop;
-//	document.getElementById("gems").innerHTML          = game.gems;
 	document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 }
 function setReg(){
@@ -45,15 +44,9 @@ function openLog() {
 	var chat_dom  = document.getElementById("chat");
 	var chat_form_dom  = document.getElementById("chatForm");
 
-	// nick_dom  = document.getElementById("inp_nickname");
-	// msg_dom   = document.getElementById("msg_out");
-	// btn_send  = document.getElementById("btnSend");
 	log_dom.style.display  = "block";
 	chat_dom.style.display = "none";
 	chat_form_dom.style.visibility = "hidden";
-	// nick_dom.style.visibility = "hidden";
-	// msg_dom.style.visibility  = "hidden";
-	// btn_send.style.visibility = "hidden";
 }
 function checkFirebrigade() {
 	document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();
