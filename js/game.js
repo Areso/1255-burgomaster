@@ -2840,7 +2840,6 @@
 				guards     = Math.ceil(guards / 4);
 				guards    += game.treasuryGuard;
 				rndThieves = Math.floor(Math.random()*(guards+1)+1);
-				console.log(rndThieves);
 				if (rndThieves === 1) {
 					goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
 					if (goldLost > game.gold) {
