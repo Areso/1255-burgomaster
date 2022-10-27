@@ -13,13 +13,29 @@
 	var pullPremodMessagesTimer = null;
 	var nearestEventTimer = null;
 	var pullAmberTimer = null;
-
-	if (config.online && config.pullMessages){
-		fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
-		pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
-		nearestEventTimer = setInterval(getNearestEventTime, 10000);
-		pullAmberTimer = setInterval(pullAmber, 3000);
+	//checking whether run locally or not
+	if (window.location.href.indexOf("file")===-1){
+			webserver = "https://navi.areso.pro:7001";
+			ws_server = "wss://navi.areso.pro:7000";
+			dev_flag  = false;
+	} else {
+		config.isOnline = false;
+		webserver = "http://localhost:6699";
+		ws_server = "ws://localhost:6698";
+		dev_flag  = true;
 	}
+	function setUpTimers(){
+        if (config.isOnline && config.pullMessages){
+            fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
+            pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
+            nearestEventTimer = setInterval(getNearestEventTime, 10000);
+            pullAmberTimer = setInterval(pullAmber, 3000);
+        }
+	}
+	setUpTimers()
+	//to enable online features with a local backend server, type in da console:
+	// config.isOnline = true
+	// setUpTimers()
 	//functions
 	function remoteRegLogin() {
 		if (reglogin==="reg"){
@@ -95,8 +111,6 @@
 				document.getElementById("server-status").innerHTML="Up";
 				chat_dom.innerHTML = "";
 				messages.forEach(printToChat);
-			} else {
-				clearInterval(fpullMessagesTimer);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
 				document.getElementById("server-status").innerHTML="Down";
@@ -123,8 +137,6 @@ function pullPremodMessages() {
 				}
 				mod_dom.innerHTML = "";
 				messages.forEach(printToMod);
-			} else {
-				clearInterval(pullPremodMessagesTimer);
 			}
 		};
 		endpoint  = webserver + "/api/v1.1/pull_premod_messages";
@@ -159,8 +171,6 @@ function pullPremodMessages() {
 				the_resp = JSON.parse(this.responseText);
 				console.log(the_resp);
 				document.getElementById("gems").innerHTML = the_resp.amber;
-			} else {
-				clearInterval(pullAmberTimer);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
 				document.getElementById("gems").innerHTML = 0
@@ -455,9 +465,6 @@ function reloadBanned() {
 				console.log(eventHelpMsg);
 				//document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
 				//document.getElementById("lblEventCountdownValue").disabled = false;
-			} else {
-				//document.getElementById("lblEventCountdownValue").disabled = true;
-				clearInterval(nearestEventTimer);
 			}
 		};
 		endpoint    = webserver + "/api/v1.1/event_countdown";
@@ -465,7 +472,7 @@ function reloadBanned() {
 		xhttp.send();
 	}
 	users_online = document.getElementById("lbl_online_value");
-	if (config.online) {
+	if (config.isOnline) {
 		websocket = new WebSocket(ws_server);
 		websocket.onmessage = function (event) {
 			data = JSON.parse(event.data);
