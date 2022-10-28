@@ -50,7 +50,7 @@ tech_tree_area = document.getElementById("available_researches");
 drawTabUniversity();
 function drawTabUniversity(){
     if (!techTreeLoaded){
-        include('js/artifacts.js',function(){
+        include('js/objects_technology_tree.js',function(){
 		});
 		techTreeLoaded = true;
     }
