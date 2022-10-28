@@ -60,7 +60,7 @@
 		pullMessages: true,
 		pullMessagesMS: 1500,
 		debug: false,
-		theme: "winter",
+		theme: "summer",
 		artilleryResearchCost: 200,
 		popIncRate: 2,
 	};

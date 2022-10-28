@@ -439,27 +439,42 @@ function reloadBanned() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				back_response = JSON.parse(this.responseText);
-				//console.log(back_response);
+				console.log(back_response);
 				cntdwn = back_response["countdown"];
 				cntdwn = cntdwn.replace("(","");
 				cntdwn = cntdwn.replace(")","");
 				cntdwn = cntdwn.split(",");
 				//console.log(cntdwn);
+				//ToDo rename from flag_event_started to event_status
 				flag_event_started = parseInt(back_response["event_started"]);
+				event_id = parseInt(back_response["event_id"]);
 				event_timer_lbl = document.getElementById("event-label");
 				event_timer_val = document.getElementById("event-value");
 				eventTimerVal  =     cntdwn[0]+localeStrings[165][0];
 				eventTimerVal += " "+cntdwn[1]+localeStrings[165][1];
 				eventTimerVal += " "+cntdwn[2]+localeStrings[165][2];
-				if (flag_event_started===0){
-					event_timer_lbl.innerHTML="New Year event will start in ";
+				if (flag_event_started===1){
+				    if (event_id === 1){
+				        event_name = locObj.eventHalloweenName.txt;
+				    }
+				    if (event_id === 2){
+				        event_name = locObj.eventNewYearName.txt;
+				    }
+					event_timer_lbl.innerHTML=event_name+locObj.eventWillStart.txt;
 					event_timer_val.innerHTML=eventTimerVal;
 
-				} else {
+				}
+				if (flag_event_started===2){
 					//TODO THAT URGENT!
 					//BUT NOT TODAY
 					//game.getEventDetails();
-					event_timer_lbl.innerHTML="New Year event will end in ";
+					if (event_id === 1){
+				        event_name = locObj.eventHalloweenName.txt;
+				    }
+				    if (event_id === 2){
+				        event_name = locObj.eventNewYearName.txt;
+				    }
+					event_timer_lbl.innerHTML=event_name+locObj.eventWillEnd.txt;
 					event_timer_val.innerHTML=eventTimerVal;
 				}
 				console.log(eventHelpMsg);
