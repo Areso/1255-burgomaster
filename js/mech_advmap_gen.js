@@ -90,7 +90,7 @@ function genMap(priceOfMapGen){
 		for (j = 0; j < config.sizeMapY; j++) {
 			if (game.myMapObjects[i][j]===0) {//to place removable objects, we should the place is free from non-removable objects
 				rnd = Math.floor((Math.random() * 12));
-				if (flag_event_started===1) {
+				if (flag_event_started===2) {
 					if (rnd >= 3) {
 						rnd = 0
 					}

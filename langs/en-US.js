@@ -559,3 +559,7 @@ locObj.execReasons = [{"txt":"treachery", "loc":"when executing a person"},
 locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
 locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};
+locObj.eventWillStart = {"txt":" event will start in", "loc":"shows on the status bar if an event was announced"};
+locObj.eventWillEnd = {"txt":" event will end in", "loc":"shows on the status bar if an event was started"};
+locObj.eventHalloweenName = {"txt":"Halloween", "loc":"shows on the status bar if the event announced or online"};
+locObj.eventNewYearName = {"txt":"New Year", "loc":"shows on the status bar if the event announced or online"};

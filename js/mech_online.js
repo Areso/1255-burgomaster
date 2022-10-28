@@ -13,13 +13,29 @@
 	var pullPremodMessagesTimer = null;
 	var nearestEventTimer = null;
 	var pullAmberTimer = null;
-
-	if (config.online && config.pullMessages){
-		fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
-		pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
-		nearestEventTimer = setInterval(getNearestEventTime, 10000);
-		pullAmberTimer = setInterval(pullAmber, 3000);
+	//checking whether run locally or not
+	if (window.location.href.indexOf("file")===-1){
+			webserver = "https://navi.areso.pro:7001";
+			ws_server = "wss://navi.areso.pro:7000";
+			dev_flag  = false;
+	} else {
+		config.isOnline = false;
+		webserver = "http://localhost:6699";
+		ws_server = "ws://localhost:6698";
+		dev_flag  = true;
 	}
+	function setUpTimers(){
+        if (config.isOnline && config.pullMessages){
+            fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
+            pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
+            nearestEventTimer = setInterval(getNearestEventTime, 10000);
+            pullAmberTimer = setInterval(pullAmber, 3000);
+        }
+	}
+	setUpTimers()
+	//to enable online features with a local backend server, type in da console:
+	// config.isOnline = true
+	// setUpTimers()
 	//functions
 	function remoteRegLogin() {
 		if (reglogin==="reg"){
@@ -95,8 +111,6 @@
 				document.getElementById("server-status").innerHTML="Up";
 				chat_dom.innerHTML = "";
 				messages.forEach(printToChat);
-			} else {
-				clearInterval(fpullMessagesTimer);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
 				document.getElementById("server-status").innerHTML="Down";
@@ -123,8 +137,6 @@ function pullPremodMessages() {
 				}
 				mod_dom.innerHTML = "";
 				messages.forEach(printToMod);
-			} else {
-				clearInterval(pullPremodMessagesTimer);
 			}
 		};
 		endpoint  = webserver + "/api/v1.1/pull_premod_messages";
@@ -159,8 +171,6 @@ function pullPremodMessages() {
 				the_resp = JSON.parse(this.responseText);
 				console.log(the_resp);
 				document.getElementById("gems").innerHTML = the_resp.amber;
-			} else {
-				clearInterval(pullAmberTimer);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
 				document.getElementById("gems").innerHTML = 0
@@ -429,35 +439,47 @@ function reloadBanned() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				back_response = JSON.parse(this.responseText);
-				//console.log(back_response);
+				console.log(back_response);
 				cntdwn = back_response["countdown"];
 				cntdwn = cntdwn.replace("(","");
 				cntdwn = cntdwn.replace(")","");
 				cntdwn = cntdwn.split(",");
 				//console.log(cntdwn);
+				//ToDo rename from flag_event_started to event_status
 				flag_event_started = parseInt(back_response["event_started"]);
+				event_id = parseInt(back_response["event_id"]);
 				event_timer_lbl = document.getElementById("event-label");
 				event_timer_val = document.getElementById("event-value");
 				eventTimerVal  =     cntdwn[0]+localeStrings[165][0];
 				eventTimerVal += " "+cntdwn[1]+localeStrings[165][1];
 				eventTimerVal += " "+cntdwn[2]+localeStrings[165][2];
-				if (flag_event_started===0){
-					event_timer_lbl.innerHTML="New Year event will start in ";
+				if (flag_event_started===1){
+				    if (event_id === 1){
+				        event_name = locObj.eventHalloweenName.txt;
+				    }
+				    if (event_id === 2){
+				        event_name = locObj.eventNewYearName.txt;
+				    }
+					event_timer_lbl.innerHTML=event_name+locObj.eventWillStart.txt;
 					event_timer_val.innerHTML=eventTimerVal;
 
-				} else {
+				}
+				if (flag_event_started===2){
 					//TODO THAT URGENT!
 					//BUT NOT TODAY
 					//game.getEventDetails();
-					event_timer_lbl.innerHTML="New Year event will end in ";
+					if (event_id === 1){
+				        event_name = locObj.eventHalloweenName.txt;
+				    }
+				    if (event_id === 2){
+				        event_name = locObj.eventNewYearName.txt;
+				    }
+					event_timer_lbl.innerHTML=event_name+locObj.eventWillEnd.txt;
 					event_timer_val.innerHTML=eventTimerVal;
 				}
 				console.log(eventHelpMsg);
 				//document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
 				//document.getElementById("lblEventCountdownValue").disabled = false;
-			} else {
-				//document.getElementById("lblEventCountdownValue").disabled = true;
-				clearInterval(nearestEventTimer);
 			}
 		};
 		endpoint    = webserver + "/api/v1.1/event_countdown";
@@ -465,7 +487,7 @@ function reloadBanned() {
 		xhttp.send();
 	}
 	users_online = document.getElementById("lbl_online_value");
-	if (config.online) {
+	if (config.isOnline) {
 		websocket = new WebSocket(ws_server);
 		websocket.onmessage = function (event) {
 			data = JSON.parse(event.data);

@@ -56,12 +56,11 @@
 		tutArcheryP: 60,
 		tutInnP: 80,
 		tutSocialP: 100,
-		online: true,
+		isOnline: true,
 		pullMessages: true,
 		pullMessagesMS: 1500,
 		debug: false,
-		theme: "winter",
+		theme: "summer",
 		artilleryResearchCost: 200,
 		popIncRate: 2,
-
 	};
