@@ -5,7 +5,7 @@
                 <img src="https://img.shields.io/github/issues-closed/Areso/1255-burgomaster">
                 <img src="https://img.shields.io/github/commit-activity/m/Areso/1255-burgomaster?foo=bar">
                 <a href="https://discord.com/invite/gHzurTMa?utm_source=Discord%20Widget&utm_medium=Connect">
-                  <img src="https://img.shields.io/discord/564554640755130409?label=Discord&logo=Discord"></a>
+                <img src="https://img.shields.io/discord/564554640755130409?label=Discord&logo=Discord"></a>
 		<h2>Play the game</h2><br>
 		<!--<a href="https://areso.github.io/1255-burgomaster">Play the game in web</a><br>-->
 		<a href="https://1255.areso.pro">Play the game in web (reserve link)</a><br><br>

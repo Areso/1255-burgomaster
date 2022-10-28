@@ -24,15 +24,14 @@
 		ws_server = "ws://localhost:6698";
 		dev_flag  = true;
 	}
-	function setUpTimers(){
+	function setUpBackendTimers(){
         if (config.isOnline && config.pullMessages){
             fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
             pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
             nearestEventTimer = setInterval(getNearestEventTime, 10000);
-            pullAmberTimer = setInterval(pullAmber, 3000);
         }
 	}
-	setUpTimers()
+	setUpBackendTimers()
 	//to enable online features with a local backend server, type in da console:
 	// config.isOnline = true
 	// setUpTimers()
@@ -52,6 +51,7 @@
 					postEventLog(msg);
 					msg       = "you got a 'registered user' badge and 10 ambers";
 					postEventLog(msg);
+					pullAmberTimer = setInterval(pullAmber, 3000);
 				}
 			};
 			fpullMessages();
@@ -80,6 +80,7 @@
 					msg = "login successfull";
 					postEventLog(msg);
 					fpullMessages();
+					pullAmberTimer = setInterval(pullAmber, 3000);
 				}
 				if (this.readyState === 4 && this.status !== 200) {
 					if (config.debug){
