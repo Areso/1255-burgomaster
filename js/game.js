@@ -3945,7 +3945,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		updateUI();
 	}
 	function loadArtifacts(){
-		include('js/artifacts.js',function(){
+		include('js/objects_artifacts.js',function(){
 		});
 	}
 	function welcomeMsg(){
