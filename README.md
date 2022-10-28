@@ -52,10 +52,10 @@
 		<li>a hero managemenet</li>
 		<li>troops managemenet</li>
 		<li>artifacts to collect</li>
-		<li>executing people</li>
-		<li>placing festivals</li>
+		<li>executing people or placing festivals</li>
+        <li>University with a tech tree</li>
 		<li>random events: stealings from the treasury, fires and plagues</li>
-		<li>time-limited events: Halloween</li>
+		<li>time-limited events: Halloween, New Year</li>
 		<li>two decoration themes: Summer and Winter</li>
 		<li>a record table</li>
 		</ul>
