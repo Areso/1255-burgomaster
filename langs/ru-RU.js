@@ -561,6 +561,6 @@ locObj.techArtilleryResearched = {"txt":"You researched the artillery technology
 locObj.bldUniversityHelp = {"txt":"Это здание необходимо для исследования новых технологий.", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Построить университет<br>%arg2 золотых", "loc":"the label of the button of building the University on the building tab"};
 locObj.eventWillStart = {"txt":" ивент начнется через", "loc":"shows on the status bar if an event was announced"};
-locObj.eventWillEnd = {"txt":" ивет закончится через", "loc":"shows on the status bar if an event was started"};
+locObj.eventWillEnd = {"txt":" ивент закончится через", "loc":"shows on the status bar if an event was started"};
 locObj.eventHalloweenName = {"txt":"Хэллуин", "loc":"shows on the status bar if the event announced or online"};
 locObj.eventNewYearName = {"txt":"Новогодний", "loc":"shows on the status bar if the event announced or online"};

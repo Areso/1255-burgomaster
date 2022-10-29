@@ -51,7 +51,7 @@
 				<img id="pop_img" class="resource-icon" src="resources/pop.png">
 				<span id="pop">2</span>
 			</div>
-			<div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  localeStrings[60], '');">
+			<div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  locObj.okay.txt, '');">
 				<img id="gems_img" class="resource-icon" src="resources/amber_ico.png">
 				<span id="gems">0</span>
 			</div>
@@ -63,7 +63,7 @@
 				Server: <span id="server-status">n/d</span>
 			</div>
 			<div class="event-val" style="margin-left: 20px;">
-				<span id="event-label"></span>
+				<span id="event-label" onclick="getEventHelp()"></span>
 				<span id="event-value" onclick="getEventHelp()"></span>
 			</div>
 		</div>

@@ -252,7 +252,7 @@
 					disabledElements.push("loadGameButton");
 					document.getElementById("saveGameButton").disabled = true;
 					document.getElementById("loadGameButton").disabled = true;
-					showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+					showModal(0, '', getAck, eventHelpMsg,  locObj.okay.txt, '');
 				} else {
 					openTab(null, 'tabEvent');
 				}
@@ -510,7 +510,7 @@
 					showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
 				} else {
 					alertMsg = localeStrings[180];
-					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+					showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 				}
 			} else {
 				var question      = localeStrings[179];
@@ -531,7 +531,7 @@
 						updateUI();
 					} else {
 						alertMsg = locObj.notEnoughGold.txt;
-						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+						showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 					}
 				}
 			}
@@ -665,7 +665,7 @@
 						return;
 					} else {
 						var alertMsg = localeStrings[228];
-						showModal(0, '', getAck, alertMsg, localeStrings[60], '');
+						showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 						return;
 					}
 				}
@@ -966,7 +966,7 @@
 				}
 			} else {
 				alertMsg = localeStrings[229];
-				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 			}
 		},
 		heroDismissCallback : function () {
@@ -1243,7 +1243,7 @@
 					if (game.isHeroHaveTroops()) {
 						showModal(1, '', game.autocampaignLaunchCallback, localeStrings[225], localeStrings[226], localeStrings[227]);
 					} else {
-						showModal(0, '', getAck, localeStrings[228],  localeStrings[60], '');
+						showModal(0, '', getAck, localeStrings[228],  locObj.okay.txt, '');
 					}
 					return;
 				}
@@ -1251,11 +1251,11 @@
 				if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN) {
 					showModal(1, '', game.autocampaignWithdrawCallback, localeStrings[171], localeStrings[32],  localeStrings[33]);
 				} else {
-					showModal(0, '', getAck, localeStrings[170],  localeStrings[60], '');
+					showModal(0, '', getAck, localeStrings[170],  locObj.okay.txt, '');
 				}
 
 			} else {
-				showModal(0, '', getAck, localeStrings[229],  localeStrings[60], '');
+				showModal(0, '', getAck, localeStrings[229],  locObj.okay.txt, '');
 			}
 		},
 		autocampaignLaunchCallback : function () {
@@ -1622,7 +1622,7 @@
 				document.getElementById("btnHireHero").disabled = true;
 				document.getElementById("selectHeroClass").disabled = true;
 				alertMsg = localeStrings[61];
-				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
+				showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 			}
 		},
 		heroLvlUp : function (campaignType) {
@@ -2743,7 +2743,7 @@
 				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
 			} else {
 				alertMsg = locObj.treasuryRequired.txt;
-				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+				showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 			}
 		},
 		hireTreasuryGuardCallback : function () {
@@ -2823,7 +2823,7 @@
 					}
 				} else {
 					alertMsg        = localeStrings[36];
-					showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+					showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 				}
 				updateResources();
 			}
@@ -3652,7 +3652,7 @@
 			game.chestCityOpen();
 		}
 		if (showAlert === true &&  alertMsg !=="" ) {
-			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+			showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 		}
 	}
 	//composite();
