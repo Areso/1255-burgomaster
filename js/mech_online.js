@@ -174,7 +174,6 @@ function pullPremodMessages() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				the_resp = JSON.parse(this.responseText);
-				console.log(the_resp);
 				document.getElementById("gems").innerHTML = the_resp.amber;
 			}
 			if (this.readyState === 4 && this.status !== 200) {
@@ -438,7 +437,6 @@ function reloadBanned() {
 		}
 	}
 	function getNearestEventTime () {
-		console.log("try to get event time")
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {

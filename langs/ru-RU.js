@@ -567,4 +567,4 @@ locObj.eventHalloweenName = {"txt":"Хэллуин", "loc":"shows on the status 
 locObj.eventNewYearName = {"txt":"Новогодний", "loc":"shows on the status bar if the event announced or online"};
 locObj.yes = {"txt":"Да", "loc":"Positive answer, happens in modal dialogues"};
 locObj.yesKillBloody = {"txt":"Да, и наиболее кроваво!", "loc":"NOT USED YET"};
-locObj.yes = {"txt":"Нет", "loc":"Negative answer, happens in modal dialogues"};
+locObj.no = {"txt":"Нет", "loc":"Negative answer, happens in modal dialogues"};
