@@ -34,7 +34,7 @@
 	setUpBackendTimers()
 	//to enable online features with a local backend server, type in da console:
 	// config.isOnline = true
-	// setUpTimers()
+	// setUpBackendTimers()
 	//functions
 	function remoteRegLogin() {
 		if (reglogin==="reg"){
