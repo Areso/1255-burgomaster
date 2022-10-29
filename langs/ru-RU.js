@@ -30,9 +30,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//30
-localeStrings.push("Да, и как можно кроважаднее!");
-localeStrings.push("Да");
-localeStrings.push("Нет");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("вы казнили горожанина за %arg1");//34
 localeStrings.push("%arg1 золотых конфисковано");//35
 localeStrings.push("слишком мало жителей");
@@ -412,6 +412,7 @@ localeStrings.push("рыцари(%arg1)");
 
 var locObj = {}
 //locObj.welcome2 = {"txt":"", "loc":""};
+locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Приветствую вас!", "loc":"Кладём в игровой лог при инициализации игры"};
 locObj.welcome1 = {"txt":"Ваша задача проста - вам нужно управлять городом, чтобы магистру не было за вас стыдно", "loc":"там же"};
 locObj.welcome2 = {"txt":"Горожане будут платить налоги, а их популяция расти каждый сезон (30 секунд)", "loc":"там же"};
@@ -564,3 +565,6 @@ locObj.eventWillStart = {"txt":" ивент начнется через", "loc":
 locObj.eventWillEnd = {"txt":" ивент закончится через", "loc":"shows on the status bar if an event was started"};
 locObj.eventHalloweenName = {"txt":"Хэллуин", "loc":"shows on the status bar if the event announced or online"};
 locObj.eventNewYearName = {"txt":"Новогодний", "loc":"shows on the status bar if the event announced or online"};
+locObj.yes = {"txt":"Да", "loc":"Positive answer, happens in modal dialogues"};
+locObj.yesKillBloody = {"txt":"Да, и наиболее кроваво!", "loc":"NOT USED YET"};
+locObj.yes = {"txt":"Нет", "loc":"Negative answer, happens in modal dialogues"};

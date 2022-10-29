@@ -30,9 +30,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//30
-localeStrings.push("Assurément, de la façon la plus barbare!");
-localeStrings.push("Oui");
-localeStrings.push("Non");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Vous avez exécuté un citoyen pour %arg1.");
 localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
 localeStrings.push("Vous avez trop peu de citoyens.");
@@ -540,3 +540,6 @@ locObj.eventWillStart = {"txt":" event will start in", "loc":"shows on the statu
 locObj.eventWillEnd = {"txt":" event will end in", "loc":"shows on the status bar if an event was started"};
 locObj.eventHalloweenName = {"txt":"Halloween", "loc":"shows on the status bar if the event announced or online"};
 locObj.eventNewYearName = {"txt":"New Year", "loc":"shows on the status bar if the event announced or online"};
+locObj.yes = {"txt":"Oui", "loc":"Positive answer, happens in modal dialogues"};
+locObj.yesKillBloody = {"txt":"Assurément, de la façon la plus barbare!", "loc":"NOT USED YET"};
+locObj.no = {"txt":"Non", "loc":"Negative answer, happens in modal dialogues"};
