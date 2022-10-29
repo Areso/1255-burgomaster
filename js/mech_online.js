@@ -83,6 +83,7 @@
 					if (config.isOnline === false){
 					    config.isOnline = true;
 					    setUpBackendTimers();
+					    enableOnlineCounter();
 					}
 					pullAmberTimer = setInterval(pullAmber, 3000);
 				}
@@ -483,22 +484,27 @@ function reloadBanned() {
 		xhttp.open("GET", endpoint, true);
 		xhttp.send();
 	}
-	users_online = document.getElementById("lbl_online_value");
-	if (config.isOnline) {
-		websocket = new WebSocket(ws_server);
-		websocket.onmessage = function (event) {
-			data = JSON.parse(event.data);
-			switch (data.type) {
-				case 'users':
-					users_online.textContent = (
-					data.count.toString() + " user" +
-					(data.count == 1 ? "" : "s"));
-					break;
-				default:
-					console.error("unsupported event", data);
-			}
-		}
-	}
+
+users_online = document.getElementById("spnOnlineValue");
+function enableOnlineCounter(){
+    if (config.isOnline) {
+        websocket = new WebSocket(ws_server);
+        websocket.onmessage = function (event) {
+           data = JSON.parse(event.data);
+           switch (data.type) {
+               case 'users':
+                   users_online.textContent = (
+                   data.count.toString() + " " +
+                   (data.count == 1 ? locObj.userCntOne.txt : locObj.userCntTwoPlus.txt));
+                   break;
+               default:
+                   console.error("unsupported event", data);
+               }
+           }
+        }
+}
+enableOnlineCounter();
+
 function send_gen_items(items_no){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {

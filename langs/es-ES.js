@@ -544,3 +544,7 @@ locObj.serverStatusSpn = {"txt": "Server: ", "loc":"showed in the status bar"};
 locObj.serverStatusND = {"txt":"n/d", "loc":"server status is no data"};
 locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};
+locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"};
+locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
+locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
+locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};

@@ -3939,6 +3939,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
 		document.getElementById("spnServerStatusLabel").innerText= locObj.serverStatusSpn.txt;
         document.getElementById("spnServerStatusValue").innerText= locObj.serverStatusND.txt;
+        document.getElementById("spnOnline").innerText           = locObj.online.txt;
+        document.getElementById("spnOnlineValue").innerText      = locObj.onlineValueND.txt;
 		if (typeof populateHeroesForHire === "function") { populateHeroesForHire() };
 		checkSaves();
 		welcomeMsg();
@@ -3946,6 +3948,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		loadArtifacts();
 		updateUI();
 	}
+    // TODO every third cell is provoke hero to attack stance
 	function loadArtifacts(){
 		include('js/objects_artifacts.js',function(){
 		});
