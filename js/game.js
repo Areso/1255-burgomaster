@@ -252,7 +252,7 @@
 					disabledElements.push("loadGameButton");
 					document.getElementById("saveGameButton").disabled = true;
 					document.getElementById("loadGameButton").disabled = true;
-					showModal(0, '', getAck, eventHelpMsg,  localeStrings[60], '');
+					showModal(0, '', getAck, eventHelpMsg,  locObj.okay.txt, '');
 				} else {
 					openTab(null, 'tabEvent');
 				}
@@ -507,15 +507,15 @@
 				if (game.myhero.status !== 2) {
 					var question      = localeStrings[179];
 					question          = question.replace("%arg1", genMapPriceFinal);
-					showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
+					showModal(1, '', game.generateMapCallback, question, locObj.yes.txt, locObj.no.txt)
 				} else {
 					alertMsg = localeStrings[180];
-					showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+					showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 				}
 			} else {
 				var question      = localeStrings[179];
 				question          = question.replace("%arg1", genMapPriceFinal);
-				showModal(1, '', game.generateMapCallback, question, localeStrings[32], localeStrings[33])
+				showModal(1, '', game.generateMapCallback, question, locObj.yes.txt, locObj.no.txt)
 			}
 		},
 		generateMapCallback : function (silent) {
@@ -531,7 +531,7 @@
 						updateUI();
 					} else {
 						alertMsg = locObj.notEnoughGold.txt;
-						showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+						showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 					}
 				}
 			}
@@ -665,7 +665,7 @@
 						return;
 					} else {
 						var alertMsg = localeStrings[228];
-						showModal(0, '', getAck, alertMsg, localeStrings[60], '');
+						showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 						return;
 					}
 				}
@@ -960,13 +960,13 @@
 			if (game.heroExists()===true){
 				if (game.isHeroHaveTroops()) {
 					var question      = localeStrings[177];
-					showModal(1, '', game.heroDismissCallback, question, localeStrings[32],  localeStrings[178]);
+					showModal(1, '', game.heroDismissCallback, question, locObj.yes.txt,  localeStrings[178]);
 				} else {
 					game.heroDie();
 				}
 			} else {
 				alertMsg = localeStrings[229];
-				showModal(0, '', getAck, alertMsg,  localeStrings[60], '');
+				showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 			}
 		},
 		heroDismissCallback : function () {
@@ -1243,19 +1243,19 @@
 					if (game.isHeroHaveTroops()) {
 						showModal(1, '', game.autocampaignLaunchCallback, localeStrings[225], localeStrings[226], localeStrings[227]);
 					} else {
-						showModal(0, '', getAck, localeStrings[228],  localeStrings[60], '');
+						showModal(0, '', getAck, localeStrings[228],  locObj.okay.txt, '');
 					}
 					return;
 				}
 
 				if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN) {
-					showModal(1, '', game.autocampaignWithdrawCallback, localeStrings[171], localeStrings[32],  localeStrings[33]);
+					showModal(1, '', game.autocampaignWithdrawCallback, localeStrings[171], locObj.yes.txt,  locObj.no.txt);
 				} else {
-					showModal(0, '', getAck, localeStrings[170],  localeStrings[60], '');
+					showModal(0, '', getAck, localeStrings[170],  locObj.okay.txt, '');
 				}
 
 			} else {
-				showModal(0, '', getAck, localeStrings[229],  localeStrings[60], '');
+				showModal(0, '', getAck, localeStrings[229],  locObj.okay.txt, '');
 			}
 		},
 		autocampaignLaunchCallback : function () {
@@ -1622,7 +1622,7 @@
 				document.getElementById("btnHireHero").disabled = true;
 				document.getElementById("selectHeroClass").disabled = true;
 				alertMsg = localeStrings[61];
-				showModal(0, '', getAck, alertMsg, localeStrings[60], '');
+				showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 			}
 		},
 		heroLvlUp : function (campaignType) {
@@ -2017,7 +2017,7 @@
 		dismissGarrisonSergeant: function() {
 			if (game.sergeants > 0) {
 				question = localeStrings[353];
-				showModal(1, '', game.dismissGarrisonSergeantCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissGarrisonSergeantCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[367]);
@@ -2035,7 +2035,7 @@
 		dismissGarrisonTurkopol: function() {
 			if (game.turkopols > 0) {
 				question = localeStrings[354];
-				showModal(1, '', game.dismissGarrisonTurkopolCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissGarrisonTurkopolCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[368]);
@@ -2053,7 +2053,7 @@
 		dismissGarrisonKnight: function() {
 			if (game.knights > 0) {
 				question = localeStrings[355];
-				showModal(1, '', game.dismissGarrisonKnightCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissGarrisonKnightCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[369]);
@@ -2074,7 +2074,7 @@
 		dismissAllGarrisonSergenats: function() {
 			if (game.sergeants > 0) {
 				question = localeStrings[356];
-				showModal(1, '', game.dismissAllGarrisonSergenatsCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllGarrisonSergenatsCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[367]);
@@ -2092,7 +2092,7 @@
 		dismissAllGarrisonTurkopols: function () {
 			if (game.turkopols > 0) {
 				question = localeStrings[357];
-				showModal(1, '', game.dismissAllGarrisonTurkopolsCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllGarrisonTurkopolsCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[368]);
@@ -2110,7 +2110,7 @@
 		dismissAllGarrisonKnights: function () {
 			if (game.knights > 0) {
 				question = localeStrings[358];
-				showModal(1, '', game.dismissAllGarrisonKnightsCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllGarrisonKnightsCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[369]);
@@ -2132,7 +2132,7 @@
 			console.log(game.hero);
 			if (game.myhero.sergeants > 0) {
 				question = localeStrings[359];
-				showModal(1, '', game.dismissHeroSergeantCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissHeroSergeantCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[370]);
@@ -2151,7 +2151,7 @@
 		dismissHeroTurkopol: function () {
 			if (game.myhero.turkopols > 0) {
 				question = localeStrings[360];
-				showModal(1, '', game.dismissHeroTurkopolCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissHeroTurkopolCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[371]);
@@ -2169,7 +2169,7 @@
 		dismissHeroKnight: function () {
 			if (game.myhero.knights > 0) {
 				question = localeStrings[361];
-				showModal(1, '', game.dismissHeroKnightCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissHeroKnightCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[372]);
@@ -2190,7 +2190,7 @@
 		dismissAllHeroSergeants: function () {
 			if (game.myhero.sergeants > 0) {
 				question = localeStrings[362];
-				showModal(1, '', game.dismissAllHeroSergeantsCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllHeroSergeantsCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[370]);
@@ -2208,7 +2208,7 @@
 		dismissAllHeroTurkopols: function () {
 			if (game.myhero.turkopols > 0) {
 				question = localeStrings[363];
-				showModal(1, '', game.dismissAllHeroTurkopolsCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllHeroTurkopolsCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[371]);
@@ -2226,7 +2226,7 @@
 		dismissAllHeroKnights: function () {
 			if (game.myhero.knights > 0) {
 				question = localeStrings[364];
-				showModal(1, '', game.dismissAllHeroKnightsCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllHeroKnightsCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[372]);
@@ -2258,7 +2258,7 @@
 					garrisonKnightsStr = localeStrings[377].replace("%arg1", game.knights);
 				}
 				question = localeStrings[365].replace("%arg1", garrisonSergeantsStr).replace("%arg2", garrisonTurkopolsStr).replace("%arg3", garrisonKnightsStr);
-				showModal(1, '', game.dismissAllGarrisonForcesCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllGarrisonForcesCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[373]);
@@ -2288,7 +2288,7 @@
 					heroKnightsStr = localeStrings[377].replace("%arg1", game.myhero.knights);
 				}
 				question = localeStrings[366].replace("%arg1", heroSergeantsStr).replace("%arg2", heroTurkopolsStr).replace("%arg3", heroKnightsStr);
-				showModal(1, '', game.dismissAllHeroForcesCallback, question, localeStrings[32], localeStrings[33]);
+				showModal(1, '', game.dismissAllHeroForcesCallback, question, locObj.yes.txt, locObj.no.txt);
 			} else {
 				msg = "<b>%arg1</b>";
 				msg = msg.replace("%arg1", localeStrings[374]);
@@ -2514,7 +2514,7 @@
 			if (game.festival_cooldown !==0) {
 				question += localeStrings[57];
 			}
-			showModal(1, '', game.makeFestivalCallback, question, localeStrings[32], localeStrings[33])
+			showModal(1, '', game.makeFestivalCallback, question, locObj.yes.txt, locObj.no.txt)
 		},
 		makeFestivalCallback : function() {
 			if (answer === 2) {
@@ -2712,7 +2712,7 @@
 			if (game.gold > costOfBuilding) {
 				if (game.buildLevelFountain === 0 && game.buildLevelGallows === 0) {
 					the_objectToBuild = objectToBuild;
-					showModal(1, '', game.buildGallowsOrFountainCallback, question, localeStrings[32], localeStrings[33])
+					showModal(1, '', game.buildGallowsOrFountainCallback, question, locObj.yes.txt, locObj.no.txt)
 				} else {
 					game.Build(objectToBuild);
 				}
@@ -2740,10 +2740,10 @@
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
 				var question = locObj.dialogConfirmHireGuard.txt.replace("%arg1",game.hireTreasuryGuardCost()).replace("%arg2",config.treasuryGuardPricePayroll);
-				showModal(1, '', game.hireTreasuryGuardCallback, question,  localeStrings[32], localeStrings[33])
+				showModal(1, '', game.hireTreasuryGuardCallback, question,  locObj.yes.txt, locObj.no.txt)
 			} else {
 				alertMsg = locObj.treasuryRequired.txt;
-				showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+				showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 			}
 		},
 		hireTreasuryGuardCallback : function () {
@@ -2766,7 +2766,7 @@
 				document.getElementById("buttonFireGuard").disabled = true;
 				document.getElementById("buttonHireGuard").disabled = true;
 				qst = locObj.dialogConfirmDismssGuardsman.txt;
-				showModal(1, '', game.fireTreasuryGuardCallback, qst,  localeStrings[32], localeStrings[33])
+				showModal(1, '', game.fireTreasuryGuardCallback, qst,  locObj.yes.txt, locObj.no.txt)
 			} else {
 				postEventLog(locObj.noGuardsman.txt, "bold");
 			}
@@ -2823,7 +2823,7 @@
 					}
 				} else {
 					alertMsg        = localeStrings[36];
-					showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+					showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 				}
 				updateResources();
 			}
@@ -2935,7 +2935,7 @@
 		putOutFire : function () {
 			if (game.fire === 1) {
 				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
-				showModal(1, '', game.putOutFireCallback, question,  localeStrings[32], localeStrings[33])
+				showModal(1, '', game.putOutFireCallback, question,  locObj.yes.txt, locObj.no.txt)
 			}
 		},
 		putOutFireCallback : function () {
@@ -3652,7 +3652,7 @@
 			game.chestCityOpen();
 		}
 		if (showAlert === true &&  alertMsg !=="" ) {
-			showModal(0, '', getAck, alertMsg,  localeStrings[60], '')
+			showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 		}
 	}
 	//composite();
@@ -3937,6 +3937,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
 		document.getElementById("downloadGame").innerText        = localeStrings[328];
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
+		document.getElementById("spnServerStatusLabel").innerText= locObj.serverStatusSpn.txt;
+        document.getElementById("spnServerStatusValue").innerText= locObj.serverStatusND.txt;
+        document.getElementById("spnOnline").innerText           = locObj.online.txt;
+        document.getElementById("spnOnlineValue").innerText      = locObj.onlineValueND.txt;
 		if (typeof populateHeroesForHire === "function") { populateHeroesForHire() };
 		checkSaves();
 		welcomeMsg();
@@ -3944,6 +3948,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		loadArtifacts();
 		updateUI();
 	}
+    // TODO every third cell is provoke hero to attack stance
 	function loadArtifacts(){
 		include('js/objects_artifacts.js',function(){
 		});
@@ -4062,7 +4067,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		} else {
 			if (localStorage.getItem('game')!==null) {
 				question = locObj.dialogSaveGame.txt;
-				showModal(1, '', saveGameCallback, question, localeStrings[32], localeStrings[33])
+				showModal(1, '', saveGameCallback, question, locObj.yes.txt, locObj.no.txt)
 			} else {
 				writeSave();
 			}
@@ -4089,7 +4094,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 	function loadGame() {
 		question = locObj.dialogLoadGame.txt;
-		showModal(1, '', loadGameCallback, question,  localeStrings[32], localeStrings[33])
+		showModal(1, '', loadGameCallback, question,  locObj.yes.txt, locObj.no.txt)
 	}
 	function loadGameCallback() {
 		if (answer === 2) {

@@ -34,7 +34,7 @@
 	setUpBackendTimers()
 	//to enable online features with a local backend server, type in da console:
 	// config.isOnline = true
-	// setUpTimers()
+	// setUpBackendTimers()
 	//functions
 	function remoteRegLogin() {
 		if (reglogin==="reg"){
@@ -80,6 +80,11 @@
 					msg = "login successfull";
 					postEventLog(msg);
 					fpullMessages();
+					if (config.isOnline === false){
+					    config.isOnline = true;
+					    setUpBackendTimers();
+					    enableOnlineCounter();
+					}
 					pullAmberTimer = setInterval(pullAmber, 3000);
 				}
 				if (this.readyState === 4 && this.status !== 200) {
@@ -109,12 +114,12 @@
 				if (config.debug){
 					console.log(messages);
 				}
-				document.getElementById("server-status").innerHTML="Up";
+				document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusUp.txt;
 				chat_dom.innerHTML = "";
 				messages.forEach(printToChat);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
-				document.getElementById("server-status").innerHTML="Down";
+				document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusDown.txt;
 			}
 		};
 		endpoint  = webserver + "/api/v1.1/pull_messages";
@@ -170,7 +175,6 @@ function pullPremodMessages() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				the_resp = JSON.parse(this.responseText);
-				console.log(the_resp);
 				document.getElementById("gems").innerHTML = the_resp.amber;
 			}
 			if (this.readyState === 4 && this.status !== 200) {
@@ -434,27 +438,24 @@ function reloadBanned() {
 		}
 	}
 	function getNearestEventTime () {
-		back_response = null;
-		eventHelpMsg  = null;
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				back_response = JSON.parse(this.responseText);
-				console.log(back_response);
 				cntdwn = back_response["countdown"];
 				cntdwn = cntdwn.replace("(","");
 				cntdwn = cntdwn.replace(")","");
 				cntdwn = cntdwn.split(",");
 				//console.log(cntdwn);
-				//ToDo rename from flag_event_started to event_status
-				flag_event_started = parseInt(back_response["event_started"]);
+				//ToDo rename from event_status_code to event_status
+				event_status_code = parseInt(back_response["event_started"]);
 				event_id = parseInt(back_response["event_id"]);
 				event_timer_lbl = document.getElementById("event-label");
 				event_timer_val = document.getElementById("event-value");
 				eventTimerVal  =     cntdwn[0]+localeStrings[165][0];
 				eventTimerVal += " "+cntdwn[1]+localeStrings[165][1];
 				eventTimerVal += " "+cntdwn[2]+localeStrings[165][2];
-				if (flag_event_started===1){
+				if (event_status_code===1){
 				    if (event_id === 1){
 				        event_name = locObj.eventHalloweenName.txt;
 				    }
@@ -463,9 +464,8 @@ function reloadBanned() {
 				    }
 					event_timer_lbl.innerHTML=event_name+locObj.eventWillStart.txt;
 					event_timer_val.innerHTML=eventTimerVal;
-
 				}
-				if (flag_event_started===2){
+				if (event_status_code===2){
 					//TODO THAT URGENT!
 					//BUT NOT TODAY
 					//game.getEventDetails();
@@ -478,31 +478,33 @@ function reloadBanned() {
 					event_timer_lbl.innerHTML=event_name+locObj.eventWillEnd.txt;
 					event_timer_val.innerHTML=eventTimerVal;
 				}
-				console.log(eventHelpMsg);
-				//document.getElementById("lblEventCountdownValue").innerHTML = lblMsg;
-				//document.getElementById("lblEventCountdownValue").disabled = false;
 			}
 		};
 		endpoint    = webserver + "/api/v1.1/event_countdown";
 		xhttp.open("GET", endpoint, true);
 		xhttp.send();
 	}
-	users_online = document.getElementById("lbl_online_value");
-	if (config.isOnline) {
-		websocket = new WebSocket(ws_server);
-		websocket.onmessage = function (event) {
-			data = JSON.parse(event.data);
-			switch (data.type) {
-				case 'users':
-					users_online.textContent = (
-					data.count.toString() + " user" +
-					(data.count == 1 ? "" : "s"));
-					break;
-				default:
-					console.error("unsupported event", data);
-			}
-		}
-	}
+
+users_online = document.getElementById("spnOnlineValue");
+function enableOnlineCounter(){
+    if (config.isOnline) {
+        websocket = new WebSocket(ws_server);
+        websocket.onmessage = function (event) {
+           data = JSON.parse(event.data);
+           switch (data.type) {
+               case 'users':
+                   users_online.textContent = (
+                   data.count.toString() + " " +
+                   (data.count == 1 ? locObj.userCntOne.txt : locObj.userCntTwoPlus.txt));
+                   break;
+               default:
+                   console.error("unsupported event", data);
+               }
+           }
+        }
+}
+enableOnlineCounter();
+
 function send_gen_items(items_no){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -627,8 +629,13 @@ function eventItemCollected () {
 	xhttp.send(dataToParse);
 }
 function getEventHelp(){
-	if (flag_event_started===1){
-		showModal(0, '', getAck, locObj.eventNewYear.txt,  localeStrings[60], '')
+	if (event_status_code===2){
+	    if (event_id===1){
+		    showModal(0, '', getAck, locObj.eventHalloween.txt, locObj.okay.txt, '')
+		}
+		if (event_id===2){
+		    showModal(0, '', getAck, locObj.eventNewYear.txt, locObj.okay.txt, '')
+		}
 	}
 }
 

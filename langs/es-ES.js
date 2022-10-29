@@ -30,9 +30,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//30
-localeStrings.push("Sí ¡De la manera más sangrienta!");
-localeStrings.push("Sí");
-localeStrings.push("No");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Ejecutaste a un ciudadano por %arg1.");
 localeStrings.push("Tu tesoro se repuso con %arg1 de oro de la propiedad confiscada al ciudadano ejecutado.");//35
 localeStrings.push("Tienes muy pocos ciudadanos.");
@@ -537,3 +537,14 @@ locObj.eventWillStart = {"txt":" event will start in", "loc":"shows on the statu
 locObj.eventWillEnd = {"txt":" event will end in", "loc":"shows on the status bar if an event was started"};
 locObj.eventHalloweenName = {"txt":"Halloween", "loc":"shows on the status bar if the event announced or online"};
 locObj.eventNewYearName = {"txt":"New Year", "loc":"shows on the status bar if the event announced or online"};
+locObj.yes = {"txt":"Sí", "loc":"Positive answer, happens in modal dialogues"};
+locObj.yesKillBloody = {"txt":"Sí ¡De la manera más sangrienta!", "loc":"NOT USED YET"};
+locObj.no = {"txt":"No", "loc":"Negative answer, happens in modal dialogues"};
+locObj.serverStatusSpn = {"txt": "Server: ", "loc":"showed in the status bar"};
+locObj.serverStatusND = {"txt":"n/d", "loc":"server status is no data"};
+locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
+locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};
+locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"};
+locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
+locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
+locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};

@@ -30,9 +30,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//30
-localeStrings.push("Да, и как можно кроважаднее!");
-localeStrings.push("Да");
-localeStrings.push("Нет");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("вы казнили горожанина за %arg1");//34
 localeStrings.push("%arg1 золотых конфисковано");//35
 localeStrings.push("слишком мало жителей");
@@ -412,6 +412,7 @@ localeStrings.push("рыцари(%arg1)");
 
 var locObj = {}
 //locObj.welcome2 = {"txt":"", "loc":""};
+locObj.welcome2 = {"txt":"", "loc":""};
 locObj.welcome0 = {"txt":"Приветствую вас!", "loc":"Кладём в игровой лог при инициализации игры"};
 locObj.welcome1 = {"txt":"Ваша задача проста - вам нужно управлять городом, чтобы магистру не было за вас стыдно", "loc":"там же"};
 locObj.welcome2 = {"txt":"Горожане будут платить налоги, а их популяция расти каждый сезон (30 секунд)", "loc":"там же"};
@@ -561,6 +562,17 @@ locObj.techArtilleryResearched = {"txt":"You researched the artillery technology
 locObj.bldUniversityHelp = {"txt":"Это здание необходимо для исследования новых технологий.", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Построить университет<br>%arg2 золотых", "loc":"the label of the button of building the University on the building tab"};
 locObj.eventWillStart = {"txt":" ивент начнется через", "loc":"shows on the status bar if an event was announced"};
-locObj.eventWillEnd = {"txt":" ивет закончится через", "loc":"shows on the status bar if an event was started"};
+locObj.eventWillEnd = {"txt":" ивент закончится через", "loc":"shows on the status bar if an event was started"};
 locObj.eventHalloweenName = {"txt":"Хэллуин", "loc":"shows on the status bar if the event announced or online"};
 locObj.eventNewYearName = {"txt":"Новогодний", "loc":"shows on the status bar if the event announced or online"};
+locObj.yes = {"txt":"Да", "loc":"Positive answer, happens in modal dialogues"};
+locObj.yesKillBloody = {"txt":"Да, и наиболее кроваво!", "loc":"NOT USED YET"};
+locObj.no = {"txt":"Нет", "loc":"Negative answer, happens in modal dialogues"};
+locObj.serverStatusSpn = {"txt": "Сервер: ", "loc":"showed in the status bar"};
+locObj.serverStatusND = {"txt":"н/д", "loc":"server status is no data"};
+locObj.serverStatusUp = {"txt":"поднят", "loc":"server status is Up"};
+locObj.serverStatusDown = {"txt":"лежит", "loc":"server status is Down"};
+locObj.online = {"txt":"Онлайн: ", "loc":"label before the online users counter"};
+locObj.onlineValueND = {"txt":"н/д", "loc":"online users numbers has no data"};
+locObj.userCntOne = {"txt":"юзер", "loc":"(one) user"};
+locObj.userCntTwoPlus = {"txt":"юзеров", "loc":"two or more users"};

@@ -88,12 +88,12 @@ function createElementUI(item, targetListId) {
 
 			// TODO: #SwordsRestriction remove it later
 			if ((item.id === 'artid15' || item.id === 'artid16')  && swordsCount === 2) {
-				showModal(0, '', getAck, locObj.swordsWarn.txt,  localeStrings[60], '');
+				showModal(0, '', getAck, locObj.swordsWarn.txt,  locObj.okay.txt, '');
 				return;
 			}
 
 			if ((item.id === 'artid17' || item.id === 'artid18')  && ringsCount === 2) {
-				showModal(0, '', getAck, locObj.ringsWarn.txt,  localeStrings[60], '');
+				showModal(0, '', getAck, locObj.ringsWarn.txt,  locObj.okay.txt, '');
 				return;
 			}
 

@@ -55,7 +55,7 @@ function gameChangePath() {
 			question  = question.replace("%arg2", localeStrings[142]);
 		}
 		yesAnswer = locObj.deadCounselorDemolishAnsYes.txt
-		showModal(1, '', gameChangePathCallback, question, yesAnswer, localeStrings[33])
+		showModal(1, '', gameChangePathCallback, question, yesAnswer, locObj.no.txt)
 	}
 }
 function gameChangePathCallback() {
