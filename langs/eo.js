@@ -543,3 +543,7 @@ locObj.eventNewYearName = {"txt":"Nova Jaro", "loc":"shows on the status bar if 
 locObj.yes = {"txt":"Jes", "loc":"Positive answer, happens in modal dialogues"};
 locObj.yesKillBloody = {"txt":"Jes, plej sange!", "loc":"NOT USED YET"};
 locObj.no = {"txt":"No", "loc":"Negative answer, happens in modal dialogues"};
+locObj.serverStatusSpn = {"txt": "Server: ", "loc":"showed in the status bar"};
+locObj.serverStatusND = {"txt":"n/d", "loc":"server status is no data"};
+locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
+locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};

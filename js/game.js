@@ -3937,6 +3937,8 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
 		document.getElementById("downloadGame").innerText        = localeStrings[328];
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
+		document.getElementById("spnServerStatusLabel").innerText= locObj.serverStatusSpn.txt;
+        document.getElementById("spnServerStatusValue").innerText= locObj.serverStatusND.txt;
 		if (typeof populateHeroesForHire === "function") { populateHeroesForHire() };
 		checkSaves();
 		welcomeMsg();
