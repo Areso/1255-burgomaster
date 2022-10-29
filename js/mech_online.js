@@ -441,7 +441,6 @@ function reloadBanned() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				back_response = JSON.parse(this.responseText);
-				console.log(back_response);
 				cntdwn = back_response["countdown"];
 				cntdwn = cntdwn.replace("(","");
 				cntdwn = cntdwn.replace(")","");
