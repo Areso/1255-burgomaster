@@ -550,22 +550,27 @@ function cloudQuickLoad(){
 			try {
 				resp      = JSON.parse(this.responseText);
 				save64    = resp.content;
-				if (save64 === null){
-				    postEventLog(locObj.noCloudSave.txt,"bold,red");
-				} else {
-				    saveLine  = atob(save64);
+			} catch(err) {
+				postEventLog(errGettingCloudSave.txt,"bold,red");
+				console.log(err);
+			}
+			if (save64 === null){
+			    postEventLog(locObj.errNoCloudSave.txt,"bold,red");
+			} else {
+			    try {
+                    saveLine  = atob(save64);
                     saveArray = saveLine.split(delimiter);
                     gameTemp  = JSON.parse(saveArray[0]);
                     overrideGame(gameTemp);
-				}
-			} catch(err) {
-				postEventLog(localeStrings[327],"bold,red");
-				console.log(err);
+                } catch(err) {
+                    postEventLog(locObj.errLoadingCloudSave.txt,"bold,red");
+				    console.log(err);
+                }
 			}
 		}
 		if (this.readyState === 4 && this.status !== 200) {
-			msg       = "game didn't saved to the cloud. You should be logined to the game before you could save the game";
-			postEventLog(msg);
+			postEventLog(locObj.errGetSaveEndpoint.txt,"bold,red");
+		    console.log(err);
 		}
 	};
 	dataToParse = session+delimiter;
