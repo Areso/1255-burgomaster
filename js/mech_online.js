@@ -550,12 +550,14 @@ function cloudQuickLoad(){
 			try {
 				resp      = JSON.parse(this.responseText);
 				save64    = resp.content;
-				console.log(save64);
-				console.log("we try to load the imported save");
-				saveLine  = atob(save64);
-				saveArray = saveLine.split(delimiter);
-				gameTemp  = JSON.parse(saveArray[0]);
-				overrideGame(gameTemp);
+				if (save64 === null){
+				    postEventLog(locObj.noCloudSave.txt,"bold,red");
+				} else {
+				    saveLine  = atob(save64);
+                    saveArray = saveLine.split(delimiter);
+                    gameTemp  = JSON.parse(saveArray[0]);
+                    overrideGame(gameTemp);
+				}
 			} catch(err) {
 				postEventLog(localeStrings[327],"bold,red");
 				console.log(err);

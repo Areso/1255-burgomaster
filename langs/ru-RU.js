@@ -576,3 +576,4 @@ locObj.online = {"txt":"Онлайн: ", "loc":"label before the online users co
 locObj.onlineValueND = {"txt":"н/д", "loc":"online users numbers has no data"};
 locObj.userCntOne = {"txt":"юзер", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"юзеров", "loc":"two or more users"};
+locObj.noCloudSave = {"txt":"у вас нет сохранения в Облаке", "loc":"could happen when trying to load a savegame from DB"}
