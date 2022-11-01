@@ -570,7 +570,9 @@ function cloudQuickLoad(){
 		}
 		if (this.readyState === 4 && this.status !== 200) {
 			postEventLog(locObj.errGetSaveEndpoint.txt,"bold,red");
-		    console.log(err);
+		    console.log(this.status, this.readyState);
+		    //ToDo - now server returns 0, 4 for JS; 500 in console, no data in logs of the server. Server is UP
+		    //but nothing valuable shown in the STDOUT. Fix the server first, fix the client second.
 		}
 	};
 	dataToParse = session+delimiter;
