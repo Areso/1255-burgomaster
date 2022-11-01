@@ -550,20 +550,29 @@ function cloudQuickLoad(){
 			try {
 				resp      = JSON.parse(this.responseText);
 				save64    = resp.content;
-				console.log(save64);
-				console.log("we try to load the imported save");
-				saveLine  = atob(save64);
-				saveArray = saveLine.split(delimiter);
-				gameTemp  = JSON.parse(saveArray[0]);
-				overrideGame(gameTemp);
 			} catch(err) {
-				postEventLog(localeStrings[327],"bold,red");
+				postEventLog(errGettingCloudSave.txt,"bold,red");
 				console.log(err);
+			}
+			if (save64 === null){
+			    postEventLog(locObj.errNoCloudSave.txt,"bold,red");
+			} else {
+			    try {
+                    saveLine  = atob(save64);
+                    saveArray = saveLine.split(delimiter);
+                    gameTemp  = JSON.parse(saveArray[0]);
+                    overrideGame(gameTemp);
+                } catch(err) {
+                    postEventLog(locObj.errLoadingCloudSave.txt,"bold,red");
+				    console.log(err);
+                }
 			}
 		}
 		if (this.readyState === 4 && this.status !== 200) {
-			msg       = "game didn't saved to the cloud. You should be logined to the game before you could save the game";
-			postEventLog(msg);
+			postEventLog(locObj.errGetSaveEndpoint.txt,"bold,red");
+		    console.log(this.status, this.readyState);
+		    //ToDo - now server returns 0, 4 for JS; 500 in console, no data in logs of the server. Server is UP
+		    //but nothing valuable shown in the STDOUT. Fix the server first, fix the client second.
 		}
 	};
 	dataToParse = session+delimiter;

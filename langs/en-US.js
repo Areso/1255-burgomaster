@@ -358,7 +358,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
 localeStrings.push("There is no savestring in the field");
-localeStrings.push("Couldn't load the game from the savestring ;-;");
+localeStrings.push("placeholder");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -574,3 +574,7 @@ locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"
 locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
 locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};
+locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"could happen when trying to load a savegame from DB"};
+locObj.errGettingCloudSave = {"txt":"error while trying to get your cloudsave from the cloud","loc":"could happen when trying to get a savegame from backend"};
+locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc":"could happen while loading cloudsave"};
+locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};

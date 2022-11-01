@@ -358,7 +358,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
 localeStrings.push("Строчка сохранения не найдена в текстовом поле");
-localeStrings.push("Не получается загрузить игру из этого сохранения");
+localeStrings.push("placeholder");
 localeStrings.push("Скачать игру (чтобы играть без Интернета)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -576,3 +576,7 @@ locObj.online = {"txt":"Онлайн: ", "loc":"label before the online users co
 locObj.onlineValueND = {"txt":"н/д", "loc":"online users numbers has no data"};
 locObj.userCntOne = {"txt":"юзер", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"юзеров", "loc":"two or more users"};
+locObj.errNoCloudSave = {"txt":"у вас нет сохранения в Облаке", "loc":"could happen when trying to load a savegame from DB"};
+locObj.errGettingCloudSave = {"txt":"ошибка при попытке получить сохранение из Облака","loc":"could happen when trying to get a savegame from backend"};
+locObj.errLoadingCloudSave = {"txt":"ошибка при загрузке в игру облачного сохранения","loc":"could happen while loading cloudsave"};
+locObj.errGetSaveEndpoint = {"txt":"ошибка сервера. Вы вошли в аккаунт? Сервер поднят?","loc":"endpoint error from /get_savegame"};
