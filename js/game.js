@@ -4153,7 +4153,9 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		game.userASaveAck = 0;
 
 		setTutorialAfterSaveRestore(gameTemp);
-
+		if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN){
+			createJournalAccordion();
+	    }
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };
