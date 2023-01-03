@@ -4156,6 +4156,9 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN){
 			createJournalAccordion();
 	    }
+	    if (game.myhero.status === HERO_STATUS.ADVENTURE_MAP){
+			createJournalAccordion();
+	    }
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };
