@@ -108,7 +108,7 @@ function updateHeroStatusInn() {
 		var equipmentTitleElem = document.createElement("div");
 		var equipmentListElem = document.createElement("div");
 		equipmentListElem.setAttribute("id", "heroEquipment");
-		equipmentTitleElem.innerText = "Equiped:";
+		equipmentTitleElem.innerText = locObj.equipmentTitle.txt;
 		heroStatsElem.appendChild(equipmentTitleElem);
 		heroStatsElem.appendChild(equipmentListElem);
 		for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {

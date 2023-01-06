@@ -31,6 +31,13 @@
 		return value === null || value === undefined;
 	}
 
+	function uuidv4() {
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+			return v.toString(16);
+		});
+	}
+
 
 	function include (url, fn) {
 		var e = document.createElement("script");
@@ -295,80 +302,6 @@
 				}
 			} else {
 				postEventLog(localeStrings[257], 'bold');
-			}
-		},
-		artefact_sell : function () {
-			var x = document.getElementById("selectGoodsFromHero").selectedIndex;
-			var y = document.getElementById("selectGoodsFromHero").options;
-			if (y !== -1 && x!==y ){
-				var the_selling_artefact      = y[x].value; //y[x].id, text, index
-				var the_selling_artefactIndex = y[x].index; //y[x].id, text, index
-				buyingPrice = artefacts[the_selling_artefact].priceBuy/2;
-				game.myhero.gold += buyingPrice;
-				game.checkTreasuryCapacity();
-				game.artefact_loss(artefacts[the_selling_artefact], "hero", the_selling_artefactIndex);
-				if (artefacts[the_selling_artefact].id!=="artid00"){
-					game.blackMarketGoods.push(artefacts[the_selling_artefact].id);
-				}
-				updateBlackMarket(null,the_selling_artefactIndex);
-				msg = localeStrings[230];
-				postEventLog(msg);
-				updateUI();
-			}
-		},
-		artefact_buy : function () {
-			var x = document.getElementById("selectGoodsForHero").selectedIndex;
-			var y = document.getElementById("selectGoodsForHero").options;
-			var the_buying_artefact      = y[x].value; //y[x].id, text, index
-			var the_buying_artefactIndex = y[x].index; //y[x].id, text, index
-			if (game.gold>=artefacts[the_buying_artefact].priceBuy){
-				game.gold = game.gold - artefacts[the_buying_artefact].priceBuy;
-				game.artefact_gain(artefacts[the_buying_artefact], "hero");
-				if (artefacts[the_buying_artefact].id !== "artid00"){
-					game.blackMarketGoods = deleteFromArray(game.blackMarketGoods, the_buying_artefactIndex);
-					updateBlackMarket(the_buying_artefactIndex,null);
-				} else {
-					updateBlackMarket(null,null);
-				}
-				msg = localeStrings[231];
-				postEventLog(msg);
-				updateUI();
-			} else {
-				postEventLog(locObj.notEnoughGold.txt, "bold");
-			}
-		},
-		artefact_gain : function (artefact, target) {
-			if (target==="hero") {
-				game.myhero.inventory.push(artefact.id);
-				if (game.myhero.inventoryWorn===undefined){
-					game.myhero.inventoryWorn=[];
-				}
-				game.myhero.inventoryWorn.push(0);
-			}
-
-		},
-		artefact_loss : function (artefact, target, posInInventory) {
-			if (target==="hero") {
-				game.myhero.inventory     = deleteFromArray(game.myhero.inventory, posInInventory);
-				game.myhero.inventoryWorn = deleteFromArray(game.myhero.inventoryWorn, posInInventory);
-			}
-		},
-		artefact_equip : function (invid, target) {
-			if (target==="hero") {
-				for (var i=0;i<artefacts[game.myhero.inventory[invid]].attr.length;i++){
-					game.myhero[artefacts[game.myhero.inventory[invid]].attr[i]]+=artefacts[game.myhero.inventory[0]].change[i];
-					game.myhero.inventoryWorn[invid]=1;
-					console.log(artefacts[game.myhero.inventory[invid]].attr[i]);
-				}
-			}
-		},
-		artefact_unequip : function (invid, target) {
-			if (target==="hero") {
-				for (var i = 0; i < artefacts[game.myhero.inventory[invid]].attr.length; i++) {
-					game.myhero[artefacts[game.myhero.inventory[invid]].attr[i]] -= artefacts[game.myhero.inventory[0]].change[i];
-					game.myhero.inventoryWorn[invid] = 0;
-					console.log(artefacts[game.myhero.inventory[invid]].attr[i]);
-				}
 			}
 		},
 		checkAudio : function (typeAudio, target) {
@@ -2830,18 +2763,15 @@
 		},
 		theftFromTreasury : function () {
 			if (game.buildLevelTreasury > 0) {
-				var guards = 0;
-				guards    += game.sergeants + game.turkopols + game.knights;
-				if (game.heroExists()===true) {
-					if (game.myhero.status===0){// in town
-						guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
-					}
+				var guards = game.sergeants + game.turkopols + game.knights;
+				if (game.heroExists() && game.myhero.status===HERO_STATUS.CITY) {
+					guards += game.myhero.sergeants + game.myhero.turkopols + game.myhero.knights;
 				}
 				guards     = Math.ceil(guards / 4);
 				guards    += game.treasuryGuard;
-				rndThieves = Math.floor(Math.random()*(guards+1)+1);
+				var rndThieves = Math.floor(Math.random()*(guards+1)+1);
 				if (rndThieves === 1) {
-					goldLost      = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
+					var goldLost = Math.floor(Math.random() * (game.gold/(1+game.buildLevelStash))/(guards-game.treasuryGuard+1)+1);
 					if (goldLost > game.gold) {
 						goldLost = game.gold;
 					}
@@ -2849,7 +2779,7 @@
 						document.getElementById('stealingAudio0').play();
 					}
 					game.gold     = game.gold - goldLost;
-					msg = localeStrings[42].replace("%arg1", goldLost);
+					var msg = localeStrings[42].replace("%arg1", goldLost);
 					postEventLog(msg);
 					updateResources();
 					if (game.isTutorialState && !game.tips.includes("tutorial_stash")){
@@ -2983,12 +2913,16 @@
 		},
 		chestCityDisappear : function () {
 			game.chestCity = 0;
-			removeIndex = buildingsInTown.indexOf('chest');
-			deleteFromArray(buildingsInTown, removeIndex);
+			var removeIndex = buildingsInTown.findIndex(function (building) {
+				return building.name === 'chest';
+			});
+			if (removeIndex > -1) {
+				buildingsInTown = deleteFromArray(buildingsInTown, removeIndex);
+			}
 			composite();
 		},
 		chestCityOpen : function () {
-			msg = locObj.city_chest_gold.txt.replace("%arg1", config.chestCity);
+			var msg = locObj.city_chest_gold.txt.replace("%arg1", config.chestCity);
 			postEventLog(msg);
 			var gold_diff = game.addMoneyToTreasury(config.chestCity);
 			if (gold_diff!==config.chestCity){
@@ -3959,22 +3893,36 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		postEventLog(locObj.welcome2.txt);
 	}
 	function postEventLog(msgEventLog, styling) {
-        if (typeof styling !== 'undefined') {
-            styling = styling.toUpperCase();
-        } else {
-            styling = "";
-        }
-        styling = styling.toUpperCase();
-        if (styling.indexOf("BOLD")!==-1){
-            msgEventLog = "<b>"+msgEventLog+"</b>";
-        }
-        if (styling.indexOf("ITALIC")!==-1){
-            msgEventLog = "<i>"+msgEventLog+"</i>";
-        }
-        if (styling.indexOf("RED")!==-1){
-            msgEventLog = "<font color='red'>"+msgEventLog+"</font>";
-        }
-		document.getElementById("log").innerHTML += getTime(0)+": "+msgEventLog+"<br>";
+
+				if (styling) {
+					styling = styling.toUpperCase();
+
+					switch (styling) {
+						case 'BOLD': msgEventLog = '<b>' + msgEventLog + '</b>'; break;
+						case 'ITALIC': msgEventLog = '<i>' + msgEventLog + '</i>'; break;
+						case 'RED': msgEventLog = '<font>' + msgEventLog + '</font>'; break;
+						default: console.warn('Unknown msg styling');
+					}
+				}
+
+
+
+        // if (typeof styling !== 'undefined') {
+        //     styling = styling.toUpperCase();
+        // } else {
+        //     styling = "";
+        // }
+        // styling = styling.toUpperCase();
+        // if (styling.indexOf("BOLD")!==-1){
+        //     msgEventLog = "<b>"+msgEventLog+"</b>";
+        // }
+        // if (styling.indexOf("ITALIC")!==-1){
+        //     msgEventLog = "<i>"+msgEventLog+"</i>";
+        // }
+        // if (styling.indexOf("RED")!==-1){
+        //     msgEventLog = "<font color='red'>"+msgEventLog+"</font>";
+        // }
+		document.getElementById('log').innerHTML += getTime(0) + ': ' + msgEventLog + '<br>';
 		scrollDown();
 	}
 	function clearJournalLog() {
@@ -4153,12 +4101,9 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		game.userASaveAck = 0;
 
 		setTutorialAfterSaveRestore(gameTemp);
-		if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN){
-			createJournalAccordion();
-	    }
-	    if (game.myhero.status === HERO_STATUS.ADVENTURE_MAP){
-			createJournalAccordion();
-	    }
+		if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN || game.myhero.status === HERO_STATUS.ADVENTURE_MAP){
+			createJournalAccordion()
+		}
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };

@@ -1,62 +1,45 @@
-function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
 function addItem(target, item) {
 
-	if (target === "hero") {
-		if (game.heroExists()) {
-			var newItem = Object.assign({}, item);
-			newItem.priceBuy = newItem.priceBuy / 2;
-			newItem.uid = uuidv4();
-			game.myhero.inventory.push(newItem);
-			createElementUI(newItem, "heroMarketList");
-			equipItem(newItem.uid);
-		}
+	var newItem = Object.assign({}, item);
+	newItem.uid = uuidv4();
+
+	if (target === "hero" && game.heroExists()) {
+		newItem.priceBuy = newItem.priceBuy / 2;
+		game.myhero.inventory.push(newItem);
+		createElementUI(newItem, "heroMarketList");
+		equipItem(newItem.uid);
 	}
 
 	if (target === "trader") {
-		var newItem = Object.assign({}, item);
-		newItem.uid = uuidv4();
 		game.blackMarketGoods.push(newItem);
 		createElementUI(newItem, "marketList");
 	}
 
-};
+}
 
+function removeItem(target, item) {
 
-
-
-function removeItem(target, itemID) {
-	if (target === "hero") {
-		if (game.heroExists()) {
-			for (var i = 0; i < game.myhero.inventory.length; i++) {
-				if (game.myhero.inventory[i].id === itemID) {
-					var targetIndex = game.myhero.inventory.indexOf(game.myhero.inventory[i]);
-					game.myhero.inventory = deleteFromArray(game.myhero.inventory, targetIndex);
-					console.log(game.myhero.inventory);
-					return
-
-				}
-			}
-		}
+	if (isNil(item)) {
+		throw new Error('Item not passed.')
 	}
 
-	if (target === "trader") {
-		for (var i = 0; i < game.blackMarketGoods.length; i++) {
-			if (game.blackMarketGoods[i].id === itemID) {
-				var targetIndex = game.blackMarketGoods.indexOf(game.blackMarketGoods[i]);
-				game.blackMarketGoods = deleteFromArray(game.blackMarketGoods, targetIndex);
-				console.log('TRADER INVENTORY: ', game.blackMarketGoods);
-				return
-			}
-		}
+	var targetInventoryList = null;
+
+	switch (target) {
+		case 'hero': targetInventoryList = game.myhero.inventory; break;
+		case 'trader': targetInventoryList = game.blackMarketGoods; break;
+		default: throw new Error('Incorrect target type: available types are "trader" or "hero"');
 	}
 
-};
+	var targetIndex = targetInventoryList.findIndex(function (inventoryItem) {
+		return inventoryItem.id === item.id;
+	});
+
+	if (targetIndex > -1) {
+		targetInventoryList.splice(targetIndex, 1);
+		removeElementUI(item.uid);
+	}
+}
 
 function removeElementUI(elemUID) {
 	var selector = '[data-uid=' + '"' + elemUID + '"]';
@@ -97,8 +80,6 @@ function createElementUI(item, targetListId) {
 				return;
 			}
 
-
-
 		if (game.gold >= item.priceBuy) {
 
 			game.gold -= item.priceBuy;
@@ -107,12 +88,9 @@ function createElementUI(item, targetListId) {
 			if (targetListId === "marketList" && id === "artid00") {
 				return
 			}
-			removeItem("trader", id);
-			removeElementUI(item.uid);
+			removeItem("trader", item);
 		} else {
-			msg = "<b>%arg1</b>";
-			msg = msg.replace("%arg1",localeStrings[20]);
-			postEventLog(msg);
+			postEventLog(localeStrings[20], 'bold');
 			return
 		}
 	}
@@ -136,8 +114,7 @@ function createElementUI(item, targetListId) {
 				addItem("trader", item);
 			}
 			updateUI();
-			removeItem("hero", id);
-			removeElementUI(item.uid);
+			removeItem("hero", item);
 			unequipItem(item.uid);
 		};
 	}
@@ -186,22 +163,13 @@ var swordsCount = 0; // TODO: #SwordsRestriction Counter will be removed after h
 var ringsCount = 0; // TODO: Same as swords. For now...
 
 function equipItem(itemUID) {
-	var inventoryItem = null;
-	var equipedItem = null;
-	for (var i = 0; i < game.myhero.inventory.length; i++) {
-		if (game.myhero.inventory[i].uid === itemUID) {
-			inventoryItem = game.myhero.inventory[i];
-			break;
-		}
-	}
+	var inventoryItem = game.myhero.inventory.find(function (item) {
+		return item.uid === itemUID;
+	});
 
-	for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {
-		if (game.myhero.inventoryWorn[i].uid === itemUID) {
-			equipedItem = game.myhero.inventoryWorn[i];
-			break;
-		}
-	}
-
+	var equipedItem = game.myhero.inventoryWorn.find(function (item) {
+		return item.uid === itemUID;
+	});
 
 	if (inventoryItem && !equipedItem) {
 		var newItem = JSON.parse(JSON.stringify(inventoryItem));
@@ -216,21 +184,17 @@ function equipItem(itemUID) {
 
 		game.myhero.inventoryWorn.push(newItem);
 		recalcStats(newItem.attr);
+		updateHeroStatus();
 	}
 
 }
 
 
 function unequipItem(itemUID) {
-	var equipedItem = null;
+	var equipedItem = game.myhero.inventoryWorn.find(function (item) {
+		return item.uid === itemUID;
+	});
 
-	for (var i = 0; i < game.myhero.inventoryWorn.length; i++) {
-		if (game.myhero.inventoryWorn[i].uid === itemUID) {
-			equipedItem = game.myhero.inventoryWorn[i];
-			break;
-		}
-	}
-	
 	if (equipedItem) {
 		var substr = 'unit_';
 		var substrLength = substr.length;
@@ -279,6 +243,8 @@ function unequipItem(itemUID) {
 		if (equipedItem.id === 'artid17' || equipedItem.id === 'artid18') {
 			ringsCount--;
 		}
+
+		updateHeroStatus();
 
 	}
 
