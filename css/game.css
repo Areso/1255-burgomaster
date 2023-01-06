@@ -250,7 +250,8 @@ body {
   font-size: 13px;
 }
 
-#tabInn {
+#tabInn,
+#tabBlackmarket {
   padding: 12px;
 }
 
@@ -295,9 +296,9 @@ body {
 .inventory-item {
   box-sizing: border-box;
   padding: 10px;
-  margin: 0 10px 6px;
+  margin-bottom: 10px;
   display: flex;
-  max-width: 761px;
+  width: 100%;
   border: 1px solid #333;
   background-color: #f1f1f1;
   font-size: 15px;
@@ -410,6 +411,11 @@ body {
 #tabAutocampaignBattle {
   padding: 10px;
   overflow-y: auto;
+}
+
+#lblGoodsForSale,
+#lblGoodsForBuying {
+  margin-bottom: 12px;
 }
 
 .accordion,
