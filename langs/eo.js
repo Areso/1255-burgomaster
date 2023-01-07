@@ -35,9 +35,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//35
-localeStrings.push("tre malmultaj civitanoj");
-localeStrings.push("trezoreja gardisto(j) forsendis ĉar vi ne povas pagi al ili!");
-localeStrings.push("fajro en la urbo!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placehodler");
 localeStrings.push("Voku fajrestingistojn? Tio kostus vin %arg1 oron!");
 localeStrings.push("fajrobrigadistoj metis finon al la fajro!");//40
 localeStrings.push("ĝi brulos al cindrojn!");
@@ -557,3 +557,6 @@ locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc
 locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};
 locObj.executedMsg = {"txt": "vi ekzekutis civitanon pro %arg1", "loc":"eventlog after the execution"};
 locObj.executedGainMsg = {"txt": "%arg1 estas konfiskita posedaĵo de la ekzekutita civitano", "loc": "eventlog after the execution"};
+locObj.executionAborted = {"txt":"tre malmultaj civitanoj", "loc":"happens if you have too low amount of citizens"};
+locObj.cantUpkeepTreasuryGuards = {"txt": "trezoreja gardisto(j) forsendis ĉar vi ne povas pagi al ili!", "loc":"in calculateTurn in case of money deficite"};
+locObj.fireInCity = {"txt": "fajro en la urbo!", "loc":"happens as part of random events"};

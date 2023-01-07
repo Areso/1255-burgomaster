@@ -35,9 +35,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//35
-localeStrings.push("Ihr habt zu wenig Bürger.");
-localeStrings.push("Einige Wachleute wurden entlassen, weil Ihr sie nicht bezahlen könnt!");
-localeStrings.push("Feuer in der Stadt!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Sollen wir die Feuerwehr rufen? Es wird Euch %arg1 Gold kosten.");
 localeStrings.push("Die Feuerwehr hat den Brand gelöscht.");//40
 localeStrings.push("Alles wird zu Asche verbrennen!");
@@ -558,3 +558,6 @@ locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc
 locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};
 locObj.executedMsg = {"txt": "Ihr habt einen Bürger wegen %arg1 hingerichtet", "loc":"eventlog after the execution"};
 locObj.executedGainMsg = {"txt": "%arg1 ist beschlagnahmtes Eigentum des hingerichteten Bürgers", "loc": "eventlog after the execution"};
+locObj.executionAborted = {"txt":"Ihr habt zu wenig Bürger", "loc":"happens if you have too low amount of citizens"};
+locObj.cantUpkeepTreasuryGuards = {"txt": "Einige Wachleute wurden entlassen, weil Ihr sie nicht bezahlen könnt!", "loc":"in calculateTurn in case of money deficite"};
+locObj.fireInCity = {"txt": "Feuer in der Stadt!", "loc":"happens as part of random events"};

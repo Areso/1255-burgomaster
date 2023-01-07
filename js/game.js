@@ -2232,8 +2232,11 @@
 					console.group("%c Treausury guard: ", "background-color: cyan; color: #333");
 					console.log("Treasury guard: ", game.treasuryGuard);
 					console.groupEnd();
-
-					msg = (canUpkeep > 0) ? localeStrings[335].replace("%arg1", dissmisedTreasuryGuard) : localeStrings[37];
+                    if (canUpkeep > 0) {
+                      msg = localeStrings[335].replace("%arg1", dissmisedTreasuryGuard);
+                    } else {
+                      msg = locObj.cantUpkeepTreasuryGuards.txt
+                    }
 					postEventLog(msg);
 				}
 			}
@@ -2674,7 +2677,7 @@
 						postEventLog(localeStrings[89].replace("%arg1", gold_diff));
 					}
 				} else {
-					alertMsg        = localeStrings[36];
+					alertMsg        = locObj.executionAborted.txt;
 					showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 				}
 				updateResources();
@@ -2739,9 +2742,7 @@
 				if (game.fire === 0) {
 					var rnd = Math.floor((Math.random() * 3) + 1);
 					if (rnd === 1) {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[38]);
-						postEventLog(msg);
+						postEventLog(locObj.fireInCity.txt, "bold");
 						game.fire = 1;
 						if (game.checkAudio('sfx', 'actions')===true) {
 							document.getElementById('fireAudio0').play();

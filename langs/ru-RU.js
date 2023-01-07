@@ -35,9 +35,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//34
 localeStrings.push("placeholder");//35
-localeStrings.push("слишком мало жителей");
-localeStrings.push("охранники уволились, потому что вам нечем платить жалование!");
-localeStrings.push("пожар в городе!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Вызвать пожарных? Это будет стоить %arg1 золота");
 localeStrings.push("пожарные погасили огонь");//40
 localeStrings.push("будет гореть дотла!");
@@ -582,3 +582,6 @@ locObj.errLoadingCloudSave = {"txt":"ошибка при загрузке в и�
 locObj.errGetSaveEndpoint = {"txt":"ошибка сервера. Вы вошли в аккаунт? Сервер поднят?","loc":"endpoint error from /get_savegame"};
 locObj.executedMsg = {"txt": "вы казнили горожанина за %arg1", "loc":"eventlog after the execution"};
 locObj.executedGainMsg = {"txt": "%arg1 золотых конфисковано", "loc": "eventlog after the execution"};
+locObj.executionAborted = {"txt":"слишком мало жителей", "loc":"happens if you have too low amount of citizens"};
+locObj.cantUpkeepTreasuryGuards = {"txt": "охранники уволились, потому что вам нечем платить жалование!", "loc":"in calculateTurn in case of money deficite"};
+locObj.fireInCity = {"txt": "пожар в городе!", "loc":"happens as part of random events"};
