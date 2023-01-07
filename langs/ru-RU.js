@@ -33,8 +33,8 @@ localeStrings.push("placeholder");//30
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("вы казнили горожанина за %arg1");//34
-localeStrings.push("%arg1 золотых конфисковано");//35
+localeStrings.push("placeholder");//34
+localeStrings.push("placeholder");//35
 localeStrings.push("слишком мало жителей");
 localeStrings.push("охранники уволились, потому что вам нечем платить жалование!");
 localeStrings.push("пожар в городе!");
@@ -580,3 +580,5 @@ locObj.errNoCloudSave = {"txt":"у вас нет сохранения в Обл�
 locObj.errGettingCloudSave = {"txt":"ошибка при попытке получить сохранение из Облака","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"ошибка при загрузке в игру облачного сохранения","loc":"could happen while loading cloudsave"};
 locObj.errGetSaveEndpoint = {"txt":"ошибка сервера. Вы вошли в аккаунт? Сервер поднят?","loc":"endpoint error from /get_savegame"};
+locObj.executedMsg = {"txt": "вы казнили горожанина за %arg1", "loc":"eventlog after the execution"};
+locObj.executedGainMsg = {"txt": "%arg1 золотых конфисковано", "loc": "eventlog after the execution"};

@@ -2665,9 +2665,9 @@
 					}
 					rnd             = Math.floor((Math.random() * 6));
 					reason          = locObj.execReasons[rnd].txt;
-					msg             = localeStrings[34].replace("%arg1", reason);
+					msg             = locObj.executedMsg.txt.replace("%arg1", reason);
 					postEventLog(msg);
-					msg             = localeStrings[35].replace("%arg1", moneyToSeize);
+					msg             = locObj.executedGainMsg.txt.replace("%arg1", moneyToSeize);
 					postEventLog(msg);
 					var gold_diff   = game.addMoneyToTreasury(moneyToSeize);
 					if (gold_diff!==moneyToSeize){

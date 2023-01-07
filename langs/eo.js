@@ -33,8 +33,8 @@ localeStrings.push("placeholder");//30
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("vi ekzekutis civitanon pro %arg1");
-localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//35
 localeStrings.push("tre malmultaj civitanoj");
 localeStrings.push("trezoreja gardisto(j) forsendis ĉar vi ne povas pagi al ili!");
 localeStrings.push("fajro en la urbo!");
@@ -555,3 +555,5 @@ locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"co
 locObj.errGettingCloudSave = {"txt":"error while trying to get your cloudsave from the cloud","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc":"could happen while loading cloudsave"};
 locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};
+locObj.executedMsg = {"txt": "vi ekzekutis civitanon pro %arg1", "loc":"eventlog after the execution"};
+locObj.executedGainMsg = {"txt": "%arg1 estas konfiskita posedaĵo de la ekzekutita civitano", "loc": "eventlog after the execution"};
