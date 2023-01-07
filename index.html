@@ -53,669 +53,669 @@
       <span id="event-value" onclick="getEventHelp()"></span>
     </div>
   </div>
-		<div class="content-panel">
-			<div id="Main" class="tab">
-				<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
-				<div id="events_graphics"></div>
-				<button id="saveGameButton" onclick="saveGame()" class="btn">Save game</button>
-				<button id="loadGameButton" onclick="loadGame()" class="btn">Load game</button>
-				<button id="buttonPutOutFire" onclick="game.putOutFire()" class="btn">Put out fire</button>
-				<button id="buttonDeathPenalty" onclick="game.deathPenalty()" class="btn">Execute smb</button>
-			</div>
-			<div id="Explore" class="tab">
-				<canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
-			</div>
-			<div id="tabUniversity" class="tab">
-				<div id="available_researches">
+    <div class="content-panel">
+      <div id="Main" class="tab">
+        <canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
+        <div id="events_graphics"></div>
+        <button id="saveGameButton" onclick="saveGame()" class="btn">Save game</button>
+        <button id="loadGameButton" onclick="loadGame()" class="btn">Load game</button>
+        <button id="buttonPutOutFire" onclick="game.putOutFire()" class="btn">Put out fire</button>
+        <button id="buttonDeathPenalty" onclick="game.deathPenalty()" class="btn">Execute smb</button>
+      </div>
+      <div id="Explore" class="tab">
+        <canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
+      </div>
+      <div id="tabUniversity" class="tab">
+        <div id="available_researches">
 
-				</div>
-				<!--<img src="resources/serpentine.png" onclick="game.research('artillery')">-->
-				<div id="lblReseachHelp" class="building-description"></div>
-			</div>
-			<div id="Settings" class="tab">
-				<h3><div id="labelSettings">Settings</div></h3>
-				<button id="btnReg"   onclick="setReg()"                             >REG</button>
-				<button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
-				 Nickname: <input id="login"    type="text"     value=""><br>
-				Password: <input id="password" type="password" value=""><br>
-				<span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
-				<button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
-				<select id="selectLng" size="1" onchange="reloadLang()">
-					<option id="optionLngEn" selected value="en-US">English</option>
-					<option id="optionLngRu"          value="ru-RU">Русский</option>
-					<option id="optionLngGe"          value="de-DE">Deutsch</option>
-					<option id="optionLngEo"          value="eo">Esperanto</option>
-					<option id="optionLngFr"          value="fr-FR">Français</option>
-				</select>
-				<table>
-					<tr>
-						<td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
-						<td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
-						<td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
-					</tr>
-				</table>
-				<button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" >Save to Cloud</button>
-				<button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;">Load save from Cloud</button>
-				<br>
-				<input id="savestring" name="savestring" value="" style="width:600px">
-				<br>
-				<a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
-				<br>
-				<br>
-				<button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
-				<button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
-				<br>
-				<br>
-				<input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
-	Research			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
-				<input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
-				<label id="lblStnLines">lines</label>
-				<br>
-				<lable id="lblStnUID" style="visibility:hidden;">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px; visibility:hidden;"></label>
-				<label id="lblStnAlias" style="display: none" >Your nickname</label>
-				<input id="inpStnAliasValue" style="display: none" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
-				<br>
-				<label id="lblStnAliasResult"></label><br>
-				<textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
-			</div>
-			<div id="tabModTools" class="tab">
-				<button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden">reload settings</button>
-				<button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden">reload banned</button>
-				<div id="moderation_area"   name="moderation"    class="interface" value="" style="width:800px; height:150px; top: 80px; left: 10px"></div>
-			</div>
-			<div id="tabSettingsSound" class="tab">
-				<label id="lblSoundMenu">Sound effects and music</label><br>
-				<!--Note, those above overwrite those below-->
-				<table border="0" width="100%">
-					<tr>
-						<td width="60%"><label id="lblOption">Option</label></td>
-						<td width="20%"><label id="lblOn">On</label></td>
-						<td width="20%"><label id="lblOff">Off</label></td>
-					</tr>
-					<tr>
-						<td width="60%"><label id="lblSfxAll">All sound effects</label></td>
-						<td width="20%"><input type = "radio"
-																	 name = "sfx"
-																	 id = "sfx_on"
-																	 value = "on"
-																	 onchange="game.setupAudio('sfx','all',1)"/></td>
-						<td width="20%"><input type = "radio"
-																	 name = "sfx"
-																	 id = "sfx_off"
-																	 value = "off"
-																	 onchange="game.setupAudio('sfx','all',0)"
-																	 checked = "checked" /></td>
-					</tr>
-					<tr>
-						<td width="60%"><label id="lblSfxEvt">Effects on all events</label></td>
-						<td width="20%"><input type = "radio"
-																	 name = "sfx_events"
-																	 id = "sfx_events_on"
-																	 value = "on"
-																	 onchange="game.setupAudio('sfx','events',1)"/></td>
-						<td width="20%"><input type = "radio"
-																	 name = "sfx_events"
-																	 id = "sfx_events_off"
-																	 value = "off"
-																	 onchange="game.setupAudio('sfx','events',0)"
-																	 checked = "checked" /></td>
-					</tr>
-					<tr>
-						<td width="60%"><label id="lblSfxEvtAR">Effects on action required events</label></td>
-						<td width="20%"><input type = "radio"
-																	 name = "sfx_actions"
-																	 id = "sfx_actions_on"
-																	 value = "on"
-																	 onchange="game.setupAudio('sfx','actions',1)"/></td>
-						<td width="20%"><input type = "radio"
-																	 name = "sfx_actions"
-																	 id = "sfx_actions_off"
-																	 value = "off"
-																	 onchange="game.setupAudio('sfx','actions',0)"
-																	 checked = "checked" /></td>
-					</tr>
-					<tr>
-						<td width="60%">-----</td>
-						<td width="20%">-----</td>
-						<td width="20%">-----</td>
-					</tr>
-					<tr>
-						<td width="60%"><label id="lblMscAll">Music all</label></td>
-						<td width="20%"><input type = "radio"
-																	 name = "music_all"
-																	 id = "music_on"
-																	 value = "on"
-																	 onchange="game.setupAudio('music','all',1)"/></td>
-						<td width="20%"><input type = "radio"
-																	 name = "music_all"
-																	 id = "music_off"
-																	 value = "off"
-																	 onchange="game.setupAudio('music','all',0)"
-																	 checked = "checked" /></td>
-					</tr>
-					<tr>
-						<td width="60%"><label id="lblMscScr">Lore and scenery music</label></td>
-						<td width="20%"><input type = "radio"
-																	 name = "music_script"
-																	 id = "music_scripts_on"
-																	 onchange="game.setupAudio('music','scripts',1)"
-																	 value = "on" /></td>
-						<td width="20%"><input type = "radio"
-																	 name = "music_script"
-																	 id = "music_scripts_off"
-																	 value = "off"
-																	 onchange="game.setupAudio('music','scripts',0)"
-																	 checked = "checked" /></td>
-					</tr>
-				</table>
-				<br>
-				<hr>
-				<button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
-			</div>
-			<div id="tabGarrison" class="tab">
-				<h3><div id="labelGarrison">Garrison</div></h3>
-				<div id="divtreasuryGuard">
-					<table border="1">
-						<tr>
-							<td>
-								<div id="treasury_guard_div" align="center">
-									<img src="resources/knight6.png">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
-								<span id="treasuryGuard">0</span>
-								<button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div id="tabFirebrigade" class="tab">
-				<h3><label id="lblFirebrigade">Fire brigade</label></h3>
-				<table border="0" width="100%">
-					<tr>
-						<td width="60%"><label id="lblFBOption">The fire service is</label></td>
-						<td width="20%"><label id="lblFBOn">on duty</label></td>
-						<td width="20%"><label id="lblFBOff">off duty</label></td>
-					</tr>
-					<tr>
-						<td width="60%"></td>
-						<td width="20%"><input type = "radio"
-																	 name = "inp_fb"
-																	 id = "fb_on"
-																	 value = "on"
-																	 onchange="game.setupFirebrigade(1)"/></td>
-						<td width="20%"><input type = "radio"
-																	 name = "inp_fb"
-																	 id = "fb_off"
-																	 value = "off"
-																	 onchange="game.setupFirebrigade(0)"
-																	 checked = "checked" /></td>
-					</tr>
-				</table>
-				<br>
-				<label id="lblFBUpKeepPrice">The price of sustain of the service is:</label><label id="lblFBUpkeepPriceValue" style="margin-left:20px;">0</label>
-				<br>
-				<div id="divFBProgress" style="display: none">0% of fire extinguished</div>
-				<br>
-			</div>
-			<div id="Building" class="tab">
-				<div id="labelBuilding" style="display: none;">Building</div>
-					<div class="building-wrapper">
-						<div class="building-list">
+        </div>
+        <!--<img src="resources/serpentine.png" onclick="game.research('artillery')">-->
+        <div id="lblReseachHelp" class="building-description"></div>
+      </div>
+      <div id="Settings" class="tab">
+        <h3><div id="labelSettings">Settings</div></h3>
+        <button id="btnReg"   onclick="setReg()"                             >REG</button>
+        <button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
+         Nickname: <input id="login"    type="text"     value=""><br>
+        Password: <input id="password" type="password" value=""><br>
+        <span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
+        <button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
+        <select id="selectLng" size="1" onchange="reloadLang()">
+          <option id="optionLngEn" selected value="en-US">English</option>
+          <option id="optionLngRu"          value="ru-RU">Русский</option>
+          <option id="optionLngGe"          value="de-DE">Deutsch</option>
+          <option id="optionLngEo"          value="eo">Esperanto</option>
+          <option id="optionLngFr"          value="fr-FR">Français</option>
+        </select>
+        <table>
+          <tr>
+            <td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
+            <td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
+            <td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
+          </tr>
+        </table>
+        <button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" >Save to Cloud</button>
+        <button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;">Load save from Cloud</button>
+        <br>
+        <input id="savestring" name="savestring" value="" style="width:600px">
+        <br>
+        <a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
+        <br>
+        <br>
+        <button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
+        <button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
+        <br>
+        <br>
+        <input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
+  Research			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
+        <input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
+        <label id="lblStnLines">lines</label>
+        <br>
+        <lable id="lblStnUID" style="visibility:hidden;">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px; visibility:hidden;"></label>
+        <label id="lblStnAlias" style="display: none" >Your nickname</label>
+        <input id="inpStnAliasValue" style="display: none" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
+        <br>
+        <label id="lblStnAliasResult"></label><br>
+        <textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
+      </div>
+      <div id="tabModTools" class="tab">
+        <button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden">reload settings</button>
+        <button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden">reload banned</button>
+        <div id="moderation_area"   name="moderation"    class="interface" value="" style="width:800px; height:150px; top: 80px; left: 10px"></div>
+      </div>
+      <div id="tabSettingsSound" class="tab">
+        <label id="lblSoundMenu">Sound effects and music</label><br>
+        <!--Note, those above overwrite those below-->
+        <table border="0" width="100%">
+          <tr>
+            <td width="60%"><label id="lblOption">Option</label></td>
+            <td width="20%"><label id="lblOn">On</label></td>
+            <td width="20%"><label id="lblOff">Off</label></td>
+          </tr>
+          <tr>
+            <td width="60%"><label id="lblSfxAll">All sound effects</label></td>
+            <td width="20%"><input type = "radio"
+                                   name = "sfx"
+                                   id = "sfx_on"
+                                   value = "on"
+                                   onchange="game.setupAudio('sfx','all',1)"/></td>
+            <td width="20%"><input type = "radio"
+                                   name = "sfx"
+                                   id = "sfx_off"
+                                   value = "off"
+                                   onchange="game.setupAudio('sfx','all',0)"
+                                   checked = "checked" /></td>
+          </tr>
+          <tr>
+            <td width="60%"><label id="lblSfxEvt">Effects on all events</label></td>
+            <td width="20%"><input type = "radio"
+                                   name = "sfx_events"
+                                   id = "sfx_events_on"
+                                   value = "on"
+                                   onchange="game.setupAudio('sfx','events',1)"/></td>
+            <td width="20%"><input type = "radio"
+                                   name = "sfx_events"
+                                   id = "sfx_events_off"
+                                   value = "off"
+                                   onchange="game.setupAudio('sfx','events',0)"
+                                   checked = "checked" /></td>
+          </tr>
+          <tr>
+            <td width="60%"><label id="lblSfxEvtAR">Effects on action required events</label></td>
+            <td width="20%"><input type = "radio"
+                                   name = "sfx_actions"
+                                   id = "sfx_actions_on"
+                                   value = "on"
+                                   onchange="game.setupAudio('sfx','actions',1)"/></td>
+            <td width="20%"><input type = "radio"
+                                   name = "sfx_actions"
+                                   id = "sfx_actions_off"
+                                   value = "off"
+                                   onchange="game.setupAudio('sfx','actions',0)"
+                                   checked = "checked" /></td>
+          </tr>
+          <tr>
+            <td width="60%">-----</td>
+            <td width="20%">-----</td>
+            <td width="20%">-----</td>
+          </tr>
+          <tr>
+            <td width="60%"><label id="lblMscAll">Music all</label></td>
+            <td width="20%"><input type = "radio"
+                                   name = "music_all"
+                                   id = "music_on"
+                                   value = "on"
+                                   onchange="game.setupAudio('music','all',1)"/></td>
+            <td width="20%"><input type = "radio"
+                                   name = "music_all"
+                                   id = "music_off"
+                                   value = "off"
+                                   onchange="game.setupAudio('music','all',0)"
+                                   checked = "checked" /></td>
+          </tr>
+          <tr>
+            <td width="60%"><label id="lblMscScr">Lore and scenery music</label></td>
+            <td width="20%"><input type = "radio"
+                                   name = "music_script"
+                                   id = "music_scripts_on"
+                                   onchange="game.setupAudio('music','scripts',1)"
+                                   value = "on" /></td>
+            <td width="20%"><input type = "radio"
+                                   name = "music_script"
+                                   id = "music_scripts_off"
+                                   value = "off"
+                                   onchange="game.setupAudio('music','scripts',0)"
+                                   checked = "checked" /></td>
+          </tr>
+        </table>
+        <br>
+        <hr>
+        <button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
+      </div>
+      <div id="tabGarrison" class="tab">
+        <h3><div id="labelGarrison">Garrison</div></h3>
+        <div id="divtreasuryGuard">
+          <table border="1">
+            <tr>
+              <td>
+                <div id="treasury_guard_div" align="center">
+                  <img src="resources/knight6.png">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
+                <span id="treasuryGuard">0</span>
+                <button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="tabFirebrigade" class="tab">
+        <h3><label id="lblFirebrigade">Fire brigade</label></h3>
+        <table border="0" width="100%">
+          <tr>
+            <td width="60%"><label id="lblFBOption">The fire service is</label></td>
+            <td width="20%"><label id="lblFBOn">on duty</label></td>
+            <td width="20%"><label id="lblFBOff">off duty</label></td>
+          </tr>
+          <tr>
+            <td width="60%"></td>
+            <td width="20%"><input type = "radio"
+                                   name = "inp_fb"
+                                   id = "fb_on"
+                                   value = "on"
+                                   onchange="game.setupFirebrigade(1)"/></td>
+            <td width="20%"><input type = "radio"
+                                   name = "inp_fb"
+                                   id = "fb_off"
+                                   value = "off"
+                                   onchange="game.setupFirebrigade(0)"
+                                   checked = "checked" /></td>
+          </tr>
+        </table>
+        <br>
+        <label id="lblFBUpKeepPrice">The price of sustain of the service is:</label><label id="lblFBUpkeepPriceValue" style="margin-left:20px;">0</label>
+        <br>
+        <div id="divFBProgress" style="display: none">0% of fire extinguished</div>
+        <br>
+      </div>
+      <div id="Building" class="tab">
+        <div id="labelBuilding" style="display: none;">Building</div>
+          <div class="building-wrapper">
+            <div class="building-list">
 
-							<div id="bldHome" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="home_img"
-										class="is-tutorial"
-										src="./resources/home_as.png"
-										alt="home_as.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)"
-									/>
-								</div>
-								<div class="building-card__action">
-									<button id="homes" class="btn is-tutorial" onclick="game.Build('Home')">Build Home</button>
-								</div>
-							</div>
+              <div id="bldHome" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="home_img"
+                    class="is-tutorial"
+                    src="./resources/home_as.png"
+                    alt="home_as.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)"
+                  />
+                </div>
+                <div class="building-card__action">
+                  <button id="homes" class="btn is-tutorial" onclick="game.Build('Home')">Build Home</button>
+                </div>
+              </div>
 
-							<div id="bldDefence" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="defences_img"
-										class="is-tutorial"
-										src="./resources/wallsf_as2.png"
-										alt="wallsf_as2.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="defence" class="btn is-tutorial" onclick="game.Build('Wall')">Build Walls</button>
-								</div>
-							</div>
+              <div id="bldDefence" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="defences_img"
+                    class="is-tutorial"
+                    src="./resources/wallsf_as2.png"
+                    alt="wallsf_as2.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="defence" class="btn is-tutorial" onclick="game.Build('Wall')">Build Walls</button>
+                </div>
+              </div>
 
-							<div id="bldTreasury" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="treasury_img"
-										class="is-tutorial"
-										src="./resources/treasury_as.png"
-										alt="treasury_as.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="treasury" class="btn is-tutorial" onclick="game.Build('Treasury')">Build Treasury</button>
-								</div>
-							</div>
+              <div id="bldTreasury" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="treasury_img"
+                    class="is-tutorial"
+                    src="./resources/treasury_as.png"
+                    alt="treasury_as.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="treasury" class="btn is-tutorial" onclick="game.Build('Treasury')">Build Treasury</button>
+                </div>
+              </div>
 
-							<div id="bldGallows" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="gallows_img"
-										class="is-tutorial"
-										src="./resources/gallows.png"
-										alt="gallows.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="buttonBldGallows" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Gallows</button>
-								</div>
-							</div>
+              <div id="bldGallows" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="gallows_img"
+                    class="is-tutorial"
+                    src="./resources/gallows.png"
+                    alt="gallows.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="buttonBldGallows" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Gallows</button>
+                </div>
+              </div>
 
-							<div id="bldFountain" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="fountain_img"
-										class="is-tutorial"
-										src="./resources/fountain.png"
-										alt="fountain.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Fountain')">Build Fountain</button>
-								</div>
-							</div>
+              <div id="bldFountain" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="fountain_img"
+                    class="is-tutorial"
+                    src="./resources/fountain.png"
+                    alt="fountain.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Fountain')">Build Fountain</button>
+                </div>
+              </div>
 
-							<div id="bldStash" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="moneystash_img"
-										class="is-tutorial"
-										src="./resources/trapdoor.png"
-										alt="trapdoor.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="buttonBldStash" class="btn is-tutorial" onclick="game.Build('Stash')">Build Stash</button>
-								</div>
-							</div>
+              <div id="bldStash" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="moneystash_img"
+                    class="is-tutorial"
+                    src="./resources/trapdoor.png"
+                    alt="trapdoor.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="buttonBldStash" class="btn is-tutorial" onclick="game.Build('Stash')">Build Stash</button>
+                </div>
+              </div>
 
-							<div id="bldStable" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="stable_img"
-										class="is-tutorial"
-										src="./resources/stable.png"
-										alt="stable.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="buttonBldStable" class="btn is-tutorial" onclick="game.Build('Stable')">Build Stable</button>
-								</div>
-							</div>
+              <div id="bldStable" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="stable_img"
+                    class="is-tutorial"
+                    src="./resources/stable.png"
+                    alt="stable.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="buttonBldStable" class="btn is-tutorial" onclick="game.Build('Stable')">Build Stable</button>
+                </div>
+              </div>
 
-							<div id="bldArchery" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="archery_img"
-										class="is-tutorial"
-										src="./resources/archery_range.png"
-										alt="archery_range.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="buttonBldArchery" class="btn is-tutorial" onclick="game.Build('Archery')">Build Archery range</button>
-								</div>
-							</div>
+              <div id="bldArchery" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="archery_img"
+                    class="is-tutorial"
+                    src="./resources/archery_range.png"
+                    alt="archery_range.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="buttonBldArchery" class="btn is-tutorial" onclick="game.Build('Archery')">Build Archery range</button>
+                </div>
+              </div>
 
-							<div id="bldInn" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="inn_img"
-										class="is-tutorial"
-										src="./resources/inn.png"
-										alt="tavern.png"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="buttonBldInn" class="btn is-tutorial" onclick="game.Build('Inn')">Build Inn</button>
-								</div>
-							</div>
-							<!--UNIVERSITY-->
-							<div id="bldUniversity" class="building-card">
-								<div class="building-card__img">
-									<img
-										id="university_img"
-										src="./resources/university2.png"
-										alt="university image"
-										onmouseover="game.help(this)"
-										onclick="game.help(this)">
-								</div>
-								<div class="building-card__action">
-									<button id="buttonBuildUniversity" class="btn" onclick="game.Build('University')">Build University</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				<div id="lblBuildHelp" class="building-description"></div>
-			</div>
-			<div id="About" class="tab">
-				<div id="aboutGameWrapper">
-					<div id="lblAboutGame">
-						<h1>1255 Burgomaster</h1>
-						<h2>How to play</h2>
-					</div>
-				</div>
-			</div>
-			<div id="tabPopulation" class="tab">
-				<div id="lblTabPop">Population history tab</div>
-				<br>
-				<table border="1">
-					<tbody>
-					<tr id="popStatK">
-					</tr>
-					<tr id="popStatV">
-					</tr>
-					</tbody>
-				</table>
-				<br>
-				<button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px">To the beginning</button>
-				<button id="btnPopPrev"     onclick="popPrev()" style="width:160px">Earlier</button>
-				<button id="btnPopNext"     onclick="popNext()" style="width:160px">Later</button>
-				<button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px">To the end</button>
-				<br>
-				<br>
-				<div id="lblCurrentPopLimit"></div>
-			</div>
-			<div id="tabGold" class="tab">
-				<div id="lblTabGold">Gold history tab</div>
-				<br>
-				<table border="1">
-					<tbody>
-					<tr id="goldStatK">
-					</tr>
-					<tr id="goldStatV">
-					</tr>
-					</tbody>
-				</table>
-				<br>
-				<button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px">To the beginning</button>
-				<button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px">Earlier</button>
-				<button id="btnGoldNext"     onclick="goldNext()" style="width:160px">Later</button>
-				<button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px">To the end</button>
-				<br>
-				<br>
-				<div id="lblCurrentGoldLimit"></div>
-			</div>
-			<div id="tabInn" class="tab">
-				<h3 id="lblTabInn">Welcome to Inn!</h3>
-				<div id="hireHeroBlock">
-					<label id="lblAvailableForHire">Hero for hire</label>
-					<table>
-						<tr>
-							<td>
-								<!--HRP-->
-								<img id="imgPrevHero" src="resources/pointer_l.png" onclick="prevHero()">
-								<img id="imgHeroForHire" src="resources/hero-knight.png">
-								<img id="imgNextHero" src="resources/pointer_r.png" onclick="nextHero()">
-							</td>
-							<td>
-								<div>
-									<label id="lblClassForHire">Knight</label>
-									<label>,  </label>
-									<label id="lblLevelForHireLbl">level </label>
-									<label id="lblLevelForHire">1</label>
-								</div>
-								<div>
-									<label id="lblPrimaryStats">ATK:2, DEF:2, INT: 2, MP: 20</label>
-								</div>
-								<div>
-									<label id="lblSpeciality">Get high chances to increase ATK when level up</label>
-								</div>
-							</td>
-						</tr>
-					</table>
-					<button id="btnHireHero" class="btn" onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
-				</div>
-				<div id="heroUpkeep">
-					<label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
-					<select id="selectUpkeepSrc" size="1" onchange="game.changeUpkeepSrc()">
-						<option id="optionPurse" selected value="0">Hero's purse</option>
-						<option id="optionTreasury"       value="1">Treasury</option>
-					</select>
-				</div>
-				<div id="heroStats"></div>
-				<button id="btnDismissHero" class="btn"   onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
-				<button id="btnAutocampaign"  class="btn"   onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
-				<button id="btnAutocampaignJournal" class="btn"   onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
-				<button id="btnTowngate" class="btn" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
-				<br>
-				<br>
-				<button id="btnLeaveCity" class="btn"   onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
-				<button id="btnGenerateMap" class="btn"  onclick="game.generateMap()" style="width:160px">Regenerate map</button>
+              <div id="bldInn" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="inn_img"
+                    class="is-tutorial"
+                    src="./resources/inn.png"
+                    alt="tavern.png"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="buttonBldInn" class="btn is-tutorial" onclick="game.Build('Inn')">Build Inn</button>
+                </div>
+              </div>
+              <!--UNIVERSITY-->
+              <div id="bldUniversity" class="building-card">
+                <div class="building-card__img">
+                  <img
+                    id="university_img"
+                    src="./resources/university2.png"
+                    alt="university image"
+                    onmouseover="game.help(this)"
+                    onclick="game.help(this)">
+                </div>
+                <div class="building-card__action">
+                  <button id="buttonBuildUniversity" class="btn" onclick="game.Build('University')">Build University</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div id="lblBuildHelp" class="building-description"></div>
+      </div>
+      <div id="About" class="tab">
+        <div id="aboutGameWrapper">
+          <div id="lblAboutGame">
+            <h1>1255 Burgomaster</h1>
+            <h2>How to play</h2>
+          </div>
+        </div>
+      </div>
+      <div id="tabPopulation" class="tab">
+        <div id="lblTabPop">Population history tab</div>
+        <br>
+        <table border="1">
+          <tbody>
+          <tr id="popStatK">
+          </tr>
+          <tr id="popStatV">
+          </tr>
+          </tbody>
+        </table>
+        <br>
+        <button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px">To the beginning</button>
+        <button id="btnPopPrev"     onclick="popPrev()" style="width:160px">Earlier</button>
+        <button id="btnPopNext"     onclick="popNext()" style="width:160px">Later</button>
+        <button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px">To the end</button>
+        <br>
+        <br>
+        <div id="lblCurrentPopLimit"></div>
+      </div>
+      <div id="tabGold" class="tab">
+        <div id="lblTabGold">Gold history tab</div>
+        <br>
+        <table border="1">
+          <tbody>
+          <tr id="goldStatK">
+          </tr>
+          <tr id="goldStatV">
+          </tr>
+          </tbody>
+        </table>
+        <br>
+        <button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px">To the beginning</button>
+        <button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px">Earlier</button>
+        <button id="btnGoldNext"     onclick="goldNext()" style="width:160px">Later</button>
+        <button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px">To the end</button>
+        <br>
+        <br>
+        <div id="lblCurrentGoldLimit"></div>
+      </div>
+      <div id="tabInn" class="tab">
+        <h3 id="lblTabInn">Welcome to Inn!</h3>
+        <div id="hireHeroBlock">
+          <label id="lblAvailableForHire">Hero for hire</label>
+          <table>
+            <tr>
+              <td>
+                <!--HRP-->
+                <img id="imgPrevHero" src="resources/pointer_l.png" onclick="prevHero()">
+                <img id="imgHeroForHire" src="resources/hero-knight.png">
+                <img id="imgNextHero" src="resources/pointer_r.png" onclick="nextHero()">
+              </td>
+              <td>
+                <div>
+                  <label id="lblClassForHire">Knight</label>
+                  <label>,  </label>
+                  <label id="lblLevelForHireLbl">level </label>
+                  <label id="lblLevelForHire">1</label>
+                </div>
+                <div>
+                  <label id="lblPrimaryStats">ATK:2, DEF:2, INT: 2, MP: 20</label>
+                </div>
+                <div>
+                  <label id="lblSpeciality">Get high chances to increase ATK when level up</label>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <button id="btnHireHero" class="btn" onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+        </div>
+        <div id="heroUpkeep">
+          <label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
+          <select id="selectUpkeepSrc" size="1" onchange="game.changeUpkeepSrc()">
+            <option id="optionPurse" selected value="0">Hero's purse</option>
+            <option id="optionTreasury"       value="1">Treasury</option>
+          </select>
+        </div>
+        <div id="heroStats"></div>
+        <button id="btnDismissHero" class="btn"   onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
+        <button id="btnAutocampaign"  class="btn"   onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
+        <button id="btnAutocampaignJournal" class="btn"   onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
+        <button id="btnTowngate" class="btn" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
+        <br>
+        <br>
+        <button id="btnLeaveCity" class="btn"   onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
+        <button id="btnGenerateMap" class="btn"  onclick="game.generateMap()" style="width:160px">Regenerate map</button>
 
-				<button id="btnAutobattlesList" class="btn" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
+        <button id="btnAutobattlesList" class="btn" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
 
-			</div>
-			<div id="tabAutocampaignJournal" class="tab">
-				<div id="lblAutocampaignJournal"></div>
-				<button id="btnToInn" class="btn"  style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
-			</div>
-			<div id="tabAutocampaignBattle" class="tab">
-				<div id="lblAutocampaignBattle"></div>
-				<button id="btnToInn1" class="btn" style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
-			</div>
-			<div id="tabTroopsHiring" class="tab">
-				<div class="grid-container" style="width: 800px; height: 480px">
-					<div class="grid-item hire" id="grid-hire11">
-						<img id="imgHiringScreenSergeantToHire"   src="resources/sergeant.png" class="unit-img"
-								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-					</div>
-					<div class="grid-item hire" id="grid-hire12">
-						<img id="imgHiringScreenTurkopolToHire" src="resources/turkopol.png" class="unit-img"
-								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-					</div>
-					<div class="grid-item hire" id="grid-hire13">
-						<img id="imgHiringScreenKnightToHire" src="resources/knight.png" class="unit-img"
-								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-					</div>
-					<div class="grid-item hire not-implemented" id="grid-hire21">4</div>
-					<div class="grid-item hire not-implemented" id="grid-hire22">5</div>
-					<div class="grid-item hire not-implemented" id="grid-hire23">6</div>
-					<div class="grid-item" id="grid-info">info</div>
-					<div class="grid-item" id="grid-castellan">
-						<img id="imgCastellanInHiringScreen" src="resources/castellan.png">
-					</div>
-					<div class="grid-item" id="grid-garrison1">
-						<img id="imgHiringScreenGarrisonSergeant1" src="resources/sergeant.png" class="unit-img"
-								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-					</div>
-					<div class="grid-item" id="grid-garrison1v">10</div>
-					<div class="grid-item" id="grid-garrison2">
-						<img id="imgHiringScreenGarrisonTurkopol2" src="resources/turkopol.png" class="unit-img"
-								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-					</div>
-					<div class="grid-item" id="grid-garrison2v">200</div>
-					<div class="grid-item" id="grid-garrison3">
-						<img id="imgHiringScreenGarrisonKnight3" src="resources/knight.png" class="unit-img"
-								 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
-					</div>
-					<div class="grid-item" id="grid-garrison3v">300</div>
-					<div class="grid-item not-implemented" id="grid-garrison4">garrison4</div>
-					<div class="grid-item not-implemented" id="grid-garrison4v">400</div>
-					<div class="grid-item not-implemented" id="grid-garrison5">garrison5</div>
-					<div class="grid-item not-implemented" id="grid-garrison5v">500</div>
-					<div class="grid-item not-implemented" id="grid-garrison6">garrison6</div>
-					<div class="grid-item not-implemented" id="grid-garrison6v">600</div>
+      </div>
+      <div id="tabAutocampaignJournal" class="tab">
+        <div id="lblAutocampaignJournal"></div>
+        <button id="btnToInn" class="btn"  style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
+      </div>
+      <div id="tabAutocampaignBattle" class="tab">
+        <div id="lblAutocampaignBattle"></div>
+        <button id="btnToInn1" class="btn" style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
+      </div>
+      <div id="tabTroopsHiring" class="tab">
+        <div class="grid-container" style="width: 800px; height: 480px">
+          <div class="grid-item hire" id="grid-hire11">
+            <img id="imgHiringScreenSergeantToHire"   src="resources/sergeant.png" class="unit-img"
+                 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+          </div>
+          <div class="grid-item hire" id="grid-hire12">
+            <img id="imgHiringScreenTurkopolToHire" src="resources/turkopol.png" class="unit-img"
+                 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+          </div>
+          <div class="grid-item hire" id="grid-hire13">
+            <img id="imgHiringScreenKnightToHire" src="resources/knight.png" class="unit-img"
+                 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+          </div>
+          <div class="grid-item hire not-implemented" id="grid-hire21">4</div>
+          <div class="grid-item hire not-implemented" id="grid-hire22">5</div>
+          <div class="grid-item hire not-implemented" id="grid-hire23">6</div>
+          <div class="grid-item" id="grid-info">info</div>
+          <div class="grid-item" id="grid-castellan">
+            <img id="imgCastellanInHiringScreen" src="resources/castellan.png">
+          </div>
+          <div class="grid-item" id="grid-garrison1">
+            <img id="imgHiringScreenGarrisonSergeant1" src="resources/sergeant.png" class="unit-img"
+                 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+          </div>
+          <div class="grid-item" id="grid-garrison1v">10</div>
+          <div class="grid-item" id="grid-garrison2">
+            <img id="imgHiringScreenGarrisonTurkopol2" src="resources/turkopol.png" class="unit-img"
+                 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+          </div>
+          <div class="grid-item" id="grid-garrison2v">200</div>
+          <div class="grid-item" id="grid-garrison3">
+            <img id="imgHiringScreenGarrisonKnight3" src="resources/knight.png" class="unit-img"
+                 onmouseover="hoverInObj(this)" onmouseout="hoverOutObj(this)" onclick="selectObj(this)">
+          </div>
+          <div class="grid-item" id="grid-garrison3v">300</div>
+          <div class="grid-item not-implemented" id="grid-garrison4">garrison4</div>
+          <div class="grid-item not-implemented" id="grid-garrison4v">400</div>
+          <div class="grid-item not-implemented" id="grid-garrison5">garrison5</div>
+          <div class="grid-item not-implemented" id="grid-garrison5v">500</div>
+          <div class="grid-item not-implemented" id="grid-garrison6">garrison6</div>
+          <div class="grid-item not-implemented" id="grid-garrison6v">600</div>
 
-					<div class="grid-item visiting-hero" id="grid-hero">
-						<img id="imgHeroInHiringScreen" width="90px" height="90px" style="display: none" src="" >
-						<img id="imgHeroInHiringScreenKnight2" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
-						<img id="imgHeroInHiringScreenMonk2" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
-					</div>
-					<div class="grid-item visiting-hero" id="grid-hero1">
-						<img id="imgHiringScreenHeroSergeant1" src="resources/sergeant.png">
-					</div>
-					<div class="grid-item visiting-hero" id="grid-hero1v">100</div>
-					<div class="grid-item visiting-hero" id="grid-hero2">
-						<img id="imgHiringScreenHeroTurkopol2" src="resources/turkopol.png">
-					</div>
-					<div class="grid-item visiting-hero" id="grid-hero2v">200</div>
-					<div class="grid-item visiting-hero" id="grid-hero3">
-						<img id="imgHiringScreenHeroKnight3"   src="resources/knight.png"  >
-					</div>
-					<div class="grid-item visiting-hero" id="grid-hero3v">300</div>
-					<div class="grid-item not-implemented" id="grid-hero4">hero4</div>
-					<div class="grid-item not-implemented" id="grid-hero4v">400</div>
-					<div class="grid-item not-implemented" id="grid-hero5">hero5</div>
-					<div class="grid-item not-implemented" id="grid-hero5v">500</div>
-					<div class="grid-item not-implemented" id="grid-hero6">hero6</div>
-					<div class="grid-item not-implemented" id="grid-hero6v">600</div>
-				</div>
-			</div>
+          <div class="grid-item visiting-hero" id="grid-hero">
+            <img id="imgHeroInHiringScreen" width="90px" height="90px" style="display: none" src="" >
+            <img id="imgHeroInHiringScreenKnight2" style="display: none" src="resources/hero-knight.png" onmouseover="game.help(this)">
+            <img id="imgHeroInHiringScreenMonk2" style="display: none" src="resources/hero-monk.png" onmouseover="game.help(this)">
+          </div>
+          <div class="grid-item visiting-hero" id="grid-hero1">
+            <img id="imgHiringScreenHeroSergeant1" src="resources/sergeant.png">
+          </div>
+          <div class="grid-item visiting-hero" id="grid-hero1v">100</div>
+          <div class="grid-item visiting-hero" id="grid-hero2">
+            <img id="imgHiringScreenHeroTurkopol2" src="resources/turkopol.png">
+          </div>
+          <div class="grid-item visiting-hero" id="grid-hero2v">200</div>
+          <div class="grid-item visiting-hero" id="grid-hero3">
+            <img id="imgHiringScreenHeroKnight3"   src="resources/knight.png"  >
+          </div>
+          <div class="grid-item visiting-hero" id="grid-hero3v">300</div>
+          <div class="grid-item not-implemented" id="grid-hero4">hero4</div>
+          <div class="grid-item not-implemented" id="grid-hero4v">400</div>
+          <div class="grid-item not-implemented" id="grid-hero5">hero5</div>
+          <div class="grid-item not-implemented" id="grid-hero5v">500</div>
+          <div class="grid-item not-implemented" id="grid-hero6">hero6</div>
+          <div class="grid-item not-implemented" id="grid-hero6v">600</div>
+        </div>
+      </div>
 
-			<div id="tabBlackmarket" class="tab">
-				<div>
-					<div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
-					<div id="marketList"></div>
-				</div>
-				<div>
-					<div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
-					<div id="heroMarketList"></div>
-				</div>
-				<button id="btnLeaveBlackmarket" onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
-			</div>
-			<div id="tabEvent" class="tab">
-				<lbl id="lblEventDetails">
+      <div id="tabBlackmarket" class="tab">
+        <div>
+          <div id="lblGoodsForSale">This blackmarket offers these goods for sale!</div>
+          <div id="marketList"></div>
+        </div>
+        <div>
+          <div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
+          <div id="heroMarketList"></div>
+        </div>
+        <button id="btnLeaveBlackmarket" onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
+      </div>
+      <div id="tabEvent" class="tab">
+        <lbl id="lblEventDetails">
 
-				</lbl>
-				<br>
-				<button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()">Open Leaderboard</button>
-			</div>
-			<div id="feedbackForm" class="tab">
+        </lbl>
+        <br>
+        <button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()">Open Leaderboard</button>
+      </div>
+      <div id="feedbackForm" class="tab">
 
-			</div>
-			<div id="tabEventLeaderboard" class="tab">
-				<div id="lblEventLBDetails">
+      </div>
+      <div id="tabEventLeaderboard" class="tab">
+        <div id="lblEventLBDetails">
 
-				</div>
-				<button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')">Back</button>
-			</div>
-			<div id="tabEventReward" class="tab">
-				<lbl id="lblEventReward">
+        </div>
+        <button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')">Back</button>
+      </div>
+      <div id="tabEventReward" class="tab">
+        <lbl id="lblEventReward">
 
-				</lbl>
-			</div>
-			<div id="Discord" class="tab">
-				<iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="480" allowtransparency="true" frameborder="0"></iframe>
-			</div>
-			<div id="audio" class="tab">
-				<audio id="fireAudio0">
-					<source src="sounds/sfx/3_sound_of_fire_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="stableAudio0">
-					<source src="sounds/sfx/16_sound_of_horse_neighing_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="stableAudio1">
-					<source src="sounds/sfx/16_sound_of_horse_neighing_1.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="stableAudio2">
-					<source src="sounds/sfx/16_sound_of_horse_neighing_2.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="treasuryAudio0">
-					<source src="sounds/sfx/10_sound_of_treasury_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="treasuryAudio1">
-					<source src="sounds/sfx/10_sound_of_treasury_1.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="treasuryAudio2">
-					<source src="sounds/sfx/10_sound_of_treasury_2.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="archeryAudio0">
-					<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="archeryAudio1">
-					<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_1.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="archeryAudio2">
-					<source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_2.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="fountainAudio0">
-					<source src="sounds/sfx/1_sound_of_fountain_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="innAudio0">
-					<source src="sounds/sfx/9_sound_of_inn_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="gallowsAudio0">
-					<source src="sounds/sfx/2_sound_of_gallows_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="sawmillAudio0">
-					<source src="sounds/sfx/11_sawmill_sound_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="sawmillAudio1">
-					<source src="sounds/sfx/11_sawmill_sound_1.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="sawmillAudio2">
-					<source src="sounds/sfx/11_sawmill_sound_2.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="plagueAudio0">
-					<source src="sounds/sfx/7_sound_of_dying_people_0.mp3" type="audio/mpeg">
-				</audio>
-				<audio id="stealingAudio0">
-					<source src="sounds/sfx/6_sound_of_stealing_gold_0.mp3" type="audio/mpeg">
-				</audio>
-			</div>
-			<div id="tabDebugging" class="tab">
-				<div id="inpTable">
+        </lbl>
+      </div>
+      <div id="Discord" class="tab">
+        <iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="480" allowtransparency="true" frameborder="0"></iframe>
+      </div>
+      <div id="audio" class="tab">
+        <audio id="fireAudio0">
+          <source src="sounds/sfx/3_sound_of_fire_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="stableAudio0">
+          <source src="sounds/sfx/16_sound_of_horse_neighing_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="stableAudio1">
+          <source src="sounds/sfx/16_sound_of_horse_neighing_1.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="stableAudio2">
+          <source src="sounds/sfx/16_sound_of_horse_neighing_2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="treasuryAudio0">
+          <source src="sounds/sfx/10_sound_of_treasury_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="treasuryAudio1">
+          <source src="sounds/sfx/10_sound_of_treasury_1.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="treasuryAudio2">
+          <source src="sounds/sfx/10_sound_of_treasury_2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="archeryAudio0">
+          <source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="archeryAudio1">
+          <source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_1.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="archeryAudio2">
+          <source src="sounds/sfx/14_sound_of_arrow_hitting_the_wooden_target_2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="fountainAudio0">
+          <source src="sounds/sfx/1_sound_of_fountain_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="innAudio0">
+          <source src="sounds/sfx/9_sound_of_inn_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="gallowsAudio0">
+          <source src="sounds/sfx/2_sound_of_gallows_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="sawmillAudio0">
+          <source src="sounds/sfx/11_sawmill_sound_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="sawmillAudio1">
+          <source src="sounds/sfx/11_sawmill_sound_1.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="sawmillAudio2">
+          <source src="sounds/sfx/11_sawmill_sound_2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="plagueAudio0">
+          <source src="sounds/sfx/7_sound_of_dying_people_0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="stealingAudio0">
+          <source src="sounds/sfx/6_sound_of_stealing_gold_0.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div id="tabDebugging" class="tab">
+        <div id="inpTable">
 
-				</div>
-				<div id="outTable">
-				</div>
-			</div>
-			<!-- Canvas modal -->
-			<canvas id="myDCanvas" width="700" height="200" class="canvas-modal">
-				Your browser does not support the HTML5 canvas tag.
-			</canvas>
-		</div>
+        </div>
+        <div id="outTable">
+        </div>
+      </div>
+      <!-- Canvas modal -->
+      <canvas id="myDCanvas" width="700" height="200" class="canvas-modal">
+        Your browser does not support the HTML5 canvas tag.
+      </canvas>
+    </div>
 
-		<div class="info-panel">
-			<div class="info-panel__actions">
-				<button id="log_btn"  class="btn" onclick="openLog()">log</button>
-				<button id="chat_btn" class="btn" onclick="openChat()">chat</button>
-				<button id="mod_btn"  class="btn" onclick="openTab(null, 'tabModTools')" style="visibility: hidden">mod</button>
-				<div id="lbl_online"><span id="spnOnline">Online: </span><span id="spnOnlineValue">n/d</span></div>
-			</div>
-			<div id="log"  name="log"		class="info-panel__history"></div>
-			<div id="chat" name="chat" 	class="info-panel__history"></div>
-			<div id="chatForm" class="info-panel__form">
-				<input id="inp_nickname"/>
-				<div class="info-panel__form-msg">
-					<input id="msg_out"/>
-				</div>
-				<button id="btnSend" onclick="sendOnClick2()" class="btn">Send</button>
-			</div>
-		</div>
+    <div class="info-panel">
+      <div class="info-panel__actions">
+        <button id="log_btn"  class="btn" onclick="openLog()">log</button>
+        <button id="chat_btn" class="btn" onclick="openChat()">chat</button>
+        <button id="mod_btn"  class="btn" onclick="openTab(null, 'tabModTools')" style="visibility: hidden">mod</button>
+        <div id="lbl_online"><span id="spnOnline">Online: </span><span id="spnOnlineValue">n/d</span></div>
+      </div>
+      <div id="log"  name="log"		class="info-panel__history"></div>
+      <div id="chat" name="chat" 	class="info-panel__history"></div>
+      <div id="chatForm" class="info-panel__form">
+        <input id="inp_nickname"/>
+        <div class="info-panel__form-msg">
+          <input id="msg_out"/>
+        </div>
+        <button id="btnSend" onclick="sendOnClick2()" class="btn">Send</button>
+      </div>
+    </div>
 </div>
 <!--GAME CONFIG-->
 <script src="js/config.js"></script>
@@ -757,59 +757,59 @@
 <!--ONLINE OPTIONS-->
 <script async src="js/mech_online.js"></script>
 <script>
-	function accordion(elem, targetClass){
-		document.addEventListener('click', function (e) {
-		var matchStr = elem + ' ' + targetClass;
-		if (!e.target.matches(matchStr)) return;
-		else{
-			if(!e.target.parentElement.classList.contains('active')){
-				e.target.parentElement.classList.add('active');
-			}else{
-				e.target.parentElement.classList.remove('active');
-			}
-		}
-		});
-	}
-	accordion('.accordion', '.accordion-header');
-	accordion('.accordion-battle', '.accordion-battle-header');
+  function accordion(elem, targetClass){
+    document.addEventListener('click', function (e) {
+    var matchStr = elem + ' ' + targetClass;
+    if (!e.target.matches(matchStr)) return;
+    else{
+      if(!e.target.parentElement.classList.contains('active')){
+        e.target.parentElement.classList.add('active');
+      }else{
+        e.target.parentElement.classList.remove('active');
+      }
+    }
+    });
+  }
+  accordion('.accordion', '.accordion-header');
+  accordion('.accordion-battle', '.accordion-battle-header');
 </script>
 <!--Google Analytics. Sorry guys and girls, but I need some analytic from the game. Feel free to block it -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111661515-1"></script>
 <script async>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-111661515-1');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-111661515-1');
 </script>
 <!-- Yandex.Metrika counter. The same -->
 <script type="text/javascript" >
-	(function (d, w, c) {
-		(w[c] = w[c] || []).push(function() {
-			try {
-				w.yaCounter47225574 = new Ya.Metrika({
-					id:47225574,
-					clickmap:true,
-					trackLinks:true,
-					accurateTrackBounce:true,
-					webvisor:true
-				});
-			} catch(e) { }
-		});
-		var n = d.getElementsByTagName("script")[0],
-				s = d.createElement("script"),
-				f = function () { n.parentNode.insertBefore(s, n); };
-		s.type = "text/javascript";
-		s.async = true;
-		s.src = "https://mc.yandex.ru/metrika/watch.js";
-		if (w.opera == "[object Opera]") {
-			d.addEventListener("DOMContentLoaded", f, false);
-		} else { f(); }
-	})(document, window, "yandex_metrika_callbacks");
+  (function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+      try {
+        w.yaCounter47225574 = new Ya.Metrika({
+          id:47225574,
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+        });
+      } catch(e) { }
+    });
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+  })(document, window, "yandex_metrika_callbacks");
 </script>
 <noscript>
-	<div>
-	<img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" />
-	</div>
+  <div>
+  <img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" />
+  </div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
 </body>
