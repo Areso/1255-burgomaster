@@ -28,31 +28,31 @@
     <div id="lblEventCountdownValue" style="margin-left:20px;" onclick="game.getEventHelp()"></div>
     <a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>
   </div>
-		<div class="resource-panel">
-			<div class="gold-val" onclick="checkGold()">
-				<img id="gold_img_bt" class="resource-icon" src="resources/gold_a.png">
-				<span id="gold">0</span>
-			</div>
-			<div class="population-val" onclick="checkPop()">
-				<img id="pop_img" class="resource-icon" src="resources/pop.png">
-				<span id="pop">2</span>
-			</div>
-			<div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  locObj.okay.txt, '');">
-				<img id="gems_img" class="resource-icon" src="resources/amber_ico.png">
-				<span id="gems">0</span>
-			</div>
-			<div class="time-val">
-				<img class="resource-icon" src="resources/sand_clock.png">
-				<span id="dcounter">30</span>
-			</div>
-			<div class="server-val">
-				<span id="spnServerStatusLabel">Server: </span><span id="spnServerStatusValue">n/d</span>
-			</div>
-			<div class="event-val" style="margin-left: 20px;">
-				<span id="event-label" onclick="getEventHelp()"></span>
-				<span id="event-value" onclick="getEventHelp()"></span>
-			</div>
-		</div>
+  <div class="resource-panel">
+    <div class="gold-val" onclick="checkGold()">
+      <img id="gold_img_bt" class="resource-icon" src="resources/gold_a.png">
+      <span id="gold">0</span>
+    </div>
+    <div class="population-val" onclick="checkPop()">
+      <img id="pop_img" class="resource-icon" src="resources/pop.png">
+      <span id="pop">2</span>
+    </div>
+    <div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  locObj.okay.txt, '');">
+      <img id="gems_img" class="resource-icon" src="resources/amber_ico.png">
+      <span id="gems">0</span>
+    </div>
+    <div class="time-val">
+      <img class="resource-icon" src="resources/sand_clock.png">
+      <span id="dcounter">30</span>
+    </div>
+    <div class="server-val">
+      <span id="spnServerStatusLabel">Server: </span><span id="spnServerStatusValue">n/d</span>
+    </div>
+    <div class="event-val" style="margin-left: 20px;">
+      <span id="event-label" onclick="getEventHelp()"></span>
+      <span id="event-value" onclick="getEventHelp()"></span>
+    </div>
+  </div>
 		<div class="content-panel">
 			<div id="Main" class="tab">
 				<canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
