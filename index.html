@@ -20,7 +20,7 @@
 <div id="htmlGame">
   <div class="menu-panel">
     <button class="tab-link" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-    <button class="tab-link" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
+    <button class="tab-link" onclick="openTab(event, 'tabBuilding')" id="btnOpenTabBuilding">Building</button>
     <button class="tab-link" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
     <button class="tab-link" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
     <button class="tab-link" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
@@ -261,9 +261,8 @@
         <div id="divFBProgress" style="display: none">0% of fire extinguished</div>
         <br>
       </div>
-      <div id="Building" class="tab">
-        <div id="labelBuilding" style="display: none;">Building</div>
-          <div class="building-wrapper">
+      <div id="tabBuilding" class="tab">
+        <div class="building-wrapper">
             <div class="building-list">
               <div id="bldHome" class="building-card">
                 <div class="building-card__img">
@@ -296,7 +295,7 @@
                 <div class="building-card__img">
                   <img
                     id="treasury_img"
-                    class="is-tutorial"
+                    src="./resources/treasury_as.png"
                     alt="treasury_as.png"
                     onmouseover="game.help(this)"
                     onclick="game.help(this)">
@@ -400,6 +399,7 @@
             </div>
           </div>
         <div id="lblBuildHelp" class="building-description"></div>
+
       </div>
       <div id="About" class="tab">
         <div id="aboutGameWrapper">
