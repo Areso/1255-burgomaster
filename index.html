@@ -17,11 +17,10 @@
   <script src="js/dom.js" ></script>
 </head>
 <body>
-
 <div id="htmlGame">
   <div class="menu-panel">
     <button class="tab-link" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-    <button class="tab-link is-tutorial" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
+    <button class="tab-link" onclick="openTab(event, 'Building')" id="tabBuilding">Building</button>
     <button class="tab-link" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
     <button class="tab-link" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
     <button class="tab-link" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
@@ -266,12 +265,10 @@
         <div id="labelBuilding" style="display: none;">Building</div>
           <div class="building-wrapper">
             <div class="building-list">
-
               <div id="bldHome" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="home_img"
-                    class="is-tutorial"
                     src="./resources/home_as.png"
                     alt="home_as.png"
                     onmouseover="game.help(this)"
@@ -282,12 +279,10 @@
                   <button id="homes" class="btn is-tutorial" onclick="game.Build('Home')">Build Home</button>
                 </div>
               </div>
-
               <div id="bldDefence" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="defences_img"
-                    class="is-tutorial"
                     src="./resources/wallsf_as2.png"
                     alt="wallsf_as2.png"
                     onmouseover="game.help(this)"
@@ -297,13 +292,11 @@
                   <button id="defence" class="btn is-tutorial" onclick="game.Build('Wall')">Build Walls</button>
                 </div>
               </div>
-
               <div id="bldTreasury" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="treasury_img"
                     class="is-tutorial"
-                    src="./resources/treasury_as.png"
                     alt="treasury_as.png"
                     onmouseover="game.help(this)"
                     onclick="game.help(this)">
@@ -312,12 +305,10 @@
                   <button id="treasury" class="btn is-tutorial" onclick="game.Build('Treasury')">Build Treasury</button>
                 </div>
               </div>
-
               <div id="bldGallows" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="gallows_img"
-                    class="is-tutorial"
                     src="./resources/gallows.png"
                     alt="gallows.png"
                     onmouseover="game.help(this)"
@@ -327,12 +318,10 @@
                   <button id="buttonBldGallows" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Gallows</button>
                 </div>
               </div>
-
               <div id="bldFountain" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="fountain_img"
-                    class="is-tutorial"
                     src="./resources/fountain.png"
                     alt="fountain.png"
                     onmouseover="game.help(this)"
@@ -342,12 +331,10 @@
                   <button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Fountain')">Build Fountain</button>
                 </div>
               </div>
-
               <div id="bldStash" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="moneystash_img"
-                    class="is-tutorial"
                     src="./resources/trapdoor.png"
                     alt="trapdoor.png"
                     onmouseover="game.help(this)"
@@ -357,12 +344,10 @@
                   <button id="buttonBldStash" class="btn is-tutorial" onclick="game.Build('Stash')">Build Stash</button>
                 </div>
               </div>
-
               <div id="bldStable" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="stable_img"
-                    class="is-tutorial"
                     src="./resources/stable.png"
                     alt="stable.png"
                     onmouseover="game.help(this)"
@@ -372,12 +357,10 @@
                   <button id="buttonBldStable" class="btn is-tutorial" onclick="game.Build('Stable')">Build Stable</button>
                 </div>
               </div>
-
               <div id="bldArchery" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="archery_img"
-                    class="is-tutorial"
                     src="./resources/archery_range.png"
                     alt="archery_range.png"
                     onmouseover="game.help(this)"
@@ -387,12 +370,10 @@
                   <button id="buttonBldArchery" class="btn is-tutorial" onclick="game.Build('Archery')">Build Archery range</button>
                 </div>
               </div>
-
               <div id="bldInn" class="building-card">
                 <div class="building-card__img">
                   <img
                     id="inn_img"
-                    class="is-tutorial"
                     src="./resources/inn.png"
                     alt="tavern.png"
                     onmouseover="game.help(this)"
@@ -745,7 +726,7 @@
 <!--JS LIBRARY FOR MODAL DIALOGUES-->
 <script async src="js/lib_dialogue.js"></script>
 <!--JS AUTOBATTLES-->
-<script async src="js/mech_autobattle.js"></script>
+<script async src="js/mech_autobattles.js"></script>
 <!--ADVENTURE GENERATOR MAP-->
 <script async src="js/mech_advmap_gen.js"></script>
 <!--ADVENTURE RENDERER  MAP-->
