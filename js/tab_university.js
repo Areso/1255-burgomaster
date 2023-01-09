@@ -49,12 +49,15 @@ function researchHelp(myobject) {
 tech_tree_area = document.getElementById("available_researches");
 drawTabUniversity();
 function drawTabUniversity(){
-    if (!techTreeLoaded){
-        include('js/objects_technology_tree.js',function(){
-		});
-		techTreeLoaded = true;
-    }
-	tech_tree_area.innerHTML = "";
+  if (!techTreeLoaded){
+    include('js/objects_technology_tree.js',function(){
+      drawTabUniversityCallback();
+      techTreeLoaded = true;
+    });
+  }
+}
+function drawTabUniversityCallback(){
+    tech_tree_area.innerHTML = "";
 	for (tech in tech_list) {
 		//check whether we already learned (we shouldn't)
 		if (!game.techLearned.includes(tech_list[tech]["id"])) {
@@ -82,4 +85,3 @@ function drawTabUniversity(){
 		}
 	}
 }
-
