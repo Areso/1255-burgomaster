@@ -8,8 +8,8 @@ In my case, I do use Cloudflare CDN.
 4. Run `bash get_id.sh`  
 5. Copy the first ID from the output to the ~/clftoken.txt  
 6. Add this to the `crontab -e`  
-`*/1 * * * * cd /var/www/html/{{ path }}/continuous_delivery && bash cd.sh >> /root/1255.burgomaster.test.log 2>>&1`  
+`*/1 * * * * cd /var/www/html/{{ path }}/continuous_delivery && bash cd.sh > /root/1255.burgomaster.test.log 2>&1`  
 This will run the script every minute
 
 ## TL,DR:
-1. git pull & purge CloudFlare cache
+1. git pull & purge CloudFlare cache if something changed
