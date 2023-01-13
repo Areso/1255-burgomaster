@@ -3,9 +3,9 @@ function updateHeroStatus() {
 	updateHeroStatusHire();
 }
 function updateResources() {
-	document.getElementById("gold").innerHTML          = game.gold;
-	document.getElementById("pop").innerHTML           = game.pop;
-	document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
+	//document.getElementById("gold").innerHTML          = game.gold;
+	//document.getElementById("pop").innerHTML           = game.pop;
+	//document.getElementById("treasuryGuard").innerHTML = game.treasuryGuard;
 }
 function setReg(){
 	reglogin = "reg";

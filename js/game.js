@@ -56,7 +56,7 @@
 	Object.freeze(HERO_STATUS);
 
 
-	var game = {
+	var game = Bind({
 		gold: 30,
 		gems: 0,
 		pop: config.startPop,
@@ -2963,7 +2963,14 @@
 				}
 			}
 		}
-	};
+	},
+	{
+	  //those three were updated through updateResources() in dom.js
+      gold: '#gold',
+      pop: '#pop',
+      treasuryGuard: "#treasuryGuard",
+      //end of the block
+	});
 	//init const-variables
 
 	var tabLinks 		= document.querySelectorAll('.tab-link');
