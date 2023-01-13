@@ -3618,7 +3618,12 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var delimiter     = ";"
 	var nightMode     = 0;
 	var dcounter_def  = 30;
-	var dcounter      = dcounter_def;
+	//var dcounter      = dcounter_def; //TO DELETION
+	var dcounter_component = Bind({
+	  dcounter: dcounter_def,
+	},{
+	  dcounter: "#dcounter",
+	})
 	var curHeroForHire= 0;
 	var heroesForHire = [];
 	var dialogShown   = false;
@@ -4160,13 +4165,13 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		allowMvt = 1;
 	}
 	function endOfTurnTimer() {
-		if (dcounter - 1 === 0) {
+		if (dcounter_component.dcounter - 1 === 0) {
 			dcounter = dcounter_def;
 			game.calculateTurn();
 		} else {
-			dcounter = dcounter - 1;
+			dcounter_component.dcounter = dcounter_component.dcounter - 1;
 		}
-		document.getElementById('dcounter').innerText = dcounter;
+		//document.getElementById('dcounter').innerText = dcounter;
 	}
 	function cooldown() {
 		if (game.festival_cooldown-1>=0) {
