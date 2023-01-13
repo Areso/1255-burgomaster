@@ -10,3 +10,6 @@ In my case, I do use Cloudflare CDN.
 6. Add this to the `crontab -e`  
 `*/1 * * * * cd /var/www/html/{{ path }}/continuous_delivery && bash cd.sh >> /root/1255.burgomaster.test.log 2>>&1`  
 This will run the script every minute
+
+## TL,DR:
+1. git pull & purge CloudFlare cache
