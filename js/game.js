@@ -3617,10 +3617,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var cnt_cursession= 0;
 	var delimiter     = ";"
 	var nightMode     = 0;
-	var dcounter_def  = 30;
+
 	//var dcounter      = dcounter_def; //TO DELETION
 	var dcounter_component = Bind({
-	  dcounter: dcounter_def,
+	  dcounter: config.dcounter_def,
 	},{
 	  dcounter: "#dcounter",
 	})
@@ -4160,13 +4160,19 @@ function setTutorialAfterSaveRestore(gameTemp) {
 			//TODO PROMTS
 		}
 	}
+	//DOM Components
+	var amber_component = Bind({
+      amber: 0,
+    },{
+      amber: "#gems",
+    })
 	//timers
 	function cooldownMvt(){
 		allowMvt = 1;
 	}
 	function endOfTurnTimer() {
 		if (dcounter_component.dcounter - 1 === 0) {
-			dcounter = dcounter_def;
+			dcounter_component.dcounter = config.dcounter_def;
 			game.calculateTurn();
 		} else {
 			dcounter_component.dcounter = dcounter_component.dcounter - 1;

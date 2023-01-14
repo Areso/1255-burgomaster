@@ -1,5 +1,6 @@
 //gameconfig
 var config = {
+  dcounter_def: 30,
   startPop: 6,
   costWall:2,
   costTower:8,

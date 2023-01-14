@@ -175,10 +175,12 @@ function pullPremodMessages() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				the_resp = JSON.parse(this.responseText);
-				document.getElementById("gems").innerHTML = the_resp.amber;
+				if (typeof amber_component.amber     === "number") { the_resp.amber }
+				//document.getElementById("gems").innerHTML = the_resp.amber;
 			}
 			if (this.readyState === 4 && this.status !== 200) {
-				document.getElementById("gems").innerHTML = 0
+			    if (typeof amber_component.amber     === "number") { 0 }
+				//document.getElementById("gems").innerHTML = 0
 			}
 		};
 		endpoint    = webserver + "/api/v1.1/get_user_amber";
