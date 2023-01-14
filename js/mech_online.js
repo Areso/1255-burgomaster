@@ -175,7 +175,7 @@ function pullPremodMessages() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				the_resp = JSON.parse(this.responseText);
-				if (typeof amber_component.amber     === "number") { the_resp.amber }
+				if (typeof amber_component.amber     === "number") {  amber_component.amber = the_resp.amber }
 				//document.getElementById("gems").innerHTML = the_resp.amber;
 			}
 			if (this.readyState === 4 && this.status !== 200) {

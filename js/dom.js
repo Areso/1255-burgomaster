@@ -2,7 +2,7 @@
 var amber_component = Bind({
   amber: 0,
 },{
-   amber: "#gems",
+  amber: "#gems",
 });
 function updateHeroStatus() {
 	updateHeroStatusInn();
