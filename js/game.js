@@ -3018,13 +3018,7 @@
 	document.getElementById("tabCity").click();
 
 
-	// 2. Выносим сюда config и game
-
-
-
-
-
-	//TOWN
+//TOWN
 	var canvas  	= document.getElementById("canvas");
 	var canvasPos   = getElementPosition(canvas);
 
