@@ -4160,12 +4160,6 @@ function setTutorialAfterSaveRestore(gameTemp) {
 			//TODO PROMTS
 		}
 	}
-	//DOM Components
-	var amber_component = Bind({
-      amber: 0,
-    },{
-      amber: "#gems",
-    })
 	//timers
 	function cooldownMvt(){
 		allowMvt = 1;
