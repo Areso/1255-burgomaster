@@ -56,7 +56,7 @@
 	Object.freeze(HERO_STATUS);
 
 
-	var game = Bind({
+	var game = {
 		gold: 30,
 		gems: 0,
 		pop: config.startPop,
@@ -2963,14 +2963,27 @@
 				}
 			}
 		}
-	},
+	};
+	/*
+	var reactive_UI = Bind({
+        //gold: game.gold,
+        //pop: game.pop,
+        //treasuryGuards: game.treasuryGuard: 0,
+        amber: 0,
+    },{
+        //gold: "#gold",
+        //pop: "#pop",
+        //treasuryGuard: "#treasuryGuard",
+        amber: "#gems",
+    });
+    /*
 	{
 	  //those three were updated through updateResources() in dom.js
       gold: '#gold',
       pop: '#pop',
       treasuryGuard: "#treasuryGuard",
       //end of the block
-	});
+	});*/
 	//init const-variables
 
 	var tabLinks 		= document.querySelectorAll('.tab-link');
