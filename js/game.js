@@ -37,7 +37,7 @@
 			return v.toString(16);
 		});
 	}
-
+    amber = 0;
 
 	function include (url, fn) {
 		var e = document.createElement("script");
@@ -47,14 +47,17 @@
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
 
-	var HERO_STATUS = {
+	const HERO_STATUS = {
 		CITY: 0,
 		AUTOCAMPAIGN: 1,
 		ADVENTURE_MAP: 2
 	};
 
-	Object.freeze(HERO_STATUS);
-    amber = 0;
+	const ATTACK_TURN = {
+		HERO: 1,
+		ENEMY: 2
+	};
+
 
 	var game = {
 		gold: 30,
@@ -134,7 +137,7 @@
 		expReward: 0,
 		goldReward: 0,
 		difficultyModifier: 0,
-		attacker: 1,
+		attacker: ATTACK_TURN.HERO,
 		isAutoBattle: false,
 		isDefeated: false,
 		nightMode: false,
@@ -1017,11 +1020,10 @@
 							game.story.push("story_two_steps");
 							postJournalLog(locObj.story2_two_steps.txt);
 							return;
-							// showModal(0, '', getAck, locObj.story2_two_steps.txt, locObj.okay.txt, '');
 						}
 					}
 
-					var rnd = randomFromRange(1, 25);
+					let rnd = randomFromRange(1, 25);
 
 					if (rnd <= 12) {
 						game.isAutoBattle = true;
@@ -1029,6 +1031,11 @@
 						while (game.isAutoBattle) {
 						  if (typeof calcAttackPhase === "function") { calcAttackPhase("AutoCampaign") };
 						}
+
+						if (!game.isAutoBattle && game.attacker !== ATTACK_TURN.HERO) {
+							game.attacker = ATTACK_TURN.HERO;
+						}
+
 					} else {
 						postJournalLog(localeStrings[175]);
 					}
