@@ -54,7 +54,7 @@
 	};
 
 	Object.freeze(HERO_STATUS);
-
+    amber = 0;
 
 	var game = {
 		gold: 30,
@@ -1157,7 +1157,9 @@
 					blMaxLvlDef = 1;
 				}
 				if (blMaxLvlDef === 0){
+				    if (!game.tips.includes("tutorial1_pop0")){
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice);
+				    }
 				} else {
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232];
 				}
@@ -2207,11 +2209,6 @@
 					if (game.userPopAck === 0) {
 						postEventLog(locObj.buildUpgradeHouse.txt, "bold");
 						game.userPopAck = 1;
-					}
-					//TUTORIALS
-					if (game.isTutorialState && !game.tips.includes("tutorial1_pop0")){
-						game.tips.push("tutorial1_pop0");
-						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
 					}
 				}
 			}
@@ -3626,11 +3623,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var nightMode     = 0;
 
 	//var dcounter      = dcounter_def; //TO DELETION
-	var dcounter_component = Bind({
-	  dcounter: config.dcounter_def,
-	},{
-	  dcounter: "#dcounter",
-	})
+        var dcounter_component = Bind({
+          dcounter: config.dcounter_def,
+        },{
+          dcounter: "#dcounter",
+        })
 	var curHeroForHire= 0;
 	var heroesForHire = [];
 	var dialogShown   = false;
@@ -3669,7 +3666,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		}
 
 	}
-
 	function getAck() {
 		if (answer === 3) {
 			console.log("before changing tutorial state");

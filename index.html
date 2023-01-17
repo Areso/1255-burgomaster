@@ -16,6 +16,7 @@
   </script>
   <!--BIND LIBRARY-->
   <script src="js/lib/bind.min.js"></script>
+  <script src="js/lib/rivets.bundled.min.js"></script>
   <!--DOM handler-->
   <script src="js/dom.js" ></script>
 </head>
@@ -33,19 +34,23 @@
   <div class="resource-panel">
     <div class="gold-val" onclick="checkGold()">
       <img id="gold_img_bt" class="resource-icon" src="resources/gold_a.png">
-      <span id="gold">0</span>
+      <span id="gold" style="display:none">30</span>
+      <span id="panelGoldValue">{ game.gold }</span>
     </div>
     <div class="population-val" onclick="checkPop()">
       <img id="pop_img" class="resource-icon" src="resources/pop.png">
-      <span id="pop">2</span>
+      <span id="pop" style="display:none">2</span>
+      <span id="panelPopValue">{ game.pop }</span>
     </div>
     <div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  locObj.okay.txt, '');">
       <img id="gems_img" class="resource-icon" src="resources/amber_ico.png">
-      <span id="gems">0</span>
+      <span id="gems" >0</span>
+      <span id="panelAmberValue" style="display:none">{ amber }</span>
     </div>
     <div class="time-val">
       <img class="resource-icon" src="resources/sand_clock.png">
-      <span id="dcounter">30</span>
+      <span id="dcounter" >30</span>
+      <span id="panelTurnCountdown" style="display:none">{ dcounter }</span>
     </div>
     <div class="server-val">
       <span id="spnServerStatusLabel">Server: </span><span id="spnServerStatusValue">n/d</span>
@@ -702,6 +707,8 @@
 <script src="js/config.js"></script>
 <!--MOST SOURCE OF THE GAME-->
 <script src="js/game.js"></script>
+<!--BINDINGS-->
+<script src="js/bindings.js"></script>
 <!--ToDo check whether this one should be SYNC-->
 <!--JS FOR HIRING TROOPS-->
 <script src="js/tab_troops_hire.js"></script>

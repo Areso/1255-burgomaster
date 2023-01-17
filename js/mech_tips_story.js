@@ -1,4 +1,8 @@
 function gameTips() {
+    if (game.isTutorialState && !game.tips.includes("tutorial1_pop0")){
+        game.tips.push("tutorial1_pop0");
+        showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
+	}
 	if (game.ticks >= config.tutorialDefenseEventTicks){
 		if (game.isTutorialState && !game.tips.includes("tutorial_defense") && !dialogShown){
 			game.tips.push("tutorial_defense");
