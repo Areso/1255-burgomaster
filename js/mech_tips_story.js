@@ -1,3 +1,4 @@
+mech_tips_story = 1;
 function gameTips() {
     if (game.isTutorialState && !game.tips.includes("tutorial1_pop0")){
         game.tips.push("tutorial1_pop0");
@@ -44,6 +45,7 @@ function gameTips() {
 		game.tips.push("tutorial_social");
 		showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
 	}
+	return 0;
 }
 function gameStory() {
 
