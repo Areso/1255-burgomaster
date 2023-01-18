@@ -4009,11 +4009,12 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		});
 	}
 	if (!gameTemp.isTutorialState) {
-		hiddenElements.forEach(function (el) {
-			if (el.classList.contains('is-tutorial')) {
+		hiddenElements = document.querySelectorAll('.is-tutorial');
+	    if (hiddenElements.length) {
+			hiddenElements.forEach(function (el) {
 				el.classList.remove('is-tutorial');
-			}
-		});
+			});
+		}
 	}
 }
 
