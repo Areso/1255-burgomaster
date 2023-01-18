@@ -347,9 +347,9 @@ localeStrings.push("Hero");
 localeStrings.push("Move the unit to the hero's squad");
 localeStrings.push("Move the unit to the garrison");
 localeStrings.push("You don't have any units to transfer in this direction");//315
-localeStrings.push("To do that, you need to build the stable");
-localeStrings.push("To do that, you need to build the archery range");
-localeStrings.push("To do that, you need to upgrade the stable to %arg1 level");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//320
 localeStrings.push("placeholder");
@@ -497,7 +497,9 @@ locObj.advmapHeroLose = {"txt": "Your troops were defeated and the hero is force
 
 locObj.eventHalloween = {"txt": "Halloween is about collecting pumpkins!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"help"}
 locObj.couldntRecordPledge = {"txt": "It seems you are not logged it. Your pledge will not be recorded","loc":"happens when collected event item while being not logged in"}
-
+locObj.requiredStables = {"txt": "Para hacer eso, necesitas construir el establo", "loc":"happens when trying to hire sergeants if no stables built"};
+locObj.requiredArcheryRange = {"txt":"Para hacer eso, necesitas construir un campo de tiro con arco", "loc":"happens when trying to hire turkopols if no archery range is built"};
+locObj.requiredStablesUpgrade = {"txt": "Para hacerlo, debe actualizar el establo al nivel %arg1", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
 

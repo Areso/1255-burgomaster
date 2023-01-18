@@ -347,9 +347,9 @@ localeStrings.push("Герой");
 localeStrings.push("Переместить бойца в отряд героя");
 localeStrings.push("Переместить бойца в гарнизон");
 localeStrings.push("У вас нет бойцов, которых можно переместить");//315
-localeStrings.push("Для этого вам нужна конюшня");
-localeStrings.push("Для этого вам нужно стрельбище");
-localeStrings.push("Для этого нужно улучшить конюшни до %arg1 уровня");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//320
 localeStrings.push("placeholder");
@@ -526,7 +526,9 @@ locObj.advmapHeroLose = {"txt": "Ваши войска потерпели пор
 locObj.eventHalloween = {"txt": "Хэллоуин - это про тыквы!\nСоздайте новую карту приключений, чтобы найти их\nНе забудьте пройти регистрацию и залогиниться, чтобы ваш вклад был учтён", "loc":"eventhelp"}
 locObj.eventNewYear   = {"txt": "Новый Год - это про снеговики! \nСоздайте новую карту приключений, чтобы найти их\nВам надо быть зарегистрированным и залогиненным, чтобы ваш вклад был учтён", "loc":"eventhelp"}
 locObj.couldntRecordPledge = {"txt": "Кажется, что вы не залогинены. Ваш вклад не будет записан","loc":"сервер не смог записать вклад"}
-
+locObj.requiredArcheryRange = {"txt":"To do that, you need to build Archery Range", "loc":"happens when trying to hire turkopols if no archery range is built"};
+locObj.requiredStables = {"txt": "Для этого вам нужно стрельбище", "loc":"happens when trying to hire sergeants if no stables built"};
+locObj.requiredStablesUpgrade = {"txt": "Для этого нужно улучшить конюшни до %arg1 уровня", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Ваш советник умер.\nНовоиспеченный советник рекомендует вам\nпересмотреть выбор, сделанный в прошлом:\n-настало время, милорд, когда вы можете сделать выбор в пользу светлого будущего нашего города.\n-если вы согласны, %arg1 будет снесен, а на его месте мы построим %arg2", "loc":""}
 locObj.deadCounselorDemolishAnsYes = {"txt":"Да, сносим это здание", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Купить",  "loc":"На предмете для продажи Черного Рынка Гоблина"};

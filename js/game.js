@@ -1529,56 +1529,54 @@
 		},
 		hireSergeants : function () {
 			if (game.buildLevelStable>=1) {
-				if (game.gold >= numberToHire*config.sergeantHiring) {
-					game.sergeants += parseInt(numberToHire);
-					game.gold      -= numberToHire*config.sergeantHiring;
-					updateTroopsNumbers();
-					updateResources();
-				} else {
-					postEventLog(locObj.notEnoughGold.txt, "bold");
+			    if (numberToHire>0){
+                    if (game.gold >= numberToHire*config.sergeantHiring) {
+                        game.sergeants += parseInt(numberToHire);
+                        game.gold      -= numberToHire*config.sergeantHiring;
+                        updateTroopsNumbers();
+                        updateResources();
+                    } else {
+                        postEventLog(locObj.notEnoughGold.txt, "bold");
+                    }
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[316]);
-				postEventLog(msg);
+				postEventLog(locObj.requiredStables.txt, "bold");
 			}
 		},
 		hireTurkopols : function () {
 			if (game.buildLevelStable>=1) {
 				if (game.buildLevelArchery >= 1) {
-					if (game.gold >= numberToHire*config.turkopolHiring) {
-						game.turkopols += parseInt(numberToHire);
-						game.gold      -= numberToHire*config.turkopolHiring;
-						updateTroopsNumbers();
-						updateResources();
-					} else {
-						postEventLog(locObj.notEnoughGold.txt, "bold");
+				    if (numberToHire>0){
+                        if (game.gold >= numberToHire*config.turkopolHiring) {
+                            game.turkopols += parseInt(numberToHire);
+                            game.gold      -= numberToHire*config.turkopolHiring;
+                            updateTroopsNumbers();
+                            updateResources();
+                        } else {
+                            postEventLog(locObj.notEnoughGold.txt, "bold");
+                        }
 					}
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[317]);
-					postEventLog(msg);
+                    postEventLog(locObj.requiredArcheryRange.txt, "bold");
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[316]);
-				postEventLog(msg);
+               postEventLog(locObj.requiredStables.txt, "bold");
 			}
 		},
 		hireKnights : function () {
 			if (game.buildLevelStable>=2) {
-				if (game.gold >= numberToHire*config.knightHiring) {
-					game.knights   += parseInt(numberToHire);
-					game.gold      -= numberToHire*config.knightHiring;
-					updateTroopsNumbers();
-					updateResources();
-				} else {
-					postEventLog(locObj.notEnoughGold.txt, "bold");
+			    if (numberToHire>0){
+                    if (game.gold >= numberToHire*config.knightHiring) {
+                        game.knights   += parseInt(numberToHire);
+                        game.gold      -= numberToHire*config.knightHiring;
+                        updateTroopsNumbers();
+                        updateResources();
+                    } else {
+                        postEventLog(locObj.notEnoughGold.txt, "bold");
+                    }
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[318]);
-				postEventLog(msg);
+                postEventLog(locObj.requiredStablesUpgrade.txt, "bold");
 			}
 		},
 		hireUnits : function () {
