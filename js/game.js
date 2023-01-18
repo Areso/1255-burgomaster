@@ -4004,7 +4004,14 @@ function setTutorialAfterSaveRestore(gameTemp) {
 	if (gameTemp.isTutorialState || gameTemp.tips.length > 0) {
 		hiddenElements.forEach(function (el) {
 			if (!el.classList.contains('is-tutorial')) {
-				el.classList.add('is-tutorial')
+				el.classList.add('is-tutorial');
+			}
+		});
+	}
+	if (!gameTemp.isTutorialState) {
+		hiddenElements.forEach(function (el) {
+			if (el.classList.contains('is-tutorial')) {
+				el.classList.remove('is-tutorial');
 			}
 		});
 	}
