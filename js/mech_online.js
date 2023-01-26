@@ -1,8 +1,8 @@
-        var amber_component = Bind({
-          amber: 0,
-        },{
-          amber: "#gems",
-        })
+var amber_component = Bind({
+  amber: 0,
+},{
+  amber: "#gems",
+})
 
 reglogin  = "reg";
 session   = "";
