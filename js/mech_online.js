@@ -83,6 +83,7 @@ function remoteRegLogin() {
 				resp_data = JSON.parse(this.responseText);
 				session   = resp_data["session"];
 				game.role = resp_data["role"];
+				game.nickname = resp_data["login"];
 				msg = "login successfull";
 				postEventLog(msg);
 				fpullMessages();
@@ -91,6 +92,7 @@ function remoteRegLogin() {
 				    setUpBackendTimers();
 				    enableOnlineCounter();
 				}
+				if (typeof setupNickname === "function") { setupNickname() };
 				pullAmberTimer = setInterval(pullAmber, 3000);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
