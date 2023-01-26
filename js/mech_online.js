@@ -304,7 +304,7 @@ function reloadBanned() {
 			//\ escape char
 			//\s - spacebar
 			//@_'- don't require escaping
-			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9@_'\;\,\s\.\?\!-]/g, '');
+			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9@_'\,\s\.\?\!-]/g, '');
 			stop = false;
 			if (sending_msg.length>0 && stop===false){
 				allowMsg = 0;
