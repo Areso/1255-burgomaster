@@ -33,11 +33,11 @@ localeStrings.push("placeholder");//30
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("вы казнили горожанина за %arg1");//34
-localeStrings.push("%arg1 золотых конфисковано");//35
-localeStrings.push("слишком мало жителей");
-localeStrings.push("охранники уволились, потому что вам нечем платить жалование!");
-localeStrings.push("пожар в городе!");
+localeStrings.push("placeholder");//34
+localeStrings.push("placeholder");//35
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Вызвать пожарных? Это будет стоить %arg1 золота");
 localeStrings.push("пожарные погасили огонь");//40
 localeStrings.push("будет гореть дотла!");
@@ -347,9 +347,9 @@ localeStrings.push("Герой");
 localeStrings.push("Переместить бойца в отряд героя");
 localeStrings.push("Переместить бойца в гарнизон");
 localeStrings.push("У вас нет бойцов, которых можно переместить");//315
-localeStrings.push("Для этого вам нужна конюшня");
-localeStrings.push("Для этого вам нужно стрельбище");
-localeStrings.push("Для этого нужно улучшить конюшни до %arg1 уровня");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//320
 localeStrings.push("placeholder");
@@ -526,7 +526,9 @@ locObj.advmapHeroLose = {"txt": "Ваши войска потерпели пор
 locObj.eventHalloween = {"txt": "Хэллоуин - это про тыквы!\nСоздайте новую карту приключений, чтобы найти их\nНе забудьте пройти регистрацию и залогиниться, чтобы ваш вклад был учтён", "loc":"eventhelp"}
 locObj.eventNewYear   = {"txt": "Новый Год - это про снеговики! \nСоздайте новую карту приключений, чтобы найти их\nВам надо быть зарегистрированным и залогиненным, чтобы ваш вклад был учтён", "loc":"eventhelp"}
 locObj.couldntRecordPledge = {"txt": "Кажется, что вы не залогинены. Ваш вклад не будет записан","loc":"сервер не смог записать вклад"}
-
+locObj.requiredArcheryRange = {"txt":"To do that, you need to build Archery Range", "loc":"happens when trying to hire turkopols if no archery range is built"};
+locObj.requiredStables = {"txt": "Для этого вам нужно стрельбище", "loc":"happens when trying to hire sergeants if no stables built"};
+locObj.requiredStablesUpgrade = {"txt": "Для этого нужно улучшить конюшни до %arg1 уровня", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Ваш советник умер.\nНовоиспеченный советник рекомендует вам\nпересмотреть выбор, сделанный в прошлом:\n-настало время, милорд, когда вы можете сделать выбор в пользу светлого будущего нашего города.\n-если вы согласны, %arg1 будет снесен, а на его месте мы построим %arg2", "loc":""}
 locObj.deadCounselorDemolishAnsYes = {"txt":"Да, сносим это здание", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Купить",  "loc":"На предмете для продажи Черного Рынка Гоблина"};
@@ -580,3 +582,19 @@ locObj.errNoCloudSave = {"txt":"у вас нет сохранения в Обл�
 locObj.errGettingCloudSave = {"txt":"ошибка при попытке получить сохранение из Облака","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"ошибка при загрузке в игру облачного сохранения","loc":"could happen while loading cloudsave"};
 locObj.errGetSaveEndpoint = {"txt":"ошибка сервера. Вы вошли в аккаунт? Сервер поднят?","loc":"endpoint error from /get_savegame"};
+locObj.executedMsg = {"txt": "вы казнили горожанина за %arg1", "loc":"eventlog after the execution"};
+locObj.executedGainMsg = {"txt": "%arg1 золотых конфисковано", "loc": "eventlog after the execution"};
+locObj.executionAborted = {"txt":"слишком мало жителей", "loc":"happens if you have too low amount of citizens"};
+locObj.cantUpkeepTreasuryGuards = {"txt": "охранники уволились, потому что вам нечем платить жалование!", "loc":"in calculateTurn in case of money deficite"};
+locObj.fireInCity = {"txt": "пожар в городе!", "loc":"happens as part of random events"};
+locObj.rqtsHomes = {"txt": "Разблокируется событием", "loc":"Requirements for homes"};
+locObj.rqtsDef = {"txt": "Разблокируется событием", "loc":"Requirements for defense buildings"};
+locObj.rqtsTreasury = {"txt": "Для разблокировки требуется %arg1 золота", "loc":"Reqs for Treasury building"};
+locObj.rqtsGallows = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Gallows"};
+locObj.rqtsFountain = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Fountain"};
+locObj.rqtsStash = {"txt":"Requires Treasury and Unlocks by an event", "loc":"Reqs for Fountain"};
+locObj.rqtsStables = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Stables"};
+locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"Reqs for Archery Range"};
+locObj.rqtsInn = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Inn"};
+locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
+locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};

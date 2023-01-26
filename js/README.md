@@ -16,4 +16,6 @@ Still, they could invoke changing of the UI inside themselves.
 ## objects_*
 Such files contain array of objects.  
 For an example, `objects_artifacts.js` contains all the supported artifacts.  
-Be careful with this one - it included in game.js.
+Be careful with this one - it included in game.js.  
+## lib/
+This folder contains external JS libraries

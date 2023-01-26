@@ -33,11 +33,11 @@ localeStrings.push("placeholder");//30
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Ihr habt einen Bürger wegen %arg1 hingerichtet.");
-localeStrings.push("%arg1 is confiscated property of the executed citizen");//35
-localeStrings.push("Ihr habt zu wenig Bürger.");
-localeStrings.push("Einige Wachleute wurden entlassen, weil Ihr sie nicht bezahlen könnt!");
-localeStrings.push("Feuer in der Stadt!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//35
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Sollen wir die Feuerwehr rufen? Es wird Euch %arg1 Gold kosten.");
 localeStrings.push("Die Feuerwehr hat den Brand gelöscht.");//40
 localeStrings.push("Alles wird zu Asche verbrennen!");
@@ -346,9 +346,9 @@ localeStrings.push("Hero");
 localeStrings.push("Move the unit to the hero's squad");
 localeStrings.push("Move the unit to the garrison");
 localeStrings.push("You don't have any units to transfer in this direction");//315
-localeStrings.push("To do that, you need to build the stable");
-localeStrings.push("To do that, you need to build the archery range");
-localeStrings.push("To do that, you need to upgrade the stable to %arg1 level");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//320
 localeStrings.push("placeholder");
@@ -502,7 +502,9 @@ locObj.advmapHeroLose = {"txt": "Your troops were defeated and the hero is force
 locObj.eventHalloween = {"txt": "Halloween is about collecting pumpkins!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"help"}
 locObj.eventNewYear   = {"txt": "New Year is about collecting snowmen!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"eventhelp"}
 locObj.couldntRecordPledge = {"txt": "It seems you are not logged it. Your pledge will not be recorded","loc":"happens when collected event item while being not logged in"}
-
+locObj.requiredStables = {"txt": "Dazu müssen Sie den Stall bauen", "loc":"happens when trying to hire sergeants if no stables built"};
+locObj.requiredArcheryRange = {"txt":"Dazu müssen Sie die Bogenschießanlage bauen", "loc":"happens when trying to hire turkopols if no archery range is built"};
+locObj.requiredStablesUpgrade = {"txt": "Dazu müssen Sie den Stable auf %arg1 Level upgraden", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
@@ -556,3 +558,19 @@ locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"co
 locObj.errGettingCloudSave = {"txt":"error while trying to get your cloudsave from the cloud","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc":"could happen while loading cloudsave"};
 locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};
+locObj.executedMsg = {"txt": "Ihr habt einen Bürger wegen %arg1 hingerichtet", "loc":"eventlog after the execution"};
+locObj.executedGainMsg = {"txt": "%arg1 ist beschlagnahmtes Eigentum des hingerichteten Bürgers", "loc": "eventlog after the execution"};
+locObj.executionAborted = {"txt":"Ihr habt zu wenig Bürger", "loc":"happens if you have too low amount of citizens"};
+locObj.cantUpkeepTreasuryGuards = {"txt": "Einige Wachleute wurden entlassen, weil Ihr sie nicht bezahlen könnt!", "loc":"in calculateTurn in case of money deficite"};
+locObj.fireInCity = {"txt": "Feuer in der Stadt!", "loc":"happens as part of random events"};
+locObj.rqtsHomes = {"txt": "Wird durch ein Ereignis freigeschaltet", "loc":"Requirements for homes"};
+locObj.rqtsDef = {"txt": "Wird durch ein Ereignis freigeschaltet", "loc":"Requirements for defense buildings"};
+locObj.rqtsTreasury = {"txt": "Benötigt %arg1 Gold", "loc":"Reqs for Treasury building"};
+locObj.rqtsGallows = {"txt":"Erfordert %arg1 Bürger zum Freischalten", "loc":"Reqs for Gallows"};
+locObj.rqtsFountain = {"txt":"Erfordert %arg1 Bürger zum Freischalten", "loc":"Reqs for Fountain"};
+locObj.rqtsStash = {"txt":"Requires Treasury and Unlocks by an event", "loc":"Reqs for Fountain"};
+locObj.rqtsStables = {"txt":"Erfordert %arg1 Bürger zum Freischalten", "loc":"Reqs for Stables"};
+locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"Reqs for Archery Range"};
+locObj.rqtsInn = {"txt":"Erfordert %arg1 Bürger zum Freischalten", "loc":"Reqs for Inn"};
+locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
+locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};

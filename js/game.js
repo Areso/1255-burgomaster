@@ -37,7 +37,7 @@
 			return v.toString(16);
 		});
 	}
-
+    amber = 0;
 
 	function include (url, fn) {
 		var e = document.createElement("script");
@@ -47,13 +47,16 @@
 		document.getElementsByTagName("head")[0].appendChild(e);
 	};
 
-	var HERO_STATUS = {
+	const HERO_STATUS = {
 		CITY: 0,
 		AUTOCAMPAIGN: 1,
 		ADVENTURE_MAP: 2
 	};
 
-	Object.freeze(HERO_STATUS);
+	const ATTACK_TURN = {
+		HERO: 1,
+		ENEMY: 2
+	};
 
 
 	var game = {
@@ -134,7 +137,7 @@
 		expReward: 0,
 		goldReward: 0,
 		difficultyModifier: 0,
-		attacker: 1,
+		attacker: ATTACK_TURN.HERO,
 		isAutoBattle: false,
 		isDefeated: false,
 		nightMode: false,
@@ -486,7 +489,7 @@
 							}
 							game.isAutoBattle = true;
 							while(game.isAutoBattle) {
-								game.calcAttackPhase("AdvMap");
+								if (typeof calcAttackPhase === "function") { calcAttackPhase("AdvMap") };
 							}
 							//suppose we win the battle
 							//removing the monster from removable objects (render array)
@@ -809,86 +812,6 @@
 				default: return "Unknown unit name";
 			}
 		},
-		calcAutoBattle: function(attackerStack, attackerHeroAttack, defenderStack, defenderHeroDefence, campaignType) {
-			console.log('--Attack start --');
-			var startRoundStr = locObj.autobattle_journal_log_start.txt;
-			var endRoundStr = locObj.autobattle_journal_log_end.txt;
-			if (campaignType==="AutoCampaign") {
-				postBattleLog(startRoundStr);
-			}
-			for (var attackerKey  in attackerStack.units) {
-				if (attackerStack.units.hasOwnProperty(attackerKey)) {
-					console.log('Attacker: ', attackerStack.units[attackerKey]);
-					for (var defenderKey in defenderStack.units) {
-						if (defenderStack.units.hasOwnProperty(defenderKey)) {
-							var target = defenderStack.units[defenderKey];
-							var dmg = game.calcDmg(attackerStack.units[attackerKey], attackerHeroAttack, defenderStack.units[defenderKey], defenderHeroDefence);
-							console.log('DMG before round: ', dmg);
-							dmg = Math.round(dmg);
-							console.log(dmg);
-							var attackerStr = locObj.autobattle_journal_log_dmg.txt.replace("%arg1", game.unitNameLoc(attackerStack.units[attackerKey].name)).replace("%arg2", dmg).replace("%arg3", game.unitNameLoc(target.name));
-							if (dmg >= target.stackHealth) {
-								console.log(`${target.name} is dying`);
-								delete defenderStack.units[defenderKey];
-								game.myhero[target.name] = 0;
-								console.log("%c DEFENDER UNITS LIST: ", "background: purple; color: #ededed", defenderStack.units);
-								attackerStr += ' '  + locObj.autobattle_journal_log_destroyed.txt.replace("%arg1", game.unitNameLoc(target.name));
-								if (campaignType==="AutoCampaign") {
-									postBattleLog(attackerStr);
-								}
-								if (isEmptyObj(defenderStack.units)) {
-									game.isAutoBattle = false;
-									game.checkWinner(campaignType);
-									if (campaignType === "AutoCampaign") {
-										game.attacker = 0;
-									}
-								}
-							} else {
-								var defenderLooses = parseInt(dmg / defenderStack.units[defenderKey].health);
-								defenderStack.units[defenderKey].count -= defenderLooses;
-								game.myhero[defenderKey] -= defenderLooses;
-								target.stackHealth -= dmg;
-								if (defenderLooses > 0) {
-									attackerStr += ' ' + locObj.autobattle_journal_log_dead.txt.replace("%arg1", defenderLooses).replace("%arg2", game.unitNameLoc(target.name));
-								}
-								if (campaignType==="AutoCampaign") {
-									postBattleLog(attackerStr);
-								}
-							}
-						}
-					}
-				}
-			}
-			if (campaignType==="AutoCampaign") {
-				postBattleLog(endRoundStr);
-			}
-			console.log('-- Attack turn ended --');
-			console.log('-----------------------');
-		},
-		calcAttackPhase: function (campaignType) {
-			var attackVal = 0;
-			var defenceVal = 0;
-			if (game.attacker === 1) {
-				if (game.myhero.atk) {
-					attackVal = game.myhero.atk;
-				}
-				if (game.enemyHero && game.enemyHero.def) {
-					defenceVal = game.enemyHero.def
-				}
-				console.log("%cENEMY ARMY FROM MAP: ", 'color: #333; background: #fc3; padding: 6px;', game.enemyHeroArmy);
-				game.calcAutoBattle(game.myheroArmy, attackVal, game.enemyHeroArmy, defenceVal, campaignType);
-				game.attacker = 2;
-			} else if (game.attacker === 2) {
-				if (game.enemyHero && game.enemyHero.atk) {
-					attackVal = game.enemyHero.atk;
-				}
-				if (game.myhero.def) {
-					defenceVal = game.myhero.def
-				}
-				game.calcAutoBattle(game.enemyHeroArmy, attackVal, game.myheroArmy, defenceVal, campaignType);
-				game.attacker = 1;
-			}
-		},
 		heroDismiss: function () {
 			if (game.heroExists()===true){
 				if (game.isHeroHaveTroops()) {
@@ -1097,19 +1020,22 @@
 							game.story.push("story_two_steps");
 							postJournalLog(locObj.story2_two_steps.txt);
 							return;
-							// showModal(0, '', getAck, locObj.story2_two_steps.txt, locObj.okay.txt, '');
 						}
 					}
 
-					var rnd = randomFromRange(1, 25);
+					let rnd = randomFromRange(1, 25);
 
 					if (rnd <= 12) {
 						game.isAutoBattle = true;
 						createBattleAccordion();
-
 						while (game.isAutoBattle) {
-							game.calcAttackPhase("AutoCampaign");
+						  if (typeof calcAttackPhase === "function") { calcAttackPhase("AutoCampaign") };
 						}
+
+						if (!game.isAutoBattle && game.attacker !== ATTACK_TURN.HERO) {
+							game.attacker = ATTACK_TURN.HERO;
+						}
+
 					} else {
 						postJournalLog(localeStrings[175]);
 					}
@@ -1238,7 +1164,9 @@
 					blMaxLvlDef = 1;
 				}
 				if (blMaxLvlDef === 0){
+				    if (!game.tips.includes("tutorial1_pop0")){
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice);
+				    }
 				} else {
 					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232];
 				}
@@ -1601,56 +1529,54 @@
 		},
 		hireSergeants : function () {
 			if (game.buildLevelStable>=1) {
-				if (game.gold >= numberToHire*config.sergeantHiring) {
-					game.sergeants += parseInt(numberToHire);
-					game.gold      -= numberToHire*config.sergeantHiring;
-					updateTroopsNumbers();
-					updateResources();
-				} else {
-					postEventLog(locObj.notEnoughGold.txt, "bold");
+			    if (numberToHire>0){
+                    if (game.gold >= numberToHire*config.sergeantHiring) {
+                        game.sergeants += parseInt(numberToHire);
+                        game.gold      -= numberToHire*config.sergeantHiring;
+                        updateTroopsNumbers();
+                        updateResources();
+                    } else {
+                        postEventLog(locObj.notEnoughGold.txt, "bold");
+                    }
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[316]);
-				postEventLog(msg);
+				postEventLog(locObj.requiredStables.txt, "bold");
 			}
 		},
 		hireTurkopols : function () {
 			if (game.buildLevelStable>=1) {
 				if (game.buildLevelArchery >= 1) {
-					if (game.gold >= numberToHire*config.turkopolHiring) {
-						game.turkopols += parseInt(numberToHire);
-						game.gold      -= numberToHire*config.turkopolHiring;
-						updateTroopsNumbers();
-						updateResources();
-					} else {
-						postEventLog(locObj.notEnoughGold.txt, "bold");
+				    if (numberToHire>0){
+                        if (game.gold >= numberToHire*config.turkopolHiring) {
+                            game.turkopols += parseInt(numberToHire);
+                            game.gold      -= numberToHire*config.turkopolHiring;
+                            updateTroopsNumbers();
+                            updateResources();
+                        } else {
+                            postEventLog(locObj.notEnoughGold.txt, "bold");
+                        }
 					}
 				} else {
-					msg = "<b>%arg1</b>";
-					msg = msg.replace("%arg1",localeStrings[317]);
-					postEventLog(msg);
+                    postEventLog(locObj.requiredArcheryRange.txt, "bold");
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[316]);
-				postEventLog(msg);
+               postEventLog(locObj.requiredStables.txt, "bold");
 			}
 		},
 		hireKnights : function () {
 			if (game.buildLevelStable>=2) {
-				if (game.gold >= numberToHire*config.knightHiring) {
-					game.knights   += parseInt(numberToHire);
-					game.gold      -= numberToHire*config.knightHiring;
-					updateTroopsNumbers();
-					updateResources();
-				} else {
-					postEventLog(locObj.notEnoughGold.txt, "bold");
+			    if (numberToHire>0){
+                    if (game.gold >= numberToHire*config.knightHiring) {
+                        game.knights   += parseInt(numberToHire);
+                        game.gold      -= numberToHire*config.knightHiring;
+                        updateTroopsNumbers();
+                        updateResources();
+                    } else {
+                        postEventLog(locObj.notEnoughGold.txt, "bold");
+                    }
 				}
 			} else {
-				msg = "<b>%arg1</b>";
-				msg = msg.replace("%arg1",localeStrings[318]);
-				postEventLog(msg);
+                postEventLog(locObj.requiredStablesUpgrade.txt, "bold");
 			}
 		},
 		hireUnits : function () {
@@ -2289,11 +2215,6 @@
 						postEventLog(locObj.buildUpgradeHouse.txt, "bold");
 						game.userPopAck = 1;
 					}
-					//TUTORIALS
-					if (game.isTutorialState && !game.tips.includes("tutorial1_pop0")){
-						game.tips.push("tutorial1_pop0");
-						showModal(0, '', getAck, locObj.tutorial1_pop0.txt, locObj.okay.txt, '')
-					}
 				}
 			}
 			game.calculateAutocampaign();
@@ -2313,8 +2234,11 @@
 					console.group("%c Treausury guard: ", "background-color: cyan; color: #333");
 					console.log("Treasury guard: ", game.treasuryGuard);
 					console.groupEnd();
-
-					msg = (canUpkeep > 0) ? localeStrings[335].replace("%arg1", dissmisedTreasuryGuard) : localeStrings[37];
+                    if (canUpkeep > 0) {
+                      msg = localeStrings[335].replace("%arg1", dissmisedTreasuryGuard);
+                    } else {
+                      msg = locObj.cantUpkeepTreasuryGuards.txt
+                    }
 					postEventLog(msg);
 				}
 			}
@@ -2746,16 +2670,16 @@
 					}
 					rnd             = Math.floor((Math.random() * 6));
 					reason          = locObj.execReasons[rnd].txt;
-					msg             = localeStrings[34].replace("%arg1", reason);
+					msg             = locObj.executedMsg.txt.replace("%arg1", reason);
 					postEventLog(msg);
-					msg             = localeStrings[35].replace("%arg1", moneyToSeize);
+					msg             = locObj.executedGainMsg.txt.replace("%arg1", moneyToSeize);
 					postEventLog(msg);
 					var gold_diff   = game.addMoneyToTreasury(moneyToSeize);
 					if (gold_diff!==moneyToSeize){
 						postEventLog(localeStrings[89].replace("%arg1", gold_diff));
 					}
 				} else {
-					alertMsg        = localeStrings[36];
+					alertMsg        = locObj.executionAborted.txt;
 					showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 				}
 				updateResources();
@@ -2820,9 +2744,7 @@
 				if (game.fire === 0) {
 					var rnd = Math.floor((Math.random() * 3) + 1);
 					if (rnd === 1) {
-						msg = "<b>%arg1</b>";
-						msg = msg.replace("%arg1",localeStrings[38]);
-						postEventLog(msg);
+						postEventLog(locObj.fireInCity.txt, "bold");
 						game.fire = 1;
 						if (game.checkAudio('sfx', 'actions')===true) {
 							document.getElementById('fireAudio0').play();
@@ -3044,6 +2966,26 @@
 			}
 		}
 	};
+	/*
+	var reactive_UI = Bind({
+        //gold: game.gold,
+        //pop: game.pop,
+        //treasuryGuards: game.treasuryGuard: 0,
+        amber: 0,
+    },{
+        //gold: "#gold",
+        //pop: "#pop",
+        //treasuryGuard: "#treasuryGuard",
+        amber: "#gems",
+    });
+    /*
+	{
+	  //those three were updated through updateResources() in dom.js
+      gold: '#gold',
+      pop: '#pop',
+      treasuryGuard: "#treasuryGuard",
+      //end of the block
+	});*/
 	//init const-variables
 
 	var tabLinks 		= document.querySelectorAll('.tab-link');
@@ -3091,13 +3033,7 @@
 	document.getElementById("tabCity").click();
 
 
-	// 2. Выносим сюда config и game
-
-
-
-
-
-	//TOWN
+//TOWN
 	var canvas  	= document.getElementById("canvas");
 	var canvasPos   = getElementPosition(canvas);
 
@@ -3690,8 +3626,13 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	var cnt_cursession= 0;
 	var delimiter     = ";"
 	var nightMode     = 0;
-	var dcounter_def  = 30;
-	var dcounter      = dcounter_def;
+
+	//var dcounter      = dcounter_def; //TO DELETION
+        var dcounter_component = Bind({
+          dcounter: config.dcounter_def,
+        },{
+          dcounter: "#dcounter",
+        })
 	var curHeroForHire= 0;
 	var heroesForHire = [];
 	var dialogShown   = false;
@@ -3719,20 +3660,17 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
 
 	function checkSaves() {
-
 		if (localStorage.getItem('game')!==null) {
 			document.getElementById("loadGameButton").style.display = "block";
 		} else {
 			if (game.isTutorialState && !game.tips.includes("tutorial0-welcome0")){
 				game.tips.push("tutorial0-welcome0");
-				showModal(0, '', getAck, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
+				showModal(0, '', disableTutorial, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
 			}
 		}
-
 	}
-
-	function getAck() {
-		if (answer === 3) {
+	function disableTutorial() {
+	    if (answer === 3) {
 			console.log("before changing tutorial state");
 			game.isTutorialState = false;
 			// document.getElementById("tabBuilding").classList.remove('is-tutorial');
@@ -3746,7 +3684,10 @@ WeightedRandom.prototype.clearEntriesList = function() {
 				})
 			}
 		}
-
+		answer = 0;
+		getAck();
+	}
+	function getAck() {
 		for (var i=0; i<disabledElements.length; i++) {
 			console.log('we are inside the loop');
 			document.getElementById(disabledElements[i]).disabled = false;
@@ -3787,7 +3728,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		//document.getElementById("tabExplore").innerText          = localeStrings[47];
 		document.getElementById("tabSettings").innerText         = localeStrings[48];
 		//document.getElementById("tabGarrison").innerText         = localeStrings[49];
-		document.getElementById("tabBuilding").innerText         = localeStrings[50];
+		document.getElementById("btnOpenTabBuilding").innerText  = localeStrings[50];
 		document.getElementById("tabAbout").innerText            = localeStrings[51];
 		document.getElementById("tabDiscord").innerText          = localeStrings[52];
 		document.getElementById("labelSettings").innerText       = localeStrings[66];
@@ -3798,7 +3739,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		document.getElementById("labelGarrison").innerText       = localeStrings[91];
 		document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
 		document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
-		document.getElementById("labelBuilding").innerText       = localeStrings[106];
+		//document.getElementById("labelBuilding").innerText       = localeStrings[106];
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
 		document.getElementById("lblTabPop").innerText           = localeStrings[161];
 		document.getElementById("lblTabGold").innerText          = localeStrings[164];
@@ -4063,9 +4004,17 @@ function setTutorialAfterSaveRestore(gameTemp) {
 	if (gameTemp.isTutorialState || gameTemp.tips.length > 0) {
 		hiddenElements.forEach(function (el) {
 			if (!el.classList.contains('is-tutorial')) {
-				el.classList.add('is-tutorial')
+				el.classList.add('is-tutorial');
 			}
 		});
+	}
+	if (!gameTemp.isTutorialState) {
+		hiddenElements = document.querySelectorAll('.is-tutorial');
+	    if (hiddenElements.length) {
+			hiddenElements.forEach(function (el) {
+				el.classList.remove('is-tutorial');
+			});
+		}
 	}
 }
 
@@ -4233,13 +4182,13 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		allowMvt = 1;
 	}
 	function endOfTurnTimer() {
-		if (dcounter - 1 === 0) {
-			dcounter = dcounter_def;
+		if (dcounter_component.dcounter - 1 === 0) {
+			dcounter_component.dcounter = config.dcounter_def;
 			game.calculateTurn();
 		} else {
-			dcounter = dcounter - 1;
+			dcounter_component.dcounter = dcounter_component.dcounter - 1;
 		}
-		document.getElementById('dcounter').innerText = dcounter;
+		//document.getElementById('dcounter').innerText = dcounter;
 	}
 	function cooldown() {
 		if (game.festival_cooldown-1>=0) {

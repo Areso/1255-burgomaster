@@ -1,3 +1,5 @@
+//DOM Components
+
 function updateHeroStatus() {
 	updateHeroStatusInn();
 	updateHeroStatusHire();
@@ -52,6 +54,7 @@ function checkFirebrigade() {
 	document.getElementById("lblFBUpkeepPriceValue").innerHTML = game.fireGuardUpkeep();
 	openTab(null, 'tabFirebrigade');
 }
+function updateButtonCaptions2(){};
 function updateButtonCaptions(){
 	nextLvlHome           = game.buildLevelH*1+1;
 	nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));

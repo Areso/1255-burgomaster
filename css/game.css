@@ -189,13 +189,13 @@ body {
   position: relative;
 }
 
-#Building.active {
+#tabBuilding.active {
   display: flex;
   flex-direction: column;
 }
 
 .building-wrapper {
-  flex: 0 0 82%;
+  flex: 0 0 80%;
   overflow-y: auto;
 }
 
@@ -204,7 +204,7 @@ body {
   flex-wrap: wrap;
   width: 80%;
   justify-content: space-between;
-  padding: 10px 10px 0;
+  padding: 5px 10px 0;
   margin: 0 auto;
 }
 
@@ -243,11 +243,12 @@ body {
   border: none;
 }
 
+
 .building-description {
-  flex: 0 0 18%;
+  flex: 0 0 20%;
   border-top: 1px solid #ccc;
-  padding: 10px;
-  font-size: 13px;
+  padding: 5px;
+  font-size: 12px;
 }
 
 #tabInn,

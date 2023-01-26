@@ -1,0 +1,3 @@
+export clftoken=abctoken
+export identifier=0123
+export email=example@adventureworks.com

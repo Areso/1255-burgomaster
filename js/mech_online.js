@@ -1,132 +1,138 @@
-	reglogin  = "reg";
-	session   = "";
-	log_dom   = document.getElementById("log");
-	chat_dom  = document.getElementById("chat");
-	mod_dom   = document.getElementById("moderation_area");
-	nick_dom  = document.getElementById("inp_nickname");
-	msg_dom   = document.getElementById("msg_out");
-	btn_send  = document.getElementById("btnSend");
-	btn_mod   = document.getElementById("mod_btn");
+var amber_component = Bind({
+  amber: 0,
+},{
+  amber: "#gems",
+})
 
-	//init timers
-	var fpullMessagesTimer = null;
-	var pullPremodMessagesTimer = null;
-	var nearestEventTimer = null;
-	var pullAmberTimer = null;
-	//checking whether run locally or not
-	if (window.location.href.indexOf("file")===-1){
-			webserver = "https://navi.areso.pro:7001";
-			ws_server = "wss://navi.areso.pro:7000";
-			dev_flag  = false;
-	} else {
-		config.isOnline = false;
-		webserver = "http://localhost:6699";
-		ws_server = "ws://localhost:6698";
-		dev_flag  = true;
-	}
-	function setUpBackendTimers(){
-        if (config.isOnline && config.pullMessages){
-            fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
-            pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
-            nearestEventTimer = setInterval(getNearestEventTime, 10000);
-        }
-	}
-	setUpBackendTimers()
-	//to enable online features with a local backend server, type in da console:
-	// config.isOnline = true
-	// setUpBackendTimers()
-	//functions
-	function remoteRegLogin() {
-		if (reglogin==="reg"){
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 201) {
-					if (config.debug){
-						console.log(session);
-						console.log(this.responseText)
-					}
-					resp_data = JSON.parse(this.responseText);
-					session   = resp_data["session"];
-					msg       = "registered successfully";
-					postEventLog(msg);
-					msg       = "you got a 'registered user' badge and 10 ambers";
-					postEventLog(msg);
-					pullAmberTimer = setInterval(pullAmber, 3000);
+reglogin  = "reg";
+session   = "";
+log_dom   = document.getElementById("log");
+chat_dom  = document.getElementById("chat");
+mod_dom   = document.getElementById("moderation_area");
+nick_dom  = document.getElementById("inp_nickname");
+msg_dom   = document.getElementById("msg_out");
+btn_send  = document.getElementById("btnSend");
+btn_mod   = document.getElementById("mod_btn");
+
+//init timers
+var fpullMessagesTimer = null;
+var pullPremodMessagesTimer = null;
+var nearestEventTimer = null;
+var pullAmberTimer = null;
+//checking whether run locally or not
+if (window.location.href.indexOf("file")===-1){
+  webserver = "https://navi.areso.pro:7001";
+  ws_server = "wss://navi.areso.pro:7000";
+  dev_flag  = false;
+} else {
+  config.isOnline = false;
+  webserver = "http://localhost:6699";
+  ws_server = "ws://localhost:6698";
+  dev_flag  = true;
+}
+function setUpBackendTimers(){
+  if (config.isOnline && config.pullMessages){
+    fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
+    pullPremodMessagesTimer = setInterval(pullPremodMessages, 5000);
+    nearestEventTimer = setInterval(getNearestEventTime, 10000);
+  }
+}
+setUpBackendTimers()
+//to enable online features with a local backend server, type in da console:
+// config.isOnline = true
+// setUpBackendTimers()
+//functions
+function remoteRegLogin() {
+	if (reglogin==="reg"){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 201) {
+				if (config.debug){
+					console.log(session);
+					console.log(this.responseText)
 				}
-			};
-			fpullMessages();
-			login     = document.getElementById("login").value;
-			password  = document.getElementById("password").value;
-			email     = document.getElementById("password").value;
-			dataToParse  = login    + delimiter;
-			dataToParse += password + delimiter;
-			dataToParse += email;
-			endpoint    = webserver + "/api/v1.1/register_user";
-			xhttp.open("POST", endpoint, true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
-		}
-		if (reglogin==="login"){
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					if (config.debug){
-						console.log(session);
-						console.log(this.responseText);
-					}
-					resp_data = JSON.parse(this.responseText);
-					session   = resp_data["session"];
-					game.role = resp_data["role"];
-					msg = "login successfull";
-					postEventLog(msg);
-					fpullMessages();
-					if (config.isOnline === false){
-					    config.isOnline = true;
-					    setUpBackendTimers();
-					    enableOnlineCounter();
-					}
-					pullAmberTimer = setInterval(pullAmber, 3000);
-				}
-				if (this.readyState === 4 && this.status !== 200) {
-					if (config.debug){
-						console.log(session);
-						console.log(this.responseText);
-					}
-					resp_data = JSON.parse(this.responseText);
-					msg = "login unsuccessfull, please try again";
-					postEventLog(msg);
-				}
-			};
-			login       = document.getElementById("login").value;
-			password    = document.getElementById("password").value;
-			dataToParse = login+delimiter+password;
-			endpoint    = webserver + "/api/v1.1/login_user";
-			xhttp.open("POST", endpoint, true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
-		}
+				resp_data = JSON.parse(this.responseText);
+				session   = resp_data["session"];
+				msg       = "registered successfully";
+				postEventLog(msg);
+				msg       = "you got a 'registered user' badge and 10 ambers";
+				postEventLog(msg);
+				pullAmberTimer = setInterval(pullAmber, 3000);
+			}
+		};
+		fpullMessages();
+		login     = document.getElementById("login").value;
+		password  = document.getElementById("password").value;
+		email     = document.getElementById("password").value;
+		dataToParse  = login    + delimiter;
+		dataToParse += password + delimiter;
+		dataToParse += email;
+		endpoint    = webserver + "/api/v1.1/register_user";
+		xhttp.open("POST", endpoint, true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(dataToParse);
 	}
-	function fpullMessages() {
+	if (reglogin==="login"){
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
-				messages = JSON.parse(this.responseText);
 				if (config.debug){
-					console.log(messages);
+					console.log(session);
+					console.log(this.responseText);
 				}
-				document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusUp.txt;
-				chat_dom.innerHTML = "";
-				messages.forEach(printToChat);
+				resp_data = JSON.parse(this.responseText);
+				session   = resp_data["session"];
+				game.role = resp_data["role"];
+				msg = "login successfull";
+				postEventLog(msg);
+				fpullMessages();
+				if (config.isOnline === false){
+    			    config.isOnline = true;
+				    setUpBackendTimers();
+				    enableOnlineCounter();
+				}
+				pullAmberTimer = setInterval(pullAmber, 3000);
 			}
 			if (this.readyState === 4 && this.status !== 200) {
-				document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusDown.txt;
+				if (config.debug){
+					console.log(session);
+					console.log(this.responseText);
+				}
+				resp_data = JSON.parse(this.responseText);
+				msg = "login unsuccessfull, please try again";
+				postEventLog(msg);
 			}
 		};
-		endpoint  = webserver + "/api/v1.1/pull_messages";
-		xhttp.open("GET", endpoint, true);
+		login       = document.getElementById("login").value;
+		password    = document.getElementById("password").value;
+		dataToParse = login+delimiter+password;
+		endpoint    = webserver + "/api/v1.1/login_user";
+		xhttp.open("POST", endpoint, true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send();
+		xhttp.send(dataToParse);
 	}
+}
+function fpullMessages() {
+    var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	if (this.readyState === 4 && this.status === 200) {
+		messages = JSON.parse(this.responseText);
+			if (config.debug){
+				console.log(messages);
+	    	}
+			document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusUp.txt;
+		    chat_dom.innerHTML = "";
+			messages.forEach(printToChat);
+		}
+		if (this.readyState === 4 && this.status !== 200) {
+			document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusDown.txt;
+		}
+	};
+	endpoint  = webserver + "/api/v1.1/pull_messages";
+	xhttp.open("GET", endpoint, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send();
+}
 function pullPremodMessages() {
 	if (game.role==="mod" || game.role==="admin"){
 		console.log("the role is OK");
@@ -175,10 +181,14 @@ function pullPremodMessages() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
 				the_resp = JSON.parse(this.responseText);
-				document.getElementById("gems").innerHTML = the_resp.amber;
+				//amber = the_resp.amber;
+				if (typeof amber_component.amber     === "number") {  amber_component.amber = the_resp.amber }
+				//document.getElementById("gems").innerHTML = the_resp.amber;
 			}
 			if (this.readyState === 4 && this.status !== 200) {
-				document.getElementById("gems").innerHTML = 0
+                //amber = 0;
+			    if (typeof amber_component.amber     === "number") { 0 }
+				//document.getElementById("gems").innerHTML = 0
 			}
 		};
 		endpoint    = webserver + "/api/v1.1/get_user_amber";
@@ -288,7 +298,13 @@ function reloadBanned() {
 	function send2(){
 		if (allowMsg===1){
 			sending_msg  = msg_dom.value;
-			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9 .?-]/g, '');
+			//^ means - everything not [following]
+			//a-z,A-Z,а-я,А-Я - no comments
+			//@ and _ doesn't require escaping
+			//\ escape char
+			//\s - spacebar
+			//@_'- don't require escaping
+			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9@_'\,\s\.\?\!-]/g, '');
 			stop = false;
 			if (sending_msg.length>0 && stop===false){
 				allowMsg = 0;
@@ -638,14 +654,14 @@ function eventItemCollected () {
 	xhttp.send(dataToParse);
 }
 function getEventHelp(){
-	if (event_status_code===2){
-	    if (event_id===1){
-		    showModal(0, '', getAck, locObj.eventHalloween.txt, locObj.okay.txt, '')
-		}
-		if (event_id===2){
-		    showModal(0, '', getAck, locObj.eventNewYear.txt, locObj.okay.txt, '')
-		}
-	}
+  if (event_status_code===2){
+    if (event_id===1){
+      showModal(0, '', getAck, locObj.eventHalloween.txt, locObj.okay.txt, '')
+    }
+    if (event_id===2){
+      showModal(0, '', getAck, locObj.eventNewYear.txt, locObj.okay.txt, '')
+    }
+  }
 }
 
 
