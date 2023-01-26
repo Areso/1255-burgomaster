@@ -298,7 +298,7 @@ function reloadBanned() {
 	function send2(){
 		if (allowMsg===1){
 			sending_msg  = msg_dom.value;
-			sending_msg  = sending_msg.replace(/[^@a-zA-ZА-Яа-я0-9 .?-]/g, '');
+			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9@,;_\/ .?-]/g, '');
 			stop = false;
 			if (sending_msg.length>0 && stop===false){
 				allowMsg = 0;
