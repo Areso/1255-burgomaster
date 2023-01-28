@@ -1210,7 +1210,7 @@
  				    }
 				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-				    helpMsg = loc.helpTreasury.txt+"<br>";
+				    helpMsg = locObj.helpTreasury.txt+"<br>";
                     helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
 				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
@@ -1219,9 +1219,21 @@
 				nextLvlGallows        = game.buildLevelGallows*1+1;
 				nextLvlPriceGallows   = Math.pow(config.costGallows,(game.buildLevelGallows*1+1));
 				if (nextLvlGallows===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows);
+				    if (!game.tips.includes("tutorial_social")){
+                        helpMsg = locObj.helpGallows.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows)+"<br>";
+                        helpMsg+= locObj.rqtsGallows.txt.replace("%arg1",config.tutSocialP);
+				    } else {
+                        helpMsg = locObj.helpGallows.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows);
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
+				    helpMsg = locObj.helpGallows.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById(" ").innerHTML=localeStrings[235]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
 				}
 			}
 			if (myobject.id==="university_img") {
