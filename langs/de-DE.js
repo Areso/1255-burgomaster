@@ -1,3 +1,6 @@
+function localeOK() {
+  return true;
+}
 var localeStrings = [];
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
