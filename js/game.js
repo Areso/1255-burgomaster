@@ -1164,20 +1164,36 @@
 					blMaxLvlDef = 1;
 				}
 				if (blMaxLvlDef === 0){
-				    if (!game.tips.includes("tutorial1_pop0")){
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice);
+				   if (!game.tips.includes("tutorial_defense")){
+				      helpMsg = locObj.helpDef.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice)+"<br>";
+				      helpMsg+= locObj.rqtsDef.txt;
+				    } else {
+                      helpMsg = locObj.helpDef.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice)+"<br>";
 				    }
+				    document.getElementById("lblBuildHelp").innerHTML=helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232];
+					document.getElementById("lblBuildHelp").innerHTML=locObj.helpDef.txt;
 				}
 			}
 			if (myobject.id==="home_img") {
 				nextLvlHome           = game.buildLevelH*1+1;
 				nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));
 				if (nextLvlHome===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[233]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceHome);
+				    if (!game.tips.includes("tutorial1_pop0")){
+				      helpMsg = locObj.helpHome.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceHome)+"<br>";
+				      helpMsg+= locObj.rqtsHome.txt;
+				    } else {
+			          helpMsg = locObj.helpHome.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceHome)+"<br>";
+				    }
+				    document.getElementById("lblBuildHelp").innerHTML=helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[233]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
+				    helpMsg = locObj.helpHome.txt+"<br>";
+				    helpMsg+=locObj.upgCostSidebar.txt.replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
+					document.getElementById("lblBuildHelp").innerHTML=helpMsg;
 				}
 			}
 			if (myobject.id==="treasury_img") {

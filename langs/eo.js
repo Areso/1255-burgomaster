@@ -262,8 +262,8 @@ localeStrings.push("Vi devas unue aldoni iujn trupojn al la taĉmento de herooj!
 localeStrings.push("Vi bezonas heroon por fari tion!");
 localeStrings.push("Estas plezuro havi komercon kun vi. Mi revidos vin");//230
 localeStrings.push("Gratulojn pro via aĉeto! Vi faris bonan elekton!");
-localeStrings.push("Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj.");
-localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj bezonas por altigi vian loĝantar limon.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj estas bezonataj por pliigi vian monan limon. <br> Ĉi tiu konstruaĵo permesas dungi kasistojn. <br> Ili necesas por minimumigi viajn ŝancojn esti ŝtelitaj.");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ekzekuti viajn civitanojn. <br> Ĝi ankaŭ pliigas impostojn kaj malpliigas naskiĝotempon kaj feliĉon. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la Fontanon!");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por aranĝi festivalojn. <br> Ĝi ankaŭ pliigas naskiĝtempon kaj feliĉon kaj malpliigas impostojn. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la forkojn!");
@@ -562,7 +562,7 @@ locObj.executedGainMsg = {"txt": "%arg1 estas konfiskita posedaĵo de la ekzekut
 locObj.executionAborted = {"txt":"tre malmultaj civitanoj", "loc":"happens if you have too low amount of citizens"};
 locObj.cantUpkeepTreasuryGuards = {"txt": "trezoreja gardisto(j) forsendis ĉar vi ne povas pagi al ili!", "loc":"in calculateTurn in case of money deficite"};
 locObj.fireInCity = {"txt": "fajro en la urbo!", "loc":"happens as part of random events"};
-locObj.rqtsHomes = {"txt": "Malŝlosas per Evento", "loc":"Requirements for homes"};
+locObj.rqtsHome = {"txt": "Malŝlosas per Evento", "loc":"Requirements for homes"};
 locObj.rqtsDef = {"txt": "Malŝlosas per Evento", "loc":"Requirements for defense buildings"};
 locObj.rqtsTreasury = {"txt": "Postulas %arg1 orojn por malŝlosi", "loc":"Reqs for Treasury building"};
 locObj.rqtsGallows = {"txt":"Postulas %arg1 civitanon por malŝlosi", "loc":"Reqs for Gallows"};
@@ -573,3 +573,5 @@ locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"
 locObj.rqtsInn = {"txt":"Postulas %arg1 civitanon por malŝlosi", "loc":"Reqs for Inn"};
 locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
 locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.helpDef = {"txt":"Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj", "loc":"help message in the building tab"};
+locObj.helpHome = {"txt": "Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj bezonas por altigi vian loĝantar limon", "loc":"help msg in the building tab"};

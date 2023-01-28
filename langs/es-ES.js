@@ -263,8 +263,8 @@ localeStrings.push("You need to add some troops to hero's squad first!");
 localeStrings.push("You need a hero to do that!");
 localeStrings.push("It is a pleasure to have a business with you. I will see you again");//230
 localeStrings.push("Congratulations with your purchase! you made good choice!");
-localeStrings.push("This building is needed for defending the city from intruders.");
-localeStrings.push("This building and its improvements is needed to raise your population limit.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
 localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235
 localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
@@ -554,7 +554,7 @@ locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"co
 locObj.errGettingCloudSave = {"txt":"error while trying to get your cloudsave from the cloud","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc":"could happen while loading cloudsave"};
 locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};
-locObj.rqtsHomes = {"txt": "Desbloqueos por un evento", "loc":"Requirements for homes"};
+locObj.rqtsHome = {"txt": "Desbloqueos por un evento", "loc":"Requirements for homes"};
 locObj.rqtsDef = {"txt": "Desbloqueos por un evento", "loc":"Requirements for defense buildings"};
 locObj.rqtsTreasury = {"txt": "Requiere %arg1 de oro para desbloquear", "loc":"Reqs for Treasury building"};
 locObj.rqtsGallows = {"txt":"Requiere %arg1 ciudadanos para desbloquear", "loc":"Reqs for Gallows"};
@@ -565,3 +565,5 @@ locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"
 locObj.rqtsInn = {"txt":"Requiere %arg1 ciudadanos para desbloquear", "loc":"Reqs for Inn"};
 locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
 locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.helpDef = {"txt":"This building is needed for defending the city from intruders", "loc":"help message in the building tab"};
+locObj.helpHome = {"txt": "This building and its improvements is needed to raise your population limit", "loc":"help msg in the building tab"};

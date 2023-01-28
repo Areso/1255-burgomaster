@@ -263,8 +263,8 @@ localeStrings.push("You need to add some troops to hero's squad first!");
 localeStrings.push("You need a hero to do that!");
 localeStrings.push("It is a pleasure to have a business with you. I will see you again");//230
 localeStrings.push("Congratulations with your purchase! you made good choice!");
-localeStrings.push("This building is needed for defending the city from intruders.");
-localeStrings.push("This building and its improvements is needed to raise your population limit.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
 localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235
 localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
@@ -585,7 +585,7 @@ locObj.executedGainMsg = {"txt": "%arg1 is confiscated property of the executed 
 locObj.executionAborted = {"txt":"too few citizens", "loc":"happens if you have too low amount of citizens"};
 locObj.cantUpkeepTreasuryGuards = {"txt": "treasury guard(s) dismissed because you are cannot pay to them!", "loc":"in calculateTurn in case of money deficite"};
 locObj.fireInCity = {"txt": "fire in the city!", "loc":"happens as part of random events"};
-locObj.rqtsHomes = {"txt": "Unlocks by an Event", "loc":"Requirements for homes"};
+locObj.rqtsHome = {"txt": "Unlocks by an Event", "loc":"Requirements for homes"};
 locObj.rqtsDef = {"txt": "Unlocks by an Event", "loc":"Requirements for defense buildings"};
 locObj.rqtsTreasury = {"txt": "Requires %arg1 gold to unlock", "loc":"Reqs for Treasury building"};
 locObj.rqtsGallows = {"txt":"Requires %arg1 citizens to unlock", "loc":"Reqs for Gallows"};
@@ -596,3 +596,5 @@ locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"
 locObj.rqtsInn = {"txt":"Requires %arg1 citizens to unlock ", "loc":"Reqs for Inn"};
 locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
 locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.helpDef = {"txt":"This building is needed for defending the city from intruders", "loc":"help message in the building tab"};
+locObj.helpHome = {"txt": "This building and its improvements is needed to raise your population limit", "loc":"help msg in the building tab"};

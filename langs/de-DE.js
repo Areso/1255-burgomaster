@@ -262,8 +262,8 @@ localeStrings.push("Sie müssen zuerst einige Truppen in den Kader des Helden au
 localeStrings.push("Dafür brauchst du einen Helden!");
 localeStrings.push("Es ist eine Freude, mit Ihnen Geschäfte zu machen. Ich werde dich wiedersehen");//230
 localeStrings.push("Herzlichen Glückwunsch zum Kauf! Sie haben eine gute Wahl getroffen!");
-localeStrings.push("Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen.");
-localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Ihr Bevölkerungslimit zu erhöhen.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geldlimit zu erhöhen. <br> In diesem Gebäude können Sie Schatzmeister einstellen. <br> Sie werden benötigt, um die Wahrscheinlichkeit zu minimieren, dass Sie ausgeraubt werden.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Hinrichtung Ihrer Bürger erforderlich. <br> Es erhöht auch die Steuern und senkt die Geburtenrate und das Glück. <br> Wenn Sie dieses Gebäude bauen, können Sie den Brunnen nicht bauen!");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Ausrichtung von Festivals erforderlich. Es erhöht außerdem die Geburtenrate und das Glück und senkt die Steuern. <br> Wenn Sie dieses Gebäude bauen, können Sie die Galgen nicht bauen!");
@@ -563,7 +563,7 @@ locObj.executedGainMsg = {"txt": "%arg1 ist beschlagnahmtes Eigentum des hingeri
 locObj.executionAborted = {"txt":"Ihr habt zu wenig Bürger", "loc":"happens if you have too low amount of citizens"};
 locObj.cantUpkeepTreasuryGuards = {"txt": "Einige Wachleute wurden entlassen, weil Ihr sie nicht bezahlen könnt!", "loc":"in calculateTurn in case of money deficite"};
 locObj.fireInCity = {"txt": "Feuer in der Stadt!", "loc":"happens as part of random events"};
-locObj.rqtsHomes = {"txt": "Wird durch ein Ereignis freigeschaltet", "loc":"Requirements for homes"};
+locObj.rqtsHome = {"txt": "Wird durch ein Ereignis freigeschaltet", "loc":"Requirements for homes"};
 locObj.rqtsDef = {"txt": "Wird durch ein Ereignis freigeschaltet", "loc":"Requirements for defense buildings"};
 locObj.rqtsTreasury = {"txt": "Benötigt %arg1 Gold", "loc":"Reqs for Treasury building"};
 locObj.rqtsGallows = {"txt":"Erfordert %arg1 Bürger zum Freischalten", "loc":"Reqs for Gallows"};
@@ -574,3 +574,5 @@ locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"
 locObj.rqtsInn = {"txt":"Erfordert %arg1 Bürger zum Freischalten", "loc":"Reqs for Inn"};
 locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
 locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.helpDef = {"txt":"Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen", "loc":"help message in the building tab"};
+locObj.helpHome = {"txt": "Dieses Gebäude und seine Verbesserungen sind erforderlich, um Ihr Bevölkerungslimit zu erhöhen", "loc":"help msg in the building tab"};

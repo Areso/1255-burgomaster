@@ -263,8 +263,8 @@ localeStrings.push("Сначала добавьте войск герою");
 localeStrings.push("Для этого нужен герой!");
 localeStrings.push("Приятно иметь с вами дело. Надеюсь на скорую встречу с вами вновь.");//230
 localeStrings.push("Поздравляю с покупкой. Это хороший выбор.");
-localeStrings.push("Это здание нужно для защиты города от захватчиков.");
-localeStrings.push("Это здание и его улучшения нужны, чтобы поднять лимит населения.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Это здание и его улучшения нужны, чтобы поднять лимит золота.<br>Это здание позволит вам нанять охранников.<br>Они нужны, чтобы уменьшить шанс кражи из казны.");
 localeStrings.push("Это здание и его улучшения нужны, чтобы можно было казнить горожан.<br>Также повышает налоговые поступления, уменьшает рождаемость и счастье горожан.<br>Если вы построите это здание, вы не сможете построить фонтан!");
 localeStrings.push("Это здание и его улучшения нужны, чтобы проводить фестивали.<br>Повышает рождаемость и счастье горожан, а также уменьшает налоговые поступления.<br>Если вы построите это здание, вы не сможете построить виселицу!");
@@ -587,7 +587,7 @@ locObj.executedGainMsg = {"txt": "%arg1 золотых конфисковано"
 locObj.executionAborted = {"txt":"слишком мало жителей", "loc":"happens if you have too low amount of citizens"};
 locObj.cantUpkeepTreasuryGuards = {"txt": "охранники уволились, потому что вам нечем платить жалование!", "loc":"in calculateTurn in case of money deficite"};
 locObj.fireInCity = {"txt": "пожар в городе!", "loc":"happens as part of random events"};
-locObj.rqtsHomes = {"txt": "Разблокируется событием", "loc":"Requirements for homes"};
+locObj.rqtsHome = {"txt": "Разблокируется событием", "loc":"Requirements for homes"};
 locObj.rqtsDef = {"txt": "Разблокируется событием", "loc":"Requirements for defense buildings"};
 locObj.rqtsTreasury = {"txt": "Для разблокировки требуется %arg1 золота", "loc":"Reqs for Treasury building"};
 locObj.rqtsGallows = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Gallows"};
@@ -598,3 +598,5 @@ locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"
 locObj.rqtsInn = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Inn"};
 locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
 locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.helpDef = {"txt":"Это здание нужно для защиты города от захватчиков", "loc":"help message in the building tab"};
+locObj.helpHome = {"txt": "Это здание и его улучшения нужны, чтобы поднять лимит населения", "loc":"help msg in the building tab"};
