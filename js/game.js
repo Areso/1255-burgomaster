@@ -1200,9 +1200,19 @@
 				nextLvlTreasury       = game.buildLevelTreasury*1+1;
 				nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
 				if (nextLvlTreasury===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[234]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceTreasury);
+				    if (!game.tips.includes("tutorial_treasury")){
+                        helpMsg = locObj.helpTreasury.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceTreasury)+"<br>";
+                        helpMsg+= locObj.rqtsTreasury.txt.replace("%arg1",config.tutTreasuryG);
+				    } else {
+                        helpMsg = locObj.helpTreasury.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceTreasury)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[234]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
+				    helpMsg = loc.helpTreasury.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
 			}
 			if (myobject.id==="gallows_img") {

@@ -268,7 +268,7 @@ localeStrings.push("It is a pleasure to have a business with you. I will see you
 localeStrings.push("Congratulations with your purchase! you made good choice!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
+localeStrings.push("placeholder");
 localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235
 localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
 localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash you have, the more you could hide in the Stash.");
@@ -570,3 +570,4 @@ locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg Univer
 locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
 locObj.helpDef = {"txt":"This building is needed for defending the city from intruders", "loc":"help message in the building tab"};
 locObj.helpHome = {"txt": "This building and its improvements is needed to raise your population limit", "loc":"help msg in the building tab"};
+locObj.helpTreasury = {"txt":"This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed", "loc":"help msg in the building tab"};

@@ -267,7 +267,7 @@ localeStrings.push("Estas plezuro havi komercon kun vi. Mi revidos vin");//230
 localeStrings.push("Gratulojn pro via aĉeto! Vi faris bonan elekton!");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj estas bezonataj por pliigi vian monan limon. <br> Ĉi tiu konstruaĵo permesas dungi kasistojn. <br> Ili necesas por minimumigi viajn ŝancojn esti ŝtelitaj.");
+localeStrings.push("placeholder");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ekzekuti viajn civitanojn. <br> Ĝi ankaŭ pliigas impostojn kaj malpliigas naskiĝotempon kaj feliĉon. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la Fontanon!");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por aranĝi festivalojn. <br> Ĝi ankaŭ pliigas naskiĝtempon kaj feliĉon kaj malpliigas impostojn. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la forkojn!");
 localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ŝpari vian monon de ŝtelistoj, se la ŝtelistoj ŝtelas vian trezorejon. La pli alta nivelo de Stash vi havas, des pli vi povus kaŝi en la Stash.") ;
@@ -578,3 +578,4 @@ locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg Univer
 locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
 locObj.helpDef = {"txt":"Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj", "loc":"help message in the building tab"};
 locObj.helpHome = {"txt": "Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj bezonas por altigi vian loĝantar limon", "loc":"help msg in the building tab"};
+locObj.helpTreasury = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj estas bezonataj por pliigi vian monan limon. <br> Ĉi tiu konstruaĵo permesas dungi kasistojn. <br> Ili necesas por minimumigi viajn ŝancojn esti ŝtelitaj", "loc":"help msg in the building tab"};
