@@ -119,19 +119,21 @@ function remoteRegLogin() {
 function fpullMessages() {
     var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-	if (this.readyState === 4 && this.status === 200) {
+	  if (this.readyState === 4 && this.status === 200) {
 		messages = JSON.parse(this.responseText);
 			if (config.debug){
 				console.log(messages);
 	    	}
-			document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusUp.txt;
+	    	if (typeof localeOK==="function") { let status = locObj.serverStatusUp.txt } else { let status = "Up" }
+			document.getElementById("spnServerStatusValue").innerHTML=status;
 		    chat_dom.innerHTML = "";
 			messages.forEach(printToChat);
-		}
-		if (this.readyState === 4 && this.status !== 200) {
-			document.getElementById("spnServerStatusValue").innerHTML=locObj.serverStatusDown.txt;
-		}
-	};
+	  }
+	  if (this.readyState === 4 && this.status !== 200) {
+		    if (typeof localeOK==="function") { let status = locObj.serverStatusDown.txt } else { let status = "Down" }
+			document.getElementById("spnServerStatusValue").innerHTML=status;
+	  }
+	}
 	endpoint  = webserver + "/api/v1.1/pull_messages";
 	xhttp.open("GET", endpoint, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
