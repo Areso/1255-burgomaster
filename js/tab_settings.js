@@ -141,6 +141,14 @@ function exportGame() {
 	stringSavegame = JSON.stringify(tmpExportGame);
 	document.getElementById("savestring").value = btoa(stringSavegame);
 }
+function exportGameDebug(){
+	tmpExportGame = game;
+	tmpExportGame.pops = [];
+	tmpExportGame.budgets = [];
+	tmpExportGame.years = [];
+	stringSavegame = JSON.stringify(tmpExportGame);
+	document.getElementById("savestring").value = (stringSavegame);
+}
 function importGame() {
 	save64 = document.getElementById("savestring").value;
 	if (save64 !== "" ) {
