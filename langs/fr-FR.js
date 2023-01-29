@@ -269,8 +269,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//235
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour organiser des festivals. <br> C'est également augmenter le taux de natalité et le bonheur et réduire les impôts. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la potence!");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour protéger votre argent des voleurs, au cas où les voleurs dévaliseraient votre trésorerie. <br> Plus le niveau de Planque est élevé, plus vous pourrez vous cacher d'or dans la Planque.");
+localeStrings.push("placeholder");
+localeStrings.push("placehodler");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de cavalerie. <br> Plus le niveau d'écurie est élevé, plus vous pourrez engager des troupes expérimentées là-bas.");
 localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone.");//240
@@ -579,4 +579,6 @@ locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathe
 locObj.helpDef = {"txt":"Ce bâtiment est nécessaire pour protéger la cité des intrus", "loc":"help message in the building tab"};
 locObj.helpHome = {"txt": "Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de population", "loc":"help msg in the building tab"};
 locObj.helpTreasury = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de dépenses. <br> Ce bâtiment vous permet d'engager des gardes du trésor. <br> Ils sont nécessaires pour réduire vos risques de vol"};
-locObj.helpGallows = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour exécuter vos citoyens. <br> Il permet aussi d'augmenter les impôts et de diminuer le taux de natalité et le bonheur. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la fontaine!", "loc":"help msg in the building tab"}
+locObj.helpGallows = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour exécuter vos citoyens. <br> Il permet aussi d'augmenter les impôts et de diminuer le taux de natalité et le bonheur. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la fontaine!", "loc":"help msg in the building tab"};
+locObj.helpFountain = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour organiser des festivals. <br> C'est également augmenter le taux de natalité et le bonheur et réduire les impôts. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la potence!", "loc":"help msg in the building tab"};
+locObj.helpStash = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour protéger votre argent des voleurs, au cas où les voleurs dévaliseraient votre trésorerie. <br> Plus le niveau de Planque est élevé, plus vous pourrez vous cacher d'or dans la Planque","loc":"help msg in the building tab"};

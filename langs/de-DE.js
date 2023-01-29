@@ -269,8 +269,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//235
-localeStrings.push("Dieses Gebäude und seine Verbesserungen sind für die Ausrichtung von Festivals erforderlich. Es erhöht außerdem die Geburtenrate und das Glück und senkt die Steuern. <br> Wenn Sie dieses Gebäude bauen, können Sie die Galgen nicht bauen!");
-localeStrings.push("Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geld vor Dieben zu retten, falls die Diebe Ihre Schatzkammer ausrauben. <br> Je höher Ihr Stash-Level ist, desto mehr könnten Sie sich im Stash verstecken.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Helden einzustellen.<br> Je höher Ihr Inn-Level ist, desto erfahrener können Sie dort Helden einstellen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Kavallerien einzustellen.<br> Je höher Ihr Stall Level ist, desto erfahrener können Sie dort Kavallerien einstellen.");
 localeStrings.push("Dieses Gebäude und seine Verbesserungen sind erforderlich, um Bogenschützen einzustellen.<br> Je höher Ihre Schießstand Level ist, desto erfahrener können Sie dort Truppen anheuern.");
@@ -580,4 +580,6 @@ locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathe
 locObj.helpDef = {"txt":"Dieses Gebäude wird benötigt, um die Stadt vor Eindringlingen zu schützen", "loc":"help message in the building tab"};
 locObj.helpHome = {"txt": "Dieses Gebäude und seine Verbesserungen sind erforderlich, um Ihr Bevölkerungslimit zu erhöhen", "loc":"help msg in the building tab"};
 locObj.helpTreasury = {"txt":"Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geldlimit zu erhöhen. <br> In diesem Gebäude können Sie Schatzmeister einstellen. <br> Sie werden benötigt, um die Wahrscheinlichkeit zu minimieren, dass Sie ausgeraubt werden.", "loc":"help msg in the building tab"};
-locObj.helpGallows = {"txt":"Dieses Gebäude und seine Verbesserungen sind für die Hinrichtung Ihrer Bürger erforderlich. <br> Es erhöht auch die Steuern und senkt die Geburtenrate und das Glück. <br> Wenn Sie dieses Gebäude bauen, können Sie den Brunnen nicht bauen!", "loc":"help msg in the building tab"}
+locObj.helpGallows = {"txt":"Dieses Gebäude und seine Verbesserungen sind für die Hinrichtung Ihrer Bürger erforderlich. <br> Es erhöht auch die Steuern und senkt die Geburtenrate und das Glück. <br> Wenn Sie dieses Gebäude bauen, können Sie den Brunnen nicht bauen!", "loc":"help msg in the building tab"};
+locObj.helpFountain = {"txt":"Dieses Gebäude und seine Verbesserungen sind für die Ausrichtung von Festivals erforderlich. Es erhöht außerdem die Geburtenrate und das Glück und senkt die Steuern. <br> Wenn Sie dieses Gebäude bauen, können Sie die Galgen nicht bauen!", "loc":"help msg in the building tab"};
+locObj.helpStash = {"txt":"Dieses Gebäude und seine Verbesserungen werden benötigt, um Ihr Geld vor Dieben zu retten, falls die Diebe Ihre Schatzkammer ausrauben. <br> Je höher Ihr Stash-Level ist, desto mehr könnten Sie sich im Stash verstecken","loc":"help msg in the building tab"};

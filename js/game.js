@@ -1228,12 +1228,10 @@
                         helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows)+"<br>";
  				    }
 				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
-					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows);
 				} else {
 				    helpMsg = locObj.helpGallows.txt+"<br>";
                     helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
 				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
-					//document.getElementById(" ").innerHTML=localeStrings[235]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
 				}
 			}
 			if (myobject.id==="university_img") {
@@ -1243,18 +1241,40 @@
 				nextLvlFountain       = game.buildLevelFountain*1+1;
 				nextLvlPriceFountain  = Math.pow(config.costFountain,(game.buildLevelFountain*1+1));
 				if (nextLvlFountain===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[236]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceFountain);
+				    if (!game.tips.includes("tutorial_social")){
+                        helpMsg = locObj.helpFountain.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceFountain)+"<br>";
+                        helpMsg+= locObj.rqtsFountain.txt.replace("%arg1",config.tutSocialP);
+				    } else {
+                        helpMsg = locObj.helpFountain.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceFountain)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[236]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlFountain).replace("%arg2",nextLvlPriceFountain);
+				    helpMsg = locObj.helpFountain.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlFountain).replace("%arg2",nextLvlPriceFountain);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
 			}
 			if (myobject.id==="moneystash_img") {
 				nextLvlStash          = game.buildLevelStash*1+1;
 				nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 				if (nextLvlStash===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash);
+				    if (!game.tips.includes("tutorial_stash")){
+				      helpMsg = locObj.helpStash.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash)+"<br>";
+				      helpMsg+= locObj.rqtsStash.txt;
+				    } else {
+			          helpMsg = locObj.helpStash.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash)+"<br>";
+				    }
+				    document.getElementById("lblBuildHelp").innerHTML=helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash);
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
+				    helpMsg = locObj.helpStash.txt+"<br>";
+				    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
+					document.getElementById("lblBuildHelp").innerHTML=helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
 				}
 			}
 			if (myobject.id==="inn_img") {
@@ -2744,6 +2764,7 @@
 					var msg = localeStrings[42].replace("%arg1", goldLost);
 					postEventLog(msg);
 					updateResources();
+					//TODO move that to mech_tips_story !!!
 					if (game.isTutorialState && !game.tips.includes("tutorial_stash")){
 						game.tips.push("tutorial_stash");
 						showModal(0, '', getAck, locObj.tutorial_stash.txt, locObj.okay.txt, '')
