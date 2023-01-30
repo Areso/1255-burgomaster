@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install python requirements
-        run: pip install -r ./python/requirements.txt
+        run: pip install -r ./tests/requirements.txt
 
       - name: Start local game server
         run: sh ./ci-scripts/start_server.sh &
