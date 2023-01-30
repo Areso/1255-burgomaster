@@ -272,9 +272,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//235
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Это здание и его улучшения нужны, чтобы нанимать героев.<br>Более высокий уровень таверны позволит нанимать более опытных героев.");
-localeStrings.push("Это здание и его улучшения нужны, чтобы нанимать конницу.<br>Более высокий уровень конюшни позволит нанимать более опытные войска.");
-localeStrings.push("Это здание и его улучшения нужны, чтобы нанимать лучников.<br>Более высокий уровень стрельбища позволит нанимать более опытные войска.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placehodler");//240
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -432,6 +432,7 @@ locObj.tutorial_stable = {"txt":"Герр Комтур, теперь вы мож
 locObj.tutorial_archery = {"txt":"Герр Комтур, теперь вы можете построить стрельбище\nНа стрельбщие можно нанимать туркополов", "loc":"tutorial msg when reached 70 pop"};
 locObj.tutorial_inn = {"txt":"Герр Комтур, теперь вы можете построить таверну\nВ таверне можно нанять героя", "loc":"tutorial msg when tutorial msg when reached 100 pop"};
 locObj.tutorial_social = {"txt":"Герр Комтур, теперь вы можете построить виселицу или фонтан\nКаждое здание имеет свои пассивные и активные бонусы", "loc":"tutorial msg when население 120 человек"};
+locObj.tutorial_university = {"txt":"Sir Commander, now you could build Univeristy\nUniversity will allow you to research new technologies", "loc":"tutorial msg when year is 1544"};
 locObj.tutorial_firebrigade = {"txt":"Герр Комтур, вы можете нанять пожарную бригаду щелкнув по колодцу\nБригада может медленно тушить пожары\nСодержание бригады зависит от количества зданий и их уровней", "loc":"tutorial msg when fire, pop>50, year>1260"};
 locObj.tutorial_autosave = {"txt":"Герр Комтур, подумайте о том, чтобы включить автосохранение в Настройках", "loc":"tutorial.Triggered by 10 first ticks"};
 locObj.tutorial_moving_troops = {"txt":"Герр Комтур, кнопки около числа юнитов позволяют ими управлять\nСтрелка перемещает юнит, двойная стрелка перемещает всех юнитов группы,\nX кнопка увольняет юнит, XX кнопка увольняет всех юнитов группы", "loc":"triggered by first enter into Hiring tab"};
@@ -564,7 +565,6 @@ locObj.execReasons = [{"txt":"предательство", "loc":"when executing
 	{"txt":"казнокрадство", "loc":""},
 	{"txt":"кражи", "loc":""}];
 locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
-locObj.bldUniversityHelp = {"txt":"Это здание необходимо для исследования новых технологий.", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Построить университет<br>%arg2 золотых", "loc":"the label of the button of building the University on the building tab"};
 locObj.eventWillStart = {"txt":" ивент начнется через", "loc":"shows on the status bar if an event was announced"};
 locObj.eventWillEnd = {"txt":" ивент закончится через", "loc":"shows on the status bar if an event was started"};
@@ -599,11 +599,15 @@ locObj.rqtsStash = {"txt":"Requires Treasury and Unlocks by an event", "loc":"Re
 locObj.rqtsStables = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Stables"};
 locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"Reqs for Archery Range"};
 locObj.rqtsInn = {"txt":"Для разблокировки требуется %arg1 жителей", "loc":"Reqs for Inn"};
-locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
-locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.rqtsUniversity = {"txt":"Разблокируется в %arg1. Текущий год: %arg2", "loc":"Reqs for Konigsberg University"};
+locObj.rqtsCatherdal = {"txt":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
 locObj.helpDef = {"txt":"Это здание нужно для защиты города от захватчиков", "loc":"help message in the building tab"};
 locObj.helpHome = {"txt": "Это здание и его улучшения нужны, чтобы поднять лимит населения", "loc":"help msg in the building tab"};
 locObj.helpTreasury = {"txt":"Это здание и его улучшения нужны, чтобы поднять лимит золота.<br>Это здание позволит вам нанять охранников.<br>Они нужны, чтобы уменьшить шанс кражи из казны.", "loc":"help msg in the building tab"};
 locObj.helpGallows = {"txt":"Это здание и его улучшения нужны, чтобы можно было казнить горожан.<br>Также повышает налоговые поступления, уменьшает рождаемость и счастье горожан.<br>Если вы построите это здание, вы не сможете построить фонтан!", "loc":"help msg in the building tab"};
 locObj.helpFountain = {"txt":"Это здание и его улучшения нужны, чтобы проводить фестивали.<br>Повышает рождаемость и счастье горожан, а также уменьшает налоговые поступления.<br>Если вы построите это здание, вы не сможете построить виселицу!", "loc":"help msg in the building tab"};
 locObj.helpStash = {"txt":"Это здание и его улучшения нужны, чтобы сохранить ваши деньги от воров, в случае если они обкрадут сокровищницу.<br>Более высокий уровень тайника позволяет спрятать больше денег","loc":"help msg in the building tab"};
+locObj.helpStables = {"txt":"Это здание и его улучшения нужны, чтобы нанимать конницу.<br>Более высокий уровень конюшни позволит нанимать более опытные войска", "loc":"help msg in the building tab"};
+locObj.helpArcheryRange = {"txt":"Это здание и его улучшения нужны, чтобы нанимать лучников.<br>Более высокий уровень стрельбища позволит нанимать более опытные войска", "loc":"help msg in the building tab"};
+locObj.helpInn = {"txt":"Это здание и его улучшения нужны, чтобы нанимать героев.<br>Более высокий уровень таверны позволит нанимать более опытных героев", "loc":"help msg in the building tab"};
+locObj.helpUniversity = {"txt":"Это здание необходимо для исследования новых технологий.", "loc":"User saw this when moving the coursor above the university icon in Building tab"};

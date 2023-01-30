@@ -32,8 +32,10 @@ function gameTips() {
 	}
 	if (game.isTutorialState && !game.tips.includes("tutorial_archery")
 	&& game.pop>=config.tutArcheryP && !dialogShown){
-		game.tips.push("tutorial_archery");
-		showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
+	    if (game.buildLevelStable>0){
+		    game.tips.push("tutorial_archery");
+		    showModal(0, '', getAck, locObj.tutorial_archery.txt, locObj.okay.txt, '')
+		}
 	}
 	if (game.isTutorialState && !game.tips.includes("tutorial_inn")
 	&& game.pop>=config.tutInnP && !dialogShown){
@@ -44,6 +46,11 @@ function gameTips() {
 	&& game.pop>=config.tutSocialP && !dialogShown){
 		game.tips.push("tutorial_social");
 		showModal(0, '', getAck, locObj.tutorial_social.txt, locObj.okay.txt, '')
+	}
+	if (game.isTutorialState && !game.tips.includes("tutorial_university")
+	&& game.year>=config.tutUniversityY && !dialogShown){
+		game.tips.push("tutorial_university");
+		showModal(0, '', getAck, locObj.tutorial_university.txt, locObj.okay.txt, '')
 	}
 	return 0;
 }

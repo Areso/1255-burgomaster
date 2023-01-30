@@ -89,7 +89,13 @@ function updateImagesBuildingTab() {
 		var defenceImgElement = document.getElementById('defences_img');
 		defenceImgElement.setAttribute('src', './resources/btab_st_castle.png');
 		defenceImgElement.setAttribute('alt', 'btab_st_castle.png');
-}
+    }
+    if (game.tips.includes("tutorial_university") || game.buildLevelUniversity > 0){
+		var tabBldElements = document.querySelectorAll('#bldUniversity .is-tutorial');
+		for (tabBldElem of tabBldElements){
+			tabBldElem.classList.remove('is-tutorial');
+		}
+	}
 	// if (game.buildLevelD === 3) {
 	// 	var defenceImgElement = document.getElementById('defences_img');
 	// 	defenceImgElement.setAttribute('src', './resources/btab_st_castle.png');

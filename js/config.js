@@ -57,6 +57,12 @@ var config = {
   tutArcheryP: 60,
   tutInnP: 80,
   tutSocialP: 100,
+  tutUniversityY: 1544,
+  //actually, 1300, 1330, 1380 years are fine
+  //1300 smaller Altstadt, 1330 Kneiphof
+  //Also, we can make Church to Cathedral upgrade (TODO)
+  tutChurchY: 1300,
+  tutCathedralY: 1330,
   isOnline: true,
   pullMessages: true,
   pullMessagesMS: 1500,

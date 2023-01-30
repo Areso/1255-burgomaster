@@ -271,9 +271,9 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//235
 localeStrings.push("placeholder");
 localeStrings.push("placeholder") ;
-localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie.");
-localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi kavaleriajn unuojn. La pli alta Ĉevalejo nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");
-localeStrings.push("Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie.");//240
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//240
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -430,6 +430,7 @@ locObj.tutorial_stable = {"txt":"Sinjoro Komtur, nun vi povus konstrui Stalojn.\
 locObj.tutorial_archery = {"txt":"Sinjoro Komtur, nun vi povus konstrui Arkpafadon.\nArkpafado permesos vin dungi turkopolojn en staloj", "loc":"tutorial msg when reached 70 pop"};
 locObj.tutorial_inn = {"txt":"Sinjoro Komtur, nun vi povus enkonstrui\nLa Gastejo permesos vin dungi heroon", "loc":"tutorial msg when reached 100 pop"};
 locObj.tutorial_social = {"txt":"Sinjoro Komtur, nun vi povus konstrui Pendilon aŭ Fontanon\nAmbaŭ havas proprajn pasivajn kaj aktivajn gratifikojn", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_university = {"txt":"Sir Commander, now you could build Univeristy\nUniversity will allow you to research new technologies", "loc":"tutorial msg when year is 1544"};
 locObj.tutorial_firebrigade = {"txt":"Sinjoro Komtur, vi povus dungi fajroŝirmilon alklakante la puton\nLa fajrobrigado estingos la fajron eventuale\nLa prizorgado de la fajrobrigado dependas de kiom\nda konstruaĵoj vi konstruis kaj plibonigis", "loc":"tutorial msg when fire, pop>50, year>1260"};
 locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
 locObj.tutorial_moving_troops = {"txt":"Sir Commander, buttons near the number of units allow you to manage units\nSingle arrow moves a unit, double arrow moves a stack,\nX button fires a unit, XX button fires a stack", "loc":"triggered by first enter into Hiring tab"};
@@ -539,7 +540,6 @@ locObj.execReasons = [{"txt":"misuzo", "loc":"when executing a person"},
 	{"txt":"greftaĵo kaj ŝtelo", "loc":""},
 	{"txt":"malversación", "loc":""}];
 locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
-locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};
 locObj.eventWillStart = {"txt":" event will start in", "loc":"shows on the status bar if an event was announced"};
 locObj.eventWillEnd = {"txt":" event will end in", "loc":"shows on the status bar if an event was started"};
@@ -574,11 +574,15 @@ locObj.rqtsStash = {"txt":"Requires Treasury and Unlocks by an event", "loc":"Re
 locObj.rqtsStables = {"txt":"Postulas %arg1 civitanon por malŝlosi", "loc":"Reqs for Stables"};
 locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"Reqs for Archery Range"};
 locObj.rqtsInn = {"txt":"Postulas %arg1 civitanon por malŝlosi", "loc":"Reqs for Inn"};
-locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
-locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.rqtsUniversity = {"txt":"Unlocks in %arg1. Current year is %arg2", "loc":"Reqs for Konigsberg University"};
+locObj.rqtsCatherdal = {"txt":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
 locObj.helpDef = {"txt":"Ĉi tiu konstruaĵo necesas por defendi la urbon kontraŭ entruduloj", "loc":"help message in the building tab"};
 locObj.helpHome = {"txt": "Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj bezonas por altigi vian loĝantar limon", "loc":"help msg in the building tab"};
 locObj.helpTreasury = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj estas bezonataj por pliigi vian monan limon. <br> Ĉi tiu konstruaĵo permesas dungi kasistojn. <br> Ili necesas por minimumigi viajn ŝancojn esti ŝtelitaj", "loc":"help msg in the building tab"};
 locObj.helpGallows = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ekzekuti viajn civitanojn. <br> Ĝi ankaŭ pliigas impostojn kaj malpliigas naskiĝotempon kaj feliĉon. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la Fontanon!", "loc":"help msg in the building tab"};
 locObj.helpFountain = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por aranĝi festivalojn. <br> Ĝi ankaŭ pliigas naskiĝtempon kaj feliĉon kaj malpliigas impostojn. <br> Se vi konstruos ĉi tiun konstruaĵon, vi ne povos konstrui la forkojn!", "loc":"help msg in the building tab"};
 locObj.helpStash = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por ŝpari vian monon de ŝtelistoj, se la ŝtelistoj ŝtelas vian trezorejon. La pli alta nivelo de Stash vi havas, des pli vi povus kaŝi en la Stash","loc":"help msg in the building tab"};
+locObj.helpStables = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi kavaleriajn unuojn. La pli alta Ĉevalejo nivelo vi havas, des pli spertaj trupoj vi povus dungi tie", "loc":"help msg in the building tab"};
+locObj.helpArcheryRange = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie", "loc":"help msg in the building tab"};
+locObj.helpInn = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie", "loc":"help msg in the building tab"};
+locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};

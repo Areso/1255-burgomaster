@@ -270,10 +270,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//235
 localeStrings.push("placeholder");
-localeStrings.push("placehodler");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté.");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de cavalerie. <br> Plus le niveau d'écurie est élevé, plus vous pourrez engager des troupes expérimentées là-bas.");
-localeStrings.push("Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone.");//240
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//240
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -430,6 +430,7 @@ locObj.tutorial_stable = {"txt":"Monseigneur Commandeur, maintenant vous pouvez 
 locObj.tutorial_archery = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire un champ de tir à l'arc\nLe stand de tir à l'arc vous permettra de louer des turkopols dans les écuries", "loc":"tutorial msg when reached 70 pop"};
 locObj.tutorial_inn = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire\nL'Auberge vous permettra d'embaucher un héros", "loc":"tutorial msg when reached 100 pop"};
 locObj.tutorial_social = {"txt":"Monseigneur Commandeur, maintenant vous pouvez construire potence ou fontaine\nLes deux ont leurs propres bonus passifs et actifs", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_university = {"txt":"Sir Commander, now you could build Univeristy\nUniversity will allow you to research new technologies", "loc":"tutorial msg when year is 1544"};
 locObj.tutorial_firebrigade = {"txt":"Monseigneur Commandeur, vous pouvez engager un pompier en cliquant sur le puits\nLes pompiers finiront par éteindre le feu\nL'entretien des pompiers dépend du nombre de bâtiments\nque vous avez construits et modernisés", "loc":"tutorial msg when fire, pop>50, year>1260"};
 locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
 locObj.tutorial_moving_troops = {"txt":"Sir Commander, buttons near the number of units allow you to manage units\nSingle arrow moves a unit, double arrow moves a stack,\nX button fires a unit, XX button fires a stack", "loc":"triggered by first enter into Hiring tab"};
@@ -539,7 +540,6 @@ locObj.execReasons = [{"txt":"traitrise", "loc":"when executing a person"},
 	{"txt":"détournement de fonds", "loc":""},
 	{"txt":"vol", "loc":""}];
 locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
-locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};
 locObj.eventWillStart = {"txt":" event will start in", "loc":"shows on the status bar if an event was announced"};
 locObj.eventWillEnd = {"txt":" event will end in", "loc":"shows on the status bar if an event was started"};
@@ -574,11 +574,15 @@ locObj.rqtsStash = {"txt":"Requires Treasury and Unlocks by an event", "loc":"Re
 locObj.rqtsStables = {"txt":"Nécessite %arg1 citoyen pour déverrouiller", "loc":"Reqs for Stables"};
 locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"Reqs for Archery Range"};
 locObj.rqtsInn = {"txt":"Nécessite %arg1 citoyen pour déverrouiller", "loc":"Reqs for Inn"};
-locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
-locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.rqtsUniversity = {"txt":"Unlocks in %arg1. Current year is %arg2", "loc":"Reqs for Konigsberg University"};
+locObj.rqtsCatherdal = {"txt":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
 locObj.helpDef = {"txt":"Ce bâtiment est nécessaire pour protéger la cité des intrus", "loc":"help message in the building tab"};
 locObj.helpHome = {"txt": "Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de population", "loc":"help msg in the building tab"};
 locObj.helpTreasury = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour augmenter votre limite de dépenses. <br> Ce bâtiment vous permet d'engager des gardes du trésor. <br> Ils sont nécessaires pour réduire vos risques de vol"};
 locObj.helpGallows = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour exécuter vos citoyens. <br> Il permet aussi d'augmenter les impôts et de diminuer le taux de natalité et le bonheur. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la fontaine!", "loc":"help msg in the building tab"};
 locObj.helpFountain = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour organiser des festivals. <br> C'est également augmenter le taux de natalité et le bonheur et réduire les impôts. <br> Si vous construisez ce bâtiment, vous ne pourrez pas construire la potence!", "loc":"help msg in the building tab"};
 locObj.helpStash = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour protéger votre argent des voleurs, au cas où les voleurs dévaliseraient votre trésorerie. <br> Plus le niveau de Planque est élevé, plus vous pourrez vous cacher d'or dans la Planque","loc":"help msg in the building tab"};
+locObj.helpStables = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de cavalerie. <br> Plus le niveau d'écurie est élevé, plus vous pourrez engager des troupes expérimentées là-bas", "loc":"help msg in the building tab"};
+locObj.helpArcheryRange = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone", "loc":"help msg in the building tab"};
+locObj.helpInn = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté", "loc":"help msg in the building tab"};
+locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};

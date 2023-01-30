@@ -1234,9 +1234,6 @@
 				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
 			}
-			if (myobject.id==="university_img") {
-				document.getElementById("lblBuildHelp").innerHTML=locObj.bldUniversityHelp.txt+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost);
-			}
 			if (myobject.id==="fountain_img") {
 				nextLvlFountain       = game.buildLevelFountain*1+1;
 				nextLvlPriceFountain  = Math.pow(config.costFountain,(game.buildLevelFountain*1+1));
@@ -1277,31 +1274,81 @@
 					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
 				}
 			}
-			if (myobject.id==="inn_img") {
-				nextLvlInn            = game.buildLevelInn*1+1;
-				nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
-				if (nextLvlInn===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn);
-				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
-				}
-			}
 			if (myobject.id==="stable_img") {
-				nextLvlStable         = game.buildLevelStable*1+1;
-				nextLvlPriceStable    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
-				if (nextLvlStable===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStable);
+				nextLvlStables         = game.buildLevelStable*1+1;
+				nextLvlPriceStables    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
+				if (nextLvlStables===1) {
+					if (!game.tips.includes("tutorial_stable")){
+                        helpMsg = locObj.helpStables.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStables)+"<br>";
+                        helpMsg+= locObj.rqtsStables.txt.replace("%arg1",config.tutStablesP);
+				    } else {
+                        helpMsg = locObj.helpStables.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStables)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStable);
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
+					helpMsg = locObj.helpStables.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStables).replace("%arg2",nextLvlPriceStables);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
 				}
 			}
 			if (myobject.id==="archery_img") {
 				nextLvlArchery         = game.buildLevelArchery*1+1;
 				nextLvlPriceArchery    = Math.pow(config.costArchery,(game.buildLevelArchery*1+1));
 				if (nextLvlArchery===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[240]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceArchery);
+					if (!game.tips.includes("tutorial_archery")){
+                        helpMsg = locObj.helpArcheryRange.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceArchery)+"<br>";
+                        helpMsg+= locObj.rqtsArcheryRange.txt.replace("%arg1",config.tutArcheryP);
+				    } else {
+                        helpMsg = locObj.helpArcheryRange.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceArchery)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[240]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
+					helpMsg = locObj.helpArcheryRange.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+				}
+			}
+			if (myobject.id==="inn_img") {
+				nextLvlInn            = game.buildLevelInn*1+1;
+				nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
+				if (nextLvlInn===1) {
+					if (!game.tips.includes("tutorial_inn")){
+                        helpMsg = locObj.helpInn.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn)+"<br>";
+                        helpMsg+= locObj.rqtsInn.txt.replace("%arg1",config.tutInnP);
+				    } else {
+                        helpMsg = locObj.helpInn.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn)+"<br>";
+ 				    }
+ 				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn);
+				} else {
+				    helpMsg = locObj.helpInn.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
+				}
+			}
+			if (myobject.id==="university_img") {
+			    if (game.buildLevelUniversity===0) {
+			       if (!game.tips.includes("tutorial_university")){
+                        helpMsg = locObj.helpUniversity.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost)+"<br>";
+                        helpMsg+= locObj.rqtsUniversity.txt.replace("%arg1",config.tutUniversityY).replace("%arg2",game.year);
+				   } else {
+                        helpMsg = locObj.helpUniversity.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost)+"<br>";
+ 				   }
+ 				   document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+			    } else {
+			        helpMsg = locObj.helpUniversity.txt;
+			        document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
 			}
 			if (myobject.id==="imgHiringScreenSergeantToHire") {
