@@ -290,3 +290,25 @@ function recalcStats(itemStats) {
 		}
 	}
 }
+
+
+function getInventoryItemListIds(target) {
+	let targetList = [];
+	switch (target) {
+		case 'hero': {
+			if (game.heroExists()) {
+				targetList = game.myhero && game.myhero.inventory;
+			}
+		} break;
+		case 'trader': targetList = game.blackMarketGoods; break;
+		default: console.warn('Unknown inventory target'); return;
+	}
+	if (targetList.length > 0) {
+		console.log('123');
+		targetList =  targetList.map(item => item.id);
+	}
+	return targetList;
+}
+
+
+

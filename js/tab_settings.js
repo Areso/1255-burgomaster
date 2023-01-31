@@ -134,11 +134,12 @@ function setupMobileUI() {
 		}
 	}
 function exportGame() {
-	tmpExportGame = game;
+	const tmpExportGame = JSON.parse(JSON.stringify(game)); // Some dummy copy of object;
+	prepareInventoryWriteSave(tmpExportGame);
 	tmpExportGame.pops = [];
 	tmpExportGame.budgets = [];
 	tmpExportGame.years = [];
-	stringSavegame = JSON.stringify(tmpExportGame);
+	const stringSavegame = JSON.stringify(tmpExportGame);
 	document.getElementById("savestring").value = btoa(stringSavegame);
 }
 function exportGameDebug(){
@@ -156,7 +157,7 @@ function importGame() {
 			console.log("we try to load the imported save");
 			saveLine  = atob(save64);
 			saveArray = saveLine.split(delimiter);
-			gameTemp  = JSON.parse(saveArray[0]);
+			const gameTemp  = JSON.parse(saveArray[0]);
 			overrideGame(gameTemp);
 		}
 		catch(err) {
@@ -168,10 +169,12 @@ function importGame() {
 	}
 }
 function cloudQuickSave(){
-	tmpExportGame = game;
+	const tmpExportGame = JSON.parse(JSON.stringify(game)); // Some dummy copy of object
+	prepareInventoryWriteSave(tmpExportGame);
 	tmpExportGame.pops = [];
 	tmpExportGame.budgets = [];
 	tmpExportGame.years = [];
-	stringSavegame = JSON.stringify(tmpExportGame);
-	save_to_cloud(btoa(stringSavegame));
+	const stringSavegame = JSON.stringify(tmpExportGame);
+	console.log(stringSavegame);
+	// save_to_cloud(btoa(stringSavegame));
 }
