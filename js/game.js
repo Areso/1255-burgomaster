@@ -4073,8 +4073,43 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			writeSave();
 		}
 	}
+
+	function prepareInventoryWriteSave(gameObjToPrepare) {
+	   const heroInventoryIds = getInventoryItemListIds('hero');
+	   const traderInventoryIds = getInventoryItemListIds('trader');
+
+	   if (heroInventoryIds.length > 0) {
+       gameObjToPrepare.myhero.inventory = heroInventoryIds;
+       gameObjToPrepare.myhero.inventoryWorn = heroInventoryIds;
+     }
+
+	   if (traderInventoryIds.length > 0) {
+       gameObjToPrepare.blackMarketGoods = traderInventoryIds;
+     }
+  }
+
+  function prepareInventoryLoadSave(gameObjToPrepare) {
+    if (gameObjToPrepare && gameObjToPrepare.myhero && gameObjToPrepare.myhero.inventory.length > 0) {
+      const copyArr = gameObjToPrepare.myhero.inventory.map(item => item);
+      game.myhero.inventory = [];
+      game.myhero.inventoryWorn = [];
+      copyArr.forEach(itemId => {
+        addItem('hero', artefacts[itemId]);
+      });
+    }
+
+    if (gameObjToPrepare && gameObjToPrepare.blackMarketGoods.length > 0) {
+      const copyArr = gameObjToPrepare.map(item => item);
+      game.blackMarketGoods = [];
+      copyArr.forEach(itemId => {
+        addItem('trader', artefacts[itemId]);
+      })
+    }
+
+  }
+
 	function writeSave(SaveType){
-		document.getElementById("loadGameButton").style.visibility = "visible";
+		document.getElementById("loadGameButton").style.display = 'block';
 		localStorage.setItem('game', JSON.stringify(game));
 		if (SaveType === "silent") {
 			if (game.userASaveAck === 0) {
@@ -4148,6 +4183,7 @@ function setTutorialAfterSaveRestore(gameTemp) {
 				game.myhero.inventoryWorn.push(0);
 			}
 		}
+    prepareInventoryLoadSave(gameTemp);
 		//options  = JSON.parse(localStorage.getItem('options'));
 		game.active_tab="";
 		game.putOutFireUI(true);
