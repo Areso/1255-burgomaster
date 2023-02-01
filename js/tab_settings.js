@@ -175,6 +175,5 @@ function cloudQuickSave(){
 	tmpExportGame.budgets = [];
 	tmpExportGame.years = [];
 	const stringSavegame = JSON.stringify(tmpExportGame);
-	console.log(stringSavegame);
-	// save_to_cloud(btoa(stringSavegame));
+	save_to_cloud(btoa(stringSavegame));
 }
