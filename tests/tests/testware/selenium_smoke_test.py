@@ -1,6 +1,6 @@
 import unittest
 
-from python.testware.seleniumwrapper import SeleniumBaseTest
+from tests.testware.seleniumwrapper import SeleniumBaseTest
 
 
 class SeleniumSmokeTest(SeleniumBaseTest):
