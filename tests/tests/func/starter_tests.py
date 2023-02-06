@@ -1,7 +1,7 @@
 import warnings
 
-from python.testware.pageobjects import StartPageObject
-from python.testware.seleniumwrapper import SeleniumBaseTest
+from tests.testware.pageobjects import StartPageObject
+from tests.testware.seleniumwrapper import SeleniumBaseTest
 
 
 class StarterTests(SeleniumBaseTest):
