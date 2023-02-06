@@ -24,12 +24,14 @@ if (window.location.href.indexOf("file")===-1){
   webserver = "https://navi.areso.pro:7001";
   ws_server = "wss://navi.areso.pro:7000";
   dev_flag  = false;
-} else {
+} else
+{
   config.isOnline = false;
   webserver = "http://localhost:6699";
   ws_server = "ws://localhost:6698";
   dev_flag  = true;
 }
+
 function setUpBackendTimers(){
   if (config.isOnline && config.pullMessages){
     fpullMessagesTimer = setInterval(fpullMessages, config.pullMessagesMS);
@@ -296,7 +298,7 @@ function reloadBanned() {
 		return null;
 	}
 	allowMsg = 1;
-	function cooldownMsg(){
+	function cooldownMsg() {
 		allowMsg = 1;
 	}
 	function send2(){

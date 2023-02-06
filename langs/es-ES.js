@@ -266,15 +266,15 @@ localeStrings.push("You need to add some troops to hero's squad first!");
 localeStrings.push("You need a hero to do that!");
 localeStrings.push("It is a pleasure to have a business with you. I will see you again");//230
 localeStrings.push("Congratulations with your purchase! you made good choice!");
-localeStrings.push("This building is needed for defending the city from intruders.");
-localeStrings.push("This building and its improvements is needed to raise your population limit.");
-localeStrings.push("This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed.");
-localeStrings.push("This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!");//235
-localeStrings.push("This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!");
-localeStrings.push("This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash you have, the more you could hide in the Stash.");
-localeStrings.push("This building and its improvements is needed to hire heroes.<br>The higher level of Inn you have, the more experienced hero you could hire there.");
-localeStrings.push("This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable you have, the more experienced troops you could hire there.");
-localeStrings.push("This building and its improvements is needed to hire archery units.<br>The higher level of Archery range you have, the more experienced troops you could hire there.");//240
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//235
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//240
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -431,6 +431,7 @@ locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nSta
 locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nArchery range will allow you to hire turkopols in stables", "loc":"tutorial msg when reached 70 pop"};
 locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when reached 100 pop"};
 locObj.tutorial_social = {"txt":"Sir Commander, now you could build Gallows or Fountain\nBoth have own passive and active bonuses", "loc":"tutorial msg when reached 120 pop"};
+locObj.tutorial_university = {"txt":"Sir Commander, now you could build Univeristy\nUniversity will allow you to research new technologies", "loc":"tutorial msg when year is 1544"};
 locObj.tutorial_firebrigade = {"txt":"Sir Commander, you could hire a firebrigade by clicking on the well\nThe firebrigade will put out the fire eventually\nThe brigade's upkeep depends on how many buildings you have built and upgraded", "loc":"tutorial msg when fire, pop>50, year>1260"};
 locObj.tutorial_autosave = {"txt":"Sir Commander, you should consider to enable autosave in Settings", "loc":"tutorial. Triggered by 10 first ticks"};
 locObj.tutorial_moving_troops = {"txt":"Sir Commander, buttons near the number of units allow you to manage units\nSingle arrow moves a unit, double arrow moves a stack,\nX button fires a unit, XX button fires a stack", "loc":"triggered by first enter into Hiring tab"};
@@ -536,7 +537,6 @@ locObj.execReasons = [{"txt":"traición", "loc":"when executing a person"},
 	{"txt":"graft and robo", "loc":""},
 	{"txt":"malversación", "loc":""}];
 locObj.techArtilleryResearched = {"txt":"You researched the artillery technology!", "loc":"Happens when the tech is discovered"};
-locObj.bldUniversityHelp = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
 locObj.bldUniversityButton = {"txt":"Build university<br>%arg2 gold", "loc":"the label of the button of building the University on the building tab"};
 locObj.eventWillStart = {"txt":" event will start in", "loc":"shows on the status bar if an event was announced"};
 locObj.eventWillEnd = {"txt":" event will end in", "loc":"shows on the status bar if an event was started"};
@@ -557,7 +557,7 @@ locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"co
 locObj.errGettingCloudSave = {"txt":"error while trying to get your cloudsave from the cloud","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc":"could happen while loading cloudsave"};
 locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};
-locObj.rqtsHomes = {"txt": "Desbloqueos por un evento", "loc":"Requirements for homes"};
+locObj.rqtsHome = {"txt": "Desbloqueos por un evento", "loc":"Requirements for homes"};
 locObj.rqtsDef = {"txt": "Desbloqueos por un evento", "loc":"Requirements for defense buildings"};
 locObj.rqtsTreasury = {"txt": "Requiere %arg1 de oro para desbloquear", "loc":"Reqs for Treasury building"};
 locObj.rqtsGallows = {"txt":"Requiere %arg1 ciudadanos para desbloquear", "loc":"Reqs for Gallows"};
@@ -566,5 +566,15 @@ locObj.rqtsStash = {"txt":"Requires Treasury and Unlocks by an event", "loc":"Re
 locObj.rqtsStables = {"txt":"Requiere %arg1 ciudadanos para desbloquear", "loc":"Reqs for Stables"};
 locObj.rqtsArcheryRange = {"txt": "Requires %arg1 citizens and Stables", "loc":"Reqs for Archery Range"};
 locObj.rqtsInn = {"txt":"Requiere %arg1 ciudadanos para desbloquear", "loc":"Reqs for Inn"};
-locObj.rqtsUniversity = {"":"Unlocks in 1544", "loc":"Reqs for Konigsberg University"};
-locObj.rqtsCatherdal = {"":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.rqtsUniversity = {"txt":"Unlocks in %arg1. Current year is %arg2", "loc":"Reqs for Konigsberg University"};
+locObj.rqtsCatherdal = {"txt":"Unlocks in 1380", "loc": "Reqs for Königsberg Cathedral"};
+locObj.helpDef = {"txt":"This building is needed for defending the city from intruders", "loc":"help message in the building tab"};
+locObj.helpHome = {"txt": "This building and its improvements is needed to raise your population limit", "loc":"help msg in the building tab"};
+locObj.helpTreasury = {"txt":"This building and its improvements is needed to raise your money limit.<br>This building allows you to hire treasury guards.<br>They are needed to minimize your chances to be robbed", "loc":"help msg in the building tab"};
+locObj.helpGallows = {"txt":"This building and its improvements is needed to execute your citizens.<br>It is also increase taxes and decrease birthrate and happiness.<br>If you build this building, you will not be able to build the Fountain!", "loc":"help msg in the building tab"};
+locObj.helpFountain = {"txt":"This building and its improvements is needed to place festivals.<br>It is also increase birthrate and happiness and decrease taxes.<br>If you build this building, you will not be able to build the Gallows!", "loc":"help msg in the building tab"};
+locObj.helpStash = {"txt":"This building and its improvements is needed to save your money from thieves, in case the thieves rob your treasury.<br>The higher level of Stash you have, the more you could hide in the Stash","loc":"help msg in the building tab"};
+locObj.helpStables = {"txt":"This building and its improvements is needed to hire cavalry units.<br>The higher level of Stable you have, the more experienced troops you could hire there", "loc":"help msg in the building tab"};
+locObj.helpArcheryRange = {"txt":"This building and its improvements is needed to hire archery units.<br>The higher level of Archery range you have, the more experienced troops you could hire there", "loc":"help msg in the building tab"};
+locObj.helpInn = {"txt":"This building and its improvements is needed to hire heroes.<br>The higher level of Inn you have, the more experienced hero you could hire there", "loc":"help msg in the building tab"};
+locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};

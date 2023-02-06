@@ -124,6 +124,7 @@ function tap (e) {
             document.getElementById("myDCanvas").classList.remove('active-modal');
             answer = 2;
             clearCanvas();
+            dialogShown = false;
         }
     }
     if (loc.x >= buttonTwoOffsetX && loc.x <= buttonTwoOffsetX+buttonTwoLength) {
@@ -131,6 +132,7 @@ function tap (e) {
             document.getElementById("myDCanvas").classList.remove('active-modal');
             answer = 3;
             clearCanvas();
+            dialogShown = false;
         }
     }
 }

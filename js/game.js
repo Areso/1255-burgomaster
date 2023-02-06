@@ -1164,86 +1164,191 @@
 					blMaxLvlDef = 1;
 				}
 				if (blMaxLvlDef === 0){
-				    if (!game.tips.includes("tutorial1_pop0")){
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice);
+				   if (!game.tips.includes("tutorial_defense")){
+				      helpMsg = locObj.helpDef.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice)+"<br>";
+				      helpMsg+= locObj.rqtsDef.txt;
+				    } else {
+                      helpMsg = locObj.helpDef.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextDefPrice)+"<br>";
 				    }
+				    document.getElementById("lblBuildHelp").innerHTML=helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[232];
+					document.getElementById("lblBuildHelp").innerHTML=locObj.helpDef.txt;
 				}
 			}
 			if (myobject.id==="home_img") {
 				nextLvlHome           = game.buildLevelH*1+1;
 				nextLvlPriceHome      = Math.pow(config.costHome,(game.buildLevelH*1+1));
 				if (nextLvlHome===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[233]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceHome);
+				    if (!game.tips.includes("tutorial1_pop0")){
+				      helpMsg = locObj.helpHome.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceHome)+"<br>";
+				      helpMsg+= locObj.rqtsHome.txt;
+				    } else {
+			          helpMsg = locObj.helpHome.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceHome)+"<br>";
+				    }
+				    document.getElementById("lblBuildHelp").innerHTML=helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[233]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
+				    helpMsg = locObj.helpHome.txt+"<br>";
+				    helpMsg+=locObj.upgCostSidebar.txt.replace("%arg1",nextLvlHome).replace("%arg2",nextLvlPriceHome);
+					document.getElementById("lblBuildHelp").innerHTML=helpMsg;
 				}
 			}
 			if (myobject.id==="treasury_img") {
 				nextLvlTreasury       = game.buildLevelTreasury*1+1;
 				nextLvlPriceTreasury  = Math.pow(config.costTreasury,(game.buildLevelTreasury*1+1));
 				if (nextLvlTreasury===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[234]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceTreasury);
+				    if (!game.tips.includes("tutorial_treasury")){
+                        helpMsg = locObj.helpTreasury.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceTreasury)+"<br>";
+                        helpMsg+= locObj.rqtsTreasury.txt.replace("%arg1",config.tutTreasuryG);
+				    } else {
+                        helpMsg = locObj.helpTreasury.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceTreasury)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[234]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
+				    helpMsg = locObj.helpTreasury.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlTreasury).replace("%arg2",nextLvlPriceTreasury);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
 			}
 			if (myobject.id==="gallows_img") {
 				nextLvlGallows        = game.buildLevelGallows*1+1;
 				nextLvlPriceGallows   = Math.pow(config.costGallows,(game.buildLevelGallows*1+1));
 				if (nextLvlGallows===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows);
+				    if (!game.tips.includes("tutorial_social")){
+                        helpMsg = locObj.helpGallows.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows)+"<br>";
+                        helpMsg+= locObj.rqtsGallows.txt.replace("%arg1",config.tutSocialP);
+				    } else {
+                        helpMsg = locObj.helpGallows.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceGallows)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[235]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
+				    helpMsg = locObj.helpGallows.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlGallows).replace("%arg2",nextLvlPriceGallows);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
-			}
-			if (myobject.id==="university_img") {
-				document.getElementById("lblBuildHelp").innerHTML=locObj.bldUniversityHelp.txt+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost);
 			}
 			if (myobject.id==="fountain_img") {
 				nextLvlFountain       = game.buildLevelFountain*1+1;
 				nextLvlPriceFountain  = Math.pow(config.costFountain,(game.buildLevelFountain*1+1));
 				if (nextLvlFountain===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[236]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceFountain);
+				    if (!game.tips.includes("tutorial_social")){
+                        helpMsg = locObj.helpFountain.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceFountain)+"<br>";
+                        helpMsg+= locObj.rqtsFountain.txt.replace("%arg1",config.tutSocialP);
+				    } else {
+                        helpMsg = locObj.helpFountain.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceFountain)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[236]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlFountain).replace("%arg2",nextLvlPriceFountain);
+				    helpMsg = locObj.helpFountain.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlFountain).replace("%arg2",nextLvlPriceFountain);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
 			}
 			if (myobject.id==="moneystash_img") {
 				nextLvlStash          = game.buildLevelStash*1+1;
 				nextLvlPriceStash     = Math.pow(config.costStash,(game.buildLevelStash*1+1));
 				if (nextLvlStash===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash);
+				    if (!game.tips.includes("tutorial_stash")){
+				      helpMsg = locObj.helpStash.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash)+"<br>";
+				      helpMsg+= locObj.rqtsStash.txt;
+				    } else {
+			          helpMsg = locObj.helpStash.txt+"<br>";
+				      helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash)+"<br>";
+				    }
+				    document.getElementById("lblBuildHelp").innerHTML=helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStash);
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
-				}
-			}
-			if (myobject.id==="inn_img") {
-				nextLvlInn            = game.buildLevelInn*1+1;
-				nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
-				if (nextLvlInn===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn);
-				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
+				    helpMsg = locObj.helpStash.txt+"<br>";
+				    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
+					document.getElementById("lblBuildHelp").innerHTML=helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[237]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStash).replace("%arg2",nextLvlPriceStash);
 				}
 			}
 			if (myobject.id==="stable_img") {
-				nextLvlStable         = game.buildLevelStable*1+1;
-				nextLvlPriceStable    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
-				if (nextLvlStable===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStable);
+				nextLvlStables         = game.buildLevelStable*1+1;
+				nextLvlPriceStables    = Math.pow(config.costStable,(game.buildLevelStable*1+1));
+				if (nextLvlStables===1) {
+					if (!game.tips.includes("tutorial_stable")){
+                        helpMsg = locObj.helpStables.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStables)+"<br>";
+                        helpMsg+= locObj.rqtsStables.txt.replace("%arg1",config.tutStablesP);
+				    } else {
+                        helpMsg = locObj.helpStables.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStables)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceStable);
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
+					helpMsg = locObj.helpStables.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStables).replace("%arg2",nextLvlPriceStables);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[239]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlStable).replace("%arg2",nextLvlPriceStable);
 				}
 			}
 			if (myobject.id==="archery_img") {
 				nextLvlArchery         = game.buildLevelArchery*1+1;
 				nextLvlPriceArchery    = Math.pow(config.costArchery,(game.buildLevelArchery*1+1));
 				if (nextLvlArchery===1) {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[240]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceArchery);
+					if (!game.tips.includes("tutorial_archery")){
+                        helpMsg = locObj.helpArcheryRange.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceArchery)+"<br>";
+                        helpMsg+= locObj.rqtsArcheryRange.txt.replace("%arg1",config.tutArcheryP);
+				    } else {
+                        helpMsg = locObj.helpArcheryRange.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceArchery)+"<br>";
+ 				    }
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				} else {
-					document.getElementById("lblBuildHelp").innerHTML=localeStrings[240]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
+					helpMsg = locObj.helpArcheryRange.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlArchery).replace("%arg2",nextLvlPriceArchery);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+				}
+			}
+			if (myobject.id==="inn_img") {
+				nextLvlInn            = game.buildLevelInn*1+1;
+				nextLvlPriceInn       = Math.pow(config.costInn,(game.buildLevelInn*1+1));
+				if (nextLvlInn===1) {
+					if (!game.tips.includes("tutorial_inn")){
+                        helpMsg = locObj.helpInn.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn)+"<br>";
+                        helpMsg+= locObj.rqtsInn.txt.replace("%arg1",config.tutInnP);
+				    } else {
+                        helpMsg = locObj.helpInn.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn)+"<br>";
+ 				    }
+ 				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.bldCostSidebar.txt.replace("%arg2",nextLvlPriceInn);
+				} else {
+				    helpMsg = locObj.helpInn.txt+"<br>";
+                    helpMsg+= locObj.upgCostSidebar.txt.replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
+				    document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+					//document.getElementById("lblBuildHelp").innerHTML=localeStrings[238]+"<br>"+locObj.upgCostSidebar.txt.replace("%arg1",nextLvlInn).replace("%arg2",nextLvlPriceInn);
+				}
+			}
+			if (myobject.id==="university_img") {
+			    if (game.buildLevelUniversity===0) {
+			       if (!game.tips.includes("tutorial_university")){
+                        helpMsg = locObj.helpUniversity.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost)+"<br>";
+                        helpMsg+= locObj.rqtsUniversity.txt.replace("%arg1",config.tutUniversityY).replace("%arg2",game.year);
+				   } else {
+                        helpMsg = locObj.helpUniversity.txt+"<br>";
+                        helpMsg+= locObj.bldCostSidebar.txt.replace("%arg2",config.bldUniversityCost)+"<br>";
+ 				   }
+ 				   document.getElementById("lblBuildHelp").innerHTML = helpMsg;
+			    } else {
+			        helpMsg = locObj.helpUniversity.txt;
+			        document.getElementById("lblBuildHelp").innerHTML = helpMsg;
 				}
 			}
 			if (myobject.id==="imgHiringScreenSergeantToHire") {
@@ -2706,6 +2811,7 @@
 					var msg = localeStrings[42].replace("%arg1", goldLost);
 					postEventLog(msg);
 					updateResources();
+					//TODO move that to mech_tips_story !!!
 					if (game.isTutorialState && !game.tips.includes("tutorial_stash")){
 						game.tips.push("tutorial_stash");
 						showModal(0, '', getAck, locObj.tutorial_stash.txt, locObj.okay.txt, '')
@@ -3967,8 +4073,44 @@ WeightedRandom.prototype.clearEntriesList = function() {
 			writeSave();
 		}
 	}
+
+	function prepareInventoryWriteSave(gameObjToPrepare) {
+	   const heroInventoryIds = getInventoryItemListIds('hero');
+	   const traderInventoryIds = getInventoryItemListIds('trader');
+
+	   if (heroInventoryIds.length > 0) {
+       gameObjToPrepare.myhero.inventory = heroInventoryIds;
+       gameObjToPrepare.myhero.inventoryWorn = heroInventoryIds;
+     }
+
+	   if (traderInventoryIds.length > 0) {
+       gameObjToPrepare.blackMarketGoods = traderInventoryIds;
+     }
+  }
+
+  function prepareInventoryLoadSave(gameObjToPrepare) {
+    if (gameObjToPrepare && game.heroExists()) {
+      if (gameObjToPrepare.myhero.inventory.length > 0) {
+        const copyArr = gameObjToPrepare.myhero.inventory.map(item => item);
+        game.myhero.inventory = [];
+        game.myhero.inventoryWorn = [];
+        copyArr.forEach(itemId => {
+          addItem('hero', artefacts[itemId]);
+        });
+      }
+    }
+    if (gameObjToPrepare && gameObjToPrepare.blackMarketGoods.length > 0) {
+      const copyArr = gameObjToPrepare.map(item => item);
+      game.blackMarketGoods = [];
+      copyArr.forEach(itemId => {
+        addItem('trader', artefacts[itemId]);
+      })
+    }
+
+  }
+
 	function writeSave(SaveType){
-		document.getElementById("loadGameButton").style.visibility = "visible";
+		document.getElementById("loadGameButton").style.display = 'block';
 		localStorage.setItem('game', JSON.stringify(game));
 		if (SaveType === "silent") {
 			if (game.userASaveAck === 0) {
@@ -4042,6 +4184,7 @@ function setTutorialAfterSaveRestore(gameTemp) {
 				game.myhero.inventoryWorn.push(0);
 			}
 		}
+        prepareInventoryLoadSave(gameTemp);
 		//options  = JSON.parse(localStorage.getItem('options'));
 		game.active_tab="";
 		game.putOutFireUI(true);

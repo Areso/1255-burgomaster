@@ -1,5 +1,5 @@
-from python.testware.locators import StartPageLocators
-from python.testware.timeouts import Timeouts
+from tests.testware.locators import StartPageLocators
+from tests.testware.timeouts import Timeouts
 
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
