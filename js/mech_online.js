@@ -515,9 +515,10 @@ function enableOnlineCounter(){
            data = JSON.parse(event.data);
            switch (data.type) {
                case 'users':
-                   users_online.textContent = (
-                   data.count.toString() + " " +
-                   (data.count == 1 ? locObj.userCntOne.txt : locObj.userCntTwoPlus.txt));
+                   if (typeof localeOK==="function") { let oneUser = locObj.userCntOne.txt } else { let oneUser = "user" }
+                   if (typeof localeOK==="function") { let moreUsers = locObj.userCntTwoPlus.txt } else { let moreUsers = "users" }
+                   users_online.textContent = data.count.toString() + " "
+                   users_online.textContent+= (data.count == 1 ? oneUser : moreUsers);
                    break;
                default:
                    console.error("unsupported event", data);
