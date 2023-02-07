@@ -515,8 +515,10 @@ function enableOnlineCounter(){
            data = JSON.parse(event.data);
            switch (data.type) {
                case 'users':
-                   if (typeof localeOK==="function") { let oneUser = locObj.userCntOne.txt } else { let oneUser = "user" }
-                   if (typeof localeOK==="function") { let moreUsers = locObj.userCntTwoPlus.txt } else { let moreUsers = "users" }
+                   let oneUser   = "user";
+                   let moreUsers = "users";
+                   if (typeof localeOK==="function") { oneUser = locObj.userCntOne.txt }
+                   if (typeof localeOK==="function") { moreUsers = locObj.userCntTwoPlus.txt }
                    users_online.textContent = data.count.toString() + " "
                    users_online.textContent+= (data.count == 1 ? oneUser : moreUsers);
                    break;
