@@ -1,5 +1,15 @@
+//load localization
+function include (url, fn) {
+  var e = document.createElement("script");
+  e.onload = fn;
+  e.src = url;
+  e.async=true;
+  document.getElementsByTagName("head")[0].appendChild(e);
+};
+include('localisation.js',function(){
+  loadStartLocale();
+});
 //DOM Components
-
 function updateHeroStatus() {
 	updateHeroStatusInn();
 	updateHeroStatusHire();

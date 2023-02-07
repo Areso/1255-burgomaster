@@ -39,14 +39,6 @@
 	}
     amber = 0;
 
-	function include (url, fn) {
-		var e = document.createElement("script");
-		e.onload = fn;
-		e.src = url;
-		e.async=true;
-		document.getElementsByTagName("head")[0].appendChild(e);
-	};
-
 	const HERO_STATUS = {
 		CITY: 0,
 		AUTOCAMPAIGN: 1,
@@ -3747,9 +3739,11 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	//setupAutosave();//DEBUG
 	//composite();
 
+    /*
 	include('localisation.js',function(){
 		loadStartLocale();
 	});
+    */
 
 	openLog();
 	setInterval(cooldown, config.oneSecMS);
@@ -3931,6 +3925,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	}
     // TODO every third cell is provoke hero to attack stance
 	function loadArtifacts(){
+	    //function include is defined in dom.js
 		include('js/objects_artifacts.js',function(){
 		});
 	}

@@ -497,6 +497,27 @@ locObj.glyphMonkDesc = {"txt": "Increases the hero's attack +4, increases heroe'
 
 locObj.goldRuneTitle = {"txt": "Rune of Golden Search", "loc": "Имя глифа"};
 locObj.goldRuneDesc = {"txt": "Increases the hero's gold reward after battle by 7%.", "loc": "Glyph desc"};
+
+locObj.lifebloodVialTitle = {"txt": "Vial of Lifeblood", "loc": "Artifact name"};
+locObj.lifebloodVialDesc = {"txt": "Increases the health of all units in the hero's army by +3", "loc": "Artifact description"};
+
+locObj.darkPactSwordTitle = { "txt": "Dark Pact Sword", "loc": "Artefact name" };
+locObj.darkPactSwordDesc = {"txt": "Increases the hero's attack by +15, reduces the health of all units in the hero's army by -35%", "loc": "Artefact description"};
+
+locObj.crusadersSwordTitle = { "txt": "Crusader's Sword", "loc": "Artifact name" };
+locObj.crusadersSwordDesc = {"txt": "Increases attack of all units in the hero's army by +20%", "loc": "Artifact description"};
+
+locObj.ringStrengthTitle = {"txt": "Ring of Strength", "loc": "Artifact name"};
+locObj.ringStrengthDesc = {"txt": "Increases the hero's attack by +5, increases attack of all units in the hero's army by +10%", "loc": "Artifact description"};
+
+locObj.ringProtectionTitle = {"txt": "Ring of Protection", "loc": "Artifact name"};
+locObj.ringProtectionDesc = {"txt": "Increases the hero's defence by +5, increases defence of all units in the hero's army by +10%", "loc": "Artifact description"};
+
+
+// TODO: #SwordRestriction remove it later
+locObj.swordsWarn = { "txt": 'A hero can carry only two swords!', "loc": 'Sword restriction' };
+locObj.ringsWarn = { "txt": 'A hero can wear only two rings!', "loc": 'Rings restriction' };
+
 locObj.advmapHeroLose = {"txt": "Your troops were defeated and the hero is forced to retreat to the city.", "loc":"When hero loses battle on advmap"}
 
 locObj.eventHalloween = {"txt": "Halloween is about collecting pumpkins!\nGenerate a new adventure map to find them\nYou need to be registered & logged, so you pledge could be recorded", "loc":"help"}
