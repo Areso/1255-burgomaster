@@ -4100,7 +4100,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
       }
     }
     if (gameObjToPrepare && gameObjToPrepare.blackMarketGoods.length > 0) {
-      const copyArr = gameObjToPrepare.map(item => item);
+      const copyArr = gameObjToPrepare.blackMarketGoods.map(item => item);
       game.blackMarketGoods = [];
       copyArr.forEach(itemId => {
         addItem('trader', artefacts[itemId]);
