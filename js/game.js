@@ -3334,13 +3334,6 @@
 		tResultArray               = tArrayBeforeDeletedElement.concat(tArrayAfterDeletedElement);
 		return tResultArray;
 	}
-	function removeFromArrays (elementIndex) {
-		buildingsInTownB = deleteFromArray(buildingsInTownB, elementIndex);
-		buildingsInTownX = deleteFromArray(buildingsInTownX, elementIndex);
-		buildingsInTownY = deleteFromArray(buildingsInTownY, elementIndex);
-		buildingsInTownW = deleteFromArray(buildingsInTownW, elementIndex);
-		buildingsInTownH = deleteFromArray(buildingsInTownH, elementIndex);
-	}
 	var Singleton = (function () {
 		var instance;
 		function createInstance() {

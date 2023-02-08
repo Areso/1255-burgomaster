@@ -74,12 +74,12 @@ function gameChangePath() {
 function gameChangePathCallback() {
 	if (answer === 2) {
 		if (game.buildLevelFountain>0) {
-			removeIndex = buildingsInTownB.indexOf('fountain');
+			removeIndex = buildingsInTown.indexOf('fountain');
 		}
 		if (game.buildLevelGallows>0) {
-			removeIndex = buildingsInTownB.indexOf('gallows');
+			removeIndex = buildingsInTown.indexOf('gallows');
 		}
-		removeFromArrays(removeIndex);
+		//removeFromArrays(removeIndex);
 		game.buildLevelFountain = 0;
 		game.buildLevelGallows  = 0;
 		composite();
