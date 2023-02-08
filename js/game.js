@@ -4204,58 +4204,14 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		if (typeof updateHeroStatus     === "function") { updateHeroStatus() }
 		if (typeof updateBlackMarket    === "function") { updateBlackMarket() }
 		if (typeof updateImagesBuildingTab === "function") { updateImagesBuildingTab() }
-		if (document.getElementById("inp_nickname").value === "" ||
-			document.getElementById("inp_nickname").value === "undefined"){
+		if (document.getElementById("inp_nickname").innerHTML === "" ||
+			document.getElementById("inp_nickname").innerHTML === "undefined"){
 			if (typeof setupNickname    === "function") { setupNickname() }
 		}
 		if (typeof drawTabUniversity === "function" ) { drawTabUniversity() }
 	}
 	function updateBlackMarket(changeSaleOffer,changeBuyOffer) {
 
-		// var selectGoodsForBuying = document.getElementById("selectGoodsForHero");
-		// if (changeSaleOffer!==null) {
-		// 	if (changeSaleOffer!==undefined){
-		// 		selectGoodsForBuying.options[changeSaleOffer].remove();
-		// 	}
-		// }
-		// var selectedItemIndex = selectGoodsForBuying.selectedIndex;
-		// selectGoodsForBuying.length = 0;
-		// for(var j in game.blackMarketGoods)	{
-		// 	selectGoodsForBuying.add(new Option(artefacts[game.blackMarketGoods[j]].name,artefacts[game.blackMarketGoods[j]].id));
-		// }
-		// if (selectedItemIndex!==-1) {
-		// 	selectGoodsForBuying.selectedIndex=selectedItemIndex;
-		// }
-		// if (game.blackMarketGoods.length!==0){
-		// 	if (selectedItemIndex !== -1){
-		// 		document.getElementById("lblArtefactBuyPriceValue").innerText = artefacts[game.blackMarketGoods[selectedItemIndex]].priceBuy;
-		// 	}
-		// }
-		// document.getElementById("lblArtefactSellPriceValue").innerText=0;
-		// if (game.heroExists()){
-		// 	var selectGoodsForSale = document.getElementById("selectGoodsFromHero");
-		// 	if (changeBuyOffer!==null) {
-		// 		if (changeSaleOffer!==undefined){
-		// 			selectGoodsForSale.options[changeBuyOffer].remove();
-		// 		}
-		// 	}
-		// 	var selectedSaleItemIndex = selectGoodsForSale.selectedIndex;
-		// 	selectGoodsForSale.length = 0;
-		// 	for(var i in game.myhero.inventory)	{
-		// 		selectGoodsForSale.add(new Option(artefacts[game.myhero.inventory[i]].name,artefacts[game.myhero.inventory[i]].id));
-		// 	}
-		// 	if (selectedItemIndex!==-1) {
-		// 		selectGoodsForSale.selectedIndex=selectedSaleItemIndex;
-		// 	}
-		// 	if (game.myhero.inventory.length!==0){
-		// 		if (selectedSaleItemIndex !== -1){
-		// 			document.getElementById("btnSellArtefact").disabled = false;
-		// 			document.getElementById("lblArtefactSellPriceValue").innerText = artefacts[game.myhero.inventory[selectedSaleItemIndex]].priceBuy/2;
-		// 		} else { document.getElementById("btnSellArtefact").disabled = true; }
-		// 	} else {
-		// 		document.getElementById("btnSellArtefact").disabled = true;
-		// 	}
-		// }
 	}
 	function getTime(type) {
 		var d  = new Date();
