@@ -10,7 +10,7 @@ function setupMobileUI() {
 		document.getElementById("log").style.height = game.log_size * 20;
 	}
 	function setupNickname() {
-		document.getElementById("inp_nickname").value = game.nickname;
+		document.getElementById("inp_nickname").innerHTML = game.nickname;
 	}
 	function setupAutosave() {
 		game.userASaveAck = 0;

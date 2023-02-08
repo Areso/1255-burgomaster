@@ -113,12 +113,6 @@ function updateButtonCaptions(){
 	if (game.buildLevelH === config.maxLevelHome) {
 		document.getElementById("homes").setAttribute("style", "display:none");
 	}
-	if (game.buildLevelGallows === config.maxLevelGallows) {
-		document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
-	}
-	if (game.buildLevelFountain === config.maxLevelFountain) {
-		document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
-	}
 	if (game.buildLevelInn === config.maxLevelInn) {
 		document.getElementById("buttonBldInn").setAttribute("style", "display:none");
 	}
@@ -131,11 +125,25 @@ function updateButtonCaptions(){
 	if (game.buildLevelUniversity === config.maxLevelUniversity) {
 		document.getElementById("buttonBuildUniversity").setAttribute("style", "display:none");
 	}
+	if (game.buildLevelFountain ===0 && game.buildLevelGallows ==0){
+	    document.getElementById("buttonBldFountain").style.display = 'block';
+	    document.getElementById("buttonBldGallows").style.display  = 'block';
+	}
 	if (game.buildLevelFountain > 0) {
 		document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
+	    if (game.buildLevelFountain === config.maxLevelFountain) {
+		    document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
+	    } else {
+		    document.getElementById("buttonBldFountain").style.display = 'block';
+		}
 	}
 	if (game.buildLevelGallows > 0) {
 		document.getElementById("buttonBldFountain").setAttribute("style", "display:none");
+		if (game.buildLevelGallows === config.maxLevelGallows) {
+		    document.getElementById("buttonBldGallows").setAttribute("style", "display:none");
+	    } else {
+		    document.getElementById("buttonBldGallows").style.display = 'block';
+		}
 		document.getElementById("buttonDeathPenalty").style.display = 'block';
 	}
 	document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
