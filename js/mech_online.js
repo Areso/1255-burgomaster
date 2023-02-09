@@ -315,7 +315,7 @@ function reloadBanned() {
 			if (sending_msg.length>0 && stop===false){
 				allowMsg = 0;
 				setInterval(cooldownMsg, 5000);
-				sending_auth = game.nick;
+				sending_auth = game.nickmae;
 				msg_dom.value = "";
 				console.log("the message out values is "+sending_msg);
 				console.log("the author out values is "+sending_auth);
