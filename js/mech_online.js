@@ -125,9 +125,7 @@ function fpullMessages() {
 			if (config.debug){
 				console.log(messages);
 	    	}
-	    	console.log(locObj.serverStatusUp.txt);
 	    	if (typeof localeOK==="function") { status = locObj.serverStatusUp.txt } else { status = "Up" }
-	    	console.log("status is "+status)
 			document.getElementById("spnServerStatusValue").innerHTML=status;
 		    chat_dom.innerHTML = "";
 			messages.forEach(printToChat);
