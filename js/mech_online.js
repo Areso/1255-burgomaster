@@ -119,18 +119,21 @@ function remoteRegLogin() {
 function fpullMessages() {
     var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
+	  let status = "";
 	  if (this.readyState === 4 && this.status === 200) {
 		messages = JSON.parse(this.responseText);
 			if (config.debug){
 				console.log(messages);
 	    	}
-	    	if (typeof localeOK==="function") { let status = locObj.serverStatusUp.txt } else { let status = "Up" }
+	    	console.log(locObj.serverStatusUp.txt);
+	    	if (typeof localeOK==="function") { status = locObj.serverStatusUp.txt } else { status = "Up" }
+	    	console.log("status is "+status)
 			document.getElementById("spnServerStatusValue").innerHTML=status;
 		    chat_dom.innerHTML = "";
 			messages.forEach(printToChat);
 	  }
 	  if (this.readyState === 4 && this.status !== 200) {
-		    if (typeof localeOK==="function") { let status = locObj.serverStatusDown.txt } else { let status = "Down" }
+		    if (typeof localeOK==="function") { status = locObj.serverStatusDown.txt } else { status = "Down" }
 			document.getElementById("spnServerStatusValue").innerHTML=status;
 	  }
 	}
