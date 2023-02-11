@@ -9,7 +9,7 @@ function include (url, fn) {
 include('localisation.js',function(){
   loadStartLocale();
 });
-	function localeCallback(returnLanguage) {
+    function localeCallback(returnLanguage) {
 		if (returnLanguage==='en-US') {
 			document.getElementById("selectLng").selectedIndex=0;
 		}
@@ -125,14 +125,25 @@ include('localisation.js',function(){
         document.getElementById("spnOnline").innerText           = locObj.online.txt;
         document.getElementById("spnOnlineValue").innerText      = locObj.onlineValueND.txt;
 		if (typeof populateHeroesForHire === "function") { populateHeroesForHire() };
-		checkSaves();
-		welcomeMsg();
-		updateButtonCaptions();
-		loadArtifacts();
-		updateUI();
+		//setup delay, in milliseconds, 1s=1000ms
+		setTimeout(checkSaves(), 400);
+		setTimeout(welcomeMsg(), 500);
+		setTimeout(updateButtonCaptions(), 400);
+		setTimeout(loadArtifacts(), 400);
+		setTimeout(updateUI(), 400);
 	}
 
 //DOM Components
+function checkSaves() {
+  if (localStorage.getItem('game')!==null) {
+    document.getElementById("loadGameButton").style.display = "block";
+  } else {
+    if (game.isTutorialState && !game.tips.includes("tutorial0-welcome0")){
+      game.tips.push("tutorial0-welcome0");
+      showModal(0, '', disableTutorial, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
+    }
+  }
+}
 function updateHeroStatus() {
 	updateHeroStatusInn();
 	updateHeroStatusHire();

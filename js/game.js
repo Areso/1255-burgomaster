@@ -1,3 +1,6 @@
+function gameOK() {
+  return true;
+}
 	// 1. Выносим сюда utils функции
 
 	function getCurrentDate() {
@@ -3752,16 +3755,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		scrollDown();
 	}
 
-	function checkSaves() {
-		if (localStorage.getItem('game')!==null) {
-			document.getElementById("loadGameButton").style.display = "block";
-		} else {
-			if (game.isTutorialState && !game.tips.includes("tutorial0-welcome0")){
-				game.tips.push("tutorial0-welcome0");
-				showModal(0, '', disableTutorial, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
-			}
-		}
-	}
 	function disableTutorial() {
 	    if (answer === 3) {
 			console.log("before changing tutorial state");
