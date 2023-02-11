@@ -274,6 +274,20 @@ function gameOK() {
 				game.isMobile = 0;
 			}
 		},
+		getCityLevel : function () {
+		  let cityLevel = 0;
+		  cityLevel += game.buildLevelH > 4 ? game.buildLevelH - 4 : 0;
+		  cityLevel += game.buildLevelD > 2 ? game.buildLevelD - 2 : 0;
+		  cityLevel += game.buildLevelTreasury;
+		  cityLevel += game.buildLevelGallows;
+		  cityLevel += game.buildLevelFountain;
+		  cityLevel += game.buildLevelStash;
+		  cityLevel += game.buildLevelStable;
+		  cityLevel += game.buildLevelArchery;
+		  cityLevel += game.buildLevelInn;
+		  cityLevel += game.buildLevelUniversity;
+		  return cityLevel;
+		},
 		setupFirebrigade : function (theValue) {
 			game.fireGuard = theValue;
 		},

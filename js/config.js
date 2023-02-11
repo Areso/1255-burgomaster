@@ -66,6 +66,7 @@ var config = {
   isOnline: true,
   pullMessages: true,
   pullMessagesMS: 1500,
+  minCityLevelForChat: 3,
   debug: false,
   theme: "winter",
   artilleryResearchCost: 200,

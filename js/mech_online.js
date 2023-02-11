@@ -312,25 +312,25 @@ function reloadBanned() {
 			//\s - spacebar
 			//@_'- don't require escaping
 			sending_msg  = sending_msg.replace(/[^a-zA-ZА-Яа-я0-9@_'\,\s\.\?\!-]/g, '');
-			stop = false;
-			if (sending_msg.length>0 && stop===false){
-				allowMsg = 0;
-				setInterval(cooldownMsg, 5000);
-				sending_auth = game.nickname;
-				msg_dom.value = "";
-				console.log("the message out values is "+sending_msg);
-				console.log("the author out values is "+sending_auth);
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState === 4 && this.status === 200) {
-						console.log("message sent");
-						answ_session = JSON.parse(this.responseText);
-						answ_session = answ_session.session;
-						if (session===""){
-							session = answ_session;
-						}
-						fpullMessages();
-					}
+			if (game.getCityLevel()>=config.minCityLevelForChat){
+			  if (sending_msg.length>0) {
+			    allowMsg = 0;
+			    setInterval(cooldownMsg, 5000);
+		        sending_auth = game.nickname;
+			    msg_dom.value = "";
+			    console.log("the message out values is "+sending_msg);
+			    console.log("the author out values is "+sending_auth);
+			    var xhttp = new XMLHttpRequest();
+			    xhttp.onreadystatechange = function() {
+				  if (this.readyState === 4 && this.status === 200) {
+				    console.log("message sent");
+				    answ_session = JSON.parse(this.responseText);
+				    answ_session = answ_session.session;
+				    if (session===""){
+				      session = answ_session;
+				    }
+				    fpullMessages();
+				  }
 				};
 				target = 0;
 				dataToParse = sending_auth+delimiter+session+delimiter;
@@ -339,6 +339,9 @@ function reloadBanned() {
 				xhttp.open("POST", endpoint, true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(dataToParse);
+			  }
+			} else {
+              showModal(0, '', getAck, locObj.errCityLevelTooLowForSendingMsg.txt,  locObj.okay.txt, '');
 			}
 		}
 	}

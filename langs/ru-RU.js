@@ -579,6 +579,7 @@ locObj.serverStatusUp = {"txt":"поднят", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"лежит", "loc":"server status is Down"};
 locObj.online = {"txt":"Онлайн: ", "loc":"label before the online users counter"};
 locObj.onlineValueND = {"txt":"н/д", "loc":"online users numbers has no data"};
+locObj.errCityLevelTooLowForSendingMsg = {"txt":"Герр Комтур, уровень вашего города слишком низок\n для отправки сообщений другим Лордам", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"юзер", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"юзеров", "loc":"two or more users"};
 locObj.errNoCloudSave = {"txt":"у вас нет сохранения в Облаке", "loc":"could happen when trying to load a savegame from DB"};

@@ -572,6 +572,7 @@ locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};
 locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"};
 locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
+locObj.errCityLevelTooLowForSendingMsg = {"txt":"Sir Commander, your city level is too low for sending messages to other Lords", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};
 locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"could happen when trying to load a savegame from DB"};
