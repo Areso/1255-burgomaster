@@ -123,7 +123,7 @@ function remoteRegLogin() {
           msg = "login unsuccessfull, please try again";
           postEventLog(msg);
         }
-    };
+      };
       login       = document.getElementById("login").value;
       password    = document.getElementById("password").value;
       dataToParse = login+delimiter+password;
