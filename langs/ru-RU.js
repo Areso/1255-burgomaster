@@ -543,6 +543,7 @@ locObj.moneyIncreased = {"txt":"казна пополняется, милорд!
 locObj.moneyDecreased = {"txt":"казна пустеет, милорд", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"население растет!", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"население убывает", "loc":"happens when s-to-s population value decreased"};
+locObj.requiredFieldsNotFilled = {"txt": "Требуемые поля не заполнены!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.buildUpgradeHouse = {"txt":"ваш город достиг максимальной численности; постройте или улучшите дома", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"игра сохранена успешно", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"игра загружена успешно", "loc":"when loaded completed successfully"};

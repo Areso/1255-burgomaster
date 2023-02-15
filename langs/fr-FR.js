@@ -539,6 +539,7 @@ locObj.moneyIncreased = {"txt":"Votre richesse augmente", "loc":"happens when s-
 locObj.moneyDecreased = {"txt":"Votre richesse diminue", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"La population augmente", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"La population diminue", "loc":"happens when s-to-s population value decreased"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.buildUpgradeHouse = {"txt":"Votre cité a atteint sa limite de population. Construisez de nouvelles maisons ou améliorez celles qui existent", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"Sauvegarde réussie", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"Chargement réussi", "loc":"when loaded completed successfully"};

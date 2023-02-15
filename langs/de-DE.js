@@ -541,6 +541,7 @@ locObj.moneyDecreased = {"txt":"Euer Reichtum verringerte sich", "loc":"happens 
 locObj.popIncreased = {"txt":"Die Bevölkerung wuchs", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"Die Bevölkerung ging zurück", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"Eure Stadt ist am Bevölkerungslimit. Errichtet neue Häuser oder rüstet bestehende auf", "loc":"the endturn tip in case of overpopulating"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.savedSuccessfully = {"txt":"Spiel erfolgreich gespeichert", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"Spiel erfolgreich geladen", "loc":"when loaded completed successfully"};
 locObj.dialogLoadGame = {"txt":"Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!", "loc":"confirmation dialogue over loading game"};

@@ -541,6 +541,7 @@ locObj.moneyDecreased = {"txt":"amount of money is decreased", "loc":"happens wh
 locObj.popIncreased = {"txt":"population is increased", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"population is decreased", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"your city is reached population limit. Build new houses or upgrade existing ones", "loc":"the endturn tip in case of overpopulating"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.savedSuccessfully = {"txt":"game saved successfully", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"game loaded successfully", "loc":"when loaded completed successfully"};
 locObj.dialogLoadGame = {"txt":"Load game? You will lose any unsaved progress!", "loc":"confirmation dialogue over loading game"};

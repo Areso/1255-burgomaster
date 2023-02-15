@@ -539,6 +539,7 @@ locObj.moneyIncreased = {"txt":"kvanto da mono pliiĝas", "loc":"happens when s-
 locObj.moneyDecreased = {"txt":"kvanto da mono malpliiĝas", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"loĝantaro pliiĝas", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"loĝantaro malpliiĝas", "loc":"happens when s-to-s population value decreased"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.buildUpgradeHouse = {"txt":"via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"ludo konservis sukcese", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"ludo ŝarĝis sukcese", "loc":"when loaded completed successfully"};

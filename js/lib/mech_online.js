@@ -44,77 +44,89 @@ setUpBackendTimers()
 // config.isOnline = true
 // setUpBackendTimers()
 //functions
+function isLoginFilled() {
+  let login = document.getElementById("login").value;
+  login     = login.replace(" ","");
+  if (login.length>0) { return true } else { return false }
+}
+function isPasswordFilled() {
+  let password = document.getElementById("password").value;
+  password     = password.replace(" ","");
+  if (password.length>0) { return true } else { return false }
+}
 function remoteRegLogin() {
-	if (reglogin==="reg"){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState === 4 && this.status === 201) {
-				if (config.debug){
-					console.log(session);
-					console.log(this.responseText)
-				}
-				resp_data = JSON.parse(this.responseText);
-				session   = resp_data["session"];
-				msg       = "registered successfully";
-				postEventLog(msg);
-				msg       = "you got a 'registered user' badge and 10 ambers";
-				postEventLog(msg);
-				pullAmberTimer = setInterval(pullAmber, 3000);
-			}
-		};
-		fpullMessages();
-		login     = document.getElementById("login").value;
-		password  = document.getElementById("password").value;
-		email     = document.getElementById("password").value;
-		dataToParse  = login    + delimiter;
-		dataToParse += password + delimiter;
-		dataToParse += email;
-		endpoint    = webserver + "/api/v1.1/register_user";
-		xhttp.open("POST", endpoint, true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send(dataToParse);
-	}
-	if (reglogin==="login"){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState === 4 && this.status === 200) {
-				if (config.debug){
-					console.log(session);
-					console.log(this.responseText);
-				}
-				resp_data = JSON.parse(this.responseText);
-				session   = resp_data["session"];
-				game.role = resp_data["role"];
-				game.nickname = resp_data["login"];
-				msg = "login successfull";
-				postEventLog(msg);
-				fpullMessages();
-				if (config.isOnline === false){
-    			    config.isOnline = true;
-				    setUpBackendTimers();
-				    enableOnlineCounter();
-				}
-				if (typeof setupNickname === "function") { setupNickname() };
-				pullAmberTimer = setInterval(pullAmber, 3000);
-			}
-			if (this.readyState === 4 && this.status !== 200) {
-				if (config.debug){
-					console.log(session);
-					console.log(this.responseText);
-				}
-				resp_data = JSON.parse(this.responseText);
-				msg = "login unsuccessfull, please try again";
-				postEventLog(msg);
-			}
-		};
-		login       = document.getElementById("login").value;
-		password    = document.getElementById("password").value;
-		dataToParse = login+delimiter+password;
-		endpoint    = webserver + "/api/v1.1/login_user";
-		xhttp.open("POST", endpoint, true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send(dataToParse);
-	}
+  if (reglogin==="reg"){
+    if (isLoginFilled && isPasswordFilled) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 201) {
+          if (config.debug){
+            console.log(session);
+            console.log(this.responseText)
+          }
+          resp_data = JSON.parse(this.responseText);
+          session   = resp_data["session"];
+          msg       = "registered successfully";
+          postEventLog(msg);
+          msg       = "you got a 'registered user' badge and 10 ambers";
+          postEventLog(msg);
+          pullAmberTimer = setInterval(pullAmber, 3000);
+		}
+      };
+      login     = document.getElementById("login").value;
+      password  = document.getElementById("password").value;
+      email     = document.getElementById("password").value;
+      dataToParse  = login    + delimiter;
+      dataToParse += password + delimiter;
+      dataToParse += email;
+      endpoint     = webserver + "/api/v1.1/register_user";
+      xhttp.open("POST", endpoint, true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(dataToParse);
+    } else {
+      showModal(0, '', getAck, locObj.requiredFieldsNotFilled.txt, locObj.okay.txt, '')
+    }
+  }
+  if (reglogin==="login"){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        if (config.debug){
+          console.log(session);
+          console.log(this.responseText);
+        }
+        resp_data = JSON.parse(this.responseText);
+        session   = resp_data["session"];
+        game.role = resp_data["role"];
+        game.nickname = resp_data["login"];
+        msg = "login successfull";
+        postEventLog(msg);
+        if (config.isOnline === false){
+          config.isOnline = true;
+          setUpBackendTimers();
+          enableOnlineCounter();
+        }
+        if (typeof setupNickname === "function") { setupNickname() };
+          pullAmberTimer = setInterval(pullAmber, 3000);
+      }
+      if (this.readyState === 4 && this.status !== 200) {
+        if (config.debug){
+          console.log(session);
+          console.log(this.responseText);
+        }
+        resp_data = JSON.parse(this.responseText);
+        msg = "login unsuccessfull, please try again";
+        postEventLog(msg);
+      }
+  };
+    login       = document.getElementById("login").value;
+    password    = document.getElementById("password").value;
+    dataToParse = login+delimiter+password;
+    endpoint    = webserver + "/api/v1.1/login_user";
+    xhttp.open("POST", endpoint, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(dataToParse);
+  }
 }
 function fpullMessages() {
     var xhttp = new XMLHttpRequest();
