@@ -70,6 +70,8 @@ function remoteRegLogin() {
           postEventLog(msg);
           msg       = "you got a 'registered user' badge and 10 ambers";
           postEventLog(msg);
+          msg       = "please, make a log-in now!";
+          postEventLog(msg);
           pullAmberTimer = setInterval(pullAmber, 3000);
 		}
       };
@@ -84,48 +86,54 @@ function remoteRegLogin() {
       xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       xhttp.send(dataToParse);
     } else {
-      showModal(0, '', getAck, locObj.requiredFieldsNotFilled.txt, locObj.okay.txt, '')
+      showModal(0, '', getAck, locObj.requiredFieldsNotFilled.txt, locObj.okay.txt, '');
     }
   }
   if (reglogin==="login"){
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState === 4 && this.status === 200) {
-        if (config.debug){
-          console.log(session);
-          console.log(this.responseText);
+    if (isLoginFilled && isPasswordFilled) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          if (config.debug){
+            console.log(session);
+            console.log(this.responseText);
+          }
+          resp_data = JSON.parse(this.responseText);
+          session   = resp_data["session"];
+          game.role = resp_data["role"];
+          game.nickname = resp_data["login"];
+          msg = "login successfull";
+          postEventLog(msg);
+          if (config.isOnline === false){
+            config.isOnline = true;
+            setUpBackendTimers();
+            enableOnlineCounter();
+          }
+          if (typeof setupNickname === "function") { setupNickname() };
+            if (pullAmberTimer === null) {
+              pullAmberTimer = setInterval(pullAmber, 3000);
+            }
         }
-        resp_data = JSON.parse(this.responseText);
-        session   = resp_data["session"];
-        game.role = resp_data["role"];
-        game.nickname = resp_data["login"];
-        msg = "login successfull";
-        postEventLog(msg);
-        if (config.isOnline === false){
-          config.isOnline = true;
-          setUpBackendTimers();
-          enableOnlineCounter();
+        if (this.readyState === 4 && this.status !== 200) {
+          if (config.debug){
+            console.log(session);
+            console.log(this.responseText);
+          }
+          resp_data = JSON.parse(this.responseText);
+          msg = "login unsuccessfull, please try again";
+          postEventLog(msg);
         }
-        if (typeof setupNickname === "function") { setupNickname() };
-          pullAmberTimer = setInterval(pullAmber, 3000);
-      }
-      if (this.readyState === 4 && this.status !== 200) {
-        if (config.debug){
-          console.log(session);
-          console.log(this.responseText);
-        }
-        resp_data = JSON.parse(this.responseText);
-        msg = "login unsuccessfull, please try again";
-        postEventLog(msg);
-      }
-  };
-    login       = document.getElementById("login").value;
-    password    = document.getElementById("password").value;
-    dataToParse = login+delimiter+password;
-    endpoint    = webserver + "/api/v1.1/login_user";
-    xhttp.open("POST", endpoint, true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(dataToParse);
+    };
+      login       = document.getElementById("login").value;
+      password    = document.getElementById("password").value;
+      dataToParse = login+delimiter+password;
+      endpoint    = webserver + "/api/v1.1/login_user";
+      xhttp.open("POST", endpoint, true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(dataToParse);
+    } else {
+      showModal(0, '', getAck, locObj.requiredFieldsNotFilled.txt, locObj.okay.txt, '');
+    }
   }
 }
 function fpullMessages() {
