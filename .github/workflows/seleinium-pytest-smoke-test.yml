@@ -19,4 +19,4 @@ jobs:
         run: pip install -r ./tests/requirements.txt
 
       - name: Run tests
-        run: pytest -s -v -m smoke ./tests/ --alluredir=allureses
+        run: pytest -s -v -m smoke ./tests/selenium
