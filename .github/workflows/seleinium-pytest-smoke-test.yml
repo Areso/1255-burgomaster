@@ -19,7 +19,4 @@ jobs:
         run: pip install -r ./tests/requirements.txt
 
       - name: Run tests
-        run: pytest -s -v -k smoke ./tests/ --alluredir=allureses
-        
-      - name: Run allure serve
-        run: allure serve ./tests/alluresses
+        run: pytest -s -v -m smoke ./tests/ --alluredir=allureses
