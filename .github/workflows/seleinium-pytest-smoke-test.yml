@@ -9,7 +9,7 @@ on:
 jobs:
   smoke_job:
     name: Smoke tests
-    runs-on: Windows 10
+    runs-on: windows-latest
 
     steps:
       - name: Install python requirements
@@ -18,5 +18,5 @@ jobs:
       - name: Run tests
         run: pytest -s -v -k smoke ./tests/ --alluredir=allureses
         
-        name: Run allure serve
+      - name: Run allure serve
         run: allure serve ./tests/alluresses
