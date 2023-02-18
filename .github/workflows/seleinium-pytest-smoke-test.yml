@@ -1,0 +1,22 @@
+name: "Selenium-pytest Smoke Tests"
+
+on:
+  pull_request:
+  push:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  smoke_job:
+    name: Smoke tests
+    runs-on: Windows 10
+
+    steps:
+      - name: Install python requirements
+        run: pip install -r ./tests/requirements.txt
+
+      - name: Run tests
+        run: pytest -s -v -k smoke ./tests/ --alluredir=allureses
+        
+        name: Run allure serve
+        run: allure serve ./tests/alluresses
