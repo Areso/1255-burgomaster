@@ -41,9 +41,9 @@ localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Call firemen? It will cost you %arg1 gold!");
-localeStrings.push("firemen put end to the fire!");//40
-localeStrings.push("it will burn to ashes!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("shit happens: thieves stole %arg1 gold from your treasury");
 localeStrings.push("You won in a lottery %arg1 gold prize");
 localeStrings.push("Save game");
@@ -541,6 +541,7 @@ locObj.moneyDecreased = {"txt":"amount of money is decreased", "loc":"happens wh
 locObj.popIncreased = {"txt":"population is increased", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"population is decreased", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"your city is reached population limit. Build new houses or upgrade existing ones", "loc":"the endturn tip in case of overpopulating"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.savedSuccessfully = {"txt":"game saved successfully", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"game loaded successfully", "loc":"when loaded completed successfully"};
 locObj.dialogLoadGame = {"txt":"Load game? You will lose any unsaved progress!", "loc":"confirmation dialogue over loading game"};
@@ -577,6 +578,7 @@ locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};
 locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"};
 locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
+locObj.errCityLevelTooLowForSendingMsg = {"txt":"Sir Commander, your city level is too low for sending messages to other Lords", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};
 locObj.errNoCloudSave = {"txt":"you don't have saved game in the cloud", "loc":"could happen when trying to load a savegame from DB"};
@@ -609,3 +611,6 @@ locObj.helpStables = {"txt":"This building and its improvements is needed to hir
 locObj.helpArcheryRange = {"txt":"This building and its improvements is needed to hire archery units.<br>The higher level of Archery range you have, the more experienced troops you could hire there", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"This building and its improvements is needed to hire heroes.<br>The higher level of Inn you have, the more experienced hero you could hire there", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Call firemen? It will cost you %arg1 gold!", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "firemen put end to the fire!", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "it will burn to ashes!", "loc":"happens if player decided not to pay to firemen"};

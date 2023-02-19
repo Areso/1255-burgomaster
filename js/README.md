@@ -12,7 +12,7 @@ For example, game loading runs over all the game, and updates info on the all ta
 ## mech_*
 Means mechanic. These files, as a rule, don't affect any particular tab.  
 Still, they could invoke changing of the UI inside themselves.  
-`mech_online.js` handles all interactions with optional game backend.
+`mech_online.js` in lib/ folder handles all interactions with optional game backend.
 ## objects_*
 Such files contain array of objects.  
 For an example, `objects_artifacts.js` contains all the supported artifacts.  

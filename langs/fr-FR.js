@@ -41,9 +41,9 @@ localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Doit-on appeler les pompiers ? Il vous en coutera %arg1 or.");
-localeStrings.push("Vos pompiers ont éteint le feu.");//40
-localeStrings.push("Tout va partir en fumée !");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("Un événement fâcheux vient de se produire: des voleurs vous ont pris %arg1 or de votre Trésorerie.");
 localeStrings.push("Vous avez gagné %arg1 or à la bourse.");
 localeStrings.push("Sauvegarder la partie");
@@ -539,6 +539,7 @@ locObj.moneyIncreased = {"txt":"Votre richesse augmente", "loc":"happens when s-
 locObj.moneyDecreased = {"txt":"Votre richesse diminue", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"La population augmente", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"La population diminue", "loc":"happens when s-to-s population value decreased"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.buildUpgradeHouse = {"txt":"Votre cité a atteint sa limite de population. Construisez de nouvelles maisons ou améliorez celles qui existent", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"Sauvegarde réussie", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"Chargement réussi", "loc":"when loaded completed successfully"};
@@ -575,6 +576,7 @@ locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};
 locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"};
 locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
+locObj.errCityLevelTooLowForSendingMsg = {"txt":"Sir Commander, your city level is too low for sending messages to other Lords", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};
 locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"could happen when trying to load a savegame from DB"};
@@ -607,3 +609,6 @@ locObj.helpStables = {"txt":"Ce bâtiment et ses améliorations sont nécessaire
 locObj.helpArcheryRange = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Doit-on appeler les pompiers ? Il vous en coutera %arg1 or", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "Vos pompiers ont éteint le feu", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "Tout va partir en fumée !", "loc":"happens if player decided not to pay to firemen"};

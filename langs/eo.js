@@ -40,10 +40,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placehodler");
-localeStrings.push("Voku fajrestingistojn? Tio kostus vin %arg1 oron!");
-localeStrings.push("fajrobrigadistoj metis finon al la fajro!");//40
-localeStrings.push("ĝi brulos al cindrojn!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezorejo");
 localeStrings.push("Vi gajnis per loterio %arg1 oro premio﻿");
 localeStrings.push("Konservi ludon");
@@ -539,6 +539,7 @@ locObj.moneyIncreased = {"txt":"kvanto da mono pliiĝas", "loc":"happens when s-
 locObj.moneyDecreased = {"txt":"kvanto da mono malpliiĝas", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"loĝantaro pliiĝas", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"loĝantaro malpliiĝas", "loc":"happens when s-to-s population value decreased"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.buildUpgradeHouse = {"txt":"via urbo atingas loĝantaran limon. Konstruu novajn domojn aŭ ĝisdatigu ekzistantajn domojn", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"ludo konservis sukcese", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"ludo ŝarĝis sukcese", "loc":"when loaded completed successfully"};
@@ -575,6 +576,7 @@ locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};
 locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"};
 locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
+locObj.errCityLevelTooLowForSendingMsg = {"txt":"Sir Commander, your city level is too low for sending messages to other Lords", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};
 locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"could happen when trying to load a savegame from DB"};
@@ -607,3 +609,6 @@ locObj.helpStables = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas po
 locObj.helpArcheryRange = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Voku fajrestingistojn? Tio kostus vin %arg1 oron!", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "fajrobrigadistoj metis finon al la fajro!", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "ĝi brulos al cindrojn!", "loc":"happens if player decided not to pay to firemen"};

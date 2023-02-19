@@ -41,9 +41,9 @@ localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Вызвать пожарных? Это будет стоить %arg1 золота");
-localeStrings.push("пожарные погасили огонь");//40
-localeStrings.push("будет гореть дотла!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("фигня случается: воры украли %arg1 золота из вашей казны");
 localeStrings.push("вы выиграли в лотерею %arg1 золота");
 localeStrings.push("Сохранить игру");
@@ -543,6 +543,7 @@ locObj.moneyIncreased = {"txt":"казна пополняется, милорд!
 locObj.moneyDecreased = {"txt":"казна пустеет, милорд", "loc":"happens when s-to-s money value decreased"};
 locObj.popIncreased = {"txt":"население растет!", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"население убывает", "loc":"happens when s-to-s population value decreased"};
+locObj.requiredFieldsNotFilled = {"txt": "Требуемые поля не заполнены!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.buildUpgradeHouse = {"txt":"ваш город достиг максимальной численности; постройте или улучшите дома", "loc":"the endturn tip in case of overpopulating"};
 locObj.savedSuccessfully = {"txt":"игра сохранена успешно", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"игра загружена успешно", "loc":"when loaded completed successfully"};
@@ -579,6 +580,7 @@ locObj.serverStatusUp = {"txt":"поднят", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"лежит", "loc":"server status is Down"};
 locObj.online = {"txt":"Онлайн: ", "loc":"label before the online users counter"};
 locObj.onlineValueND = {"txt":"н/д", "loc":"online users numbers has no data"};
+locObj.errCityLevelTooLowForSendingMsg = {"txt":"Герр Комтур, уровень вашего города слишком низок\n для отправки сообщений другим Лордам", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"юзер", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"юзеров", "loc":"two or more users"};
 locObj.errNoCloudSave = {"txt":"у вас нет сохранения в Облаке", "loc":"could happen when trying to load a savegame from DB"};
@@ -611,3 +613,6 @@ locObj.helpStables = {"txt":"Это здание и его улучшения н
 locObj.helpArcheryRange = {"txt":"Это здание и его улучшения нужны, чтобы нанимать лучников.<br>Более высокий уровень стрельбища позволит нанимать более опытные войска", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"Это здание и его улучшения нужны, чтобы нанимать героев.<br>Более высокий уровень таверны позволит нанимать более опытных героев", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"Это здание необходимо для исследования новых технологий.", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Вызвать пожарных? Это будет стоить %arg1 золота", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "пожарные погасили огонь!", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "будет гореть дотла!", "loc":"happens if player decided not to pay to firemen"};

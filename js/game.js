@@ -1,3 +1,6 @@
+function gameOK() {
+  return true;
+}
 	// 1. Выносим сюда utils функции
 
 	function getCurrentDate() {
@@ -270,6 +273,20 @@
 			} else {
 				game.isMobile = 0;
 			}
+		},
+		getCityLevel : function () {
+		  let cityLevel = 0;
+		  cityLevel += game.buildLevelH > 4 ? game.buildLevelH - 4 : 0;
+		  cityLevel += game.buildLevelD > 2 ? game.buildLevelD - 2 : 0;
+		  cityLevel += game.buildLevelTreasury;
+		  cityLevel += game.buildLevelGallows;
+		  cityLevel += game.buildLevelFountain;
+		  cityLevel += game.buildLevelStash;
+		  cityLevel += game.buildLevelStable;
+		  cityLevel += game.buildLevelArchery;
+		  cityLevel += game.buildLevelInn;
+		  cityLevel += game.buildLevelUniversity;
+		  return cityLevel;
 		},
 		setupFirebrigade : function (theValue) {
 			game.fireGuard = theValue;
@@ -2884,7 +2901,7 @@
 		},
 		putOutFire : function () {
 			if (game.fire === 1) {
-				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
+				question = locObj.callFiremen.txt.replace("%arg1", config.costPutOutFire)
 				showModal(1, '', game.putOutFireCallback, question,  locObj.yes.txt, locObj.no.txt)
 			}
 		},
@@ -2900,8 +2917,8 @@
 					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
-				msg = localeStrings[41];
-				postEventLog(msg);
+			    let msg = typeof localeOK=== "function" ? locObj.burnToAshes.txt : "it will burn to ashes!";
+    			postEventLog(msg);
 			}
 		},
 		putOutFireUI : function(load) {
@@ -2911,7 +2928,8 @@
 				document.getElementById("gameIcon").href="resources/favicon-normal.png";
 				document.getElementById("divFBProgress").style.display="none";
 				if (load!==true){
-					msg = localeStrings[40];
+				    //TODO make different messages for user input and the fireservice
+				    let msg = typeof localeOK=== "function" ? locObj.fireEndedByFireservice.txt : "fire extinguished by fire service";
 					postEventLog(msg);
 				}
 				updateResources();
@@ -3752,16 +3770,6 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		scrollDown();
 	}
 
-	function checkSaves() {
-		if (localStorage.getItem('game')!==null) {
-			document.getElementById("loadGameButton").style.display = "block";
-		} else {
-			if (game.isTutorialState && !game.tips.includes("tutorial0-welcome0")){
-				game.tips.push("tutorial0-welcome0");
-				showModal(0, '', disableTutorial, locObj.tutorial0_w0.txt, locObj.okay.txt, locObj.skipTutorial.txt)
-			}
-		}
-	}
 	function disableTutorial() {
 	    if (answer === 3) {
 			console.log("before changing tutorial state");

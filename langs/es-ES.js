@@ -36,14 +36,14 @@ localeStrings.push("placeholder");//30
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Ejecutaste a un ciudadano por %arg1.");
-localeStrings.push("Tu tesoro se repuso con %arg1 de oro de la propiedad confiscada al ciudadano ejecutado.");//35
-localeStrings.push("Tienes muy pocos ciudadanos.");
-localeStrings.push("¡Algunos guardias se fueron porque no les puedes pagar!");
-localeStrings.push("¡Fuego en la ciudad!");
-localeStrings.push("¿Deberíamos llamar a los bomberos? Te costará %arg1 de oro.");
-localeStrings.push("Tus bomberos extinguieron el fuego.");//40
-localeStrings.push("!Todo quedará en cenizas!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//35
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("Así es la vida: ¡Ladrones robaron %arg1 de oro de tu tesoro!");
 localeStrings.push("Ganaste %arg1 de oro en las apuestas.");
 localeStrings.push("Guardar juego");
@@ -537,6 +537,7 @@ locObj.moneyDecreased = {"txt":"Tu riqueza se redujo", "loc":"happens when s-to-
 locObj.popIncreased = {"txt":"La población creció", "loc":"happens when s-to-s population value increased"};
 locObj.popDecreased = {"txt":"La población se redujo", "loc":"happens when s-to-s population value decreased"};
 locObj.buildUpgradeHouse = {"txt":"Tu ciudad alcanzó el límite de población. Construye nuevas casas o mejora las existentes", "loc":"the endturn tip in case of overpopulating"};
+locObj.requiredFieldsNotFilled = {"txt": "Required fields are not filled!", "loc":"happens in case of empty fields like login, password, etc"};
 locObj.savedSuccessfully = {"txt":"Juego guardado exitosamente", "loc":"when manual save completed successfully"};
 locObj.loadedSuccessfully = {"txt":"Juego cargado exitosamente", "loc":"when loaded completed successfully"};
 locObj.dialogLoadGame = {"txt":"¿Cargar juego? Perderás cualquier avance no guardado", "loc":"confirmation dialogue over loading game"};
@@ -572,12 +573,18 @@ locObj.serverStatusUp = {"txt":"Up", "loc":"server status is Up"};
 locObj.serverStatusDown = {"txt":"Down", "loc":"server status is Down"};
 locObj.online = {"txt":"Online: ", "loc":"label before the online users counter"};
 locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
+locObj.errCityLevelTooLowForSendingMsg = {"txt":"Sir Commander, your city level is too low for sending messages to other Lords", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};
 locObj.errNoCloudSave = {"txt":"you don't have savegame in the cloud", "loc":"could happen when trying to load a savegame from DB"};
 locObj.errGettingCloudSave = {"txt":"error while trying to get your cloudsave from the cloud","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc":"could happen while loading cloudsave"};
 locObj.errGetSaveEndpoint = {"txt":"error from server. Are you logged in? Is server up?","loc":"endpoint error from /get_savegame"};
+locObj.executedMsg = {"txt": "Ejecutaste a un ciudadano por %arg1.", "loc":"eventlog after the execution"};//TODO 'tu' most likely. need to change to 'usted'!
+locObj.executedGainMsg = {"txt": "Tu tesoro se repuso con %arg1 de oro de la propiedad confiscada al ciudadano ejecutado", "loc": "eventlog after the execution"};
+locObj.executionAborted = {"txt":"Tienes muy pocos ciudadanos", "loc":"happens if you have too low amount of citizens"};
+locObj.cantUpkeepTreasuryGuards = {"txt": "¡Algunos guardias se fueron porque no les puedes pagar!", "loc":"in calculateTurn in case of money deficite"};
+locObj.fireInCity = {"txt": "¡Fuego en la ciudad!", "loc":"happens as part of random events"};
 locObj.rqtsHome = {"txt": "Desbloqueos por un evento", "loc":"Requirements for homes"};
 locObj.rqtsDef = {"txt": "Desbloqueos por un evento", "loc":"Requirements for defense buildings"};
 locObj.rqtsTreasury = {"txt": "Requiere %arg1 de oro para desbloquear", "loc":"Reqs for Treasury building"};
@@ -599,3 +606,6 @@ locObj.helpStables = {"txt":"This building and its improvements is needed to hir
 locObj.helpArcheryRange = {"txt":"This building and its improvements is needed to hire archery units.<br>The higher level of Archery range you have, the more experienced troops you could hire there", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"This building and its improvements is needed to hire heroes.<br>The higher level of Inn you have, the more experienced hero you could hire there", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"¿Deberíamos llamar a los bomberos? Te costará %arg1 de oro.", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "los bomberos extinguieron el fuego", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "¡Todo quedará en cenizas!", "loc":"happens if player decided not to pay to firemen"};
