@@ -48,13 +48,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//45
-localeStrings.push("Urbo");
-localeStrings.push("Mondo");
-localeStrings.push("Preferoj");
-localeStrings.push("Garnison");
-localeStrings.push("Konstruaĵo");//50
-localeStrings.push("Kiel ludi");
-localeStrings.push("Discord");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//50
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Estingi la fajron");
 localeStrings.push("Ekzekuti civitanon");
 localeStrings.push("placeholder");//55
@@ -616,3 +616,8 @@ locObj.rndEventsStealing = {"txt": "merdo okazas: ŝtelistoj ŝtelis %arg1 oron 
 locObj.rndEventsLotteryWon = {"txt": "Vi gajnis per loterio %arg1 oro premio", "loc":"random events lottery won msg"};
 locObj.locSaveGame= {"txt": "Konservi ludon", "loc":"browser-wide savegame"};
 locObj.locLoadGame = {"txt": "Ŝarĝi ludon", "loc":"load save from localStorage of the browser"};
+locObj.tabCity = {"txt":"Urbo", "loc":"tabname in the tab bar"};
+locObj.tabSettings = {"txt":"Preferoj", "loc": "tabname Settings in the tab bar"};
+locObj.tabBuilding = {"txt": "Konstruaĵo", "loc": "tabname Building in the tab bar"};
+locObj.tabHowToPlay = {"txt": "Kiel ludi", "loc":"tabname How To Play, about and stuff in da bar"};
+locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};

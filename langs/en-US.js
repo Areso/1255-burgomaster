@@ -48,13 +48,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//45
-localeStrings.push("City");
-localeStrings.push("Explore");
-localeStrings.push("Settings");
-localeStrings.push("Garrison");
-localeStrings.push("Building");//50
-localeStrings.push("How To Play");
-localeStrings.push("Discord");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//50
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Put out the fire");
 localeStrings.push("Execute somebody");
 localeStrings.push("placeholder");//55
@@ -618,3 +618,8 @@ locObj.rndEventsStealing = {"txt": "shit happens: thieves stole %arg1 gold from 
 locObj.rndEventsLotteryWon = {"txt": "You won in a lottery %arg1 gold prize", "loc":"random events lottery won msg"};
 locObj.locSaveGame = {"txt": "Save game", "loc":"browser-wide savegame"};
 locObj.locLoadGame = {"txt": "Load game", "loc":"load save from localStorage of the browser"};
+locObj.tabCity = {"txt":"City", "loc":"tabname in the tab bar"};
+locObj.tabSettings = {"txt":"Settings", "loc": "tabname Settings in the tab bar"};
+locObj.tabBuilding = {"txt": "Building", "loc": "tabname Building in the tab bar"};
+locObj.tabHowToPlay = {"txt": "How To Play", "loc":"tabname How To Play, about and stuff in da bar"};
+locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
