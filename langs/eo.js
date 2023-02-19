@@ -44,10 +44,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezorejo");
-localeStrings.push("Vi gajnis per loterio %arg1 oro premio﻿");
-localeStrings.push("Konservi ludon");
-localeStrings.push("Ŝarĝi ludon");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
 localeStrings.push("Urbo");
 localeStrings.push("Mondo");
 localeStrings.push("Preferoj");
@@ -612,3 +612,7 @@ locObj.helpUniversity = {"txt":"This building is required to research new techno
 locObj.callFiremen = {"txt":"Voku fajrestingistojn? Tio kostus vin %arg1 oron!", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "fajrobrigadistoj metis finon al la fajro!", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "ĝi brulos al cindrojn!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezorejo", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "Vi gajnis per loterio %arg1 oro premio", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Konservi ludon", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Ŝarĝi ludon", "loc":"load save from localStorage of the browser"};

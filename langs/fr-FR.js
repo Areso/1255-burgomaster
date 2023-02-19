@@ -44,10 +44,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("Un événement fâcheux vient de se produire: des voleurs vous ont pris %arg1 or de votre Trésorerie.");
-localeStrings.push("Vous avez gagné %arg1 or à la bourse.");
-localeStrings.push("Sauvegarder la partie");
-localeStrings.push("Charger une partie");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
 localeStrings.push("Cité");
 localeStrings.push("Explorer");
 localeStrings.push("Paramètres");
@@ -612,3 +612,7 @@ locObj.helpUniversity = {"txt":"This building is required to research new techno
 locObj.callFiremen = {"txt":"Doit-on appeler les pompiers ? Il vous en coutera %arg1 or", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "Vos pompiers ont éteint le feu", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "Tout va partir en fumée !", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "c'est la vie: des voleurs vous ont pris %arg1 or de votre Trésorerie.", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "Vous avez gagné %arg1 or à la bourse.", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Sauvegarder la partie", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Charger une partie", "loc":"load save from localStorage of the browser"};

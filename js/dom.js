@@ -30,8 +30,8 @@ include('localisation.js',function(){
 		}
 		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
 		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
-		document.getElementById("saveGameButton").innerText      = localeStrings[44];
-		document.getElementById("loadGameButton").innerText      = localeStrings[45];
+		document.getElementById("saveGameButton").innerText      = locObj.locSaveGame.txt;
+		document.getElementById("loadGameButton").innerText      = locObj.locLoadGame.txt;
 		document.getElementById("tabCity").innerText             = localeStrings[46];
 		//document.getElementById("tabExplore").innerText          = localeStrings[47];
 		document.getElementById("tabSettings").innerText         = localeStrings[48];

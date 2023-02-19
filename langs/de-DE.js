@@ -44,10 +44,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("Dumm gelaufen: Diebe haben %arg1 Gold aus Eurer Schatzkammer gestohlen!");
-localeStrings.push("Ihr habt %arg1 Gold beim Glücksspiel gewonnen.");
-localeStrings.push("Spiel speichern");
-localeStrings.push("Spiel laden");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
 localeStrings.push("Stadt");
 localeStrings.push("Erkunden");
 localeStrings.push("Einstellungen");
@@ -613,3 +613,7 @@ locObj.helpUniversity = {"txt":"This building is required to research new techno
 locObj.callFiremen = {"txt":"Sollen wir die Feuerwehr rufen? Es wird Euch %arg1 Gold kosten", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "Die Feuerwehr hat den Brand gelöscht", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "Alles wird zu Asche verbrennen!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "Dumm gelaufen: Diebe haben %arg1 Gold aus Eurer Schatzkammer gestohlen!", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "Ihr habt %arg1 Gold beim Glücksspiel gewonnen", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Spiel speichern", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Spiel laden", "loc":"load save from localStorage of the browser"};

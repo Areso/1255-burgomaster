@@ -2817,7 +2817,8 @@ function gameOK() {
 						document.getElementById('stealingAudio0').play();
 					}
 					game.gold     = game.gold - goldLost;
-					var msg = localeStrings[42].replace("%arg1", goldLost);
+					let msg = typeof localeOK === "function" ? locObj.rndEventsStealing.txt : "shit happens, thiefs stole gold from your treasury";
+					msg = msg.replace("%arg1", goldLost);
 					postEventLog(msg);
 					updateResources();
 					//TODO move that to mech_tips_story !!!
@@ -2936,7 +2937,7 @@ function gameOK() {
 			}
 		},
 		winLottery : function () {
-			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
+			msg = locObj.rndEventsLotteryWon.txt.replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
 			var gold_diff = game.addMoneyToTreasury(config.lotteryPrize);
 			if (gold_diff!==config.lotteryPrize){

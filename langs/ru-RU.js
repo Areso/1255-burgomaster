@@ -44,10 +44,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("фигня случается: воры украли %arg1 золота из вашей казны");
-localeStrings.push("вы выиграли в лотерею %arg1 золота");
-localeStrings.push("Сохранить игру");
-localeStrings.push("Загрузить игру");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
 localeStrings.push("Город");
 localeStrings.push("Мир");
 localeStrings.push("Настройки");
@@ -616,3 +616,7 @@ locObj.helpUniversity = {"txt":"Это здание необходимо для 
 locObj.callFiremen = {"txt":"Вызвать пожарных? Это будет стоить %arg1 золота", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "пожарные погасили огонь!", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "будет гореть дотла!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "фигня случается: воры украли %arg1 золота из вашей казны", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "вы выиграли в лотерею %arg1 золота", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Сохранить игру", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Загрузить игру", "loc":"load save from localStorage of the browser"};
