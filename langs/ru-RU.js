@@ -41,9 +41,9 @@ localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Вызвать пожарных? Это будет стоить %arg1 золота");
-localeStrings.push("пожарные погасили огонь");//40
-localeStrings.push("будет гореть дотла!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("фигня случается: воры украли %arg1 золота из вашей казны");
 localeStrings.push("вы выиграли в лотерею %arg1 золота");
 localeStrings.push("Сохранить игру");
@@ -613,3 +613,6 @@ locObj.helpStables = {"txt":"Это здание и его улучшения н
 locObj.helpArcheryRange = {"txt":"Это здание и его улучшения нужны, чтобы нанимать лучников.<br>Более высокий уровень стрельбища позволит нанимать более опытные войска", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"Это здание и его улучшения нужны, чтобы нанимать героев.<br>Более высокий уровень таверны позволит нанимать более опытных героев", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"Это здание необходимо для исследования новых технологий.", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Вызвать пожарных? Это будет стоить %arg1 золота", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "пожарные погасили огонь!", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "будет гореть дотла!", "loc":"happens if player decided not to pay to firemen"};

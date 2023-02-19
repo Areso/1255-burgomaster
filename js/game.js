@@ -2901,7 +2901,7 @@ function gameOK() {
 		},
 		putOutFire : function () {
 			if (game.fire === 1) {
-				question = localeStrings[39].replace("%arg1", config.costPutOutFire)
+				question = locObj.callFiremen.txt.replace("%arg1", config.costPutOutFire)
 				showModal(1, '', game.putOutFireCallback, question,  locObj.yes.txt, locObj.no.txt)
 			}
 		},
@@ -2917,8 +2917,8 @@ function gameOK() {
 					postEventLog(locObj.notEnoughGold.txt, "bold");
 				}
 			} else {
-				msg = localeStrings[41];
-				postEventLog(msg);
+			    let msg = typeof localeOK=== "function" ? locObj.burnToAshes.txt : "it will burn to ashes!";
+    			postEventLog(msg);
 			}
 		},
 		putOutFireUI : function(load) {
@@ -2928,7 +2928,8 @@ function gameOK() {
 				document.getElementById("gameIcon").href="resources/favicon-normal.png";
 				document.getElementById("divFBProgress").style.display="none";
 				if (load!==true){
-					msg = localeStrings[40];
+				    //TODO make different messages for user input and the fireservice
+				    let msg = typeof localeOK=== "function" ? locObj.fireEndedByFireservice.txt : "fire extinguished by fire service";
 					postEventLog(msg);
 				}
 				updateResources();

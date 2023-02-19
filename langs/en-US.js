@@ -41,9 +41,9 @@ localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Call firemen? It will cost you %arg1 gold!");
-localeStrings.push("firemen put end to the fire!");//40
-localeStrings.push("it will burn to ashes!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("shit happens: thieves stole %arg1 gold from your treasury");
 localeStrings.push("You won in a lottery %arg1 gold prize");
 localeStrings.push("Save game");
@@ -611,3 +611,6 @@ locObj.helpStables = {"txt":"This building and its improvements is needed to hir
 locObj.helpArcheryRange = {"txt":"This building and its improvements is needed to hire archery units.<br>The higher level of Archery range you have, the more experienced troops you could hire there", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"This building and its improvements is needed to hire heroes.<br>The higher level of Inn you have, the more experienced hero you could hire there", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Call firemen? It will cost you %arg1 gold!", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "firemen put end to the fire!", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "it will burn to ashes!", "loc":"happens if player decided not to pay to firemen"};

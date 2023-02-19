@@ -41,9 +41,9 @@ localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Doit-on appeler les pompiers ? Il vous en coutera %arg1 or.");
-localeStrings.push("Vos pompiers ont éteint le feu.");//40
-localeStrings.push("Tout va partir en fumée !");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("Un événement fâcheux vient de se produire: des voleurs vous ont pris %arg1 or de votre Trésorerie.");
 localeStrings.push("Vous avez gagné %arg1 or à la bourse.");
 localeStrings.push("Sauvegarder la partie");
@@ -609,3 +609,6 @@ locObj.helpStables = {"txt":"Ce bâtiment et ses améliorations sont nécessaire
 locObj.helpArcheryRange = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour embaucher des unités de tir à l'arc. <br> Plus le niveau camp de tir à l'arc, plus vous pouvez engager des troupes expérimentées dans cette zone", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"Ce bâtiment et ses améliorations sont nécessaires pour embaucher des héros. <br> Plus le niveau d’auberge est élevé, plus le héros recruté sur place sera expérimenté", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Doit-on appeler les pompiers ? Il vous en coutera %arg1 or", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "Vos pompiers ont éteint le feu", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "Tout va partir en fumée !", "loc":"happens if player decided not to pay to firemen"};

@@ -40,10 +40,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("placehodler");
-localeStrings.push("Voku fajrestingistojn? Tio kostus vin %arg1 oron!");
-localeStrings.push("fajrobrigadistoj metis finon al la fajro!");//40
-localeStrings.push("ĝi brulos al cindrojn!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
 localeStrings.push("merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezorejo");
 localeStrings.push("Vi gajnis per loterio %arg1 oro premio﻿");
 localeStrings.push("Konservi ludon");
@@ -609,3 +609,6 @@ locObj.helpStables = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas po
 locObj.helpArcheryRange = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi pafarkistajn unuojn. La pli alta Pafado nivelo vi havas, des pli spertaj trupoj vi povus dungi tie", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"Ĉi tiu konstruaĵo kaj ĝiaj plibonigoj necesas por dungi heroojn. La plej altan nivelon de Gastejo vi havas, des pli spertan heroon vi povus dungi tie", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Voku fajrestingistojn? Tio kostus vin %arg1 oron!", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "fajrobrigadistoj metis finon al la fajro!", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "ĝi brulos al cindrojn!", "loc":"happens if player decided not to pay to firemen"};
