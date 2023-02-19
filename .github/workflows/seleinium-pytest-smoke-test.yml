@@ -1,0 +1,22 @@
+name: "Selenium-pytest Smoke Tests"
+
+on:
+  pull_request:
+  push:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  smoke_job:
+    name: Smoke tests
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+    
+      - name: Install python requirements
+        run: pip install -r ./tests/selenium/requirements.txt
+
+      - name: Run tests
+        run: pytest -s -v -m smoke ./tests/selenium
