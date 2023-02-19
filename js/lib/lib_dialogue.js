@@ -119,6 +119,7 @@ function tap (e) {
     canvasScaleRatio = canvas.width / canvas.offsetWidth;
     loc.x = (tapX - pos.x) * canvasScaleRatio;
     loc.y = (tapY - pos.y) * canvasScaleRatio;
+    //console.log(e.pageX, e.pageY, loc.x, loc.y);
     if (loc.x >= buttonOneOffsetX && loc.x <= buttonOneOffsetX+buttonOneLength) {
         if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
             document.getElementById("myDCanvas").classList.remove('active-modal');
