@@ -359,8 +359,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("There is no savestring in the textbox");
-localeStrings.push("Couldn't load the game from the savestring");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -546,7 +546,8 @@ locObj.loadedSuccessfully = {"txt":"ludo ŝarĝis sukcese", "loc":"when loaded c
 locObj.dialogLoadGame = {"txt":"Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"Pardonu! Ne ekzistas konserva dosiero!", "loc":"in case there is no savegame"};
 locObj.dialogSaveGame = {"txt":"Konservu ludon? Vi reskribos ian ajn konservitan!", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Bonvolu enigi konservan ĉenon", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Bonvolu enigi konservan ĉenon", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Couldn't load the game from the savestring ;-;", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"tre longa ĉeno", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"Vi dungis gardiston!", "loc":"after succesfully hired a guardsman"};

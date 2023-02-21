@@ -360,7 +360,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("Строчка сохранения не найдена в текстовом поле");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Скачать игру (чтобы играть без Интернета)");
 localeStrings.push("placeholder");
@@ -550,7 +550,8 @@ locObj.loadedSuccessfully = {"txt":"игра загружена успешно",
 locObj.dialogLoadGame = {"txt":"Загрузить игру? Вы потеряете весь несохраненный прогресс!", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"Извините, но сохраненных игр нет!", "loc":"in case there is no savegame"};
 locObj.dialogSaveGame = {"txt":"Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Пожалуйста, вставьте сохранение", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Пожалуйста, вставьте сохранение", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Не получается загрузиться из этой строки", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"очень длинная строка", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу\nи %arg2 золотых за каждый сезон", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"Вы наняли охранника", "loc":"after succesfully hired a guardsman"};

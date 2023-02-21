@@ -161,11 +161,11 @@ function importGame() {
 			overrideGame(gameTemp);
 		}
 		catch(err) {
-			postEventLog(localeStrings[327],"bold,red");
+			postEventLog(locObj.loadGameFromStringError.txt,"bold,red");
 			console.log(err);
 		}
 	} else {
-		postEventLog(localeStrings[326],"bold");
+		postEventLog(locObj.loadGameFromStringEmpty.txt,"bold");
 	}
 }
 function cloudQuickSave(){

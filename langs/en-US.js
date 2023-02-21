@@ -360,7 +360,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("There is no savestring in the field");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
@@ -548,7 +548,8 @@ locObj.dialogLoadGame = {"txt":"Load game? You will lose any unsaved progress!",
 locObj.noSaveGame = {"txt":"Sorry! There is no save to load from!", "loc":"in case there is no savegame"};
 //TODO check only in case of overwrite or every savegame dialog!
 locObj.dialogSaveGame = {"txt":"Save game? You will rewrite any save you already have!", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Please insert save string", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Please insert save string", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Couldn't load the game from the savestring ;-;", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"very long string", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Do you want to hire a guardsman? He will cost you %arg1 gold\nand then %arg2 gold per each season!", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"You hired a guardsman!", "loc":"after succesfully hired a guardsman"};

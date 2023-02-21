@@ -359,8 +359,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("There is no savestring in the textbox");
-localeStrings.push("Couldn't load the game from the savestring");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -547,7 +547,8 @@ locObj.loadedSuccessfully = {"txt":"Spiel erfolgreich geladen", "loc":"when load
 locObj.dialogLoadGame = {"txt":"Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"Verzeiht! Es wurde kein gespeicherter Spielstand gefunden", "loc":"in case there is no savegame"};
 locObj.dialogSaveGame = {"txt":"Spiel speichern? Alte Spielstände werden dabei überschrieben!", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Bitte fügt Euren Spielstand ein", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Bitte fügt Euren Spielstand ein", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Couldn't load the game from the savestring ;-;", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"sehr lange Zeichenkette", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Möchtet Ihr einen Wachmann einstellen? Er wird Euch einmalig %arg1 Gold und danach %arg2 Gold pro Saison kosten", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"Ihr habt einen Wachmann angeheuert", "loc":"after succesfully hired a guardsman"};
