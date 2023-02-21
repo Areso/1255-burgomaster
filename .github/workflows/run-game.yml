@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: run server with the front of the game
-        run: python3 -m http.server 88
+        run: python3 -m http.server 8080
 
       - name: check whether game is UP
         run: |
-          curl -X GET "http://localhost:88/"
+          curl -X GET "http://localhost:8080/"
