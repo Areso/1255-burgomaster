@@ -1,4 +1,4 @@
-name: "Python Smoke Tests"
+name: "check game could run"
 
 on:
   pull_request:
@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: run server with the front of the game
-        run: python3 -m http.server 80
+        run: python3 -m http.server 88
 
       - name: check whether game is UP
         run: |
-          curl -X GET "http://localhost/"
+          curl -X GET "http://localhost:88/"
