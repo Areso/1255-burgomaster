@@ -1,0 +1,23 @@
+name: "Python Smoke Tests"
+
+on:
+  pull_request:
+  push:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  smoke_job:
+    name: Smoke Actions Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: run server with the front of the game
+        run: python3 -m http.server 80
+
+      - name: check whether game is UP
+        run: |
+          curl -X GET "http://localhost/"
