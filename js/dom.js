@@ -28,8 +28,8 @@ include('localisation.js',function(){
 		if (returnLanguage==='fi-FI') {
 			document.getElementById("selectLng").selectedIndex=5;
 		}
-		document.getElementById("buttonPutOutFire").innerText    = localeStrings[53];
-		document.getElementById("buttonDeathPenalty").innerText  = localeStrings[54];
+		document.getElementById("buttonPutOutFire").innerText    = locObj.btnPutOutTheFire.txt;
+		document.getElementById("buttonDeathPenalty").innerText  = locObj.btnExecutePerson.txt;
 		document.getElementById("saveGameButton").innerText      = locObj.locSaveGame.txt;
 		document.getElementById("loadGameButton").innerText      = locObj.locLoadGame.txt;
 		document.getElementById("tabCity").innerText             = locObj.tabCity.txt;

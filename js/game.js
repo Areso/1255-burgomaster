@@ -2481,9 +2481,9 @@ function gameOK() {
 			updateUI();
 		},
 		makeFestival : function() {
-			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
+			question      = locObj.festivalConfirm.txt.replace("%arg1", game.festivalPrice());
 			if (game.festival_cooldown !==0) {
-				question += localeStrings[57];
+				question += locObj.festivalConfirmCooldown.txt;
 			}
 			showModal(1, '', game.makeFestivalCallback, question, locObj.yes.txt, locObj.no.txt)
 		},

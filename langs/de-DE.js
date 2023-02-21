@@ -55,11 +55,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//50
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Löscht das feuer");
-localeStrings.push("Bürger hinrichten");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("Möchten Ihr ein Festival veranstalten?\nDas würde Sie %arg1 Gold kosten!\n");
-localeStrings.push("Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
 localeStrings.push(["Ihr Gewinn wegen des Festivals ist %arg1", "Ihr Verlust wegen des Festivals ist %arg1"]);
 localeStrings.push("Gut");//60
@@ -622,3 +622,7 @@ locObj.tabSettings = {"txt":"Einstellungen", "loc": "tabname Settings in the tab
 locObj.tabBuilding = {"txt": "Bauen", "loc": "tabname Building in the tab bar"};
 locObj.tabHowToPlay = {"txt": "Anleitung", "loc":"tabname How To Play, about and stuff in da bar"};
 locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Löscht das feuer", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Bürger hinrichten", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "Möchten Ihr ein Festival veranstalten?\nDas würde Sie %arg1 Gold kosten!\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n", "loc":"happens in case of Cooldown of the festivals"};

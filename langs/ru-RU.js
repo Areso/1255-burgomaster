@@ -55,11 +55,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//50
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Потушить огонь");
-localeStrings.push("Казнить человека");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n");
-localeStrings.push("Фестиваль был проведен не так давно.\nЭффект от фестиваля будет снижен.\n");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push(["Взят ивентовый предмет!","Ваш вклад записан!"]);
 localeStrings.push(["Ваша прибыль от фестиваля %arg1","Ваш убыток от фестиваля %arg1"]);
 localeStrings.push("Хорошо");//60
@@ -625,3 +625,7 @@ locObj.tabSettings = {"txt":"Настройки", "loc": "tabname Settings in th
 locObj.tabBuilding = {"txt": "Строительство", "loc": "tabname Building in the tab bar"};
 locObj.tabHowToPlay = {"txt": "Как играть", "loc":"tabname How To Play, about and stuff in da bar"};
 locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Потушить огонь", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Казнить человека", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Фестиваль был проведен не так давно.\nЭффект от фестиваля будет снижен.\n", "loc":"happens in case of Cooldown of the festivals"};

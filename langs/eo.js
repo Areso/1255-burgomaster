@@ -55,11 +55,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//50
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Estingi la fajron");
-localeStrings.push("Ekzekuti civitanon");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("Ĉu vi volas fari festivalon?\nKostus al vi %arg1 oro!\n");
-localeStrings.push("Festivalo estis farita antaŭ ne tre longa tempo.\nLa efekto de festivalo malfortiĝus.\n");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
 localeStrings.push(["Via gajno pro la festivalo estas %arg1", "Via perdo pro la festivalo estas %arg1"]);
 localeStrings.push("OK");//60
@@ -621,3 +621,7 @@ locObj.tabSettings = {"txt":"Preferoj", "loc": "tabname Settings in the tab bar"
 locObj.tabBuilding = {"txt": "Konstruaĵo", "loc": "tabname Building in the tab bar"};
 locObj.tabHowToPlay = {"txt": "Kiel ludi", "loc":"tabname How To Play, about and stuff in da bar"};
 locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Estingi la fajron", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Ekzekuti civitanon", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "Ĉu vi volas fari festivalon?\nKostus al vi %arg1 oro!\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Festivalo estis farita antaŭ ne tre longa tempo.\nLa efekto de festivalo malfortiĝus.\n", "loc":"happens in case of Cooldown of the festivals"};
