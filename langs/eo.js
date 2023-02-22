@@ -60,10 +60,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Via gajno pro la festivalo estas %arg1", "Via perdo pro la festivalo estas %arg1"]);
-localeStrings.push("OK");//60
-localeStrings.push("Vi jam havas heroon!");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
 localeStrings.push("aŭtomate konservi ŝaltita");
 localeStrings.push("aŭtomate konservi malŝaltita");
 localeStrings.push("Vi estas konstruonta %arg1.\n Se la objekto estas konstruita, vi ne rajtus konstrui %arg2.\n Ĉu vi certas en via elekto?");
@@ -626,3 +626,9 @@ locObj.btnPutOutTheFire = {"txt": "Estingi la fajron", "loc": "button to extingu
 locObj.btnExecutePerson = {"txt": "Ekzekuti civitanon", "loc": "button to execute somebody"};
 locObj.festivalConfirm = {"txt": "Ĉu vi volas fari festivalon?\nKostus al vi %arg1 oro!\n", "loc":"place festival confirmation dialogue"};
 locObj.festivalConfirmCooldown = {"txt":"Festivalo estis farita antaŭ ne tre longa tempo.\nLa efekto de festivalo malfortiĝus.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+locObj.festivalGain = {"txt": "Via gajno pro la festivalo estas %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Via perdo pro la festivalo estas %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "Vi jam havas heroon!", "loc":"happens when trying to hire a hero, when you have one hired"};

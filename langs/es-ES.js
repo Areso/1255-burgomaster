@@ -60,10 +60,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Tus ganancias por el destival son %arg1","Tus pérdidas por el festival son %arg1"]);
-localeStrings.push("Okey");//60
-localeStrings.push("¡Ya tienes un héroe!");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
 localeStrings.push("Autoguardado encendido");
 localeStrings.push("Autoguardado apagado");
 localeStrings.push("Estás apunto de construir %arg1.\n Si el objeto es construído, no podrás construir %arg2.\n ¿Estás seguro de tu decisión?");
@@ -623,3 +623,10 @@ locObj.btnPutOutTheFire = {"txt": "Apagar el fuego", "loc": "button to extinguis
 locObj.btnExecutePerson = {"txt": "Ejecutar a alguien", "loc": "button to execute somebody"};
 locObj.festivalConfirm = {"txt": "¿Quieres hacer un festival?\n¡Te costará  %arg1 de oro!\n", "loc":"place festival confirmation dialogue"};
 locObj.festivalConfirmCooldown = {"txt":"Ya se hizo un festival hace poco.\nEl efecto de un festival sería menor.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+//TODO rewrite from tus to usted!
+locObj.festivalGain = {"txt": "Tus ganancias por el destival son %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Tus pérdidas por el festival son %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "¡Usted ya tiene un héroe!", "loc":"happens when trying to hire a hero, when you have one hired"};

@@ -551,7 +551,7 @@ function gameOK() {
 				updateUI();
 			}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
-				postEventLog(localeStrings[58][0]);
+				postEventLog(locObj.eventItemCollected.txt);
 				eventItemCollected();
 			}
 		},
@@ -1596,7 +1596,7 @@ function gameOK() {
 				disabledElements.push("selectHeroClass");
 				document.getElementById("btnHireHero").disabled = true;
 				document.getElementById("selectHeroClass").disabled = true;
-				alertMsg = localeStrings[61];
+				alertMsg = locObj.errAlreadyHasHero.txt;
 				showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 			}
 		},
@@ -2496,9 +2496,10 @@ function gameOK() {
 					game.addMoneyToTreasury(fundraising);
 					gold_diff = game.gold-gold_was;
 					if (gold_diff>=0){
-						msg = localeStrings[59][0].replace("%arg1",gold_diff);
+					    if (gold_diff===0) { gold_diff = 1}
+						msg = locObj.festivalGain.txt.replace("%arg1",gold_diff);
 					} else {
-						msg = localeStrings[59][1].replace("%arg1",gold_diff);
+						msg = locObj.festivalLoss.txt.replace("%arg1",gold_diff);
 					}
 					postEventLog(msg);
 					game.festival_cooldown  = config.festCooldown;

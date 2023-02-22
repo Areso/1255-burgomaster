@@ -60,10 +60,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push(["Взят ивентовый предмет!","Ваш вклад записан!"]);
-localeStrings.push(["Ваша прибыль от фестиваля %arg1","Ваш убыток от фестиваля %arg1"]);
-localeStrings.push("Хорошо");//60
-localeStrings.push("У вас уже есть герой");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
 localeStrings.push("Автосохранение включено");
 localeStrings.push("Автосохранение выключено");
 localeStrings.push("Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?");
@@ -630,3 +630,9 @@ locObj.btnPutOutTheFire = {"txt": "Потушить огонь", "loc": "button 
 locObj.btnExecutePerson = {"txt": "Казнить человека", "loc": "button to execute somebody"};
 locObj.festivalConfirm = {"txt": "Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n", "loc":"place festival confirmation dialogue"};
 locObj.festivalConfirmCooldown = {"txt":"Фестиваль был проведен не так давно.\nЭффект от фестиваля будет снижен.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "Взят ивентовый предмет!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Ваш вклад записан!", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+locObj.festivalGain = {"txt": "Ваша прибыль от фестиваля %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Ваш убыток от фестиваля %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "У вас уже есть герой!", "loc":"happens when trying to hire a hero, when you have one hired"};

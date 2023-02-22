@@ -60,10 +60,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Ihr Gewinn wegen des Festivals ist %arg1", "Ihr Verlust wegen des Festivals ist %arg1"]);
-localeStrings.push("Gut");//60
-localeStrings.push("Ihr habt schon einen Helden");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
 localeStrings.push("Automatisches Speichern ist eingeschaltet");
 localeStrings.push("Automatisches Speichern ist ausgeschaltet");
 localeStrings.push("Ihr sind im Begriff, nach %arg1 zu bauen.\nWenn das Objekt gebaut wird, können Ihr keine %arg2 bauen.\nBist du dir bei deiner Wahl sicher?");
@@ -627,3 +627,9 @@ locObj.btnPutOutTheFire = {"txt": "Löscht das feuer", "loc": "button to extingu
 locObj.btnExecutePerson = {"txt": "Bürger hinrichten", "loc": "button to execute somebody"};
 locObj.festivalConfirm = {"txt": "Möchten Ihr ein Festival veranstalten?\nDas würde Sie %arg1 Gold kosten!\n", "loc":"place festival confirmation dialogue"};
 locObj.festivalConfirmCooldown = {"txt":"Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+locObj.festivalGain = {"txt": "Ihr Gewinn wegen des Festivals ist %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Ihr Verlust wegen des Festivals ist %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "Ihr habt schon einen Helden", "loc":"happens when trying to hire a hero, when you have one hired"};
