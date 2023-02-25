@@ -8,7 +8,7 @@ on:
 
 jobs:
   smoke_job:
-    name: Smoke Actions Job
+    name: Cypress Validate HTML
     runs-on: ubuntu-latest
 
     steps:
