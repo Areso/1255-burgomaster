@@ -64,9 +64,9 @@ localeStrings.push(["placeholder","placeholder"]);
 localeStrings.push(["placeholder","placeholder"]);
 localeStrings.push("placeholder");//60
 localeStrings.push("placeholder");
-localeStrings.push("La sauvegarde automatique est activée.");
-localeStrings.push("La sauvegarde automatique est désactivée.");
-localeStrings.push("Vous êtes sur le point de constuire %arg1.\nSi cet objet est construit, vous ne pourrez plus construire %arg2.\nEtes-vous sûr de votre choix ?");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Rien à montrer encore, venez ici plus tard.");//65
 localeStrings.push("Paramètres");
 localeStrings.push("Exporter la partie");
@@ -174,8 +174,8 @@ localeStrings.push("tour de pierre");
 localeStrings.push("maison");
 localeStrings.push("maisons");
 localeStrings.push("auberge");//140
-localeStrings.push("potence");
-localeStrings.push("fontaine");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("trésorerie");
 localeStrings.push("or");
 localeStrings.push("population");//145
@@ -530,6 +530,10 @@ locObj.requiredStables = {"txt": "Pour ce faire, vous devez construire l'écurie
 locObj.requiredArcheryRange = {"txt":"Pour ce faire, vous devez construire une gamme de tir à l'arc", "loc":"happens when trying to hire turkopols if no archery range is built"};
 locObj.requiredStablesUpgrade = {"txt": "Pour ce faire, vous devez mettre à niveau l'écurie au niveau %arg1", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
+locObj.demolishGallows = {"txt": "potence", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.fountainUnlock = {"txt": "fontaine", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
+locObj.demolishFountain = {"txt": "fontaine", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.gallowsUnlock = {"txt": "potence", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
@@ -632,3 +636,10 @@ locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you log
 locObj.festivalGain = {"txt": "Votre gain grâce au festival est de %arg1 or.", "loc":"happens if the festival was profitable for budget"};
 locObj.festivalLoss = {"txt": "Votre perte dû au festival est de %arg1 or.", "loc":"happens if the festival was unprofitable for budget"};
 locObj.errAlreadyHasHero = {"txt": "Vous avez déjà un héros !", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "La sauvegarde automatique est activée.", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "La sauvegarde automatique est désactivée.", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "Vous êtes sur le point de constuire %arg1.\nSi cet objet est construit, vous ne pourrez plus construire %arg2.\nEtes-vous sûr de votre choix ?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "potence", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "fontaine", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "fontaine", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "potence", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};

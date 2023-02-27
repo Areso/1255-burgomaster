@@ -64,9 +64,9 @@ localeStrings.push(["placeholder","placeholder"]);
 localeStrings.push(["placeholder","placeholder"]);
 localeStrings.push("placeholder");//60
 localeStrings.push("placeholder");
-localeStrings.push("aŭtomate konservi ŝaltita");
-localeStrings.push("aŭtomate konservi malŝaltita");
-localeStrings.push("Vi estas konstruonta %arg1.\n Se la objekto estas konstruita, vi ne rajtus konstrui %arg2.\n Ĉu vi certas en via elekto?");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Nenio por montri ankoraŭ, venu ĉi tien poste.");//65
 localeStrings.push("Preferoj");
 localeStrings.push("eksporti konserva dosieron");
@@ -174,8 +174,8 @@ localeStrings.push("ŝtona turo");
 localeStrings.push("domo");
 localeStrings.push("domoj");
 localeStrings.push("gatejo");//140
-localeStrings.push("pendumilo");
-localeStrings.push("fonto");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("trezorejo");
 localeStrings.push("oro");
 localeStrings.push("langeto");//145
@@ -530,6 +530,10 @@ locObj.requiredStables = {"txt": "Por fari tion, vi devas konstrui la stalon", "
 locObj.requiredArcheryRange = {"txt":"Por fari tion, vi devas konstrui arkpafadon", "loc":"happens when trying to hire turkopols if no archery range is built"};
 locObj.requiredStablesUpgrade = {"txt": "Por fari tion, vi devas altgradigi la stalon al %arg1 nivelo", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
+locObj.demolishGallows = {"txt": "pendumilo", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.fountainUnlock = {"txt": "fonto", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
+locObj.demolishFountain = {"txt": "fonto", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.gallowsUnlock = {"txt": "pendumilo", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
@@ -632,3 +636,10 @@ locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you log
 locObj.festivalGain = {"txt": "Via gajno pro la festivalo estas %arg1", "loc":"happens if the festival was profitable for budget"};
 locObj.festivalLoss = {"txt": "Via perdo pro la festivalo estas %arg1", "loc":"happens if the festival was unprofitable for budget"};
 locObj.errAlreadyHasHero = {"txt": "Vi jam havas heroon!", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "aŭtomate konservi ŝaltita", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "aŭtomate konservi malŝaltita", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "Vi estas konstruonta %arg1.\n Se la objekto estas konstruita, vi ne rajtus konstrui %arg2.\n Ĉu vi certas en via elekto?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "pendumilo", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "fonto", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "fonto", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "pendumilo", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};

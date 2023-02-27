@@ -2675,11 +2675,11 @@ function gameOK() {
 			var costOfBuilding = 0;
 			if (objectToBuild==="Fountain") {
 				costOfBuilding = config.costFountain;
-				question = localeStrings[64].replace("%arg1",localeStrings[142]).replace("%arg2",localeStrings[141]);
+				question = locObj.GallowsFountainChoiceConfirm.txt.replace("%arg1",locObj.FountainChoiceConfirm.txt).replace("%arg2",locObj.GallowsBlocked.txt);
 			}
 			if (objectToBuild==="Gallows") {
 				costOfBuilding = config.costGallows;
-				question = localeStrings[64].replace("%arg1",localeStrings[141]).replace("%arg2",localeStrings[142]);
+				question = locObj.GallowsFountainChoiceConfirm.txt.replace("%arg1",locObj.GallowsChoiceConfirm.txt).replace(locObj.FountainBlocked.txt);
 			}
 			if (game.gold > costOfBuilding) {
 				if (game.buildLevelFountain === 0 && game.buildLevelGallows === 0) {

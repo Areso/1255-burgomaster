@@ -64,9 +64,9 @@ localeStrings.push(["placeholder","placeholder"]);
 localeStrings.push(["placeholder","placeholder"]);
 localeStrings.push("placeholder");//60
 localeStrings.push("placeholder");
-localeStrings.push("Автосохранение включено");
-localeStrings.push("Автосохранение выключено");
-localeStrings.push("Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Пока нечего показать. Попробуйте позже.");//65
 localeStrings.push("Настройки");
 localeStrings.push("Экспорт сохранения");
@@ -534,6 +534,10 @@ locObj.requiredArcheryRange = {"txt":"To do that, you need to build Archery Rang
 locObj.requiredStables = {"txt": "Для этого вам нужно стрельбище", "loc":"happens when trying to hire sergeants if no stables built"};
 locObj.requiredStablesUpgrade = {"txt": "Для этого нужно улучшить конюшни до %arg1 уровня", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Ваш советник умер.\nНовоиспеченный советник рекомендует вам\nпересмотреть выбор, сделанный в прошлом:\n-настало время, милорд, когда вы решаете, что лучше для нашего города.\n-если вы согласны, %arg1 будет снесен, а на его месте мы построим %arg2", "loc":""}
+locObj.demolishGallows = {"txt": "виселицу", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.fountainUnlock = {"txt": "фонтант", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
+locObj.demolishFountain = {"txt": "фонтан", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.gallowsUnlock = {"txt": "виселицу", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
 locObj.deadCounselorDemolishAnsYes = {"txt":"Да, сносим это здание", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Купить",  "loc":"На предмете для продажи Черного Рынка Гоблина"};
 locObj.sell = {"txt":"Продать", "loc":"На предмете для продажи Черного Рынка Гоблина"};
@@ -636,3 +640,10 @@ locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you log
 locObj.festivalGain = {"txt": "Ваша прибыль от фестиваля %arg1", "loc":"happens if the festival was profitable for budget"};
 locObj.festivalLoss = {"txt": "Ваш убыток от фестиваля %arg1", "loc":"happens if the festival was unprofitable for budget"};
 locObj.errAlreadyHasHero = {"txt": "У вас уже есть герой!", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "Автосохранение включено", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "Автосохранение выключено", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "виселицу", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "фонтан", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "фонтан", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "виселицу", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};

@@ -27,11 +27,11 @@ function setupMobileUI() {
 	function changeAutosave() {
 		if (game.o_autosave===0) {
 			game.o_autosave = 1;
-			postEventLog(localeStrings[62]);
+			postEventLog(locObj.autosaveTurnedOn.txt);
 			setupAutosave();
 		} else {
 			game.o_autosave = 0;
-			postEventLog(localeStrings[63]);
+			postEventLog(locObj.autosaveTurnedOff.txt);
 			setupAutosave();
 		}
 	}
