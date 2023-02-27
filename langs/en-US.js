@@ -67,11 +67,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Nothing to show yet, come here later.");//65
-localeStrings.push("Settings");
-localeStrings.push("Export Game");
-localeStrings.push("Import Game");
-localeStrings.push("Autosave");
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Change color mode");//70
 localeStrings.push("Option");
 localeStrings.push("On");
@@ -645,3 +645,9 @@ locObj.GallowsChoiceConfirm = {"txt": "Gallows", "loc": "your choice in GallowsF
 locObj.FountainBlocked = {"txt": "Fountain", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
 locObj.FountainChoiceConfirm = {"txt": "Fountain", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
 locObj.GallowsBlocked = {"txt": "Gallows", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Nothing to show yet, come here later", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Settings", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "Export Game", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "Import Game", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "Autosave", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Change color mode", "loc": "settings tab change colour mode button"};

@@ -67,12 +67,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Пока нечего показать. Попробуйте позже.");//65
-localeStrings.push("Настройки");
-localeStrings.push("Экспорт сохранения");
-localeStrings.push("Импорт сохранения");
-localeStrings.push("Автосохранение");
-localeStrings.push("Сменить цветовой режим");//70
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//70
 localeStrings.push("Опция");
 localeStrings.push("Включено");
 localeStrings.push("Выключено");
@@ -647,3 +647,9 @@ locObj.GallowsChoiceConfirm = {"txt": "виселицу", "loc": "your choice in
 locObj.FountainBlocked = {"txt": "фонтан", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
 locObj.FountainChoiceConfirm = {"txt": "фонтан", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
 locObj.GallowsBlocked = {"txt": "виселицу", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Пока нечего показать. Попробуйте позже", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Настройки", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "Экспорт сохранения", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "Импорт сохранения", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "Автосохранение", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Сменить цветовой режим", "loc": "settings tab change colour mode button"};

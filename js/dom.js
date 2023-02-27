@@ -37,11 +37,10 @@ include('localisation.js',function(){
 		document.getElementById("btnOpenTabBuilding").innerText  = locObj.tabBuilding.txt;
 		document.getElementById("tabAbout").innerText            = locObj.tabHowToPlay.txt;
 		document.getElementById("tabDiscord").innerText          = locObj.tabDiscord.txt;
-		document.getElementById("labelSettings").innerText       = localeStrings[66];
-		document.getElementById("labelSettings").innerText       = localeStrings[66];
-		document.getElementById("buttonExportGame").innerText    = localeStrings[67];
-		document.getElementById("buttonImportGame").innerText    = localeStrings[68];
-		document.getElementById("labelAutosave").innerText       = localeStrings[69];
+		document.getElementById("labelSettings").innerText       = locObj.tabSettings.txt;
+		document.getElementById("buttonExportGame").innerText    = locObj.tabSettingsBtnExportGame.txt;
+		document.getElementById("buttonImportGame").innerText    = locObj.tabSettingsBtnImportGame.txt;
+		document.getElementById("labelAutosave").innerText       = locObj.tabSettingsLblAutosave.txt;
 		document.getElementById("labelGarrison").innerText       = localeStrings[91];
 		document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
 		document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
@@ -49,7 +48,7 @@ include('localisation.js',function(){
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
 		document.getElementById("lblTabPop").innerText           = localeStrings[161];
 		document.getElementById("lblTabGold").innerText          = localeStrings[164];
-		document.getElementById("btnColorMode").innerText        = localeStrings[70];
+		document.getElementById("btnColorMode").innerText        = locObj.tabSettingsBtnChangeColorMode.txt;
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
 		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
 		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];

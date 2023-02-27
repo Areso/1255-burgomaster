@@ -67,12 +67,12 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Nenio por montri ankoraŭ, venu ĉi tien poste.");//65
-localeStrings.push("Preferoj");
-localeStrings.push("eksporti konserva dosieron");
-localeStrings.push("importi konserva dosieron");
-localeStrings.push("aŭtomate konservi");
-localeStrings.push("Ŝanĝi koloran reĝimon");//70
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//70
 localeStrings.push("Prefero");
 localeStrings.push("On");
 localeStrings.push("Malŝaltita");
@@ -643,3 +643,9 @@ locObj.GallowsChoiceConfirm = {"txt": "pendumilo", "loc": "your choice in Gallow
 locObj.FountainBlocked = {"txt": "fonto", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
 locObj.FountainChoiceConfirm = {"txt": "fonto", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
 locObj.GallowsBlocked = {"txt": "pendumilo", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Nenio por montri ankoraŭ, venu ĉi tien poste", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Preferoj", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "eksporti konserva dosieron", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "importi konserva dosieron", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "aŭtomate konservi", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Ŝanĝi koloran reĝimon", "loc": "settings tab change colour mode button"};

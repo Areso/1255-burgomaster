@@ -3589,7 +3589,6 @@ function gameOK() {
 			openTab(null, 'tabInn');
 		}
 		if (buildingName==='gallows') {
-			//alertMsg = localeStrings[141];
 			showAlert = false;
 			game.deathPenalty();
 		}
