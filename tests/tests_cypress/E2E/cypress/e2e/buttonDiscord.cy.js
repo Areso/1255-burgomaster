@@ -1,6 +1,6 @@
-describe('City', () => {
+describe('Discord', () => {
 
-    it('should be buttons in  window City', () => {
+    it('should be buttons in  window Discord', () => {
         cy.visit('/');
 
         Cypress.on('uncaught:exception', (err, runnable) => {
@@ -14,27 +14,27 @@ describe('City', () => {
         });
 
         cy.get('.menu-panel').within(() => {
-            cy.get('#tabCity').click();
-            cy.get('#tabCity').should('have.class','tab-link active');
-            cy.get('#btnOpenTabBuilding').should('have.class','tab-link');
-            cy.get('#tabSettings').should('have.class','tab-link');
-            cy.get('#tabAbout').should('have.class','tab-link');
-            cy.get('#tabDiscord').should('have.class','tab-link');
+            cy.get('#tabCity').should('have.class', 'tab-link');
+            cy.get('#btnOpenTabBuilding').should('have.class', 'tab-link');
+            cy.get('#tabSettings').should('have.class', 'tab-link');
+            cy.get('#tabAbout').should('have.class', 'tab-link');
+            cy.get('#tabDiscord').click();
+            cy.get('#tabDiscord').should('have.class', 'tab-link active');
             cy.get('#lblEventCountdownValue');
         });
 
         cy.get('.resource-panel').within(() => {
             cy.get('.gold-val').within(() => {
-                cy.get('#gold_img_bt').should('have.class','resource-icon')
-              //  cy.get('#gold').should('have.style','display:none')
+                cy.get('#gold_img_bt').should('have.class', 'resource-icon')
+                //  cy.get('#gold').should('have.style','display:none')
                 cy.get('#panelGoldValue').contains(/\d+/);
             });
             cy.get('.population-val').within(() => {
-                cy.get('#pop_img').should('have.class','resource-icon')
+                cy.get('#pop_img').should('have.class', 'resource-icon')
                 cy.get('#panelPopValue').contains(/\d+/);
             });
             cy.get('.gems-val').within(() => {
-                cy.get('#gems_img').should('have.class','resource-icon')
+                cy.get('#gems_img').should('have.class', 'resource-icon')
                 cy.get('#gems').contains(/\d+/);
             });
             cy.get('.time-val').within(() => {
@@ -52,26 +52,23 @@ describe('City', () => {
         });
 
         cy.get('.content-panel').within(() => {
-            cy.get('#main').within(() => {
-                cy.get('#canvas');
-                cy.get('#saveGameButton').should('have.class','btn');
-                cy.get('#loadGameButton').should('have.class','btn');
-                cy.get('#buttonPutOutFire').should('have.attr','onclick','game.putOutFire()');
-                cy.get('#buttonDeathPenalty').should('have.attr','onclick','game.deathPenalty()');
-            });
+            cy.get('#discord').should('have.class', 'tab active')
+            // Docs Cypress https://docs.cypress.io/api/commands/origin#Other-limitations
+            // It cannot run commands inside an <iframe> element
+            //However, <iframe> support is on our roadmap for inclusion in a future version of Cypress.
         });
 
         cy.get('.info-panel').within(() => {
             cy.get('.info-panel__actions').within(() => {
-                cy.get('#log_btn').should('have.class','btn');
-                cy.get('#chat_btn').should('have.class','btn');
-                cy.get('#chat_btn').should('have.class','btn');
+                cy.get('#log_btn').should('have.class', 'btn');
+                cy.get('#chat_btn').should('have.class', 'btn');
+                cy.get('#chat_btn').should('have.class', 'btn');
                 cy.get('#lbl_online').within(() => {
                     cy.get('#spnOnline');
-                    cy.get('#spnOnlineValue');                  
-                });    
+                    cy.get('#spnOnlineValue');
+                });
             });
-            cy.get('#log').should('have.class','info-panel__history');
+            cy.get('#log').should('have.class', 'info-panel__history');
         });
     });
 })
