@@ -92,21 +92,21 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push(["placeholder","placeholder","placeholder"]);
 localeStrings.push("placeholder");
-localeStrings.push("Amber are most valued currency");//90
-localeStrings.push("Guarnición");
-localeStrings.push("Fuego");
-localeStrings.push("Contratar");
-localeStrings.push("Reclutar tropas");
-localeStrings.push("Castellán");//95
-localeStrings.push("Héroe");
-localeStrings.push("Entrenar hermano-sargento<br/>%arg1 gold");
-localeStrings.push("Contratar turkopolo<br/>%arg1 gold");
-localeStrings.push("Entrenar hermano-caballero<br/>%arg1 gold");
-localeStrings.push("brothers-sergeants: ");//100
-localeStrings.push("turkopolos: ");
-localeStrings.push("hermano-caballeros: ");
-localeStrings.push("mover una unidad al escuadrón del héroe");
-localeStrings.push("mover una unidad a la guarnición");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placehodler");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
 localeStrings.push("Construcción");
 localeStrings.push("Construir Casa<br/>nvl %arg1<br/>%arg2 de oro");
@@ -662,3 +662,12 @@ locObj.tabSettingsLblMobileUI = {"txt": "Interfaz Móvil", "loc": "settings tab"
 locObj.tabSettingsLblLogSize = {"txt":"Tamaño del registro de eventos", "loc": "settings tab"};
 locObj.tabSettingsLblLines = {"txt": "líneas", "loc": "settings tab"};
 locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "Amber are most valued currency", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Garnison", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Fuego", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Contratar", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Castellán", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Héroe","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "hermano-sergentos", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "turkopolos", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "hermano-caballeros", "loc": "troops management screen"};

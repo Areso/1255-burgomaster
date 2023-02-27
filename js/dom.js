@@ -41,9 +41,9 @@ include('localisation.js',function(){
 		document.getElementById("buttonExportGame").innerText    = locObj.tabSettingsBtnExportGame.txt;
 		document.getElementById("buttonImportGame").innerText    = locObj.tabSettingsBtnImportGame.txt;
 		document.getElementById("labelAutosave").innerText       = locObj.tabSettingsLblAutosave.txt;
-		document.getElementById("labelGarrison").innerText       = localeStrings[91];
-		document.getElementById("buttonFireGuard").innerText     = localeStrings[92];
-		document.getElementById("buttonHireGuard").innerText     = localeStrings[93];
+		document.getElementById("labelGarrison").innerText       = locObj.lblGarrison.txt;
+		document.getElementById("buttonFireGuard").innerText     = locObj.btnFire.txt;
+		document.getElementById("buttonHireGuard").innerText     = locObj.btnHire.txt;
 		//document.getElementById("labelBuilding").innerText       = localeStrings[106];
 		document.getElementById("lblAboutGame").innerHTML        = localeStrings[131].replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
 		document.getElementById("lblTabPop").innerText           = localeStrings[161];
@@ -59,9 +59,7 @@ include('localisation.js',function(){
 		document.getElementById("btnTowngate").innerText         = localeStrings[221];
 		document.getElementById("btnLeaveCity").innerText        = localeStrings[222];
 		document.getElementById("btnGenerateMap").innerText      = localeStrings[223];
-
 		document.getElementById("btnAutobattlesList").innerText  = locObj.autobattle_journal_btn.txt;
-
 		document.getElementById("lblOption").innerText           = locObj.tabSoundSettingsLblOption.txt;
 		document.getElementById("lblOn").innerText               = locObj.on.txt;
 		document.getElementById("lblOff").innerText              = locObj.off.txt;
@@ -71,30 +69,14 @@ include('localisation.js',function(){
 		document.getElementById("lblMscAll").innerText           = locObj.tabSoundSettingsAllMusic.txt;
 		document.getElementById("lblMscScr").innerText           = locObj.tabSoundSettingsScMusic.txt;
 		document.getElementById("btnToGeneralSettings").innerText= locObj.btnBack.txt;
-
 		document.getElementById("btnToInn").innerText            = locObj.btnBack.txt;
 		document.getElementById("btnToInn1").innerText           = locObj.btnBack.txt;
-
 		document.getElementById("lblSoundMenu").innerText        = locObj.lblSoundMenu.txt;
 		document.getElementById("btnSoundSettings").innerText    = locObj.tabSettingsBtnOpenSoundSettings.txt;
 		document.getElementById("lblStnMobileUI").innerText      = locObj.tabSettingsLblMobileUI.txt;
 		document.getElementById("lblStnEventLogSize").innerText  = locObj.tabSettingsLblLogSize.txt;
 		document.getElementById("lblStnLines").innerText         = locObj.tabSettingsLblLines.txt;
-		/*
-		document.getElementById("lblTroopsHiring").innerText     = localeStrings[94];
-		document.getElementById("btnHireSergeant").innerHTML     = localeStrings[97].replace("%arg1",config.sergeantHiring);
-		document.getElementById("btnHireTurkopol").innerHTML     = localeStrings[98].replace("%arg1",config.turkopolHiring);
-		document.getElementById("btnHireKnight").innerHTML       = localeStrings[99].replace("%arg1",config.knightHiring);
-		document.getElementById("lblTabHiringTroopsSergeantsGarrison").innerText       = localeStrings[100];
-		document.getElementById("lblTabHiringTroopsTurkopolsGarrison").innerText       = localeStrings[101];
-		document.getElementById("lblTabHiringTroopsKnightsGarrison").innerText         = localeStrings[102];
-		document.getElementById("lblTabHiringTroopsSergeantsHeroSquad").innerText      = localeStrings[100];
-		document.getElementById("lblTabHiringTroopsTurkopolsHeroSquad").innerText      = localeStrings[101];
-		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
-		document.getElementById("lblTabHiringTroopsKnightsHeroSquad").innerText        = localeStrings[102];
-		*/
 		document.getElementById("lblGoodsForSale").innerText     = localeStrings[260];
-
 		//document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
 		//document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
 		//document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];

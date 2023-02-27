@@ -92,21 +92,21 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push(["placeholder","placeholder","placeholder"]);
 localeStrings.push("placeholder");
-localeStrings.push("l'ambre est la monnaie la plus rare");//90
-localeStrings.push("Garnison");
-localeStrings.push("Licencier");
-localeStrings.push("Embaucher");
-localeStrings.push("Embaucher des troupes");
-localeStrings.push("Castellan");//95
-localeStrings.push("Héros");
-localeStrings.push("train frère sergent ");
-localeStrings.push("louer turkopol");
-localeStrings.push("train frère chevalier");
-localeStrings.push("frère sergents: ");//100
-localeStrings.push("turkopols: ");
-localeStrings.push("frère chevaliers: ");
-localeStrings.push("déplacer l'unité à l'équipe de héros");
-localeStrings.push("déplacer une unité à la garnison");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
 localeStrings.push("Bâtiment");
 localeStrings.push("Construire une Maison<br/>niveau %arg1<br/>%arg2 or");
@@ -664,3 +664,12 @@ locObj.tabSettingsLblMobileUI = {"txt": "Interface utilisateur mobile", "loc": "
 locObj.tabSettingsLblLogSize = {"txt":"Taille du journal des événements", "loc": "settings tab"};
 locObj.tabSettingsLblLines = {"txt": "lignes", "loc": "settings tab"};
 locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "l'ambre est la monnaie la plus rare", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Garnison", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Licencier", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Embaucher", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Castellan", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Héros","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "frère sergents", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "turkopols", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "frère chevaliers", "loc": "troops management screen"};

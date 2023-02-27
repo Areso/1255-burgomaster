@@ -92,21 +92,21 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push(["placeholder","placeholder","placeholder"]);
 localeStrings.push("placeholder");
-localeStrings.push("Ambro estas la plej malofta valuto");//90
-localeStrings.push("Garnison");
-localeStrings.push("Forsenti");
-localeStrings.push("Dungi");
-localeStrings.push("Dungado de trupoj");
-localeStrings.push("Castellan");//95
-localeStrings.push("Heroo");
-localeStrings.push("Trajni frat-serĝenton<br/>pro %arg1 oro");
-localeStrings.push("Dungi turkopolon<br/>pro %arg1 oro");
-localeStrings.push("Trejni frat-kavaliron<br/>pro %arg1 oro");
-localeStrings.push("frat-serĝentoj: ");//100
-localeStrings.push("turkopoloj: ");
-localeStrings.push("frat-kavaliroj: ");
-localeStrings.push("movi unuon al la heroa taĉmento");
-localeStrings.push("movi unuon al la garnizono");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
 localeStrings.push("Konstruaĵo");
 localeStrings.push("Konstrui Domon<br/>nivelo %arg1<br/>pro %arg2 oro");
@@ -664,3 +664,12 @@ locObj.tabSettingsLblMobileUI = {"txt": "Poŝtelefona UI", "loc": "settings tab"
 locObj.tabSettingsLblLogSize = {"txt":"Eventa grandeco", "loc": "settings tab"};
 locObj.tabSettingsLblLines = {"txt": "linioj", "loc": "settings tab"};
 locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "Ambro estas la plej malofta valuto", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Garnison", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Forsenti", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Dungi", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Castellan", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Heroo","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "frat-serĝentoj", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "turkopoloj", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "frat-kavaliroj", "loc": "troops management screen"};

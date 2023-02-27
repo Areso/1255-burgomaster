@@ -3498,7 +3498,7 @@ function gameOK() {
 		var showAlert = true;
 		alertMsg = "";
 		if (buildingName==='amber'){
-			alertMsg = localeStrings[90];
+			alertMsg = locObj.amber.txt;
 		}
 		if (buildingName==='well') {
 			showAlert = false;
