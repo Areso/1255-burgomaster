@@ -73,17 +73,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//70
-localeStrings.push("Prefero");
-localeStrings.push("On");
-localeStrings.push("Malŝaltita");
-localeStrings.push("Ĉiuj sonefektoj");
-localeStrings.push("Efikoj al ĉiuj eventoj");//75
-localeStrings.push("Efikoj sur agado postulis eventojn");
-localeStrings.push("Muziko ĉio");
-localeStrings.push("Lore kaj scenomuziko");
-localeStrings.push("Reen");
-localeStrings.push("Preferoj de sonefektoj kaj muziko");//80
-localeStrings.push("Malfermu sonajn preferojn");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placehodler");
 localeStrings.push("Poŝtelefona UI");
 localeStrings.push("Eventa grandeco");
 localeStrings.push("linioj");
@@ -649,3 +649,14 @@ locObj.tabSettingsBtnExportGame = {"txt": "eksporti konserva dosieron", "loc":"E
 locObj.tabSettingsBtnImportGame = {"txt": "importi konserva dosieron", "loc":"Import game button"};
 locObj.tabSettingsLblAutosave = {"txt": "aŭtomate konservi", "loc": "Autsave label before the toggle"};
 locObj.tabSettingsBtnChangeColorMode = {"txt": "Ŝanĝi koloran reĝimon", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Prefero", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "ŝaltita", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "Malŝaltita", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt":"Ĉiuj sonefektoj", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Efikoj al ĉiuj eventoj", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Efikoj sur agado postulis eventojn", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Muziko ĉio", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Lore kaj scenomuziko", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Reen", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Preferoj de sonefektoj kaj muziko", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Malfermu sonajn preferojn", "loc":"settings tab"};

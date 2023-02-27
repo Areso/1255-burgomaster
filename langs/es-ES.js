@@ -73,17 +73,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//70
-localeStrings.push("Opción");
-localeStrings.push("Encendido");
-localeStrings.push("Apagado");
-localeStrings.push("Todos los efectos de sonido");
-localeStrings.push("Efectos en todos los eventos");//75
-localeStrings.push("Efectos en eventos que requieren una acción");
-localeStrings.push("Toda la música");
-localeStrings.push("Música de conocimiento y diálogos");
-localeStrings.push("Volver");
-localeStrings.push("Configuraciones de efectos de sonido y música");//80
-localeStrings.push("Abrir configuraciones de sonido");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("Interfaz Móvil");
 localeStrings.push("Tamaño del registro de eventos");
 localeStrings.push("líneas");
@@ -647,3 +647,14 @@ locObj.tabSettingsBtnExportGame = {"txt": "Exportar Juego", "loc":"Export game b
 locObj.tabSettingsBtnImportGame = {"txt": "Importar Juego", "loc":"Import game button"};
 locObj.tabSettingsLblAutosave = {"txt": "Autoguardado", "loc": "Autsave label before the toggle"};
 locObj.tabSettingsBtnChangeColorMode = {"txt": "Cambiar modo de color", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Opción", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "Encendido", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "Apagado", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt":"Todos los efectos de sonido", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Efectos en todos los eventos", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Efectos en eventos que requieren una acción", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Toda la música", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Música de conocimiento y diálogos", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Volver", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Configuraciones de efectos de sonido y música", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Abrir configuraciones de sonido", "loc":"settings tab"};

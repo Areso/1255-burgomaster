@@ -73,17 +73,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//70
-localeStrings.push("Опция");
-localeStrings.push("Включено");
-localeStrings.push("Выключено");
-localeStrings.push("Все звуковые эффекты");
-localeStrings.push("Эффекты всех событий");//75
-localeStrings.push("Эффекты событий, где нужна ваша реакция");
-localeStrings.push("Вся музыка");
-localeStrings.push("Музыка сценариев");
-localeStrings.push("Назад");
-localeStrings.push("Настройки музыки и эффектов");//80
-localeStrings.push("Открыть звуковые настройки");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("Мобильный вид");
 localeStrings.push("Размер лога событий");
 localeStrings.push("строк");
@@ -653,3 +653,14 @@ locObj.tabSettingsBtnExportGame = {"txt": "Экспорт сохранения",
 locObj.tabSettingsBtnImportGame = {"txt": "Импорт сохранения", "loc":"Import game button"};
 locObj.tabSettingsLblAutosave = {"txt": "Автосохранение", "loc": "Autsave label before the toggle"};
 locObj.tabSettingsBtnChangeColorMode = {"txt": "Сменить цветовой режим", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Опция", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "Включено", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "Выключено", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt": "Все звуковые эффекты", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Эффекты всех событий", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Эффекты событий, где нужна ваша реакция", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Вся музыка", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Музыка сценариев", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Назад", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Настройки музыки и эффектов", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Открыть звуковые настройки", "loc":"settings tab"};

@@ -53,7 +53,6 @@ include('localisation.js',function(){
 		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
 		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
 		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
-		document.getElementById("btnColorMode").innerText        = localeStrings[70];
 		document.getElementById("btnDismissHero").innerText      = localeStrings[217];
 		//document.getElementById("btnAutocampaign").innerText     = localeStrings[218];
 		document.getElementById("btnAutocampaignJournal").innerText  = localeStrings[220];
@@ -63,21 +62,21 @@ include('localisation.js',function(){
 
 		document.getElementById("btnAutobattlesList").innerText  = locObj.autobattle_journal_btn.txt;
 
-		document.getElementById("lblOption").innerText           = localeStrings[71];
-		document.getElementById("lblOn").innerText               = localeStrings[72];
-		document.getElementById("lblOff").innerText              = localeStrings[73];
-		document.getElementById("lblSfxAll").innerText           = localeStrings[74];
-		document.getElementById("lblSfxEvt").innerText           = localeStrings[75];
-		document.getElementById("lblSfxEvtAR").innerText         = localeStrings[76];
-		document.getElementById("lblMscAll").innerText           = localeStrings[77];
-		document.getElementById("lblMscScr").innerText           = localeStrings[78];
-		document.getElementById("btnToGeneralSettings").innerText= localeStrings[79];
+		document.getElementById("lblOption").innerText           = locObj.tabSoundSettingsLblOption.txt;
+		document.getElementById("lblOn").innerText               = locObj.on.txt;
+		document.getElementById("lblOff").innerText              = locObj.off.txt;
+		document.getElementById("lblSfxAll").innerText           = locObj.tabSoundSettingsLblAllSoundEffects.txt;
+		document.getElementById("lblSfxEvt").innerText           = locObj.tabSoundSettingsLblAllEventsEffects.txt;
+		document.getElementById("lblSfxEvtAR").innerText         = locObj.tabSoundSettingsLblEffectsAR.txt;
+		document.getElementById("lblMscAll").innerText           = locObj.tabSoundSettingsAllMusic.txt;
+		document.getElementById("lblMscScr").innerText           = locObj.tabSoundSettingsScMusic.txt;
+		document.getElementById("btnToGeneralSettings").innerText= locObj.btnBack.txt;
 
-		document.getElementById("btnToInn").innerText            = localeStrings[79];
-		document.getElementById("btnToInn1").innerText           = localeStrings[79];
+		document.getElementById("btnToInn").innerText            = locObj.btnBack.txt;
+		document.getElementById("btnToInn1").innerText           = locObj.btnBack.txt;
 
-		document.getElementById("lblSoundMenu").innerText        = localeStrings[80];
-		document.getElementById("btnSoundSettings").innerText    = localeStrings[81];
+		document.getElementById("lblSoundMenu").innerText        = locObj.lblSoundMenu.txt;
+		document.getElementById("btnSoundSettings").innerText    = locObj.tabSettingsBtnOpenSoundSettings.txt;
 		document.getElementById("lblStnMobileUI").innerText      = localeStrings[82];
 		document.getElementById("lblStnEventLogSize").innerText  = localeStrings[83];
 		document.getElementById("lblStnLines").innerText         = localeStrings[84];

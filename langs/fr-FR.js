@@ -73,17 +73,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//70
-localeStrings.push("Option");
-localeStrings.push("Sur");
-localeStrings.push("De");
-localeStrings.push("Tous les effets sonores");
-localeStrings.push("Effets sur tous les événements");//75
-localeStrings.push("Effets sur les événements requis");
-localeStrings.push("Musique tout");
-localeStrings.push("Musique de tradition et de paysages");
-localeStrings.push("Retour");
-localeStrings.push("Réglages des effets sonores et de la musique");//80
-localeStrings.push("Ouvrir les paramètres sonores");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
 localeStrings.push("Interface utilisateur mobile");
 localeStrings.push("Taille du journal des événements");
 localeStrings.push("lignes");
@@ -649,3 +649,14 @@ locObj.tabSettingsBtnExportGame = {"txt": "Exporter la partie", "loc":"Export ga
 locObj.tabSettingsBtnImportGame = {"txt": "Importer la partie", "loc":"Import game button"};
 locObj.tabSettingsLblAutosave = {"txt": "Sauvegarde automatique", "loc": "Autsave label before the toggle"};
 locObj.tabSettingsBtnChangeColorMode = {"txt": "Inverser les couleurs", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Option", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "Sur", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "De", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt":"Tous les effets sonores", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Effets sur tous les événements", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Effets sur les événements requis", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Musique tout", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Musique de tradition et de paysages", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Retour", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Réglages des effets sonores et de la musique", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Ouvrir les paramètres sonores", "loc":"settings tab"};
