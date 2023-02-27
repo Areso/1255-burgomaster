@@ -84,14 +84,14 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//80
 localeStrings.push("placeholder");
-localeStrings.push("Мобильный вид");
-localeStrings.push("Размер лога событий");
-localeStrings.push("строк");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Никнейм зарегистрирован","Никнейм обновлен","Извините, но никнейм занят"]);
-localeStrings.push("Сокровищница была пополнена на %arg1 золота");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
 localeStrings.push("Янтарь - самая ценная валюта в игре");//90
 localeStrings.push("Гарнизон");
 localeStrings.push("Уволить");
@@ -664,3 +664,7 @@ locObj.tabSoundSettingsScMusic = {"txt": "Музыка сценариев", "loc
 locObj.btnBack = {"txt": "Назад", "loc":"sound settings tab"};
 locObj.lblSoundMenu = {"txt": "Настройки музыки и эффектов", "loc": "sounds settings tab"};
 locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Открыть звуковые настройки", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Мобильный вид", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Размер лога событий", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "строк", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "Сокровищница была пополнена на %arg1 золота", "loc":"gold added when a hero returned to the city"};

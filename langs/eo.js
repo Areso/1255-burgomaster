@@ -83,15 +83,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//80
-localeStrings.push("placehodler");
-localeStrings.push("Poŝtelefona UI");
-localeStrings.push("Eventa grandeco");
-localeStrings.push("linioj");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("%arg1 gold has been added to your treasury");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
 localeStrings.push("Ambro estas la plej malofta valuto");//90
 localeStrings.push("Garnison");
 localeStrings.push("Forsenti");
@@ -660,3 +660,7 @@ locObj.tabSoundSettingsScMusic = {"txt": "Lore kaj scenomuziko", "loc": "sounds 
 locObj.btnBack = {"txt": "Reen", "loc":"sound settings tab"};
 locObj.lblSoundMenu = {"txt": "Preferoj de sonefektoj kaj muziko", "loc": "sounds settings tab"};
 locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Malfermu sonajn preferojn", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Poŝtelefona UI", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Eventa grandeco", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "linioj", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};

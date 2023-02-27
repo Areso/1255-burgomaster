@@ -219,37 +219,6 @@ function gameOK() {
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(lastHope_str);
 		},
-		updateAlias : function () {
-			proposedAlias = document.getElementById("inpStnAliasValue").value;
-			console.log(proposedAlias);
-			back_response_alias = null;
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					back_response_alias = JSON.parse(this.responseText);
-					console.log(back_response_alias);
-					if (back_response_alias["content"]===200) {
-						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][0];
-						game.alias = document.getElementById("inpStnAliasValue").value;
-					}
-					if (back_response_alias["content"]===201) {
-						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][1];
-						game.alias = document.getElementById("inpStnAliasValue").value;
-					}
-					if (back_response_alias["content"]===204) {
-						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][2];
-						document.getElementById("inpStnAliasValue").value = "";
-					}
-					setTimeout(function(){ document.getElementById("lblStnAliasResult").innerText=""; }, 5000);
-				} else {
-					game.alias = document.getElementById("inpStnAliasValue").value;
-				}
-			};
-			dataToParse = game.UID+delimiter+game.alias+delimiter+proposedAlias;
-			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/register_alias", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
-		},
 		getEventHelp : function () {
 			if (eventHelpMsg!==null) {
 				if (flag_event_started===0){
@@ -650,7 +619,7 @@ function gameOK() {
 				game.attacker = 1; // TODO: Check problem with attacker after auto combat on adventure map
 				var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
 				if ( gold_diff !== game.myhero.gold) {
-					postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+					postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 				}
 				game.myhero.gold = 0;
 				enemyRandomizer.clearEntriesList();
@@ -1074,7 +1043,7 @@ function gameOK() {
 						postEventLog(localeStrings[176] + game.myhero.gold);
 						var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
 						if (gold_diff !== game.myhero.gold){
-							postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+							postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 						}
 						game.myhero.gold               = 0;
 					}
@@ -2791,7 +2760,7 @@ function gameOK() {
 					postEventLog(msg);
 					var gold_diff   = game.addMoneyToTreasury(moneyToSeize);
 					if (gold_diff!==moneyToSeize){
-						postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+						postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 					}
 				} else {
 					alertMsg        = locObj.executionAborted.txt;
@@ -2942,7 +2911,7 @@ function gameOK() {
 			postEventLog(msg);
 			var gold_diff = game.addMoneyToTreasury(config.lotteryPrize);
 			if (gold_diff!==config.lotteryPrize){
-				postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+				postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 			}
 			updateResources();
 		},
@@ -2966,7 +2935,7 @@ function gameOK() {
 			postEventLog(msg);
 			var gold_diff = game.addMoneyToTreasury(config.chestCity);
 			if (gold_diff!==config.chestCity){
-				postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+				postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 			}
 			updateResources();
 			//REMOVE THE CHEST

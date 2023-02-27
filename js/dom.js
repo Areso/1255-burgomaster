@@ -77,9 +77,9 @@ include('localisation.js',function(){
 
 		document.getElementById("lblSoundMenu").innerText        = locObj.lblSoundMenu.txt;
 		document.getElementById("btnSoundSettings").innerText    = locObj.tabSettingsBtnOpenSoundSettings.txt;
-		document.getElementById("lblStnMobileUI").innerText      = localeStrings[82];
-		document.getElementById("lblStnEventLogSize").innerText  = localeStrings[83];
-		document.getElementById("lblStnLines").innerText         = localeStrings[84];
+		document.getElementById("lblStnMobileUI").innerText      = locObj.tabSettingsLblMobileUI.txt;
+		document.getElementById("lblStnEventLogSize").innerText  = locObj.tabSettingsLblLogSize.txt;
+		document.getElementById("lblStnLines").innerText         = locObj.tabSettingsLblLines.txt;
 		/*
 		document.getElementById("lblTroopsHiring").innerText     = localeStrings[94];
 		document.getElementById("btnHireSergeant").innerHTML     = localeStrings[97].replace("%arg1",config.sergeantHiring);

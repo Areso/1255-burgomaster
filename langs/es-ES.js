@@ -84,14 +84,14 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//80
 localeStrings.push("placeholder");
-localeStrings.push("Interfaz Móvil");
-localeStrings.push("Tamaño del registro de eventos");
-localeStrings.push("líneas");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("%arg1 gold has been added to your treasury");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
 localeStrings.push("Amber are most valued currency");//90
 localeStrings.push("Guarnición");
 localeStrings.push("Fuego");
@@ -658,3 +658,7 @@ locObj.tabSoundSettingsScMusic = {"txt": "Música de conocimiento y diálogos", 
 locObj.btnBack = {"txt": "Volver", "loc":"sound settings tab"};
 locObj.lblSoundMenu = {"txt": "Configuraciones de efectos de sonido y música", "loc": "sounds settings tab"};
 locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Abrir configuraciones de sonido", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Interfaz Móvil", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Tamaño del registro de eventos", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "líneas", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
