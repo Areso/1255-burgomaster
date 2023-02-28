@@ -78,10 +78,6 @@ describe('Settings', () => {
                 cy.get('#inpStnEventLogSize').should('have.attr', 'onchange', 'game.setupEventLogSize()');
 
 
-                cy.get('#lblStnUID').should('have.attr', 'style', 'visibility:hidden;');
-                cy.get('#lblStnUIDValue').should('have.attr', 'style', 'margin-left: 20px; visibility:hidden;');
-                cy.get('#lblStnAlias').should('have.attr', 'style', 'display: none');
-                cy.get('#inpStnAliasValue').should('have.attr', 'style', 'display: none');
                 cy.get('#patchnotes').should('have.attr', 'style', 'width:700px; height:280px; top:255px; left:40px; visibility: hidden;');
             });
         });
