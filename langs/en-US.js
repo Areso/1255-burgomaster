@@ -686,7 +686,7 @@ helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
     "Also, any CSL translation could have mistakes or untranslated parts<br>"+
     "or parts of translation which are partly outdated.<br>"+
     "You could help with translations for the game here:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
 locObj.tabHowToPlayText = helpBlock;
 locObj.cityScreenSawmill = {"txt": "sawmill", "loc": "cityscreen"};
 locObj.cityScreenWishingWell = {"txt": "wishing well", "loc": "cityscreen"};

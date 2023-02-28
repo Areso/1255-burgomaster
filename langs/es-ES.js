@@ -682,7 +682,7 @@ helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
     "Además, cualquier traducción de ISC puede tener errores o partes sin traducir<br>"+
     "o partes de la traducción parcialmente desactualizadas.<br>"+
     "Puedes ayudar con las traducciones del juego acá:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
 locObj.tabHowToPlayText = helpBlock;
 locObj.cityScreenSawmill = {"txt": "aserradero", "loc": "cityscreen"};
 locObj.cityScreenWishingWell = {"txt": "pozo de los deseos", "loc": "cityscreen"};

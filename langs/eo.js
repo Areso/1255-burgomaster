@@ -684,7 +684,7 @@ helpBlock = "<h1>1255 Burgomaster</h1>" +
     "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn<br>"+
     "aŭ partoj de traduko, kiuj estas parte malaktualaj.<br>"+
     "Vi povus helpi per tradukoj por la ludo ĉi tie:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
 locObj.tabHowToPlayText = helpBlock;
 locObj.cityScreenSawmill = {"txt": "segejo", "loc": "cityscreen"};
 locObj.cityScreenWishingWell = {"txt": "dezirante puto", "loc": "cityscreen"};

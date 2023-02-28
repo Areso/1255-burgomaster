@@ -688,7 +688,7 @@ helpBlock = "<h1>1255: Расцвет Тевтонцев</h1>" +
     "Также надо отметить, что переводы СПЯ могут содержать ошибки и непереведенные фрагменты<br>"+
     "или части, содержащие устаревший перевод.<br>"+
     "Вы можете помочь с переводами здесь:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
 locObj.tabHowToPlayText = helpBlock;
 locObj.cityScreenSawmill = {"txt": "пилорама", "loc": "cityscreen"};
 locObj.cityScreenWishingWell = {"txt": "колодец желаний", "loc": "cityscreen"};

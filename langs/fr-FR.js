@@ -684,7 +684,7 @@ helpBlock = "<h1>1255 Burgomaster</h1>" +
     "Par ailleurs, toute traduction issue des CSL peut présenter des erreurs ou des éléments non traduits.<br>"+
     "ou des éléments de traduction qui ne sont plus à jour.<br>"+
     "Vous pouvez aider pour la traduction du jeu ici :<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
 locObj.tabHowToPlayText = helpBlock;
 locObj.cityScreenSawmill = {"txt": "scierie", "loc": "cityscreen"};
 locObj.cityScreenWishingWell = {"txt": "puit", "loc": "cityscreen"};
