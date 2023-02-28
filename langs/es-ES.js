@@ -44,82 +44,82 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("Así es la vida: ¡Ladrones robaron %arg1 de oro de tu tesoro!");
-localeStrings.push("Ganaste %arg1 de oro en las apuestas.");
-localeStrings.push("Guardar juego");
-localeStrings.push("Gargar juego");//45
-localeStrings.push("Ciudad");
-localeStrings.push("Explorar");
-localeStrings.push("Configuración");
-localeStrings.push("Guarnición");
-localeStrings.push("Contrucción");//50
-localeStrings.push("Cómo Jugar");
-localeStrings.push("Discord");
-localeStrings.push("Apagar el fuego");
-localeStrings.push("Ejecutar a alguien");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//50
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("¿Quieres hacer un festival?\n¡Te costará  %arg1 de oro!\n");
-localeStrings.push("Ya se hizo un festival hace poco.\nEl efecto de un festival sería menor.\n");
-localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Tus ganancias por el destival son %arg1","Tus pérdidas por el festival son %arg1"]);
-localeStrings.push("Okey");//60
-localeStrings.push("¡Ya tienes un héroe!");
-localeStrings.push("Autoguardado encendido");
-localeStrings.push("Autoguardado apagado");
-localeStrings.push("Estás apunto de construir %arg1.\n Si el objeto es construído, no podrás construir %arg2.\n ¿Estás seguro de tu decisión?");
-localeStrings.push("Nada que mostrar aún, vuelve después.");//65
-localeStrings.push("Configuración");
-localeStrings.push("Exportar Juego");
-localeStrings.push("Importar Juego");
-localeStrings.push("Autoguardado");
-localeStrings.push("Cambiar modo de color");//70
-localeStrings.push("Opción");
-localeStrings.push("Encendido");
-localeStrings.push("Apagado");
-localeStrings.push("Todos los efectos de sonido");
-localeStrings.push("Efectos en todos los eventos");//75
-localeStrings.push("Efectos en eventos que requieren una acción");
-localeStrings.push("Toda la música");
-localeStrings.push("Música de conocimiento y diálogos");
-localeStrings.push("Volver");
-localeStrings.push("Configuraciones de efectos de sonido y música");//80
-localeStrings.push("Abrir configuraciones de sonido");
-localeStrings.push("Interfaz Móvil");
-localeStrings.push("Tamaño del registro de eventos");
-localeStrings.push("líneas");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("%arg1 gold has been added to your treasury");
-localeStrings.push("Amber are most valued currency");//90
-localeStrings.push("Guarnición");
-localeStrings.push("Fuego");
-localeStrings.push("Contratar");
-localeStrings.push("Reclutar tropas");
-localeStrings.push("Castellán");//95
-localeStrings.push("Héroe");
-localeStrings.push("Entrenar hermano-sargento<br/>%arg1 gold");
-localeStrings.push("Contratar turkopolo<br/>%arg1 gold");
-localeStrings.push("Entrenar hermano-caballero<br/>%arg1 gold");
-localeStrings.push("brothers-sergeants: ");//100
-localeStrings.push("turkopolos: ");
-localeStrings.push("hermano-caballeros: ");
-localeStrings.push("mover una unidad al escuadrón del héroe");
-localeStrings.push("mover una unidad a la guarnición");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placehodler");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Construcción");
-localeStrings.push("Construir Casa<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Casa<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Torre<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Tesorería<br/>nvl %arg1<br/>%arg2 de oro");//110
-localeStrings.push("Construir Horca<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Fuente<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Escondite<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Posada<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("Build Archery range<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Castle<br/>lvl %arg1<br/>%arg2 gold");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,50 +133,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>Cómo Jugar</h2>" +
-   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
-     'feedback <a href="https://form.jotform.com/211014175318041">https://form.jotform.com/211014175318041</a><br>' +
-    "Este juego se basa en tics. Un tic del reloj ocurre cada 30 segundos.<br>" +
-    "Después de cada vuelta del reloj tu población te paga impuestos y crece.<br>" +
-    "Normalmente, cada ciudadano te paga una pieza de oro por tic.<br>" +
-    "Este comportamiento puede cambiar por decisiones del jugador.<br>" +
-    "Necesitas construir Casas para permitir el crecimiento de la población de tu ciudad.<br>" +
-    "Cada nivel de Casas te permite tener más población.<br>" +
-    "Necesitas crear Muros y una Torre para mantener tu ciudad a salvo de intrusos.<br>" +
-    "Necesitas contruir una Tesorería para almacenar tu oro.<br>" +
-    "Cada nivel de la Tesorería te permite almacenar más oro.<br>" +
-    "Además, la Tesorería te permite contratar guardias del tesoro.<br>" +
-    "Los guardias del tesoro disminuyen significativamente la probabilidad de que tu oro sea robado de tu tesoro.<br>" +
-    "Contratar un guarda te costará %arg1 de oro.<br>" +
-    "Cada guardia requiere un pago regular (en cada tic), te costará %arg2 de oro.<br>" +
-    "Si no tienes suficiente dinero, dejarán su trabajo de forma permanente.<br>" +
-    "Puedes construir una Fuente O una Horca. No puedes cambiar tu decisión después de que se construya.<br>" +
-    "Las Fuentes incrementarán la felicidad y la velocidad de crecimiento de la población<br>" +
-    "Las Horcas reducirán la felicidad y el crecimiento de la población, aumentarán los impuestos y te permitirán ejecutar pobladores.<br>" +
-    "Ejecutar un poblador confiscará su propiedad y la agregará a tu tesoro en forma de oro.<br>" +
-    "Se requiere un Escondite para disminuir tus pérdidas por robo. No puedes construir un Escondite sin una Tesorería.<br>"+
-    "Este es un juego de un jugador.<br>"+
-    "<br>" +
-    "Idiomas Soportados (IS): Inglés (English), Ruso (Русский).<br>"+
-    "Idiomas Soportados por la Comunidad (ISC): Alemán (Deutsch), Castellano.<br>"+
-    "El autor no puede proveer ayuda ni respuestas a preguntas realizadas en los ISC,<br>"+
-    "aún cuando (partes de) el juego están en ISC.<br>"+
-    "Además, cualquier traducción de ISC puede tener errores o partes sin traducir<br>"+
-    "o partes de la traducción parcialmente desactualizadas.<br>"+
-    "Puedes ayudar con las traducciones del juego acá:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("pozo de los deseos");
-localeStrings.push("aserradero");
-localeStrings.push("muro");
-localeStrings.push("muro de piedra");//135
-localeStrings.push("torre");
-localeStrings.push("stone tower");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("home");
 localeStrings.push("homes");
 localeStrings.push("inn");//140
-localeStrings.push("gallows");
-localeStrings.push("fountain");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("treasury");
 localeStrings.push("gold");
 localeStrings.push("population");//145
@@ -360,8 +328,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("There is no savestring in the field");
-localeStrings.push("Couldn't load the game from the savestring ;-;");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -526,6 +494,10 @@ locObj.requiredStables = {"txt": "Para hacer eso, necesitas construir el establo
 locObj.requiredArcheryRange = {"txt":"Para hacer eso, necesitas construir un campo de tiro con arco", "loc":"happens when trying to hire turkopols if no archery range is built"};
 locObj.requiredStablesUpgrade = {"txt": "Para hacerlo, debe actualizar el establo al nivel %arg1", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
+locObj.demolishGallows = {"txt": "Gallows", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.fountainUnlock = {"txt": "Fountain", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
+locObj.demolishFountain = {"txt": "Fountain", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.gallowsUnlock = {"txt": "Gallows", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
 
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
@@ -543,7 +515,8 @@ locObj.loadedSuccessfully = {"txt":"Juego cargado exitosamente", "loc":"when loa
 locObj.dialogLoadGame = {"txt":"¿Cargar juego? Perderás cualquier avance no guardado", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"¡Perdón¡ ¡No hay un juego guardado para cargar!", "loc":"in case there is no savegame"};
 locObj.dialogSaveGame = {"txt":"¿Guardar juego? ¡Sobreescribirás cualquier guardado que ya tengas!", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Por favor ingresa el código de guardado", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Por favor ingresa el código de guardado", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Couldn't load the game from the savestring ;-;", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"código muy largo", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"¿Quieres contratar un guardia? Te costará %arg1 de oro y luego %arg2 de oro por cada estación", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"Contrataste un guardia", "loc":"after succesfully hired a guardsman"};
@@ -609,3 +582,111 @@ locObj.helpUniversity = {"txt":"This building is required to research new techno
 locObj.callFiremen = {"txt":"¿Deberíamos llamar a los bomberos? Te costará %arg1 de oro.", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "los bomberos extinguieron el fuego", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "¡Todo quedará en cenizas!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "Así es la vida: ¡Ladrones robaron %arg1 de oro de tu tesoro!", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "Ganaste %arg1 de oro en las apuestas", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Guardar juego", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Cargar juego", "loc":"load save from localStorage of the browser"};
+locObj.tabCity = {"txt":"Ciudad", "loc":"tabname in the tab bar"};
+locObj.tabSettings = {"txt":"Configuración", "loc": "tabname Settings in the tab bar"};
+locObj.tabBuilding = {"txt": "Construcción", "loc": "tabname Building in the tab bar"};
+locObj.tabHowToPlay = {"txt": "Cómo Jugar", "loc":"tabname How To Play, about and stuff in da bar"};
+locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Apagar el fuego", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Ejecutar a alguien", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "¿Quieres hacer un festival?\n¡Te costará  %arg1 de oro!\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Ya se hizo un festival hace poco.\nEl efecto de un festival sería menor.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+//TODO rewrite from tus to usted!
+locObj.festivalGain = {"txt": "Tus ganancias por el destival son %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Tus pérdidas por el festival son %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "¡Usted ya tiene un héroe!", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "Autoguardado encendido", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "Autoguardado apagado", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "Estás apunto de construir %arg1.\n Si el objeto es construído, no podrás construir %arg2.\n ¿Estás seguro de tu decisión?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "Gallows", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "Fountain", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "Fountain", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "Gallows", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Nada que mostrar aún, vuelve después", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Configuración", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "Exportar Juego", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "Importar Juego", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "Autoguardado", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Cambiar modo de color", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Opción", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "Encendido", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "Apagado", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt":"Todos los efectos de sonido", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Efectos en todos los eventos", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Efectos en eventos que requieren una acción", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Toda la música", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Música de conocimiento y diálogos", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Volver", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Configuraciones de efectos de sonido y música", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Abrir configuraciones de sonido", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Interfaz Móvil", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Tamaño del registro de eventos", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "líneas", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "Amber are most valued currency", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Garnison", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Fuego", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Contratar", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Castellán", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Héroe","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "hermano-sergentos", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "turkopolos", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "hermano-caballeros", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Construir Casa<br/>nvl %arg1<br/>%arg2 de oro", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Construir Muro<br/>nvl %arg1<br/>%arg2 de oro", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Construir Torre<br/>nvl %arg1<br/>%arg2 de oro", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Build Castle<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Construir Tesorería<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Construir Horca<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Construir Fuente<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Construir Escondite<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Construir Posada<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Build Stable<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Build Archery range<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
+    "<h2>Cómo Jugar</h2>" +
+   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
+     'feedback <a href="https://form.jotform.com/211014175318041">https://form.jotform.com/211014175318041</a><br>' +
+    "Este juego se basa en tics. Un tic del reloj ocurre cada 30 segundos.<br>" +
+    "Después de cada vuelta del reloj tu población te paga impuestos y crece.<br>" +
+    "Normalmente, cada ciudadano te paga una pieza de oro por tic.<br>" +
+    "Este comportamiento puede cambiar por decisiones del jugador.<br>" +
+    "Necesitas construir Casas para permitir el crecimiento de la población de tu ciudad.<br>" +
+    "Cada nivel de Casas te permite tener más población.<br>" +
+    "Necesitas crear Muros y una Torre para mantener tu ciudad a salvo de intrusos.<br>" +
+    "Necesitas contruir una Tesorería para almacenar tu oro.<br>" +
+    "Cada nivel de la Tesorería te permite almacenar más oro.<br>" +
+    "Además, la Tesorería te permite contratar guardias del tesoro.<br>" +
+    "Los guardias del tesoro disminuyen significativamente la probabilidad de que tu oro sea robado de tu tesoro.<br>" +
+    "Contratar un guarda te costará %arg1 de oro.<br>" +
+    "Cada guardia requiere un pago regular (en cada tic), te costará %arg2 de oro.<br>" +
+    "Si no tienes suficiente dinero, dejarán su trabajo de forma permanente.<br>" +
+    "Puedes construir una Fuente O una Horca. No puedes cambiar tu decisión después de que se construya.<br>" +
+    "Las Fuentes incrementarán la felicidad y la velocidad de crecimiento de la población<br>" +
+    "Las Horcas reducirán la felicidad y el crecimiento de la población, aumentarán los impuestos y te permitirán ejecutar pobladores.<br>" +
+    "Ejecutar un poblador confiscará su propiedad y la agregará a tu tesoro en forma de oro.<br>" +
+    "Se requiere un Escondite para disminuir tus pérdidas por robo. No puedes construir un Escondite sin una Tesorería.<br>"+
+    "Este es un juego de un jugador.<br>"+
+    "<br>" +
+    "Idiomas Soportados (IS): Inglés (English), Ruso (Русский).<br>"+
+    "Idiomas Soportados por la Comunidad (ISC): Alemán (Deutsch), Castellano.<br>"+
+    "El autor no puede proveer ayuda ni respuestas a preguntas realizadas en los ISC,<br>"+
+    "aún cuando (partes de) el juego están en ISC.<br>"+
+    "Además, cualquier traducción de ISC puede tener errores o partes sin traducir<br>"+
+    "o partes de la traducción parcialmente desactualizadas.<br>"+
+    "Puedes ayudar con las traducciones del juego acá:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "aserradero", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "pozo de los deseos", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "muro", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "muro de piedra", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "torre", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "torre de piedra", "loc": "cityscreen"};

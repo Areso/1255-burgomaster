@@ -44,82 +44,82 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("фигня случается: воры украли %arg1 золота из вашей казны");
-localeStrings.push("вы выиграли в лотерею %arg1 золота");
-localeStrings.push("Сохранить игру");
-localeStrings.push("Загрузить игру");//45
-localeStrings.push("Город");
-localeStrings.push("Мир");
-localeStrings.push("Настройки");
-localeStrings.push("Гарнизон");
-localeStrings.push("Строительство");//50
-localeStrings.push("Как играть");
-localeStrings.push("Discord");
-localeStrings.push("Потушить огонь");
-localeStrings.push("Казнить человека");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//50
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n");
-localeStrings.push("Фестиваль был проведен не так давно.\nЭффект от фестиваля будет снижен.\n");
-localeStrings.push(["Взят ивентовый предмет!","Ваш вклад записан!"]);
-localeStrings.push(["Ваша прибыль от фестиваля %arg1","Ваш убыток от фестиваля %arg1"]);
-localeStrings.push("Хорошо");//60
-localeStrings.push("У вас уже есть герой");
-localeStrings.push("Автосохранение включено");
-localeStrings.push("Автосохранение выключено");
-localeStrings.push("Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?");
-localeStrings.push("Пока нечего показать. Попробуйте позже.");//65
-localeStrings.push("Настройки");
-localeStrings.push("Экспорт сохранения");
-localeStrings.push("Импорт сохранения");
-localeStrings.push("Автосохранение");
-localeStrings.push("Сменить цветовой режим");//70
-localeStrings.push("Опция");
-localeStrings.push("Включено");
-localeStrings.push("Выключено");
-localeStrings.push("Все звуковые эффекты");
-localeStrings.push("Эффекты всех событий");//75
-localeStrings.push("Эффекты событий, где нужна ваша реакция");
-localeStrings.push("Вся музыка");
-localeStrings.push("Музыка сценариев");
-localeStrings.push("Назад");
-localeStrings.push("Настройки музыки и эффектов");//80
-localeStrings.push("Открыть звуковые настройки");
-localeStrings.push("Мобильный вид");
-localeStrings.push("Размер лога событий");
-localeStrings.push("строк");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Никнейм зарегистрирован","Никнейм обновлен","Извините, но никнейм занят"]);
-localeStrings.push("Сокровищница была пополнена на %arg1 золота");
-localeStrings.push("Янтарь - самая ценная валюта в игре");//90
-localeStrings.push("Гарнизон");
-localeStrings.push("Уволить");
-localeStrings.push("Нанять");
-localeStrings.push("Найм и управление войсками");
-localeStrings.push("Кастелян");//95
-localeStrings.push("Герой");
-localeStrings.push("Обучить брата-сержанта<br/>%arg1 золота");
-localeStrings.push("Нанять туркопола<br/>%arg1 золота");
-localeStrings.push("Обучить брата-рыцаря<br/>%arg1 золота");
-localeStrings.push("братья-сержанты: ");//100
-localeStrings.push("туркополы: ");
-localeStrings.push("братья-рыцари: ");
-localeStrings.push("передать бойца герою");
-localeStrings.push("передать бойца в гарнизон");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Строительство");
-localeStrings.push("Построить Дом<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Стену<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Башню<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Сокровищницу<br/>ур. %arg1<br/>%arg2 золота");//110
-localeStrings.push("Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Таверну<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Конюшню<br/>ур. %arg1<br/>%arg2 золота");//115
-localeStrings.push("Построить Стрельбище<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Замок<br/>ур. %arg1<br/>%arg2 золота");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,45 +133,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Бургомастер</h1>" +
-    "<h2>Как играть</h2>" +
-    "Cсылка на вики <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>"+
-    "Анкета с обратной связью <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>здесь</a><br>"+
-    "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
-    "После каждого тика население растет и платит налоги.<br>" +
-    "Обычно, каждый горожанин приносит один золотой за тик.<br>" +
-    "Однако, принимаемые игроком решения влияют на это значение.<br>" +
-    "Вам нужно строить дома для поддержания роста населения.<br>" +
-    "Чем выше уровень домов, тем больше населения сможет жить в вашем городе.<br>" +
-    "Вам нужно строить стены и крепость, чтобы предотвратить разрушительные набеги.<br>" +
-    "Вам нужно построить сокровищницу для хранения золота.<br>" +
-    "Чем выше уровень сокровищницы, тем больше золота вы можете в ней хранить.<br>" +
-    "Также, сокровищница позволяет нанимать охранников.<br>" +
-    "Охрана существенно снижает шанс воровства из сокровищницы.<br>" +
-    "Найм охранника будет стоить %arg1 золотых.<br>" +
-    "Каждый тик охранники нуждаются в жаловании, которое составляет %arg2 золотых.<br>" +
-    "Если в Сокровищнице будет недостаточно денег для выплаты жалования, они покинут вас.<br>" +
-    "Вы можете построить фонтан ИЛИ виселицу. Вы не можете изменить свой выбор, после того, как построили здание.<br>" +
-    "Фонтаны увеличивают счастье и скорость роста населения.<br>" +
-    "Виселица уменьшает счастье, скорость роста населения, увеличивает налоги и позволяет казнить горожан.<br>" +
-    "Казнь любого горожанина сопровождается конфискацией его имущества<br>" +
-    "Тайник позволяет сократить потери от воровства. Тайник нельзя построить без сокровищницы.<br>"+
-    "Это однопользовательская игра<br>"+
-    "<br>" +
-    "Поддерживаемые языки(ПЯ): Английский, Русский.<br>"+
-    "Сообществом Поддерживаемые Языки (СПЯ): Немецкий, Эсперанто, Французский<br>"+
-    "СПЯ значит, что автор не помогает и не отвечает на вопросы, заданные на СПЯ,<br>"+
-    "несмотря на то, что части игры или игра целиком могут быть доступны на СПЯ.<br>"+
-    "Также надо отметить, что переводы СПЯ могут содержать ошибки и непереведенные фрагменты<br>"+
-    "или части, содержащие устаревший перевод.<br>"+
-    "Вы можете помочь с переводами здесь:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("колодец желаний");
-localeStrings.push("пилорама");
-localeStrings.push("стена");
-localeStrings.push("каменная стена");//135
-localeStrings.push("башня");
-localeStrings.push("каменная башня");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("дом");
 localeStrings.push("дома");
 localeStrings.push("таверна");//140
@@ -360,7 +328,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("Строчка сохранения не найдена в текстовом поле");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("Скачать игру (чтобы играть без Интернета)");
 localeStrings.push("placeholder");
@@ -534,6 +502,10 @@ locObj.requiredArcheryRange = {"txt":"To do that, you need to build Archery Rang
 locObj.requiredStables = {"txt": "Для этого вам нужно стрельбище", "loc":"happens when trying to hire sergeants if no stables built"};
 locObj.requiredStablesUpgrade = {"txt": "Для этого нужно улучшить конюшни до %arg1 уровня", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Ваш советник умер.\nНовоиспеченный советник рекомендует вам\nпересмотреть выбор, сделанный в прошлом:\n-настало время, милорд, когда вы решаете, что лучше для нашего города.\n-если вы согласны, %arg1 будет снесен, а на его месте мы построим %arg2", "loc":""}
+locObj.demolishGallows = {"txt": "виселицу", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.fountainUnlock = {"txt": "фонтант", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
+locObj.demolishFountain = {"txt": "фонтан", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.gallowsUnlock = {"txt": "виселицу", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
 locObj.deadCounselorDemolishAnsYes = {"txt":"Да, сносим это здание", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Купить",  "loc":"На предмете для продажи Черного Рынка Гоблина"};
 locObj.sell = {"txt":"Продать", "loc":"На предмете для продажи Черного Рынка Гоблина"};
@@ -550,7 +522,8 @@ locObj.loadedSuccessfully = {"txt":"игра загружена успешно",
 locObj.dialogLoadGame = {"txt":"Загрузить игру? Вы потеряете весь несохраненный прогресс!", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"Извините, но сохраненных игр нет!", "loc":"in case there is no savegame"};
 locObj.dialogSaveGame = {"txt":"Сохранить игру? Это перезапишет текущее сохранение, если у вас такое есть", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Пожалуйста, вставьте сохранение", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Пожалуйста, вставьте сохранение", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Не получается загрузиться из этой строки", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"очень длинная строка", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Вы хотите нанять охранника? Это будет стоить %arg1 золотых сразу\nи %arg2 золотых за каждый сезон", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"Вы наняли охранника", "loc":"after succesfully hired a guardsman"};
@@ -616,3 +589,110 @@ locObj.helpUniversity = {"txt":"Это здание необходимо для 
 locObj.callFiremen = {"txt":"Вызвать пожарных? Это будет стоить %arg1 золота", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "пожарные погасили огонь!", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "будет гореть дотла!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "фигня случается: воры украли %arg1 золота из вашей казны", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "вы выиграли в лотерею %arg1 золота", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Сохранить игру", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Загрузить игру", "loc":"load save from localStorage of the browser"};
+locObj.tabCity = {"txt":"Город", "loc":"tabname in the tab bar"};
+locObj.tabSettings = {"txt":"Настройки", "loc": "tabname Settings in the tab bar"};
+locObj.tabBuilding = {"txt": "Строительство", "loc": "tabname Building in the tab bar"};
+locObj.tabHowToPlay = {"txt": "Как играть", "loc":"tabname How To Play, about and stuff in da bar"};
+locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Потушить огонь", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Казнить человека", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "Вы хотите устроить фестиваль?\nЭто будет стоить %arg1 золота\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Фестиваль был проведен не так давно.\nЭффект от фестиваля будет снижен.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "Взят ивентовый предмет!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Ваш вклад записан!", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+locObj.festivalGain = {"txt": "Ваша прибыль от фестиваля %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Ваш убыток от фестиваля %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "У вас уже есть герой!", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "Автосохранение включено", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "Автосохранение выключено", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "виселицу", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "фонтан", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "фонтан", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "виселицу", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Пока нечего показать. Попробуйте позже", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Настройки", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "Экспорт сохранения", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "Импорт сохранения", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "Автосохранение", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Сменить цветовой режим", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Опция", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "Включено", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "Выключено", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt": "Все звуковые эффекты", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Эффекты всех событий", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Эффекты событий, где нужна ваша реакция", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Вся музыка", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Музыка сценариев", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Назад", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Настройки музыки и эффектов", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Открыть звуковые настройки", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Мобильный вид", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Размер лога событий", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "строк", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "Сокровищница была пополнена на %arg1 золота", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "Янтарь - самая ценная валюта в игре", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Гарнизон", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Уволить", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Нанять", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Кастелян", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Герой","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "братья-сержанты", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "туркополы", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "братья-рыцари", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Построить Дом<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Построить Стену<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Построить Башню<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Построить Замок<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Построить Сокровищницу<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Построить Тайник<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Построить Таверну<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Построить Конюшню<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Построить Стрельбище<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+helpBlock = "<h1>1255: Расцвет Тевтонцев</h1>" +
+    "<h2>Как играть</h2>" +
+    "Cсылка на вики <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>"+
+    "Анкета с обратной связью <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>здесь</a><br>"+
+    "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
+    "После каждого тика население растет и платит налоги.<br>" +
+    "Обычно, каждый горожанин приносит один золотой за тик.<br>" +
+    "Однако, принимаемые игроком решения влияют на это значение.<br>" +
+    "Вам нужно строить дома для поддержания роста населения.<br>" +
+    "Чем выше уровень домов, тем больше населения сможет жить в вашем городе.<br>" +
+    "Вам нужно строить стены и крепость, чтобы предотвратить разрушительные набеги.<br>" +
+    "Вам нужно построить сокровищницу для хранения золота.<br>" +
+    "Чем выше уровень сокровищницы, тем больше золота вы можете в ней хранить.<br>" +
+    "Также, сокровищница позволяет нанимать охранников.<br>" +
+    "Охрана существенно снижает шанс воровства из сокровищницы.<br>" +
+    "Найм охранника будет стоить %arg1 золотых.<br>" +
+    "Каждый тик охранники нуждаются в жаловании, которое составляет %arg2 золотых.<br>" +
+    "Если в Сокровищнице будет недостаточно денег для выплаты жалования, они покинут вас.<br>" +
+    "Вы можете построить фонтан ИЛИ виселицу. Вы не можете изменить свой выбор, после того, как построили здание.<br>" +
+    "Фонтаны увеличивают счастье и скорость роста населения.<br>" +
+    "Виселица уменьшает счастье, скорость роста населения, увеличивает налоги и позволяет казнить горожан.<br>" +
+    "Казнь любого горожанина сопровождается конфискацией его имущества<br>" +
+    "Тайник позволяет сократить потери от воровства. Тайник нельзя построить без сокровищницы.<br>"+
+    "Это однопользовательская игра<br>"+
+    "<br>" +
+    "Поддерживаемые языки(ПЯ): Английский, Русский.<br>"+
+    "Сообществом Поддерживаемые Языки (СПЯ): Немецкий, Эсперанто, Французский<br>"+
+    "СПЯ значит, что автор не помогает и не отвечает на вопросы, заданные на СПЯ,<br>"+
+    "несмотря на то, что части игры или игра целиком могут быть доступны на СПЯ.<br>"+
+    "Также надо отметить, что переводы СПЯ могут содержать ошибки и непереведенные фрагменты<br>"+
+    "или части, содержащие устаревший перевод.<br>"+
+    "Вы можете помочь с переводами здесь:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "пилорама", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "колодец желаний", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "стена", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "каменная стена", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "башня", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "каменная башня", "loc": "cityscreen"};

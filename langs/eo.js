@@ -44,82 +44,82 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezorejo");
-localeStrings.push("Vi gajnis per loterio %arg1 oro premio﻿");
-localeStrings.push("Konservi ludon");
-localeStrings.push("Ŝarĝi ludon");//45
-localeStrings.push("Urbo");
-localeStrings.push("Mondo");
-localeStrings.push("Preferoj");
-localeStrings.push("Garnison");
-localeStrings.push("Konstruaĵo");//50
-localeStrings.push("Kiel ludi");
-localeStrings.push("Discord");
-localeStrings.push("Estingi la fajron");
-localeStrings.push("Ekzekuti civitanon");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//50
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("Ĉu vi volas fari festivalon?\nKostus al vi %arg1 oro!\n");
-localeStrings.push("Festivalo estis farita antaŭ ne tre longa tempo.\nLa efekto de festivalo malfortiĝus.\n");
-localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Via gajno pro la festivalo estas %arg1", "Via perdo pro la festivalo estas %arg1"]);
-localeStrings.push("OK");//60
-localeStrings.push("Vi jam havas heroon!");
-localeStrings.push("aŭtomate konservi ŝaltita");
-localeStrings.push("aŭtomate konservi malŝaltita");
-localeStrings.push("Vi estas konstruonta %arg1.\n Se la objekto estas konstruita, vi ne rajtus konstrui %arg2.\n Ĉu vi certas en via elekto?");
-localeStrings.push("Nenio por montri ankoraŭ, venu ĉi tien poste.");//65
-localeStrings.push("Preferoj");
-localeStrings.push("eksporti konserva dosieron");
-localeStrings.push("importi konserva dosieron");
-localeStrings.push("aŭtomate konservi");
-localeStrings.push("Ŝanĝi koloran reĝimon");//70
-localeStrings.push("Prefero");
-localeStrings.push("On");
-localeStrings.push("Malŝaltita");
-localeStrings.push("Ĉiuj sonefektoj");
-localeStrings.push("Efikoj al ĉiuj eventoj");//75
-localeStrings.push("Efikoj sur agado postulis eventojn");
-localeStrings.push("Muziko ĉio");
-localeStrings.push("Lore kaj scenomuziko");
-localeStrings.push("Reen");
-localeStrings.push("Preferoj de sonefektoj kaj muziko");//80
-localeStrings.push("Malfermu sonajn preferojn");
-localeStrings.push("Poŝtelefona UI");
-localeStrings.push("Eventa grandeco");
-localeStrings.push("linioj");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("%arg1 gold has been added to your treasury");
-localeStrings.push("Ambro estas la plej malofta valuto");//90
-localeStrings.push("Garnison");
-localeStrings.push("Forsenti");
-localeStrings.push("Dungi");
-localeStrings.push("Dungado de trupoj");
-localeStrings.push("Castellan");//95
-localeStrings.push("Heroo");
-localeStrings.push("Trajni frat-serĝenton<br/>pro %arg1 oro");
-localeStrings.push("Dungi turkopolon<br/>pro %arg1 oro");
-localeStrings.push("Trejni frat-kavaliron<br/>pro %arg1 oro");
-localeStrings.push("frat-serĝentoj: ");//100
-localeStrings.push("turkopoloj: ");
-localeStrings.push("frat-kavaliroj: ");
-localeStrings.push("movi unuon al la heroa taĉmento");
-localeStrings.push("movi unuon al la garnizono");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Konstruaĵo");
-localeStrings.push("Konstrui Domon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Muron<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Turon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Trezoron<br/>nivelo %arg1<br/>pro %arg2 oro");//110
-localeStrings.push("Konstrui Pendumilon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Fonton<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Kaŝejon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Gatejon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Ĉevalejo<br/>lvl %arg1<br/>pro %arg2 gold");//115
-localeStrings.push("Konstrui Pafado<br/>lvl %arg1<br/>pro %arg2 gold");
-localeStrings.push("Konstrui Kastelon<br/>nivelo %arg1<br/>pro %arg2 oro");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,49 +133,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>Kiel ludi</h2>" +
-    "Ĉi tiu ludo havas horloĝon sub la kapuĉo. Ĉiu tiklo de la horloĝo okazas en 30 sekundoj.<br>" +
-    "Post ĉiu horloĝo turnu vian loĝantaron pagos impostojn al vi kaj kreskos.<br>" +
-    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
-    "Normale, ĉiu civitano pagas al vi unu oran pecon laŭ tiktaĵo.<br>" +
-    "Ĉi tiu konduto povus esti ŝanĝita per ludantodecidoj.<br>" +
-    "Vi devas konstrui domojn por daŭrigi la kreskadon de via urba loĝantaro.<br>" +
-    "Ĉiu nivelo de Domoj permesas vin havi pli da loĝantaro.<br>" +
-    "Vi bezonas konstrui Murojn kaj Turon por konservi vian urbon sekura kontraŭ entruduloj.<br>" +
-    "Vi devas konstrui Trezoron por konservi vian oron.<br>" +
-    "Ĉiu nivelo de la trezorejo permesas vin ŝpari pli da oro.<br>" +
-    "Ankaŭ la trezoro permesas vin dungi trezora gardistojn.<br>" +
-    "Trezoraj gardistoj malpliigas signife la eblon ŝteli oron de via trezoro.<br>" +
-    "Dungi gardiston vin kostos %arg1 oran.<br>" +
-    "Ĉiu gardisto bezonas regulan pagon (ĉiu turno), ĝi kostas %arg2 oron. <br>" +
-    "Se vi ne havas sufiĉe da mono, ili lasos sian laboron konstante.<br>" +
-    "Vi povas konstrui fonton aŭ pendumilon. Vi ne povas ŝanĝi vian elekton post kiam konstruiĝis.<br>" +
-    "Fontoj pliigos feliĉon kaj rapidecon de populacio kreskanta.<br>" +
-    "Pendumilon povas malpliigi feliĉon kaj loĝantaran kreskon, pliigi impostojn kaj permesi ke vi ekzekutis civitanoоn.<br>" +
-    "Ekzekuti iun civitanon konfiskos siajn posedaĵojn kaj aldonos ĝin al via trezoroĵo.<br>" +
-    "Kaŝejon bezonas pro redukti viajn perdojn pro ŝtelado. Vi ne povas konstrui kaŝejon sen trezoroĵo.<br>"+
-    "Tios estas unu-ludanta ludo.<br>"+
-    "<br>" +
-    "Apogita Lingvoj (AL): Angla, Rusa.<br>"+
-    "Komunumaj Apogita Lingvoj (KAL): Germana, Esperanto, Franka<br>"+
-    "KAL signifas, ke la aŭtoro ne provizas helpon aŭ respondojn en la KAL,<br>"+
-    "kvankam partoj de la ludo aŭ ludo entute povus esti disponigitaj en la KAL.<br>"+
-    "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn<br>"+
-    "aŭ partoj de traduko, kiuj estas parte malaktualaj.<br>"+
-    "Vi povus helpi per tradukoj por la ludo ĉi tie:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("dezirante puto");
-localeStrings.push("segejo");
-localeStrings.push("muro");
-localeStrings.push("ŝtona muro");//135
-localeStrings.push("turo");
-localeStrings.push("ŝtona turo");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("domo");
 localeStrings.push("domoj");
 localeStrings.push("gatejo");//140
-localeStrings.push("pendumilo");
-localeStrings.push("fonto");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("trezorejo");
 localeStrings.push("oro");
 localeStrings.push("langeto");//145
@@ -359,8 +328,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("There is no savestring in the textbox");
-localeStrings.push("Couldn't load the game from the savestring");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -530,6 +499,10 @@ locObj.requiredStables = {"txt": "Por fari tion, vi devas konstrui la stalon", "
 locObj.requiredArcheryRange = {"txt":"Por fari tion, vi devas konstrui arkpafadon", "loc":"happens when trying to hire turkopols if no archery range is built"};
 locObj.requiredStablesUpgrade = {"txt": "Por fari tion, vi devas altgradigi la stalon al %arg1 nivelo", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
+locObj.demolishGallows = {"txt": "pendumilo", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.fountainUnlock = {"txt": "fonto", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
+locObj.demolishFountain = {"txt": "fonto", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.gallowsUnlock = {"txt": "pendumilo", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
@@ -546,7 +519,8 @@ locObj.loadedSuccessfully = {"txt":"ludo ŝarĝis sukcese", "loc":"when loaded c
 locObj.dialogLoadGame = {"txt":"Ŝargi ludon? Vi perdos ĉiun nekonservitan progreson!", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"Pardonu! Ne ekzistas konserva dosiero!", "loc":"in case there is no savegame"};
 locObj.dialogSaveGame = {"txt":"Konservu ludon? Vi reskribos ian ajn konservitan!", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Bonvolu enigi konservan ĉenon", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Bonvolu enigi konservan ĉenon", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Couldn't load the game from the savestring ;-;", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"tre longa ĉeno", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Ĉu vi volas dungi gardiston? Li kostos al vi %arg1 oron kaj tiam %arg2 oron ĉiun sezonon!", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"Vi dungis gardiston!", "loc":"after succesfully hired a guardsman"};
@@ -612,3 +586,109 @@ locObj.helpUniversity = {"txt":"This building is required to research new techno
 locObj.callFiremen = {"txt":"Voku fajrestingistojn? Tio kostus vin %arg1 oron!", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "fajrobrigadistoj metis finon al la fajro!", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "ĝi brulos al cindrojn!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "merdo okazas: ŝtelistoj ŝtelis %arg1 oron de via trezorejo", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "Vi gajnis per loterio %arg1 oro premio", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Konservi ludon", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Ŝarĝi ludon", "loc":"load save from localStorage of the browser"};
+locObj.tabCity = {"txt":"Urbo", "loc":"tabname in the tab bar"};
+locObj.tabSettings = {"txt":"Preferoj", "loc": "tabname Settings in the tab bar"};
+locObj.tabBuilding = {"txt": "Konstruaĵo", "loc": "tabname Building in the tab bar"};
+locObj.tabHowToPlay = {"txt": "Kiel ludi", "loc":"tabname How To Play, about and stuff in da bar"};
+locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Estingi la fajron", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Ekzekuti civitanon", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "Ĉu vi volas fari festivalon?\nKostus al vi %arg1 oro!\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Festivalo estis farita antaŭ ne tre longa tempo.\nLa efekto de festivalo malfortiĝus.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+locObj.festivalGain = {"txt": "Via gajno pro la festivalo estas %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Via perdo pro la festivalo estas %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "Vi jam havas heroon!", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "aŭtomate konservi ŝaltita", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "aŭtomate konservi malŝaltita", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "Vi estas konstruonta %arg1.\n Se la objekto estas konstruita, vi ne rajtus konstrui %arg2.\n Ĉu vi certas en via elekto?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "pendumilo", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "fonto", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "fonto", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "pendumilo", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Nenio por montri ankoraŭ, venu ĉi tien poste", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Preferoj", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "eksporti konserva dosieron", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "importi konserva dosieron", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "aŭtomate konservi", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Ŝanĝi koloran reĝimon", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Prefero", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "ŝaltita", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "Malŝaltita", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt":"Ĉiuj sonefektoj", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Efikoj al ĉiuj eventoj", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Efikoj sur agado postulis eventojn", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Muziko ĉio", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Lore kaj scenomuziko", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Reen", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Preferoj de sonefektoj kaj muziko", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Malfermu sonajn preferojn", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Poŝtelefona UI", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Eventa grandeco", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "linioj", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "Ambro estas la plej malofta valuto", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Garnison", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Forsenti", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Dungi", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Castellan", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Heroo","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "frat-serĝentoj", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "turkopoloj", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "frat-kavaliroj", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Konstrui Domon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Konstrui Muron<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Konstrui Turon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Konstrui Kastelon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Konstrui Trezoron<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Konstrui Pendumilon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Konstrui Fonton<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Konstrui Kaŝejon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Konstrui Gatejon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Konstrui Ĉevalejon<br/>lvl %arg1<br/>pro %arg2 gold", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Konstrui Pafadon<br/>lvl %arg1<br/>pro %arg2 gold", "loc":"building tab"};
+helpBlock = "<h1>1255 Burgomaster</h1>" +
+    "<h2>Kiel ludi</h2>" +
+    "Ĉi tiu ludo havas horloĝon sub la kapuĉo. Ĉiu tiklo de la horloĝo okazas en 30 sekundoj.<br>" +
+    "Post ĉiu horloĝo turnu vian loĝantaron pagos impostojn al vi kaj kreskos.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
+    "Normale, ĉiu civitano pagas al vi unu oran pecon laŭ tiktaĵo.<br>" +
+    "Ĉi tiu konduto povus esti ŝanĝita per ludantodecidoj.<br>" +
+    "Vi devas konstrui domojn por daŭrigi la kreskadon de via urba loĝantaro.<br>" +
+    "Ĉiu nivelo de Domoj permesas vin havi pli da loĝantaro.<br>" +
+    "Vi bezonas konstrui Murojn kaj Turon por konservi vian urbon sekura kontraŭ entruduloj.<br>" +
+    "Vi devas konstrui Trezoron por konservi vian oron.<br>" +
+    "Ĉiu nivelo de la trezorejo permesas vin ŝpari pli da oro.<br>" +
+    "Ankaŭ la trezoro permesas vin dungi trezora gardistojn.<br>" +
+    "Trezoraj gardistoj malpliigas signife la eblon ŝteli oron de via trezoro.<br>" +
+    "Dungi gardiston vin kostos %arg1 oran.<br>" +
+    "Ĉiu gardisto bezonas regulan pagon (ĉiu turno), ĝi kostas %arg2 oron. <br>" +
+    "Se vi ne havas sufiĉe da mono, ili lasos sian laboron konstante.<br>" +
+    "Vi povas konstrui fonton aŭ pendumilon. Vi ne povas ŝanĝi vian elekton post kiam konstruiĝis.<br>" +
+    "Fontoj pliigos feliĉon kaj rapidecon de populacio kreskanta.<br>" +
+    "Pendumilon povas malpliigi feliĉon kaj loĝantaran kreskon, pliigi impostojn kaj permesi ke vi ekzekutis civitanoоn.<br>" +
+    "Ekzekuti iun civitanon konfiskos siajn posedaĵojn kaj aldonos ĝin al via trezoroĵo.<br>" +
+    "Kaŝejon bezonas pro redukti viajn perdojn pro ŝtelado. Vi ne povas konstrui kaŝejon sen trezoroĵo.<br>"+
+    "Tios estas unu-ludanta ludo.<br>"+
+    "<br>" +
+    "Apogita Lingvoj (AL): Angla, Rusa.<br>"+
+    "Komunumaj Apogita Lingvoj (KAL): Germana, Esperanto, Franka<br>"+
+    "KAL signifas, ke la aŭtoro ne provizas helpon aŭ respondojn en la KAL,<br>"+
+    "kvankam partoj de la ludo aŭ ludo entute povus esti disponigitaj en la KAL.<br>"+
+    "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn<br>"+
+    "aŭ partoj de traduko, kiuj estas parte malaktualaj.<br>"+
+    "Vi povus helpi per tradukoj por la ludo ĉi tie:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "segejo", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "dezirante puto", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "muro", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "ŝtona muro", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "turo", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "ŝtona turo", "loc": "cityscreen"};

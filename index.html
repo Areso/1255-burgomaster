@@ -42,7 +42,7 @@
       <span id="pop" style="display:none">2</span>
       <span id="panelPopValue">{ game.pop }</span>
     </div>
-    <div class="gems-val" onclick="showModal(0, '', getAck, localeStrings[90],  locObj.okay.txt, '');">
+    <div class="gems-val" onclick="showModal(0, '', getAck, locObj.amber.txt,  locObj.okay.txt, '');">
       <img id="gems_img" class="resource-icon" src="resources/amber_ico.png">
       <span id="gems" >0</span>
       <span id="panelAmberValue" style="display:none">{ amber }</span>
@@ -118,9 +118,6 @@
         <input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
         <label id="lblStnLines">lines</label>
         <br>
-        <lable id="lblStnUID" style="visibility:hidden;">Your UID</lable><label id="lblStnUIDValue" style="margin-left: 20px; visibility:hidden;"></label>
-        <label id="lblStnAlias" style="display: none" >Your nickname</label>
-        <input id="inpStnAliasValue" style="display: none" value="" onchange="game.updateAlias()" style="margin-left: 20px;">
         <br>
         <label id="lblStnAliasResult"></label><br>
         <textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>

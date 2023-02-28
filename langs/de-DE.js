@@ -44,82 +44,82 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//40
 localeStrings.push("placeholder");
-localeStrings.push("Dumm gelaufen: Diebe haben %arg1 Gold aus Eurer Schatzkammer gestohlen!");
-localeStrings.push("Ihr habt %arg1 Gold beim Glücksspiel gewonnen.");
-localeStrings.push("Spiel speichern");
-localeStrings.push("Spiel laden");//45
-localeStrings.push("Stadt");
-localeStrings.push("Erkunden");
-localeStrings.push("Einstellungen");
-localeStrings.push("Garnison");
-localeStrings.push("Bauen");//50
-localeStrings.push("Anleitung");
-localeStrings.push("Discord");
-localeStrings.push("Löscht das feuer");
-localeStrings.push("Bürger hinrichten");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//50
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("Möchten Ihr ein Festival veranstalten?\nDas würde Sie %arg1 Gold kosten!\n");
-localeStrings.push("Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n");
-localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Ihr Gewinn wegen des Festivals ist %arg1", "Ihr Verlust wegen des Festivals ist %arg1"]);
-localeStrings.push("Gut");//60
-localeStrings.push("Ihr habt schon einen Helden");
-localeStrings.push("Automatisches Speichern ist eingeschaltet");
-localeStrings.push("Automatisches Speichern ist ausgeschaltet");
-localeStrings.push("Ihr sind im Begriff, nach %arg1 zu bauen.\nWenn das Objekt gebaut wird, können Ihr keine %arg2 bauen.\nBist du dir bei deiner Wahl sicher?");
-localeStrings.push("Noch nichts zu zeigen, kommen Sie später hierher.");//65
-localeStrings.push("Einstellungen");
-localeStrings.push("Spielstand exportieren");
-localeStrings.push("Spielstand importieren");
-localeStrings.push("Automatisches Speichern");
-localeStrings.push("Farbmodus ändern");//70
-localeStrings.push("Möglichkeit");
-localeStrings.push("Auf");
-localeStrings.push("Aus");
-localeStrings.push("Alle Soundeffekte");
-localeStrings.push("Auswirkungen auf alle Ereignisse");//75
-localeStrings.push("Auswirkungen auf die erforderlichen Ereignisse");
-localeStrings.push("Musik alles");
-localeStrings.push("Überlieferungs- und Bühnenmusik");
-localeStrings.push("Zurück");
-localeStrings.push("Einstellungen von Soundeffekten und Musik");//80
-localeStrings.push("Klangeinstellungen öffnen");
-localeStrings.push("Mobile Benutzeroberfläche");
-localeStrings.push("Größe des Ereignisprotokolls");
-localeStrings.push("linien");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("%arg1 gold has been added to your treasury");
-localeStrings.push("Bernstein ist die seltenste Währung");//90
-localeStrings.push("Garnison");
-localeStrings.push("Entlassen");
-localeStrings.push("Einstellen");
-localeStrings.push("Truppen einstellen");
-localeStrings.push("Kastellan");//95
-localeStrings.push("Held");
-localeStrings.push("Sariantsbrueder ausbilden<br/>%arg1 gold");
-localeStrings.push("Mieten turkopol<br/>%arg1 gold");
-localeStrings.push("Ritterbrueder ausbilden<br/>%arg1 gold");
-localeStrings.push("Sariantsbrueder: ");//100
-localeStrings.push("turkopole: ");
-localeStrings.push("Ritterbrueder: ");
-localeStrings.push("Bewege eine Einheit zum Helden-Trupp");
-localeStrings.push("Bringe eine Einheit in die Garnison");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Bauen");
-localeStrings.push("Haus bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Mauer bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Turm bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Schatzkammer bauen<br/>lvl %arg1<br/>%arg2 gold");//110
-localeStrings.push("Galgen bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Brunnen bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Versteck bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Schenke bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Stall bauen<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("Schießstand bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Kastell bauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,49 +133,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>Anleitung</h2>" +
-    "Dieses Spiel ist rundenbasiert. Jede Runde dauert 30 Sekunden.<br>" +
-    "Nach jeder Runde zahlt deine Bevölkerung Steuern an Euch und wächst.<br>" +
-    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>"+
-    "Normalerweise bringt Euch jeder Bürger ein Goldstück pro Runde ein.<br>" +
-    "Dieses Verhalten kann durch Eure Entscheidungen geändert werden.<br>" +
-    "Ihr müsst Häuser bauen, um das Wachstum Eurer Stadtbevölkerung zu ermöglichen.<br>" +
-    "Jede Stufe von Häusern kann mehr Bürger beheimaten.<br>" +
-    "Ihr müsst Mauern und einen Turm errichten, um die Stadt vor Eindringlingen zu schützen.<br>" +
-    "Ihr müsst eine Schatzkammer bauen, um Euer Gold zu lagern.<br>" +
-    "Jede Stufe der Schatzkammer kann mehr Gold lagern.<br>" +
-    "Außerdem erlaubt Euch die Schatzkammer, Wachleute einzustellen.<br>" +
-    "Wachleute verringern die Wahrscheinlichkeit, dass Gold aus Eurer Schatzkammer gestohlen wird.<br>" +
-    "Einen Wachmann neu einzustellen wird Euch %arg1 Gold kosten.<br>" +
-    "Außerdem verlangt jeder Wachmann pro Runde einen Sold von %arg2 Gold.<br>" +
-    "Wenn Ihr nicht genug Geld habt, werden sie ihre Arbeit dauerhaft aufgeben.<br>" +
-    "Ihr könnt entweder einen Brunnen oder einen Galgen errichten. Ist der Bau abgeschlossen, könnt Ihr eure Entscheidung nicht mehr ändern.<br>" +
-    "Brunnen steigern die Zufriedenheit Eurer Bürger und das Bevölkerungswachstum.<br>" +
-    "Galgen verringern Zufriedenheit und Wachstum, aber erhöhen Eure Steuereinnahmen und ermöglichen Euch, Stadtbewohner hinzurichten.<br>" +
-    "Richtet Ihr einen Bürger hin, wird sein Besitz beschlagnahmt und Eurem Vermögen hinzugefügt.<br>" +
-    "Ein Versteck wird Eure Verluste durch Diebstahl verringern. Ihr könnt jedoch kein Versteck ohne eine Schatzkammer bauen.<br>"+
-    "Dieses Spiel ist für einen Einzelspieler.<br>"+
-    "<br>" +
-    "Unterstützte Sprachen (SL, supported languages): Englisch (English), Russisch (Русский).<br>" +
-    "Von der Community unterstützte Sprachen (CSL, community supported languages): Deutsch, Esperanto, French (le français)<br>" +
-    "Der Autor kann keine Hilfe oder Antworten zu in einer CSL gestellten Fragen geben,<br>"+
-    "obwohl das Spiel (oder Teile davon) in der CSL zur Verfügung gestellt werden."+
-    "Außerdem könnten Übersetzungen in eine CSL Fehler ebenso wie unübersetzte<br>"+
-    "oder auch veraltete Teile beinhalten.<br>"+
-    "Ihr könnt uns hier bei der Übersetzung des Spiels unterstützen:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("Wunschbrunnen");
-localeStrings.push("Sägewerk");
-localeStrings.push("Mauer");
-localeStrings.push("Steinmauer");//135
-localeStrings.push("Turm");
-localeStrings.push("Steinturm");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Haus");
 localeStrings.push("Häuser");
 localeStrings.push("Schenke");//140
-localeStrings.push("Galgen");
-localeStrings.push("ein Brunnen");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Schatzkammer");
 localeStrings.push("gold");
 localeStrings.push("Bevölkerung");//145
@@ -359,8 +328,8 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//325
-localeStrings.push("There is no savestring in the textbox");
-localeStrings.push("Couldn't load the game from the savestring");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Download game for playing off-grid (to play without Internet connection)");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//330
@@ -531,6 +500,10 @@ locObj.requiredStables = {"txt": "Dazu müssen Sie den Stall bauen", "loc":"happ
 locObj.requiredArcheryRange = {"txt":"Dazu müssen Sie die Bogenschießanlage bauen", "loc":"happens when trying to hire turkopols if no archery range is built"};
 locObj.requiredStablesUpgrade = {"txt": "Dazu müssen Sie den Stable auf %arg1 Level upgraden", "loc":"happens when trying to hire knights and stables level too low"};
 locObj.deadCounselorDemolish = {"txt":"Your counselor is dead.\nThe new counselor, however, urges us to reconsider\nthe choice which was made with the previous one:\n-it's time, m'lord, when we could decide what's better for our nation.\n-if you agree, we demolish the %arg1 and thus you could build %arg2", "loc":""}
+locObj.demolishGallows = {"txt": "Galgen", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.fountainUnlock = {"txt": "ein Brunnen", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
+locObj.demolishFountain = {"txt": "ein Brunnen", "loc": "your choice in deadCounselorDemolish dialogue"};
+locObj.gallowsUnlock = {"txt": "Galgen", "loc": "will be unlocked in deadCounselorDemolish dialogue"};
 locObj.deadCounselorDemolishAnsYes = {"txt":"Yes, demolish it", "loc":"Positive answer"}
 locObj.buy  = {"txt":"Buy",  "loc":"On item in BlackMarket for sale from Goblin"};
 locObj.sell = {"txt":"Sell", "loc":"On item in BlackMarket for sale from Hero"};
@@ -547,7 +520,8 @@ locObj.loadedSuccessfully = {"txt":"Spiel erfolgreich geladen", "loc":"when load
 locObj.dialogLoadGame = {"txt":"Spiel laden? Nicht gespeicherter Fortschritt geht dabei verloren!", "loc":"confirmation dialogue over loading game"};
 locObj.noSaveGame = {"txt":"Verzeiht! Es wurde kein gespeicherter Spielstand gefunden", "loc":"in case there is no savegame"};
 locObj.dialogSaveGame = {"txt":"Spiel speichern? Alte Spielstände werden dabei überschrieben!", "loc":"when trying to save game or overwriting existing savegame"};
-locObj.loadGameFromStringError = {"txt":"Bitte fügt Euren Spielstand ein", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringEmpty = {"txt":"Bitte fügt Euren Spielstand ein", "loc":"happens when the loadgame input is empty"};
+locObj.loadGameFromStringError = {"txt":"Couldn't load the game from the savestring ;-;", "loc":"happens when the loadgame input is incorrect or couldn't be processed"};
 locObj.lblLongSaveString = {"txt":"sehr lange Zeichenkette", "loc":"label near input fielf for savegame string"};
 locObj.dialogConfirmHireGuard = {"txt":"Möchtet Ihr einen Wachmann einstellen? Er wird Euch einmalig %arg1 Gold und danach %arg2 Gold pro Saison kosten", "loc":"hiring treasury guard confirmation dialogue"};
 locObj.hiredGuardsman = {"txt":"Ihr habt einen Wachmann angeheuert", "loc":"after succesfully hired a guardsman"};
@@ -613,3 +587,109 @@ locObj.helpUniversity = {"txt":"This building is required to research new techno
 locObj.callFiremen = {"txt":"Sollen wir die Feuerwehr rufen? Es wird Euch %arg1 Gold kosten", "loc":"dialog happens when trying to get rid off the fire"};
 locObj.fireEndedByFireservice = {"txt": "Die Feuerwehr hat den Brand gelöscht", "loc":"happens after firemen ended the fire"};
 locObj.burnToAshes = {"txt": "Alles wird zu Asche verbrennen!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "Dumm gelaufen: Diebe haben %arg1 Gold aus Eurer Schatzkammer gestohlen!", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "Ihr habt %arg1 Gold beim Glücksspiel gewonnen", "loc":"random events lottery won msg"};
+locObj.locSaveGame= {"txt": "Spiel speichern", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Spiel laden", "loc":"load save from localStorage of the browser"};
+locObj.tabCity = {"txt":"Stadt", "loc":"tabname in the tab bar"};
+locObj.tabSettings = {"txt":"Einstellungen", "loc": "tabname Settings in the tab bar"};
+locObj.tabBuilding = {"txt": "Bauen", "loc": "tabname Building in the tab bar"};
+locObj.tabHowToPlay = {"txt": "Anleitung", "loc":"tabname How To Play, about and stuff in da bar"};
+locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Löscht das feuer", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Bürger hinrichten", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "Möchten Ihr ein Festival veranstalten?\nDas würde Sie %arg1 Gold kosten!\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Festival wurde vor nicht allzu langer Zeit platziert.\nDer Effekt des Festivals würde schwächer werden.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+locObj.festivalGain = {"txt": "Ihr Gewinn wegen des Festivals ist %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Ihr Verlust wegen des Festivals ist %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "Ihr habt schon einen Helden", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "Automatisches Speichern ist eingeschaltet", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "Automatisches Speichern ist ausgeschaltet", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "Ihr sind im Begriff, nach %arg1 zu bauen.\nWenn das Objekt gebaut wird, können Ihr keine %arg2 bauen.\nBist du dir bei deiner Wahl sicher?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "Galgen", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "ein Brunnen", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "ein Brunnen", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "Galgen", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Noch nichts zu zeigen, kommen Sie später hierher", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Einstellungen", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "Spielstand exportieren", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "Spielstand importieren", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "Automatisches Speichern", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Farbmodus ändern", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Möglichkeit", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "Auf", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "Aus", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt":"Alle Soundeffekte", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Auswirkungen auf alle Ereignisse", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Auswirkungen auf die erforderlichen Ereignisse", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "Musik alles", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Überlieferungs- und Bühnenmusik", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Zurück", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Einstellungen von Soundeffekten und Musik", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Klangeinstellungen öffnen", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Mobile Benutzeroberfläche", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Größe des Ereignisprotokolls", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "linien", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "Bernstein ist die seltenste Währung", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Garnison", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Entlassen", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Einstellen", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Kastellan", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Held","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "Sariantsbrueder", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "turkopole", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "Ritterbrueder", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Haus bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Mauer bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Turm bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Kastell bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Schatzkammer bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Galgen bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Brunnen bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Versteck bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Schenke bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Stall bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Schießstand bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
+    "<h2>Anleitung</h2>" +
+    "Dieses Spiel ist rundenbasiert. Jede Runde dauert 30 Sekunden.<br>" +
+    "Nach jeder Runde zahlt deine Bevölkerung Steuern an Euch und wächst.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>"+
+    "Normalerweise bringt Euch jeder Bürger ein Goldstück pro Runde ein.<br>" +
+    "Dieses Verhalten kann durch Eure Entscheidungen geändert werden.<br>" +
+    "Ihr müsst Häuser bauen, um das Wachstum Eurer Stadtbevölkerung zu ermöglichen.<br>" +
+    "Jede Stufe von Häusern kann mehr Bürger beheimaten.<br>" +
+    "Ihr müsst Mauern und einen Turm errichten, um die Stadt vor Eindringlingen zu schützen.<br>" +
+    "Ihr müsst eine Schatzkammer bauen, um Euer Gold zu lagern.<br>" +
+    "Jede Stufe der Schatzkammer kann mehr Gold lagern.<br>" +
+    "Außerdem erlaubt Euch die Schatzkammer, Wachleute einzustellen.<br>" +
+    "Wachleute verringern die Wahrscheinlichkeit, dass Gold aus Eurer Schatzkammer gestohlen wird.<br>" +
+    "Einen Wachmann neu einzustellen wird Euch %arg1 Gold kosten.<br>" +
+    "Außerdem verlangt jeder Wachmann pro Runde einen Sold von %arg2 Gold.<br>" +
+    "Wenn Ihr nicht genug Geld habt, werden sie ihre Arbeit dauerhaft aufgeben.<br>" +
+    "Ihr könnt entweder einen Brunnen oder einen Galgen errichten. Ist der Bau abgeschlossen, könnt Ihr eure Entscheidung nicht mehr ändern.<br>" +
+    "Brunnen steigern die Zufriedenheit Eurer Bürger und das Bevölkerungswachstum.<br>" +
+    "Galgen verringern Zufriedenheit und Wachstum, aber erhöhen Eure Steuereinnahmen und ermöglichen Euch, Stadtbewohner hinzurichten.<br>" +
+    "Richtet Ihr einen Bürger hin, wird sein Besitz beschlagnahmt und Eurem Vermögen hinzugefügt.<br>" +
+    "Ein Versteck wird Eure Verluste durch Diebstahl verringern. Ihr könnt jedoch kein Versteck ohne eine Schatzkammer bauen.<br>"+
+    "Dieses Spiel ist für einen Einzelspieler.<br>"+
+    "<br>" +
+    "Unterstützte Sprachen (SL, supported languages): Englisch (English), Russisch (Русский).<br>" +
+    "Von der Community unterstützte Sprachen (CSL, community supported languages): Deutsch, Esperanto, French (le français)<br>" +
+    "Der Autor kann keine Hilfe oder Antworten zu in einer CSL gestellten Fragen geben,<br>"+
+    "obwohl das Spiel (oder Teile davon) in der CSL zur Verfügung gestellt werden."+
+    "Außerdem könnten Übersetzungen in eine CSL Fehler ebenso wie unübersetzte<br>"+
+    "oder auch veraltete Teile beinhalten.<br>"+
+    "Ihr könnt uns hier bei der Übersetzung des Spiels unterstützen:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "Sägewerk", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "Wunschbrunnen", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "Mauer", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "Steinmauer", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "Turm", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "Steinturm", "loc": "cityscreen"};

@@ -1,0 +1,31 @@
+name: "Validate HTML"
+
+on:
+  pull_request:
+  push:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  smoke_job:
+    name: Cypress Validate HTML
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: run server with the front of the game
+        run: python3 -m http.server 8080 &
+
+      - name: check whether game is UP
+        run: |
+          curl -X GET "http://localhost:8080/"
+      
+      - name: cypress run
+        uses: cypress-io/github-action@v5      
+        with:
+          working-directory: tests/tests_cypress/validateHTML
+          start: |
+            npm install --save-dev html-validate cypress-html-validate
+            npm run start

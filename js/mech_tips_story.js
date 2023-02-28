@@ -60,12 +60,12 @@ function gameStory() {
 function gameChangePath() {
 	if (game.ticks % 80 === 0 && !dialogShown && (game.buildLevelFountain>0||game.buildLevelGallows>0) ){
 		if (game.buildLevelFountain>0) {
-			question  = locObj.deadCounselorDemolish.txt.replace("%arg1", localeStrings[142]);
-			question  = question.replace("%arg2", localeStrings[141]);
+			question  = locObj.deadCounselorDemolish.txt.replace("%arg1", locObj.demolishFountain.txt);
+			question  = question.replace("%arg2", locObj.gallowsUnlock.txt);
 		}
 		if (game.buildLevelGallows>0) {
-			question  = locObj.deadCounselorDemolish.txt.replace("%arg1", localeStrings[141]);
-			question  = question.replace("%arg2", localeStrings[142]);
+			question  = locObj.deadCounselorDemolish.txt.replace("%arg1", locObj.demolishGallows.txt);
+			question  = question.replace("%arg2", locObj.fountainUnlock.txt);
 		}
 		yesAnswer = locObj.deadCounselorDemolishAnsYes.txt
 		showModal(1, '', gameChangePathCallback, question, yesAnswer, locObj.no.txt)

@@ -25,7 +25,7 @@ function checkPop() {
 			openTab(null, 'tabPopulation');
 		} else {
 			// nothing to show
-			var alertMsg = localeStrings[65];
+			var alertMsg = locObj.noStatsYet.txt;
 			disabledElements.push("saveGameButton");
 			disabledElements.push("loadGameButton");
 			document.getElementById("saveGameButton").disabled = true;

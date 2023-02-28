@@ -219,37 +219,6 @@ function gameOK() {
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(lastHope_str);
 		},
-		updateAlias : function () {
-			proposedAlias = document.getElementById("inpStnAliasValue").value;
-			console.log(proposedAlias);
-			back_response_alias = null;
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					back_response_alias = JSON.parse(this.responseText);
-					console.log(back_response_alias);
-					if (back_response_alias["content"]===200) {
-						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][0];
-						game.alias = document.getElementById("inpStnAliasValue").value;
-					}
-					if (back_response_alias["content"]===201) {
-						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][1];
-						game.alias = document.getElementById("inpStnAliasValue").value;
-					}
-					if (back_response_alias["content"]===204) {
-						document.getElementById("lblStnAliasResult").innerText=localeStrings[88][2];
-						document.getElementById("inpStnAliasValue").value = "";
-					}
-					setTimeout(function(){ document.getElementById("lblStnAliasResult").innerText=""; }, 5000);
-				} else {
-					game.alias = document.getElementById("inpStnAliasValue").value;
-				}
-			};
-			dataToParse = game.UID+delimiter+game.alias+delimiter+proposedAlias;
-			xhttp.open("POST", "http://armata.ga:5000/api/v1.0/register_alias", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(dataToParse);
-		},
 		getEventHelp : function () {
 			if (eventHelpMsg!==null) {
 				if (flag_event_started===0){
@@ -551,7 +520,7 @@ function gameOK() {
 				updateUI();
 			}
 			if (game.myMapRemObjects[game.heroX][game.heroY]===2) {
-				postEventLog(localeStrings[58][0]);
+				postEventLog(locObj.eventItemCollected.txt);
 				eventItemCollected();
 			}
 		},
@@ -650,7 +619,7 @@ function gameOK() {
 				game.attacker = 1; // TODO: Check problem with attacker after auto combat on adventure map
 				var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
 				if ( gold_diff !== game.myhero.gold) {
-					postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+					postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 				}
 				game.myhero.gold = 0;
 				enemyRandomizer.clearEntriesList();
@@ -1074,7 +1043,7 @@ function gameOK() {
 						postEventLog(localeStrings[176] + game.myhero.gold);
 						var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
 						if (gold_diff !== game.myhero.gold){
-							postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+							postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 						}
 						game.myhero.gold               = 0;
 					}
@@ -1596,7 +1565,7 @@ function gameOK() {
 				disabledElements.push("selectHeroClass");
 				document.getElementById("btnHireHero").disabled = true;
 				document.getElementById("selectHeroClass").disabled = true;
-				alertMsg = localeStrings[61];
+				alertMsg = locObj.errAlreadyHasHero.txt;
 				showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 			}
 		},
@@ -2481,9 +2450,9 @@ function gameOK() {
 			updateUI();
 		},
 		makeFestival : function() {
-			question      = localeStrings[56].replace("%arg1", game.festivalPrice());
+			question      = locObj.festivalConfirm.txt.replace("%arg1", game.festivalPrice());
 			if (game.festival_cooldown !==0) {
-				question += localeStrings[57];
+				question += locObj.festivalConfirmCooldown.txt;
 			}
 			showModal(1, '', game.makeFestivalCallback, question, locObj.yes.txt, locObj.no.txt)
 		},
@@ -2496,9 +2465,10 @@ function gameOK() {
 					game.addMoneyToTreasury(fundraising);
 					gold_diff = game.gold-gold_was;
 					if (gold_diff>=0){
-						msg = localeStrings[59][0].replace("%arg1",gold_diff);
+					    if (gold_diff===0) { gold_diff = 1}
+						msg = locObj.festivalGain.txt.replace("%arg1",gold_diff);
 					} else {
-						msg = localeStrings[59][1].replace("%arg1",gold_diff);
+						msg = locObj.festivalLoss.txt.replace("%arg1",gold_diff);
 					}
 					postEventLog(msg);
 					game.festival_cooldown  = config.festCooldown;
@@ -2674,11 +2644,11 @@ function gameOK() {
 			var costOfBuilding = 0;
 			if (objectToBuild==="Fountain") {
 				costOfBuilding = config.costFountain;
-				question = localeStrings[64].replace("%arg1",localeStrings[142]).replace("%arg2",localeStrings[141]);
+				question = locObj.GallowsFountainChoiceConfirm.txt.replace("%arg1",locObj.FountainChoiceConfirm.txt).replace("%arg2",locObj.GallowsBlocked.txt);
 			}
 			if (objectToBuild==="Gallows") {
 				costOfBuilding = config.costGallows;
-				question = localeStrings[64].replace("%arg1",localeStrings[141]).replace("%arg2",localeStrings[142]);
+				question = locObj.GallowsFountainChoiceConfirm.txt.replace("%arg1",locObj.GallowsChoiceConfirm.txt).replace(locObj.FountainBlocked.txt);
 			}
 			if (game.gold > costOfBuilding) {
 				if (game.buildLevelFountain === 0 && game.buildLevelGallows === 0) {
@@ -2790,7 +2760,7 @@ function gameOK() {
 					postEventLog(msg);
 					var gold_diff   = game.addMoneyToTreasury(moneyToSeize);
 					if (gold_diff!==moneyToSeize){
-						postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+						postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 					}
 				} else {
 					alertMsg        = locObj.executionAborted.txt;
@@ -2817,7 +2787,8 @@ function gameOK() {
 						document.getElementById('stealingAudio0').play();
 					}
 					game.gold     = game.gold - goldLost;
-					var msg = localeStrings[42].replace("%arg1", goldLost);
+					let msg = typeof localeOK === "function" ? locObj.rndEventsStealing.txt : "shit happens, thiefs stole gold from your treasury";
+					msg = msg.replace("%arg1", goldLost);
 					postEventLog(msg);
 					updateResources();
 					//TODO move that to mech_tips_story !!!
@@ -2936,11 +2907,11 @@ function gameOK() {
 			}
 		},
 		winLottery : function () {
-			msg = localeStrings[43].replace("%arg1", config.lotteryPrize);
+			msg = locObj.rndEventsLotteryWon.txt.replace("%arg1", config.lotteryPrize);
 			postEventLog(msg);
 			var gold_diff = game.addMoneyToTreasury(config.lotteryPrize);
 			if (gold_diff!==config.lotteryPrize){
-				postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+				postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 			}
 			updateResources();
 		},
@@ -2964,7 +2935,7 @@ function gameOK() {
 			postEventLog(msg);
 			var gold_diff = game.addMoneyToTreasury(config.chestCity);
 			if (gold_diff!==config.chestCity){
-				postEventLog(localeStrings[89].replace("%arg1", gold_diff));
+				postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
 			}
 			updateResources();
 			//REMOVE THE CHEST
@@ -3113,11 +3084,6 @@ function gameOK() {
 		} else {
 			game.active_tab="";
 		}
-		if (tabName==="Settings"){
-			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
-			document.getElementById("inpStnAliasValue").value = game.alias;
-		}
-
 		tabs.forEach(tab => {
 			if (tab.classList.contains('active')) {
 				tab.classList.remove('active');
@@ -3527,7 +3493,7 @@ function gameOK() {
 		var showAlert = true;
 		alertMsg = "";
 		if (buildingName==='amber'){
-			alertMsg = localeStrings[90];
+			alertMsg = locObj.amber.txt;
 		}
 		if (buildingName==='well') {
 			showAlert = false;
@@ -3538,7 +3504,6 @@ function gameOK() {
 			checkGold();
 		}
 		if (buildingName==='pop') {
-			//alertMsg = localeStrings[145];
 			showAlert = false;
 			checkPop();
 		}
@@ -3549,10 +3514,9 @@ function gameOK() {
 				var Audio = 'sawmillAudio'+arnd;
 				document.getElementById(Audio).play();
 			}
-			//alertMsg = localeStrings[133];
 		}
 		if (buildingName==='wall') {
-			//alertMsg = localeStrings[134];
+
 		}
 		if (buildingName==='university') {
 			showAlert = false;
@@ -3560,7 +3524,7 @@ function gameOK() {
 			openTab(null, 'tabUniversity');
 		}
 		if (buildingName==='swall') {
-			//alertMsg = localeStrings[135];
+
 		}
 		if (buildingName==='home') {
 			showAlert = false;
@@ -3572,11 +3536,11 @@ function gameOK() {
 		}
 		if (buildingName==='castle') {
 			showAlert = false;
-			alertMsg = localeStrings[136];
+			alertMsg = locObj.cityScreenTower.txt;
 		}
 		if (buildingName==='stone_castle') {
 			showAlert = false;
-			alertMsg = localeStrings[137];
+			alertMsg = locObj.cityScreenStoneTower.txt;
 		}
 		if (buildingName==='inn') {
 			//alertMsg = localeStrings[140];
@@ -3587,7 +3551,6 @@ function gameOK() {
 			openTab(null, 'tabInn');
 		}
 		if (buildingName==='gallows') {
-			//alertMsg = localeStrings[141];
 			showAlert = false;
 			game.deathPenalty();
 		}

@@ -27,11 +27,11 @@ function setupMobileUI() {
 	function changeAutosave() {
 		if (game.o_autosave===0) {
 			game.o_autosave = 1;
-			postEventLog(localeStrings[62]);
+			postEventLog(locObj.autosaveTurnedOn.txt);
 			setupAutosave();
 		} else {
 			game.o_autosave = 0;
-			postEventLog(localeStrings[63]);
+			postEventLog(locObj.autosaveTurnedOff.txt);
 			setupAutosave();
 		}
 	}
@@ -169,11 +169,11 @@ function importGame() {
 			overrideGame(gameTemp);
 		}
 		catch(err) {
-			postEventLog(localeStrings[327],"bold,red");
+			postEventLog(locObj.loadGameFromStringError.txt,"bold,red");
 			console.log(err);
 		}
 	} else {
-		postEventLog(localeStrings[326],"bold");
+		postEventLog(locObj.loadGameFromStringEmpty.txt,"bold");
 	}
 }
 function cloudQuickSave(){

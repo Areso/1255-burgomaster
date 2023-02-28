@@ -674,7 +674,7 @@ function eventItemCollected () {
 		if (this.readyState === 4 && this.status === 200) {
 			back_response_ItemCollected = JSON.parse(this.responseText);
 			console.log(back_response_ItemCollected);
-			postEventLog(localeStrings[58][1]);
+			postEventLog(locObj.eventPledgeRecorded.txt);
 		}
 		if (this.readyState === 4 && this.status !== 200) {
 			postEventLog(locObj.couldntRecordPledge.txt);
