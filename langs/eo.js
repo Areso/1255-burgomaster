@@ -108,18 +108,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Konstruaĵo");
-localeStrings.push("Konstrui Domon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Muron<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Turon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Trezoron<br/>nivelo %arg1<br/>pro %arg2 oro");//110
-localeStrings.push("Konstrui Pendumilon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Fonton<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Kaŝejon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Gatejon<br/>nivelo %arg1<br/>pro %arg2 oro");
-localeStrings.push("Konstrui Ĉevalejo<br/>lvl %arg1<br/>pro %arg2 gold");//115
-localeStrings.push("Konstrui Pafado<br/>lvl %arg1<br/>pro %arg2 gold");
-localeStrings.push("Konstrui Kastelon<br/>nivelo %arg1<br/>pro %arg2 oro");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,44 +133,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>Kiel ludi</h2>" +
-    "Ĉi tiu ludo havas horloĝon sub la kapuĉo. Ĉiu tiklo de la horloĝo okazas en 30 sekundoj.<br>" +
-    "Post ĉiu horloĝo turnu vian loĝantaron pagos impostojn al vi kaj kreskos.<br>" +
-    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
-    "Normale, ĉiu civitano pagas al vi unu oran pecon laŭ tiktaĵo.<br>" +
-    "Ĉi tiu konduto povus esti ŝanĝita per ludantodecidoj.<br>" +
-    "Vi devas konstrui domojn por daŭrigi la kreskadon de via urba loĝantaro.<br>" +
-    "Ĉiu nivelo de Domoj permesas vin havi pli da loĝantaro.<br>" +
-    "Vi bezonas konstrui Murojn kaj Turon por konservi vian urbon sekura kontraŭ entruduloj.<br>" +
-    "Vi devas konstrui Trezoron por konservi vian oron.<br>" +
-    "Ĉiu nivelo de la trezorejo permesas vin ŝpari pli da oro.<br>" +
-    "Ankaŭ la trezoro permesas vin dungi trezora gardistojn.<br>" +
-    "Trezoraj gardistoj malpliigas signife la eblon ŝteli oron de via trezoro.<br>" +
-    "Dungi gardiston vin kostos %arg1 oran.<br>" +
-    "Ĉiu gardisto bezonas regulan pagon (ĉiu turno), ĝi kostas %arg2 oron. <br>" +
-    "Se vi ne havas sufiĉe da mono, ili lasos sian laboron konstante.<br>" +
-    "Vi povas konstrui fonton aŭ pendumilon. Vi ne povas ŝanĝi vian elekton post kiam konstruiĝis.<br>" +
-    "Fontoj pliigos feliĉon kaj rapidecon de populacio kreskanta.<br>" +
-    "Pendumilon povas malpliigi feliĉon kaj loĝantaran kreskon, pliigi impostojn kaj permesi ke vi ekzekutis civitanoоn.<br>" +
-    "Ekzekuti iun civitanon konfiskos siajn posedaĵojn kaj aldonos ĝin al via trezoroĵo.<br>" +
-    "Kaŝejon bezonas pro redukti viajn perdojn pro ŝtelado. Vi ne povas konstrui kaŝejon sen trezoroĵo.<br>"+
-    "Tios estas unu-ludanta ludo.<br>"+
-    "<br>" +
-    "Apogita Lingvoj (AL): Angla, Rusa.<br>"+
-    "Komunumaj Apogita Lingvoj (KAL): Germana, Esperanto, Franka<br>"+
-    "KAL signifas, ke la aŭtoro ne provizas helpon aŭ respondojn en la KAL,<br>"+
-    "kvankam partoj de la ludo aŭ ludo entute povus esti disponigitaj en la KAL.<br>"+
-    "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn<br>"+
-    "aŭ partoj de traduko, kiuj estas parte malaktualaj.<br>"+
-    "Vi povus helpi per tradukoj por la ludo ĉi tie:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("dezirante puto");
-localeStrings.push("segejo");
-localeStrings.push("muro");
-localeStrings.push("ŝtona muro");//135
-localeStrings.push("turo");
-localeStrings.push("ŝtona turo");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("domo");
 localeStrings.push("domoj");
 localeStrings.push("gatejo");//140
@@ -673,3 +642,53 @@ locObj.imgHero = {"txt":"Heroo","loc":"troops management screen"};
 locObj.imgBrotherSergeants = {"txt": "frat-serĝentoj", "loc": "troops management screen"};
 locObj.imgTurkopols = {"txt": "turkopoloj", "loc": "troops management screen"};
 locObj.imgBrotherKnights = {"txt": "frat-kavaliroj", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Konstrui Domon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Konstrui Muron<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Konstrui Turon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Konstrui Kastelon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Konstrui Trezoron<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Konstrui Pendumilon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Konstrui Fonton<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Konstrui Kaŝejon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Konstrui Gatejon<br/>nivelo %arg1<br/>pro %arg2 oro", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Konstrui Ĉevalejon<br/>lvl %arg1<br/>pro %arg2 gold", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Konstrui Pafadon<br/>lvl %arg1<br/>pro %arg2 gold", "loc":"building tab"};
+helpBlock = "<h1>1255 Burgomaster</h1>" +
+    "<h2>Kiel ludi</h2>" +
+    "Ĉi tiu ludo havas horloĝon sub la kapuĉo. Ĉiu tiklo de la horloĝo okazas en 30 sekundoj.<br>" +
+    "Post ĉiu horloĝo turnu vian loĝantaron pagos impostojn al vi kaj kreskos.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
+    "Normale, ĉiu civitano pagas al vi unu oran pecon laŭ tiktaĵo.<br>" +
+    "Ĉi tiu konduto povus esti ŝanĝita per ludantodecidoj.<br>" +
+    "Vi devas konstrui domojn por daŭrigi la kreskadon de via urba loĝantaro.<br>" +
+    "Ĉiu nivelo de Domoj permesas vin havi pli da loĝantaro.<br>" +
+    "Vi bezonas konstrui Murojn kaj Turon por konservi vian urbon sekura kontraŭ entruduloj.<br>" +
+    "Vi devas konstrui Trezoron por konservi vian oron.<br>" +
+    "Ĉiu nivelo de la trezorejo permesas vin ŝpari pli da oro.<br>" +
+    "Ankaŭ la trezoro permesas vin dungi trezora gardistojn.<br>" +
+    "Trezoraj gardistoj malpliigas signife la eblon ŝteli oron de via trezoro.<br>" +
+    "Dungi gardiston vin kostos %arg1 oran.<br>" +
+    "Ĉiu gardisto bezonas regulan pagon (ĉiu turno), ĝi kostas %arg2 oron. <br>" +
+    "Se vi ne havas sufiĉe da mono, ili lasos sian laboron konstante.<br>" +
+    "Vi povas konstrui fonton aŭ pendumilon. Vi ne povas ŝanĝi vian elekton post kiam konstruiĝis.<br>" +
+    "Fontoj pliigos feliĉon kaj rapidecon de populacio kreskanta.<br>" +
+    "Pendumilon povas malpliigi feliĉon kaj loĝantaran kreskon, pliigi impostojn kaj permesi ke vi ekzekutis civitanoоn.<br>" +
+    "Ekzekuti iun civitanon konfiskos siajn posedaĵojn kaj aldonos ĝin al via trezoroĵo.<br>" +
+    "Kaŝejon bezonas pro redukti viajn perdojn pro ŝtelado. Vi ne povas konstrui kaŝejon sen trezoroĵo.<br>"+
+    "Tios estas unu-ludanta ludo.<br>"+
+    "<br>" +
+    "Apogita Lingvoj (AL): Angla, Rusa.<br>"+
+    "Komunumaj Apogita Lingvoj (KAL): Germana, Esperanto, Franka<br>"+
+    "KAL signifas, ke la aŭtoro ne provizas helpon aŭ respondojn en la KAL,<br>"+
+    "kvankam partoj de la ludo aŭ ludo entute povus esti disponigitaj en la KAL.<br>"+
+    "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn<br>"+
+    "aŭ partoj de traduko, kiuj estas parte malaktualaj.<br>"+
+    "Vi povus helpi per tradukoj por la ludo ĉi tie:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "segejo", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "dezirante puto", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "muro", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "ŝtona muro", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "turo", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "ŝtona turo", "loc": "cityscreen"};

@@ -108,18 +108,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Bâtiment");
-localeStrings.push("Construire une Maison<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire un Mur<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire une Tour<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire une Trésorerie<br/>niveau %arg1<br/>%arg2 or");//110
-localeStrings.push("Construire une Potence<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire une Fontaine<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire une Planque<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire une Auberge<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire une Écuries<br/>niveau %arg1<br/>%arg2 or");//115
-localeStrings.push("Construire Camp de tir à l'arc<br/>niveau %arg1<br/>%arg2 or");
-localeStrings.push("Construire un Château<br/>niveau %arg1<br/>%arg2 or");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,42 +133,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>Comment jouer</h2>" +
-    "Ce jeu se joue en tours. Une horloge décompte un tour toutes les 30 secondes.<br>" +
-    "A la fin de chaque tour votre population paye des impôts and s'agrandit.<br>" +
-    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
-    "Normalement, chaque citoyen vous paye un or par tour.<br>" +
-    "Ce comportement vient à changer en fonction de vos choix.<br>" +
-    "Vous devez construire des Maisons pour poursuivre la croissance de votre population.<br>" +
-    "Chaque niveau de maison vous permet d'avoir davantage d'habitants.<br>" +
-    "Vous avez besoin de construire des Murs et une Tour pour vous protéger des envahisseurs.<br>" +
-    "Vous avez besoin de construire une Trésorerie pour pouvoir stocker votre or.<br>" +
-    "Chaque niveau de Trésorerie vous permet de stocker davantage d'or.<br>" +
-    "La Trésorerie vous permet également d'embaucher des gardes.<br>" +
-    "Les gardes réduisent vos chances de vous faire dérober votre or de la Trésorerie.<br>" +
-    "Embaucher un garde vous coutera %arg1 or.<br>" +
-    "Chaque garde recquiert un paiement régulier à chaque tour d'un montant de %arg2 or.<br>" +
-    "Si vous n'avez pas assez d'or pour les payer, ils démissioneront de façon permanente.<br>" +
-    "Vous pouvez construire une Fontaine ou une Potence mais pas les deux. Vous ne pourrez pas changer d'avis une fois le bâtiment construit.<br>" +
-    "La Fontaine augmentera le bonheur et la vitesse de croissance de la population.<br>" +
-    "La Potence diminuera le bonheur et la vitesse de croissance de la population, mais augmentera les impôts et vous permettra d'exécuter des citoyens.<br>" +
-    "Exécuter une personne confisquera ses biens qui viendront s'ajouter à votre or.<br>" +
-    "La Planque est nécessaire pour diminuer le montant des vols. Vous ne pouvez pas construire de Planque sans posséder d'abord une Trésorerie.<br>"+
-    "C'est un jeu solo.<br>"+
-    "<br>" +
-    "Langages supportés (SL) : English, Russian (Русский).<br>"+
-    "Langages apportés par la communauté (CSL): German (Deutsch), Esperanto, French (le français).<br>"+
-    "L'auteur ne peut apporter aucune aide ni répondre aux questions concernant les CSL,<br>"+
-    "même si le jeu est (en partie) fourni par les CSL.<br>"+
-    "Par ailleurs, toute traduction issue des CSL peut présenter des erreurs ou des éléments non traduits.<br>"+
-    "ou des éléments de traduction qui ne sont plus à jour.<br>"+
-    "Vous pouvez aider pour la traduction du jeu ici :<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("puit");
-localeStrings.push("scierie");
-localeStrings.push("mur");
-localeStrings.push("mur de pierre");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
 localeStrings.push("tour");
 localeStrings.push("tour de pierre");
 localeStrings.push("maison");
@@ -673,3 +642,53 @@ locObj.imgHero = {"txt":"Héros","loc":"troops management screen"};
 locObj.imgBrotherSergeants = {"txt": "frère sergents", "loc": "troops management screen"};
 locObj.imgTurkopols = {"txt": "turkopols", "loc": "troops management screen"};
 locObj.imgBrotherKnights = {"txt": "frère chevaliers", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Construire une Maison<br/>niveau %arg1<br/>%arg2 or", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Construire un Mur<br/>niveau %arg1<br/>%arg2 or", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Construire une Tour<br/>niveau %arg1<br/>%arg2 or", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Construire un Château<br/>niveau %arg1<br/>%arg2 or", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Construire une Trésorerie<br/>niveau %arg1<br/>%arg2 or", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Construire une Potence<br/>niveau %arg1<br/>%arg2 or", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Construire une Fontaine<br/>niveau %arg1<br/>%arg2 or", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Construire une Planque<br/>niveau %arg1<br/>%arg2 or", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Construire une Auberge<br/>niveau %arg1<br/>%arg2 or", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Construire une Écuries<br/>niveau %arg1<br/>%arg2 or", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Construire Camp de tir à l'arc<br/>niveau %arg1<br/>%arg2 or", "loc":"building tab"};
+helpBlock = "<h1>1255 Burgomaster</h1>" +
+    "<h2>Comment jouer</h2>" +
+    "Ce jeu se joue en tours. Une horloge décompte un tour toutes les 30 secondes.<br>" +
+    "A la fin de chaque tour votre population paye des impôts and s'agrandit.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
+    "Normalement, chaque citoyen vous paye un or par tour.<br>" +
+    "Ce comportement vient à changer en fonction de vos choix.<br>" +
+    "Vous devez construire des Maisons pour poursuivre la croissance de votre population.<br>" +
+    "Chaque niveau de maison vous permet d'avoir davantage d'habitants.<br>" +
+    "Vous avez besoin de construire des Murs et une Tour pour vous protéger des envahisseurs.<br>" +
+    "Vous avez besoin de construire une Trésorerie pour pouvoir stocker votre or.<br>" +
+    "Chaque niveau de Trésorerie vous permet de stocker davantage d'or.<br>" +
+    "La Trésorerie vous permet également d'embaucher des gardes.<br>" +
+    "Les gardes réduisent vos chances de vous faire dérober votre or de la Trésorerie.<br>" +
+    "Embaucher un garde vous coutera %arg1 or.<br>" +
+    "Chaque garde recquiert un paiement régulier à chaque tour d'un montant de %arg2 or.<br>" +
+    "Si vous n'avez pas assez d'or pour les payer, ils démissioneront de façon permanente.<br>" +
+    "Vous pouvez construire une Fontaine ou une Potence mais pas les deux. Vous ne pourrez pas changer d'avis une fois le bâtiment construit.<br>" +
+    "La Fontaine augmentera le bonheur et la vitesse de croissance de la population.<br>" +
+    "La Potence diminuera le bonheur et la vitesse de croissance de la population, mais augmentera les impôts et vous permettra d'exécuter des citoyens.<br>" +
+    "Exécuter une personne confisquera ses biens qui viendront s'ajouter à votre or.<br>" +
+    "La Planque est nécessaire pour diminuer le montant des vols. Vous ne pouvez pas construire de Planque sans posséder d'abord une Trésorerie.<br>"+
+    "C'est un jeu solo.<br>"+
+    "<br>" +
+    "Langages supportés (SL) : English, Russian (Русский).<br>"+
+    "Langages apportés par la communauté (CSL): German (Deutsch), Esperanto, French (le français).<br>"+
+    "L'auteur ne peut apporter aucune aide ni répondre aux questions concernant les CSL,<br>"+
+    "même si le jeu est (en partie) fourni par les CSL.<br>"+
+    "Par ailleurs, toute traduction issue des CSL peut présenter des erreurs ou des éléments non traduits.<br>"+
+    "ou des éléments de traduction qui ne sont plus à jour.<br>"+
+    "Vous pouvez aider pour la traduction du jeu ici :<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "scierie", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "puit", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "mur", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "mur de pierre", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "tour", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "tour de pierre", "loc": "cityscreen"};

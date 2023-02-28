@@ -108,18 +108,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Construcción");
-localeStrings.push("Construir Casa<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Casa<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Torre<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Tesorería<br/>nvl %arg1<br/>%arg2 de oro");//110
-localeStrings.push("Construir Horca<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Fuente<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Escondite<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Construir Posada<br/>nvl %arg1<br/>%arg2 de oro");
-localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("Build Archery range<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Castle<br/>lvl %arg1<br/>%arg2 gold");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,45 +133,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>Cómo Jugar</h2>" +
-   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
-     'feedback <a href="https://form.jotform.com/211014175318041">https://form.jotform.com/211014175318041</a><br>' +
-    "Este juego se basa en tics. Un tic del reloj ocurre cada 30 segundos.<br>" +
-    "Después de cada vuelta del reloj tu población te paga impuestos y crece.<br>" +
-    "Normalmente, cada ciudadano te paga una pieza de oro por tic.<br>" +
-    "Este comportamiento puede cambiar por decisiones del jugador.<br>" +
-    "Necesitas construir Casas para permitir el crecimiento de la población de tu ciudad.<br>" +
-    "Cada nivel de Casas te permite tener más población.<br>" +
-    "Necesitas crear Muros y una Torre para mantener tu ciudad a salvo de intrusos.<br>" +
-    "Necesitas contruir una Tesorería para almacenar tu oro.<br>" +
-    "Cada nivel de la Tesorería te permite almacenar más oro.<br>" +
-    "Además, la Tesorería te permite contratar guardias del tesoro.<br>" +
-    "Los guardias del tesoro disminuyen significativamente la probabilidad de que tu oro sea robado de tu tesoro.<br>" +
-    "Contratar un guarda te costará %arg1 de oro.<br>" +
-    "Cada guardia requiere un pago regular (en cada tic), te costará %arg2 de oro.<br>" +
-    "Si no tienes suficiente dinero, dejarán su trabajo de forma permanente.<br>" +
-    "Puedes construir una Fuente O una Horca. No puedes cambiar tu decisión después de que se construya.<br>" +
-    "Las Fuentes incrementarán la felicidad y la velocidad de crecimiento de la población<br>" +
-    "Las Horcas reducirán la felicidad y el crecimiento de la población, aumentarán los impuestos y te permitirán ejecutar pobladores.<br>" +
-    "Ejecutar un poblador confiscará su propiedad y la agregará a tu tesoro en forma de oro.<br>" +
-    "Se requiere un Escondite para disminuir tus pérdidas por robo. No puedes construir un Escondite sin una Tesorería.<br>"+
-    "Este es un juego de un jugador.<br>"+
-    "<br>" +
-    "Idiomas Soportados (IS): Inglés (English), Ruso (Русский).<br>"+
-    "Idiomas Soportados por la Comunidad (ISC): Alemán (Deutsch), Castellano.<br>"+
-    "El autor no puede proveer ayuda ni respuestas a preguntas realizadas en los ISC,<br>"+
-    "aún cuando (partes de) el juego están en ISC.<br>"+
-    "Además, cualquier traducción de ISC puede tener errores o partes sin traducir<br>"+
-    "o partes de la traducción parcialmente desactualizadas.<br>"+
-    "Puedes ayudar con las traducciones del juego acá:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("pozo de los deseos");
-localeStrings.push("aserradero");
-localeStrings.push("muro");
-localeStrings.push("muro de piedra");//135
-localeStrings.push("torre");
-localeStrings.push("stone tower");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("home");
 localeStrings.push("homes");
 localeStrings.push("inn");//140
@@ -620,7 +588,7 @@ locObj.locSaveGame= {"txt": "Guardar juego", "loc":"browser-wide savegame"};
 locObj.locLoadGame = {"txt": "Cargar juego", "loc":"load save from localStorage of the browser"};
 locObj.tabCity = {"txt":"Ciudad", "loc":"tabname in the tab bar"};
 locObj.tabSettings = {"txt":"Configuración", "loc": "tabname Settings in the tab bar"};
-locObj.tabBuilding = {"txt": "Contrucción", "loc": "tabname Building in the tab bar"};
+locObj.tabBuilding = {"txt": "Construcción", "loc": "tabname Building in the tab bar"};
 locObj.tabHowToPlay = {"txt": "Cómo Jugar", "loc":"tabname How To Play, about and stuff in da bar"};
 locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
 locObj.btnPutOutTheFire = {"txt": "Apagar el fuego", "loc": "button to extinguish the fire"};
@@ -671,3 +639,54 @@ locObj.imgHero = {"txt":"Héroe","loc":"troops management screen"};
 locObj.imgBrotherSergeants = {"txt": "hermano-sergentos", "loc": "troops management screen"};
 locObj.imgTurkopols = {"txt": "turkopolos", "loc": "troops management screen"};
 locObj.imgBrotherKnights = {"txt": "hermano-caballeros", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Construir Casa<br/>nvl %arg1<br/>%arg2 de oro", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Construir Muro<br/>nvl %arg1<br/>%arg2 de oro", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Construir Torre<br/>nvl %arg1<br/>%arg2 de oro", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Build Castle<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Construir Tesorería<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Construir Horca<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Construir Fuente<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Construir Escondite<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Construir Posada<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Build Stable<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Build Archery range<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
+    "<h2>Cómo Jugar</h2>" +
+   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
+     'feedback <a href="https://form.jotform.com/211014175318041">https://form.jotform.com/211014175318041</a><br>' +
+    "Este juego se basa en tics. Un tic del reloj ocurre cada 30 segundos.<br>" +
+    "Después de cada vuelta del reloj tu población te paga impuestos y crece.<br>" +
+    "Normalmente, cada ciudadano te paga una pieza de oro por tic.<br>" +
+    "Este comportamiento puede cambiar por decisiones del jugador.<br>" +
+    "Necesitas construir Casas para permitir el crecimiento de la población de tu ciudad.<br>" +
+    "Cada nivel de Casas te permite tener más población.<br>" +
+    "Necesitas crear Muros y una Torre para mantener tu ciudad a salvo de intrusos.<br>" +
+    "Necesitas contruir una Tesorería para almacenar tu oro.<br>" +
+    "Cada nivel de la Tesorería te permite almacenar más oro.<br>" +
+    "Además, la Tesorería te permite contratar guardias del tesoro.<br>" +
+    "Los guardias del tesoro disminuyen significativamente la probabilidad de que tu oro sea robado de tu tesoro.<br>" +
+    "Contratar un guarda te costará %arg1 de oro.<br>" +
+    "Cada guardia requiere un pago regular (en cada tic), te costará %arg2 de oro.<br>" +
+    "Si no tienes suficiente dinero, dejarán su trabajo de forma permanente.<br>" +
+    "Puedes construir una Fuente O una Horca. No puedes cambiar tu decisión después de que se construya.<br>" +
+    "Las Fuentes incrementarán la felicidad y la velocidad de crecimiento de la población<br>" +
+    "Las Horcas reducirán la felicidad y el crecimiento de la población, aumentarán los impuestos y te permitirán ejecutar pobladores.<br>" +
+    "Ejecutar un poblador confiscará su propiedad y la agregará a tu tesoro en forma de oro.<br>" +
+    "Se requiere un Escondite para disminuir tus pérdidas por robo. No puedes construir un Escondite sin una Tesorería.<br>"+
+    "Este es un juego de un jugador.<br>"+
+    "<br>" +
+    "Idiomas Soportados (IS): Inglés (English), Ruso (Русский).<br>"+
+    "Idiomas Soportados por la Comunidad (ISC): Alemán (Deutsch), Castellano.<br>"+
+    "El autor no puede proveer ayuda ni respuestas a preguntas realizadas en los ISC,<br>"+
+    "aún cuando (partes de) el juego están en ISC.<br>"+
+    "Además, cualquier traducción de ISC puede tener errores o partes sin traducir<br>"+
+    "o partes de la traducción parcialmente desactualizadas.<br>"+
+    "Puedes ayudar con las traducciones del juego acá:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "aserradero", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "pozo de los deseos", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "muro", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "muro de piedra", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "torre", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "torre de piedra", "loc": "cityscreen"};

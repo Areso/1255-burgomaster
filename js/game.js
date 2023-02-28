@@ -3084,11 +3084,6 @@ function gameOK() {
 		} else {
 			game.active_tab="";
 		}
-		if (tabName==="Settings"){
-			document.getElementById("lblStnUIDValue").innerHTML = game.UID;
-			document.getElementById("inpStnAliasValue").value = game.alias;
-		}
-
 		tabs.forEach(tab => {
 			if (tab.classList.contains('active')) {
 				tab.classList.remove('active');
@@ -3509,7 +3504,6 @@ function gameOK() {
 			checkGold();
 		}
 		if (buildingName==='pop') {
-			//alertMsg = localeStrings[145];
 			showAlert = false;
 			checkPop();
 		}
@@ -3520,10 +3514,9 @@ function gameOK() {
 				var Audio = 'sawmillAudio'+arnd;
 				document.getElementById(Audio).play();
 			}
-			//alertMsg = localeStrings[133];
 		}
 		if (buildingName==='wall') {
-			//alertMsg = localeStrings[134];
+
 		}
 		if (buildingName==='university') {
 			showAlert = false;
@@ -3531,7 +3524,7 @@ function gameOK() {
 			openTab(null, 'tabUniversity');
 		}
 		if (buildingName==='swall') {
-			//alertMsg = localeStrings[135];
+
 		}
 		if (buildingName==='home') {
 			showAlert = false;
@@ -3543,11 +3536,11 @@ function gameOK() {
 		}
 		if (buildingName==='castle') {
 			showAlert = false;
-			alertMsg = localeStrings[136];
+			alertMsg = locObj.cityScreenTower.txt;
 		}
 		if (buildingName==='stone_castle') {
 			showAlert = false;
-			alertMsg = localeStrings[137];
+			alertMsg = locObj.cityScreenStoneTower.txt;
 		}
 		if (buildingName==='inn') {
 			//alertMsg = localeStrings[140];

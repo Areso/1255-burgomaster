@@ -108,18 +108,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Строительство");
-localeStrings.push("Построить Дом<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Стену<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Башню<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Сокровищницу<br/>ур. %arg1<br/>%arg2 золота");//110
-localeStrings.push("Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Тайник<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Таверну<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Конюшню<br/>ур. %arg1<br/>%arg2 золота");//115
-localeStrings.push("Построить Стрельбище<br/>ур. %arg1<br/>%arg2 золота");
-localeStrings.push("Построить Замок<br/>ур. %arg1<br/>%arg2 золота");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//117
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,45 +133,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Бургомастер</h1>" +
-    "<h2>Как играть</h2>" +
-    "Cсылка на вики <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>"+
-    "Анкета с обратной связью <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>здесь</a><br>"+
-    "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
-    "После каждого тика население растет и платит налоги.<br>" +
-    "Обычно, каждый горожанин приносит один золотой за тик.<br>" +
-    "Однако, принимаемые игроком решения влияют на это значение.<br>" +
-    "Вам нужно строить дома для поддержания роста населения.<br>" +
-    "Чем выше уровень домов, тем больше населения сможет жить в вашем городе.<br>" +
-    "Вам нужно строить стены и крепость, чтобы предотвратить разрушительные набеги.<br>" +
-    "Вам нужно построить сокровищницу для хранения золота.<br>" +
-    "Чем выше уровень сокровищницы, тем больше золота вы можете в ней хранить.<br>" +
-    "Также, сокровищница позволяет нанимать охранников.<br>" +
-    "Охрана существенно снижает шанс воровства из сокровищницы.<br>" +
-    "Найм охранника будет стоить %arg1 золотых.<br>" +
-    "Каждый тик охранники нуждаются в жаловании, которое составляет %arg2 золотых.<br>" +
-    "Если в Сокровищнице будет недостаточно денег для выплаты жалования, они покинут вас.<br>" +
-    "Вы можете построить фонтан ИЛИ виселицу. Вы не можете изменить свой выбор, после того, как построили здание.<br>" +
-    "Фонтаны увеличивают счастье и скорость роста населения.<br>" +
-    "Виселица уменьшает счастье, скорость роста населения, увеличивает налоги и позволяет казнить горожан.<br>" +
-    "Казнь любого горожанина сопровождается конфискацией его имущества<br>" +
-    "Тайник позволяет сократить потери от воровства. Тайник нельзя построить без сокровищницы.<br>"+
-    "Это однопользовательская игра<br>"+
-    "<br>" +
-    "Поддерживаемые языки(ПЯ): Английский, Русский.<br>"+
-    "Сообществом Поддерживаемые Языки (СПЯ): Немецкий, Эсперанто, Французский<br>"+
-    "СПЯ значит, что автор не помогает и не отвечает на вопросы, заданные на СПЯ,<br>"+
-    "несмотря на то, что части игры или игра целиком могут быть доступны на СПЯ.<br>"+
-    "Также надо отметить, что переводы СПЯ могут содержать ошибки и непереведенные фрагменты<br>"+
-    "или части, содержащие устаревший перевод.<br>"+
-    "Вы можете помочь с переводами здесь:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("колодец желаний");
-localeStrings.push("пилорама");
-localeStrings.push("стена");
-localeStrings.push("каменная стена");//135
-localeStrings.push("башня");
-localeStrings.push("каменная башня");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("дом");
 localeStrings.push("дома");
 localeStrings.push("таверна");//140
@@ -677,3 +645,54 @@ locObj.imgHero = {"txt":"Герой","loc":"troops management screen"};
 locObj.imgBrotherSergeants = {"txt": "братья-сержанты", "loc": "troops management screen"};
 locObj.imgTurkopols = {"txt": "туркополы", "loc": "troops management screen"};
 locObj.imgBrotherKnights = {"txt": "братья-рыцари", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Построить Дом<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Построить Стену<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Построить Башню<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Построить Замок<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Построить Сокровищницу<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Построить Виселицу<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Построить Фонтан<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Построить Тайник<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Построить Таверну<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Построить Конюшню<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Построить Стрельбище<br/>ур. %arg1<br/>%arg2 золота", "loc":"building tab"};
+helpBlock = "<h1>1255: Расцвет Тевтонцев</h1>" +
+    "<h2>Как играть</h2>" +
+    "Cсылка на вики <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>"+
+    "Анкета с обратной связью <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>здесь</a><br>"+
+    "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.<br>" +
+    "После каждого тика население растет и платит налоги.<br>" +
+    "Обычно, каждый горожанин приносит один золотой за тик.<br>" +
+    "Однако, принимаемые игроком решения влияют на это значение.<br>" +
+    "Вам нужно строить дома для поддержания роста населения.<br>" +
+    "Чем выше уровень домов, тем больше населения сможет жить в вашем городе.<br>" +
+    "Вам нужно строить стены и крепость, чтобы предотвратить разрушительные набеги.<br>" +
+    "Вам нужно построить сокровищницу для хранения золота.<br>" +
+    "Чем выше уровень сокровищницы, тем больше золота вы можете в ней хранить.<br>" +
+    "Также, сокровищница позволяет нанимать охранников.<br>" +
+    "Охрана существенно снижает шанс воровства из сокровищницы.<br>" +
+    "Найм охранника будет стоить %arg1 золотых.<br>" +
+    "Каждый тик охранники нуждаются в жаловании, которое составляет %arg2 золотых.<br>" +
+    "Если в Сокровищнице будет недостаточно денег для выплаты жалования, они покинут вас.<br>" +
+    "Вы можете построить фонтан ИЛИ виселицу. Вы не можете изменить свой выбор, после того, как построили здание.<br>" +
+    "Фонтаны увеличивают счастье и скорость роста населения.<br>" +
+    "Виселица уменьшает счастье, скорость роста населения, увеличивает налоги и позволяет казнить горожан.<br>" +
+    "Казнь любого горожанина сопровождается конфискацией его имущества<br>" +
+    "Тайник позволяет сократить потери от воровства. Тайник нельзя построить без сокровищницы.<br>"+
+    "Это однопользовательская игра<br>"+
+    "<br>" +
+    "Поддерживаемые языки(ПЯ): Английский, Русский.<br>"+
+    "Сообществом Поддерживаемые Языки (СПЯ): Немецкий, Эсперанто, Французский<br>"+
+    "СПЯ значит, что автор не помогает и не отвечает на вопросы, заданные на СПЯ,<br>"+
+    "несмотря на то, что части игры или игра целиком могут быть доступны на СПЯ.<br>"+
+    "Также надо отметить, что переводы СПЯ могут содержать ошибки и непереведенные фрагменты<br>"+
+    "или части, содержащие устаревший перевод.<br>"+
+    "Вы можете помочь с переводами здесь:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "пилорама", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "колодец желаний", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "стена", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "каменная стена", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "башня", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "каменная башня", "loc": "cityscreen"};

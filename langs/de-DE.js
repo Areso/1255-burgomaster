@@ -108,18 +108,18 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Bauen");
-localeStrings.push("Haus bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Mauer bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Turm bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Schatzkammer bauen<br/>lvl %arg1<br/>%arg2 gold");//110
-localeStrings.push("Galgen bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Brunnen bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Versteck bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Schenke bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Stall bauen<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("Schießstand bauen<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Kastell bauen<br/>lvl %arg1<br/>%arg2 gold");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,44 +133,13 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>Anleitung</h2>" +
-    "Dieses Spiel ist rundenbasiert. Jede Runde dauert 30 Sekunden.<br>" +
-    "Nach jeder Runde zahlt deine Bevölkerung Steuern an Euch und wächst.<br>" +
-    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>"+
-    "Normalerweise bringt Euch jeder Bürger ein Goldstück pro Runde ein.<br>" +
-    "Dieses Verhalten kann durch Eure Entscheidungen geändert werden.<br>" +
-    "Ihr müsst Häuser bauen, um das Wachstum Eurer Stadtbevölkerung zu ermöglichen.<br>" +
-    "Jede Stufe von Häusern kann mehr Bürger beheimaten.<br>" +
-    "Ihr müsst Mauern und einen Turm errichten, um die Stadt vor Eindringlingen zu schützen.<br>" +
-    "Ihr müsst eine Schatzkammer bauen, um Euer Gold zu lagern.<br>" +
-    "Jede Stufe der Schatzkammer kann mehr Gold lagern.<br>" +
-    "Außerdem erlaubt Euch die Schatzkammer, Wachleute einzustellen.<br>" +
-    "Wachleute verringern die Wahrscheinlichkeit, dass Gold aus Eurer Schatzkammer gestohlen wird.<br>" +
-    "Einen Wachmann neu einzustellen wird Euch %arg1 Gold kosten.<br>" +
-    "Außerdem verlangt jeder Wachmann pro Runde einen Sold von %arg2 Gold.<br>" +
-    "Wenn Ihr nicht genug Geld habt, werden sie ihre Arbeit dauerhaft aufgeben.<br>" +
-    "Ihr könnt entweder einen Brunnen oder einen Galgen errichten. Ist der Bau abgeschlossen, könnt Ihr eure Entscheidung nicht mehr ändern.<br>" +
-    "Brunnen steigern die Zufriedenheit Eurer Bürger und das Bevölkerungswachstum.<br>" +
-    "Galgen verringern Zufriedenheit und Wachstum, aber erhöhen Eure Steuereinnahmen und ermöglichen Euch, Stadtbewohner hinzurichten.<br>" +
-    "Richtet Ihr einen Bürger hin, wird sein Besitz beschlagnahmt und Eurem Vermögen hinzugefügt.<br>" +
-    "Ein Versteck wird Eure Verluste durch Diebstahl verringern. Ihr könnt jedoch kein Versteck ohne eine Schatzkammer bauen.<br>"+
-    "Dieses Spiel ist für einen Einzelspieler.<br>"+
-    "<br>" +
-    "Unterstützte Sprachen (SL, supported languages): Englisch (English), Russisch (Русский).<br>" +
-    "Von der Community unterstützte Sprachen (CSL, community supported languages): Deutsch, Esperanto, French (le français)<br>" +
-    "Der Autor kann keine Hilfe oder Antworten zu in einer CSL gestellten Fragen geben,<br>"+
-    "obwohl das Spiel (oder Teile davon) in der CSL zur Verfügung gestellt werden."+
-    "Außerdem könnten Übersetzungen in eine CSL Fehler ebenso wie unübersetzte<br>"+
-    "oder auch veraltete Teile beinhalten.<br>"+
-    "Ihr könnt uns hier bei der Übersetzung des Spiels unterstützen:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("Wunschbrunnen");
-localeStrings.push("Sägewerk");
-localeStrings.push("Mauer");
-localeStrings.push("Steinmauer");//135
-localeStrings.push("Turm");
-localeStrings.push("Steinturm");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Haus");
 localeStrings.push("Häuser");
 localeStrings.push("Schenke");//140
@@ -674,3 +643,53 @@ locObj.imgHero = {"txt":"Held","loc":"troops management screen"};
 locObj.imgBrotherSergeants = {"txt": "Sariantsbrueder", "loc": "troops management screen"};
 locObj.imgTurkopols = {"txt": "turkopole", "loc": "troops management screen"};
 locObj.imgBrotherKnights = {"txt": "Ritterbrueder", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Haus bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Mauer bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Turm bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Kastell bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Schatzkammer bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Galgen bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Brunnen bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Versteck bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Schenke bauen<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Stall bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Schießstand bauen<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
+    "<h2>Anleitung</h2>" +
+    "Dieses Spiel ist rundenbasiert. Jede Runde dauert 30 Sekunden.<br>" +
+    "Nach jeder Runde zahlt deine Bevölkerung Steuern an Euch und wächst.<br>" +
+    "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>"+
+    "Normalerweise bringt Euch jeder Bürger ein Goldstück pro Runde ein.<br>" +
+    "Dieses Verhalten kann durch Eure Entscheidungen geändert werden.<br>" +
+    "Ihr müsst Häuser bauen, um das Wachstum Eurer Stadtbevölkerung zu ermöglichen.<br>" +
+    "Jede Stufe von Häusern kann mehr Bürger beheimaten.<br>" +
+    "Ihr müsst Mauern und einen Turm errichten, um die Stadt vor Eindringlingen zu schützen.<br>" +
+    "Ihr müsst eine Schatzkammer bauen, um Euer Gold zu lagern.<br>" +
+    "Jede Stufe der Schatzkammer kann mehr Gold lagern.<br>" +
+    "Außerdem erlaubt Euch die Schatzkammer, Wachleute einzustellen.<br>" +
+    "Wachleute verringern die Wahrscheinlichkeit, dass Gold aus Eurer Schatzkammer gestohlen wird.<br>" +
+    "Einen Wachmann neu einzustellen wird Euch %arg1 Gold kosten.<br>" +
+    "Außerdem verlangt jeder Wachmann pro Runde einen Sold von %arg2 Gold.<br>" +
+    "Wenn Ihr nicht genug Geld habt, werden sie ihre Arbeit dauerhaft aufgeben.<br>" +
+    "Ihr könnt entweder einen Brunnen oder einen Galgen errichten. Ist der Bau abgeschlossen, könnt Ihr eure Entscheidung nicht mehr ändern.<br>" +
+    "Brunnen steigern die Zufriedenheit Eurer Bürger und das Bevölkerungswachstum.<br>" +
+    "Galgen verringern Zufriedenheit und Wachstum, aber erhöhen Eure Steuereinnahmen und ermöglichen Euch, Stadtbewohner hinzurichten.<br>" +
+    "Richtet Ihr einen Bürger hin, wird sein Besitz beschlagnahmt und Eurem Vermögen hinzugefügt.<br>" +
+    "Ein Versteck wird Eure Verluste durch Diebstahl verringern. Ihr könnt jedoch kein Versteck ohne eine Schatzkammer bauen.<br>"+
+    "Dieses Spiel ist für einen Einzelspieler.<br>"+
+    "<br>" +
+    "Unterstützte Sprachen (SL, supported languages): Englisch (English), Russisch (Русский).<br>" +
+    "Von der Community unterstützte Sprachen (CSL, community supported languages): Deutsch, Esperanto, French (le français)<br>" +
+    "Der Autor kann keine Hilfe oder Antworten zu in einer CSL gestellten Fragen geben,<br>"+
+    "obwohl das Spiel (oder Teile davon) in der CSL zur Verfügung gestellt werden."+
+    "Außerdem könnten Übersetzungen in eine CSL Fehler ebenso wie unübersetzte<br>"+
+    "oder auch veraltete Teile beinhalten.<br>"+
+    "Ihr könnt uns hier bei der Übersetzung des Spiels unterstützen:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "Sägewerk", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "Wunschbrunnen", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "Mauer", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "Steinmauer", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "Turm", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "Steinturm", "loc": "cityscreen"};
