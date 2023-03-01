@@ -41,85 +41,85 @@ localeStrings.push("placeholder");//35
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Call firemen? It will cost you %arg1 gold!");
-localeStrings.push("firemen put end to the fire!");//40
-localeStrings.push("it will burn to ashes!");
-localeStrings.push("pesky thieves stole %arg1 gold from your treasury");
-localeStrings.push("You won in a lottery %arg1 gold prize");
-localeStrings.push("Save game");
-localeStrings.push("Load game");//45
-localeStrings.push("City");
-localeStrings.push("Explore");
-localeStrings.push("Settings");
-localeStrings.push("Garrison");
-localeStrings.push("Building");//50
-localeStrings.push("How To Play");
-localeStrings.push("Discord");
-localeStrings.push("Put out the fire");
-localeStrings.push("Execute somebody");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//40
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//45
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//50
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//55
-localeStrings.push("Ancient holiday is forthcoming. Townsfolks are in a good mood to celebrate and already prepared some wine. If you wish, you may start a festival.\n But it will cost you %arg1 gold. You order milord?\n");
-localeStrings.push("The festival was started not so long ago.\nThe effect from festival would be weaker.\n");
-localeStrings.push(["The event item collected!","Your pledge is recorded!"]);
-localeStrings.push(["Festival brought some fun to your people and %arg1 gold to you","Festival got out of control and some drunken brigands ransacked town. You lost %arg1 gold, milord"]);
-localeStrings.push("Okay");//60
-localeStrings.push("You already have a hero!");
-localeStrings.push("Autosave is turned on");
-localeStrings.push("Autosave is turned off");
-localeStrings.push("You are about to build %arg1.\nIf the object is built, you wouldn't be allow to build %arg2.\nAre you sure in your choice?");
-localeStrings.push("Nothing to show yet, come here later.");//65
-localeStrings.push("Settings");
-localeStrings.push("Export Game");
-localeStrings.push("Import Game");
-localeStrings.push("Autosave");
-localeStrings.push("Change color mode");//70
-localeStrings.push("Option");
-localeStrings.push("On");
-localeStrings.push("Off");
-localeStrings.push("All sound effects");
-localeStrings.push("Effects on all events");//75
-localeStrings.push("Effects on action required events");
-localeStrings.push("All music");
-localeStrings.push("Lore and script music");
-localeStrings.push("Back");
-localeStrings.push("Sound effects and music");//80
-localeStrings.push("Open sound settings");
-localeStrings.push("Mobile UI");
-localeStrings.push("Event log size");
-localeStrings.push("lines");
-localeStrings.push("Your UID");//85
-localeStrings.push("Your nickname");
-localeStrings.push("Update");
-localeStrings.push(["Your nickname is registered","Your nickname is updated","Sorry, but this nicknames is taken"]);
-localeStrings.push("%arg1 gold has been added to your treasury");
-localeStrings.push("Amber is the most valued currency");//90
-localeStrings.push("Garrison");
-localeStrings.push("Fire");
-localeStrings.push("Hire");
-localeStrings.push("Hiring and managing troops");
-localeStrings.push("Castellan");//95
-localeStrings.push("Hero");
-localeStrings.push("Train brother-sergeant<br/>%arg1 gold");
-localeStrings.push("Hire turkopol<br/>%arg1 gold");
-localeStrings.push("Train brother-knight<br/>%arg1 gold");
-localeStrings.push("brothers-sergeants: ");//100
-localeStrings.push("turkopols: ");
-localeStrings.push("brothers-knights: ");
-localeStrings.push("move a unit to the hero squad");
-localeStrings.push("move a unit to the hero garrison");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push(["placeholder","placeholder"]);
+localeStrings.push("placeholder");//60
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//65
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//70
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//75
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//80
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//85
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder","placeholder","placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//90
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//95
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//100
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//105
-localeStrings.push("Building");
-localeStrings.push("Build Home<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Wall<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Tower<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Treasury<br/>lvl %arg1<br/>%arg2 gold");//110
-localeStrings.push("Build Gallows<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Fountain<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Stash<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Inn<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Stable<br/>lvl %arg1<br/>%arg2 gold");//115
-localeStrings.push("Build Archery range<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("Build Castle<br/>lvl %arg1<br/>%arg2 gold");//117
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//110
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//115
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//120
@@ -133,7 +133,7 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("placeholder");//131
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
