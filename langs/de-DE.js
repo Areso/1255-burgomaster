@@ -140,15 +140,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//135
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Haus");
-localeStrings.push("Häuser");
-localeStrings.push("Schenke");//140
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Schatzkammer");
-localeStrings.push("gold");
-localeStrings.push("Bevölkerung");//145
-localeStrings.push("Schießstand");
+localeStrings.push("placeholder");//140
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//145
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -159,10 +159,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("Zu Beginn");
-localeStrings.push("Bisherige");
-localeStrings.push("Nächster");
-localeStrings.push("Zur aktuellen");//160
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160
 localeStrings.push("Bevölkerungshistorie-Tab");
 localeStrings.push("Aktuelle Bevölkerungsgrenze ist %arg1");
 localeStrings.push("Aktuelle Goldgrenze ist %arg1");
@@ -693,3 +693,16 @@ locObj.cityScreenWall = {"txt": "Mauer", "loc": "cityscreen"};
 locObj.cityScreenStoneWall = {"txt": "Steinmauer", "loc": "cityscreen"};
 locObj.cityScreenTower = {"txt": "Turm", "loc": "cityscreen"};
 locObj.cityScreenStoneTower = {"txt": "Steinturm", "loc": "cityscreen"};
+locObj.cityScreenHouse = {"txt": "Haus", "loc": "cityscreen"};
+locObj.cityScreenHouses = {"txt": "Häuser", "loc": "cityscreen"};
+locObj.cityScreenInn = {"txt": "Schenke", "loc": "cityscreen"};
+locObj.cityScreenGallows = {"txt": "gallows", "loc": "cityscreen"};
+locObj.cityScreenFountain = {"txt": "fountain", "loc": "cityscreen"};
+locObj.cityScreenTreasury = {"txt": "Schatzkammer", "loc": "cityscreen"};
+locObj.resourceGold = {"txt": "gold", "loc": "resource panel"};
+locObj.resourcePop = {"txt": "Bevölkerung", "loc": "resource panel"};
+locObj.cityScreenArcheryRange = {"txt": "Schießstand", "loc":"cityscreen"};
+locObj.paginationStart = {"txt": "Zu Beginn", "loc": "stat pages, to the start button"};
+locObj.paginationPrevious = {"txt": "Bisherige", "loc": "stat pages, previous page"};
+locObj.paginationNext = {"txt": "Nächster", "loc": "stat pages, next page btn"};
+locObj.paginationCurrent = {"txt": "Zur aktuellen", "loc": "stat pages, current btn"};

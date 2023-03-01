@@ -140,15 +140,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//135
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("дом");
-localeStrings.push("дома");
-localeStrings.push("таверна");//140
-localeStrings.push("виселица");//TODO ["виселица","виселицу"]
-localeStrings.push("фонтан");
-localeStrings.push("сокровищница");
-localeStrings.push("золото");
-localeStrings.push("население");//145
-localeStrings.push("стрельбище");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//140
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//145
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -159,10 +159,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("В начало");
-localeStrings.push("Предыдущая");
-localeStrings.push("Следующая");
-localeStrings.push("К текущей");//160
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160
 localeStrings.push("Данные о населении по периодам");
 localeStrings.push("Текущий лимит населения %arg1");
 localeStrings.push("Текущий лимит золота %arg1");
@@ -696,3 +696,16 @@ locObj.cityScreenWall = {"txt": "стена", "loc": "cityscreen"};
 locObj.cityScreenStoneWall = {"txt": "каменная стена", "loc": "cityscreen"};
 locObj.cityScreenTower = {"txt": "башня", "loc": "cityscreen"};
 locObj.cityScreenStoneTower = {"txt": "каменная башня", "loc": "cityscreen"};
+locObj.cityScreenHouse = {"txt": "дом", "loc": "cityscreen"};
+locObj.cityScreenHouses = {"txt": "дома", "loc": "cityscreen"};
+locObj.cityScreenInn = {"txt": "таверна", "loc": "cityscreen"};
+locObj.cityScreenGallows = {"txt": "виселица", "loc": "cityscreen"};
+locObj.cityScreenFountain = {"txt": "фонтан", "loc": "cityscreen"};
+locObj.cityScreenTreasury = {"txt": "сокровищница", "loc": "cityscreen"};
+locObj.resourceGold = {"txt": "золото", "loc": "resource panel"};
+locObj.resourcePop = {"txt": "население", "loc": "resource panel"};
+locObj.cityScreenArcheryRange = {"txt": "стрельбище", "loc":"cityscreen"};
+locObj.paginationStart = {"txt": "В начало", "loc": "stat pages, to the start button"};
+locObj.paginationPrevious = {"txt": "Предыдущая", "loc": "stat pages, previous page"};
+locObj.paginationNext = {"txt": "Следующая", "loc": "stat pages, next page btn"};
+locObj.paginationCurrent = {"txt": "К текущей", "loc": "stat pages, current btn"};

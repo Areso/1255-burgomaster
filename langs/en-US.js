@@ -133,54 +133,22 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//130
-localeStrings.push("<h1>1255 Burgomaster</h1>" +
-    "<h2>How to play</h2>" +
-   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
-     "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
-    "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
-    "After each clock turn your population is paying taxes to you and growing.<br>" +
-    "Normally, each citizen pays to you one gold piece per tick.<br>" +
-    "This behavior could be changed by player decisions.<br>" +
-    "You need to build Homes to continue growth of your city population.<br>" +
-    "Each lvl of Houses allows you to have more population.<br>" +
-    "You need to build Walls and Tower (Keep) to keep your city safe against intruders.<br>" +
-    "You need to build a Treasury to store your gold.<br>" +
-    "Each lvl of the treasury allows you to store more gold.<br>" +
-    "Also, Treasury allows you to hire treasury guards.<br>" +
-    "Treasury guards significantly decrease chance of gold being stolen from your treasury.<br>" +
-    "Hiring a guard will cost you %arg1 gold.<br>" +
-    "Each guard requires regular payment (each tick), it also costs %arg2 gold.<br>" +
-    "If you do not have enough money, they will leave their work permanently.<br>" +
-    "You can build Fountain OR Gallows. You cannot change your choice after building is done.<br>" +
-    "Fountains will increase happiness and speed of population growth<br>" +
-    "Gallows will decrease population, increase taxes, and allow you to execute townsfolk.<br>" +
-    "Executing any townsperson will add his property as confiscated gold.<br>" +
-    "Stash is required to lower your losses from stealing. You cannot build Stash without Treasury.<br>"+
-    "This is a single-player game.<br>"+
-    "<br>" +
-    "Supported Languages(SL): English, Russian (Русский).<br>"+
-    "Community Supported Languages(CSL): German (Deutsch), Esperanto, French (le français).<br>"+
-    "CSL means that the author doesn't provide any help or answers asked in the CSL,<br>"+
-    "though parts of the game or game in whole could be provided in the CSL.<br>"+
-    "Also, any CSL translation could have mistakes or untranslated parts<br>"+
-    "or parts of translation which are partly outdated.<br>"+
-    "You could help with translations for the game here:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>");//131
-localeStrings.push("wishing well");
-localeStrings.push("sawmill");
-localeStrings.push("wall");
-localeStrings.push("stone wall");//135
-localeStrings.push("tower");
-localeStrings.push("stone tower");
-localeStrings.push("home");
-localeStrings.push("homes");
-localeStrings.push("inn");//140
-localeStrings.push("gallows");
-localeStrings.push("fountain");
-localeStrings.push("treasury");
-localeStrings.push("gold");
-localeStrings.push("population");//145
-localeStrings.push("archery range");
+localeStrings.push("placeholder");//131
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//135
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//140
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//145
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -191,10 +159,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("To the beginning");
-localeStrings.push("Previous");
-localeStrings.push("Next");
-localeStrings.push("To the current");//160
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160
 localeStrings.push("Population history tab");
 localeStrings.push("Current population limit is %arg1");
 localeStrings.push("Current gold limit is %arg1");
@@ -610,3 +578,126 @@ locObj.helpStables = {"txt":"This building and its improvements is needed to hir
 locObj.helpArcheryRange = {"txt":"This building and its improvements is needed to hire archery units.<br>The higher level of Archery range you have, the more experienced troops you could hire there", "loc":"help msg in the building tab"};
 locObj.helpInn = {"txt":"This building and its improvements is needed to hire heroes.<br>The higher level of Inn you have, the more experienced hero you could hire there", "loc":"help msg in the building tab"};
 locObj.helpUniversity = {"txt":"This building is required to research new technologies", "loc":"User saw this when moving the coursor above the university icon in Building tab"};
+locObj.callFiremen = {"txt":"Call firemen? It will cost you %arg1 gold!", "loc":"dialog happens when trying to get rid off the fire"};
+locObj.fireEndedByFireservice = {"txt": "firemen put end to the fire!", "loc":"happens after firemen ended the fire"};
+locObj.burnToAshes = {"txt": "it will burn to ashes!", "loc":"happens if player decided not to pay to firemen"};
+locObj.rndEventsStealing = {"txt": "shit happens: thieves stole %arg1 gold from your treasury", "loc":"random events, stealings"};
+locObj.rndEventsLotteryWon = {"txt": "You won in a lottery %arg1 gold prize", "loc":"random events lottery won msg"};
+locObj.locSaveGame = {"txt": "Save game", "loc":"browser-wide savegame"};
+locObj.locLoadGame = {"txt": "Load game", "loc":"load save from localStorage of the browser"};
+locObj.tabCity = {"txt":"City", "loc":"tabname in the tab bar"};
+locObj.tabSettings = {"txt":"Settings", "loc": "tabname Settings in the tab bar"};
+locObj.tabBuilding = {"txt": "Building", "loc": "tabname Building in the tab bar"};
+locObj.tabHowToPlay = {"txt": "How To Play", "loc":"tabname How To Play, about and stuff in da bar"};
+locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
+locObj.btnPutOutTheFire = {"txt": "Put out the fire", "loc": "button to extinguish the fire"};
+locObj.btnExecutePerson = {"txt": "Execute somebody", "loc": "button to execute somebody"};
+locObj.festivalConfirm = {"txt": "Do you want to place a festival?\nIt would cost to you %arg1 gold!\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Festival was placed not so long ago.\nThe effect from festival would be weaken.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
+locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
+locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
+locObj.festivalGain = {"txt": "Your gain because of the festival is %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalLoss = {"txt": "Your loss because of the festival is %arg1", "loc":"happens if the festival was unprofitable for budget"};
+locObj.errAlreadyHasHero = {"txt": "You already have a hero!", "loc":"happens when trying to hire a hero, when you have one hired"};
+locObj.autosaveTurnedOn = {"txt": "Autosave is turned on", "loc": "happens when autosave enabled"};
+locObj.autosaveTurnedOff = {"txt": "Autosave is turned off", "loc": "happens when autosave disabled"};
+locObj.GallowsFountainChoiceConfirm = {"txt": "You are about to build %arg1.\nIf the object is built, you wouldn't be allow to build %arg2.\nAre you sure in your choice?", "loc":"happens when you are about to build Fountain or Gallows"};
+locObj.GallowsChoiceConfirm = {"txt": "Gallows", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainBlocked = {"txt": "Fountain", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.FountainChoiceConfirm = {"txt": "Fountain", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
+locObj.GallowsBlocked = {"txt": "Gallows", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
+locObj.noStatsYet = {"txt": "Nothing to show yet, come here later", "loc":"happens when trying to open gold/pop stats"};
+locObj.tabSettings = {"txt": "Settings", "loc":"Settings tab name"};
+locObj.tabSettingsBtnExportGame = {"txt": "Export Game", "loc":"Export game button"};
+locObj.tabSettingsBtnImportGame = {"txt": "Import Game", "loc":"Import game button"};
+locObj.tabSettingsLblAutosave = {"txt": "Autosave", "loc": "Autsave label before the toggle"};
+locObj.tabSettingsBtnChangeColorMode = {"txt": "Change color mode", "loc": "settings tab change colour mode button"};
+locObj.tabSoundSettingsLblOption = {"txt": "Option", "loc":"Sound settings tab, name of the option"};
+locObj.on = {"txt": "on", "loc": "used on Sound Settings tab"};
+locObj.off = {"txt": "off", "loc": "used on Sounds Settings tab"};
+locObj.tabSoundSettingsLblAllSoundEffects = {"txt":"All sound effects", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblAllEventsEffects = {"txt":"Effects on all events", "loc": "sound settings tab"};
+locObj.tabSoundSettingsLblEffectsAR = {"txt": "Effects on action required events", "loc":"sound settings tab"};
+locObj.tabSoundSettingsAllMusic = {"txt": "All music", "loc":"sound settings tab"};
+locObj.tabSoundSettingsScMusic = {"txt": "Lore and script music", "loc": "sounds settings tab"};
+locObj.btnBack = {"txt": "Back", "loc":"sound settings tab"};
+locObj.lblSoundMenu = {"txt": "Sound effects and music", "loc": "sounds settings tab"};
+locObj.tabSettingsBtnOpenSoundSettings = {"txt": "Open sound settings", "loc":"settings tab"};
+locObj.tabSettingsLblMobileUI = {"txt": "Mobile UI", "loc": "settings tab"};
+locObj.tabSettingsLblLogSize = {"txt":"Event log size", "loc": "settings tab"};
+locObj.tabSettingsLblLines = {"txt": "lines", "loc": "settings tab"};
+locObj.goldAddedToTreasury = {"txt": "%arg1 gold has been added to your treasury", "loc":"gold added when a hero returned to the city"};
+locObj.amber = {"txt": "Amber is the most valued currency", "loc": "happens on click on amber"};
+locObj.lblGarrison = {"txt": "Garrison", "loc": "label in Garrison tab"};
+locObj.btnFire = {"txt": "Fire", "loc": "button in Garrison tab"};
+locObj.btnHire = {"txt": "Hire", "loc": "button in Garrison tab"};
+locObj.imgCastellan = {"txt": "Castellan", "loc": "troops management screen"};
+locObj.imgHero = {"txt":"Hero","loc":"troops management screen"};
+locObj.imgBrotherSergeants = {"txt": "brothers-sergeants", "loc": "troops management screen"};
+locObj.imgTurkopols = {"txt": "turkopols", "loc": "troops management screen"};
+locObj.imgBrotherKnights = {"txt": "brother-knights", "loc": "troops management screen"};
+locObj.btnBuildHouse = {"txt": "Build Home<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildWall = {"txt": "Build Wall<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTower = {"txt": "Build Tower<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildCastle = {"txt": "Build Castle<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildTreasury = {"txt": "Build Treasury<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildGallows = {"txt": "Build Gallows<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildFountain = {"txt": "Build Fountain<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildStash = {"txt": "Build Stash<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildInn = {"txt": "Build Inn<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab"};
+locObj.btnBuildStables = {"txt": "Build Stable<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+locObj.btnBuildArcheryRange = {"txt": "Build Archery range<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
+helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
+    "<h2>How to play</h2>" +
+   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
+     "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" +
+    "This game has some clock under the hood. Each clock's tick happens in 30 seconds.<br>" +
+    "After each clock turn your population is paying taxes to you and growing.<br>" +
+    "Normally, each citizen pays to you one gold piece per tick.<br>" +
+    "This behavior could be changed by player decisions.<br>" +
+    "You need to build Homes to continue growth of your city population.<br>" +
+    "Each lvl of Houses allows you to have more population.<br>" +
+    "You need to build Walls and Tower (Keep) to keep your city safe against intruders.<br>" +
+    "You need to build a Treasury to store your gold.<br>" +
+    "Each lvl of the treasury allows you to store more gold.<br>" +
+    "Also, Treasury allows you to hire treasury guards.<br>" +
+    "Treasury guards significantly decrease chance of gold being stolen from your treasury.<br>" +
+    "Hiring a guard will cost you %arg1 gold.<br>" +
+    "Each guard requires regular payment (each tick), it also costs %arg2 gold.<br>" +
+    "If you do not have enough money, they will leave their work permanently.<br>" +
+    "You can build Fountain OR Gallows. You cannot change your choice after building is done.<br>" +
+    "Fountains will increase happiness and speed of population growth<br>" +
+    "Gallows will decrease population, increase taxes, and allow you to execute townsfolk.<br>" +
+    "Executing any townsperson will add his property as confiscated gold.<br>" +
+    "Stash is required to lower your losses from stealing. You cannot build Stash without Treasury.<br>"+
+    "This is a single-player game.<br>"+
+    "<br>" +
+    "Supported Languages(SL): English, Russian (Русский).<br>"+
+    "Community Supported Languages(CSL): German (Deutsch), Esperanto, French (le français).<br>"+
+    "CSL means that the author doesn't provide any help or answers asked in the CSL,<br>"+
+    "though parts of the game or game in whole could be provided in the CSL.<br>"+
+    "Also, any CSL translation could have mistakes or untranslated parts<br>"+
+    "or parts of translation which are partly outdated.<br>"+
+    "You could help with translations for the game here:<br>"+
+    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
+locObj.tabHowToPlayText = helpBlock;
+locObj.cityScreenSawmill = {"txt": "sawmill", "loc": "cityscreen"};
+locObj.cityScreenWishingWell = {"txt": "wishing well", "loc": "cityscreen"};
+locObj.cityScreenWall = {"txt": "wall", "loc": "cityscreen"};
+locObj.cityScreenStoneWall = {"txt": "stone wall", "loc": "cityscreen"};
+locObj.cityScreenTower = {"txt": "tower", "loc": "cityscreen"};
+locObj.cityScreenStoneTower = {"txt": "stone tower", "loc": "cityscreen"};
+locObj.cityScreenHouse = {"txt": "house", "loc": "cityscreen"};
+locObj.cityScreenHouses = {"txt": "houses", "loc": "cityscreen"};
+locObj.cityScreenInn = {"txt": "inn", "loc": "cityscreen"};
+locObj.cityScreenGallows = {"txt": "gallows", "loc": "cityscreen"};
+locObj.cityScreenFountain = {"txt": "fountain", "loc": "cityscreen"};
+locObj.cityScreenTreasury = {"txt": "treasury", "loc": "cityscreen"};
+locObj.resourceGold = {"txt": "gold", "loc": "resource panel"};
+locObj.resourcePop = {"txt": "population", "loc": "resource panel"};
+locObj.cityScreenArcheryRange = {"txt": "archery range", "loc":"cityscreen"};
+locObj.paginationStart = {"txt": "To the beginning", "loc": "stat pages, to the start button"};
+locObj.paginationPrevious = {"txt": "Previous", "loc": "stat pages, previous page btn"};
+locObj.paginationNext = {"txt": "Next", "loc": "stat pages, next page btn"};
+locObj.paginationCurrent = {"txt": "To the current", "loc": "stat pages, current btn"};

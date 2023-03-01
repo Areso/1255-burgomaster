@@ -140,15 +140,15 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");//135
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("domo");
-localeStrings.push("domoj");
-localeStrings.push("gatejo");//140
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("trezorejo");
-localeStrings.push("oro");
-localeStrings.push("langeto");//145
-localeStrings.push("pafado");
+localeStrings.push("placeholder");//140
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//145
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -159,10 +159,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("Al la komenco");
-localeStrings.push("Antaŭa");
-localeStrings.push("Sekva");
-localeStrings.push("Al la fluo");//160
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160
 localeStrings.push("langeto pri civitanaj historio");
 localeStrings.push("Nuna populacio limo estas %arg1");
 localeStrings.push("Nuna ora limo estas %arg1");
@@ -692,3 +692,16 @@ locObj.cityScreenWall = {"txt": "muro", "loc": "cityscreen"};
 locObj.cityScreenStoneWall = {"txt": "ŝtona muro", "loc": "cityscreen"};
 locObj.cityScreenTower = {"txt": "turo", "loc": "cityscreen"};
 locObj.cityScreenStoneTower = {"txt": "ŝtona turo", "loc": "cityscreen"};
+locObj.cityScreenHouse = {"txt": "domo", "loc": "cityscreen"};
+locObj.cityScreenHouses = {"txt": "domoj", "loc": "cityscreen"};
+locObj.cityScreenInn = {"txt": "gatejo", "loc": "cityscreen"};
+locObj.cityScreenGallows = {"txt": "gallows", "loc": "cityscreen"};
+locObj.cityScreenFountain = {"txt": "fountain", "loc": "cityscreen"};
+locObj.cityScreenTreasury = {"txt": "trezorejo", "loc": "cityscreen"};
+locObj.resourceGold = {"txt": "oro", "loc": "resource panel"};
+locObj.resourcePop = {"txt": "langeto", "loc": "resource panel"};
+locObj.cityScreenArcheryRange = {"txt": "pafado", "loc":"cityscreen"};
+locObj.paginationStart = {"txt": "Al la komenco", "loc": "stat pages, to the start button"};
+locObj.paginationPrevious = {"txt": "Antaŭa", "loc": "stat pages, previous page"};
+locObj.paginationNext = {"txt": "Sekva", "loc": "stat pages, next page btn"};
+locObj.paginationCurrent = {"txt": "Al la fluo", "loc": "stat pages, current btn"};
