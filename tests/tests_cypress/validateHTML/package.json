@@ -6,7 +6,7 @@
     },
     "type": "module",
     "scripts": {
-      "start": "npx cypress run",
+      "start": "npx cypress open",
       "test:integration": "docker-compose --file docker-compose.cypress.yml up --exit-code-from cypress --build cypress",
       "clean:reports": "rm -rf cypress/reports/",
       "test": "npm run clean:reports && cypress run",
