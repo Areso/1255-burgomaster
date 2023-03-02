@@ -163,11 +163,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
-localeStrings.push("langeto pri civitanaj historio");
-localeStrings.push("Nuna populacio limo estas %arg1");
-localeStrings.push("Nuna ora limo estas %arg1");
-localeStrings.push("langeto pri mono historio");
-localeStrings.push(["T","H","M"]);//165
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["plch","plch","plch"]);//165
 localeStrings.push("This is the time amount before an event will start");
 localeStrings.push("This is the time amount before the event will end");
 localeStrings.push("La ĉielo super la urbo malheliĝis al nigraj, fulmotondroj faris tian vidon, kaj subite ĉiuj haltis.");
@@ -705,3 +705,10 @@ locObj.paginationStart = {"txt": "Al la komenco", "loc": "stat pages, to the sta
 locObj.paginationPrevious = {"txt": "Antaŭa", "loc": "stat pages, previous page"};
 locObj.paginationNext = {"txt": "Sekva", "loc": "stat pages, next page btn"};
 locObj.paginationCurrent = {"txt": "Al la fluo", "loc": "stat pages, current btn"};
+locObj.tabPopHistory = {"txt": "langeto pri civitanaj historio", "loc": "Label in Pop history tab"};
+locObj.tabPopHistoryCurrentLimit = {"txt": "Nuna populacio limo estas %arg1", "loc": "Label current pop limit"};
+locObj.tabGoldHistoryCurrentLimit = {"txt": "Nuna ora limo estas %arg1", "loc": "label current gold limit"};
+locObj.tabGoldHistory = {"txt": "langeto pri mono historio", "loc":"Label in Gold history tab"};
+locObj.dayAcronym = {"txt": "T", "loc": "used for countdown in events"};
+locObj.hourAcronym = {"txt": "H", "loc": "used for countdown in events"};
+locObj.minuteAcronym = {"txt", "M", "loc": "used for countdown in events"};

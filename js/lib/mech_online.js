@@ -498,9 +498,9 @@ function reloadBanned() {
 				event_id = parseInt(back_response["event_id"]);
 				event_timer_lbl = document.getElementById("event-label");
 				event_timer_val = document.getElementById("event-value");
-				eventTimerVal  =     cntdwn[0]+localeStrings[165][0];
-				eventTimerVal += " "+cntdwn[1]+localeStrings[165][1];
-				eventTimerVal += " "+cntdwn[2]+localeStrings[165][2];
+				eventTimerVal  =     cntdwn[0]+locObj.dayAcronym.txt;
+				eventTimerVal += " "+cntdwn[1]+locObj.hourAcronym.txt;
+				eventTimerVal += " "+cntdwn[2]+locObj.minuteAcronym.txt;
 				if (event_status_code===1){
 				    if (event_id === 1){
 				        event_name = locObj.eventHalloweenName.txt;

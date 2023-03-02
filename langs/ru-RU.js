@@ -163,11 +163,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
-localeStrings.push("Данные о населении по периодам");
-localeStrings.push("Текущий лимит населения %arg1");
-localeStrings.push("Текущий лимит золота %arg1");
-localeStrings.push("Данные о казне по периодам");
-localeStrings.push(["Д","Ч","М"]);//165
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["plch","plch","plch"]);//165
 localeStrings.push("Время до начала ближайшего тематического игрового мероприятия");
 localeStrings.push("Время до конца ближайшего тематического игрового мероприятия");
 localeStrings.push("Небо над городом потемнело, засверкали молнии, и внезапно всё прекратилось.");
@@ -709,3 +709,10 @@ locObj.paginationStart = {"txt": "В начало", "loc": "stat pages, to the s
 locObj.paginationPrevious = {"txt": "Предыдущая", "loc": "stat pages, previous page"};
 locObj.paginationNext = {"txt": "Следующая", "loc": "stat pages, next page btn"};
 locObj.paginationCurrent = {"txt": "К текущей", "loc": "stat pages, current btn"};
+locObj.tabPopHistory = {"txt": "Данные о населении по периодам", "loc": "Label in Pop history tab"};
+locObj.tabPopHistoryCurrentLimit = {"txt": "Текущий лимит населения %arg1", "loc": "Label current pop limit"};
+locObj.tabGoldHistoryCurrentLimit = {"txt": "Текущий лимит золота %arg1", "loc": "label current gold limit"};
+locObj.tabGoldHistory = {"txt": "Данные о казне по периодам", "loc":"Label in Gold history tab"};
+locObj.dayAcronym = {"txt": "Д", "loc": "used for countdown in events"};
+locObj.hourAcronym = {"txt": "Ч", "loc": "used for countdown in events"};
+locObj.minuteAcronym = {"txt", "М", "loc": "used for countdown in events"};

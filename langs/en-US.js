@@ -163,11 +163,11 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//160
-localeStrings.push("Population history tab");
-localeStrings.push("Current population limit is %arg1");
-localeStrings.push("Current gold limit is %arg1");
-localeStrings.push("Gold history tab");
-localeStrings.push(["D","H","M"]);//165
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["plch","plch","plch"]);//165
 localeStrings.push("This is the time amount before an event will start");
 localeStrings.push("This is the time amount before the event will end");
 localeStrings.push("The sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.");
@@ -703,3 +703,10 @@ locObj.paginationStart = {"txt": "To the beginning", "loc": "stat pages, to the 
 locObj.paginationPrevious = {"txt": "Previous", "loc": "stat pages, previous page btn"};
 locObj.paginationNext = {"txt": "Next", "loc": "stat pages, next page btn"};
 locObj.paginationCurrent = {"txt": "To the current", "loc": "stat pages, current btn"};
+locObj.tabPopHistory = {"txt": "Population history tab", "loc": "Label in Pop history tab"};
+locObj.tabPopHistoryCurrentLimit = {"txt": "Current population limit is %arg1", "loc": "Label current pop limit"};
+locObj.tabGoldHistoryCurrentLimit = {"txt": "Current gold limit is %arg1", "loc": "label current gold limit"};
+locObj.tabGoldHistory = {"txt": "Gold history tab", "loc":"Label in Gold history tab"};
+locObj.dayAcronym = {"txt": "D", "loc": "used for countdown in events"};
+locObj.hourAcronym = {"txt": "H", "loc": "used for countdown in events"};
+locObj.minuteAcronym = {"txt", "M", "loc": "used for countdown in events"};

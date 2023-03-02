@@ -44,9 +44,9 @@ include('localisation.js',function(){
 		document.getElementById("labelGarrison").innerText       = locObj.lblGarrison.txt;
 		document.getElementById("buttonFireGuard").innerText     = locObj.btnFire.txt;
 		document.getElementById("buttonHireGuard").innerText     = locObj.btnHire.txt;
-		document.getElementById("lblAboutGame").innerHTML        = locObj.tabHowToPlayText.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
-		document.getElementById("lblTabPop").innerText           = localeStrings[161];
-		document.getElementById("lblTabGold").innerText          = localeStrings[164];
+		document.getElementById("lblAboutGame").innerHTML        = locObj.tabHowToPlayText.txt.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
+		document.getElementById("lblTabPop").innerText           = locObj.tabPopHistory.txt;
+		document.getElementById("lblTabGold").innerText          = locObj.tabGoldHistory.txt;
 		document.getElementById("btnColorMode").innerText        = locObj.tabSettingsBtnChangeColorMode.txt;
 		document.getElementById("lblTabInn").innerText           = localeStrings[181];
 		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
