@@ -12,6 +12,7 @@
       "test": "npm run clean:reports && cypress run",
       "merge:reports": "mochawesome-merge cypress/reports/*.json > cypress-tests-report.json",
       "create:html:report": "marge --reportDir tests cypress-tests-report.json",
-      "generate:html:report": "npm run merge:reports && npm run create:html:report"
+      "generate:html:report": "npm run merge:reports && npm run create:html:report",
+      "validate": "npm exec html-validate ../../../index.html" 
     }
   }
