@@ -394,7 +394,7 @@ locObj.tutorial1_pop0 = {"txt":"Sir Commander, you need to build houses to keep 
 locObj.tutorial_defense = {"txt":"Sir Commander, scouts reported on armed people\nin the nearest woods. Consider building a wall", "loc":"tutorial msg when defense line is unlocked"};
 locObj.tutorial_treasury = {"txt":"Sir Commander, your gold supply is growing\nBuild a treasury to store the vast amount of gold", "loc":"tutorial msg when treasury is unlocked"};
 locObj.tutorial_treasury_guards = {"txt":"Sir Commander, now you could hire treasury guards in your treasury\nThey are decreasing the chance of stealing from the treasury", "loc":"tutorial msg when treasury is built"};
-locObj.tutorial_stash = {"txt":"Sir Commander, thieves stole gold from your treasury!\nBuild a stash, so you could hide some gold from stealing", "loc":"tutorial msg when first stealing has a place"};
+locObj.tutorial_stash = {"txt":"Sir Commander, pesky thieves stole gold from your treasury!\nBuild a stash, so you could hide some gold from stealing", "loc":"tutorial msg when first stealing has a place"};
 locObj.tutorial_stable = {"txt":"Sir Commander, now you could build Stables\nStables will allow you to hire sergeants and knights", "loc":"tutorial msg when reached 50 pop"};
 locObj.tutorial_archery = {"txt":"Sir Commander, now you could build Archery range\nArchery range will allow you to hire turkopols in stables", "loc":"tutorial msg when reached 70 pop"};
 locObj.tutorial_inn = {"txt":"Sir Commander, now you could build Inn\nThe Inn will allow you to hire a hero", "loc":"tutorial msg when reached 100 pop"};
@@ -592,13 +592,15 @@ locObj.tabHowToPlay = {"txt": "How To Play", "loc":"tabname How To Play, about a
 locObj.tabDiscord = {"txt": "Discord", "loc": "tabname Discord with a Discord widget"};
 locObj.btnPutOutTheFire = {"txt": "Put out the fire", "loc": "button to extinguish the fire"};
 locObj.btnExecutePerson = {"txt": "Execute somebody", "loc": "button to execute somebody"};
-locObj.festivalConfirm = {"txt": "Do you want to place a festival?\nIt would cost to you %arg1 gold!\n", "loc":"place festival confirmation dialogue"};
-locObj.festivalConfirmCooldown = {"txt":"Festival was placed not so long ago.\nThe effect from festival would be weaken.\n", "loc":"happens in case of Cooldown of the festivals"};
+locObj.festivalConfirm = {"txt": "Ancient holiday is forthcoming.\nTownsfolks are in a good mood and ready to celebrate\nand already prepared some wine.\nIf you wish, you may start a festival.\nIt will cost you %arg1 gold. You order milord?\n", "loc":"place festival confirmation dialogue"};
+locObj.festivalConfirmCooldown = {"txt":"Festival was placed not so long ago.\nThe effect from festival would be weaker.\n", "loc":"happens in case of Cooldown of the festivals"};
 locObj.eventItemCollected = {"txt": "The event item collected!", "loc": "happens when gathered an event item"};
 locObj.eventPledgeRecorded = {"txt": "Your pledge is recorded", "loc": "happens when the pledge was successfully recorded"};
 locObj.eventPledgeError = {"txt": "Your pledge couldn't be recorded. Are you logged in?", "loc": "happens when the pledge wasn't recorded"};
-locObj.festivalGain = {"txt": "Your gain because of the festival is %arg1", "loc":"happens if the festival was profitable for budget"};
+locObj.festivalGain = {"txt": "Festival brought some fun to your people and %arg1 gold to you", "loc":"happens if the festival was profitable for budget"};
 locObj.festivalLoss = {"txt": "Your loss because of the festival is %arg1", "loc":"happens if the festival was unprofitable for budget"};
+//todo ransack
+//Festival got out of control and some drunken brigands ransacked town. You lost %arg1 gold, milord
 locObj.errAlreadyHasHero = {"txt": "You already have a hero!", "loc":"happens when trying to hire a hero, when you have one hired"};
 locObj.autosaveTurnedOn = {"txt": "Autosave is turned on", "loc": "happens when autosave enabled"};
 locObj.autosaveTurnedOff = {"txt": "Autosave is turned off", "loc": "happens when autosave disabled"};

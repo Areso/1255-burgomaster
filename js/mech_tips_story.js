@@ -78,6 +78,7 @@ function gameChangePathCallback() {
 		}
 		if (game.buildLevelGallows>0) {
 			removeIndex = buildingsInTown.indexOf('gallows');
+			document.getElementById("buttonDeathPenalty").style.display = 'none';
 		}
 		//removeFromArrays(removeIndex);
 		game.buildLevelFountain = 0;
