@@ -1,5 +1,5 @@
 {
-  "extends": ["html-validate:standard"],
+  "extends": ["html-validate:recommended"],
   "rules": {
         "require-sri": "warn",
         "script-type": "warn",

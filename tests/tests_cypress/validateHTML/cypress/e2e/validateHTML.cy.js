@@ -11,6 +11,7 @@ describe("validate", () => {
 
     cy.htmlvalidate(
       {
+        extends: ["html-validate:recommended"],
         rules: {
           'require-sri': 'off',
           'script-type': 'off',
