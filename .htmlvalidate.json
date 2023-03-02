@@ -1,7 +1,7 @@
 {
   "extends": ["html-validate:standard"],
   "rules": {
-    "require-sri": "warn",
+        "require-sri": "warn",
         "script-type": "warn",
         "wcag/h30": "warn",
         "wcag/h37": "warn",
