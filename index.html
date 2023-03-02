@@ -23,11 +23,11 @@
 <body>
 <div id="htmlGame">
   <div class="menu-panel">
-    <button class="tab-link" onclick="openTab(event, 'Main')" id="tabCity">Main</button>
-    <button class="tab-link" onclick="openTab(event, 'tabBuilding')" id="btnOpenTabBuilding">Building</button>
-    <button class="tab-link" onclick="openTab(event, 'Settings')" id="tabSettings">Settings</button>
-    <button class="tab-link" onclick="openTab(event, 'About')" id="tabAbout">How To Play</button>
-    <button class="tab-link" onclick="openTab(event, 'Discord')" id="tabDiscord">Discord</button>
+    <button class="tab-link" onclick="openTab(event, 'Main')" id="tabCity" type="button">Main</button>
+    <button class="tab-link" onclick="openTab(event, 'tabBuilding')" id="btnOpenTabBuilding" type="button">Building</button>
+    <button class="tab-link" onclick="openTab(event, 'Settings')" id="tabSettings" type="button">Settings</button>
+    <button class="tab-link" onclick="openTab(event, 'About')" id="tabAbout" type="button">How To Play</button>
+    <button class="tab-link" onclick="openTab(event, 'Discord')" id="tabDiscord" type="button">Discord</button>
     <div id="lblEventCountdownValue" style="margin-left:20px;" onclick="game.getEventHelp()"></div>
     <a href="https://www.patreon.com/bePatron?u=7838459" target="_blank"><img src="resources/patreon.png" style="padding: 6px 0px"></a>
   </div>
@@ -64,10 +64,10 @@
     <div id="Main" class="tab">
         <canvas width="800" height="480" id="canvas" class="canvas" style="z-index:1"></canvas>
         <div id="events_graphics"></div>
-        <button id="saveGameButton" onclick="saveGame()" class="btn">Save game</button>
-        <button id="loadGameButton" onclick="loadGame()" class="btn">Load game</button>
-        <button id="buttonPutOutFire" onclick="game.putOutFire()" class="btn">Put out fire</button>
-        <button id="buttonDeathPenalty" onclick="game.deathPenalty()" class="btn">Execute smb</button>
+        <button id="saveGameButton" onclick="saveGame()" class="btn" type="button">Save game</button>
+        <button id="loadGameButton" onclick="loadGame()" class="btn" type="button">Load game</button>
+        <button id="buttonPutOutFire" onclick="game.putOutFire()" class="btn" type="button">Put out fire</button>
+        <button id="buttonDeathPenalty" onclick="game.deathPenalty()" class="btn" type="button">Execute smb</button>
       </div>
     <div id="Explore" class="tab">
         <canvas width="800" height="480" id="canvasMap" class="canvas" style="z-index:1"></canvas>
@@ -81,12 +81,12 @@
       </div>
     <div id="Settings" class="tab">
         <h3><div id="labelSettings">Settings</div></h3>
-        <button id="btnReg"   onclick="setReg()"                             >REG</button>
-        <button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" >LOGIN</button><br>
+        <button id="btnReg"   onclick="setReg()"                             type="button">REG</button>
+        <button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" type="button">LOGIN</button><br>
          Nickname: <input id="login"    type="text"     value=""><br>
         Password: <input id="password" type="password" value=""><br>
         <span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
-        <button id="btnRegLogin" onclick="remoteRegLogin()">Register</button><br><hr>
+        <button id="btnRegLogin" onclick="remoteRegLogin()" type="button">Register</button><br><hr>
         <select id="selectLng" size="1" onchange="reloadLang()">
           <option id="optionLngEn" selected value="en-US">English</option>
           <option id="optionLngRu"          value="ru-RU">Русский</option>
@@ -97,25 +97,25 @@
         <table>
           <tr>
             <td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
-            <td><button id="buttonExportGame" onclick="exportGame()" >Export Game</button></td>
-            <td><button id="buttonImportGame" onclick="importGame()" >Import Game</button></td>
+            <td><button id="buttonExportGame" onclick="exportGame()" type="button">Export Game</button></td>
+            <td><button id="buttonImportGame" onclick="importGame()" type="button">Import Game</button></td>
           </tr>
         </table>
-        <button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" >Save to Cloud</button>
-        <button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;">Load save from Cloud</button>
+        <button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" type="button">Save to Cloud</button>
+        <button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;" type="button">Load save from Cloud</button>
         <br>
-        <input id="savestring" name="savestring" value="" style="width:600px">
+        <input type="text" id="savestring" name="savestring" value="" style="width:600px">
         <br>
         <a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
         <br>
         <br>
-        <button id="btnColorMode" onclick="changeColorMode()">ChangeColorMode</button>
-        <button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')">Open sound settings</button>
+        <button id="btnColorMode" onclick="changeColorMode()" type="button">ChangeColorMode</button>
+        <button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')" type="button">Open sound settings</button>
         <br>
         <br>
         <input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
   Research			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
-        <input id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
+        <input type="text" id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
         <label id="lblStnLines">lines</label>
         <br>
         <br>
@@ -123,8 +123,8 @@
         <textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
       </div>
     <div id="tabModTools" class="tab">
-        <button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden">reload settings</button>
-        <button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden">reload banned</button>
+        <button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden" type="button">reload settings</button>
+        <button id="ban_btn"  onclick="reloadBanned()"   style="visibility: hidden" type="button">reload banned</button>
         <div id="moderation_area"   name="moderation"    class="interface" value="" style="width:800px; height:150px; top: 80px; left: 10px"></div>
       </div>
     <div id="tabSettingsSound" class="tab">
@@ -214,7 +214,7 @@
         </table>
         <br>
         <hr>
-        <button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')">Back</button>
+        <button id="btnToGeneralSettings" onclick="openTab(null, 'Settings')" type="button">Back</button>
       </div>
     <div id="tabGarrison" class="tab">
         <h3><div id="labelGarrison">Garrison</div></h3>
@@ -229,9 +229,9 @@
             </tr>
             <tr>
               <td>
-                <button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px">Fire</button>
+                <button id="buttonFireGuard" onclick="game.fireTreasuryGuard()" style="width:100px" type="button">Fire</button>
                 <span id="treasuryGuard">0</span>
-                <button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px">Hire</button>
+                <button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px" type="button">Hire</button>
               </td>
             </tr>
           </table>
@@ -279,7 +279,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="homes" class="btn is-tutorial" onclick="game.Build('Home')">Build Home</button>
+              <button id="homes" class="btn is-tutorial" onclick="game.Build('Home')" type="button">Build Home</button>
             </div>
           </div>
           <div id="bldDefence" class="building-card">
@@ -292,7 +292,7 @@
               onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="defence" class="btn is-tutorial" onclick="game.Build('Wall')">Build Walls</button>
+              <button id="defence" class="btn is-tutorial" onclick="game.Build('Wall')" type="button">Build Walls</button>
             </div>
           </div>
           <div id="bldTreasury" class="building-card">
@@ -305,7 +305,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="treasury" class="btn is-tutorial" onclick="game.Build('Treasury')">Build Treasury</button>
+              <button id="treasury" class="btn is-tutorial" onclick="game.Build('Treasury')" type="button">Build Treasury</button>
             </div>
           </div>
           <div id="bldGallows" class="building-card">
@@ -318,7 +318,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="buttonBldGallows" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')">Build Gallows</button>
+              <button id="buttonBldGallows" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Gallows')" type="button">Build Gallows</button>
             </div>
           </div>
           <div id="bldFountain" class="building-card">
@@ -331,7 +331,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Fountain')">Build Fountain</button>
+              <button id="buttonBldFountain" class="btn is-tutorial" onclick="game.buildGallowsOrFountain('Fountain')" type="button">Build Fountain</button>
             </div>
           </div>
           <div id="bldStash" class="building-card">
@@ -344,7 +344,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="buttonBldStash" class="btn is-tutorial" onclick="game.Build('Stash')">Build Stash</button>
+              <button id="buttonBldStash" class="btn is-tutorial" onclick="game.Build('Stash')" type="button">Build Stash</button>
             </div>
           </div>
           <div id="bldStable" class="building-card">
@@ -357,7 +357,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="buttonBldStable" class="btn is-tutorial" onclick="game.Build('Stable')">Build Stable</button>
+              <button id="buttonBldStable" class="btn is-tutorial" onclick="game.Build('Stable')" type="button">Build Stable</button>
             </div>
           </div>
           <div id="bldArchery" class="building-card">
@@ -370,7 +370,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="buttonBldArchery" class="btn is-tutorial" onclick="game.Build('Archery')">Build Archery range</button>
+              <button id="buttonBldArchery" class="btn is-tutorial" onclick="game.Build('Archery')" type="button">Build Archery range</button>
             </div>
           </div>
           <div id="bldInn" class="building-card">
@@ -383,7 +383,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="buttonBldInn" class="btn is-tutorial" onclick="game.Build('Inn')">Build Inn</button>
+              <button id="buttonBldInn" class="btn is-tutorial" onclick="game.Build('Inn')" type="button">Build Inn</button>
             </div>
           </div>
           <!--UNIVERSITY-->
@@ -397,7 +397,7 @@
                onclick="game.help(this)">
             </div>
             <div class="building-card__action">
-              <button id="buttonBuildUniversity" class="btn is-tutorial" onclick="game.Build('University')">Build University</button>
+              <button id="buttonBuildUniversity" class="btn is-tutorial" onclick="game.Build('University')" type="button">Build University</button>
             </div>
           </div>
         </div>
@@ -424,10 +424,10 @@
           </tbody>
         </table>
         <br>
-        <button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px">To the beginning</button>
-        <button id="btnPopPrev"     onclick="popPrev()" style="width:160px">Earlier</button>
-        <button id="btnPopNext"     onclick="popNext()" style="width:160px">Later</button>
-        <button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px">To the end</button>
+        <button id="btnPopAtStart"  onclick="popAtStart()" style="width:160px" type="button">To the beginning</button>
+        <button id="btnPopPrev"     onclick="popPrev()" style="width:160px" type="button">Earlier</button>
+        <button id="btnPopNext"     onclick="popNext()" style="width:160px" type="button">Later</button>
+        <button id="btnPopAtEnd"    onclick="popAtEnd()" style="width:160px" type="button">To the end</button>
         <br>
         <br>
         <div id="lblCurrentPopLimit"></div>
@@ -444,10 +444,10 @@
           </tbody>
         </table>
         <br>
-        <button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px">To the beginning</button>
-        <button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px">Earlier</button>
-        <button id="btnGoldNext"     onclick="goldNext()" style="width:160px">Later</button>
-        <button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px">To the end</button>
+        <button id="btnGoldAtStart"  onclick="goldAtStart()" style="width:160px" type="button">To the beginning</button>
+        <button id="btnGoldPrev"     onclick="goldPrev()" style="width:160px" type="button">Earlier</button>
+        <button id="btnGoldNext"     onclick="goldNext()" style="width:160px" type="button">Later</button>
+        <button id="btnGoldAtEnd"    onclick="goldAtEnd()" style="width:160px" type="button">To the end</button>
         <br>
         <br>
         <div id="lblCurrentGoldLimit"></div>
@@ -480,7 +480,7 @@
               </td>
             </tr>
           </table>
-          <button id="btnHireHero" class="btn" onclick="game.heroHire()" style="width:160px; margin-left: 30px">Hire hero %arg1 level</button>
+          <button id="btnHireHero" class="btn" onclick="game.heroHire()" style="width:160px; margin-left: 30px" type="button">Hire hero %arg1 level</button>
         </div>
         <div id="heroUpkeep">
           <label id="lblUpkeepSrc">The primary source of payments to the hero's troops is </label>
@@ -490,25 +490,25 @@
           </select>
         </div>
         <div id="heroStats"></div>
-        <button id="btnDismissHero" class="btn"   onclick="game.heroDismiss()" style="width:160px; visibility:hidden">Dismiss hero</button>
-        <button id="btnAutocampaign"  class="btn"   onclick="game.autocampaign()" style="width:160px; visibility: hidden">Launch autocampaign!</button>
-        <button id="btnAutocampaignJournal" class="btn"   onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden">Open journal</button>
-        <button id="btnTowngate" class="btn" onclick="game.towngate()" style="visibility: hidden">Teleport to the town!</button>
+        <button id="btnDismissHero" class="btn"   onclick="game.heroDismiss()" style="width:160px; visibility:hidden" type="button">Dismiss hero</button>
+        <button id="btnAutocampaign"  class="btn"   onclick="game.autocampaign()" style="width:160px; visibility: hidden" type="button">Launch autocampaign!</button>
+        <button id="btnAutocampaignJournal" class="btn"   onclick="openTabAutocampaignJournal()" style="width:160px; visibility: hidden" type="button">Open journal</button>
+        <button id="btnTowngate" class="btn" onclick="game.towngate()" style="visibility: hidden" type="button">Teleport to the town!</button>
         <br>
         <br>
-        <button id="btnLeaveCity" class="btn"   onclick="game.cityLeave()" style="width:160px; visibility: hidden">Go to exploring!</button>
-        <button id="btnGenerateMap" class="btn"  onclick="game.generateMap()" style="width:160px">Regenerate map</button>
+        <button id="btnLeaveCity" class="btn"   onclick="game.cityLeave()" style="width:160px; visibility: hidden" type="button">Go to exploring!</button>
+        <button id="btnGenerateMap" class="btn"  onclick="game.generateMap()" style="width:160px" type="button">Regenerate map</button>
 
-        <button id="btnAutobattlesList" class="btn" onclick="openTabAutocampaignBattle()" style="width:160px">Autocampaign battles</button>
+        <button id="btnAutobattlesList" class="btn" onclick="openTabAutocampaignBattle()" style="width:160px" type="button">Autocampaign battles</button>
 
       </div>
     <div id="tabAutocampaignJournal" class="tab">
         <div id="lblAutocampaignJournal"></div>
-        <button id="btnToInn" class="btn"  style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
+        <button id="btnToInn" class="btn"  style="width:160px;" onclick="openTab(null, 'tabInn')" type="button">Back</button>
       </div>
     <div id="tabAutocampaignBattle" class="tab">
         <div id="lblAutocampaignBattle"></div>
-        <button id="btnToInn1" class="btn" style="width:160px;" onclick="openTab(null, 'tabInn')">Back</button>
+        <button id="btnToInn1" class="btn" style="width:160px;" onclick="openTab(null, 'tabInn')" type="button">Back</button>
       </div>
     <div id="tabTroopsHiring" class="tab">
         <div class="grid-container" style="width: 800px; height: 480px">
@@ -587,14 +587,14 @@
           <div id="lblGoodsForBuying">This blackmarket could buy your goods!</div>
           <div id="heroMarketList"></div>
         </div>
-        <button id="btnLeaveBlackmarket" onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;">Go to exploring!</button>
+        <button id="btnLeaveBlackmarket" onclick="openTab(null, 'Explore')" style="width:160px; margin-left: 42px; margin-top: 10px;" type="button">Go to exploring!</button>
       </div>
     <div id="tabEvent" class="tab">
         <lbl id="lblEventDetails">
 
         </lbl>
         <br>
-        <button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()">Open Leaderboard</button>
+        <button id="btnToEventLeaderboard" class="interface" style="width:160px; top: 490px; left:50px;" onclick="game.openLeaderboard()" type="button">Open Leaderboard</button>
       </div>
     <div id="feedbackForm" class="tab">
 
@@ -603,7 +603,7 @@
         <div id="lblEventLBDetails">
 
         </div>
-        <button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')">Back</button>
+        <button id="btnToEvent" class="interface" style="width:160px; top: 490px; left:50px;" onclick="openTab(null, 'tabEvent')" type="button">Back</button>
       </div>
     <div id="tabEventReward" class="tab">
         <lbl id="lblEventReward">
@@ -611,7 +611,7 @@
         </lbl>
       </div>
     <div id="Discord" class="tab">
-        <iframe src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="480" allowtransparency="true" frameborder="0"></iframe>
+        <iframe title="Discord" src="https://discordapp.com/widget?id=564554640755130409&theme=light" width="800" height="480" allowtransparency="true" frameborder="0"></iframe>
       </div>
     <div id="audio" class="tab">
         <audio id="fireAudio0">
@@ -683,9 +683,9 @@
   </div>
   <div class="info-panel">
       <div class="info-panel__actions">
-        <button id="log_btn"  class="btn" onclick="openLog()">log</button>
-        <button id="chat_btn" class="btn" onclick="openChat()">chat</button>
-        <button id="mod_btn"  class="btn" onclick="openTab(null, 'tabModTools')" style="visibility: hidden">mod</button>
+        <button id="log_btn"  class="btn" onclick="openLog()" type="button">log</button>
+        <button id="chat_btn" class="btn" onclick="openChat()" type="button">chat</button>
+        <button id="mod_btn"  class="btn" onclick="openTab(null, 'tabModTools')" style="visibility: hidden" type="button">mod</button>
         <div id="lbl_online"><span id="spnOnline">Online: </span><span id="spnOnlineValue">n/d</span></div>
       </div>
       <div id="log"  name="log"		class="info-panel__history"></div>
@@ -693,9 +693,9 @@
       <div id="chatForm" class="info-panel__form">
         <label id="inp_nickname"></label>
         <div class="info-panel__form-msg">
-          <input id="msg_out"/>
+          <input type="text" id="msg_out"/>
         </div>
-        <button id="btnSend" onclick="sendOnClick2()" class="btn">Send</button>
+        <button id="btnSend" onclick="sendOnClick2()" class="btn" type="button">Send</button>
       </div>
     </div>
 </div>
