@@ -712,4 +712,4 @@ locObj.tabGoldHistoryCurrentLimit = {"txt": "Aktuelle Goldgrenze ist %arg1", "lo
 locObj.tabGoldHistory = {"txt": "Goldhistorie-Tab", "loc":"Label in Gold history tab"};
 locObj.dayAcronym = {"txt": "T", "loc": "used for countdown in events"};
 locObj.hourAcronym = {"txt": "S", "loc": "used for countdown in events"};
-locObj.minuteAcronym = {"txt", "M", "loc": "used for countdown in events"};
+locObj.minuteAcronym = {"txt": "M", "loc": "used for countdown in events"};

@@ -715,4 +715,4 @@ locObj.tabGoldHistoryCurrentLimit = {"txt": "Текущий лимит золо�
 locObj.tabGoldHistory = {"txt": "Данные о казне по периодам", "loc":"Label in Gold history tab"};
 locObj.dayAcronym = {"txt": "Д", "loc": "used for countdown in events"};
 locObj.hourAcronym = {"txt": "Ч", "loc": "used for countdown in events"};
-locObj.minuteAcronym = {"txt", "М", "loc": "used for countdown in events"};
+locObj.minuteAcronym = {"txt": "М", "loc": "used for countdown in events"};
