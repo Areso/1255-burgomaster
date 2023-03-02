@@ -138,17 +138,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//135
-localeStrings.push("tour");
-localeStrings.push("tour de pierre");
-localeStrings.push("maison");
-localeStrings.push("maisons");
-localeStrings.push("auberge");//140
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("trésorerie");
-localeStrings.push("or");
-localeStrings.push("population");//145
-localeStrings.push("camp de tir à l'arc");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//140
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//145
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -159,10 +159,10 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//155
 localeStrings.push("placeholder");
-localeStrings.push("Au début");
-localeStrings.push("Précédent");
-localeStrings.push("Prochain");
-localeStrings.push("Au courant");//160
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//160
 localeStrings.push("Onglet Historique de la population");
 localeStrings.push("La population actuelle est limitée à %arg1");
 localeStrings.push("La limite d'or actuelle est de %arg1");
@@ -692,3 +692,16 @@ locObj.cityScreenWall = {"txt": "mur", "loc": "cityscreen"};
 locObj.cityScreenStoneWall = {"txt": "mur de pierre", "loc": "cityscreen"};
 locObj.cityScreenTower = {"txt": "tour", "loc": "cityscreen"};
 locObj.cityScreenStoneTower = {"txt": "tour de pierre", "loc": "cityscreen"};
+locObj.cityScreenHouse = {"txt": "maison", "loc": "cityscreen"};
+locObj.cityScreenHouses = {"txt": "maisons", "loc": "cityscreen"};
+locObj.cityScreenInn = {"txt": "auberge", "loc": "cityscreen"};
+locObj.cityScreenGallows = {"txt": "gallows", "loc": "cityscreen"};
+locObj.cityScreenFountain = {"txt": "fountain", "loc": "cityscreen"};
+locObj.cityScreenTreasury = {"txt": "trésorerie", "loc": "cityscreen"};
+locObj.resourceGold = {"txt": "or", "loc": "resource panel"};
+locObj.resourcePop = {"txt": "camp de tir à l'arc", "loc": "resource panel"};
+locObj.cityScreenArcheryRange = {"txt": "archery range", "loc":"cityscreen"};
+locObj.paginationStart = {"txt": "Au début", "loc": "stat pages, to the start button"};
+locObj.paginationPrevious = {"txt": "Précédent", "loc": "stat pages, previous page"};
+locObj.paginationNext = {"txt": "Prochain", "loc": "stat pages, next page btn"};
+locObj.paginationCurrent = {"txt": "Au courant", "loc": "stat pages, current btn"};

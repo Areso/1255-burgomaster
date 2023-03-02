@@ -2648,7 +2648,7 @@ function gameOK() {
 			}
 			if (objectToBuild==="Gallows") {
 				costOfBuilding = config.costGallows;
-				question = locObj.GallowsFountainChoiceConfirm.txt.replace("%arg1",locObj.GallowsChoiceConfirm.txt).replace(locObj.FountainBlocked.txt);
+				question = locObj.GallowsFountainChoiceConfirm.txt.replace("%arg1",locObj.GallowsChoiceConfirm.txt).replace("%arg2",locObj.FountainBlocked.txt);
 			}
 			if (game.gold > costOfBuilding) {
 				if (game.buildLevelFountain === 0 && game.buildLevelGallows === 0) {
@@ -3543,7 +3543,6 @@ function gameOK() {
 			alertMsg = locObj.cityScreenStoneTower.txt;
 		}
 		if (buildingName==='inn') {
-			//alertMsg = localeStrings[140];
 			showAlert = false;
 			if (game.checkAudio('sfx', 'all')===true) {
 				document.getElementById('innAudio0').play();
