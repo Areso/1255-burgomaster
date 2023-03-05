@@ -168,37 +168,37 @@ localeStrings.push("placeholder");
 localeStrings.push("placehodler");
 localeStrings.push("placeholder");
 localeStrings.push(["plc","plc","plc"]);//165
-localeStrings.push("This is the time amount before an event will start");
-localeStrings.push("This is the time amount before the event will end");
-localeStrings.push("The sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped.");
-localeStrings.push("Day ");
-localeStrings.push("Your hero needs to be in a autocampaign to do that!");//170
-localeStrings.push("Do you want to withdraw your hero?");
-localeStrings.push("the hero and all troops met their death in the glory combat");
-localeStrings.push("the hero has met great number of enemies and crash them. The battle brings to the hero money and experience!");
-localeStrings.push("the hero has met small number of enemies and crash them. The battle brings to the hero money and experience!");
-localeStrings.push("the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)");//175
-localeStrings.push("looted trophies from the campaign: ");
-localeStrings.push("Do you want to dismiss hero with all troops?");
-localeStrings.push("Nope. I will move all units from the hero first");
-localeStrings.push("Do you want to generate a new map? It would cost %arg1 gold to you!");
-localeStrings.push("You couldn't do it while your hero on the map!");//180
-localeStrings.push("Welcome to Inn!");
-localeStrings.push("Hire hero<br/>lvl %arg1<br/>%arg2 gold");
-localeStrings.push("luck");
-localeStrings.push("superstition");
-localeStrings.push("morale");//185
-localeStrings.push("the hero found some money: ");
-localeStrings.push("Intelligence");
 localeStrings.push("placeholder");
-localeStrings.push("Level");
-localeStrings.push("Attack");//190
-localeStrings.push("Defense");
-localeStrings.push("Manapoints");
-localeStrings.push("Spellpower");
-localeStrings.push("Experience");
-localeStrings.push("Current experience");//195
-localeStrings.push("Experience required for next level");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//170
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//175
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//180
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//190
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//195
+localeStrings.push("placeholder");
 localeStrings.push("Alignment");
 localeStrings.push("Lawful");
 localeStrings.push("Neutral");
@@ -710,3 +710,33 @@ locObj.tabGoldHistory = {"txt": "Gold history tab", "loc":"Label in Gold history
 locObj.dayAcronym = {"txt": "D", "loc": "used for countdown in events"};
 locObj.hourAcronym = {"txt": "H", "loc": "used for countdown in events"};
 locObj.minuteAcronym = {"txt": "M", "loc": "used for countdown in events"};
+locObj.countDownBeforeEventStarts = {"txt": "This is the time amount before an event will start", "loc": "resource panel?"};
+locObj.countDownBeforeEventEnds = {"txt": "This is the time amount before the event will end", "loc": "resource panel?"};
+locObj.mapRegenerate = {"txt": "The sky above the city darkened to black, lightning bolts made such a sight, and suddenly all stopped", "loc": "after pressed generate new map button"};
+locObj.day = {"txt": "Día", "loc": "occurs in autobattles logs"};
+locObj.autocampaignWithdrawErr = {"txt": "Your hero needs to be in a autocampaign to do that!", "loc":"happens when failing to withdraw the hero from autocampaign"};
+locObj.autocampaignWithdrawDialogConfirm = {"txt": "Do you want to withdraw your hero?", "loc": "happens when you pressing withdraw button"};
+locObj.heroLost = {"txt":"the hero and all troops met their death in the glory combat", "loc": "happens when the hero is lost"};
+locObj.autocampaignHeroCrushedVastEnemyArmy = {"txt":"the hero has met great number of enemies and crash them. The battle brings to the hero money and experience!", "loc":"autocampaign journal with aggressive stance"};
+locObj.autocampaignHeroCrushedSmallEnemyArmy = {"txt": "the hero has met small number of enemies and crash them. The battle brings to the hero a bit of money and experience", "loc":"autocampaign journal with cautious stance"};
+locObj.autocampaignNoEvents = {"txt": "the day was very boring. Only one pagan was killed (a hunter took a pagan as a prey. so sad!)", "loc":"autocampaign log no events"};
+locObj.autocampaignLootList = {"txt": "looted trophies from the campaign: ", "loc":"autocampaign"};
+locObj.dialogDismissHeroConfirm = {"txt": "Do you want to dismiss hero with all troops?", "loc":"when dismiss hero button pressed"};
+locObj.dialogDismissHeroNoOption = {"txt": "Nope. I will move all units from the hero first", "loc":"when you declined"};
+locObj.dialogMapRegenerate = {"txt": "Do you want to generate a new map? It would cost %arg1 gold to you!", "loc": "map regenerate confirmation dialogue"};
+locObj.errMapRegenerateHeroOnMap = {"txt": "You couldn't do it while your hero on the map!", "loc": "happens if you try to make new map while your hero on an existing one"};
+locObj.tabInnWelcome = {"txt": "A sly innkeeper winks at you: Your gold, my food and stories, milord. Welcome to inn!", "loc":"label in Inn tab"};
+locObj.tabInnBtnHireHero = {"txt": "Hire hero<br/>lvl %arg1<br/>%arg2 gold", "loc": "tab Inn, button Hire Hero"};
+locObj.heroStatLuck = {"txt": "luck", "loc": "hero stat"};
+locObj.heroStatSuperstition = {"txt": "superstition", "loc": "hero stat"};
+locObj.heroStatMorale = {"txt": "morale", "loc": "hero stat"};
+locObj.heroFoundMoney = {"txt": "the hero found some money: %arg1", "loc": "when a chest found on Adventure Map"};
+locObj.heroStatInt = {"txt": "Intelligence", "loc": "hero stat"};
+locObj.heroStatLevel = {"txt": "Level", "loc": "hero stat"};
+locObj.heroStatAtk = {"txt": "Attack", "loc": "hero stat"};
+locObj.heroStatDef = {"txt": "Defense", "loc": "hero stat"};
+locObj.heroStatMP =  {"txt": "Manapoints", "loc": "hero stat"};
+locObj.heroStatSpellpower = {"txt": "Spellpower", "loc": "hero stat"};
+locObj.heroExp = {"txt": "Experience", "loc": "hero stat"};
+locObj.heroCurrentExp = {"txt": "Current experience", "loc": "hero stat"};
+locObj.heroNextLvlExp = {"txt": "Experience required for next level", "loc": "hero stat"};

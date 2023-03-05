@@ -48,7 +48,7 @@ include('localisation.js',function(){
 		document.getElementById("lblTabPop").innerText           = locObj.tabPopHistory.txt;
 		document.getElementById("lblTabGold").innerText          = locObj.tabGoldHistory.txt;
 		document.getElementById("btnColorMode").innerText        = locObj.tabSettingsBtnChangeColorMode.txt;
-		document.getElementById("lblTabInn").innerText           = localeStrings[181];
+		document.getElementById("lblTabInn").innerText           = locObj.tabInnWelcome.txt;
 		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
 		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
 		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
@@ -258,7 +258,7 @@ function updateButtonCaptions(){
 		}
 		document.getElementById("buttonDeathPenalty").style.display = 'block';
 	}
-	document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
+	document.getElementById("btnHireHero").innerHTML         = locObj.tabInnBtnHireHero.txt.replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 }
 function dynamicCellsSetStyle() {
 	if (game.nightMode === true){

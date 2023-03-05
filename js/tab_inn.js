@@ -84,15 +84,15 @@ function updateHeroStatusInn() {
 		if (heroStatusNeedsUpdate === true) {
 			game.myhero.status = 0;
 		}
-		HTMLofHeroStats    += localeStrings[189]+": "+game.myhero.level+"<br>";
-		HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
-		HTMLofHeroStats    += localeStrings[195]+": "+game.myhero.exp+" | ";
-		HTMLofHeroStats    += localeStrings[196]+": "+game.heroNextLvlExpLimit()+"<br>";
-		HTMLofHeroStats    += localeStrings[190]+": "+game.myhero.atk+" | ";
-		HTMLofHeroStats    += localeStrings[191]+": "+game.myhero.def+"<br>";
-		HTMLofHeroStats    += localeStrings[187]+": "+game.myhero.int+"<br>";
-		HTMLofHeroStats    += localeStrings[192]+": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
-		HTMLofHeroStats    += localeStrings[193]+": "+game.myhero.mpow+"<br>";
+		HTMLofHeroStats    += locObj.heroStatLevel.txt+": "+game.myhero.level+"<br>";
+		//HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
+		HTMLofHeroStats    += locObj.heroCurrentExp.txt     +": "+game.myhero.exp+" | ";
+		HTMLofHeroStats    += locObj.heroNextLvlExp.txt     +": "+game.heroNextLvlExpLimit()+"<br>";
+		HTMLofHeroStats    += locObj.heroStatAtk.txt        +": "+game.myhero.atk+" | ";
+		HTMLofHeroStats    += locObj.heroStatDef.txt        +": "+game.myhero.def+"<br>";
+		HTMLofHeroStats    += locObj.heroStatInt.txt        +": "+game.myhero.int+"<br>";
+		HTMLofHeroStats    += locObj.heroStatMP.txt         +": "+game.myhero.cmana+"/"+game.myhero.mana+" | ";
+		HTMLofHeroStats    += locObj.heroStatSpellpower.txt +": "+game.myhero.mpow+"<br>";
 		HTMLofHeroStats    += heroActivity+"<br>";
 		if (game.myhero.status===1) {
 			HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";

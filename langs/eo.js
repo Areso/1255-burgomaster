@@ -168,37 +168,37 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push(["plch","plch","plch"]);//165
-localeStrings.push("This is the time amount before an event will start");
-localeStrings.push("This is the time amount before the event will end");
-localeStrings.push("La ĉielo super la urbo malheliĝis al nigraj, fulmotondroj faris tian vidon, kaj subite ĉiuj haltis.");
-localeStrings.push("Tago ");
-localeStrings.push("Via heroo devas esti en aŭtokampanjo por fari tion!");//170
-localeStrings.push("Ĉu vi volas retiri vian heroon?");
-localeStrings.push("la heroo kaj ĉiuj trupoj renkontis sian morton en la glor-batalo");
-localeStrings.push("la heroo renkontis grandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
-localeStrings.push("la heroo renkontis malgrandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!");
-localeStrings.push("la tago estis tre enuiga. Nur unu pagano estis mortigita (ĉasisto prenis paganon kiel predon. Do malĝoja!)");//175
-localeStrings.push("Forigitaj trofeoj de la kampanjo: ");
-localeStrings.push("Ĉu vi volas eksigi heroon kun ĉiuj trupoj?");
-localeStrings.push("Ne. Unue, mi translokigos ĉiujn ekzemplerojn de la heroo");
-localeStrings.push("Ĉu vi volas generi novan mapon? Kostus al vi %arg1 mono!");
-localeStrings.push("Vi ne povis fari ĝin dum via heroo sur la mapo!");//180
-localeStrings.push("Bonvenon al Gastejo");
-localeStrings.push("dungi heroon<br/>nivelo %arg1<br/>%arg2 oro");
-localeStrings.push("bonŝanco");
-localeStrings.push("superstiĉo");
-localeStrings.push("moralo"); // 185
-localeStrings.push("la heroo trovis iom da mono: ");
-localeStrings.push("Inteligenteco");
 localeStrings.push("placeholder");
-localeStrings.push("Nivelo");
-localeStrings.push("Atako");//190
-localeStrings.push("Defendo");
-localeStrings.push("Magiaj punktoj");
-localeStrings.push("Magia potenco");
-localeStrings.push("Sperto");
-localeStrings.push("Nuna sperto");//195
-localeStrings.push("Sperto bezonata por sekva nivelo");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//170
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//175
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//180
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder"); // 185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//190
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//195
+localeStrings.push("placeholder");
 localeStrings.push("Aliĝo");
 localeStrings.push("Laŭleĝa");
 localeStrings.push("Neŭtrala");
@@ -712,3 +712,33 @@ locObj.tabGoldHistory = {"txt": "langeto pri mono historio", "loc":"Label in Gol
 locObj.dayAcronym = {"txt": "T", "loc": "used for countdown in events"};
 locObj.hourAcronym = {"txt": "H", "loc": "used for countdown in events"};
 locObj.minuteAcronym = {"txt": "M", "loc": "used for countdown in events"};
+locObj.countDownBeforeEventStarts = {"txt": "This is the time amount before an event will start", "loc": "resource panel?"};
+locObj.countDownBeforeEventEnds = {"txt": "This is the time amount before the event will end", "loc": "resource panel?"};
+locObj.mapRegenerate = {"txt": "La ĉielo super la urbo malheliĝis al nigraj, fulmotondroj faris tian vidon, kaj subite ĉiuj haltis", "loc": "after pressed generate new map button"};
+locObj.day = {"txt": "Tago", "loc": "occurs in autobattles logs"};
+locObj.autocampaignWithdrawErr = {"txt": "Via heroo devas esti en aŭtokampanjo por fari tion!", "loc":"happens when failing to withdraw the hero from autocampaign"};
+locObj.autocampaignWithdrawDialogConfirm = {"txt": "Ĉu vi volas retiri vian heroon?", "loc": "happens when you pressing withdraw button"};
+locObj.heroLost = {"txt":"la heroo kaj ĉiuj trupoj renkontis sian morton en la glor-batalo", "loc": "happens when the hero is lost"};
+locObj.autocampaignHeroCrushedVastEnemyArmy = {"txt":"la heroo renkontis grandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!", "loc":"autocampaign journal with aggressive stance"};
+locObj.autocampaignHeroCrushedSmallEnemyArmy = {"txt": "la heroo renkontis malgrandan nombron da malamikoj kaj frakasis ilin. La batalo alportas al la heroo monon kaj sperton!", "loc":"autocampaign journal with cautious stance"};
+locObj.autocampaignNoEvents = {"txt": "la tago estis tre enuiga. Nur unu pagano estis mortigita (ĉasisto prenis paganon kiel predon. Do malĝoja!)", "loc":"autocampaign log no events"};
+locObj.autocampaignLootList = {"txt": "Forigitaj trofeoj de la kampanjo: ", "loc":"autocampaign"};
+locObj.dialogDismissHeroConfirm = {"txt": "Ĉu vi volas eksigi heroon kun ĉiuj trupoj?", "loc":"when dismiss hero button pressed"};
+locObj.dialogDismissHeroNoOption = {"txt": "Ne. Unue, mi translokigos ĉiujn ekzemplerojn de la heroo", "loc":"when you declined"};
+locObj.dialogMapRegenerate = {"txt": "Ĉu vi volas generi novan mapon? Kostus al vi %arg1 mono!", "loc": "map regenerate confirmation dialogue"};
+locObj.errMapRegenerateHeroOnMap = {"txt": "Vi ne povis fari ĝin dum via heroo sur la mapo!", "loc": "happens if you try to make new map while your hero on an existing one"};
+locObj.tabInnWelcome = {"txt": "Bonvenon al Gastejo", "loc":"label in Inn tab"};
+locObj.tabInnBtnHireHero = {"txt": "dungi heroon<br/>nivelo %arg1<br/>%arg2 oro", "loc": "tab Inn, button Hire Hero"};
+locObj.heroStatLuck = {"txt": "bonŝanco", "loc": "hero stat"};
+locObj.heroStatSuperstition = {"txt": "superstiĉo", "loc": "hero stat"};
+locObj.heroStatMorale = {"txt": "moralo", "loc": "hero stat"};
+locObj.heroFoundMoney = {"txt": "la heroo trovis iom da mono: %arg1", "loc": "when a chest found on Adventure Map"};
+locObj.heroStatInt = {"txt": "Inteligenteco", "loc": "hero stat"};
+locObj.heroStatLevel = {"txt": "Nivelo", "loc": "hero stat"};
+locObj.heroStatAtk = {"txt": "Atako", "loc": "hero stat"};
+locObj.heroStatDef = {"txt": "Defendo", "loc": "hero stat"};
+locObj.heroStatMP =  {"txt": "Magiaj punktoj", "loc": "hero stat"};
+locObj.heroStatSpellpower = {"txt": "Magia potenco", "loc": "hero stat"};
+locObj.heroExp = {"txt": "Sperto", "loc": "hero stat"};
+locObj.heroCurrentExp = {"txt": "Nuna sperto", "loc": "hero stat"};
+locObj.heroNextLvlExp = {"txt": "Sperto bezonata por sekva nivelo", "loc": "hero stat"};

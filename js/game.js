@@ -206,20 +206,7 @@ function gameOK() {
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(dataToParse);
 		},
-		sendSaveToTheCloud : function (lastHope_str) {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState === 4 && this.status === 200) {
-					msg = "savegame sent to the cloud successfully";
-					postEventLog(msg);
-				}
-			};
-			dataToParse = game.UID;
-			xhttp.open("POST", "http://51.68.172.115:9090/lasthope", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(lastHope_str);
-		},
-		getEventHelp : function () {
+        getEventHelp : function () {
 			if (eventHelpMsg!==null) {
 				if (flag_event_started===0){
 					disabledElements.push("saveGameButton");
@@ -419,15 +406,15 @@ function gameOK() {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;
 			if (game.heroExists()===true) {
 				if (game.myhero.status !== 2) {
-					var question      = localeStrings[179];
+					let question      = locObj.dialogMapRegenerate.txt;
 					question          = question.replace("%arg1", genMapPriceFinal);
 					showModal(1, '', game.generateMapCallback, question, locObj.yes.txt, locObj.no.txt)
 				} else {
-					alertMsg = localeStrings[180];
+					alertMsg = locObj.errMapRegenerateHeroOnMap.txt;
 					showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 				}
 			} else {
-				var question      = localeStrings[179];
+				let question      = locObj.dialogMapRegenerate.txt;
 				question          = question.replace("%arg1", genMapPriceFinal);
 				showModal(1, '', game.generateMapCallback, question, locObj.yes.txt, locObj.no.txt)
 			}
@@ -441,7 +428,7 @@ function gameOK() {
 				if (answer === 2) {
 					if (game.gold >= genMapPriceFinal) {
 						genMap(genMapPriceFinal);
-						postEventLog(localeStrings[168]);
+						postEventLog(locObj.mapRegenerate.txt);
 						updateUI();
 					} else {
 						alertMsg = locObj.notEnoughGold.txt;
@@ -514,7 +501,7 @@ function gameOK() {
 		},
 		checkColissionWithRemovableObstacles : function () {
 			if (game.myMapRemObjects[game.heroX][game.heroY]===1) {
-				postEventLog(localeStrings[186]+config.chestMoney);
+				postEventLog(locObj.heroFoundMoney.txt.replace("%arg1", config.chestMoney));
 				game.myhero.gold += config.chestMoney;
 				game.checkTreasuryCapacity();
 				updateUI();
@@ -702,9 +689,9 @@ function gameOK() {
 			if (game.attacker === 1 && !game.isAutoBattle) {
 				if (campaignType === "AutoCampaign") {
 					if (game.myhero.stance === 1) {
-						postJournalLog(localeStrings[174]);
+						postJournalLog(locObj.autocampaignHeroCrushedSmallEnemyArmy.txt);
 					} else {
-						postJournalLog(localeStrings[173]);
+						postJournalLog(locObj.autocampaignHeroCrushedVastEnemyArmy.txt);
 					}
 				}
 				console.log("The player is the winner");
@@ -719,7 +706,7 @@ function gameOK() {
 			} else {
 				if (campaignType === "AutoCampaign") {
 					if (game.myhero.stance === 0) {
-						postJournalLog(localeStrings[172]);
+						postJournalLog(locObj.heroLost.txt);
 						game.heroDie();
 						game.myheroArmy = {armyID: 1, units: {}};
 					} else {
@@ -793,8 +780,8 @@ function gameOK() {
 		heroDismiss: function () {
 			if (game.heroExists()===true){
 				if (game.isHeroHaveTroops()) {
-					var question      = localeStrings[177];
-					showModal(1, '', game.heroDismissCallback, question, locObj.yes.txt,  localeStrings[178]);
+					let question      = locObj.dialogDismissHeroConfirm.txt;
+					showModal(1, '', game.heroDismissCallback, question, locObj.yes.txt,  locObj.dialogDismissHeroNoOption.txt);
 				} else {
 					game.heroDie();
 				}
@@ -1015,7 +1002,7 @@ function gameOK() {
 						}
 
 					} else {
-						postJournalLog(localeStrings[175]);
+						postJournalLog(locObj.autocampaignNoEvents.txt);
 					}
 
 					game.heroLvlUp("AutoCampaign");
@@ -1023,6 +1010,7 @@ function gameOK() {
 				}
 
 				if (game.myhero.aCampaignBackward === 1) {
+				    // TODO make an ambush!!!
 					if (game.myhero.aCampaignLong - 1 > 0){
 						game.myhero.aCampaignLong     -= 1;
 						if (game.isDefeated) {
@@ -1031,7 +1019,7 @@ function gameOK() {
 							return;
 						}
 						game.myhero.aCampaignTotalLong += 1;
-						postJournalLog(localeStrings[175]);
+						postJournalLog(locObj.autocampaignNoEvents.txt);
 					} else {
 						document.getElementById("btnAutocampaign").disabled = false;
 						enemyRandomizer.clearEntriesList();
@@ -1040,7 +1028,7 @@ function gameOK() {
 						game.myhero.aCampaignTotalLong = 0;
 						game.myhero.aCampaignForward   = 0;
 						game.myhero.aCampaignBackward  = 0;
-						postEventLog(localeStrings[176] + game.myhero.gold);
+						postEventLog(locObj.autocampaignLootList.txt + game.myhero.gold);
 						var gold_diff = game.addMoneyToTreasury(game.myhero.gold);
 						if (gold_diff !== game.myhero.gold){
 							postEventLog(locObj.goldAddedToTreasury.txt.replace("%arg1", gold_diff));
@@ -1051,8 +1039,6 @@ function gameOK() {
 				}
 
 			}
-
-
 		},
 		isHeroHaveTroops : function () {
 			var totalCount = 0;
@@ -1086,9 +1072,10 @@ function gameOK() {
 				}
 
 				if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN) {
-					showModal(1, '', game.autocampaignWithdrawCallback, localeStrings[171], locObj.yes.txt,  locObj.no.txt);
+				    let question = locObj.autocampaignWithdrawDialogConfirm.txt;
+					showModal(1, '', game.autocampaignWithdrawCallback, question, locObj.yes.txt,  locObj.no.txt);
 				} else {
-					showModal(0, '', getAck, localeStrings[170],  locObj.okay.txt, '');
+					showModal(0, '', getAck, locObj.autocampaignWithdrawErr.txt,  locObj.okay.txt, '');
 				}
 
 			} else {
@@ -3882,7 +3869,7 @@ WeightedRandom.prototype.clearEntriesList = function() {
 	function postJournalLog(msgEventLog) {
 		var id = "accordionBody-" + game.autocampaignCounter;
 		var targetCampaignLogElement = document.getElementById(id);
-		targetCampaignLogElement.innerHTML += localeStrings[169]+game.myhero.aCampaignTotalLong;
+		targetCampaignLogElement.innerHTML += locObj.day.txt+" "+game.myhero.aCampaignTotalLong;
 		targetCampaignLogElement.innerHTML += ": "+msgEventLog+"<br>";
 		scrollDown();
 	}

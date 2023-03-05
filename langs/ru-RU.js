@@ -168,37 +168,37 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push(["plch","plch","plch"]);//165
-localeStrings.push("Время до начала ближайшего тематического игрового мероприятия");
-localeStrings.push("Время до конца ближайшего тематического игрового мероприятия");
-localeStrings.push("Небо над городом потемнело, засверкали молнии, и внезапно всё прекратилось.");
-localeStrings.push("День ");
-localeStrings.push("Ваш герой должен быть в автокампании");//170
-localeStrings.push("Вы хотите отозвать героя?");
-localeStrings.push("герой и все его войска встретили свою смерть на поле брани.");
-localeStrings.push("герой встретил превосходящего по численности врага и одолел его. Опыт и деньги стали наградой!");
-localeStrings.push("герой встретил малочисленного врага и одолел его. Опыт и деньги стали наградой!");
-localeStrings.push("день прошел скучно. Один язычник был убит (охотник принял его в лесу за дикого зверя. Бывает)");//175
-localeStrings.push("Добытые трофеи из похода: ");
-localeStrings.push("Вы хотите уволить героя со всеми войсками?");
-localeStrings.push("Нет. Сперва надо забрать войска");
-localeStrings.push("Вы хотите создать карту заново? Это будет стоить %arg1 золота");
-localeStrings.push("Нельзя это сделать, пока герой на карте");//180
-localeStrings.push("Вы в Таверне");
-localeStrings.push("Нанять героя<br/>уровень %arg1<br/>%arg2 золота");
-localeStrings.push("удача");
-localeStrings.push("суеверность");
-localeStrings.push("мораль");//185
-localeStrings.push("герой нашел немного денег: ");
-localeStrings.push("Интеллект");
 localeStrings.push("placeholder");
-localeStrings.push("Уровень");
-localeStrings.push("Атака");//190
-localeStrings.push("Защита");
-localeStrings.push("Мана");
-localeStrings.push("Сила магии");
-localeStrings.push("Опыт");
-localeStrings.push("Текущий опыт");//195
-localeStrings.push("Опыт, необходимый для следующего уровня");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//170
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//175
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//180
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//190
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//195
+localeStrings.push("placeholder");
 localeStrings.push("Характер");
 localeStrings.push("Добропорядочный");
 localeStrings.push("Нейтральный");
@@ -716,3 +716,33 @@ locObj.tabGoldHistory = {"txt": "Данные о казне по периода�
 locObj.dayAcronym = {"txt": "Д", "loc": "used for countdown in events"};
 locObj.hourAcronym = {"txt": "Ч", "loc": "used for countdown in events"};
 locObj.minuteAcronym = {"txt": "М", "loc": "used for countdown in events"};
+locObj.countDownBeforeEventStarts = {"txt": "Время до начала ближайшего тематического игрового мероприятия", "loc": "resource panel?"};
+locObj.countDownBeforeEventEnds = {"txt": "Время до конца ближайшего тематического игрового мероприятия", "loc": "resource panel?"};
+locObj.mapRegenerate = {"txt": "Небо над городом потемнело, засверкали молнии, и внезапно всё прекратилось", "loc": "after pressed generate new map button"};
+locObj.day = {"txt": "День", "loc": "occurs in autobattles logs"};
+locObj.autocampaignWithdrawErr = {"txt": "Команда доступна только если герой находится в автокампании!", "loc":"happens when failing to withdraw the hero from autocampaign"};
+locObj.autocampaignWithdrawDialogConfirm = {"txt": "Вы хотите отозвать героя?", "loc": "happens when you pressing withdraw button"};
+locObj.heroLost = {"txt":"герой и все его войска встретили свою смерть на поле брани", "loc": "happens when the hero is lost"};
+locObj.autocampaignHeroCrushedVastEnemyArmy = {"txt":"герой встретил превосходящего по численности врага и одолел его. Опыт и деньги стали наградой!", "loc":"autocampaign journal with aggressive stance"};
+locObj.autocampaignHeroCrushedSmallEnemyArmy = {"txt": "герой встретил малочисленного врага и одолел его. Опыт и деньги стали наградой!", "loc":"autocampaign journal with cautious stance"};
+locObj.autocampaignNoEvents = {"txt": "день прошел скучно. Один язычник был убит (охотник принял его в лесу за дикого зверя. Бывает)", "loc":"autocampaign log no events"};
+locObj.autocampaignLootList = {"txt": "Добытые трофеи из похода: ", "loc":"autocampaign"};
+locObj.dialogDismissHeroConfirm = {"txt": "Вы хотите уволить героя со всеми войсками?", "loc":"when dismiss hero button pressed"};
+locObj.dialogDismissHeroNoOption = {"txt": "Нет. Сперва надо забрать войска", "loc":"when you declined"};
+locObj.dialogMapRegenerate = {"txt": "Вы хотите создать карту заново? Это будет стоить %arg1 золота", "loc": "map regenerate confirmation dialogue"};
+locObj.errMapRegenerateHeroOnMap = {"txt": "Нельзя это сделать, пока герой на карте", "loc": "happens if you try to make new map while your hero on an existing one"};
+locObj.tabInnWelcome = {"txt": "Вы в Таверне", "loc":"label in Inn tab"};
+locObj.tabInnBtnHireHero = {"txt": "Нанять героя<br/>уровень %arg1<br/>%arg2 золота", "loc": "tab Inn, button Hire Hero"};
+locObj.heroStatLuck = {"txt": "удача", "loc": "hero stat"};
+locObj.heroStatSuperstition = {"txt": "суеверность", "loc": "hero stat"};
+locObj.heroStatMorale = {"txt": "мораль", "loc": "hero stat"};
+locObj.heroFoundMoney = {"txt": "герой нашел немного денег: %arg1", "loc": "when a chest found on Adventure Map"};
+locObj.heroStatInt = {"txt": "Интеллект", "loc": "hero stat"};
+locObj.heroStatLevel = {"txt": "Уровень", "loc": "hero stat"};
+locObj.heroStatAtk = {"txt": "Атака", "loc": "hero stat"};
+locObj.heroStatDef = {"txt": "Защита", "loc": "hero stat"};
+locObj.heroStatMP =  {"txt": "Мана", "loc": "hero stat"};
+locObj.heroStatSpellpower = {"txt": "Сила магии", "loc": "hero stat"};
+locObj.heroExp = {"txt": "Опыт", "loc": "hero stat"};
+locObj.heroCurrentExp = {"txt": "Текущий опыт", "loc": "hero stat"};
+locObj.heroNextLvlExp = {"txt": "Опыт, необходимый для следующего уровня", "loc": "hero stat"};

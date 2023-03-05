@@ -168,37 +168,37 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push(["plc","plc","plc"]);//165
-localeStrings.push("This is the time amount before an event will start");
-localeStrings.push("This is the time amount before the event will end");
-localeStrings.push("Le ciel au-dessus de la ville s'assombrit en noir, des éclairs firent un tel spectacle et tout s'arrêta brusquement.");
-localeStrings.push("Jour ");
-localeStrings.push("Votre héros doit être en autocampagne pour le faire!");//170
-localeStrings.push("Voulez-vous retirer votre héros?");
-localeStrings.push("e héros et toutes les troupes ont rencontré leur mort dans le combat de gloire");
-localeStrings.push("le héros a rencontré un grand nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");
-localeStrings.push("le héros a rencontré un petit nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!");
-localeStrings.push("la journée était très ennuyeuse. Un seul païen a été tué (un chasseur a pris un païen comme proie. Si triste!)");//175
-localeStrings.push("Trophées pillés de la campagne: ");
-localeStrings.push("Voulez-vous renvoyer le héros avec toutes les troupes?");
-localeStrings.push("Nan. Tout d'abord, je déplacerai toutes les unités du héros");
-localeStrings.push("Voulez-vous générer une nouvelle carte? Il vous en coûterait %arg1 pièces d'or!");
-localeStrings.push("Vous ne pouvez pas le faire tant que votre héros est sur la carte!");//180
-localeStrings.push("Bienvenue à l'auberge!");
-localeStrings.push("Embaucher un héros<br>de niveau %arg1<br>pour %arg2 pièces d'or");
-localeStrings.push("chance");
-localeStrings.push("superstition");
-localeStrings.push("morale"); // 185
-localeStrings.push("le héros a trouvé de l'or: ");
-localeStrings.push("Intelligence");
 localeStrings.push("placeholder");
-localeStrings.push("Niveau");
-localeStrings.push("Attaque");//190
-localeStrings.push("Défense");
-localeStrings.push("Points magiques");
-localeStrings.push("Puissance des sorts");
-localeStrings.push("Expérience");
-localeStrings.push("Expérience actuelle");//195
-localeStrings.push("Expérience requise pour le nivueau suivant");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//170
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//175
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//180
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder"); // 185
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//190
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//195
+localeStrings.push("placeholder");
 localeStrings.push("Alignement");
 localeStrings.push("Légitime");
 localeStrings.push("Neutre");
@@ -712,3 +712,33 @@ locObj.tabGoldHistory = {"txt": "Onglet Historique de l'or", "loc":"Label in Gol
 locObj.dayAcronym = {"txt": "J", "loc": "used for countdown in events"};
 locObj.hourAcronym = {"txt": "H", "loc": "used for countdown in events"};
 locObj.minuteAcronym = {"txt": "M", "loc": "used for countdown in events"};
+locObj.countDownBeforeEventStarts = {"txt": "This is the time amount before an event will start", "loc": "resource panel?"};
+locObj.countDownBeforeEventEnds = {"txt": "This is the time amount before the event will end", "loc": "resource panel?"};
+locObj.mapRegenerate = {"txt": "Le ciel au-dessus de la ville s'assombrit en noir, des éclairs firent un tel spectacle et tout s'arrêta brusquement", "loc": "after pressed generate new map button"};
+locObj.day = {"txt": "Jour", "loc": "occurs in autobattles logs"};
+locObj.autocampaignWithdrawErr = {"txt": "Votre héros doit être en autocampagne pour le faire!", "loc":"happens when failing to withdraw the hero from autocampaign"};
+locObj.autocampaignWithdrawDialogConfirm = {"txt": "Voulez-vous retirer votre héros?", "loc": "happens when you pressing withdraw button"};
+locObj.heroLost = {"txt":"e héros et toutes les troupes ont rencontré leur mort dans le combat de gloire", "loc": "happens when the hero is lost"};
+locObj.autocampaignHeroCrushedVastEnemyArmy = {"txt":"le héros a rencontré un grand nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!", "loc":"autocampaign journal with aggressive stance"};
+locObj.autocampaignHeroCrushedSmallEnemyArmy = {"txt": "le héros a rencontré un petit nombre d'ennemis et les a écrasés. La bataille apporte au héros de l'argent et de l'expérience!", "loc":"autocampaign journal with cautious stance"};
+locObj.autocampaignNoEvents = {"txt": "la journée était très ennuyeuse. Un seul païen a été tué (un chasseur a pris un païen comme proie. Si triste!)", "loc":"autocampaign log no events"};
+locObj.autocampaignLootList = {"txt": "Trophées pillés de la campagne: ", "loc":"autocampaign"};
+locObj.dialogDismissHeroConfirm = {"txt": "Voulez-vous renvoyer le héros avec toutes les troupes?", "loc":"when dismiss hero button pressed"};
+locObj.dialogDismissHeroNoOption = {"txt": "Nan. Tout d'abord, je déplacerai toutes les unités du héros", "loc":"when you declined"};
+locObj.dialogMapRegenerate = {"txt": "Voulez-vous générer une nouvelle carte? Il vous en coûterait %arg1 pièces d'or!", "loc": "map regenerate confirmation dialogue"};
+locObj.errMapRegenerateHeroOnMap = {"txt": "Vous ne pouvez pas le faire tant que votre héros est sur la carte!", "loc": "happens if you try to make new map while your hero on an existing one"};
+locObj.tabInnWelcome = {"txt": "Bienvenue à l'auberge!", "loc":"label in Inn tab"};
+locObj.tabInnBtnHireHero = {"txt": "Embaucher un héros<br>de niveau %arg1<br>pour %arg2 pièces d'or", "loc": "tab Inn, button Hire Hero"};
+locObj.heroStatLuck = {"txt": "chance", "loc": "hero stat"};
+locObj.heroStatSuperstition = {"txt": "superstition", "loc": "hero stat"};
+locObj.heroStatMorale = {"txt": "morale", "loc": "hero stat"};
+locObj.heroFoundMoney = {"txt": "le héros a trouvé de l'or: %arg1", "loc": "when a chest found on Adventure Map"};
+locObj.heroStatInt = {"txt": "Intelligence", "loc": "hero stat"};
+locObj.heroStatLevel = {"txt": "Niveau", "loc": "hero stat"};
+locObj.heroStatAtk = {"txt": "Attaque", "loc": "hero stat"};
+locObj.heroStatDef = {"txt": "Défense", "loc": "hero stat"};
+locObj.heroStatMP =  {"txt": "Points magiques", "loc": "hero stat"};
+locObj.heroStatSpellpower = {"txt": "Puissance des sorts", "loc": "hero stat"};
+locObj.heroExp = {"txt": "Expérience", "loc": "hero stat"};
+locObj.heroCurrentExp = {"txt": "Current experience", "loc": "hero stat"};
+locObj.heroNextLvlExp = {"txt": "Expérience requise pour le nivueau suivant", "loc": "hero stat"};
