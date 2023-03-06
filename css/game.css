@@ -414,6 +414,14 @@ body {
   overflow-y: auto;
 }
 
+.dynamicCellsNight {
+  color: #c1c1c1;
+}
+
+.dynamicCellsDay {
+  color: #000000;
+}
+
 #lblGoodsForSale,
 #lblGoodsForBuying {
   margin-bottom: 12px;
