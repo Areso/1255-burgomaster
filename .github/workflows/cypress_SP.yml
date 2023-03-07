@@ -1,4 +1,4 @@
-name: "E2E tests"
+name: "PROD Check save Game"
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   smoke_job:
-    name: Cypress E2E tests
+    name: Cypress PROD Check save Game
     runs-on: ubuntu-latest
 
     steps:
