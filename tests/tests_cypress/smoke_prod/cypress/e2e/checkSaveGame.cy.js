@@ -18,7 +18,8 @@ describe('Verification of authorization and loading of the save', () => {
         cy.get('#login').type('tester16');
         cy.get('#password').type('tester16');
         cy.get('#btnRegLogin').click();
-        cy.get('#buttonLoadFromCloud', { timeout: 15000 }).click();
+        cy.get('#log').contains('login successfull');
+        cy.get('#buttonLoadFromCloud', { timeout: 9000 }).click();
 
         // Check
         cy.get('#autosaveImg').should('have.attr', 'src', 'resources/button_green.png');
