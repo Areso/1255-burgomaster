@@ -1,4 +1,5 @@
 import 'cypress-html-validate/commands';
+import { Attribute } from 'html-validate';
 
 describe("validate", () => {
 
@@ -13,18 +14,32 @@ describe("validate", () => {
       {
         extends: ["html-validate:recommended"],
         rules: {
-          'require-sri': 'off',
-          'script-type': 'off',
-          'wcag/h30': 'off',
-          'wcag/h37': 'off',
-          'heading-level': 'off',
-          'element-permitted-content': 'off',
-          'input-missing-label': 'off',
-          'no-deprecated-attr': 'off',
-          'element-permitted-content': 'off',
-          'attribute-allowed-values': 'off',
-          'element-name': 'off'
+          "element-required-attributes": [
+            "warn",
+            {
+              exclude: ['lang'],
+            },
+          ],
+          'require-sri': 'warn',
+          'script-type': 'warn',
+          'wcag/h30': 'warn',
+          'wcag/h37': 'warn',
+          'heading-level': 'warn',
+          'element-permitted-content': 'warn',
+          'input-missing-label': 'warn',
+          'no-deprecated-attr': 'warn',
+          'element-permitted-content': 'warn',
+          'attribute-allowed-values': 'warn',
+          'element-name': 'warn',
+          'attribute-boolean-style':'warn',
+          'no-inline-style':'warn',
+          'valid-id':'warn',
+          'void-style':'warn'
+
         }
+      },
+      {
+        exclude: ['lang'],
       }
     );
   });

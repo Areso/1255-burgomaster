@@ -1,18 +1,32 @@
 {
-  "extends": ["html-validate:recommended"],
+  "extends": [
+    "html-validate:recommended"
+  ],
   "rules": {
-        "require-sri": "warn",
-        "script-type": "warn",
-        "wcag/h30": "warn",
-        "wcag/h37": "warn",
-        "heading-level": "warn",
-        "element-permitted-content": "warn",
-        "input-missing-label": "warn",
-        "no-deprecated-attr": "warn",
-        "attribute-allowed-values": "warn",
-        "element-name": "warn"
+    "element-required-attributes": [
+      "warn",
+      {
+        "exclude": [
+          "html lang"
+        ]
+      }
+    ],
+    "require-sri": "warn",
+    "script-type": "warn",
+    "wcag/h30": "warn",
+    "wcag/h37": "warn",
+    "heading-level": "warn",
+    "element-permitted-content": "warn",
+    "input-missing-label": "warn",
+    "no-deprecated-attr": "warn",
+    "attribute-allowed-values": "warn",
+    "element-name": "warn",
+    "attribute-boolean-style": "warn",
+    "no-inline-style": "warn",
+    "valid-id": "warn",
+    "void-style": "warn"
   },
   "elements": [
-    "html5"      
+    "html5"
   ]
 }
