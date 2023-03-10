@@ -11,11 +11,12 @@ describe('Checking the registration of a new user', () => {
         cy.window().then((win) => {
             win.eval('document.getElementById("myDCanvas").classList.remove("active-modal")');
         });
+        let userName = 'Autotest' + Math.floor(Math.random() * 10000);
 
         cy.get('#tabSettings').click();
         cy.get('#selectLng').select('English');
         cy.get('#btnReg').click();
-        cy.get('#login').type('Autotest' + Math.floor(Math.random() * 10000));
+        cy.get('#login').type(userName);
         cy.get('#password').type('Autotest');
         cy.get('#btnRegLogin').click();
         cy.get('#log').contains('registered successfully');
@@ -88,5 +89,17 @@ describe('Checking the registration of a new user', () => {
             cy.contains('Your task is simple - manage the city as mayor of the city!');
             cy.contains('Citizen will pay taxes each season (30 secs) and population will grow each season');
         });
+
+        cy.visit('/');
+        cy.reload(true);
+
+        cy.get('#tabSettings').click();
+        cy.get('#selectLng').select('English');
+        cy.get('#btnLogin').click();
+        cy.get('#login').type(userName);
+        cy.get('#password').type('Autotest');
+        cy.get('#btnRegLogin').click();
+        cy.get('#log').contains('login successfull');
+
     });
 })

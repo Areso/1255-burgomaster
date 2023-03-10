@@ -54,7 +54,7 @@ describe('Verification of authorization and loading of the save', () => {
         cy.get('#buttonBldGallows')
             .should('have.text', 'Build Gallowslvl 150 gold')
             .and('have.class', 'btn')
-            .and('not.be.visible'); //'not.be.visible'  'have.style','display:none'
+            .and('not.be.visible'); 
         cy.get('#buttonBldFountain')
             .should('have.text', 'Build Fountainlvl 3125000 gold')
             .and('have.class', 'btn');
