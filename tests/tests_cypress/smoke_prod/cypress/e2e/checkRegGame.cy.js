@@ -1,6 +1,6 @@
-describe('Verification of authorization and loading of the save', () => {
+describe('Checking the registration of a new user', () => {
 
-    it('Verification of authorization and loading of the save', () => {
+    it('Checking the registration of a new user', () => {
         cy.visit('/');
 
         Cypress.on('uncaught:exception', (err, runnable) => {
