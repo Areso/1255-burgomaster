@@ -1449,31 +1449,6 @@ function gameOK() {
 		heroExists: function () {
 			return (Object.keys(game.myhero).length === 0 && game.myhero.constructor === Object) ? false : true;
 		},
-		heroAlignment(returnFormat) {
-			if (returnFormat==="text") {
-				var heroAlignment = "";
-				if (game.myhero.lawful < 40) {
-					heroAlignment += localeStrings[200];
-				}
-				if (game.myhero.lawful >= 40 && game.myhero.lawful <60) {
-					heroAlignment += localeStrings[199];
-				}
-				if (game.myhero.lawful >= 60) {
-					heroAlignment += localeStrings[198];
-				}
-				if (game.myhero.kindness < 40) {
-					heroAlignment += " "+localeStrings[203];
-				}
-				if (game.myhero.kindness >= 40 && game.myhero.kindness <60) {
-					heroAlignment += " "+localeStrings[202];
-				}
-				if (game.myhero.kindness >= 60) {
-					heroAlignment += " "+localeStrings[201];
-				}
-				heroAlignment += " ("+game.myhero.lawful+"; "+game.myhero.kindness+")";
-			}
-			return heroAlignment;
-		},
 		heroNextLvlExpLimit () {
 			return Math.pow((game.myhero.level+1) * config.heroExpK,2);
 		},

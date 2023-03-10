@@ -199,30 +199,30 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//195
 localeStrings.push("placeholder");
-localeStrings.push("Alignment");
-localeStrings.push("Lawful");
-localeStrings.push("Neutral");
-localeStrings.push("Chaotic");//200
-localeStrings.push("Good");
-localeStrings.push("Neutral");
-localeStrings.push("Evil");
-localeStrings.push(["Knight", "Monk"]);
-localeStrings.push("Class");//205
-localeStrings.push("Hero now is ");
-localeStrings.push(" in town");
-localeStrings.push(" in autocampaign");
-localeStrings.push(" in manualcampaign");
-localeStrings.push(["eating", "drinking","gambling","training","fistfighting","resting"]);//210
-localeStrings.push(["marching back","marching","killing pagans", "converting pagans","making a camp","looting dead pagans"]);
-localeStrings.push(["marching", "making a camp","looting"]);
-localeStrings.push("Days from the city");
-localeStrings.push("From the city");
-localeStrings.push("To the city");//215
-localeStrings.push("Gold in hero's purse");
-localeStrings.push("Dismiss hero");
-localeStrings.push("Send hero to autocampaign");
-localeStrings.push("Withdraw the hero");
-localeStrings.push("Open journal");//220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//200
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder", "placeholder"]);
+localeStrings.push("placeholder");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder"]);//210
+localeStrings.push(["placeholder"]);
+localeStrings.push(["placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//220
 localeStrings.push("Use towngate scroll");
 localeStrings.push("Go to the adventure map");
 localeStrings.push("Regenerate map");
@@ -256,7 +256,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Direction: ");
+localeStrings.push("placeholder");
 localeStrings.push("The hero is just behind the city now!");//255
 localeStrings.push("You don't have a Towngate scroll!");
 localeStrings.push("First, head the hero to the town!");
@@ -740,3 +740,21 @@ locObj.heroStatSpellpower = {"txt": "Spellpower", "loc": "hero stat"};
 locObj.heroExp = {"txt": "Experience", "loc": "hero stat"};
 locObj.heroCurrentExp = {"txt": "Current experience", "loc": "hero stat"};
 locObj.heroNextLvlExp = {"txt": "Experience required for next level", "loc": "hero stat"};
+locObj.heroClasses = {"txt": ["Knight", "Monk"], "loc": "inn tab"};
+locObj.lblClass = {"txt": "Class", "loc": "inn tab"};
+locObj.lblHeroLocation = {"txt":"Hero now is ", "loc":"inn tab"};
+locObj.heroInTown = {"txt": " in town", "loc": "used to build hero activity line"};
+locObj.heroInAutocampaign = {"txt": " in autocampaign", "loc": "used to build hero activity line"};
+locObj.heroOnAdventureMap = {"txt": " on the Adventure Map", "loc": "used to build hero activity line"};
+locObj.heroActivitiesInTown = {"txt": ["eating", "drinking","gambling","training","fistfighting","resting"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesInAutocampaign = {"txt":["marching back","marching","killing pagans", "converting pagans","making a camp","looting dead pagans"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesOnAdventureMap = {"txt":["marching", "making a camp","looting"],"loc": "used to build hero activity line"};
+locObj.lblDistanceFromTown = {"txt": "Days from the city", "loc": "inn tab"};
+locObj.directionFromTown = {"txt": "From the city", "loc": "inn tab"};
+locObj.directionToTown = {"txt": "To the city", "loc": "inn tab"};
+locObj.goldInHerosPurse = {"txt": "Gold in hero's purse", "loc": "inn tab"};
+locObj.lblDirection = {"txt": "Direction: ", "loc": "inn tab"};
+locObj.btnDismissHero = {"txt": "Dismiss hero", "loc": "inn tab"};
+locObj.btnAutocampaignSendHero = {"txt": "Send hero to autocampaign", "loc": "inn tab"};
+locObj.btnAutocampaignWithdrawHero = {"txt": "Withdraw the hero", "loc": "inn tab"};
+locObj.btnAutocampaignOpenJournal = {"txt": "Open journal", "loc": "inn tab"};

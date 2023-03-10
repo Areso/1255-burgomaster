@@ -199,30 +199,30 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//195
 localeStrings.push("placeholder");
-localeStrings.push("Aliĝo");
-localeStrings.push("Laŭleĝa");
-localeStrings.push("Neŭtrala");
-localeStrings.push("Kaosa");//200
-localeStrings.push("Bono");
-localeStrings.push("Neŭtralo");
-localeStrings.push("Malbono");
-localeStrings.push(["Kavaliro", "Monako"]);
-localeStrings.push("Klaso");//205
-localeStrings.push("Heroo nun estas");
-localeStrings.push(" en la urbo");
-localeStrings.push(" en aŭtokombina");
-localeStrings.push(" en mana komparado");
-localeStrings.push(["manĝi", "trinki", "vetludi", "trejni", "pugni", "ripozi"]); // 210
-localeStrings.push(["marŝi reen", "marŝi", "mortigi paganojn", "konverti paganojn", "fari tendaron", "prirabi mortintajn paganojn"]);
-localeStrings.push(["marŝi", "fari tendaron", "rabado"]);
-localeStrings.push("Tagoj el la urbo");
-localeStrings.push("El la urbo");
-localeStrings.push("Al la urbo"); // 215
-localeStrings.push("Ora en monujo de heroo");
-localeStrings.push("Malakcepti heroon");
-localeStrings.push("Sendu heroon al aŭtokampanjo");
-localeStrings.push("Forigu la heroon");
-localeStrings.push("Malferma taglibro"); // 220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//200
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder", "placeholder"]);
+localeStrings.push("placeholder");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder"]); // 210
+localeStrings.push(["placeholder"]);
+localeStrings.push(["placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder"); // 215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder"); // 220
 localeStrings.push("Uzu ruleton de urbeto");
 localeStrings.push("Iru al aventura mapo");
 localeStrings.push("Regeneri mapon");
@@ -256,7 +256,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Direction: ");
+localeStrings.push("placeholder");
 localeStrings.push("La heroo estas malantaŭ la urbo nun!");//255
 localeStrings.push("Vi ne havas Towngate-movon!");
 localeStrings.push("Unue, direktu la heroon al la urbo!");
@@ -742,3 +742,21 @@ locObj.heroStatSpellpower = {"txt": "Magia potenco", "loc": "hero stat"};
 locObj.heroExp = {"txt": "Sperto", "loc": "hero stat"};
 locObj.heroCurrentExp = {"txt": "Nuna sperto", "loc": "hero stat"};
 locObj.heroNextLvlExp = {"txt": "Sperto bezonata por sekva nivelo", "loc": "hero stat"};
+locObj.heroClasses = {"txt": ["Kavaliro", "Monako"], "loc": "inn tab"};
+locObj.lblClass = {"txt": "Klaso", "loc": "inn tab"};
+locObj.lblHeroLocation = {"txt":"Heroo nun estas ", "loc":"inn tab"};
+locObj.heroInTown = {"txt": "  en la urbo", "loc": "used to build hero activity line"};
+locObj.heroInAutocampaign = {"txt": " en aŭtokombina", "loc": "used to build hero activity line"};
+locObj.heroOnAdventureMap = {"txt": " on the Adventure Map", "loc": "used to build hero activity line"};
+locObj.heroActivitiesInTown = {"txt": ["manĝi", "trinki", "vetludi", "trejni", "pugni", "ripozi"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesInAutocampaign = {"txt":["marŝi reen", "marŝi", "mortigi paganojn", "konverti paganojn", "fari tendaron", "prirabi mortintajn paganojn"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesOnAdventureMap = {"txt":["marŝi", "fari tendaron", "rabado"],"loc": "used to build hero activity line"};
+locObj.lblDistanceFromTown = {"txt": "Tagoj el la urbo", "loc": "inn tab"};
+locObj.directionFromTown = {"txt": "El la urbo", "loc": "inn tab"};
+locObj.directionToTown = {"txt": "Al la urbo", "loc": "inn tab"};
+locObj.goldInHerosPurse = {"txt": "Ora en monujo de heroo", "loc": "inn tab"};
+locObj.lblDirection = {"txt": "Direction: ", "loc": "inn tab"};
+locObj.btnDismissHero = {"txt": "Malakcepti heroon", "loc": "inn tab"};
+locObj.btnAutocampaignSendHero = {"txt": "Sendi heroon al aŭtokampanjo", "loc": "inn tab"};
+locObj.btnAutocampaignWithdrawHero = {"txt": "Forigi la heroon", "loc": "inn tab"};
+locObj.btnAutocampaignOpenJournal = {"txt": "Malfermi taglibro", "loc": "inn tab"};

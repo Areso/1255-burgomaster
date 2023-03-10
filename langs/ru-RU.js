@@ -199,30 +199,30 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//195
 localeStrings.push("placeholder");
-localeStrings.push("Характер");
-localeStrings.push("Добропорядочный");
-localeStrings.push("Нейтральный");
-localeStrings.push("Разрушительный");//200
-localeStrings.push("Добряк");
-localeStrings.push("Пофигист");
-localeStrings.push("Злыдень");
-localeStrings.push(["Рыцарь", "Монах"]);
-localeStrings.push("Класс");//205
-localeStrings.push("Герой сейчас ");
-localeStrings.push(" где-то в городе");
-localeStrings.push(" в автокампании");
-localeStrings.push(" в кампании");
-localeStrings.push(["ест", "пьет","играет в карты","тренируется","дерется","отдыхает"]);//210
-localeStrings.push(["возвращается в город","на марше","убивает язычников", "обращает язычников","строит лагерь","собирает трофеи"]);
-localeStrings.push(["на марше", "строит лагерь","собирает трофеи"]);
-localeStrings.push("Дней от города");
-localeStrings.push("От города");
-localeStrings.push("К городу");//215
-localeStrings.push("Злата в кошеле героя");
-localeStrings.push("Уволить героя");
-localeStrings.push("Отправить в поход");
-localeStrings.push("Вернуть из похода");
-localeStrings.push("Открыть журнал");//220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//200
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder", "placeholder"]);
+localeStrings.push("placeholder");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder"]);//210
+localeStrings.push(["placeholder"]);
+localeStrings.push(["placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//220
 localeStrings.push("Свиток городских врат");
 localeStrings.push("На карту приключений");
 localeStrings.push("Пересоздать карту");
@@ -256,7 +256,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Direction: ");
+localeStrings.push("placeholder");
 localeStrings.push("Герой теперь буквально в одном шаге от города!");//255
 localeStrings.push("У вас нет свитка городских врат!");
 localeStrings.push("Сначала направьте героя в город.");
@@ -746,3 +746,21 @@ locObj.heroStatSpellpower = {"txt": "Сила магии", "loc": "hero stat"};
 locObj.heroExp = {"txt": "Опыт", "loc": "hero stat"};
 locObj.heroCurrentExp = {"txt": "Текущий опыт", "loc": "hero stat"};
 locObj.heroNextLvlExp = {"txt": "Опыт, необходимый для следующего уровня", "loc": "hero stat"};
+locObj.heroClasses = {"txt": ["Рыцарь", "Монах"], "loc": "inn tab"};
+locObj.lblClass = {"txt": "Класс", "loc": "inn tab"};
+locObj.lblHeroLocation = {"txt":"Герой сейчас ", "loc":"inn tab"};
+locObj.heroInTown = {"txt": " где-то в городе", "loc": "used to build hero activity line"};
+locObj.heroInAutocampaign = {"txt": " в автокампании", "loc": "used to build hero activity line"};
+locObj.heroOnAdventureMap = {"txt": " на карте приключений", "loc": "used to build hero activity line"};
+locObj.heroActivitiesInTown = {"txt": ["ест", "пьет","играет в карты","тренируется","дерется","отдыхает"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesInAutocampaign = {"txt":["возвращается в город","на марше","убивает язычников", "обращает язычников","строит лагерь","собирает трофеи"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesOnAdventureMap = {"txt":["на марше", "строит лагерь","собирает трофеи"],"loc": "used to build hero activity line"};
+locObj.lblDistanceFromTown = {"txt": "Дней от города", "loc": "inn tab"};
+locObj.directionFromTown = {"txt": "От города", "loc": "inn tab"};
+locObj.directionToTown = {"txt": "К городу", "loc": "inn tab"};
+locObj.goldInHerosPurse = {"txt": "Злата в кошеле героя", "loc": "inn tab"};
+locObj.lblDirection = {"txt": "Направление: ", "loc": "inn tab"};
+locObj.btnDismissHero = {"txt": "Уволить героя", "loc": "inn tab"};
+locObj.btnAutocampaignSendHero = {"txt": "Отправить в поход", "loc": "inn tab"};
+locObj.btnAutocampaignWithdrawHero = {"txt": "Вернуть из похода", "loc": "inn tab"};
+locObj.btnAutocampaignOpenJournal = {"txt": "Открыть журнал", "loc": "inn tab"};

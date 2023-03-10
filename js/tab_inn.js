@@ -6,9 +6,8 @@ let curHeroPortraitId = [];
 
 function updateHeroStatusInn() {
 	if ( game.heroExists()) {
-		var lblHeroClass    = localeStrings[204][game.myhero.class];
-		var lblAlignment    = game.heroAlignment("text");
-		var HTMLofHeroStats = localeStrings[205]+": "+lblHeroClass+" | ";
+		var lblHeroClass    = locObj.heroClasses.txt[game.myhero.class];
+		var HTMLofHeroStats = locObj.lblClass.txt+": "+lblHeroClass+" | ";
 		var heroStatusNeedsUpdate = true;
 		document.getElementById("btnDismissHero").style.visibility = "visible";
 		document.getElementById("btnAutocampaign").style.visibility = "visible";
@@ -43,13 +42,14 @@ function updateHeroStatusInn() {
 			game.myhero.knights = 0;
 		}
 
-		var heroActivity = localeStrings[206];
+		var heroActivity = locObj.lblHeroLocation.txt;
 
 		if (game.myhero.status===0){
-			var rnd = Math.floor(Math.random() * localeStrings[210].length);
-			heroActivity += localeStrings[210][rnd]+localeStrings[207];
+			let rnd = Math.floor(Math.random() * locObj.heroActivitiesInTown.txt.length);
+			heroActivity = heroActivity.replace("%arg1", locObj.heroActivitiesInTown.txt[rnd]);
+			heroActivity = heroActivity.replace("%arg2", locObj.heroInTown.txt);
 			heroStatusNeedsUpdate = false;
-			document.getElementById("btnAutocampaign").innerText=localeStrings[218];
+			document.getElementById("btnAutocampaign").innerText=locObj.btnAutocampaignSendHero.txt;
 			document.getElementById("btnAutocampaign").style.visibility="visible";
 			document.getElementById("btnAutocampaign").disabled = false;
 			document.getElementById("btnAutocampaign").style.visibility="visible";
@@ -59,22 +59,27 @@ function updateHeroStatusInn() {
 			document.getElementById("grid-hero").style.display="block";
 		}
 		if (game.myhero.status===1){
-			var rnd = Math.floor(Math.random() * localeStrings[211].length);
-			while (rnd === 0) {
-				rnd = Math.floor(Math.random() * localeStrings[211].length);
+			let rnd = Math.floor(Math.random() * locObj.heroActivitiesInAutocampaign.txt.length);
+			//if hero is not marching back
+			if (game.myhero.aCampaignBackward !== 1){
+			  //then rnd===0 ("marching back") is not available. Rolling dices again!
+			  while (rnd === 0) {
+			    rnd = Math.floor(Math.random() * locObj.heroActivitiesInAutocampaign.txt.length);
+			  }
 			}
-			heroActivity += localeStrings[211][rnd]+localeStrings[208];
+			heroActivity = heroActivity.replace("%arg1", locObj.heroActivitiesInAutocampaign.txt[rnd]);
+			heroActivity = heroActivity.replace("%arg2", locObj.heroInAutocampaign.txt);
 			heroStatusNeedsUpdate = false;
-			document.getElementById("btnAutocampaign").innerText=localeStrings[219];
+			document.getElementById("btnAutocampaign").innerText=locObj.btnAutocampaignWithdrawHero.txt;
 			document.getElementById("btnAutocampaign").style.visibility="visible";
 			document.getElementById("btnAutocampaignJournal").style.visibility="visible";
 			document.getElementById("btnLeaveCity").style.visibility="hidden";
 			document.getElementById("btnTowngate").style.visibility="visible"
 		}
 		if (game.myhero.status===2){
-			var rnd = Math.floor(Math.random() * localeStrings[212].length);
-			// console.log('[updateHeroStatusInn::STATUS::2]: manual campaign, activity is: ' + rnd);
-			heroActivity += localeStrings[212][rnd]+localeStrings[209];
+			var rnd = Math.floor(Math.random() * locObj.heroActivitiesOnAdventureMap.txt.length);
+			heroActivity = heroActivity.replace("%arg1", locObj.heroActivitiesOnAdventureMap.txt[rnd]);
+			heroActivity = heroActivity.replace("%arg2", locObj.heroOnAdventureMap.txt);
 			heroStatusNeedsUpdate = false;
 			document.getElementById("btnAutocampaign").style.visibility="hidden";
 			document.getElementById("btnAutocampaignJournal").style.visibility="hidden";
@@ -85,7 +90,6 @@ function updateHeroStatusInn() {
 			game.myhero.status = 0;
 		}
 		HTMLofHeroStats    += locObj.heroStatLevel.txt+": "+game.myhero.level+"<br>";
-		//HTMLofHeroStats    += localeStrings[197]+": "+lblAlignment+"<br>";
 		HTMLofHeroStats    += locObj.heroCurrentExp.txt     +": "+game.myhero.exp+" | ";
 		HTMLofHeroStats    += locObj.heroNextLvlExp.txt     +": "+game.heroNextLvlExpLimit()+"<br>";
 		HTMLofHeroStats    += locObj.heroStatAtk.txt        +": "+game.myhero.atk+" | ";
@@ -95,13 +99,13 @@ function updateHeroStatusInn() {
 		HTMLofHeroStats    += locObj.heroStatSpellpower.txt +": "+game.myhero.mpow+"<br>";
 		HTMLofHeroStats    += heroActivity+"<br>";
 		if (game.myhero.status===1) {
-			HTMLofHeroStats    += localeStrings[213]+": "+game.myhero.aCampaignLong+"<br>";
+			HTMLofHeroStats    += locObj.lblDistanceFromTown.txt+": "+game.myhero.aCampaignLong+"<br>";
 			if (game.myhero.aCampaignForward === 1) {
-				HTMLofHeroStats += localeStrings[254] + localeStrings[214] + "<br>";
+				HTMLofHeroStats += locObj.lblDirection.txt + locObj.directionFromTown.txt + "<br>";
 			} else {
-				HTMLofHeroStats += localeStrings[254] + localeStrings[215] + "<br>";
+				HTMLofHeroStats += locObj.lblDirection.txt + locObj.directionToTown.txt + "<br>";
 			}
-			HTMLofHeroStats    += localeStrings[216]+": "+game.myhero.gold+"<br>";
+			HTMLofHeroStats    += locObj.goldInHerosPurse.txt+": "+game.myhero.gold+"<br>";
 		}
 		var heroStatsElem = document.getElementById("heroStats");
 		heroStatsElem.innerHTML = HTMLofHeroStats;

@@ -52,9 +52,8 @@ include('localisation.js',function(){
 		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
 		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
 		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
-		document.getElementById("btnDismissHero").innerText      = localeStrings[217];
-		//document.getElementById("btnAutocampaign").innerText     = localeStrings[218];
-		document.getElementById("btnAutocampaignJournal").innerText  = localeStrings[220];
+		document.getElementById("btnDismissHero").innerText      = locObj.btnDismissHero.txt;
+		document.getElementById("btnAutocampaignJournal").innerText  = locObj.btnAutocampaignOpenJournal.txt;
 		document.getElementById("btnTowngate").innerText         = localeStrings[221];
 		document.getElementById("btnLeaveCity").innerText        = localeStrings[222];
 		document.getElementById("btnGenerateMap").innerText      = localeStrings[223];

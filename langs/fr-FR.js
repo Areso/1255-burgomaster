@@ -199,30 +199,30 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//195
 localeStrings.push("placeholder");
-localeStrings.push("Alignement");
-localeStrings.push("Légitime");
-localeStrings.push("Neutre");
-localeStrings.push("Chaotique");//200
-localeStrings.push("Bien");
-localeStrings.push("Neutre");
-localeStrings.push("Mal");
-localeStrings.push(["Chevalier", "Moine"]);
-localeStrings.push("Classe");//205
-localeStrings.push("Le héros ");
-localeStrings.push(" en cité");
-localeStrings.push(" en campagne automatique");
-localeStrings.push(" en campagne");
-localeStrings.push(["manger", "boit", "joue", "s'entraine", "se bat", "se repose"]); // 210
-localeStrings.push(["sur le trajet retour", "marchant", "tuant des païens", "convertissant des païens", "faisant un camp", "pillant des païens morts"]);
-localeStrings.push(["marching", "faire un camp", "piller"]);
-localeStrings.push("Jours de la cité");
-localeStrings.push("De la cité");
-localeStrings.push("Vers la cité"); // 215
-localeStrings.push("L'or dans le sac du héros");
-localeStrings.push("Rejeter le héros");
-localeStrings.push("Envoyer le héros à autocampaign");
-localeStrings.push("Retirer le héros");
-localeStrings.push("Journal ouvert"); // 220
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//200
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder", "placeholder"]);
+localeStrings.push("placeholder");//205
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push(["placeholder"]); // 210
+localeStrings.push(["placeholder"]);
+localeStrings.push(["placeholder"]);
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder"); // 215
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder"); // 220
 localeStrings.push("Utiliser porte de la cité");
 localeStrings.push("Aller à la carte d'aventure");
 localeStrings.push("Régénérer la carte");
@@ -256,7 +256,7 @@ localeStrings.push("placeholder");//250
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Direction: ");
+localeStrings.push("placeholder");
 localeStrings.push("Le héros est juste derrière la ville maintenant!");//255
 localeStrings.push("Vous n'avez pas de rouleau Towngate!");
 localeStrings.push("Tout d'abord, dirigez le héros en ville!");
@@ -742,3 +742,21 @@ locObj.heroStatSpellpower = {"txt": "Puissance des sorts", "loc": "hero stat"};
 locObj.heroExp = {"txt": "Expérience", "loc": "hero stat"};
 locObj.heroCurrentExp = {"txt": "Current experience", "loc": "hero stat"};
 locObj.heroNextLvlExp = {"txt": "Expérience requise pour le nivueau suivant", "loc": "hero stat"};
+locObj.heroClasses = {"txt": ["Chevalier", "Moine"], "loc": "inn tab"};
+locObj.lblClass = {"txt": "Classe", "loc": "inn tab"};
+locObj.lblHeroLocation = {"txt":"Le héros  ", "loc":"inn tab"};
+locObj.heroInTown = {"txt": " en cité", "loc": "used to build hero activity line"};
+locObj.heroInAutocampaign = {"txt": " en campagne automatique", "loc": "used to build hero activity line"};
+locObj.heroOnAdventureMap = {"txt": " sur la carte d'aventure", "loc": "used to build hero activity line"};
+locObj.heroActivitiesInTown = {"txt": ["manger", "boit", "joue", "s'entraine", "se bat", "se repose"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesInAutocampaign = {"txt":["sur le trajet retour", "marchant", "tuant des païens", "convertissant des païens", "faisant un camp", "pillant des païens morts"], "loc": "used to build hero activity line"};
+locObj.heroActivitiesOnAdventureMap = {"txt":["marching", "faire un camp", "piller"],"loc": "used to build hero activity line"};
+locObj.lblDistanceFromTown = {"txt": "Jours de la cité", "loc": "inn tab"};
+locObj.directionFromTown = {"txt": "De la cité", "loc": "inn tab"};
+locObj.directionToTown = {"txt": "Vers la cité", "loc": "inn tab"};
+locObj.goldInHerosPurse = {"txt": "L'or dans le sac du héros", "loc": "inn tab"};
+locObj.lblDirection = {"txt": "Direction: ", "loc": "inn tab"};
+locObj.btnDismissHero = {"txt": "Rejeter le héros", "loc": "inn tab"};
+locObj.btnAutocampaignSendHero = {"txt": "Envoyer le héros à autocampaign", "loc": "inn tab"};
+locObj.btnAutocampaignWithdrawHero = {"txt": "Retirer le héros", "loc": "inn tab"};
+locObj.btnAutocampaignOpenJournal = {"txt": "Journal ouvert", "loc": "inn tab"};
