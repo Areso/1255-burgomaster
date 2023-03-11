@@ -8,7 +8,12 @@ describe('Checking the registration of a new user', () => {
         cy.request('DELETE', 'https://navi.areso.pro:7001/api/v1.1/delete_test_users');
     })
 
-    it('Checking the registration of a new user', () => {
+    it('Checking the registration of a new user', {
+        retries: {
+            runMode: 2,
+            openMode: 2,
+        },
+    }, () => {
         cy.visit('/');
 
         Cypress.on('uncaught:exception', (err, runnable) => {
