@@ -1,10 +1,10 @@
 describe('Checking the registration of a new user', () => {
 
-    before(() => {
+    beforeEach(() => {
         cy.request('DELETE', 'https://navi.areso.pro:7001/api/v1.1/delete_test_users');
     })
 
-    after(() => {
+    afterEach(() => {
         cy.request('DELETE', 'https://navi.areso.pro:7001/api/v1.1/delete_test_users');
     })
 
