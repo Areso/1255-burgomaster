@@ -223,17 +223,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder"); // 220
-localeStrings.push("Utiliser porte de la cité");
-localeStrings.push("Aller à la carte d'aventure");
-localeStrings.push("Régénérer la carte");
-localeStrings.push("Votre héros a été promu au niveau suivant!");
-localeStrings.push("Voulez-vous une attitude agressive (récompense plus élevée, risque plus élevé) ou une position de prudence?");//225
-localeStrings.push("Agressif! Vouloir du sang et de l'or!");
-localeStrings.push("Prudent. A quoi bon d'or si votre héros est mort?");
-localeStrings.push("Vous devez d'abord ajouter des troupes à l'équipe de héros!");
-localeStrings.push("Vous avez besoin d'un héros pour faire ça!");
-localeStrings.push("C'est un plaisir d'avoir une entreprise avec vous. Je te reverrai");//230
-localeStrings.push("Félicitations pour votre achat! Vous avez fait le bon choix!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//230
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -257,26 +257,26 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Le héros est juste derrière la ville maintenant!");//255
-localeStrings.push("Vous n'avez pas de rouleau Towngate!");
-localeStrings.push("Tout d'abord, dirigez le héros en ville!");
+localeStrings.push("placeholder");//255
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Le marchand du marché noir propose ces produits à la vente!");//260
-localeStrings.push("prix ");
-localeStrings.push("Acheter sélectionné");
-localeStrings.push("Le marchand du marché noir pourrait acheter vos biens.");
-localeStrings.push("Vendre sélectionné");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Le service d'incendie");//270
-localeStrings.push("Le service d'incendie est");
-localeStrings.push("service");
-localeStrings.push("hors service");
-localeStrings.push("Le prix du maintien du service est de");
+localeStrings.push("placeholder");//270
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -760,3 +760,28 @@ locObj.btnDismissHero = {"txt": "Rejeter le héros", "loc": "inn tab"};
 locObj.btnAutocampaignSendHero = {"txt": "Envoyer le héros à autocampaign", "loc": "inn tab"};
 locObj.btnAutocampaignWithdrawHero = {"txt": "Retirer le héros", "loc": "inn tab"};
 locObj.btnAutocampaignOpenJournal = {"txt": "Journal ouvert", "loc": "inn tab"};
+locObj.btnUseTowngateScroll = {"txt": "Utiliser porte de la cité", "loc": "inn tab"};
+locObj.btnGoToAdvenureMap = {"txt": "Aller à la carte d'aventure", "loc": "inn tab"};
+locObj.btnRegenerateMap = {"txt": "Régénérer la carte", "loc": "inn tab"};
+locObj.msgHeroAdvancedToNextLvl = {"txt": "Votre héros a été promu au niveau suivant!", "loc": "event log?"};
+locObj.dlgHeroStance = {"txt": "Voulez-vous une attitude agressive (récompense plus élevée, risque plus élevé) ou une position de prudence?", "loc": "dialog happens when hero leaving town"};
+locObj.ansHeroAggressiveStance = {"txt": "Agressif! Vouloir du sang et de l'or!", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.ansHeroCautiousStance = {"txt": "Prudent. A quoi bon d'or si votre héros est mort?", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.errHeroHasNoTroops = {"txt": "Vous devez d'abord ajouter des troupes à l'équipe de héros!", "loc": "when trying to send hero outta city with no troops"};
+locObj.errNoHero = {"txt": "Vous avez besoin d'un héros pour faire ça!", "loc": "when trying to invoke hero-related actions with no hero"};
+locObj.msgAfterSellToTrader = {"txt": "C'est un plaisir d'avoir une entreprise avec vous. Je te reverrai", "loc": "not used so far"};
+locObj.msgAfterBuyFromTrader = {"txt": "Félicitations pour votre achat! Vous avez fait le bon choix!", "loc": "not used so far"};
+locObj.artifactTowngateAfterUse = {"txt": "Le héros est juste derrière la ville maintenant!", "loc": "after the artefact was used"};
+locObj.artifactErrNoTowngate = {"txt": "Vous n'avez pas de rouleau Towngate!", "loc": "when trying to use towngate scroll witout having one"};
+locObj.artifactErrWrongDirection = {"txt": "Tout d'abord, dirigez le héros en ville!", "loc": "happens when try to cast towngate and moving from the town"};
+locObj.lblGoodForSale = {"txt": "Le marchand du marché noir propose ces produits à la vente!", "loc":"blackmarket tab, good for sale from the NPC"};
+locObj.lblHeroGoodsFoSale = {"txt": "Le marchand du marché noir pourrait acheter vos biens.", "loc":"blackmarket tab"};
+//TODO chech the following three, they aren't in use right now for some reason!
+locObj.tabBlackMarketlblPrice = {"txt": "prix ", "loc": "blackmarket tab"};
+locObj.btnBuySelected = {"txt": "Acheter sélectionné", "loc": "blackmarket tab"};
+locObj.btnSellSelected = {"txt": "Vendre sélectionné", "loc": "blackmarket tab"};
+locObj.lblFirebrigade = {"txt": "Le service d'incendie", "loc": "firebrigade tab title"};
+locObj.lblFireServiceStatus = {"txt": "Le service d'incendie est", "loc": "fireservice service label"};
+locObj.onDuty = {"txt": "service", "loc":"a fire service status - enabled"};
+locObj.offDuty = {"txt": "hors service", "loc":"a fire service status - disabled"};
+locObj.lblFirebrigadeUpkeep = {"txt":"Le prix du maintien du service est de", "loc":"firebrigade tab"};

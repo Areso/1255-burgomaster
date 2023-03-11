@@ -263,13 +263,13 @@ function gameOK() {
 					unequipItem(towngateScroll.uid);
 					removeElementUI(towngateScroll.uid);
 					game.myhero.aCampaignLong = 1;
-					postEventLog(localeStrings[255], 'bold');
+					postEventLog(locObj.artifactTowngateAfterUse.txt, 'bold');
 					updateUI();
 				} else {
-					postEventLog(localeStrings[256], 'bold');
+					postEventLog(locObj.artifactErrNoTowngate.txt, 'bold');
 				}
 			} else {
-				postEventLog(localeStrings[257], 'bold');
+				postEventLog(locObj.artifactErrWrongDirection.txt, 'bold');
 			}
 		},
 		checkAudio : function (typeAudio, target) {
@@ -557,20 +557,19 @@ function gameOK() {
 			}
 		},
 		cityLeave: function () {
-
 			if (game.heroExists()) {
 				if (game.myhero.status === 0) {
 					if (game.isHeroHaveTroops()) {
-						var question = localeStrings[225];
-						showModal(1, '', game.cityLeaveCallback, question, localeStrings[226], localeStrings[227]);
+						let question = locObj.dlgHeroStance.txt;
+						showModal(1, '', game.cityLeaveCallback, question,
+						  locObj.ansHeroAggressiveStance.txt, locObj.ansHeroCautiousStance.txt);
 						return;
 					} else {
-						var alertMsg = localeStrings[228];
+						let alertMsg = locObj.errAddTroopsToHero.txt;
 						showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 						return;
 					}
 				}
-
 				if (game.myhero.status === 2) {
 					console.log("[cityLeave]: Hero is on the adventure map, just open it!");
 					openTab(null, 'Explore');
@@ -786,7 +785,7 @@ function gameOK() {
 					game.heroDie();
 				}
 			} else {
-				alertMsg = localeStrings[229];
+				let alertMsg = locObj.errNoHero.txt;
 				showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '');
 			}
 		},
@@ -1064,9 +1063,11 @@ function gameOK() {
 			if (game.heroExists()){
 				if (game.myhero.status === HERO_STATUS.CITY) {
 					if (game.isHeroHaveTroops()) {
-						showModal(1, '', game.autocampaignLaunchCallback, localeStrings[225], localeStrings[226], localeStrings[227]);
+					    let question =  locObj.dlgHeroStance.txt;
+						showModal(1, '', game.autocampaignLaunchCallback, question,
+						  locObj.ansHeroAggressiveStance.txt, locObj.ansHeroCautiousStance.txt);
 					} else {
-						showModal(0, '', getAck, localeStrings[228],  locObj.okay.txt, '');
+						showModal(0, '', getAck, locObj.errHeroHasNoTroops.txt,  locObj.okay.txt, '');
 					}
 					return;
 				}
@@ -1079,7 +1080,7 @@ function gameOK() {
 				}
 
 			} else {
-				showModal(0, '', getAck, localeStrings[229],  locObj.okay.txt, '');
+				showModal(0, '', getAck, locObj.errNoHero.txt,  locObj.okay.txt, '');
 			}
 		},
 		autocampaignLaunchCallback : function () {
@@ -1557,7 +1558,7 @@ function gameOK() {
 				}
 
 				if (campaignType === "AutoCampaign") {
-					postJournalLog(localeStrings[224]);
+					postJournalLog(locObj.msgHeroAdvancedToNextLvl.txt);
 				}
 			}
 		},
@@ -3738,42 +3739,21 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		postEventLog(locObj.welcome2.txt);
 	}
 	function postEventLog(msgEventLog, styling) {
-
-				if (styling) {
-					styling = styling.toUpperCase();
-
-					switch (styling) {
-						case 'BOLD': msgEventLog = '<b>' + msgEventLog + '</b>'; break;
-						case 'ITALIC': msgEventLog = '<i>' + msgEventLog + '</i>'; break;
-						case 'RED': msgEventLog = '<font>' + msgEventLog + '</font>'; break;
-						default: console.warn('Unknown msg styling');
-					}
-				}
-
-
-
-        // if (typeof styling !== 'undefined') {
-        //     styling = styling.toUpperCase();
-        // } else {
-        //     styling = "";
-        // }
-        // styling = styling.toUpperCase();
-        // if (styling.indexOf("BOLD")!==-1){
-        //     msgEventLog = "<b>"+msgEventLog+"</b>";
-        // }
-        // if (styling.indexOf("ITALIC")!==-1){
-        //     msgEventLog = "<i>"+msgEventLog+"</i>";
-        // }
-        // if (styling.indexOf("RED")!==-1){
-        //     msgEventLog = "<font color='red'>"+msgEventLog+"</font>";
-        // }
-		document.getElementById('log').innerHTML += getTime(0) + ': ' + msgEventLog + '<br>';
-		scrollDown();
+      if (styling) {
+        styling = styling.toUpperCase();
+        switch (styling) {
+          case 'BOLD': msgEventLog = '<b>' + msgEventLog + '</b>'; break;
+          case 'ITALIC': msgEventLog = '<i>' + msgEventLog + '</i>'; break;
+          case 'RED': msgEventLog = '<font>' + msgEventLog + '</font>'; break;
+          default: console.warn('Unknown msg styling');
+        }
+      }
+      document.getElementById('log').innerHTML += getTime(0) + ': ' + msgEventLog + '<br>';
+      scrollDown();
 	}
 	function clearJournalLog() {
 		document.getElementById("lblAutocampaignJournal").innerHTML = "";
 	}
-
 	function createJournalAccordion() {
 		var accordionContainerElement = document.createElement('div');
 		var accordionHeaderElement    = document.createElement('div');

@@ -1,40 +1,31 @@
 function addItem(target, item) {
-
 	var newItem = Object.assign({}, item);
 	newItem.uid = uuidv4();
-
 	if (target === "hero" && game.heroExists()) {
 		newItem.priceBuy = newItem.priceBuy / 2;
 		game.myhero.inventory.push(newItem);
 		createElementUI(newItem, "heroMarketList");
 		equipItem(newItem.uid);
 	}
-
 	if (target === "trader") {
 		game.blackMarketGoods.push(newItem);
 		createElementUI(newItem, "marketList");
 	}
-
 }
 
 function removeItem(target, item) {
-
 	if (isNil(item)) {
 		throw new Error('Item not passed.')
 	}
-
 	var targetInventoryList = null;
-
 	switch (target) {
 		case 'hero': targetInventoryList = game.myhero.inventory; break;
 		case 'trader': targetInventoryList = game.blackMarketGoods; break;
 		default: throw new Error('Incorrect target type: available types are "trader" or "hero"');
 	}
-
 	var targetIndex = targetInventoryList.findIndex(function (inventoryItem) {
 		return inventoryItem.id === item.id;
 	});
-
 	if (targetIndex > -1) {
 		targetInventoryList.splice(targetIndex, 1);
 		removeElementUI(item.uid);
@@ -52,34 +43,27 @@ function removeElementUI(elemUID) {
 
 function createElementUI(item, targetListId) {
 	var parent = document.getElementById(targetListId);
-
 	var descWrapperElement = document.createElement("div");
 	var nameElement = document.createElement("div");
 	var descElement = document.createElement("span");
 	var priceElement = document.createElement("div");
-
 	var imgElement = document.createElement("img");
 	var imgWrapperElement = document.createElement("div");
-
 	var actionBtnElement = document.createElement("button");
-
 	var id = item.id;
 	if (targetListId === "marketList") {
 		actionBtnElement.innerText = locObj.buy.txt;
 		actionBtnElement.onclick = function (e) {
 		e.preventDefault();
-
 			// TODO: #SwordsRestriction remove it later
 			if ((item.id === 'artid15' || item.id === 'artid16')  && swordsCount === 2) {
 				showModal(0, '', getAck, locObj.swordsWarn.txt,  locObj.okay.txt, '');
 				return;
 			}
-
 			if ((item.id === 'artid17' || item.id === 'artid18')  && ringsCount === 2) {
 				showModal(0, '', getAck, locObj.ringsWarn.txt,  locObj.okay.txt, '');
 				return;
 			}
-
 		if (game.gold >= item.priceBuy) {
 
 			game.gold -= item.priceBuy;
@@ -100,15 +84,12 @@ function createElementUI(item, targetListId) {
 		actionBtnElement.innerText = locObj.sell.txt;
 		actionBtnElement.onclick = function (e) {
 			e.preventDefault();
-
 			var testCost = game.gold + item.priceBuy;
 			if (testCost >= game.goldLimit()) {
 				postEventLog("You reached gold limit!");
 				return
 			}
-
 			game.gold += item.priceBuy;
-
 			if (item.id !== "artid00") {
 				item.priceBuy *= 2;
 				addItem("trader", item);
@@ -118,45 +99,31 @@ function createElementUI(item, targetListId) {
 			unequipItem(item.uid);
 		};
 	}
-
-
-
 	var imgSrc = "resources/" + item.img;
 	imgElement.setAttribute("src", imgSrc);
-
 	var wrapperElement = document.createElement("div");
-
-
 	nameElement.innerText = item.name;
 	priceElement.innerText = item.priceBuy;
 	priceElement.classList.add("price-val");
 	nameElement.appendChild(priceElement);
-
 	descElement.innerText = item.desc;
-
-
 	imgWrapperElement.appendChild(imgElement);
 	imgWrapperElement.classList.add("inventory-item__wrapper-img");
 	descWrapperElement.appendChild(nameElement);
 	descWrapperElement.appendChild(descElement);
 	nameElement.classList.add("inventory-item__name")
-
 	descWrapperElement.classList.add("inventory-item__wrapper-desc");
-
 	wrapperElement.appendChild(imgWrapperElement);
 	wrapperElement.appendChild(descWrapperElement);
 	wrapperElement.appendChild(actionBtnElement);
 	actionBtnElement.classList.add("inventory-item__btn");
-
 	wrapperElement.classList.add("inventory-item");
 	wrapperElement.setAttribute("data-uid", item.uid);
-
 	parent.appendChild(wrapperElement);
-
 }
 
 function clearTraderUI() {
-	document.getElementById('marketList').innerHTML = '';
+  document.getElementById('marketList').innerHTML = '';
 }
 
 var swordsCount = 0; // TODO: #SwordsRestriction Counter will be removed after hero inventory system rework. For now dummy fix.
@@ -293,21 +260,20 @@ function recalcStats(itemStats) {
 
 
 function getInventoryItemListIds(target) {
-	let targetList = [];
-	switch (target) {
-		case 'hero': {
-			if (game.heroExists()) {
-				targetList = game.myhero && game.myhero.inventory;
-			}
-		} break;
-		case 'trader': targetList = game.blackMarketGoods; break;
-		default: console.warn('Unknown inventory target'); return;
-	}
-	if (targetList.length > 0) {
-		console.log('123');
-		targetList =  targetList.map(item => item.id);
-	}
-	return targetList;
+  let targetList = [];
+  switch (target) {
+    case 'hero': {
+      if (game.heroExists()) {
+        targetList = game.myhero && game.myhero.inventory;
+      }
+    } break;
+    case 'trader': targetList = game.blackMarketGoods; break;
+    default: console.warn('Unknown inventory target'); return;
+  }
+  if (targetList.length > 0) {
+    targetList =  targetList.map(item => item.id);
+  }
+  return targetList;
 }
 
 

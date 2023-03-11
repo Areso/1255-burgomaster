@@ -223,17 +223,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder"); // 220
-localeStrings.push("Uzu ruleton de urbeto");
-localeStrings.push("Iru al aventura mapo");
-localeStrings.push("Regeneri mapon");
-localeStrings.push("Via heroo promociiĝis al la sekva nivelo!");
-localeStrings.push("Ĉu vi volas agresa sinteno (pli alta rekompenco, pli alta risko) aŭ singarda?");//225
-localeStrings.push("Agresa! Volu sangon kaj monon!");
-localeStrings.push("Zorgema. Ĉu bona el oro se via heroo mortis?");
-localeStrings.push("Vi devas unue aldoni iujn trupojn al la taĉmento de herooj!");
-localeStrings.push("Vi bezonas heroon por fari tion!");
-localeStrings.push("Estas plezuro havi komercon kun vi. Mi revidos vin");//230
-localeStrings.push("Gratulojn pro via aĉeto! Vi faris bonan elekton!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//230
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -257,26 +257,26 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("La heroo estas malantaŭ la urbo nun!");//255
-localeStrings.push("Vi ne havas Towngate-movon!");
-localeStrings.push("Unue, direktu la heroon al la urbo!");
+localeStrings.push("placeholder");//255
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("La komercisto de nigra merkato ofertas ĉi tiujn varojn por vendo!");//260
-localeStrings.push("prezo ");
-localeStrings.push("Aĉeti elektitan");
-localeStrings.push("La komercisto de nigra merkato povus aĉeti viajn varojn.");
-localeStrings.push("Vendi elektita");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Fajrobrigadisto");//270
-localeStrings.push("La fajro servo");
-localeStrings.push("funkcias");
-localeStrings.push("ne funkcias");
-localeStrings.push("La prezo de daŭro de la servo estas");
+localeStrings.push("placeholder");//270
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -760,3 +760,28 @@ locObj.btnDismissHero = {"txt": "Malakcepti heroon", "loc": "inn tab"};
 locObj.btnAutocampaignSendHero = {"txt": "Sendi heroon al aŭtokampanjo", "loc": "inn tab"};
 locObj.btnAutocampaignWithdrawHero = {"txt": "Forigi la heroon", "loc": "inn tab"};
 locObj.btnAutocampaignOpenJournal = {"txt": "Malfermi taglibro", "loc": "inn tab"};
+locObj.btnUseTowngateScroll = {"txt": "Uzi ruleton de urbeto", "loc": "inn tab"};
+locObj.btnGoToAdvenureMap = {"txt": "Iri al aventura mapo", "loc": "inn tab"};
+locObj.btnRegenerateMap = {"txt": "Regeneri mapon", "loc": "inn tab"};
+locObj.msgHeroAdvancedToNextLvl = {"txt": "Via heroo promociiĝis al la sekva nivelo!", "loc": "event log?"};
+locObj.dlgHeroStance = {"txt": "Ĉu vi volas agresa sinteno (pli alta rekompenco, pli alta risko) aŭ singarda?", "loc": "dialog happens when hero leaving town"};
+locObj.ansHeroAggressiveStance = {"txt": "Agresa! Volu sangon kaj monon!", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.ansHeroCautiousStance = {"txt": "Zorgema. Ĉu bona el oro se via heroo mortis?", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.errHeroHasNoTroops = {"txt": "Vi devas unue aldoni iujn trupojn al la taĉmento de herooj!", "loc": "when trying to send hero outta city with no troops"};
+locObj.errNoHero = {"txt": "Vi bezonas heroon por fari tion!", "loc": "when trying to invoke hero-related actions with no hero"};
+locObj.msgAfterSellToTrader = {"txt": "Estas plezuro havi komercon kun vi. Mi revidos vin", "loc": "not used so far"};
+locObj.msgAfterBuyFromTrader = {"txt": "Gratulojn pro via aĉeto! Vi faris bonan elekton!", "loc": "not used so far"};
+locObj.artifactTowngateAfterUse = {"txt": "La heroo estas malantaŭ la urbo nun!", "loc": "after the artefact was used"};
+locObj.artifactErrNoTowngate = {"txt": "Vi ne havas Towngate-movon!", "loc": "when trying to use towngate scroll witout having one"};
+locObj.artifactErrWrongDirection = {"txt": "Unue, direktu la heroon al la urbo!", "loc": "happens when try to cast towngate and moving from the town"};
+locObj.lblGoodForSale = {"txt": "La komercisto de nigra merkato ofertas ĉi tiujn varojn por vendo!", "loc":"blackmarket tab, good for sale from the NPC"};
+locObj.lblHeroGoodsFoSale = {"txt": "La komercisto de nigra merkato povus aĉeti viajn varojn.", "loc":"blackmarket tab"};
+//TODO chech the following three, they aren't in use right now for some reason!
+locObj.tabBlackMarketlblPrice = {"txt": "prezo ", "loc": "blackmarket tab"};
+locObj.btnBuySelected = {"txt": "Aĉeti elektitan", "loc": "blackmarket tab"};
+locObj.btnSellSelected = {"txt": "Vendi elektita", "loc": "blackmarket tab"};
+locObj.lblFirebrigade = {"txt": "Fajrobrigadisto", "loc": "firebrigade tab title"};
+locObj.lblFireServiceStatus = {"txt": "La fajro servo", "loc": "fireservice service label"};
+locObj.onDuty = {"txt": "funkcias", "loc":"a fire service status - enabled"};
+locObj.offDuty = {"txt": "ne funkcias", "loc":"a fire service status - disabled"};
+locObj.lblFirebrigadeUpkeep = {"txt":"La prezo de daŭro de la servo estas", "loc":"firebrigade tab"};

@@ -223,17 +223,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder"); // 220
-localeStrings.push("Towngate-Scroll verwenden");
-localeStrings.push("Gehe zur Abenteuerkarte");
-localeStrings.push("Karte neu generieren");
-localeStrings.push("Dein Held wurde zum nächsten Level befördert!");
-localeStrings.push("Wollen Sie eine aggressive Haltung (höhere Belohnung, höheres Risiko) oder eine vorsichtige?");//225
-localeStrings.push("Aggressiv! Willst du Blut und Geld!");
-localeStrings.push("Vorsichtig. Was nützt Gold, wenn dein Held tot ist?");
-localeStrings.push("Sie müssen zuerst einige Truppen in den Kader des Helden aufnehmen!");
-localeStrings.push("Dafür brauchst du einen Helden!");
-localeStrings.push("Es ist eine Freude, mit Ihnen Geschäfte zu machen. Ich werde dich wiedersehen");//230
-localeStrings.push("Herzlichen Glückwunsch zum Kauf! Sie haben eine gute Wahl getroffen!");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//230
+localeStrings.push("palceholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -257,26 +257,26 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Der Held ist gerade hinter der Stadt!");//255
-localeStrings.push("Sie haben keine Towngate-Schriftrolle!");
-localeStrings.push("Begib dich zuerst mit dem Helden in die Stadt!");
+localeStrings.push("placeholder");//255
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Der Schwarzmarkt  des Händlers bietet diese Waren zum Verkauf!");//260
-localeStrings.push("preis ");
-localeStrings.push("kaufen Sie ausgewählt");
-localeStrings.push("Der Händler Schwarzmarkt  könnte Ihre Waren kaufen.");
-localeStrings.push("Verkaufen ausgewählt");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Feuerwehr");//270
-localeStrings.push("Die Feuerwehr");
-localeStrings.push("ist im Dienst");
-localeStrings.push("ist dienstfrei");
-localeStrings.push("Der Preis für den Erhalt des Dienstes beträgt");
+localeStrings.push("placeholder");//270
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -760,3 +760,28 @@ locObj.btnDismissHero = {"txt": "Held entlassen", "loc": "inn tab"};
 locObj.btnAutocampaignSendHero = {"txt": "Held an Autokampagne senden", "loc": "inn tab"};
 locObj.btnAutocampaignWithdrawHero = {"txt": "Den Helden zurückziehen", "loc": "inn tab"};
 locObj.btnAutocampaignOpenJournal = {"txt": "Tagebuch öffnen", "loc": "inn tab"};
+locObj.btnUseTowngateScroll = {"txt": "Towngate-Scroll verwenden", "loc": "inn tab"};
+locObj.btnGoToAdvenureMap = {"txt": "Gehe zur Abenteuerkarte", "loc": "inn tab"};
+locObj.btnRegenerateMap = {"txt": "Karte neu generieren", "loc": "inn tab"};
+locObj.msgHeroAdvancedToNextLvl = {"txt": "Dein Held wurde zum nächsten Level befördert!", "loc": "event log?"};
+locObj.dlgHeroStance = {"txt": "Wollen Sie eine aggressive Haltung (höhere Belohnung, höheres Risiko) oder eine vorsichtige?", "loc": "dialog happens when hero leaving town"};
+locObj.ansHeroAggressiveStance = {"txt": "Aggressiv! Willst du Blut und Geld!", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.ansHeroCautiousStance = {"txt": "Vorsichtig. Was nützt Gold, wenn dein Held tot ist??", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.errHeroHasNoTroops = {"txt": "Sie müssen zuerst einige Truppen in den Kader des Helden aufnehmen!", "loc": "when trying to send hero outta city with no troops"};
+locObj.errNoHero = {"txt": "Dafür brauchst du einen Helden!", "loc": "when trying to invoke hero-related actions with no hero"};
+locObj.msgAfterSellToTrader = {"txt": "Es ist eine Freude, mit Ihnen Geschäfte zu machen. Ich werde dich wiedersehen.", "loc": "not used so far"};
+locObj.msgAfterBuyFromTrader = {"txt": "Herzlichen Glückwunsch zum Kauf! Sie haben eine gute Wahl getroffen!", "loc": "not used so far"};
+locObj.artifactTowngateAfterUse = {"txt": "Der Held ist gerade hinter der Stadt!", "loc": "after the artefact was used"};
+locObj.artifactErrNoTowngate = {"txt": "Sie haben keine Towngate-Schriftrolle!", "loc": "when trying to use towngate scroll witout having one"};
+locObj.artifactErrWrongDirection = {"txt": "Begib dich zuerst mit dem Helden in die Stadt!", "loc": "happens when try to cast towngate and moving from the town"};
+locObj.lblGoodForSale = {"txt": "Der Schwarzmarkt  des Händlers bietet diese Waren zum Verkauf!", "loc":"blackmarket tab, good for sale from the NPC"};
+locObj.lblHeroGoodsFoSale = {"txt": "Der Händler Schwarzmarkt  könnte Ihre Waren kaufen", "loc":"blackmarket tab"};
+//TODO chech the following two, they aren't in use right now for some reason!
+locObj.tabBlackMarketlblPrice = {"txt": "preis ", "loc": "blackmarket tab"};
+locObj.btnBuySelected = {"txt": "kaufen Sie ausgewählt", "loc": "blackmarket tab"};
+locObj.btnSellSelected = {"txt": "Verkaufen ausgewählt", "loc": "blackmarket tab"};
+locObj.lblFirebrigade = {"txt": "Feuerwehr", "loc": "firebrigade tab title"};
+locObj.lblFireServiceStatus = {"txt": "Die Feuerwehr", "loc": "fireservice service label"};
+locObj.onDuty = {"txt": "ist im Dienst", "loc":"a fire service status - enabled"};
+locObj.offDuty = {"txt": "ist dienstfrei", "loc":"a fire service status - disabled"};
+locObj.lblFirebrigadeUpkeep = {"txt":"Der Preis für den Erhalt des Dienstes beträgt", "loc":"firebrigade tab"};

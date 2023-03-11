@@ -223,17 +223,17 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");//220
-localeStrings.push("Свиток городских врат");
-localeStrings.push("На карту приключений");
-localeStrings.push("Пересоздать карту");
-localeStrings.push("Ваш герой достиг следующего уровня!");
-localeStrings.push("Выберите поведение героя: агрессивное (выше награда и риск) или осторожное?");//225
-localeStrings.push("Агрессивное. Хочу крови и денег!");
-localeStrings.push("Осторожное. Какой толк от денег, если ваш герой мертв?");
-localeStrings.push("Сначала добавьте войск герою");
-localeStrings.push("Для этого нужен герой!");
-localeStrings.push("Приятно иметь с вами дело. Надеюсь на скорую встречу с вами вновь.");//230
-localeStrings.push("Поздравляю с покупкой. Это хороший выбор.");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//225
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//230
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -257,26 +257,26 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Герой теперь буквально в одном шаге от города!");//255
-localeStrings.push("У вас нет свитка городских врат!");
-localeStrings.push("Сначала направьте героя в город.");
+localeStrings.push("placeholder");//255
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Продавец с черного рынка предлагает свои товары на продажу!");//260
-localeStrings.push("цена ");
-localeStrings.push("Купить выбранное");
-localeStrings.push("Продавец с черного рынка может выкупить ваши товары.");
-localeStrings.push("Продать выбранное");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//260
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("placeholder");//265
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Пожарная охрана");//270
-localeStrings.push("Пожарная охрана");
-localeStrings.push("на службе");
-localeStrings.push("не на службе");
-localeStrings.push("Цена содержания пожарной охраны");
+localeStrings.push("placeholder");//270
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("%arg1% of fire extinguished");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
@@ -764,3 +764,28 @@ locObj.btnDismissHero = {"txt": "Уволить героя", "loc": "inn tab"};
 locObj.btnAutocampaignSendHero = {"txt": "Отправить в поход", "loc": "inn tab"};
 locObj.btnAutocampaignWithdrawHero = {"txt": "Вернуть из похода", "loc": "inn tab"};
 locObj.btnAutocampaignOpenJournal = {"txt": "Открыть журнал", "loc": "inn tab"};
+locObj.btnUseTowngateScroll = {"txt": "Свиток городских врат", "loc": "inn tab"};
+locObj.btnGoToAdvenureMap = {"txt": "На карту приключений", "loc": "inn tab"};
+locObj.btnRegenerateMap = {"txt": "Пересоздать карту", "loc": "inn tab"};
+locObj.msgHeroAdvancedToNextLvl = {"txt": "Ваш герой достиг следующего уровня!", "loc": "event log?"};
+locObj.dlgHeroStance = {"txt": "Выберите поведение героя: агрессивное (выше награда и риск) или осторожное?", "loc": "dialog happens when hero leaving town"};
+locObj.ansHeroAggressiveStance = {"txt": "Агрессивное. Хочу крови и денег!", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.ansHeroCautiousStance = {"txt": "Осторожное. Какой толк от денег, если ваш герой мертв?", "loc": "One of the options to the locObj.dlgHeroStance question"};
+locObj.errHeroHasNoTroops = {"txt": "Сначала добавьте войск герою", "loc": "when trying to send hero outta city with no troops"};
+locObj.errNoHero = {"txt": "Для этого нужен герой!", "loc": "when trying to invoke hero-related actions with no hero"};
+locObj.msgAfterSellToTrader = {"txt": "Приятно иметь с вами дело. Надеюсь на скорую встречу с вами вновь.", "loc": "not used so far"};
+locObj.msgAfterBuyFromTrader = {"txt": "Поздравляю с покупкой. Это хороший выбор.", "loc": "not used so far"};
+locObj.artifactTowngateAfterUse = {"txt": "Герой теперь буквально в одном шаге от города!!", "loc": "after the artefact was used"};
+locObj.artifactErrNoTowngate = {"txt": "У вас нет свитка городских врат!", "loc": "when trying to use towngate scroll witout having one"};
+locObj.artifactErrWrongDirection = {"txt": "Сначала направьте героя в город.", "loc": "happens when try to cast towngate and moving from the town"};
+locObj.lblGoodForSale = {"txt": "Продавец с черного рынка предлагает свои товары на продажу!", "loc":"blackmarket tab, good for sale from the NPC"};
+locObj.lblHeroGoodsFoSale = {"txt": "Продавец с черного рынка может выкупить ваши товары.", "loc":"blackmarket tab"};
+//TODO chech the following three, they aren't in use right now for some reason!
+locObj.tabBlackMarketlblPrice = {"txt": "цена ", "loc": "blackmarket tab"};
+locObj.btnBuySelected = {"txt": "Купить выбранное", "loc": "blackmarket tab"};
+locObj.btnSellSelected = {"txt": "Продать выбранное", "loc": "blackmarket tab"};
+locObj.lblFirebrigade = {"txt": "Пожарная охрана", "loc": "firebrigade tab title"};
+locObj.lblFireServiceStatus = {"txt": "Пожарная охрана", "loc": "fireservice service label"};
+locObj.onDuty = {"txt": "на службе", "loc":"a fire service status - enabled"};
+locObj.offDuty = {"txt": "не на службе", "loc":"a fire service status - disabled"};
+locObj.lblFirebrigadeUpkeep = {"txt":"Цена содержания пожарной охраны", "loc":"firebrigade tab"};
