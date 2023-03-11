@@ -41,17 +41,38 @@ describe('Verification of authorization and loading of the save', () => {
         // checking available buildings
         cy.get('#btnOpenTabBuilding').click();
 
-        cy.get('#homes').should('have.text', 'Build Homelvl 17131072 gold');
-        // bugs
-        // cy.get('#defence').should('have.class', 'Build Walllvl 3125000 gold');
-        cy.get('#treasury').should('have.text', 'Build Treasurylvl 1381920000000000000 gold');
-        cy.get('#buttonBldGallows').should('have.text', 'Build Gallowslvl 150 gold');
-        cy.get('#buttonBldFountain').should('have.text', 'Build Fountainlvl 3125000 gold');
-        cy.get('#buttonBldStash').should('have.text', 'Build Stashlvl 3125000 gold');
-        cy.get('#buttonBldStable').should('have.text', 'Build Stablelvl 3125000 gold');
-        cy.get('#buttonBldArchery').should('have.text', 'Build Archery rangelvl 3125000 gold');
-        cy.get('#buttonBldInn').should('have.text', 'Build Innlvl 4160000 gold');
-        cy.get('#buttonBuildUniversity').should('have.text', 'Build university200 gold');
+        cy.get('#homes')
+            .should('have.text', 'Build Homelvl 17131072 gold')
+            .and('have.class', 'btn');
+        cy.get('#defence')
+            .should('have.text', 'Build Walllvl 12 gold')
+            .and('have.class', 'btn')
+            .and('not.be.visible');
+        cy.get('#treasury')
+            .should('have.text', 'Build Treasurylvl 1381920000000000000 gold')
+            .and('have.class', 'btn');
+        cy.get('#buttonBldGallows')
+            .should('have.text', 'Build Gallowslvl 150 gold')
+            .and('have.class', 'btn')
+            .and('not.be.visible'); 
+        cy.get('#buttonBldFountain')
+            .should('have.text', 'Build Fountainlvl 3125000 gold')
+            .and('have.class', 'btn');
+        cy.get('#buttonBldStash')
+            .should('have.text', 'Build Stashlvl 3125000 gold')
+            .and('have.class', 'btn');
+        cy.get('#buttonBldStable')
+            .should('have.text', 'Build Stablelvl 3125000 gold')
+            .and('have.class', 'btn');
+        cy.get('#buttonBldArchery')
+            .should('have.text', 'Build Archery rangelvl 3125000 gold')
+            .and('have.class', 'btn');
+        cy.get('#buttonBldInn')
+            .should('have.text', 'Build Innlvl 4160000 gold')
+            .and('have.class', 'btn');
+        cy.get('#buttonBuildUniversity')
+            .should('have.text', 'Build university200 gold')
+            .and('have.class', 'btn');
 
         cy.get('#chat_btn').click();
         cy.get('#log_btn').click();
