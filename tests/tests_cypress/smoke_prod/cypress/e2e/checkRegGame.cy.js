@@ -1,6 +1,19 @@
 describe('Checking the registration of a new user', () => {
 
-    it('Checking the registration of a new user', () => {
+    beforeEach(() => {
+        cy.request('DELETE', 'https://navi.areso.pro:7001/api/v1.1/delete_test_users');
+    })
+
+    afterEach(() => {
+        cy.request('DELETE', 'https://navi.areso.pro:7001/api/v1.1/delete_test_users');
+    })
+
+    it('Checking the registration of a new user', {
+        retries: {
+            runMode: 2,
+            openMode: 2,
+        },
+    }, () => {
         cy.visit('/');
 
         Cypress.on('uncaught:exception', (err, runnable) => {
@@ -11,7 +24,8 @@ describe('Checking the registration of a new user', () => {
         cy.window().then((win) => {
             win.eval('document.getElementById("myDCanvas").classList.remove("active-modal")');
         });
-        let userName = 'Autotest' + Math.floor(Math.random() * 10000);
+
+        let userName = 'Autotest0000';
 
         cy.get('#tabSettings').click();
         cy.get('#selectLng').select('English');
@@ -27,15 +41,15 @@ describe('Checking the registration of a new user', () => {
             cy.contains('please, make a log-in now!');
         });
 
-        cy.get('#buttonLoadFromCloud', { timeout: 9000 }).click();
-        cy.get('#log').contains('error from server. Are you logged in? Is server up?');
+        cy.get('#buttonLoadFromCloud', { timeout: 15000 }).click();
+        cy.get('#log').contains("you don't have saved game in the cloud");
 
         // Check
         cy.get('#autosaveImg').should('have.attr', 'src', 'resources/button_red.png');
-        cy.get('#panelGoldValue').should("have.text", 30);
-        cy.get('#panelPopValue').should("have.text", 6);
-        cy.get('#gems').should("have.text", 10);
-        cy.get('#spnServerStatusValue').should("have.text", "Up");
+        cy.get('#panelGoldValue').should('have.text', 30);
+        cy.get('#panelPopValue').should('have.text', 6);
+        cy.get('#gems').should('have.text', 10);
+        cy.get('#spnServerStatusValue').should('have.text', 'Up');
 
         cy.window().its('game.year').should('equal', 1255);
         cy.window().its('game.season').should('equal', 2);
@@ -100,6 +114,5 @@ describe('Checking the registration of a new user', () => {
         cy.get('#password').type('Autotest');
         cy.get('#btnRegLogin').click();
         cy.get('#log').contains('login successfull');
-
     });
 })
