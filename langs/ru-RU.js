@@ -277,39 +277,39 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("%arg1% of fire extinguished");//275
+localeStrings.push("placeholder");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("Основной источник выплаты содержания войскам героя ");
-localeStrings.push("Вы не можете платить содержание сержантам. Они уволены.");//280
-localeStrings.push("Вы не можете платить содержание туркополам. Они уволены.");
-localeStrings.push("Вы не можете платить содержание рыцарям. Они уволены.");
-localeStrings.push("Вы не можете платить содержание пожарным. Они уволены.");
-localeStrings.push("кошелек героя");
-localeStrings.push("сокровищница");//285
-localeStrings.push("Свиток телепорта");
-localeStrings.push("Этот одноразовый предмет позволяет вам совершить телепорт к городу в автокампании.");
-localeStrings.push("Четырехлистный клевер");
-localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
-localeStrings.push("Медаль отваги");//290
-localeStrings.push("Этот предмет увеличивает мораль героя на 1");
-localeStrings.push("Медаль храбрости");
-localeStrings.push("Этот предмет увеличивает мораль героя на 1");
-localeStrings.push("Медаль чести");
-localeStrings.push("Этот предмет увеличивает мораль героя на 1");//295
-localeStrings.push("Медаль за отличия");
-localeStrings.push("Этот предмет увеличивает мораль героя на 1");
-localeStrings.push("Заячья лапка");
-localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
-localeStrings.push("Золотая подкова");//300
-localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
-localeStrings.push("Удачливая монетка игрока");
-localeStrings.push("Этот предмет увеличивает удачу и суеверность героя на 1");
-localeStrings.push("Песочные часы неудачи");
-localeStrings.push("Этот предмет отменяет все бонусы удачи и суеверности героя и его врага");//305
-localeStrings.push("Хрустальный шар");
-localeStrings.push("Этот предмет позволяет предсказать результат следующей битвы");//almost all times. 70% I guess, would be enough for start
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//290
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//295
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//300
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//305
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//almost all times. 70% I guess, would be enough for start
 localeStrings.push("Брат-сержант. Конный воин ближнего боя. Цена найма %arg1. Цена содержания %arg2");
 localeStrings.push("Туркопол. Верховой лучник. Цена найма %arg1. Цена содержания %arg2");
 localeStrings.push("Брат-рыцарь. Конный воин ближнего боя с хорошими доспехами. Цена найма %arg1. Цена содержания %arg2");//310
@@ -789,3 +789,11 @@ locObj.lblFireServiceStatus = {"txt": "Пожарная охрана", "loc": "f
 locObj.onDuty = {"txt": "на службе", "loc":"a fire service status - enabled"};
 locObj.offDuty = {"txt": "не на службе", "loc":"a fire service status - disabled"};
 locObj.lblFirebrigadeUpkeep = {"txt":"Цена содержания пожарной охраны", "loc":"firebrigade tab"};
+locObj.fireExtinguishingProgress = {"txt": "%arg1% пожара потушено", "loc":"firebrigade tab"};
+locObj.heroTroopsUpkeepSource = {"txt": "Основной источник выплаты содержания войскам героя ", "loc": "inn tab"};
+locObj.noUpkeepSergeantsDismissed = {"txt": "Вы не можете платить содержание сержантам. Они уволены.", "loc":"happens in calcTurn if no money for sergeants"};
+locObj.noUpkeepTurkopolsDismissed = {"txt": "Вы не можете платить содержание туркополам. Они уволены.", "loc":"happens in calcTurn if no money for turkopols"};
+locObj.noUpkeepKnightsDismissed = {"txt": "Вы не можете платить содержание рыцарям. Они уволены.", "loc":"happens in calcTurn if no money for knights"};
+locObj.noUpkeepFirebrigadeDismissed = {"txt": "Вы не можете платить содержание пожарным. Они уволены.", "loc": "happens in calcTurn if no money for firebrigade"};
+locObj.heroTroopsUpkeepSrcHeroPurse = {"txt": "кошелек героя", "loc": "inn tab"};
+locObj.heroTroopsUpkeepSrcTreasury = {"txt": "сокровищница", "loc": "inn tab"};

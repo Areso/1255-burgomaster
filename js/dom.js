@@ -49,9 +49,9 @@ include('localisation.js',function(){
 		document.getElementById("lblTabGold").innerText          = locObj.tabGoldHistory.txt;
 		document.getElementById("btnColorMode").innerText        = locObj.tabSettingsBtnChangeColorMode.txt;
 		document.getElementById("lblTabInn").innerText           = locObj.tabInnWelcome.txt;
-		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
-		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
-		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
+		document.getElementById("lblUpkeepSrc").innerText        = locObj.heroTroopsUpkeepSource.txt;
+		document.getElementById("selectUpkeepSrc")[0].text       = locObj.heroTroopsUpkeepSrcHeroPurse.txt;
+		document.getElementById("selectUpkeepSrc")[1].text       = locObj.heroTroopsUpkeepSrcTreasury.txt;
 		document.getElementById("btnDismissHero").innerText      = locObj.btnDismissHero.txt;
 		document.getElementById("btnAutocampaignJournal").innerText  = locObj.btnAutocampaignOpenJournal.txt;
 		document.getElementById("btnTowngate").innerText         = locObj.btnUseTowngateScroll.txt;

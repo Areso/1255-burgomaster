@@ -277,21 +277,21 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("%arg1% of fire extinguished");//275
+localeStrings.push("placeholder");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("The primary source of payments to the hero's troops is ");
-localeStrings.push("Sie können es sich nicht leisten, Ihre Sergeanten zu behalten. Sie werden entlassen.");//280
-localeStrings.push("Sie können es sich nicht leisten, Ihre Turkopole zu unterhalten. Sie werden entlassen.");
-localeStrings.push("Sie können es sich nicht leisten, Ihre Ritter zu unterhalten. Sie werden entlassen.");
-localeStrings.push("Sie können es sich nicht leisten, Ihr Feuerwehrteam zu unterhalten. Sie werden entlassen.");
-localeStrings.push("the hero's purse");
-localeStrings.push("the treasury");//285
-localeStrings.push("Towngate scroll");
-localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
-localeStrings.push("Four-Leaf Clover");
-localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Medal of Valor");//290
 localeStrings.push("This item increases your hero's moral by 1");
 localeStrings.push("Medal of Courage");
@@ -785,3 +785,11 @@ locObj.lblFireServiceStatus = {"txt": "Die Feuerwehr", "loc": "fireservice servi
 locObj.onDuty = {"txt": "ist im Dienst", "loc":"a fire service status - enabled"};
 locObj.offDuty = {"txt": "ist dienstfrei", "loc":"a fire service status - disabled"};
 locObj.lblFirebrigadeUpkeep = {"txt":"Der Preis für den Erhalt des Dienstes beträgt", "loc":"firebrigade tab"};
+locObj.fireExtinguishingProgress = {"txt": "%arg1% of fire extinguished", "loc":"firebrigade tab"};
+locObj.heroTroopsUpkeepSource = {"txt": "The primary source of payments to the hero's troops is ", "loc": "inn tab"};
+locObj.noUpkeepSergeantsDismissed = {"txt": "Sie können es sich nicht leisten, Ihre Sergeanten zu behalten. Sie werden entlassen.", "loc":"happens in calcTurn if no money for sergeants"};
+locObj.noUpkeepTurkopolsDismissed = {"txt": "Sie können es sich nicht leisten, Ihre Turkopole zu unterhalten. Sie werden entlassen.", "loc":"happens in calcTurn if no money for turkopols"};
+locObj.noUpkeepKnightsDismissed = {"txt": "Sie können es sich nicht leisten, Ihre Ritter zu unterhalten. Sie werden entlassen", "loc":"happens in calcTurn if no money for knights"};
+locObj.noUpkeepFirebrigadeDismissed = {"txt": "Sie können es sich nicht leisten, Ihr Feuerwehrteam zu unterhalten. Sie werden entlassen.", "loc": "happens in calcTurn if no money for firebrigade"};
+locObj.heroTroopsUpkeepSrcHeroPurse = {"txt": "the hero's purse", "loc": "inn tab"};
+locObj.heroTroopsUpkeepSrcTreasury = {"txt": "the treasury", "loc": "inn tab"};

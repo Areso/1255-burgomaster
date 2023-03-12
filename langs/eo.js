@@ -277,21 +277,21 @@ localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("%arg1% of fire extinguished");//275
+localeStrings.push("placeholder");//275
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
 localeStrings.push("placeholder");
-localeStrings.push("The primary source of payments to the hero's troops is ");
-localeStrings.push("Vi ne povas permesi gardi viajn serĝentojn. Ili estas eksigitaj.");//280
-localeStrings.push("Vi ne povas permesi konservi viajn turkopolojn. Ili estas eksigitaj.");
-localeStrings.push("Vi ne povas permesi konservi viajn kavalirojn. Ili estas eksigitaj.");
-localeStrings.push("Vi ne povas permesi subteni vian fajrestingistaron. Ili estas eksigitaj.");
-localeStrings.push("the hero's purse");
-localeStrings.push("the treasury");//285
-localeStrings.push("Towngate scroll");
-localeStrings.push("This consumable item allows you to teleport to city from an autocampaign");
-localeStrings.push("Four-Leaf Clover");
-localeStrings.push("This item increases your hero's luck and superstition by 1");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//280
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");//285
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
+localeStrings.push("placeholder");
 localeStrings.push("Medal of Valor");//290
 localeStrings.push("This item increases your hero's moral by 1");
 localeStrings.push("Medal of Courage");
@@ -785,3 +785,11 @@ locObj.lblFireServiceStatus = {"txt": "La fajro servo", "loc": "fireservice serv
 locObj.onDuty = {"txt": "funkcias", "loc":"a fire service status - enabled"};
 locObj.offDuty = {"txt": "ne funkcias", "loc":"a fire service status - disabled"};
 locObj.lblFirebrigadeUpkeep = {"txt":"La prezo de daŭro de la servo estas", "loc":"firebrigade tab"};
+locObj.fireExtinguishingProgress = {"txt": "%arg1% of fire extinguished", "loc":"firebrigade tab"};
+locObj.heroTroopsUpkeepSource = {"txt": "The primary source of payments to the hero's troops is ", "loc": "inn tab"};
+locObj.noUpkeepSergeantsDismissed = {"txt": "Vi ne povas permesi gardi viajn serĝentojn. Ili estas eksigitaj.", "loc":"happens in calcTurn if no money for sergeants"};
+locObj.noUpkeepTurkopolsDismissed = {"txt": "Vi ne povas permesi konservi viajn turkopolojn. Ili estas eksigitaj.", "loc":"happens in calcTurn if no money for turkopols"};
+locObj.noUpkeepKnightsDismissed = {"txt": "Vi ne povas permesi konservi viajn kavalirojn. Ili estas eksigitaj.", "loc":"happens in calcTurn if no money for knights"};
+locObj.noUpkeepFirebrigadeDismissed = {"txt": "Vi ne povas permesi subteni vian fajrestingistaron. Ili estas eksigitaj.", "loc": "happens in calcTurn if no money for firebrigade"};
+locObj.heroTroopsUpkeepSrcHeroPurse = {"txt": "the hero's purse", "loc": "inn tab"};
+locObj.heroTroopsUpkeepSrcTreasury = {"txt": "the treasury", "loc": "inn tab"};

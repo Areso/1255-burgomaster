@@ -565,7 +565,7 @@ function gameOK() {
 						  locObj.ansHeroAggressiveStance.txt, locObj.ansHeroCautiousStance.txt);
 						return;
 					} else {
-						let alertMsg = locObj.errAddTroopsToHero.txt;
+						let alertMsg = locObj.errHeroHasNoTroops.txt;
 						showModal(0, '', getAck, alertMsg, locObj.okay.txt, '');
 						return;
 					}
@@ -2306,7 +2306,7 @@ function gameOK() {
 					console.log("Sergeants: ", game.sergeants);
 					console.groupEnd();
 
-					msg = (canUpkeep > 0) ? localeStrings[336].replace("%arg1", dismissedSergeants) : localeStrings[280];
+					msg = (canUpkeep > 0) ? localeStrings[336].replace("%arg1", dismissedSergeants) : locObj.noUpkeepSergeantsDismissed.txt;
 					postEventLog(msg);
 				}
 			}
@@ -2328,7 +2328,7 @@ function gameOK() {
 					console.log("Turkopols: ", game.turkopols);
 					console.groupEnd();
 
-					msg = (canUpkeep > 0) ? localeStrings[337].replace("%arg1", dismissedTurkopols) : localeStrings[281];
+					msg = (canUpkeep > 0) ? localeStrings[337].replace("%arg1", dismissedTurkopols) : locObj.noUpkeepTurkopolsDismissed.txt;
 					postEventLog(msg);
 				}
 			}
@@ -2351,7 +2351,7 @@ function gameOK() {
 					console.log("Knights: ", game.knights);
 					console.groupEnd();
 
-					msg = (canUpkeep > 0) ? localeStrings[338].replace("%arg1", dismissedKnights) : localeStrings[282];
+					msg = (canUpkeep > 0) ? localeStrings[338].replace("%arg1", dismissedKnights) : locObj.noUpkeepKnightsDismissed.txt;
 					postEventLog(msg);
 				}
 			}
@@ -2362,7 +2362,7 @@ function gameOK() {
 				else {
 					game.fireGuard = 0;
 					setupFirebrigadeUI();
-					msg   = localeStrings[283];
+					msg   = locObj.noUpkeepFirebrigadeDismissed.txt;
 					postEventLog(msg);
 				}
 			}
@@ -2377,7 +2377,9 @@ function gameOK() {
 						document.getElementById("divFBProgress").style.display="inline";
 					}
 					var fireProgress = Math.ceil((config.fireStepsBasic-game.fireSteps)/config.fireStepsBasic*100);
-					document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1",fireProgress);
+					//TODO CHECK THIS CODE, IT IS REPEATED TWICE IN DIFFERENT PLACES
+					//CONSIDER to move to one function
+					document.getElementById("divFBProgress").innerHTML = locObj.fireExtinguishingProgress.txt.replace("%arg1",fireProgress);
 				}
 			}
 			//console.log("%c GOLD AFTER UPKEEP PAYMENTS: ", "color: blue", game.gold);
@@ -2800,7 +2802,8 @@ function gameOK() {
 						}
 						composite();
 						game.fireSteps = config.fireStepsBasic;
-						document.getElementById("divFBProgress").innerHTML = localeStrings[275].replace("%arg1","0");
+						//TODO check this
+						document.getElementById("divFBProgress").innerHTML = locObj.fireExtinguishingProgress.txt.replace("%arg1","0");
 						if (game.fireGuard===1){
 							document.getElementById("divFBProgress").style.display="inline";
 						}
