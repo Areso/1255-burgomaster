@@ -3741,19 +3741,19 @@ WeightedRandom.prototype.clearEntriesList = function() {
 		postEventLog(locObj.welcome1.txt);
 		postEventLog(locObj.welcome2.txt);
 	}
-	function postEventLog(msgEventLog, styling) {
-      if (styling) {
-        styling = styling.toUpperCase();
-        switch (styling) {
-          case 'BOLD': msgEventLog = '<b>' + msgEventLog + '</b>'; break;
-          case 'ITALIC': msgEventLog = '<i>' + msgEventLog + '</i>'; break;
-          case 'RED': msgEventLog = '<font>' + msgEventLog + '</font>'; break;
-          default: console.warn('Unknown msg styling');
-        }
-      }
-      document.getElementById('log').innerHTML += getTime(0) + ': ' + msgEventLog + '<br>';
-      scrollDown();
-	}
+function postEventLog(msgEventLog, styling) {
+  if (styling) {
+    styling = styling.toUpperCase();
+    switch (styling) {
+      case 'BOLD': msgEventLog = '<b>' + msgEventLog + '</b>'; break;
+      case 'ITALIC': msgEventLog = '<i>' + msgEventLog + '</i>'; break;
+      case 'RED': msgEventLog = '<font>' + msgEventLog + '</font>'; break;
+      default: console.warn('Unknown msg styling');
+    }
+  }
+  document.getElementById('log').innerHTML += getTime(0) + ': ' + msgEventLog + '<br>';
+  scrollDown();
+}
 	function clearJournalLog() {
 		document.getElementById("lblAutocampaignJournal").innerHTML = "";
 	}
