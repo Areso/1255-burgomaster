@@ -1,6 +1,6 @@
 function updateImagesBuildingTab() {
 	if (game.tips.includes('tutorial1_pop0') && game.isTutorialState) {
-		document.getElementById("tabBuilding").classList.remove('is-tutorial');
+		document.getElementById("Building").classList.remove('is-tutorial');
 	}
 
 	if (game.tips.includes("tutorial1_pop0") || game.buildLevelH > 0  ) {
@@ -8,7 +8,7 @@ function updateImagesBuildingTab() {
 		for (var tabBldElem of tabBldElements){
 			tabBldElem.classList.remove('is-tutorial');
 		}
-		var tabBuilding = document.getElementById("tabBuilding");
+		var tabBuilding = document.getElementById("Building");
 		if (tabBuilding.classList.contains('is-tutorial')) {
 			tabBuilding.classList.remove('is-tutorial');
 		}

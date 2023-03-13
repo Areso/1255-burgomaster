@@ -34,7 +34,7 @@ include('localisation.js',function(){
 		document.getElementById("loadGameButton").innerText      = locObj.locLoadGame.txt;
 		document.getElementById("tabCity").innerText             = locObj.tabCity.txt;
 		document.getElementById("tabSettings").innerText         = locObj.tabSettings.txt;
-		document.getElementById("btnOpenTabBuilding").innerText  = locObj.tabBuilding.txt;
+		document.getElementById("TabBuilding").innerText  = locObj.tabBuilding.txt;
 		document.getElementById("tabAbout").innerText            = locObj.tabHowToPlay.txt;
 		document.getElementById("tabDiscord").innerText          = locObj.tabDiscord.txt;
 		document.getElementById("labelSettings").innerText       = locObj.tabSettings.txt;

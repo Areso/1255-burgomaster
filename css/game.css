@@ -189,7 +189,7 @@ body {
   position: relative;
 }
 
-#tabBuilding.active {
+#Building.active {
   display: flex;
   flex-direction: column;
 }
