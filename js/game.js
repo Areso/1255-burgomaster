@@ -2790,10 +2790,15 @@ function gameOK() {
 				}
 			}
 		},
-		startFire : function () {
+		startFire : function (autotest=false) {
 			if (game.year > 1260) {
 				if (game.fire === 0) {
-					var rnd = Math.floor((Math.random() * 3) + 1);
+				    let rnd = 0
+				    if (autotest===true) {
+				        rnd = 1
+				    } else {
+					    rnd = Math.floor((Math.random() * 3) + 1);
+					}
 					if (rnd === 1) {
 						postEventLog(locObj.fireInCity.txt, "bold");
 						game.fire = 1;
@@ -2814,26 +2819,13 @@ function gameOK() {
 							showModal(0, '', getAck, locObj.tutorial_firebrigade.txt, locObj.okay.txt, '')
 						}
 						//TODO make a certain building in fire, not just "city"
-						if (game.buildLevelD == 1) {
-							ceil = 1
-						}
-						if (game.buildLevelD == 2) {
-							ceil = 2
-						}
-						rnd = Math.floor((Math.random() * 2) + 0);
-						if (rnd === 0) {
-							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-						}
-						if (rnd === 1) {
-							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-						}
-						if (rnd === 0) {
-							//	document.getElementById('constructions').innerHTML = document.getElementById('constructions').innerHTML+fire;
-						}
+						return true;
 					}
 				} else {
-					//you can't get another fire, while you do have previous still burning your city. For now.
+					return false;
 				}
+			} else {
+			    return false;
 			}
 		},
 		putOutFire : function () {
