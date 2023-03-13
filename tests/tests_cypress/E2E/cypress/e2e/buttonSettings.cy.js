@@ -15,7 +15,7 @@ describe('Settings', () => {
 
         cy.get('.menu-panel').within(() => {
             cy.get('#tabCity').should('have.class', 'tab-link');
-            cy.get('#TabBuilding').should('have.class', 'tab-link');
+            cy.get('#tabBuilding').should('have.class', 'tab-link');
             cy.get('#tabSettings').click();
             cy.get('#tabSettings').should('have.class', 'tab-link active');
             cy.get('#tabAbout').should('have.class', 'tab-link');

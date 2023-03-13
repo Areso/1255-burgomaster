@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class BasePageLocators:
     WORKSPACE = (By.XPATH, "//div[@class='content-panel']/div[@id='Main']/canvas")
     CITY = (By.ID, "tabCity")
-    BUILDING = (By.ID, "TabBuilding")
+    BUILDING = (By.ID, "tabBuilding")
     SETTINGS = (By.ID, "tabSettings")
     ABOUT = (By.ID, "tabAbout")
     DISCORD_CHANNEL = (By.ID, "tabDiscord")
