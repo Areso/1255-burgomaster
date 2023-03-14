@@ -9,7 +9,7 @@ on:
 jobs:
   smoke_job:
     name: Smoke tests
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
