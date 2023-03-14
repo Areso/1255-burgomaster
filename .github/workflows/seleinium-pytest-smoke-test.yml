@@ -21,6 +21,9 @@ jobs:
       - name: check whether game is UP
         run: |
           curl -X GET "http://localhost:8080/"
+      
+      - name: where is chromedriver, mzfka?
+        run: whereis chromedriver
 
       - name: Install python requirements
         run: pip install -r ./tests/selenium/requirements.txt
