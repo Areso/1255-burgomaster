@@ -24,6 +24,12 @@ jobs:
       
       - name: where is chromedriver, mzfka?
         run: whereis chromedriver
+        
+      - name: what the rights do we have?
+        run: cd /usr/bin && ls -lah | grep chromedriver
+      
+      - name: smokestart the driver
+        run: /usr/bin/chromedriver
 
       - name: Install python requirements
         run: pip install -r ./tests/selenium/requirements.txt
