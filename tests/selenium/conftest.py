@@ -13,7 +13,7 @@ def browser(request):
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        browser = webdriver.Chrome('/usr/local/bin/chromedriver')
+        browser = webdriver.Chrome('/usr/bin/chromedriver')
         browser.maximize_window()
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
