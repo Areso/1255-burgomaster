@@ -34,7 +34,8 @@ describe("validate", () => {
           'attribute-boolean-style':'warn',
           'no-inline-style':'warn',
           'valid-id':'warn',
-          'void-style':'warn'
+          'void-style':'warn',
+          'no-dup-id':'warn'
 
         }
       },
