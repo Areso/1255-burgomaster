@@ -45,3 +45,15 @@ Cypress.Commands.add('langContentBtn', (tabName, btnName, textName) => {
 
     });
 })
+
+Cypress.Commands.add('logText', (eventCommand, textName) => {
+    let text;
+    cy.get('#log_btn').click();
+
+    cy.window().then((win1) => {
+        win1.eval(eventCommand);
+        text = win1.eval('locObj.' + textName + '.txt');
+        cy.get('[id="log"]').contains(text);
+
+    });
+})

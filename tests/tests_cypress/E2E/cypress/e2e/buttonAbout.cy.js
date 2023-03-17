@@ -58,6 +58,20 @@ describe('About', () => {
                         cy.get('[href="https://github.com/Areso/1255-burgomaster/wiki"]');
                         cy.get('[href="https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform"]');
                         cy.get('[href="https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE"]');
+                    
+                        // TODO Проверить что ссылка валидна. Отправляем запрос проверяем на код 200 
+                    //     cy
+                    //     .get('a')
+                    //     .invoke('attr', 'href')
+                    //     .then(href => {
+                       
+                    //       cy
+                    //         .request(href)
+                    //         .its('status')
+                    //         .should('eq', 200);
+                       
+                    //   });
+                    
                     });
                     });
             });
