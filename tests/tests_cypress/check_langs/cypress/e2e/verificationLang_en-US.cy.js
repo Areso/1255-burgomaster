@@ -1,6 +1,6 @@
 
 describe('Verification lang', () => {
-    const LANG = '"en-US"';
+    const LANG = '"en-US"'; // en-US, ru-RU, de-DE, eo, fr-FR
 
     const CITY = 'tabCity';
     const BUILDING = 'btnOpenTabBuilding';
@@ -26,9 +26,9 @@ describe('Verification lang', () => {
     })
 
     it('Locale ' + LANG + '. Verification welcome text in log', () => {
-        cy.logText('', 'welcome0');
-        cy.logText('', 'welcome1');
-        cy.logText('', 'welcome2');        
+        cy.langLogText('', 'welcome0');
+        cy.langLogText('', 'welcome1');
+        cy.langLogText('', 'welcome2');        
     })
 
     it('Locale ' + LANG + '. Verification feature Fire', () => {
@@ -38,9 +38,13 @@ describe('Verification lang', () => {
             win.eval('game.year=1261');
         });
 
-        cy.logText('game.startFire(autotest=true)', 'fireInCity');
+        cy.langLogText('game.startFire(autotest=true)', 'fireInCity');
         cy.langContentBtn(CITY, 'buttonPutOutFire', 'btnPutOutTheFire');
-        cy.logText('game.putOutFireUI()', 'fireEndedByFireservice');
+        cy.langLogText('game.putOutFireUI()', 'fireEndedByFireservice');
+    });
+
+    it('Locale ' + LANG + '. Verification button buttonDeathPenalty', () => {
+        cy.langContentBtn(CITY, 'buttonDeathPenalty', 'btnExecutePerson');
     });
 
     it('Locale ' + LANG + '. Verification button saveGameButton', () => {
@@ -98,22 +102,15 @@ describe('Verification lang', () => {
         cy.langContentBtn(CITY, 'buttonHireGuard', 'btnHire');
     });
 
-    // разобраться, возможно сменить блок, проверяем форматированный текст
-    it.skip('!!!!!!!!!!!!!!!!!!!!!!!!!! Locale ' + LANG + '. Verification label lblAboutGame', () => {
+    // ожидает рефакторинга кода
+    it.skip('!!!SKIP!!! Locale ' + LANG + '. Verification label lblAboutGame', () => {
         let text;
         cy.get('#' + ABOUT).click();
 
         cy.window().then((win1) => {
-            text = win1.eval('locObj.tabHowToPlayText.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll)');
-            //  cy.get('[id="' + lblAboutGame + '"]').then(() => {
-            // console.log("=====> " + text);
-            cy.get('#lblAboutGame').then(() => {
-                //    cy.get('[id="' + aboutGameWrapper + '"]').then(() => {
-
-                cy.contains(text);
-            })
-
-        });
+            text = win1.eval('locObj.tabHowToPlayText');//.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll)');
+            cy.get('#lblAboutGame').should('text',text);
+         });
 
     });
 
@@ -137,12 +134,12 @@ describe('Verification lang', () => {
         cy.langContentBtn(SETTINGS, 'btnColorMode', 'tabSettingsBtnChangeColorMode');
     });
 
-    it.skip('!!!!!!!!!!!!!!!Locale ' + LANG + '.  label selectUpkeepSrc[0]', () => {
-        cy.langContentBtn(CITY, 'selectUpkeepSrc[0]', 'heroTroopsUpkeepSrcHeroPurse');
+    it('Locale ' + LANG + '.  label selectUpkeepSrc[0]', () => {
+        cy.langListElement(CITY, 'selectUpkeepSrc',0, 'heroTroopsUpkeepSrcHeroPurse');
     });
 
-    it.skip('!!!!!!!!!!!!!!!Locale ' + LANG + '.  label selectUpkeepSrc[1]', () => {
-        cy.langContentBtn(CITY, 'selectUpkeepSrc[1]', 'heroTroopsUpkeepSrcTreasury');
+    it('Locale ' + LANG + '.  label selectUpkeepSrc[1]', () => {
+        cy.langListElement(CITY, 'selectUpkeepSrc',1, 'heroTroopsUpkeepSrcTreasury');
     });
 
     it('Locale ' + LANG + '. Verification button btnDismissHero', () => {
@@ -296,7 +293,8 @@ describe('Verification lang', () => {
         cy.langContentBtn(CITY, 'btnGoldAtEnd', 'paginationCurrent');
     });
 
-    it.skip('&&&&&&&&&&&&&&&&Locale ' + LANG + '. Verification button downloadGame', () => {
+    // Ожидает рефакторинга кода
+    it.skip('!!!SKIP!!!Locale ' + LANG + '. Verification button downloadGame', () => {
         cy.langContentBtn(CITY, 'downloadGame', 'localeStrings[328]');
     });
 
@@ -319,141 +317,4 @@ describe('Verification lang', () => {
     it('Locale ' + LANG + '. Verification button spnOnlineValue', () => {
         cy.langContentBtn(CITY, 'spnOnlineValue', 'onlineValueND');
     });
-
-
-    // 68 / 7
-    // ------------------("buttonPutOutFire").innerText    = locObj.btnPutOutTheFire.txt;
-    // document.getElementById("buttonDeathPenalty").innerText  = locObj.btnExecutePerson.txt;
-    // -????????---------("saveGameButton").innerText      = locObj.locSaveGame.txt;
-    // -????????---------("loadGameButton").innerText      = locObj.locLoadGame.txt;
-    // ------------------("tabCity").innerText             = locObj.tabCity.txt;
-    // ------------------("tabSettings").innerText         = locObj.tabSettings.txt;
-    // ------------------("btnOpenTabBuilding").innerText  = locObj.tabBuilding.txt;
-    // ------------------("tabAbout").innerText            = locObj.tabHowToPlay.txt;
-    // ------------------("tabDiscord").innerText          = locObj.tabDiscord.txt;
-    // ------------------("labelSettings").innerText       = locObj.tabSettings.txt;
-    // ------------------("buttonExportGame").innerText    = locObj.tabSettingsBtnExportGame.txt;
-    // ------------------("buttonImportGame").innerText    = locObj.tabSettingsBtnImportGame.txt;
-    // ------------------("labelAutosave").innerText       = locObj.tabSettingsLblAutosave.txt;
-    // ------------------("labelGarrison").innerText       = locObj.lblGarrison.txt;
-    // ------------------("buttonFireGuard").innerText     = locObj.btnFire.txt;
-    // ------------------("buttonHireGuard").innerText     = locObj.btnHire.txt;
-    // -????????---------("lblAboutGame").innerHTML        = locObj.tabHowToPlayText.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
-    // ------------------("lblTabPop").innerText           = locObj.tabPopHistory.txt;
-    // ------------------("lblTabGold").innerText          = locObj.tabGoldHistory.txt;
-    // ------------------("btnColorMode").innerText        = locObj.tabSettingsBtnChangeColorMode.txt;
-    // ------------------("lblTabInn").innerText           = locObj.tabInnWelcome.txt;
-    // ------------------("lblUpkeepSrc").innerText        = locObj.heroTroopsUpkeepSource.txt;
-    // -????????---------("selectUpkeepSrc")[0].text       = locObj.heroTroopsUpkeepSrcHeroPurse.txt;
-    // -????????---------("selectUpkeepSrc")[1].text       = locObj.heroTroopsUpkeepSrcTreasury.txt;
-    // 	-----------------("btnDismissHero").innerText      = locObj.btnDismissHero.txt;
-    // 	-----------------("btnAutocampaignJournal").innerText  = locObj.btnAutocampaignOpenJournal.txt;
-    // 	-----------------("btnTowngate").innerText         = locObj.btnUseTowngateScroll.txt;
-    // 	-----------------("btnLeaveCity").innerText        = locObj.btnGoToAdvenureMap.txt;
-    // 	-----------------("btnGenerateMap").innerText      = locObj.btnRegenerateMap.txt;
-    // 	-----------------("btnAutobattlesList").innerText  = locObj.autobattle_journal_btn.txt;
-    // 	-----------------("lblOption").innerText           = locObj.tabSoundSettingsLblOption.txt;
-    // 	-----------------("lblOn").innerText               = locObj.on.txt;
-    // 	-----------------("lblOff").innerText              = locObj.off.txt;
-    // 	-----------------("lblSfxAll").innerText           = locObj.tabSoundSettingsLblAllSoundEffects.txt;
-    // 	-----------------("lblSfxEvt").innerText           = locObj.tabSoundSettingsLblAllEventsEffects.txt;
-    // 	-----------------("lblSfxEvtAR").innerText         = locObj.tabSoundSettingsLblEffectsAR.txt;
-    // 	-----------------("lblMscAll").innerText           = locObj.tabSoundSettingsAllMusic.txt;
-    // 	-----------------("lblMscScr").innerText           = locObj.tabSoundSettingsScMusic.txt;
-    // 	-----------------("btnToGeneralSettings").innerText= locObj.btnBack.txt;
-    // 	-----------------("btnToInn").innerText            = locObj.btnBack.txt;
-    // 	-----------------("btnToInn1").innerText           = locObj.btnBack.txt;
-    // 	-----------------("lblSoundMenu").innerText        = locObj.lblSoundMenu.txt;
-    // 	-----------------("btnSoundSettings").innerText    = locObj.tabSettingsBtnOpenSoundSettings.txt;
-    // 	-----------------("lblStnMobileUI").innerText      = locObj.tabSettingsLblMobileUI.txt;
-    // 	-----------------("lblStnEventLogSize").innerText  = locObj.tabSettingsLblLogSize.txt;
-    // 	-----------------("lblStnLines").innerText         = locObj.tabSettingsLblLines.txt;
-    // 	-----------------("lblGoodsForSale").innerText     = locObj.lblGoodForSale.txt;
-    // 	-----------------("lblGoodsForBuying").innerText   = locObj.lblHeroGoodsFoSale.txt;
-    // 	-----------------("btnLeaveBlackmarket").innerText = locObj.btnGoToAdvenureMap.txt;
-    // 	-----------------("lblFirebrigade").innerText      = locObj.lblFirebrigade.txt;
-    // 	-----------------("lblFBOption").innerText         = locObj.lblFireServiceStatus.txt;
-    // 	-----------------("lblFBOn").innerText             = locObj.onDuty.txt;
-    // 	-----------------("lblFBOff").innerText            = locObj.offDuty.txt;
-    // 	-----------------("lblFBUpKeepPrice").innerText    = locObj.lblFirebrigadeUpkeep.txt;
-    // 	-----------------("btnPopAtStart").innerText       = locObj.paginationStart.txt;
-    // 	-----------------("btnGoldAtStart").innerText      = locObj.paginationStart.txt;
-    // 	-----------------("btnPopPrev").innerText          = locObj.paginationPrevious.txt;
-    // 	-----------------("btnGoldPrev").innerText         = locObj.paginationPrevious.txt;
-    // 	-----------------("btnPopNext").innerText          = locObj.paginationNext.txt;
-    // 	-----------------("btnGoldNext").innerText         = locObj.paginationNext.txt;
-    // 	-----------------("btnPopAtEnd").innerText         = locObj.paginationCurrent.txt;
-    // 	-----------------("btnGoldAtEnd").innerText        = locObj.paginationCurrent.txt;
-    // 	--???????--------("downloadGame").innerText        = localeStrings[328];
-    // 	-----------------("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
-    // 	-----------------("spnServerStatusLabel").innerText= locObj.serverStatusSpn.txt;
-    //  -----------------("spnServerStatusValue").innerText= locObj.serverStatusND.txt;
-    //  -----------------("spnOnline").innerText           = locObj.online.txt;
-    //  -----------------("spnOnlineValue").innerText      = locObj.onlineValueND.txt;
-
-
-
-
-    // });
-    // cy.get('#tabSettings').click();
-    // cy.get('#selectLng').select('English');
-    // cy.get('#btnLogin').click();
-    // cy.get('#login').type('tester16');
-    // cy.get('#password').type('tester16');
-    // cy.get('#btnRegLogin').click();
-    // cy.get('#log').contains('login successfull');
-    // cy.get('#buttonLoadFromCloud', { timeout: 9000 }).click();
-
-    // // Check
-    // cy.get('#autosaveImg').should('have.attr', 'src', 'resources/button_green.png');
-    // cy.get('#panelGoldValue').should("have.text", 24180);
-    // cy.get('#panelPopValue').should("have.text", 648);
-    // cy.get('#gems').should("have.text", 10);
-    // cy.get('#spnServerStatusValue').should("have.text", "Up");
-
-    // cy.window().its('game.year').should('equal', 1308);
-    // cy.window().its('game.season').should('equal', 3);
-    // cy.window().its('game.food').should('equal', 20);
-    // cy.window().its('game.treasuryGuard').should('equal', 20);
-    // cy.window().its('game.happiness').should('equal', 80);
-    // cy.window().its('game.fire').should('equal', 0);
-    // cy.window().its('game.fireSteps').should('equal', 0);
-    // cy.window().its('game.fireGuard').should('equal', 0);
-    // cy.window().its('game.hero').should('equal', 0);
-
-    // // checking available buildings
-    // cy.get('#btnOpenTabBuilding').click();
-
-    // cy.get('#homes')
-    //     .should('have.text', 'Build Homelvl 17131072 gold')
-    //     .and('have.class', 'btn');
-    // cy.get('#defence')
-    //     .should('have.text', 'Build Walllvl 12 gold')
-    //     .and('have.class', 'btn')
-    //     .and('not.be.visible');
-    // cy.get('#treasury')
-    //     .should('have.text', 'Build Treasurylvl 1381920000000000000 gold')
-    //     .and('have.class', 'btn');
-    // cy.get('#buttonBldGallows')
-    //     .should('have.text', 'Build Gallowslvl 150 gold')
-    //     .and('have.class', 'btn')
-    //     .and('not.be.visible'); 
-    // cy.get('#buttonBldFountain')
-    //     .should('have.text', 'Build Fountainlvl 3125000 gold')
-    //     .and('have.class', 'btn');
-    // cy.get('#buttonBldStash')
-    //     .should('have.text', 'Build Stashlvl 3125000 gold')
-    //     .and('have.class', 'btn');
-    // cy.get('#buttonBldStable')
-    //     .should('have.text', 'Build Stablelvl 3125000 gold')
-    //     .and('have.class', 'btn');
-    // cy.get('#buttonBldArchery')
-    //     .should('have.text', 'Build Archery rangelvl 3125000 gold')
-    //     .and('have.class', 'btn');
-    // cy.get('#buttonBldInn')
-    //     .should('have.text', 'Build Innlvl 4160000 gold')
-    //     .and('have.class', 'btn');
-    // cy.get('#buttonBuildUniversity')
-    //     .should('have.text', 'Build university200 gold')
-    //     .and('have.class', 'btn');
 })

@@ -46,7 +46,7 @@ Cypress.Commands.add('langContentBtn', (tabName, btnName, textName) => {
     });
 })
 
-Cypress.Commands.add('logText', (eventCommand, textName) => {
+Cypress.Commands.add('langLogText', (eventCommand, textName) => {
     let text;
     cy.get('#log_btn').click();
 
@@ -55,5 +55,17 @@ Cypress.Commands.add('logText', (eventCommand, textName) => {
         text = win1.eval('locObj.' + textName + '.txt');
         cy.get('[id="log"]').contains(text);
 
+    });
+})
+
+Cypress.Commands.add('langListElement', (tabName, listName, elemNumber, textName) => {
+    let text;
+    cy.get('#'+tabName).click();
+
+    cy.window().then((win1) => {
+        text = win1.eval('locObj.' + textName + '.txt');
+        cy.get('[id="'+listName+'"] > option').should(($lis) => {
+            expect($lis.eq(elemNumber)).to.contain(text);
+        })
     });
 })
