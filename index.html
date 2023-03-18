@@ -3,10 +3,10 @@
   <link rel="shortcut icon" id="gameIcon" type="image/x-icon" href="resources/favicon-normal.png">
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   <title>1255: Rise of Teutonics</title>
-  <link rel="stylesheet"  type="text/css" href="./css/normalize.min.css"/>
-  <link rel="stylesheet"  type="text/css" href="./css/game.css"/>
-  <link rel="stylesheet"  type="text/css" href="./css/hire.css"/>
-  <link rel="stylesheet"  type="text/css" href="./css/inn.css" />
+  <link rel="stylesheet"  type="text/css" href="./css/normalize.min.css">
+  <link rel="stylesheet"  type="text/css" href="./css/game.css">
+  <link rel="stylesheet"  type="text/css" href="./css/hire.css">
+  <link rel="stylesheet"  type="text/css" href="./css/inn.css">
   <script src="https://browser.sentry-cdn.com/5.1.2/bundle.min.js" crossorigin="anonymous"></script>
   <script>
     'use strict';
@@ -95,11 +95,13 @@
           <option id="optionLngFr"          value="fr-FR">Français</option>
         </select>
         <table>
+          <tbody>
           <tr>
             <td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
             <td><button id="buttonExportGame" onclick="exportGame()" type="button">Export Game</button></td>
             <td><button id="buttonImportGame" onclick="importGame()" type="button">Import Game</button></td>
           </tr>
+          </tbody>
         </table>
         <button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" type="button">Save to Cloud</button>
         <button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;" type="button">Load save from Cloud</button>
@@ -131,6 +133,7 @@
         <label id="lblSoundMenu">Sound effects and music</label><br>
         <!--Note, those above overwrite those below-->
         <table border="0" width="100%">
+          <tbody>
           <tr>
             <td width="60%"><label id="lblOption">Option</label></td>
             <td width="20%"><label id="lblOn">On</label></td>
@@ -138,45 +141,45 @@
           </tr>
           <tr>
             <td width="60%"><label id="lblSfxAll">All sound effects</label></td>
-            <td width="20%"><input type = "radio"
-                                   name = "sfx"
-                                   id = "sfx_on"
-                                   value = "on"
-                                   onchange="game.setupAudio('sfx','all',1)"/></td>
-            <td width="20%"><input type = "radio"
-                                   name = "sfx"
-                                   id = "sfx_off"
-                                   value = "off"
+            <td width="20%"><input type="radio"
+                                   name="sfx"
+                                   id="sfx_on"
+                                   value="on"
+                                   onchange="game.setupAudio('sfx','all',1)"></td>
+            <td width="20%"><input type="radio"
+                                   name="sfx"
+                                   id="sfx_off"
+                                   value="off"
                                    onchange="game.setupAudio('sfx','all',0)"
-                                   checked = "checked" /></td>
+                                   checked="checked"></td>
           </tr>
           <tr>
             <td width="60%"><label id="lblSfxEvt">Effects on all events</label></td>
-            <td width="20%"><input type = "radio"
-                                   name = "sfx_events"
-                                   id = "sfx_events_on"
-                                   value = "on"
-                                   onchange="game.setupAudio('sfx','events',1)"/></td>
-            <td width="20%"><input type = "radio"
-                                   name = "sfx_events"
-                                   id = "sfx_events_off"
-                                   value = "off"
+            <td width="20%"><input type="radio"
+                                   name="sfx_events"
+                                   id="sfx_events_on"
+                                   value="on"
+                                   onchange="game.setupAudio('sfx','events',1)"></td>
+            <td width="20%"><input type="radio"
+                                   name="sfx_events"
+                                   id="sfx_events_off"
+                                   value="off"
                                    onchange="game.setupAudio('sfx','events',0)"
-                                   checked = "checked" /></td>
+                                   checked="checked"></td>
           </tr>
           <tr>
             <td width="60%"><label id="lblSfxEvtAR">Effects on action required events</label></td>
-            <td width="20%"><input type = "radio"
-                                   name = "sfx_actions"
-                                   id = "sfx_actions_on"
-                                   value = "on"
-                                   onchange="game.setupAudio('sfx','actions',1)"/></td>
-            <td width="20%"><input type = "radio"
-                                   name = "sfx_actions"
-                                   id = "sfx_actions_off"
-                                   value = "off"
+            <td width="20%"><input type="radio"
+                                   name="sfx_actions"
+                                   id="sfx_actions_on"
+                                   value="on"
+                                   onchange="game.setupAudio('sfx','actions',1)"></td>
+            <td width="20%"><input type="radio"
+                                   name="sfx_actions"
+                                   id="sfx_actions_off"
+                                   value="off"
                                    onchange="game.setupAudio('sfx','actions',0)"
-                                   checked = "checked" /></td>
+                                   checked="checked"></td>
           </tr>
           <tr>
             <td width="60%">-----</td>
@@ -185,32 +188,33 @@
           </tr>
           <tr>
             <td width="60%"><label id="lblMscAll">Music all</label></td>
-            <td width="20%"><input type = "radio"
-                                   name = "music_all"
-                                   id = "music_on"
-                                   value = "on"
-                                   onchange="game.setupAudio('music','all',1)"/></td>
-            <td width="20%"><input type = "radio"
-                                   name = "music_all"
-                                   id = "music_off"
-                                   value = "off"
+            <td width="20%"><input type="radio"
+                                   name="music_all"
+                                   id="music_on"
+                                   value="on"
+                                   onchange="game.setupAudio('music','all',1)"></td>
+            <td width="20%"><input type="radio"
+                                   name="music_all"
+                                   id="music_off"
+                                   value="off"
                                    onchange="game.setupAudio('music','all',0)"
-                                   checked = "checked" /></td>
+                                   checked="checked"></td>
           </tr>
           <tr>
             <td width="60%"><label id="lblMscScr">Lore and scenery music</label></td>
-            <td width="20%"><input type = "radio"
-                                   name = "music_script"
-                                   id = "music_scripts_on"
+            <td width="20%"><input type="radio"
+                                   name="music_script"
+                                   id="music_scripts_on"
                                    onchange="game.setupAudio('music','scripts',1)"
-                                   value = "on" /></td>
-            <td width="20%"><input type = "radio"
-                                   name = "music_script"
-                                   id = "music_scripts_off"
-                                   value = "off"
+                                   value="on"></td>
+            <td width="20%"><input type="radio"
+                                   name="music_script"
+                                   id="music_scripts_off"
+                                   value="off"
                                    onchange="game.setupAudio('music','scripts',0)"
-                                   checked = "checked" /></td>
+                                   checked="checked"></td>
           </tr>
+          </tbody>
         </table>
         <br>
         <hr>
@@ -220,6 +224,7 @@
         <h3><div id="labelGarrison">Garrison</div></h3>
         <div id="divtreasuryGuard">
           <table border="1">
+            <tbody>
             <tr>
               <td>
                 <div id="treasury_guard_div" align="center">
@@ -234,12 +239,14 @@
                 <button id="buttonHireGuard" onclick="game.hireTreasuryGuard()" style="width:100px" type="button">Hire</button>
               </td>
             </tr>
+            </tbody>
           </table>
         </div>
       </div>
     <div id="tabFirebrigade" class="tab">
         <h3><label id="lblFirebrigade">Fire brigade</label></h3>
         <table border="0" width="100%">
+          <tbody>
           <tr>
             <td width="60%"><label id="lblFBOption">The fire service is</label></td>
             <td width="20%"><label id="lblFBOn">on duty</label></td>
@@ -247,18 +254,19 @@
           </tr>
           <tr>
             <td width="60%"></td>
-            <td width="20%"><input type = "radio"
-                                   name = "inp_fb"
-                                   id = "fb_on"
-                                   value = "on"
-                                   onchange="game.setupFirebrigade(1)"/></td>
-            <td width="20%"><input type = "radio"
-                                   name = "inp_fb"
-                                   id = "fb_off"
-                                   value = "off"
+            <td width="20%"><input type="radio"
+                                   name="inp_fb"
+                                   id="fb_on"
+                                   value="on"
+                                   onchange="game.setupFirebrigade(1)"></td>
+            <td width="20%"><input type="radio"
+                                   name="inp_fb"
+                                   id="fb_off"
+                                   value="off"
                                    onchange="game.setupFirebrigade(0)"
-                                   checked = "checked" /></td>
+                                   checked="checked"></td>
           </tr>
+          </tbody>
         </table>
         <br>
         <label id="lblFBUpKeepPrice">The price of sustain of the service is:</label><label id="lblFBUpkeepPriceValue" style="margin-left:20px;">0</label>
@@ -457,14 +465,17 @@
         <div id="hireHeroBlock">
           <label id="lblAvailableForHire">Hero for hire</label>
           <table>
+            <tbody>
             <tr>
-              <td style="width: 300px;">
+              <!-- <td class="heroPhoto"> -->
+                <td width="39%">
                 <!--HRP-->
                 <img id="imgPrevHero" src="resources/pointer_l.png" onclick="prevHero()">
                 <img id="imgHeroForHire" src="resources/hero-knight.png">
                 <img id="imgNextHero" src="resources/pointer_r.png" onclick="nextHero()">
               </td>
-              <td style="width: 455px;">
+              <td width="61%">
+                <!-- <td class="heroInfo"></td> -->
                 <div>
                   <label id="lblClassForHire">Knight</label>
                   <label>,  </label>
@@ -479,6 +490,7 @@
                 </div>
               </td>
             </tr>
+            </tbody>
           </table>
           <button id="btnHireHero" class="btn" onclick="game.heroHire()" style="width:160px; margin-left: 70px" type="button">Hire hero %arg1 level</button>
         </div>
@@ -693,7 +705,7 @@
       <div id="chatForm" class="info-panel__form">
         <label id="inp_nickname"></label>
         <div class="info-panel__form-msg">
-          <input type="text" id="msg_out"/>
+          <input type="text" id="msg_out">
         </div>
         <button id="btnSend" onclick="sendOnClick2()" class="btn" type="button">Send</button>
       </div>
@@ -767,7 +779,7 @@
   gtag('config', 'UA-111661515-1');
 </script>
 <!-- Yandex.Metrika counter. The same -->
-<script type="text/javascript" >
+<script>
   (function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
       try {
@@ -793,7 +805,7 @@
 </script>
 <noscript>
   <div>
-  <img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="" />
+  <img src="https://mc.yandex.ru/watch/47225574" style="position:absolute; left:-9999px;" alt="">
   </div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
