@@ -1,4 +1,4 @@
-name: "Validate HTML"
+name: "Verification language"
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   smoke_job:
-    name: Cypress Validate HTML
+    name: Cypress Verification language
     runs-on: ubuntu-latest
 
     steps:
