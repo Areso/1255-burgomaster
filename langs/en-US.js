@@ -552,6 +552,7 @@ locObj.onlineValueND = {"txt":"n/d", "loc":"online users numbers has no data"};
 locObj.errCityLevelTooLowForSendingMsg = {"txt":"Sir Commander, your city level is too low for sending messages to other Lords", "loc":"happens when low-level user try to send msg in chat"}
 locObj.userCntOne = {"txt":"user", "loc":"(one) user"};
 locObj.userCntTwoPlus = {"txt":"users", "loc":"two or more users"};
+locObj.savedCloudSuccessfully = {"txt":"game saved to the cloud successfully", "loc":"when cloud save completed successfully"};
 locObj.errNoCloudSave = {"txt":"you don't have saved game in the cloud", "loc":"could happen when trying to load a savegame from DB"};
 locObj.errGettingCloudSave = {"txt":"error while trying to get your cloudsave from the cloud","loc":"could happen when trying to get a savegame from backend"};
 locObj.errLoadingCloudSave = {"txt":"error while processing your cloudsave","loc":"could happen while loading cloudsave"};

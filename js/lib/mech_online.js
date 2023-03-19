@@ -576,12 +576,10 @@ function save_to_cloud(savegame_to_cloud){
 	xhttp.onreadystatechange = function() {
 		if (this.readyState === 4 && this.status === 200) {
 			console.log("game saved to the cloud successfully");
-			msg       = "game saved to the cloud successfully";
-			postEventLog(msg);
+			postEventLog(locObj.savedCloudSuccessfully);
 		}
 		if (this.readyState === 4 && this.status !== 200) {
-			msg       = "game didn't saved to the cloud. You should be logined to the game before you could save the game";
-			postEventLog(msg);
+			postEventLog(locObj.errNoCloudSave.txt,"bold,red");
 		}
 	};
 	dataToParse = session+delimiter;
