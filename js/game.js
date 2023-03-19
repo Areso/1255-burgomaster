@@ -386,21 +386,19 @@ function gameOK() {
 			setupAudioUI();
 		},
 		genBlackMarketGoods : function () {
-      // Just simple goods generation for now. Only two artefacts per adventure map.
-      game.blackMarketGoods = [];
-      clearTraderUI();
-      var rnd = randomFromRange(11, 16);
-      // if (rnd.toString().length < 2) {
-      //   rnd = "0" + rnd;
-      // }
-      var id = "artid" + rnd;
-      addItem('trader', artefacts['artid00']);
-      addItem('trader', artefacts[id]);
-
-      // var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
-      // artefactIds.push(id); - Not used for now
-
-      // console.log('%c BLACK MARKET GOODS: ', 'background: #c00; color: #fff;', game.blackMarketGoods);
+          // Just simple goods generation for now. Only two artefacts per adventure map.
+          game.blackMarketGoods = [];
+          clearTraderUI();
+          var rnd = randomFromRange(11, 16);
+          // if (rnd.toString().length < 2) {
+          //   rnd = "0" + rnd;
+          // }
+          var id = "artid" + rnd;
+          addItem('blackMarketGoods', artefacts['artid00']);
+          addItem('blackMarketGoods', artefacts[id]);
+          // var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
+          // artefactIds.push(id); - Not used for now
+          // console.log('%c BLACK MARKET GOODS: ', 'background: #c00; color: #fff;', game.blackMarketGoods);
 		},
 		generateMap : function () {
 			var genMapPriceFinal = Math.pow((game.buildLevelInn+2)*(game.buildLevelTreasury+2),2)*config.genMapCostBasic/2;

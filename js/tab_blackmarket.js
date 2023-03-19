@@ -1,6 +1,20 @@
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+function get_artifact_localization(object_id, property){
+  if (artifacts[id][property][language]==="undefined") {
+    return artefacts[id]["default"];
+  } else {
+    return artefacts[id][language];
+  }
+}
 function addItem(target, item) {
-	var newItem = Object.assign({}, item);
+	//var newItem = Object.assign({}, item);
 	newItem.uid = uuidv4();
+	console.log(newItem);
 	if (target === "hero" && game.heroExists()) {
 		newItem.priceBuy = newItem.priceBuy / 2;
 		game.myhero.inventory.push(newItem);
@@ -64,22 +78,19 @@ function createElementUI(item, targetListId) {
 				showModal(0, '', getAck, locObj.ringsWarn.txt,  locObj.okay.txt, '');
 				return;
 			}
-		if (game.gold >= item.priceBuy) {
-
-			game.gold -= item.priceBuy;
-			addItem("hero", item);
-			updateUI();
-			if (targetListId === "marketList" && id === "artid00") {
-				return
-			}
-			removeItem("trader", item);
-		} else {
-			postEventLog(localeStrings[20], 'bold');
-			return
-		}
-	}
-
-
+            if (game.gold >= item.priceBuy) {
+                game.gold -= item.priceBuy;
+                addItem("hero", item);
+                updateUI();
+                if (targetListId === "marketList" && id === "artid00") {
+                    return
+                }
+                removeItem("trader", item);
+            } else {
+                postEventLog(locObj.notEnoughGold.txt, 'bold');
+                return
+            }
+	    }
 	} else {
 		actionBtnElement.innerText = locObj.sell.txt;
 		actionBtnElement.onclick = function (e) {
@@ -166,12 +177,9 @@ function unequipItem(itemUID) {
 		var substr = 'unit_';
 		var substrLength = substr.length;
 		var itemStats = equipedItem.attr;
-
 		for (var i = 0; i < itemStats.length; i++) {
-
 			if (itemStats[i].name.includes(substr)) {
 				var unitParam = itemStats[i].name.substring(substrLength);
-
 				switch(itemStats[i].type) {
 					case BONUS_VALUE_TYPES.INTEGER: {
 						for (var key in game.myheroArmy.units) {
@@ -186,7 +194,6 @@ function unequipItem(itemUID) {
 					default: throw new Error('Unknown stat type. Unable to assign value to ' + itemStats[i].name + '. Correct types is: "flat" or "percentage"');
 				}
 			}
-
 			if (game.myhero && game.myhero[itemStats[i].name]) {
 				switch(itemStats[i].type) {
 					case BONUS_VALUE_TYPES.INTEGER:
@@ -210,24 +217,17 @@ function unequipItem(itemUID) {
 		if (equipedItem.id === 'artid17' || equipedItem.id === 'artid18') {
 			ringsCount--;
 		}
-
 		updateHeroStatus();
-
 	}
-
 }
-
 
 function recalcStats(itemStats) {
 	if (itemStats.length) {
 		var substr = 'unit_';
 		var substrLength = substr.length;
-
 		for (var i = 0; i < itemStats.length; i++) {
-
 			if (itemStats[i].name.includes(substr)) {
 				var unitParam = itemStats[i].name.substring(substrLength);
-
 				switch(itemStats[i].type) {
 					case BONUS_VALUE_TYPES.INTEGER: {
 						for (var key in game.myheroArmy.units) {

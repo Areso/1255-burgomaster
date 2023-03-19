@@ -14,7 +14,7 @@ var artefacts = {
           "en-US":"Towngate scroll",
           "ru-RU":"Свиток телепорта",
         },
-        descr: {
+        desc: {
 		  "default":"This consumable item allows you to teleport to city from an autocampaign",
           "en-US":"This consumable item allows you to teleport to city from an autocampaign",
           "ru-RU":"Этот одноразовый предмет позволяет вам совершить телепорт к городу в автокампании.",
