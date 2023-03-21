@@ -11,7 +11,8 @@ function get_artefact_localization(object_id, property){
     return artefacts[object_id][property][language];
   }
 }
-function buy(){
+function buy(tem_for_buying){
+console.log(item_for_buying)
 			// TODO: #SwordsRestriction remove it later
 			if ((item.id === 'artid15' || item.id === 'artid16')  && swordsCount === 2) {
 				showModal(0, '', getAck, locObj.swordsWarn.txt,  locObj.okay.txt, '');
@@ -74,7 +75,9 @@ function createElementUI(item_ref, targetListId) {
 
 	if (targetListId === "tabBlackMarketTraderGoods") {
 		actionBtnElement.innerText = locObj.buy.txt;
+		actionBtnElement.id = item.uid;
 		actionBtnElement.onclick = function (e) {
+		  console.log(e.target.id)
 		  buy(this);
 	    }
 	    priceElement.innerText = item.priceBuy;
