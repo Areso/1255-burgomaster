@@ -3957,7 +3957,7 @@ function setTutorialAfterSaveRestore(gameTemp) {
 			}
 			for (let iterator in tmpHero["inventory"]) {
 			  let itemToAdd = tmpHero["inventory"][iterator]
-			  addItem('hero', itemToAdd);
+			  createElementUI(itemToAdd, 'tabBlackMarketHeroGoods');
 			}
 			while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
 				game.myhero.inventoryWorn.push(0);
@@ -3977,7 +3977,7 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		}
 		for (let iterator in game.blackMarketGoods) {
 		  let itemToAdd = game["blackMarketGoods"][iterator];
-		  addItem('blackMarketGoods', itemToAdd);
+		  createElementUI(itemToAdd, 'tabBlackMarketTraderGoods');
 		}
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
