@@ -135,7 +135,7 @@ function setupMobileUI() {
 	}
 function exportGame() {
 	const tmpExportGame = JSON.parse(JSON.stringify(game)); // Some dummy copy of object;
-	prepareInventoryWriteSave(tmpExportGame);
+	//prepareInventoryWriteSave(tmpExportGame);
 	tmpExportGame.pops = [];
 	tmpExportGame.budgets = [];
 	tmpExportGame.years = [];
@@ -170,7 +170,7 @@ function importGame() {
 }
 function cloudQuickSave(){
 	const tmpExportGame = JSON.parse(JSON.stringify(game)); // Some dummy copy of object
-	prepareInventoryWriteSave(tmpExportGame);
+	//prepareInventoryWriteSave(tmpExportGame);
 	tmpExportGame.pops = [];
 	tmpExportGame.budgets = [];
 	tmpExportGame.years = [];

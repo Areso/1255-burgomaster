@@ -394,8 +394,10 @@ function gameOK() {
           //   rnd = "0" + rnd;
           // }
           var id = "artid" + rnd;
-          addItem('blackMarketGoods', artefacts['artid00']);
-          addItem('blackMarketGoods', artefacts[id]);
+          game.blackMarketGoods.push('artid00');
+          game.blackMarketGoods.push(id);
+          //addItem('blackMarketGoods', artefacts['artid00']);
+          //addItem('blackMarketGoods', artefacts[id]);
           // var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
           // artefactIds.push(id); - Not used for now
           // console.log('%c BLACK MARKET GOODS: ', 'background: #c00; color: #fff;', game.blackMarketGoods);
@@ -453,6 +455,7 @@ function gameOK() {
 							game.isAutoBattle = true;
 							while(game.isAutoBattle) {
 								if (typeof calcAttackPhase === "function") { calcAttackPhase("AdvMap") };
+								break;//DEBUG
 							}
 							//suppose we win the battle
 							//removing the monster from removable objects (render array)
@@ -3845,7 +3848,7 @@ function postEventLog(msgEventLog, styling) {
 		}
 	}
 
-	function prepareInventoryWriteSave(gameObjToPrepare) {
+	/*function prepareInventoryWriteSave(gameObjToPrepare) {
 	   const heroInventoryIds = getInventoryItemListIds('hero');
 	   const traderInventoryIds = getInventoryItemListIds('trader');
 
@@ -3879,6 +3882,7 @@ function postEventLog(msgEventLog, styling) {
     }
 
   }
+  */
 
 	function writeSave(SaveType){
 		document.getElementById("loadGameButton").style.display = 'block';
@@ -3951,11 +3955,15 @@ function setTutorialAfterSaveRestore(gameTemp) {
 					}
 				}
 			}
+			for (let iterator in tmpHero["inventory"]) {
+			  let itemToAdd = tmpHero["inventory"][iterator]
+			  addItem('hero', itemToAdd);
+			}
 			while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
 				game.myhero.inventoryWorn.push(0);
 			}
 		}
-        prepareInventoryLoadSave(gameTemp);
+        //prepareInventoryLoadSave(gameTemp);
 		//options  = JSON.parse(localStorage.getItem('options'));
 		game.active_tab="";
 		game.putOutFireUI(true);
@@ -3966,6 +3974,10 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		setTutorialAfterSaveRestore(gameTemp);
 		if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN || game.myhero.status === HERO_STATUS.ADVENTURE_MAP){
 			createJournalAccordion()
+		}
+		for (let iterator in game.blackMarketGoods) {
+		  let itemToAdd = game["blackMarketGoods"][iterator];
+		  addItem('blackMarketGoods', itemToAdd);
 		}
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
