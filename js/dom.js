@@ -44,7 +44,13 @@ include('localisation.js',function(){
 		document.getElementById("labelGarrison").innerText       = locObj.lblGarrison.txt;
 		document.getElementById("buttonFireGuard").innerText     = locObj.btnFire.txt;
 		document.getElementById("buttonHireGuard").innerText     = locObj.btnHire.txt;
-		document.getElementById("lblAboutGame").innerHTML        = locObj.tabHowToPlayText.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
+		document.getElementById("lblAbout_h1").innerText         = locObj.lblAbout_h1.txt;
+		document.getElementById("lblAbout_h2").innerText         = locObj.lblAbout_h2.txt;
+		document.getElementById("lblAbout_wiki").innerHTML       = locObj.lblAbout_wiki.txt;
+		document.getElementById("lblAbout_feedback").innerHTML   = locObj.lblAbout_feedback.txt;
+		document.getElementById("lblAbout_meh").innerText        = locObj.lblAbout_meh.txt;
+		document.getElementById("lblAbout_supLang").innerText    = locObj.lblAbout_supLang.txt;
+		document.getElementById("lblAbout_googleLang").innerHTML = locObj.lblAbout_googleLang.txt;
 		document.getElementById("lblTabPop").innerText           = locObj.tabPopHistory.txt;
 		document.getElementById("lblTabGold").innerText          = locObj.tabGoldHistory.txt;
 		document.getElementById("btnColorMode").innerText        = locObj.tabSettingsBtnChangeColorMode.txt;
