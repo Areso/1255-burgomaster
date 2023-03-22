@@ -48,7 +48,7 @@ include('localisation.js',function(){
 		document.getElementById("lblAbout_h2").innerText         = locObj.lblAbout_h2.txt;
 		document.getElementById("lblAbout_wiki").innerHTML       = locObj.lblAbout_wiki.txt;
 		document.getElementById("lblAbout_feedback").innerHTML   = locObj.lblAbout_feedback.txt;
-		document.getElementById("lblAbout_meh").innerText        = locObj.lblAbout_meh.txt;
+		document.getElementById("lblAbout_meh").innerText        = locObj.lblAbout_meh.txt.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
 		document.getElementById("lblAbout_supLang").innerText    = locObj.lblAbout_supLang.txt;
 		document.getElementById("lblAbout_googleLang").innerHTML = locObj.lblAbout_googleLang.txt;
 		document.getElementById("lblTabPop").innerText           = locObj.tabPopHistory.txt;

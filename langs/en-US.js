@@ -672,8 +672,8 @@ locObj.lblAbout_meh = {
     "Each lvl of the treasury allows you to store more gold.\n" +
     "Also, Treasury allows you to hire treasury guards.\n" +
     "Treasury guards significantly decrease chance of gold being stolen from your treasury.\n" +
-    "Hiring a guard will cost you 20 gold.\n" +
-    'Each guard requires regular payment (each tick), it also costs 10 gold.\n' +
+    "Hiring a guard will cost you %arg1 gold.\n" +
+    'Each guard requires regular payment (each tick), it also costs %arg2 gold.\n' +
     "If you do not have enough money, they will leave their work permanently.\n" +
     "You can build Fountain OR Gallows. You cannot change your choice after building is done.\n" +
     "Fountains will increase happiness and speed of population growth.\n" +
