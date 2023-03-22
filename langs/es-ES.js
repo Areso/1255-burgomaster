@@ -605,6 +605,7 @@ locObj.festivalLoss = {"txt": "Tus pérdidas por el festival son %arg1", "loc":"
 locObj.errAlreadyHasHero = {"txt": "¡Usted ya tiene un héroe!", "loc":"happens when trying to hire a hero, when you have one hired"};
 locObj.autosaveTurnedOn = {"txt": "Autoguardado encendido", "loc": "happens when autosave enabled"};
 locObj.autosaveTurnedOff = {"txt": "Autoguardado apagado", "loc": "happens when autosave disabled"};
+locObj.downloadGame = { "txt": "Download game for playing off-grid (to play without Internet connection)", "loc": "download game successfully" };
 locObj.GallowsFountainChoiceConfirm = {"txt": "Estás apunto de construir %arg1.\n Si el objeto es construído, no podrás construir %arg2.\n ¿Estás seguro de tu decisión?", "loc":"happens when you are about to build Fountain or Gallows"};
 locObj.GallowsChoiceConfirm = {"txt": "Gallows", "loc": "your choice in GallowsFountainChoiceConfirm dialogue"};
 locObj.FountainBlocked = {"txt": "Fountain", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue"};
@@ -651,40 +652,41 @@ locObj.btnBuildStash = {"txt": "Construir Escondite<br/>nvl %arg1<br/>%arg2 de o
 locObj.btnBuildInn = {"txt": "Construir Posada<br/>nvl %arg1<br/>%arg2 de oro", "loc": "building tab"};
 locObj.btnBuildStables = {"txt": "Build Stable<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
 locObj.btnBuildArcheryRange = {"txt": "Build Archery range<br/>lvl %arg1<br/>%arg2 gold", "loc":"building tab"};
-helpBlock = "<h1>1255: Rise of Teutonics</h1>" +
-    "<h2>Cómo Jugar</h2>" +
-   'wiki <a href="https://github.com/Areso/1255-burgomaster/wiki">https://github.com/Areso/1255-burgomaster/wiki</a><br>' +
-     'feedback <a href="https://form.jotform.com/211014175318041">https://form.jotform.com/211014175318041</a><br>' +
-    "Este juego se basa en tics. Un tic del reloj ocurre cada 30 segundos.<br>" +
-    "Después de cada vuelta del reloj tu población te paga impuestos y crece.<br>" +
-    "Normalmente, cada ciudadano te paga una pieza de oro por tic.<br>" +
-    "Este comportamiento puede cambiar por decisiones del jugador.<br>" +
-    "Necesitas construir Casas para permitir el crecimiento de la población de tu ciudad.<br>" +
-    "Cada nivel de Casas te permite tener más población.<br>" +
-    "Necesitas crear Muros y una Torre para mantener tu ciudad a salvo de intrusos.<br>" +
-    "Necesitas contruir una Tesorería para almacenar tu oro.<br>" +
-    "Cada nivel de la Tesorería te permite almacenar más oro.<br>" +
-    "Además, la Tesorería te permite contratar guardias del tesoro.<br>" +
-    "Los guardias del tesoro disminuyen significativamente la probabilidad de que tu oro sea robado de tu tesoro.<br>" +
-    "Contratar un guarda te costará %arg1 de oro.<br>" +
-    "Cada guardia requiere un pago regular (en cada tic), te costará %arg2 de oro.<br>" +
-    "Si no tienes suficiente dinero, dejarán su trabajo de forma permanente.<br>" +
-    "Puedes construir una Fuente O una Horca. No puedes cambiar tu decisión después de que se construya.<br>" +
-    "Las Fuentes incrementarán la felicidad y la velocidad de crecimiento de la población<br>" +
-    "Las Horcas reducirán la felicidad y el crecimiento de la población, aumentarán los impuestos y te permitirán ejecutar pobladores.<br>" +
-    "Ejecutar un poblador confiscará su propiedad y la agregará a tu tesoro en forma de oro.<br>" +
-    "Se requiere un Escondite para disminuir tus pérdidas por robo. No puedes construir un Escondite sin una Tesorería.<br>"+
-    "Este es un juego de un jugador.<br>"+
-    "<br>" +
-    "Idiomas Soportados (IS): Inglés (English), Ruso (Русский).<br>"+
-    "Idiomas Soportados por la Comunidad (ISC): Alemán (Deutsch), Castellano.<br>"+
-    "El autor no puede proveer ayuda ni respuestas a preguntas realizadas en los ISC,<br>"+
-    "aún cuando (partes de) el juego están en ISC.<br>"+
-    "Además, cualquier traducción de ISC puede tener errores o partes sin traducir<br>"+
-    "o partes de la traducción parcialmente desactualizadas.<br>"+
-    "Puedes ayudar con las traducciones del juego acá:<br>"+
-    "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>";
-locObj.tabHowToPlayText = helpBlock;
+locObj.lblAbout_h1 = { "txt": "1255: Rise of Teutonics"};
+locObj.lblAbout_h2 = { "txt": "Cómo Jugar"};
+locObj.lblAbout_wiki = { "txt": "wiki: <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>"};
+locObj.lblAbout_feedback = { "txt": "feedback <a href='https://form.jotform.com/211014175318041'>https://form.jotform.com/211014175318041</a><br>"};
+locObj.lblAbout_meh = {
+  "txt": "Este juego se basa en tics. Un tic del reloj ocurre cada 30 segundos.\n" +
+    "Después de cada vuelta del reloj tu población te paga impuestos y crece.\n" +
+    "Normalmente, cada ciudadano te paga una pieza de oro por tic.\n" +
+    "Este comportamiento puede cambiar por decisiones del jugador.\n" +
+    "Necesitas construir Casas para permitir el crecimiento de la población de tu ciudad.\n" +
+    "Cada nivel de Casas te permite tener más población.\n" +
+    "Necesitas crear Muros y una Torre para mantener tu ciudad a salvo de intrusos.\n" +
+    "Necesitas contruir una Tesorería para almacenar tu oro.\n" +
+    "Cada nivel de la Tesorería te permite almacenar más oro.\n" +
+    "Además, la Tesorería te permite contratar guardias del tesoro.\n" +
+    "Los guardias del tesoro disminuyen significativamente la probabilidad de que tu oro sea robado de tu tesoro.\n" +
+    "Contratar un guarda te costará %arg1 de oro.\n" +
+    "Cada guardia requiere un pago regular (en cada tic), te costará %arg2 de oro.\n" +
+    "Si no tienes suficiente dinero, dejarán su trabajo de forma permanente.\n" +
+    "Puedes construir una Fuente O una Horca. No puedes cambiar tu decisión después de que se construya.\n" +
+    "Las Fuentes incrementarán la felicidad y la velocidad de crecimiento de la población\n" +
+    "Las Horcas reducirán la felicidad y el crecimiento de la población, aumentarán los impuestos y te permitirán ejecutar pobladores.\n" +
+    "Ejecutar un poblador confiscará su propiedad y la agregará a tu tesoro en forma de oro.\n" +
+    "Se requiere un Escondite para disminuir tus pérdidas por robo. No puedes construir un Escondite sin una Tesorería.\n"+
+    "Este es un juego de un jugador."};
+    locObj.lblAbout_supLang = {
+      "txt": "Idiomas Soportados (IS): Inglés (English), Ruso (Русский).\n"+
+    "Idiomas Soportados por la Comunidad (ISC): Alemán (Deutsch), Castellano.\n"+
+    "El autor no puede proveer ayuda ni respuestas a preguntas realizadas en los ISC,\n"+
+    "aún cuando (partes de) el juego están en ISC.\n"+
+    "Además, cualquier traducción de ISC puede tener errores o partes sin traducir\n"+
+    "o partes de la traducción parcialmente desactualizadas.\n"+
+    "Puedes ayudar con las traducciones del juego acá:"};
+    locObj.lblAbout_googleLang = { "txt": "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>"};
+
 locObj.cityScreenSawmill = {"txt": "aserradero", "loc": "cityscreen"};
 locObj.cityScreenWishingWell = {"txt": "pozo de los deseos", "loc": "cityscreen"};
 locObj.cityScreenWall = {"txt": "muro", "loc": "cityscreen"};

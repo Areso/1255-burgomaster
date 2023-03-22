@@ -1,6 +1,6 @@
 
 describe('Verification lang', () => {
-    const LANG = '"de-DE"'; // en-US, ru-RU, de-DE, eo, fr-FR
+    const LANG = '"es-ES"'; // en-US, ru-RU, de-DE, eo, fr-FR, es-ES
 
     const CITY = 'tabCity';
     const BUILDING = 'btnOpenTabBuilding';

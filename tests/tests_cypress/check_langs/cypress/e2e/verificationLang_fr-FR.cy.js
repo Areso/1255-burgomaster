@@ -293,9 +293,8 @@ describe('Verification lang', () => {
         cy.langContentBtn(CITY, 'btnGoldAtEnd', 'paginationCurrent');
     });
 
-    // Ожидает рефакторинга кода
-    it.skip('!!!SKIP!!!Locale ' + LANG + '. Verification button downloadGame', () => {
-        cy.langContentBtn(CITY, 'downloadGame', 'localeStrings[328]');
+    it('Locale ' + LANG + '. Verification button downloadGame', () => {
+        cy.langContentBtn(CITY, 'downloadGame', 'downloadGame');
     });
 
     it('Locale ' + LANG + '. Verification label lblLevelForHireLbl', () => {
