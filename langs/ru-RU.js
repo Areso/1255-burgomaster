@@ -611,6 +611,7 @@ locObj.festivalLoss = { "txt": "Ваш убыток от фестиваля %arg
 locObj.errAlreadyHasHero = { "txt": "У вас уже есть герой!", "loc": "happens when trying to hire a hero, when you have one hired" };
 locObj.autosaveTurnedOn = { "txt": "Автосохранение включено", "loc": "happens when autosave enabled" };
 locObj.autosaveTurnedOff = { "txt": "Автосохранение выключено", "loc": "happens when autosave disabled" };
+locObj.downloadGame = { "txt": "Скачать игру (чтобы играть без Интернета)", "loc": "download game successfully" };
 locObj.GallowsFountainChoiceConfirm = { "txt": "Вы собираетесь построить %arg1.\nЕсли вы построите это здание, вы не сможете построить %arg2.\nВы уверены в вашем выборе?", "loc": "happens when you are about to build Fountain or Gallows" };
 locObj.GallowsChoiceConfirm = { "txt": "виселицу", "loc": "your choice in GallowsFountainChoiceConfirm dialogue" };
 locObj.FountainBlocked = { "txt": "фонтан", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue" };

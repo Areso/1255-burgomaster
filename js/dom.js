@@ -96,7 +96,7 @@ include('localisation.js',function(){
 		document.getElementById("btnGoldNext").innerText         = locObj.paginationNext.txt;
 		document.getElementById("btnPopAtEnd").innerText         = locObj.paginationCurrent.txt;
 		document.getElementById("btnGoldAtEnd").innerText        = locObj.paginationCurrent.txt;
-		document.getElementById("downloadGame").innerText        = localeStrings[328];
+		document.getElementById("downloadGame").innerText        = locObj.downloadGame.txt;
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
 		document.getElementById("spnServerStatusLabel").innerText= locObj.serverStatusSpn.txt;
         document.getElementById("spnServerStatusValue").innerText= locObj.serverStatusND.txt;

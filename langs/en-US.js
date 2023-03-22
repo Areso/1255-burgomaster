@@ -609,6 +609,7 @@ locObj.festivalLoss = { "txt": "Your loss because of the festival is %arg1", "lo
 locObj.errAlreadyHasHero = { "txt": "You already have a hero!", "loc": "happens when trying to hire a hero, when you have one hired" };
 locObj.autosaveTurnedOn = { "txt": "Autosave is turned on", "loc": "happens when autosave enabled" };
 locObj.autosaveTurnedOff = { "txt": "Autosave is turned off", "loc": "happens when autosave disabled" };
+locObj.downloadGame = { "txt": "Download game for playing off-grid (to play without Internet connection)", "loc": "download game successfully" };
 locObj.GallowsFountainChoiceConfirm = { "txt": "You are about to build %arg1.\nIf the object is built, you wouldn't be allow to build %arg2.\nAre you sure in your choice?", "loc": "happens when you are about to build Fountain or Gallows" };
 locObj.GallowsChoiceConfirm = { "txt": "Gallows", "loc": "your choice in GallowsFountainChoiceConfirm dialogue" };
 locObj.FountainBlocked = { "txt": "Fountain", "loc": "will be blocked in GallowsFountainChoiceConfirm dialogue" };
@@ -655,7 +656,6 @@ locObj.btnBuildStash = { "txt": "Build Stash<br/>lvl %arg1<br/>%arg2 gold", "loc
 locObj.btnBuildInn = { "txt": "Build Inn<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab" };
 locObj.btnBuildStables = { "txt": "Build Stable<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab" };
 locObj.btnBuildArcheryRange = { "txt": "Build Archery range<br/>lvl %arg1<br/>%arg2 gold", "loc": "building tab" };
-// helpBlock = 
 locObj.lblAbout_h1 = { "txt": "1255: Rise of Teutonics" };
 locObj.lblAbout_h2 = { "txt": "How to play" };
 locObj.lblAbout_wiki = { "txt": "wiki: <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>" };
@@ -691,7 +691,6 @@ locObj.lblAbout_supLang = {
     "You could help with translations for the game here:"
 };
 locObj.lblAbout_googleLang = { "txt": "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>" };
-// locObj.tabHowToPlayText = helpBlock;
 locObj.cityScreenSawmill = { "txt": "sawmill", "loc": "cityscreen" };
 locObj.cityScreenWishingWell = { "txt": "wishing well", "loc": "cityscreen" };
 locObj.cityScreenWall = { "txt": "wall", "loc": "cityscreen" };
