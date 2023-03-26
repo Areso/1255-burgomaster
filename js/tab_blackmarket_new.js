@@ -4,6 +4,22 @@ function uuidv4() {
     return v.toString(16);
   });
 }
+function populateBlackMarketGoods() {
+  clearTraderUI();
+  for (let iterator in game.blackMarketGoods) {
+    let itemToAdd = game["blackMarketGoods"][iterator];
+    createElementUI(itemToAdd, 'tabBlackMarketTraderGoods');
+  }
+}
+function populateHeroGoods(){
+  clearHeroGoodsUI();
+  if (game.heroExists()){
+    for (let iterator in tmpHero["inventory"]) {
+      let itemToAdd = tmpHero["inventory"][iterator]
+      createElementUI(itemToAdd, 'tabBlackMarketHeroGoods');
+    }
+  }
+}
 function get_artefact_localization(object_id, property){
   if (artefacts[object_id][property][language]===undefined) {
     return artefacts[object_id][property]["default"];
@@ -11,17 +27,43 @@ function get_artefact_localization(object_id, property){
     return artefacts[object_id][property][language];
   }
 }
-function buy(tem_for_buying){
-console.log(item_for_buying)
-			// TODO: #SwordsRestriction remove it later
-			if ((item.id === 'artid15' || item.id === 'artid16')  && swordsCount === 2) {
-				showModal(0, '', getAck, locObj.swordsWarn.txt,  locObj.okay.txt, '');
-				return;
-			}
-			if ((item.id === 'artid17' || item.id === 'artid18')  && ringsCount === 2) {
-				showModal(0, '', getAck, locObj.ringsWarn.txt,  locObj.okay.txt, '');
-				return;
-			}
+function clearTraderUI() {
+  document.getElementById('tabBlackMarketTraderGoods').innerHTML = '';
+}
+function clearHeroGoodsUI() {
+  document.getElementById('tabBlackMarketHeroGoods').innerHTML = '';
+}
+function buy(item_for_buying){
+  //console.log("buy ", item_for_buying);
+  let data = item_for_buying.split(";");
+  let uid  = data[0];
+  let id   = data[1];
+  console.log(uid, id);
+  item = artefacts[id];
+  // TODO: #SwordsRestriction remove it later
+  if ((item.id === 'artid15' || item.id === 'artid16')  && swordsCount === 2) {
+    showModal(0, '', getAck, locObj.swordsWarn.txt,  locObj.okay.txt, '');
+    return;
+  }
+  if ((item.id === 'artid17' || item.id === 'artid18')  && ringsCount === 2) {
+    showModal(0, '', getAck, locObj.ringsWarn.txt,  locObj.okay.txt, '');
+    return;
+  }
+  if (game.gold >= item.priceBuy) {
+    game.gold -= item.priceBuy;
+    game.myhero.inventory.push(id);
+    if (id! == "artid00") {
+      let theIndex          = game.blackMarketGoods.indexOf(id);
+      game.blackMarketGoods = deleteFromArray(game.blackMarketGoods, theIndex);
+      populateBlackMarketGoods();
+    }
+    createElementUI(id, "tabBlackMarketHeroGoods");
+    equipItem(item.uid);
+  }
+}
+  /*;
+
+
 			console.log("item for sale from trader is ", item);
             if (game.gold >= item.priceBuy) {
                 game.gold -= item.priceBuy;
@@ -36,7 +78,8 @@ console.log(item_for_buying)
                 postEventLog(locObj.notEnoughGold.txt, 'bold');
                 return
             }
-}
+  */
+
 function sell(){
 var testCost = game.gold + item.priceBuy;
 			if (testCost >= game.goldLimit()) {
@@ -75,10 +118,10 @@ function createElementUI(item_ref, targetListId) {
 
 	if (targetListId === "tabBlackMarketTraderGoods") {
 		actionBtnElement.innerText = locObj.buy.txt;
-		actionBtnElement.id = item.uid;
+		actionBtnElement.id = item.uid+";"+id;
 		actionBtnElement.onclick = function (e) {
-		  console.log(e.target.id)
-		  buy(this);
+		  item = e.target.id;
+		  buy(item);
 	    }
 	    priceElement.innerText = item.priceBuy;
 	}
@@ -86,7 +129,7 @@ function createElementUI(item_ref, targetListId) {
 	    actionBtnElement.innerText = locObj.sell.txt;
 		console.log(locObj.sell.txt)
 		actionBtnElement.onclick = function (e) {
-		  sell(this);
+		  sell(e.target.id);
 		}
 		priceElement.innerText = item.priceBuy/2;
 	}
@@ -110,4 +153,71 @@ function createElementUI(item_ref, targetListId) {
 	wrapperElement.classList.add("inventory-item");
 	wrapperElement.setAttribute("data-uid", item.uid);
 	parent.appendChild(wrapperElement);
+}
+
+var swordsCount = 0; // TODO: #SwordsRestriction Counter will be removed after hero inventory system rework. For now dummy fix.
+var ringsCount = 0; // TODO: Same as swords. For now...
+
+function equipItem(itemUID) {
+	var inventoryItem = game.myhero.inventory.find(function (item) {
+		return item.uid === itemUID;
+	});
+
+	var equipedItem = game.myhero.inventoryWorn.find(function (item) {
+		return item.uid === itemUID;
+	});
+
+	if (inventoryItem && !equipedItem) {
+		var newItem = JSON.parse(JSON.stringify(inventoryItem));
+		// TODO: #SwordsRestriction remove it later
+		if (newItem.id === 'artid15' || newItem.id === 'artid16') {
+			swordsCount++;
+		}
+
+		if (newItem.id === 'artid17' || newItem.id === 'artid18') {
+			ringsCount++;
+		}
+
+		game.myhero.inventoryWorn.push(newItem);
+		recalcStats(newItem.attr);
+		updateHeroStatus();
+	}
+
+}
+
+function recalcStats(itemStats) {
+	if (itemStats.length) {
+		var substr = 'unit_';
+		var substrLength = substr.length;
+		for (var i = 0; i < itemStats.length; i++) {
+			if (itemStats[i].name.includes(substr)) {
+				var unitParam = itemStats[i].name.substring(substrLength);
+				switch(itemStats[i].type) {
+					case BONUS_VALUE_TYPES.INTEGER: {
+						for (var key in game.myheroArmy.units) {
+							game.myheroArmy.units[key][unitParam] += itemStats[i].val;
+						}
+					} break;
+					case BONUS_VALUE_TYPES.PERCENT: {
+						for (var key in game.myheroArmy.units) {
+							game.myheroArmy.units[key][unitParam] = Math.round(game.myheroArmy.units[key][unitParam] * itemStats[i].val);
+						}
+					} break;
+					default: throw new Error('Unknown stat type. Unable to assign value to ' + itemStats[i].name + '. Correct types is: "' + BONUS_VALUE_TYPES.INTEGER + '" or "' + BONUS_VALUE_TYPES.PERCENT + '"');
+				}
+			}
+
+			if (game.myhero && game.myhero[itemStats[i].name]) {
+				switch(itemStats[i].type) {
+					case BONUS_VALUE_TYPES.INTEGER:
+						game.myhero[itemStats[i].name] += itemStats[i].val;
+						break;
+					case BONUS_VALUE_TYPES.PERCENT:
+						game.myhero[itemStats[i].name] = Math.round(game.myhero[itemStats[i].name] * itemStats[i].val);
+						break;
+					default: throw new Error('Unknown stat type. Unable to assign value to ' + itemStats[i].name + '. Correct types is: "' + BONUS_VALUE_TYPES.INTEGER + '" or "' + BONUS_VALUE_TYPES.PERCENT + '"');
+				}
+			}
+		}
+	}
 }

@@ -388,7 +388,7 @@ function gameOK() {
 		genBlackMarketGoods : function () {
           // Just simple goods generation for now. Only two artefacts per adventure map.
           game.blackMarketGoods = [];
-          clearTraderUI();
+          //clearTraderUI();
           var rnd = randomFromRange(11, 16);
           // if (rnd.toString().length < 2) {
           //   rnd = "0" + rnd;
@@ -396,6 +396,7 @@ function gameOK() {
           var id = "artid" + rnd;
           game.blackMarketGoods.push('artid00');
           game.blackMarketGoods.push(id);
+          populateBlackMarketGoods();
           //addItem('blackMarketGoods', artefacts['artid00']);
           //addItem('blackMarketGoods', artefacts[id]);
           // var artefactIds = ['artid00']; // Always set artid00 as default market item. Not used for now.
@@ -3955,10 +3956,7 @@ function setTutorialAfterSaveRestore(gameTemp) {
 					}
 				}
 			}
-			for (let iterator in tmpHero["inventory"]) {
-			  let itemToAdd = tmpHero["inventory"][iterator]
-			  createElementUI(itemToAdd, 'tabBlackMarketHeroGoods');
-			}
+			populateHeroGoods();
 			while (game.myhero.inventory.length>game.myhero.inventoryWorn.length){
 				game.myhero.inventoryWorn.push(0);
 			}
@@ -3975,10 +3973,7 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		if (game.myhero.status === HERO_STATUS.AUTOCAMPAIGN || game.myhero.status === HERO_STATUS.ADVENTURE_MAP){
 			createJournalAccordion()
 		}
-		for (let iterator in game.blackMarketGoods) {
-		  let itemToAdd = game["blackMarketGoods"][iterator];
-		  createElementUI(itemToAdd, 'tabBlackMarketTraderGoods');
-		}
+        populateBlackMarketGoods();
 		setupMobileUI();
 		if (typeof setupFirebrigadeUI === "function") { setupFirebrigadeUI() };
 		if (typeof setupAudioUI === "function") { setupAudioUI() };
