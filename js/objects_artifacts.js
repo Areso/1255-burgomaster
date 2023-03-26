@@ -413,7 +413,7 @@ var artefacts = {
         artefactsWorn: 1
     },
     artid19: {
-        id: "artid16",
+        id: "artid19",
         img: "two_handed_sword_zweihander.png",
         name: {
           "default": "Two handed Landsknecht sword",
