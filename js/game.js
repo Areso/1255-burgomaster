@@ -339,61 +339,6 @@ function gameOK() {
 				}
 			}
 		},
-		setupAudio : function (typeAudio, target, dvalue) {
-			if (typeAudio==='sfx') {
-				if (target==='all') {
-					if (dvalue===1) {
-						game.sfx_all       = 1;
-						game.sfx_events    = 1;
-						game.sfx_actions   = 1;
-					}
-					if (dvalue===0) {
-						game.sfx_all       = 0;
-					}
-				}
-				if (target==='events') {
-					if (dvalue===1) {
-						game.sfx_events    = 1;
-						game.sfx_actions   = 1;
-					}
-					if (dvalue===0) {
-						game.sfx_all       = 0;
-						game.sfx_events    = 0;
-					}
-				}
-				if (target==='actions') {
-					if (dvalue===1) {
-						game.sfx_actions   = 1;
-					}
-					if (dvalue===0) {
-						game.sfx_all       = 0;
-						game.sfx_events    = 0;
-						game.sfx_actions   = 0;
-					}
-				}
-			}
-			if (typeAudio==='music') {
-				if (target==='all') {
-					if (dvalue===1) {
-						game.music_all     = 1;
-						game.music_scripts = 1;
-					}
-					if (dvalue===0) {
-						game.music_all     = 0;
-					}
-				}
-				if (target==='scripts') {
-					if (dvalue===1) {
-						game.music_scripts = 1;
-					}
-					if (dvalue===0) {
-						game.music_all     = 0;
-						game.music_scripts = 0;
-					}
-				}
-			}
-			setupAudioUI();
-		},
 		genBlackMarketGoods : function () {
           // Just simple goods generation for now. Only two artefacts per adventure map.
           game.blackMarketGoods = [];
