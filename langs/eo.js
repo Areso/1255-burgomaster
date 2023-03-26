@@ -657,7 +657,7 @@ locObj.btnBuildStables = { "txt": "Konstrui Ĉevalejon<br/>lvl %arg1<br/>pro %ar
 locObj.btnBuildArcheryRange = { "txt": "Konstrui Pafadon<br/>lvl %arg1<br/>pro %arg2 gold", "loc": "building tab" };
 locObj.lblAbout_h1 = { "txt": "1255 Burgomaster" };
 locObj.lblAbout_h2 = { "txt": "Kiel ludi" };
-locObj.lblAbout_wiki = { "txt": "wiki: <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>" };
+locObj.lblAbout_wiki = { "txt": "wiki: <a href='https://github.com/Areso/1255-burgomaster/wiki'>1255 Burgomaster's Wiki</a><br>" };
 locObj.lblAbout_feedback = { "txt": "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" };
 locObj.lblAbout_meh = {
   "txt": "Ĉi tiu ludo havas horloĝon sub la kapuĉo. Ĉiu tiklo de la horloĝo okazas en 30 sekundoj.\n" +
@@ -687,10 +687,9 @@ locObj.lblAbout_supLang = {
     "KAL signifas, ke la aŭtoro ne provizas helpon aŭ respondojn en la KAL,\n" +
     "kvankam partoj de la ludo aŭ ludo entute povus esti disponigitaj en la KAL.\n" +
     "Ankaŭ ĉiu KAL-tradukado povus havi erarojn aŭ netradukitajn partojn\n" +
-    "aŭ partoj de traduko, kiuj estas parte malaktualaj.\n" +
-    "Vi povus helpi per tradukoj por la ludo ĉi tie:"
+    "aŭ partoj de traduko, kiuj estas parte malaktualaj.\n" 
 };
-locObj.lblAbout_googleLang = { "txt": "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>" };
+locObj.lblAbout_googleLang = { "txt": "Vi povus helpi per tradukoj por la ludo ĉi tie: <a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>google dokumentaj tradukoj por la ludo</a><br>" };
 
 locObj.cityScreenSawmill = { "txt": "segejo", "loc": "cityscreen" };
 locObj.cityScreenWishingWell = { "txt": "dezirante puto", "loc": "cityscreen" };
