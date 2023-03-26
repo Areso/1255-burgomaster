@@ -336,8 +336,8 @@ body {
   align-self: center;
 }
 
-#marketList,
-#heroMarketList {
+#tabBlackMarketTraderGoods,
+#tabBlackMarketHeroGoods {
   overflow-y: auto;
   height: 100%;
   max-height: 175px;

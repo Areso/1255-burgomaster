@@ -38,63 +38,72 @@ function buy(item_for_buying){
   let data = item_for_buying.split(";");
   let uid  = data[0];
   let id   = data[1];
-  console.log(uid, id);
-  item = artefacts[id];
-  // TODO: #SwordsRestriction remove it later
-  if ((item.id === 'artid15' || item.id === 'artid16')  && swordsCount === 2) {
-    showModal(0, '', getAck, locObj.swordsWarn.txt,  locObj.okay.txt, '');
-    return;
-  }
-  if ((item.id === 'artid17' || item.id === 'artid18')  && ringsCount === 2) {
-    showModal(0, '', getAck, locObj.ringsWarn.txt,  locObj.okay.txt, '');
-    return;
-  }
+  let item = artefacts[id];
   if (game.gold >= item.priceBuy) {
     game.gold -= item.priceBuy;
     game.myhero.inventory.push(id);
-    if (id! == "artid00") {
+    if (id !== "artid00") {
       let theIndex          = game.blackMarketGoods.indexOf(id);
       game.blackMarketGoods = deleteFromArray(game.blackMarketGoods, theIndex);
       populateBlackMarketGoods();
+      equipItem_new(item);
     }
     createElementUI(id, "tabBlackMarketHeroGoods");
-    equipItem(item.uid);
   }
 }
-  /*;
 
-
-			console.log("item for sale from trader is ", item);
-            if (game.gold >= item.priceBuy) {
-                game.gold -= item.priceBuy;
-                addItem("hero", item);
-                updateUI();
-                if (targetListId === "marketList" && id === "artid00") {
-                    return
-                }
-                removeItem("trader", item);
-                equipItem(item.uid);
-            } else {
-                postEventLog(locObj.notEnoughGold.txt, 'bold');
-                return
-            }
-  */
+function isFreeSlot(item){
+  let require_slots  = item.slots;
+  let slots_qty      = item.slots.length
+  let isSatisfied    = true;
+  if (require_slots[0] !== "misc") {
+    for (let iterator in game.myhero.inventoryWorn){
+      let worn_artefact_ref =   game.myhero.inventoryWorn[iterator];
+      let worn_artefact = artefacts[worn_artefact_ref];
+      if (require_slots === worn_artefact.slots) {
+        isSatisfied = false;
+        return isSatisfied;
+      }
+      if (slots_qty > 1){
+        for (let slot_rqt_iterator in require_slots) {
+          if (require_slots[slot_rqt_iterator] === worn_artefact.slots) {
+            isSatisfied = false;
+            return isSatisfied;
+          }
+        }
+      }
+    }
+  }
+  if (require_slots[0] === "misc") {
+    misc_worn = 0;
+    for (let iterator in game.myhero.inventoryWorn){
+      let worn_artefact_ref =   game.myhero.inventoryWorn[iterator];
+      let worn_artefact = artefacts[worn_artefact_ref];
+      if (worn_artefact.slots[0] === "misc") {
+        misc_worn += 1;
+      }
+    }
+    if (misc_worn >= config.miscSlots) {
+      isSatisfied = false;
+    }
+  }
+  return isSatisfied;
+}
+function equipItem_new(item){
+  console.log(item)
+  console.log("equipt item")
+  //console.log(isFreeSlot(item))
+  if (!isFreeSlot(item)) {
+    return;
+  }
+  console.log("try to worn")
+  game.myhero.inventoryWorn.push(item.id);
+  //recalcStats(newItem.attr);
+  //updateHeroStatus();
+}
 
 function sell(){
-var testCost = game.gold + item.priceBuy;
-			if (testCost >= game.goldLimit()) {
-				postEventLog("You reached gold limit!");
-				return
-			}
-			console.log("the item for sale ", item);
-			game.gold += item.priceBuy;
-			if (item.id !== "artid00") {
-				item.priceBuy *= 2;
-				addItem("trader", item);
-			}
-			updateUI();
-			removeItem("hero", item);
-			unequipItem(item.uid);
+
 }
 function createElementUI(item_ref, targetListId) {
     //get item
@@ -153,36 +162,6 @@ function createElementUI(item_ref, targetListId) {
 	wrapperElement.classList.add("inventory-item");
 	wrapperElement.setAttribute("data-uid", item.uid);
 	parent.appendChild(wrapperElement);
-}
-
-var swordsCount = 0; // TODO: #SwordsRestriction Counter will be removed after hero inventory system rework. For now dummy fix.
-var ringsCount = 0; // TODO: Same as swords. For now...
-
-function equipItem(itemUID) {
-	var inventoryItem = game.myhero.inventory.find(function (item) {
-		return item.uid === itemUID;
-	});
-
-	var equipedItem = game.myhero.inventoryWorn.find(function (item) {
-		return item.uid === itemUID;
-	});
-
-	if (inventoryItem && !equipedItem) {
-		var newItem = JSON.parse(JSON.stringify(inventoryItem));
-		// TODO: #SwordsRestriction remove it later
-		if (newItem.id === 'artid15' || newItem.id === 'artid16') {
-			swordsCount++;
-		}
-
-		if (newItem.id === 'artid17' || newItem.id === 'artid18') {
-			ringsCount++;
-		}
-
-		game.myhero.inventoryWorn.push(newItem);
-		recalcStats(newItem.attr);
-		updateHeroStatus();
-	}
-
 }
 
 function recalcStats(itemStats) {
