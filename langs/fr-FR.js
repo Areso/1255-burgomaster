@@ -657,7 +657,7 @@ locObj.btnBuildStables = { "txt": "Construire une Écuries<br/>niveau %arg1<br/>
 locObj.btnBuildArcheryRange = { "txt": "Construire Camp de tir à l'arc<br/>niveau %arg1<br/>%arg2 or", "loc": "building tab" };
 locObj.lblAbout_h1 = { "txt": "1255 Burgomaster" };
 locObj.lblAbout_h2 = { "txt": "Comment jouer" };
-locObj.lblAbout_wiki = { "txt": "wiki: <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>" };
+locObj.lblAbout_wiki = { "txt": "wiki: <a href='https://github.com/Areso/1255-burgomaster/wiki'>1255 Burgomaster's Wiki</a><br>" };
 locObj.lblAbout_feedback = { "txt": "feedback <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>feedback form</a><br>" };
 locObj.lblAbout_meh = {
   "txt": "Ce jeu se joue en tours. Une horloge décompte un tour toutes les 30 secondes.\n" +
@@ -687,10 +687,9 @@ locObj.lblAbout_supLang = {
     "L'auteur ne peut apporter aucune aide ni répondre aux questions concernant les CSL,\n" +
     "même si le jeu est (en partie) fourni par les CSL.\n" +
     "Par ailleurs, toute traduction issue des CSL peut présenter des erreurs ou des éléments non traduits.\n" +
-    "ou des éléments de traduction qui ne sont plus à jour.\n" +
-    "Vous pouvez aider pour la traduction du jeu ici :"
+    "ou des éléments de traduction qui ne sont plus à jour.\n"
 };
-locObj.lblAbout_googleLang = { "txt": "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>" };
+locObj.lblAbout_googleLang = { "txt": "Vous pouvez aider pour la traduction du jeu ici: <a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>traductions de documents Google pour le jeu</a><br>" };
 locObj.cityScreenSawmill = { "txt": "scierie", "loc": "cityscreen" };
 locObj.cityScreenWishingWell = { "txt": "puit", "loc": "cityscreen" };
 locObj.cityScreenWall = { "txt": "mur", "loc": "cityscreen" };

@@ -1,6 +1,6 @@
 
 describe('Verification lang', () => {
-    const LANG = '"fr-FR"'; // en-US, ru-RU, de-DE, eo, fr-FR
+    const LANG = '"fr-FR"'; // en-US, ru-RU, de-DE, eo, fr-FR, es-ES
 
     const CITY = 'tabCity';
     const BUILDING = 'btnOpenTabBuilding';
@@ -25,13 +25,25 @@ describe('Verification lang', () => {
         });
     })
 
-    it('Locale ' + LANG + '. Verification welcome text in log', () => {
+    it('Locale ' + LANG + '.', () => {
+        let arg = '.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll)';
+
+        // *********************************************************************
+        //     Checking the file dom.js
+        // *********************************************************************
+
+        // Verification button spnServerStatusValue
+        cy.langContentBtn(CITY, 'spnServerStatusValue', 'serverStatusND');
+
+        // Verification button spnOnlineValue
+        cy.langContentBtn(CITY, 'spnOnlineValue', 'onlineValueND');
+
+        // Verification welcome text in log
         cy.langLogText('', 'welcome0');
         cy.langLogText('', 'welcome1');
-        cy.langLogText('', 'welcome2');        
-    })
+        cy.langLogText('', 'welcome2');
 
-    it('Locale ' + LANG + '. Verification feature Fire', () => {
+        //Verification feature Fire
         cy.get('#log_btn').click();
 
         cy.window().then((win) => {
@@ -41,279 +53,212 @@ describe('Verification lang', () => {
         cy.langLogText('game.startFire(autotest=true)', 'fireInCity');
         cy.langContentBtn(CITY, 'buttonPutOutFire', 'btnPutOutTheFire');
         cy.langLogText('game.putOutFireUI()', 'fireEndedByFireservice');
-    });
 
-    it('Locale ' + LANG + '. Verification button buttonDeathPenalty', () => {
+        // Verification button buttonDeathPenalty
         cy.langContentBtn(CITY, 'buttonDeathPenalty', 'btnExecutePerson');
-    });
 
-    it('Locale ' + LANG + '. Verification button saveGameButton', () => {
+        // Verification button saveGameButton
         cy.langContentBtn(CITY, 'saveGameButton', 'locSaveGame');
-     });
 
-    it('Locale ' + LANG + '. Verification button loadGameButton', () => {
+        // Verification button loadGameButton
         cy.langContentBtn(CITY, 'loadGameButton', 'locLoadGame');
-    });
 
-    it('Locale ' + LANG + '. Verification button tabCity', () => {
+        // Verification button tabCity
         cy.langBtn(CITY, 'tabCity');
-    });
-    it('Locale ' + LANG + '. Verification button btnOpenTabBuilding', () => {
+
+        // Verification button btnOpenTabBuilding
         cy.langBtn(BUILDING, 'tabBuilding');
-    });
 
-    it('Locale ' + LANG + '. Verification button tabSettings', () => {
+        // Verification button tabSettings
         cy.langBtn(SETTINGS, 'tabSettings');
-    });
 
-    it('Locale ' + LANG + '. Verification button tabAbout', () => {
+        // Verification button tabAbout
         cy.langBtn(ABOUT, 'tabHowToPlay');
-    });
 
-    it('Locale ' + LANG + '. Verification button tabDiscord', () => {
+        // Verification button tabDiscord
         cy.langBtn(DISCORD, 'tabDiscord');
-    });
 
-    it('Locale ' + LANG + '. Verification button labelSettings', () => {
+        // Verification button labelSettings
         cy.langContentBtn(SETTINGS, 'labelSettings', 'tabSettings');
-    });
 
-    it('Locale ' + LANG + '. Verification button buttonExportGame', () => {
+        // Verification button buttonExportGame
         cy.langContentBtn(SETTINGS, 'buttonExportGame', 'tabSettingsBtnExportGame');
-    });
 
-    it('Locale ' + LANG + '. Verification button buttonImportGame', () => {
+        // Verification button buttonImportGame
         cy.langContentBtn(SETTINGS, 'buttonImportGame', 'tabSettingsBtnImportGame');
-    });
 
-    it('Locale ' + LANG + '. Verification label labelAutosave', () => {
+        // Verification label labelAutosave
         cy.langContentBtn(SETTINGS, 'labelAutosave', 'tabSettingsLblAutosave');
-    });
 
-    it('Locale ' + LANG + '. Verification label labelGarrison', () => {
+        // Verification label labelGarrison
         cy.langContentBtn(CITY, 'labelGarrison', 'lblGarrison');
-    });
 
-    it('Locale ' + LANG + '. Verification button buttonFireGuard', () => {
+        // Verification button buttonFireGuard
         cy.langContentBtn(CITY, 'buttonFireGuard', 'btnFire');
-    });
 
-    it('Locale ' + LANG + '. Verification button buttonFireGuard', () => {
+        // Verification button buttonFireGuard
         cy.langContentBtn(CITY, 'buttonHireGuard', 'btnHire');
-    });
 
-    // ожидает рефакторинга кода
-    it.skip('!!!SKIP!!! Locale ' + LANG + '. Verification label lblAboutGame', () => {
-        let text;
-        cy.get('#' + ABOUT).click();
+        // Verification label lblAboutGame
+        cy.langContentBtn(ABOUT, 'lblAbout_h1', 'lblAbout_h1');
+        cy.langContentBtn(ABOUT, 'lblAbout_h2', 'lblAbout_h2');
+        cy.langContentHref(ABOUT, 'lblAbout_wiki', 'lblAbout_wiki');
+        cy.langContentHref(ABOUT, 'lblAbout_feedback', 'lblAbout_feedback');
+        cy.langContentArg(ABOUT, 'lblAbout_meh', 'lblAbout_meh', arg);
+        cy.langContentBtn(ABOUT, 'lblAbout_supLang', 'lblAbout_supLang');
+        cy.langContentHref(ABOUT, 'lblAbout_googleLang', 'lblAbout_googleLang');
 
-        cy.window().then((win1) => {
-            text = win1.eval('locObj.tabHowToPlayText');//.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll)');
-            cy.get('#lblAboutGame').should('text',text);
-         });
-
-    });
-
-    it('Locale ' + LANG + '. Verification label lblTabGold', () => {
+        // Verification label lblTabGold
         cy.langContentBtn(CITY, 'lblTabGold', 'tabGoldHistory');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblTabPop', () => {
+        // Verification label lblTabPop
         cy.langContentBtn(CITY, 'lblTabPop', 'tabPopHistory');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblTabInn', () => {
+        // Verification label lblTabInn
         cy.langContentBtn(CITY, 'lblTabInn', 'tabInnWelcome');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblUpkeepSrc', () => {
+        // Verification label lblUpkeepSrc
         cy.langContentBtn(SETTINGS, 'lblUpkeepSrc', 'heroTroopsUpkeepSource');
-    });
 
-    it('Locale ' + LANG + '. Verification label btnColorMode', () => {
+        // Verification label btnColorMode
         cy.langContentBtn(SETTINGS, 'btnColorMode', 'tabSettingsBtnChangeColorMode');
-    });
 
-    it('Locale ' + LANG + '.  label selectUpkeepSrc[0]', () => {
-        cy.langListElement(CITY, 'selectUpkeepSrc',0, 'heroTroopsUpkeepSrcHeroPurse');
-    });
+        // Verification label selectUpkeepSrc[0]
+        cy.langListElement(CITY, 'selectUpkeepSrc', 0, 'heroTroopsUpkeepSrcHeroPurse');
 
-    it('Locale ' + LANG + '.  label selectUpkeepSrc[1]', () => {
-        cy.langListElement(CITY, 'selectUpkeepSrc',1, 'heroTroopsUpkeepSrcTreasury');
-    });
+        // Verification label selectUpkeepSrc[1]
+        cy.langListElement(CITY, 'selectUpkeepSrc', 1, 'heroTroopsUpkeepSrcTreasury');
 
-    it('Locale ' + LANG + '. Verification button btnDismissHero', () => {
+        //Verification button btnDismissHero
         cy.langContentBtn(CITY, 'btnDismissHero', 'btnDismissHero');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnAutocampaignJournal', () => {
+        // Verification button btnAutocampaignJournal
         cy.langContentBtn(CITY, 'btnAutocampaignJournal', 'btnAutocampaignOpenJournal');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnTowngate', () => {
+        // Verification button btnTowngate
         cy.langContentBtn(CITY, 'btnTowngate', 'btnUseTowngateScroll');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnLeaveCity', () => {
+        // Verification button btnLeaveCity
         cy.langContentBtn(CITY, 'btnLeaveCity', 'btnGoToAdvenureMap');
-    });
-    it('Locale ' + LANG + '. Verification button btnGenerateMap', () => {
+
+        // Verification button btnGenerateMap
         cy.langContentBtn(CITY, 'btnGenerateMap', 'btnRegenerateMap');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnAutobattlesList', () => {
+        // Verification button btnAutobattlesList
         cy.langContentBtn(CITY, 'btnAutobattlesList', 'autobattle_journal_btn');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblOption', () => {
+        // Verification label lblOption
         cy.langContentBtn(SETTINGS, 'lblOption', 'tabSoundSettingsLblOption');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblOn', () => {
+        // Verification label lblOn
         cy.langContentBtn(SETTINGS, 'lblOn', 'on');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblOff', () => {
+        // Verification label lblOff
         cy.langContentBtn(SETTINGS, 'lblOff', 'off');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblSfxAll', () => {
+        // Verification label lblSfxAll
         cy.langContentBtn(SETTINGS, 'lblSfxAll', 'tabSoundSettingsLblAllSoundEffects');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblSfxEvt', () => {
+        // Verification label lblSfxEvt
         cy.langContentBtn(SETTINGS, 'lblSfxEvt', 'tabSoundSettingsLblAllEventsEffects');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblSfxEvtAR', () => {
+        // Verification label lblSfxEvtAR
         cy.langContentBtn(SETTINGS, 'lblSfxEvtAR', 'tabSoundSettingsLblEffectsAR');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblMscAll', () => {
+        // Verification label lblMscAll
         cy.langContentBtn(SETTINGS, 'lblMscAll', 'tabSoundSettingsAllMusic');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblMscScr', () => {
+        // Verification label lblMscScr
         cy.langContentBtn(SETTINGS, 'lblMscScr', 'tabSoundSettingsScMusic');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnToGeneralSettings', () => {
+        // Verification button btnToGeneralSettings
         cy.langContentBtn(CITY, 'btnToGeneralSettings', 'btnBack');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnToInn', () => {
+        // Verification button btnToInn
         cy.langContentBtn(CITY, 'btnToInn', 'btnBack');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnToInn1', () => {
+        // Verification button btnToInn1
         cy.langContentBtn(CITY, 'btnToInn1', 'btnBack');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblSoundMenu', () => {
+        // Verification label lblSoundMenu
         cy.langContentBtn(SETTINGS, 'lblSoundMenu', 'lblSoundMenu');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnSoundSettings', () => {
+        // Verification button btnSoundSettings
         cy.langContentBtn(CITY, 'btnSoundSettings', 'tabSettingsBtnOpenSoundSettings');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblStnMobileUI', () => {
+        // Verification label lblStnMobileUI
         cy.langContentBtn(SETTINGS, 'lblStnMobileUI', 'tabSettingsLblMobileUI');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblStnEventLogSize', () => {
+        // Verification label lblStnEventLogSize
         cy.langContentBtn(SETTINGS, 'lblStnEventLogSize', 'tabSettingsLblLogSize');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblStnLines', () => {
+        // Verification label lblStnLines
         cy.langContentBtn(SETTINGS, 'lblStnLines', 'tabSettingsLblLines');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblGoodsForSale', () => {
+        // Verification label lblGoodsForSale
         cy.langContentBtn(SETTINGS, 'lblGoodsForSale', 'lblGoodForSale');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblGoodsForBuying', () => {
+        // Verification label lblGoodsForBuying
         cy.langContentBtn(SETTINGS, 'lblGoodsForBuying', 'lblHeroGoodsFoSale');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnLeaveBlackmarket', () => {
+        // Verification button btnLeaveBlackmarket
         cy.langContentBtn(CITY, 'btnLeaveBlackmarket', 'btnGoToAdvenureMap');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblFirebrigade', () => {
+        // Verification label lblFirebrigade
         cy.langContentBtn(SETTINGS, 'lblFirebrigade', 'lblFirebrigade');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblFBOption', () => {
+        // Verification label lblFBOption
         cy.langContentBtn(SETTINGS, 'lblFBOption', 'lblFireServiceStatus');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblFBOn', () => {
+        // Verification label lblFBOn
         cy.langContentBtn(SETTINGS, 'lblFBOn', 'onDuty');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblFBOff', () => {
+        // Verification label lblFBOff
         cy.langContentBtn(SETTINGS, 'lblFBOff', 'offDuty');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblFBUpKeepPrice', () => {
+        // Verification label lblFBUpKeepPrice
         cy.langContentBtn(SETTINGS, 'lblFBUpKeepPrice', 'lblFirebrigadeUpkeep');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnPopAtStart', () => {
+        // Verification button btnPopAtStart
         cy.langContentBtn(CITY, 'btnPopAtStart', 'paginationStart');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnGoldAtStart', () => {
+        // Verification button btnGoldAtStart
         cy.langContentBtn(CITY, 'btnGoldAtStart', 'paginationStart');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnPopPrev', () => {
+        // Verification button btnPopPrev
         cy.langContentBtn(CITY, 'btnPopPrev', 'paginationPrevious');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnGoldPrev', () => {
+        // Verification button btnGoldPrev
         cy.langContentBtn(CITY, 'btnGoldPrev', 'paginationPrevious');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnPopNext', () => {
+        // Verification button btnPopNext
         cy.langContentBtn(CITY, 'btnPopNext', 'paginationNext');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnGoldNext', () => {
+        // Verification button btnGoldNext
         cy.langContentBtn(CITY, 'btnGoldNext', 'paginationNext');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnPopAtEnd', () => {
+        // Verification button btnPopAtEnd
         cy.langContentBtn(CITY, 'btnPopAtEnd', 'paginationCurrent');
-    });
 
-    it('Locale ' + LANG + '. Verification button btnGoldAtEnd', () => {
+        // Verification button btnGoldAtEnd
         cy.langContentBtn(CITY, 'btnGoldAtEnd', 'paginationCurrent');
-    });
 
-    it('Locale ' + LANG + '. Verification button downloadGame', () => {
+        // Verification button downloadGame
         cy.langContentBtn(CITY, 'downloadGame', 'downloadGame');
-    });
 
-    it('Locale ' + LANG + '. Verification label lblLevelForHireLbl', () => {
+        // Verification label lblLevelForHireLbl
         cy.langContentBtn(SETTINGS, 'lblLevelForHireLbl', 'heroLvlLbl');
-    });
 
-    it('Locale ' + LANG + '. Verification button spnServerStatusLabel', () => {
+        // Verification button spnServerStatusLabel
         cy.langContentBtn(CITY, 'spnServerStatusLabel', 'serverStatusSpn');
-    });
 
-    it('Locale ' + LANG + '. Verification button spnServerStatusValue', () => {
-        cy.langContentBtn(CITY, 'spnServerStatusValue', 'serverStatusND');
-    });
-
-    it('Locale ' + LANG + '. Verification button spnOnline', () => {
+        // Verification button spnOnline
         cy.langContentBtn(CITY, 'spnOnline', 'online');
-    });
 
-    it('Locale ' + LANG + '. Verification button spnOnlineValue', () => {
-        cy.langContentBtn(CITY, 'spnOnlineValue', 'onlineValueND');
+
+        // *********************************************************************
+        //     Checking the file objects_artifacts.js
+        // *********************************************************************
+
     });
 })

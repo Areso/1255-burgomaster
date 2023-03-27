@@ -660,7 +660,7 @@ locObj.btnBuildStables = { "txt": "Построить Конюшню<br/>ур. %
 locObj.btnBuildArcheryRange = { "txt": "Построить Стрельбище<br/>ур. %arg1<br/>%arg2 золота", "loc": "building tab" };
 locObj.lblAbout_h1 = { "txt": "1255: Расцвет Тевтонцев" };
 locObj.lblAbout_h2 = { "txt": "Как играть" };
-locObj.lblAbout_wiki = { "txt": "Cсылка на вики: <a href='https://github.com/Areso/1255-burgomaster/wiki'>https://github.com/Areso/1255-burgomaster/wiki</a><br>" };
+locObj.lblAbout_wiki = { "txt": "Cсылка на вики: <a href='https://github.com/Areso/1255-burgomaster/wiki'>1255 Burgomaster's Wiki</a><br>" };
 locObj.lblAbout_feedback = { "txt": "Анкета с обратной связью <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM9HyQVEdW39Mc2-t8_LNFXUlyMZLhvX0jx_uvrzxF7QnmfQ/viewform'>здесь</a><br>" };
 locObj.lblAbout_meh = {
   "txt": "У этой игры под 'капотом' находится таймер. Каждый 'тик' таймера происходит за 30 секунд.\n" +
@@ -690,10 +690,9 @@ locObj.lblAbout_supLang = {
     "СПЯ значит, что автор не помогает и не отвечает на вопросы, заданные на СПЯ,\n" +
     "несмотря на то, что части игры или игра целиком могут быть доступны на СПЯ.\n" +
     "Также надо отметить, что переводы СПЯ могут содержать ошибки и непереведенные фрагменты\n" +
-    "или части, содержащие устаревший перевод.\n" +
-    "Вы можете помочь с переводами здесь:"
+    "или части, содержащие устаревший перевод.\n"
 };
-locObj.lblAbout_googleLang = { "txt": "<a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE</a><br>" };
+locObj.lblAbout_googleLang = { "txt": "Вы можете помочь с переводами здесь: <a href='https://docs.google.com/spreadsheets/d/1WxRoxfPpYBHqvWb4mQNxGVr3r4VyxHSEuELzdU1I2PE'>Google документ для переводов игры</a><br>" };
 locObj.cityScreenSawmill = { "txt": "пилорама", "loc": "cityscreen" };
 locObj.cityScreenWishingWell = { "txt": "колодец желаний", "loc": "cityscreen" };
 locObj.cityScreenWall = { "txt": "стена", "loc": "cityscreen" };

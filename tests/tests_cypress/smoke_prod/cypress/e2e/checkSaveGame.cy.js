@@ -22,7 +22,7 @@ describe('Verification of authorization and loading of the save', () => {
         cy.get('#buttonLoadFromCloud', { timeout: 9000 }).click();
 
         // Check
-        cy.get('#autosaveImg').should('have.attr', 'src', 'resources/button_green.png');
+        cy.get('#autosaveImg').should('have.attr', 'src', 'resources/button_red.png');
         cy.get('#panelGoldValue').should("have.text", 24180);
         cy.get('#panelPopValue').should("have.text", 648);
         cy.get('#gems').should("have.text", 10);
@@ -37,6 +37,10 @@ describe('Verification of authorization and loading of the save', () => {
         cy.window().its('game.fireSteps').should('equal', 0);
         cy.window().its('game.fireGuard').should('equal', 0);
         cy.window().its('game.hero').should('equal', 0);
+
+        cy.window().then((win) => {
+            win.eval('dcounter_component.dcounter=1');
+        });
 
         // checking available buildings
         cy.get('#btnOpenTabBuilding').click();
