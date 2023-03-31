@@ -414,16 +414,16 @@ var artefacts = {
     },
     artid19: {
         id: "artid19",
-        img: "two_handed_sword_zweihander.png",
+        img: "landsknecht_sword.png",
         name: {
-          "default": "Two handed Landsknecht sword",
-          "en-US": "Two handed Landsknecht sword",
-          "ru-RU": "Двуручный меч лэндснехта",
+          "default": "Landsknecht's two-handed sword",
+          "en-US": "Landsknecht's two-handed sword",
+          "ru-RU": "Двуручный меч ландскнехта",
         },
         desc: {
-          "default": "Increases attack of the hero by 20, reduces defense by 10",
-          "en-US": "Increases attack of the hero by 20, reduces defense by 10",
-          "ru-RU": "Увеличивает атаку героя на 20, уменьшает защиту на 10",
+          "default": "Increases attack of the hero by +20, reduces defense by -10",
+          "en-US": "Increases attack of the hero by +20, reduces defense by -10",
+          "ru-RU": "Увеличивает атаку героя на +20, уменьшает защиту на -10",
         },
         attr: [
             { name: "atk", type: BONUS_VALUE_TYPES.INTEGER, val: 20 },

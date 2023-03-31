@@ -86,7 +86,7 @@ function setupMobileUI() {
 			}
 
 			document.querySelector(".resource-panel").style.backgroundColor = "black";
-			document.querySelector("#pop_img").setAttribute("src", "resources/pop_light.png");
+			// document.querySelector("#pop_img").setAttribute("src", "resources/pop_light.png");
 
 
 			dynamicCellsSetStyle();
