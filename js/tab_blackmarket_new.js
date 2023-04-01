@@ -101,7 +101,6 @@ function equipItem_new(item){
   //recalcStats(newItem.attr);
   //updateHeroStatus();
 }
-
 function sell(){
 
 }
