@@ -26,4 +26,5 @@ jobs:
         uses: cypress-io/github-action@v5      
         with:
           working-directory: tests/tests_cypress/unit
-          start: npm run start
+          start: npm install chai-json-schema |
+                 npm run start
