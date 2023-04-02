@@ -28,6 +28,7 @@ var artefacts = {
     },
     artid01: {
         id: "artid01",
+        img: "medal.png",
         name: {
           "default":"Four-Leaf Clover",
           "en-US":"Four-Leaf Clover",
@@ -48,6 +49,7 @@ var artefacts = {
     },
     artid02: {
         id: "artid02",
+        img: "medal.png",
         name: {
           "default": "Medal of Valor",
           "en-US": "Medal of Valor",
@@ -68,6 +70,7 @@ var artefacts = {
     },
     artid03: {
         id: "artid03",
+        img: "medal.png",
         name: {
           "default": "Medal of Courage",
           "en-US": "Medal of Courage",
@@ -88,6 +91,7 @@ var artefacts = {
     },
     artid04: {
         id: "artid04",
+        img: "medal.png",
         name: {
           "default": "Medal of Honor",
           "en-US": "Medal of Honor",
@@ -108,6 +112,7 @@ var artefacts = {
     },
     artid05: {
         id: "artid05",
+        img: "medal.png",
         name: {
           "default": "Medal of Distinction",
           "en-US": "Medal of Distinction",
@@ -128,6 +133,7 @@ var artefacts = {
     },
     artid06: {
         id: "artid06",
+        img: "medal.png",
         name: {
           "default": "Rabbit's Foot",
           "en-US": "Rabbit's Foot",
@@ -148,6 +154,7 @@ var artefacts = {
     },
     artid07: {
         id: "artid07",
+        img: "medal.png",
         name: {
           "default": "Golden Horseshoe",
           "en-US": "Golden Horseshoe",
@@ -168,6 +175,7 @@ var artefacts = {
     },
     artid08: {
         id: "artid08",
+        img: "medal.png",
         name: {
           "default": "Gambler's Lucky Coin",
           "en-US": "Gambler's Lucky Coin",
@@ -188,6 +196,7 @@ var artefacts = {
     },
     artid09: {
         id: "artid09",
+        img: "sand_clock.png",
         name: {
           "default": "Unlucky hourglass",
           "en-US": "Unlucky hourglass",
@@ -208,6 +217,7 @@ var artefacts = {
     },
     artid10: {
         id: "artid10",
+        img: "medal.png",
         name: {
           "default": "Glass globe",
           "en-US": "Glass globe",

@@ -15,6 +15,6 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-
+chai.use(require('chai-json-schema'));
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
