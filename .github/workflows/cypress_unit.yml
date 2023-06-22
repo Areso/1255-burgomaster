@@ -14,16 +14,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: run server with the front of the game
-        run: python3 -m http.server 8080 &
-
-      - name: check whether game is UP
-        run: |
-          curl -X GET "http://localhost:8080/"
-      
+     
       - name: cypress run
         uses: cypress-io/github-action@v5      
         with:
           working-directory: tests/tests_cypress/unit
+          run: npm install chai-json-schema
           start: npm run start
