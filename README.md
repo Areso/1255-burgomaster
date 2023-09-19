@@ -69,5 +69,19 @@
 		ALL GRAPHIC AND SOUND ASSETS UNDER PROPRIETARY LICENSE.<br>
 		YOU MAY NOT REDISTRIBUTE THE GAME WITH THE ASSETS VIA PUBLISHING IN INTERNET, STORES, OR ANY OTHER WAY<br>
 		YOU MAY USE ASSETS ONLY FOR LOCAL RUNNING<br>
+		<br>
+<h2>The Graveyard list</h2><br>
+  Here lie projects, which started around the same time (or later) and already dead:<br>
+<ul>
+  <li>Babylon's Fall publisher Square Enix (2022, March 3 - 2023, February 27)</li>
+  <li>Hyper Scape publisher Ubisoft (2020 Aug - 2022, April 28) </li>
+  <li>Crowfall (2021-2022, November 22)</li>
+  <li>Super Bomberman R Online by Konami (2021 June-2022, December 1)</li>
+  <li>Scavangers by Behaviour Interactive (2021-2022, December 16)</li>
+  <li>Fuser (2020, November - 2022, December 19)</li>
+  <li>Dead and Buried II publisher Facebook (2019-2023)</li>
+  <li>Bogo publisher Facebook (2019-2023)</li>
+</ul><br>
+Only open sourced games could run as long as at least one of their fun exists
 </body>
 <html>
