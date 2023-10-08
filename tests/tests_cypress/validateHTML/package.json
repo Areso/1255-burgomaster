@@ -1,7 +1,7 @@
 {
     "devDependencies": {
-      "cypress": "12.6.0",
-      "cypress-html-validate": "^5.1.2",
+      "cypress": "13.3.0",
+      "cypress-html-validate": "^6.1.0",
       "html-validate": "^7.13.2"      
     },
     "type": "module",
