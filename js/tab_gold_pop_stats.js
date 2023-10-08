@@ -11,7 +11,7 @@ function checkPop() {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-10+i] +'</span></td>';
 			pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-10+i]  +'</span></td>';
 		}
-		document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+		document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabPopulation');
 	} else {
@@ -20,7 +20,7 @@ function checkPop() {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
 				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
@@ -30,7 +30,7 @@ function checkPop() {
 			disabledElements.push("loadGameButton");
 			document.getElementById("saveGameButton").disabled = true;
 			document.getElementById("loadGameButton").disabled = true;
-			showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
+			showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 		}
 	}
 }
@@ -46,7 +46,7 @@ function popAtStart() {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i] +'</span></td>';
 			pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[i]  +'</span></td>';
 		}
-		document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+		document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabPopulation');
 	} else {
@@ -55,7 +55,7 @@ function popAtStart() {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i] +'</span></td>';
 				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[i]  +'</span></td>';
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
@@ -80,7 +80,7 @@ function popPrev() {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[popPage*10+i] +'</span></td>';
 			pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[popPage*10+i]  +'</span></td>';
 		}
-		document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+		document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabPopulation');
 	} else {
@@ -89,7 +89,7 @@ function popPrev() {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
 				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
@@ -114,7 +114,7 @@ function popNext() {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[popPage*10+i] +'</span></td>';
 			pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[popPage*10+i]  +'</span></td>';
 		}
-		document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+		document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabPopulation');
 	} else {
@@ -123,7 +123,7 @@ function popNext() {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i] +'</span></td>';
 				pop.innerHTML  = pop.innerHTML  +'<td><span class="dynamicCells">'+ game.pops[game.years.length-game.years.length+i]  +'</span></td>';
 			}
-			document.getElementById("lblCurrentPopLimit").innerHTML=localeStrings[162].replace("%arg1",game.popLimit());
+			document.getElementById("lblCurrentPopLimit").innerHTML=locObj.tabPopHistoryCurrentLimit.txt.replace("%arg1",game.popLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabPopulation');
 		} else {
@@ -146,9 +146,8 @@ function checkGold() {
 		for (i=0;i<10;i++) {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-10+i]    +'</span></td>';
 			gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-10+i]  +'</span></td>';
-			//console.log('period is '+game.years[game.years.length-10+i]+' and gold is '+game.budgets[game.years.length-10+i]);
 		}
-		document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+		document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabGold');
 	} else {
@@ -156,19 +155,18 @@ function checkGold() {
 			for (i=0;i<game.years.length;i++) {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
 				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
-				//console.log('period is '+game.years[game.years.length-game.years.length+i]+' and gold is '+game.budgets[game.years.length-game.years.length+i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {
 			// nothing to show
-			var alertMsg = localeStrings[65];
+			var alertMsg = locObj.noStatsYet.txt;
 			disabledElements.push("saveGameButton");
 			disabledElements.push("loadGameButton");
 			document.getElementById("saveGameButton").disabled = true;
 			document.getElementById("loadGameButton").disabled = true;
-			showModal(0, '', getAck, alertMsg,  localeStrings[65], '')
+			showModal(0, '', getAck, alertMsg,  locObj.okay.txt, '')
 		}
 	}
 }
@@ -183,9 +181,8 @@ function goldAtStart() {
 		for (i=0;i<10;i++) {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i]    +'</span></td>';
 			gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[i]  +'</span></td>';
-			//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 		}
-		document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+		document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabGold');
 	} else {
@@ -193,9 +190,8 @@ function goldAtStart() {
 			for (i=0;i<game.years.length;i++) {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[i]    +'</span></td>';
 				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[i]  +'</span></td>';
-				//console.log('period is '+game.years[i]+' and gold is '+game.budgets[i]);
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {
@@ -221,7 +217,7 @@ function goldPrev() {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[goldPage*10+i]    +'</span></td>';
 			gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[goldPage*10+i]  +'</span></td>';
 		}
-		document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+		document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabGold');
 	} else {
@@ -230,7 +226,7 @@ function goldPrev() {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
 				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {
@@ -256,7 +252,7 @@ function goldNext() {
 			year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[goldPage*10+i]    +'</span></td>';
 			gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[goldPage*10+i]  +'</span></td>';
 		}
-		document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+		document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 		dynamicCellsSetStyle();
 		openTab(null, 'tabGold');
 	} else {
@@ -265,7 +261,7 @@ function goldNext() {
 				year.innerHTML = year.innerHTML +'<td><span class="dynamicCells">'+ game.years[game.years.length-game.years.length+i]    +'</span></td>';
 				gold.innerHTML = gold.innerHTML +'<td><span class="dynamicCells">'+ game.budgets[game.years.length-game.years.length+i]  +'</span></td>';
 			}
-			document.getElementById("lblCurrentGoldLimit").innerHTML=localeStrings[163].replace("%arg1",game.goldLimit());
+			document.getElementById("lblCurrentGoldLimit").innerHTML=locObj.tabGoldHistoryCurrentLimit.txt.replace("%arg1",game.goldLimit());
 			dynamicCellsSetStyle();
 			openTab(null, 'tabGold');
 		} else {

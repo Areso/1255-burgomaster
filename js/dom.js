@@ -44,20 +44,25 @@ include('localisation.js',function(){
 		document.getElementById("labelGarrison").innerText       = locObj.lblGarrison.txt;
 		document.getElementById("buttonFireGuard").innerText     = locObj.btnFire.txt;
 		document.getElementById("buttonHireGuard").innerText     = locObj.btnHire.txt;
-		document.getElementById("lblAboutGame").innerHTML        = locObj.tabHowToPlayText.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
-		document.getElementById("lblTabPop").innerText           = localeStrings[161];
-		document.getElementById("lblTabGold").innerText          = localeStrings[164];
+		document.getElementById("lblAbout_h1").innerText         = locObj.lblAbout_h1.txt;
+		document.getElementById("lblAbout_h2").innerText         = locObj.lblAbout_h2.txt;
+		document.getElementById("lblAbout_wiki").innerHTML       = locObj.lblAbout_wiki.txt;
+		document.getElementById("lblAbout_feedback").innerHTML   = locObj.lblAbout_feedback.txt;
+		document.getElementById("lblAbout_meh").innerText        = locObj.lblAbout_meh.txt.replace("%arg1",config.treasuryGuardPriceHire).replace("%arg2",config.treasuryGuardPricePayroll);
+		document.getElementById("lblAbout_supLang").innerText    = locObj.lblAbout_supLang.txt;
+		document.getElementById("lblAbout_googleLang").innerHTML = locObj.lblAbout_googleLang.txt;
+		document.getElementById("lblTabPop").innerText           = locObj.tabPopHistory.txt;
+		document.getElementById("lblTabGold").innerText          = locObj.tabGoldHistory.txt;
 		document.getElementById("btnColorMode").innerText        = locObj.tabSettingsBtnChangeColorMode.txt;
-		document.getElementById("lblTabInn").innerText           = localeStrings[181];
-		document.getElementById("lblUpkeepSrc").innerText        = localeStrings[279];
-		document.getElementById("selectUpkeepSrc")[0].text       = localeStrings[284];
-		document.getElementById("selectUpkeepSrc")[1].text       = localeStrings[285];
-		document.getElementById("btnDismissHero").innerText      = localeStrings[217];
-		//document.getElementById("btnAutocampaign").innerText     = localeStrings[218];
-		document.getElementById("btnAutocampaignJournal").innerText  = localeStrings[220];
-		document.getElementById("btnTowngate").innerText         = localeStrings[221];
-		document.getElementById("btnLeaveCity").innerText        = localeStrings[222];
-		document.getElementById("btnGenerateMap").innerText      = localeStrings[223];
+		document.getElementById("lblTabInn").innerText           = locObj.tabInnWelcome.txt;
+		document.getElementById("lblUpkeepSrc").innerText        = locObj.heroTroopsUpkeepSource.txt;
+		document.getElementById("selectUpkeepSrc")[0].text       = locObj.heroTroopsUpkeepSrcHeroPurse.txt;
+		document.getElementById("selectUpkeepSrc")[1].text       = locObj.heroTroopsUpkeepSrcTreasury.txt;
+		document.getElementById("btnDismissHero").innerText      = locObj.btnDismissHero.txt;
+		document.getElementById("btnAutocampaignJournal").innerText  = locObj.btnAutocampaignOpenJournal.txt;
+		document.getElementById("btnTowngate").innerText         = locObj.btnUseTowngateScroll.txt;
+		document.getElementById("btnLeaveCity").innerText        = locObj.btnGoToAdvenureMap.txt;
+		document.getElementById("btnGenerateMap").innerText      = locObj.btnRegenerateMap.txt;
 		document.getElementById("btnAutobattlesList").innerText  = locObj.autobattle_journal_btn.txt;
 		document.getElementById("lblOption").innerText           = locObj.tabSoundSettingsLblOption.txt;
 		document.getElementById("lblOn").innerText               = locObj.on.txt;
@@ -75,27 +80,23 @@ include('localisation.js',function(){
 		document.getElementById("lblStnMobileUI").innerText      = locObj.tabSettingsLblMobileUI.txt;
 		document.getElementById("lblStnEventLogSize").innerText  = locObj.tabSettingsLblLogSize.txt;
 		document.getElementById("lblStnLines").innerText         = locObj.tabSettingsLblLines.txt;
-		document.getElementById("lblGoodsForSale").innerText     = localeStrings[260];
-		//document.getElementById("lblArtefactSellPrice").innerText= localeStrings[261];
-		//document.getElementById("lblArtefactBuyPrice").innerText = localeStrings[261];
-		//document.getElementById("btnBuyArtefact").innerText      = localeStrings[262];
-		document.getElementById("lblGoodsForBuying").innerText   = localeStrings[263];
-		//document.getElementById("btnSellArtefact").innerText     = localeStrings[264];
-		document.getElementById("btnLeaveBlackmarket").innerText = localeStrings[222];
-		document.getElementById("lblFirebrigade").innerText      = localeStrings[270];
-		document.getElementById("lblFBOption").innerText         = localeStrings[271];
-		document.getElementById("lblFBOn").innerText             = localeStrings[272];
-		document.getElementById("lblFBOff").innerText            = localeStrings[273];
-		document.getElementById("lblFBUpKeepPrice").innerText    = localeStrings[274];
-		document.getElementById("btnPopAtStart").innerText       = localeStrings[157];
-		document.getElementById("btnGoldAtStart").innerText      = localeStrings[157];
-		document.getElementById("btnPopPrev").innerText          = localeStrings[158];
-		document.getElementById("btnGoldPrev").innerText         = localeStrings[158];
-		document.getElementById("btnPopNext").innerText          = localeStrings[159];
-		document.getElementById("btnGoldNext").innerText         = localeStrings[159];
-		document.getElementById("btnPopAtEnd").innerText         = localeStrings[160];
-		document.getElementById("btnGoldAtEnd").innerText        = localeStrings[160];
-		document.getElementById("downloadGame").innerText        = localeStrings[328];
+		document.getElementById("lblGoodsForSale").innerText     = locObj.lblGoodForSale.txt;
+		document.getElementById("lblGoodsForBuying").innerText   = locObj.lblHeroGoodsFoSale.txt;
+		document.getElementById("btnLeaveBlackmarket").innerText = locObj.btnGoToAdvenureMap.txt;
+		document.getElementById("lblFirebrigade").innerText      = locObj.lblFirebrigade.txt;
+		document.getElementById("lblFBOption").innerText         = locObj.lblFireServiceStatus.txt;
+		document.getElementById("lblFBOn").innerText             = locObj.onDuty.txt;
+		document.getElementById("lblFBOff").innerText            = locObj.offDuty.txt;
+		document.getElementById("lblFBUpKeepPrice").innerText    = locObj.lblFirebrigadeUpkeep.txt;
+		document.getElementById("btnPopAtStart").innerText       = locObj.paginationStart.txt;
+		document.getElementById("btnGoldAtStart").innerText      = locObj.paginationStart.txt;
+		document.getElementById("btnPopPrev").innerText          = locObj.paginationPrevious.txt;
+		document.getElementById("btnGoldPrev").innerText         = locObj.paginationPrevious.txt;
+		document.getElementById("btnPopNext").innerText          = locObj.paginationNext.txt;
+		document.getElementById("btnGoldNext").innerText         = locObj.paginationNext.txt;
+		document.getElementById("btnPopAtEnd").innerText         = locObj.paginationCurrent.txt;
+		document.getElementById("btnGoldAtEnd").innerText        = locObj.paginationCurrent.txt;
+		document.getElementById("downloadGame").innerText        = locObj.downloadGame.txt;
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
 		document.getElementById("spnServerStatusLabel").innerText= locObj.serverStatusSpn.txt;
         document.getElementById("spnServerStatusValue").innerText= locObj.serverStatusND.txt;
@@ -258,33 +259,33 @@ function updateButtonCaptions(){
 		}
 		document.getElementById("buttonDeathPenalty").style.display = 'block';
 	}
-	document.getElementById("btnHireHero").innerHTML         = localeStrings[182].replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
+	document.getElementById("btnHireHero").innerHTML         = locObj.tabInnBtnHireHero.txt.replace("%arg1",game.buildLevelInn).replace("%arg2",config.costHero);
 }
 function dynamicCellsSetStyle() {
-	if (game.nightMode === true){
-		var dynElementsDay = document.getElementsByClassName('dynamicCellsDay');
-		while(dynElementsDay.length) {
-			dynElementsDay[0].className = 'dynamicCellsNight';
-		}
-		var dynElements = document.getElementsByClassName('dynamicCells');
-		while(dynElements.length) {
-			dynElements[0].className = 'dynamicCellsNight';
-		}
-	} else {
-		var dynElementsNight = document.getElementsByClassName('dynamicCellsNight');
-		while(dynElementsNight.length) {
-			dynElementsNight[0].className = 'dynamicCellsDay';
-		}
-		var dynElements = document.getElementsByClassName('dynamicCells');
-		while(dynElements.length) {
-			dynElements[0].className = 'dynamicCellsDay';
-		}
-	}
+  if (game.nightMode === true){
+    var dynElementsDay = document.getElementsByClassName('dynamicCellsDay');
+    while(dynElementsDay.length) {
+      dynElementsDay[0].className = 'dynamicCellsNight';
+    }
+    var dynElements = document.getElementsByClassName('dynamicCells');
+    while(dynElements.length) {
+      dynElements[0].className = 'dynamicCellsNight';
+    }
+  } else {
+    var dynElementsNight = document.getElementsByClassName('dynamicCellsNight');
+    while(dynElementsNight.length) {
+      dynElementsNight[0].className = 'dynamicCellsDay';
+    }
+    var dynElements = document.getElementsByClassName('dynamicCells');
+    while(dynElements.length) {
+      dynElements[0].className = 'dynamicCellsDay';
+    }
+  }
 }
 function setupFirebrigadeUI () {
-	if (game.fireGuard === 1) {
-		document.getElementById("fb_on").checked = true;
-	} else {
-		document.getElementById("fb_off").checked = true;
-	}
+  if (game.fireGuard === 1) {
+    document.getElementById("fb_on").checked = true;
+  } else {
+    document.getElementById("fb_off").checked = true;
+  }
 }

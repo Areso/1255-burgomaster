@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class BasePage:
     def __init__(self, browser, timeout=10):
         self.browser = browser
-        self.url = "https://1255.areso.pro/"
+        self.url = "http://localhost:8080/"
         self.browser.implicitly_wait(timeout)
 
     def open(self):

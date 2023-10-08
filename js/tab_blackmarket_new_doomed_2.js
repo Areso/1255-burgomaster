@@ -1,42 +1,64 @@
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+function get_artefact_localization(object_id, property){
+  if (artefacts[object_id][property][language]===undefined) {
+    return artefacts[object_id][property]["default"];
+  } else {
+    return artefacts[object_id][property][language];
+  }
+}
+function tabBlackMarketDrawUI(){
+  if (game.heroExists()){
+    for (let iterator in tmpHero["inventory"]) {
+      let itemToAdd = tmpHero["inventory"][iterator]
+      addItem('hero', itemToAdd);
+    }
+  }
+}
 function addItem(target, item) {
-
-	var newItem = Object.assign({}, item);
-	newItem.uid = uuidv4();
+    console.log(target, item)
+    item = artefacts[item];
+    console.log('======')
+	//var newItem = Object.assign({}, item);
+	item.uid = uuidv4();
 
 	if (target === "hero" && game.heroExists()) {
-		newItem.priceBuy = newItem.priceBuy / 2;
-		game.myhero.inventory.push(newItem);
-		createElementUI(newItem, "heroMarketList");
-		equipItem(newItem.uid);
+		//game.myhero.inventory.push(newItem);
+		createElementUI(item, "heroMarketList");
+		equipItem(item.uid);
 	}
 
-	if (target === "trader") {
-		game.blackMarketGoods.push(newItem);
-		createElementUI(newItem, "marketList");
+	if (target === "blackMarketGoods") {
+		//game.blackMarketGoods.push(newItem);
+		createElementUI(item, "marketList");
 	}
 
 }
 
 function removeItem(target, item) {
-
 	if (isNil(item)) {
 		throw new Error('Item not passed.')
 	}
-
 	var targetInventoryList = null;
-
 	switch (target) {
 		case 'hero': targetInventoryList = game.myhero.inventory; break;
 		case 'trader': targetInventoryList = game.blackMarketGoods; break;
 		default: throw new Error('Incorrect target type: available types are "trader" or "hero"');
 	}
-
-	var targetIndex = targetInventoryList.findIndex(function (inventoryItem) {
-		return inventoryItem.id === item.id;
-	});
-
+	console.log(item)
+	console.log(target)
+	console.log(targetInventoryList)
+	id_item = item["id"]
+	console.log(id_item);
+	targetIndex = targetInventoryList.indexOf(id_item)
+	console.log(targetIndex)
 	if (targetIndex > -1) {
 		targetInventoryList.splice(targetIndex, 1);
+		console.log("TRY TO CALL REMOVE ELEMENT UI");
 		removeElementUI(item.uid);
 	}
 }
@@ -52,18 +74,17 @@ function removeElementUI(elemUID) {
 
 function createElementUI(item, targetListId) {
 	var parent = document.getElementById(targetListId);
-
 	var descWrapperElement = document.createElement("div");
 	var nameElement = document.createElement("div");
 	var descElement = document.createElement("span");
 	var priceElement = document.createElement("div");
-
 	var imgElement = document.createElement("img");
 	var imgWrapperElement = document.createElement("div");
-
 	var actionBtnElement = document.createElement("button");
-
 	var id = item.id;
+	console.log('----X----0----xx');
+	console.log(item, targetListId)
+	var price = item.priceBuy
 	if (targetListId === "marketList") {
 		actionBtnElement.innerText = locObj.buy.txt;
 		actionBtnElement.onclick = function (e) {
@@ -83,12 +104,12 @@ function createElementUI(item, targetListId) {
 		if (game.gold >= item.priceBuy) {
 
 			game.gold -= item.priceBuy;
-			addItem("hero", item);
+			addItem("hero", item.id);
 			updateUI();
 			if (targetListId === "marketList" && id === "artid00") {
 				return
 			}
-			removeItem("trader", item);
+			removeItem("trader", item.id);
 		} else {
 			postEventLog(localeStrings[20], 'bold');
 			return
@@ -100,8 +121,9 @@ function createElementUI(item, targetListId) {
 		actionBtnElement.innerText = locObj.sell.txt;
 		actionBtnElement.onclick = function (e) {
 			e.preventDefault();
-
-			var testCost = game.gold + item.priceBuy;
+            price = price/2
+            console.log("new price is ", price)
+			var testCost = game.gold + item.priceBuy/2;
 			if (testCost >= game.goldLimit()) {
 				postEventLog("You reached gold limit!");
 				return
@@ -110,15 +132,15 @@ function createElementUI(item, targetListId) {
 			game.gold += item.priceBuy;
 
 			if (item.id !== "artid00") {
-				item.priceBuy *= 2;
-				addItem("trader", item);
+				//item.priceBuy *= 2;
+				addItem("blackMarketGoods", item.id);
 			}
 			updateUI();
-			removeItem("hero", item);
+			removeItem("hero", item.id);
 			unequipItem(item.uid);
 		};
 	}
-
+    console.log("before assigment  price is ", price)
 
 
 	var imgSrc = "resources/" + item.img;
@@ -126,28 +148,21 @@ function createElementUI(item, targetListId) {
 
 	var wrapperElement = document.createElement("div");
 
-
-	nameElement.innerText = item.name;
-	priceElement.innerText = item.priceBuy;
+	nameElement.innerText = get_artefact_localization(item.id, "name");
+	priceElement.innerText =price;
 	priceElement.classList.add("price-val");
 	nameElement.appendChild(priceElement);
-
-	descElement.innerText = item.desc;
-
-
+	descElement.innerText = get_artefact_localization(item.id, "desc");
 	imgWrapperElement.appendChild(imgElement);
 	imgWrapperElement.classList.add("inventory-item__wrapper-img");
 	descWrapperElement.appendChild(nameElement);
 	descWrapperElement.appendChild(descElement);
 	nameElement.classList.add("inventory-item__name")
-
 	descWrapperElement.classList.add("inventory-item__wrapper-desc");
-
 	wrapperElement.appendChild(imgWrapperElement);
 	wrapperElement.appendChild(descWrapperElement);
 	wrapperElement.appendChild(actionBtnElement);
 	actionBtnElement.classList.add("inventory-item__btn");
-
 	wrapperElement.classList.add("inventory-item");
 	wrapperElement.setAttribute("data-uid", item.uid);
 

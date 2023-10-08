@@ -1,6 +1,7 @@
 import pytest
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 def pytest_addoption(parser):
@@ -13,7 +14,11 @@ def browser(request):
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        browser = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)
         browser.maximize_window()
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
