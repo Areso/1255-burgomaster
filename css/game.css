@@ -1,11 +1,16 @@
 html {
   height: 100%;
+  
+  /* background-color: #0a0e0b;
+  color:white; 
+  */
 }
 
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.45;
   min-height: 100%;
+  transition: background-color 0.5s ease;
 }
 
 

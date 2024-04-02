@@ -2343,7 +2343,8 @@ function gameOK() {
 			game.addMoneyToTreasury(taxes);
 			if (game.gold !== gold_was) {
 				if (game.gold > gold_was) {
-					msg = locObj.moneyIncreased.txt;
+					msg = locObj.moneyIncreased.txt + ' ' + game.gold;
+					// msg = ;
 				} else {
 					msg = locObj.moneyDecreased.txt;
 				}
@@ -4027,4 +4028,40 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		} else {
 			game.festival_cooldown = 0;
 		}
+	}
+
+	function changeBackgroundStyle(){
+		// Select the HTML element
+		var htmlElement = document.querySelector('html');
+
+		// Select the body element
+		var bodyElement = document.querySelector('.menu-panel');
+
+		// Define new background and text color
+		var newBackgroundColor = '#1C1C1C';
+		var newTextColor = 'white';
+
+		htmlElement.style.transition = "background-color 0.5s ease";
+		htmlElement.style.backgroundColor = newBackgroundColor;
+		htmlElement.style.color = newTextColor;
+
+		// Change the text color of the body
+		bodyElement.style.color = newTextColor;
+
+
+		// e.g for menu as well 
+		//  var menuPanel = document.querySelector('.menu-panel');
+		//  var newBackgroundColor = '#1C1C1C';
+		//  var newTextColor = 'white';
+		//  menuPanel.style.transition = "background-color 0.5s ease";
+		//  menuPanel.style.backgroundColor = newBackgroundColor;
+		//  var buttons = menuPanel.querySelectorAll('.tab-link');
+		//  buttons.forEach(function(button) {
+		// 	 button.style.color = newTextColor;
+		//  });
+	 
+		//  var countdownValue = menuPanel.querySelector('#lblEventCountdownValue');
+		//  if (countdownValue) {
+		// 	 countdownValue.style.color = newTextColor;
+		//  }
 	}

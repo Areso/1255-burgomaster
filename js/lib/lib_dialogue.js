@@ -46,71 +46,84 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
         return img;
     }
     function placeText() {
-        ctx.fillStyle     = 'black';
-        ctx.font          = "14px Calibri";
-        sceneTextArray    = sceneText.split("\n");
-        sceneTextLength   = sceneTextArray.length;
-        if (sceneTextLength === 1) {
-          sceneTextOrLength  = sceneText.length;
-          //console.log("dialog text len is "+sceneTextLength);
-          nextLine = sceneText.lastIndexOf(" ", 80)
+        ctx.fillStyle = 'black';
+        ctx.font = "15px Calibri";
+        const sceneTextArray = sceneText.split("\n");
+        const sceneTextLength = sceneTextArray.length;
+        const isSingleLine = sceneTextLength === 1;
+        let nextLine;
+    
+        if (isSingleLine) {
+            nextLine = sceneText.lastIndexOf(" ", 80);
         }
-        sceneLines        = 0;
-        sceneOffsetX      = img1sizeX + 20;
-        sceneOffsetY      = 40;
-        ctx.globalAlpha   = 1;
+    
+        let sceneLines = 0;
+        const sceneOffsetX = img1sizeX + 20;
+        const sceneOffsetY = 40;
+        ctx.globalAlpha = 1;
+    
         while (sceneLines < sceneTextLength) {
-            ctx.fillText(sceneTextArray[sceneLines], sceneOffsetX, sceneOffsetY + sceneLines*20);
-            sceneLines    = sceneLines+1;
+            ctx.fillText(sceneTextArray[sceneLines], sceneOffsetX, sceneOffsetY + sceneLines * 20);
+            sceneLines++;
         }
-        buttonsOffsetY    = sceneOffsetY + sceneLines*20 + 20;
-        buttonOneLength   = answerTextOne.length*7.5 + 20;
-        buttonTwoLength   = answerTextTwo.length*7.5 + 20;
-        ctx.fillStyle     = '#bbc2c9';
-        buttonOneOffsetX  = img1sizeX + imageOffsetX + 10;
-        buttonTwoOffsetX  = buttonOneOffsetX+buttonOneLength + 50;
-        ctx.globalAlpha   = alphaValue;
+    
+        const buttonsOffsetY  = sceneOffsetY + sceneLines * 20 + 20;
+        const buttonOneLength = answerTextOne.length * 7.5 + 20;
+        const buttonTwoLength = answerTextTwo.length * 7.5 + 20;
+        ctx.fillStyle = '#bbc2c9';
+
+        const buttonOneOffsetX = img1sizeX + imageOffsetX + 10;
+        const buttonTwoOffsetX = buttonOneOffsetX + buttonOneLength + 50;
+
+        ctx.globalAlpha = alphaValue;
         ctx.fillRect(buttonOneOffsetX, buttonsOffsetY, buttonOneLength, 20);
-        if (answerTextTwo!=='') {
+    
+        if (answerTextTwo !== '') {
             ctx.fillRect(buttonTwoOffsetX, buttonsOffsetY, buttonTwoLength, 20);
         }
-        ctx.fillStyle     = 'black';
-        ctx.globalAlpha   = 1;
-        ctx.fillText(answerTextOne,buttonOneOffsetX+5,buttonsOffsetY+14);
-        ctx.fillText(answerTextTwo,buttonTwoOffsetX+5,buttonsOffsetY+14);
+    
+        ctx.fillStyle = 'black';
+        ctx.globalAlpha = 1;
+        ctx.fillText(answerTextOne, buttonOneOffsetX + 5, buttonsOffsetY + 14);
+        ctx.fillText(answerTextTwo, buttonTwoOffsetX + 5, buttonsOffsetY + 14);
+        
     }
+    
     canvas.addEventListener("touchstart", tap);
     canvas.addEventListener("mousedown", tap);
 }
-function clearCanvas(){
-    var ctx = canvas.getContext("2d");
-    ctx.fillStyle     = "rgb(255, 255, 255)"
+function clearCanvas() {
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "rgb(255, 255, 255)";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     myCanvas.returnAnswer();
 }
-function raiseQuestion() {
+
+function raiseQuestion(imageSrc = 'trapdoor.png') {
     myCanvas('Would you like to cruelly execute your fellow citizen in front of townsfolk,\n my lord?',
-        'Yessss, in the most bloody way!','No', 'trapdoor.png');
+        'Yessss, in the most bloody way!', 'No', imageSrc);
 }
-function raiseQuestionImageless () {
-    myCanvas('Would you like to cruelly execute your fellow citizen in front of townsfolk,\n my lord?',
-        'Yessss, in the most bloody way!','No', '');
+
+function raiseQuestionImageless() {
+    raiseQuestion('');
 }
-answer = 0;
-function getElementPosition (element) {
-    //thanks to William Alone
-    var parentOffset,
-        pos = {
-            x: element.offsetLeft,
-            y: element.offsetTop
-        };
-    if (element.offsetParent) {
-        parentOffset = getElementPosition(element.offsetParent);
-        pos.x += parentOffset.x;
-        pos.y += parentOffset.y;
+
+let answer = 0;
+
+function getElementPosition(element) {
+    let pos = {
+        x: element.offsetLeft,
+        y: element.offsetTop
+    };
+    let parent = element.offsetParent;
+    while (parent) {
+        pos.x += parent.offsetLeft;
+        pos.y += parent.offsetTop;
+        parent = parent.offsetParent;
     }
     return pos;
 }
+
 function tap(e) {
     const pos = getElementPosition(canvas);
     const loc = {};
