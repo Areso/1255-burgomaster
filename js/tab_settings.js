@@ -86,7 +86,7 @@ function setupMobileUI() {
 			}
 
 			document.querySelector(".resource-panel").style.backgroundColor = "black";
-			document.querySelector("#pop_img").setAttribute("src", "resources/pop_light.png");
+			// document.querySelector("#pop_img").setAttribute("src", "resources/pop_light.png");
 
 
 			dynamicCellsSetStyle();
@@ -135,7 +135,7 @@ function setupMobileUI() {
 	}
 function exportGame() {
 	const tmpExportGame = JSON.parse(JSON.stringify(game)); // Some dummy copy of object;
-	prepareInventoryWriteSave(tmpExportGame);
+	//prepareInventoryWriteSave(tmpExportGame);
 	tmpExportGame.pops = [];
 	tmpExportGame.budgets = [];
 	tmpExportGame.years = [];
@@ -178,7 +178,7 @@ function importGame() {
 }
 function cloudQuickSave(){
 	const tmpExportGame = JSON.parse(JSON.stringify(game)); // Some dummy copy of object
-	prepareInventoryWriteSave(tmpExportGame);
+	//prepareInventoryWriteSave(tmpExportGame);
 	tmpExportGame.pops = [];
 	tmpExportGame.budgets = [];
 	tmpExportGame.years = [];

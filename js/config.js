@@ -71,4 +71,5 @@ var config = {
   theme: "winter",
   artilleryResearchCost: 200,
   popIncRate: 2,
+  miscSlots: 5,
 };
