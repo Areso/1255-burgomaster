@@ -52,56 +52,56 @@ function myCanvas(imageName, thefunction, sceneText, answerTextOne,answerTextTwo
         const sceneTextLength = sceneTextArray.length;
         const isSingleLine = sceneTextLength === 1;
         let nextLine;
-    
+
         if (isSingleLine) {
             nextLine = sceneText.lastIndexOf(" ", 80);
         }
-    
+
+
         let sceneLines = 0;
         const sceneOffsetX = img1sizeX + 20;
         const sceneOffsetY = 40;
         ctx.globalAlpha = 1;
-    
+
         while (sceneLines < sceneTextLength) {
             ctx.fillText(sceneTextArray[sceneLines], sceneOffsetX, sceneOffsetY + sceneLines * 20);
             sceneLines++;
         }
-    
-        const buttonsOffsetY  = sceneOffsetY + sceneLines * 20 + 20;
-        const buttonOneLength = answerTextOne.length * 7.5 + 20;
-        const buttonTwoLength = answerTextTwo.length * 7.5 + 20;
-        ctx.fillStyle = '#bbc2c9';
+        
+        buttonsOffsetY    = sceneOffsetY + sceneLines*20 + 20;
+        buttonOneLength   = answerTextOne.length*7.5 + 20;
+        buttonTwoLength   = answerTextTwo.length*7.5 + 20;
+        ctx.fillStyle     = '#bbc2c9';
 
-        const buttonOneOffsetX = img1sizeX + imageOffsetX + 10;
-        const buttonTwoOffsetX = buttonOneOffsetX + buttonOneLength + 50;
+        buttonOneOffsetX  = img1sizeX + imageOffsetX + 10;
+        buttonTwoOffsetX  = buttonOneOffsetX+buttonOneLength + 50;
+        ctx.globalAlpha   = alphaValue;
 
-        ctx.globalAlpha = alphaValue;
+
         ctx.fillRect(buttonOneOffsetX, buttonsOffsetY, buttonOneLength, 20);
-    
+
         if (answerTextTwo !== '') {
             ctx.fillRect(buttonTwoOffsetX, buttonsOffsetY, buttonTwoLength, 20);
         }
-    
+
         ctx.fillStyle = 'black';
         ctx.globalAlpha = 1;
         ctx.fillText(answerTextOne, buttonOneOffsetX + 5, buttonsOffsetY + 14);
         ctx.fillText(answerTextTwo, buttonTwoOffsetX + 5, buttonsOffsetY + 14);
-        
     }
-    
     canvas.addEventListener("touchstart", tap);
     canvas.addEventListener("mousedown", tap);
 }
 function clearCanvas() {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "rgb(255, 255, 255)";
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     myCanvas.returnAnswer();
 }
-
 function raiseQuestion(imageSrc = 'trapdoor.png') {
     myCanvas('Would you like to cruelly execute your fellow citizen in front of townsfolk,\n my lord?',
-        'Yessss, in the most bloody way!', 'No', imageSrc);
+    'Yessss, in the most bloody way!', 'No', imageSrc);
 }
 
 function raiseQuestionImageless() {
@@ -130,6 +130,7 @@ function tap(e) {
     const tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
     const tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
     const canvasScaleRatio = canvas.width / canvas.offsetWidth;
+    
     loc.x = (tapX - pos.x) * canvasScaleRatio;
     loc.y = (tapY - pos.y) * canvasScaleRatio;
 
