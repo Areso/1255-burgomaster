@@ -4030,38 +4030,43 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		}
 	}
 
-	function changeBackgroundStyle(){
-		// Select the HTML element
-		var htmlElement = document.querySelector('html');
 
-		// Select the body element
+	function changeBackgroundStyle() {
+		var htmlElement = document.querySelector('html');
+	
+		// Check if the current background color is dark
+		var currentBackgroundColor = window.getComputedStyle(htmlElement).getPropertyValue('background-color');
+		var isDarkBackground = isDark(currentBackgroundColor);
+	
 		var bodyElement = document.querySelector('.menu-panel');
 
-		// Define new background and text color
-		var newBackgroundColor = '#1C1C1C';
+		var newBackgroundColor;
 		var newTextColor = 'white';
-
+	
+		if (isDarkBackground) {
+			newBackgroundColor = 'white';
+			newTextColor = 'black';
+		} else {
+			newBackgroundColor = '#1C1C1C';
+			newTextColor = 'white';
+		}
+	
 		htmlElement.style.transition = "background-color 0.5s ease";
 		htmlElement.style.backgroundColor = newBackgroundColor;
 		htmlElement.style.color = newTextColor;
-
-		// Change the text color of the body
+	
 		bodyElement.style.color = newTextColor;
-
-
-		// e.g for menu as well 
-		//  var menuPanel = document.querySelector('.menu-panel');
-		//  var newBackgroundColor = '#1C1C1C';
-		//  var newTextColor = 'white';
-		//  menuPanel.style.transition = "background-color 0.5s ease";
-		//  menuPanel.style.backgroundColor = newBackgroundColor;
-		//  var buttons = menuPanel.querySelectorAll('.tab-link');
-		//  buttons.forEach(function(button) {
-		// 	 button.style.color = newTextColor;
-		//  });
-	 
-		//  var countdownValue = menuPanel.querySelector('#lblEventCountdownValue');
-		//  if (countdownValue) {
-		// 	 countdownValue.style.color = newTextColor;
-		//  }
+	}
+	
+	function isDark(color) {
+		// Convert color to RGB
+		color = color.substring(4, color.length-1)
+			 .replace(/ /g, '')
+			 .split(',');
+	
+		// Get luminance
+		var luminance = 0.2126 * color[0] + 0.7152 * color[1] + 0.0722 * color[2];
+	
+		// Check if luminance is less than a threshold
+		return luminance < 128;
 	}
