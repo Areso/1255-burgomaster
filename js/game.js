@@ -2343,7 +2343,8 @@ function gameOK() {
 			game.addMoneyToTreasury(taxes);
 			if (game.gold !== gold_was) {
 				if (game.gold > gold_was) {
-					msg = locObj.moneyIncreased.txt;
+					msg = locObj.moneyIncreased.txt + ' ' + game.gold;
+					// msg = ;
 				} else {
 					msg = locObj.moneyDecreased.txt;
 				}
@@ -4027,4 +4028,45 @@ function setTutorialAfterSaveRestore(gameTemp) {
 		} else {
 			game.festival_cooldown = 0;
 		}
+	}
+
+
+	function changeBackgroundStyle() {
+		var htmlElement = document.querySelector('html');
+	
+		// Check if the current background color is dark
+		var currentBackgroundColor = window.getComputedStyle(htmlElement).getPropertyValue('background-color');
+		var isDarkBackground = isDark(currentBackgroundColor);
+	
+		var bodyElement = document.querySelector('.menu-panel');
+
+		var newBackgroundColor;
+		var newTextColor = 'white';
+	
+		if (isDarkBackground) {
+			newBackgroundColor = 'white';
+			newTextColor = 'black';
+		} else {
+			newBackgroundColor = '#1C1C1C';
+			newTextColor = 'white';
+		}
+	
+		htmlElement.style.transition = "background-color 0.5s ease";
+		htmlElement.style.backgroundColor = newBackgroundColor;
+		htmlElement.style.color = newTextColor;
+	
+		bodyElement.style.color = newTextColor;
+	}
+	
+	function isDark(color) {
+		// Convert color to RGB
+		color = color.substring(4, color.length-1)
+			 .replace(/ /g, '')
+			 .split(',');
+	
+		// Get luminance
+		var luminance = 0.2126 * color[0] + 0.7152 * color[1] + 0.0722 * color[2];
+	
+		// Check if luminance is less than a threshold
+		return luminance < 128;
 	}
