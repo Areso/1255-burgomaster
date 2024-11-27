@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-      "cypress": "12.6.0"
+      "cypress": "13.3.0"
     },
     "type": "module",
     "scripts": {
