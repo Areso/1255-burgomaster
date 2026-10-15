@@ -85,3 +85,7 @@
 Only open sourced games could run as long as at least one of their fun exists
 </body>
 <html>
+
+## Play online
+
+Also playable on [WASM Arcade](https://www.wasmarcade.online/arcade/1255-burgomaster/) — free, no download.
