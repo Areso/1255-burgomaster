@@ -81,48 +81,88 @@
       </div>
     <div id="Settings" class="tab">
         <h3><div id="labelSettings">Settings</div></h3>
-        <button id="btnReg"   onclick="setReg()"                             type="button">REG</button>
-        <button id="btnLogin" onclick="setLogin()" style="margin-left:20px;" type="button">LOGIN</button><br>
-         Nickname: <input id="login"    type="text"     value=""><br>
-        Password: <input id="password" type="password" value=""><br>
-        <span id="emailLine">Email: <input id="email" type="text" value=""> - trully optional, only for account recovering<br></span>
-        <button id="btnRegLogin" onclick="remoteRegLogin()" type="button">Register</button><br><hr>
-        <select id="selectLng" size="1" onchange="reloadLang()">
-          <option id="optionLngEn" selected value="en-US">English</option>
-          <option id="optionLngRu"          value="ru-RU">Русский</option>
-          <option id="optionLngGe"          value="de-DE">Deutsch</option>
-          <option id="optionLngEo"          value="eo">Esperanto</option>
-          <option id="optionLngFr"          value="fr-FR">Français</option>
-        </select>
-        <table>
-          <tbody>
-          <tr>
-            <td width="40%"><label id="labelAutosave">Autosave</label><img id="autosaveImg" onclick="changeAutosave()" src="resources/button_red.png" style="margin-left: 20px;"></td>
-            <td><button id="buttonExportGame" onclick="exportGame()" type="button">Export Game</button></td>
-            <td><button id="buttonImportGame" onclick="importGame()" type="button">Import Game</button></td>
-          </tr>
-          </tbody>
-        </table>
-        <button id="buttonSaveToCloud" onclick="cloudQuickSave()" style="margin-bottom:20px; margin-top:15px;" type="button">Save to Cloud</button>
-        <button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" style="margin-left:30px; margin-bottom:20px; margin-top:15px;" type="button">Load save from Cloud</button>
-        <br>
-        <input type="text" id="savestring" name="savestring" value="" style="width:600px">
-        <br>
-        <a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
-        <br>
-        <br>
-        <button id="btnColorMode" onclick="changeColorMode()" type="button">ChangeColorMode</button>
-        <button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')" type="button">Open sound settings</button>
-        <br>
-        <br>
-        <input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()" style="margin-left: 50px;"><label id="lblStnMobileUI">Mobile UI</label>
-  Research			<label id="lblStnEventLogSize" style="margin-left: 20px;">Event log size</label>
-        <input type="text" id="inpStnEventLogSize" value="" onchange="game.setupEventLogSize()" style="width:35px; margin-right:10px;">
-        <label id="lblStnLines">lines</label>
-        <br>
-        <br>
-        <label id="lblStnAliasResult"></label><br>
-        <textarea id="patchnotes" class="interface" value="" style="width:700px; height:280px; top:255px; left:40px; visibility: hidden;"></textarea>
+        <div class="settings-column">
+        <div id="settingsAccount" class="settings-section is-disabled">
+          <div class="settings-switch">
+            <button id="btnReg"   class="settings-switch-tab is-active" onclick="setReg()"   type="button" disabled>REG</button>
+            <button id="btnLogin" class="settings-switch-tab"           onclick="setLogin()" type="button" disabled>LOGIN</button>
+          </div>
+          <div class="settings-switch-body">
+          <div class="settings-row">
+            <label id="lblStnNickname" class="settings-label" for="login">Nickname:</label>
+            <input id="login" class="settings-input" type="text" value="" disabled>
+          </div>
+          <div class="settings-row">
+            <label id="lblStnPassword" class="settings-label" for="password">Password:</label>
+            <input id="password" class="settings-input" type="password" value="" disabled>
+          </div>
+          <span id="emailLine" class="settings-row">
+            <label id="lblStnEmail" class="settings-label" for="email">Email:</label>
+            <input id="email" class="settings-input" type="text" value="" disabled>
+            <label id="lblStnEmailHint" class="settings-hint" for="email">truly optional, only for account recovery</label>
+          </span>
+          <div class="settings-row">
+            <button id="btnRegLogin" onclick="remoteRegLogin()" type="button" disabled>Register</button>
+          </div>
+          </div>
+        </div>
+        <hr>
+        <div class="settings-section">
+          <div class="settings-row">
+            <select id="selectLng" size="1" onchange="reloadLang()">
+              <option id="optionLngEn" selected value="en-US">English</option>
+              <option id="optionLngRu"          value="ru-RU">Русский</option>
+              <option id="optionLngGe"          value="de-DE">Deutsch</option>
+              <option id="optionLngEo"          value="eo">Esperanto</option>
+              <option id="optionLngFr"          value="fr-FR">Français</option>
+            </select>
+          </div>
+        </div>
+        </div>
+        <div class="settings-column">
+        <div class="settings-section">
+          <div class="settings-row">
+            <label id="labelAutosave" class="settings-label">Autosave</label>
+            <img id="autosaveImg" class="settings-toggle" onclick="changeAutosave()" src="resources/button_red.png">
+          </div>
+          <div class="settings-row">
+            <input type="text" id="savestring" class="settings-input-wide" name="savestring" value="">
+          </div>
+          <div class="settings-row">
+            <button id="buttonExportGame" onclick="exportGame()" type="button">Export Game</button>
+            <button id="buttonImportGame" onclick="importGame()" type="button">Import Game</button>
+          </div>
+          <div class="settings-row">
+            <button id="buttonSaveToCloud"   onclick="cloudQuickSave()" type="button" disabled>Save to Cloud</button>
+            <button id="buttonLoadFromCloud" onclick="cloudQuickLoad()" type="button" disabled>Load from Cloud</button>
+          </div>
+          <div class="settings-row">
+            <a id="downloadGame" href="https://github.com/Areso/1255-burgomaster/archive/gh-pages.zip">Download game for playing off-grid (to play without Internet connection)</a>
+          </div>
+        </div>
+        <hr>
+        <div class="settings-section">
+          <div class="settings-row">
+            <button id="btnColorMode" onclick="changeColorMode()" type="button">ChangeColorMode</button>
+          </div>
+          <div class="settings-row">
+            <button id="btnSoundSettings" onclick="openTab(null, 'tabSettingsSound')" type="button">Open sound settings</button>
+          </div>
+          <div class="settings-row">
+            <input type="checkbox" id="cbMobileUI" value="mobileUI" onclick="game.mobileUI()">
+            <label id="lblStnMobileUI" for="cbMobileUI">Mobile UI</label>
+          </div>
+          <div class="settings-row">
+            <label id="lblStnEventLogSize" class="settings-label" for="inpStnEventLogSize">Event log size</label>
+            <input type="text" id="inpStnEventLogSize" class="settings-input-short" value="" onchange="game.setupEventLogSize()">
+            <label id="lblStnLines" for="inpStnEventLogSize">lines</label>
+          </div>
+        </div>
+        </div>
+        <div class="settings-row">
+          <label id="lblStnAliasResult"></label>
+        </div>
+        <textarea id="patchnotes" class="interface" value="" style="display: none;"></textarea>
       </div>
     <div id="tabModTools" class="tab">
         <button id="set_btn"  onclick="reloadSettings()" style="visibility: hidden" type="button">reload settings</button>

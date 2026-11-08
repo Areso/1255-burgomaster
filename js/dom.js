@@ -80,6 +80,15 @@ include('localisation.js',function(){
 		document.getElementById("lblStnMobileUI").innerText      = locObj.tabSettingsLblMobileUI.txt;
 		document.getElementById("lblStnEventLogSize").innerText  = locObj.tabSettingsLblLogSize.txt;
 		document.getElementById("lblStnLines").innerText         = locObj.tabSettingsLblLines.txt;
+		document.getElementById("btnReg").innerText              = locObj.tabSettingsTabReg.txt;
+		document.getElementById("btnLogin").innerText            = locObj.tabSettingsTabLogin.txt;
+		document.getElementById("lblStnNickname").innerText      = locObj.tabSettingsLblNickname.txt;
+		document.getElementById("lblStnPassword").innerText      = locObj.tabSettingsLblPassword.txt;
+		document.getElementById("lblStnEmail").innerText         = locObj.tabSettingsLblEmail.txt;
+		document.getElementById("lblStnEmailHint").innerText     = locObj.tabSettingsLblEmailHint.txt;
+		document.getElementById("btnRegLogin").innerText         = (typeof reglogin !== "undefined" && reglogin === "login") ? locObj.tabSettingsBtnLogin.txt : locObj.tabSettingsBtnRegister.txt;
+		document.getElementById("buttonSaveToCloud").innerText   = locObj.tabSettingsBtnSaveToCloud.txt;
+		document.getElementById("buttonLoadFromCloud").innerText = locObj.tabSettingsBtnLoadFromCloud.txt;
 		document.getElementById("lblGoodsForSale").innerText     = locObj.lblGoodForSale.txt;
 		document.getElementById("lblGoodsForBuying").innerText   = locObj.lblHeroGoodsFoSale.txt;
 		document.getElementById("btnLeaveBlackmarket").innerText = locObj.btnGoToAdvenureMap.txt;
@@ -99,7 +108,7 @@ include('localisation.js',function(){
 		document.getElementById("downloadGame").innerText        = locObj.downloadGame.txt;
 		document.getElementById("lblLevelForHireLbl").innerText  = locObj.heroLvlLbl.txt;
 		document.getElementById("spnServerStatusLabel").innerText= locObj.serverStatusSpn.txt;
-        document.getElementById("spnServerStatusValue").innerText= locObj.serverStatusND.txt;
+        updateServerStatusUI();
         document.getElementById("spnOnline").innerText           = locObj.online.txt;
         document.getElementById("spnOnlineValue").innerText      = locObj.onlineValueND.txt;
 		if (typeof populateHeroesForHire === "function") { populateHeroesForHire() };
@@ -134,12 +143,41 @@ function updateResources() {
 function setReg(){
 	reglogin = "reg";
 	document.getElementById("emailLine").style.display = "block";
-	document.getElementById("btnRegLogin").innerText   = "Register";
+	document.getElementById("btnRegLogin").innerText   = typeof localeOK === "function" ? locObj.tabSettingsBtnRegister.txt : "Register";
+	document.getElementById("btnReg").className        = "settings-switch-tab is-active";
+	document.getElementById("btnLogin").className      = "settings-switch-tab";
 };
 function setLogin(){
 	reglogin = "login";
 	document.getElementById("emailLine").style.display = "none";
-	document.getElementById("btnRegLogin").innerText   = "Login";
+	document.getElementById("btnRegLogin").innerText   = typeof localeOK === "function" ? locObj.tabSettingsBtnLogin.txt : "Login";
+	document.getElementById("btnReg").className        = "settings-switch-tab";
+	document.getElementById("btnLogin").className      = "settings-switch-tab is-active";
+};
+//server status: "nd" (no data yet), "up" or "down"
+var serverStatus = "nd";
+function setServerStatus(status) {
+	serverStatus = status;
+	updateServerStatusUI();
+}
+function updateServerStatusUI() {
+	var text = "n/d";
+	if (serverStatus === "up")   { text = "Up" }
+	if (serverStatus === "down") { text = "Down" }
+	if (typeof localeOK === "function") {
+		if (serverStatus === "nd")   { text = locObj.serverStatusND.txt }
+		if (serverStatus === "up")   { text = locObj.serverStatusUp.txt }
+		if (serverStatus === "down") { text = locObj.serverStatusDown.txt }
+	}
+	document.getElementById("spnServerStatusValue").innerHTML = text;
+	//online features are available only when the server is up
+	var offline   = serverStatus !== "up";
+	var onlineIds = ["btnReg", "btnLogin", "login", "password", "email", "btnRegLogin",
+	                 "buttonSaveToCloud", "buttonLoadFromCloud"];
+	for (var i = 0; i < onlineIds.length; i++) {
+		document.getElementById(onlineIds[i]).disabled = offline;
+	}
+	document.getElementById("settingsAccount").className = offline ? "settings-section is-disabled" : "settings-section";
 };
 function openChat() {
 	var log_dom   = document.getElementById("log");

@@ -139,20 +139,17 @@ function remoteRegLogin() {
 function fpullMessages() {
     var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-	  let status = "";
 	  if (this.readyState === 4 && this.status === 200) {
 		messages = JSON.parse(this.responseText);
 			if (config.debug){
 				console.log(messages);
 	    	}
-	    	if (typeof localeOK==="function") { status = locObj.serverStatusUp.txt } else { status = "Up" }
-			document.getElementById("spnServerStatusValue").innerHTML=status;
+			setServerStatus("up");
 		    chat_dom.innerHTML = "";
 			messages.forEach(printToChat);
 	  }
 	  if (this.readyState === 4 && this.status !== 200) {
-		    if (typeof localeOK==="function") { status = locObj.serverStatusDown.txt } else { status = "Down" }
-			document.getElementById("spnServerStatusValue").innerHTML=status;
+			setServerStatus("down");
 	  }
 	}
 	endpoint  = webserver + "/api/v1.1/pull_messages";
