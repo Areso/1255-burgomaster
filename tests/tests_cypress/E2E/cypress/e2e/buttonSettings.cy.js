@@ -58,9 +58,9 @@ describe('Settings', () => {
                 cy.get('#login').should('have.attr', 'type', 'text');
                 cy.get('#password').should('have.attr', 'type', 'password');
                 cy.get('#email').should('have.attr', 'type', 'text');
-                cy.get('#btnRegLogin').should('have.attr', 'onclick', 'remoteRegLogin()'); //cy.get('.connectors-list > li').should(($lis) => {
+                cy.get('#btnRegLogin').should('have.attr', 'onclick', 'remoteRegLogin()'); 
 
-                cy.get('#selectLng').should('have.attr', 'onchange', 'reloadLang()');
+                cy.get('#selectLng').should('have.attr', 'onchange', 'reloadLang()');//cy.get('.connectors-list > li').should(($lis) => {
                 cy.get('#labelAutosave');
                 cy.get('#autosaveImg').should('have.attr', 'onclick', 'changeAutosave()');
                 cy.get('#buttonExportGame').should('have.attr', 'onclick', 'exportGame()');

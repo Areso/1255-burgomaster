@@ -6,12 +6,13 @@
     },
     "type": "module",
     "scripts": {
-      "start": "npx cypress run",
+      "start": "npx cypress open",
       "test:integration": "docker-compose --file docker-compose.cypress.yml up --exit-code-from cypress --build cypress",
       "clean:reports": "rm -rf cypress/reports/",
       "test": "npm run clean:reports && cypress run",
       "merge:reports": "mochawesome-merge cypress/reports/*.json > cypress-tests-report.json",
       "create:html:report": "marge --reportDir tests cypress-tests-report.json",
-      "generate:html:report": "npm run merge:reports && npm run create:html:report"
+      "generate:html:report": "npm run merge:reports && npm run create:html:report",
+      "validate": "npm exec html-validate ../../../index.html" 
     }
   }

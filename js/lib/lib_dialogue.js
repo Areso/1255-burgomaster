@@ -111,29 +111,31 @@ function getElementPosition (element) {
     }
     return pos;
 }
-function tap (e) {
-    pos = getElementPosition(canvas);
-    loc = {};
-    tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
-    tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
-    canvasScaleRatio = canvas.width / canvas.offsetWidth;
+function tap(e) {
+    const pos = getElementPosition(canvas);
+    const loc = {};
+    const tapX = e.targetTouches ? e.targetTouches[0].pageX : e.pageX;
+    const tapY = e.targetTouches ? e.targetTouches[0].pageY : e.pageY;
+    const canvasScaleRatio = canvas.width / canvas.offsetWidth;
     loc.x = (tapX - pos.x) * canvasScaleRatio;
     loc.y = (tapY - pos.y) * canvasScaleRatio;
-    //console.log(e.pageX, e.pageY, loc.x, loc.y);
-    if (loc.x >= buttonOneOffsetX && loc.x <= buttonOneOffsetX+buttonOneLength) {
-        if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
-            document.getElementById("myDCanvas").classList.remove('active-modal');
-            answer = 2;
-            clearCanvas();
-            dialogShown = false;
-        }
+
+    const checkButton = (offsetX, length, answer) => {
+        return loc.x >= offsetX && loc.x <= offsetX + length &&
+            loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY + 20;
+    };
+
+    if (checkButton(buttonOneOffsetX, buttonOneLength, 2)) {
+        document.getElementById("myDCanvas").classList.remove('active-modal');
+        answer = 2;
+        clearCanvas();
+        dialogShown = false;
     }
-    if (loc.x >= buttonTwoOffsetX && loc.x <= buttonTwoOffsetX+buttonTwoLength) {
-        if (loc.y >= buttonsOffsetY && loc.y <= buttonsOffsetY+20) {
-            document.getElementById("myDCanvas").classList.remove('active-modal');
-            answer = 3;
-            clearCanvas();
-            dialogShown = false;
-        }
+
+    if (checkButton(buttonTwoOffsetX, buttonTwoLength, 3)) {
+        document.getElementById("myDCanvas").classList.remove('active-modal');
+        answer = 3;
+        clearCanvas();
+        dialogShown = false;
     }
 }

@@ -1,0 +1,22 @@
+name: "PROD Check save Game"
+
+on:
+  pull_request:
+  push:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  smoke_job:
+    name: Cypress PROD Check save Game
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: cypress run
+        uses: cypress-io/github-action@v5      
+        with:
+          working-directory: tests/tests_cypress/smoke_prod
+          start: npm run start

@@ -31,7 +31,7 @@ class SettingsPageLocators:
 
 
 class AboutPageLocators:
-    LINK_WIKI = (By.XPATH, "//div[@id='lblAboutGame']/a")
+    LINK_WIKI = (By.XPATH, "//div[@id='lblAbout_h1']")
 
 
 class DiscordPageLocators:

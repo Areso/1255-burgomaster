@@ -139,20 +139,17 @@ function remoteRegLogin() {
 function fpullMessages() {
     var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-	  let status = "";
 	  if (this.readyState === 4 && this.status === 200) {
 		messages = JSON.parse(this.responseText);
 			if (config.debug){
 				console.log(messages);
 	    	}
-	    	if (typeof localeOK==="function") { status = locObj.serverStatusUp.txt } else { status = "Up" }
-			document.getElementById("spnServerStatusValue").innerHTML=status;
+			setServerStatus("up");
 		    chat_dom.innerHTML = "";
 			messages.forEach(printToChat);
 	  }
 	  if (this.readyState === 4 && this.status !== 200) {
-		    if (typeof localeOK==="function") { status = locObj.serverStatusDown.txt } else { status = "Down" }
-			document.getElementById("spnServerStatusValue").innerHTML=status;
+			setServerStatus("down");
 	  }
 	}
 	endpoint  = webserver + "/api/v1.1/pull_messages";
@@ -498,9 +495,9 @@ function reloadBanned() {
 				event_id = parseInt(back_response["event_id"]);
 				event_timer_lbl = document.getElementById("event-label");
 				event_timer_val = document.getElementById("event-value");
-				eventTimerVal  =     cntdwn[0]+localeStrings[165][0];
-				eventTimerVal += " "+cntdwn[1]+localeStrings[165][1];
-				eventTimerVal += " "+cntdwn[2]+localeStrings[165][2];
+				eventTimerVal  =     cntdwn[0]+locObj.dayAcronym.txt;
+				eventTimerVal += " "+cntdwn[1]+locObj.hourAcronym.txt;
+				eventTimerVal += " "+cntdwn[2]+locObj.minuteAcronym.txt;
 				if (event_status_code===1){
 				    if (event_id === 1){
 				        event_name = locObj.eventHalloweenName.txt;
@@ -576,12 +573,10 @@ function save_to_cloud(savegame_to_cloud){
 	xhttp.onreadystatechange = function() {
 		if (this.readyState === 4 && this.status === 200) {
 			console.log("game saved to the cloud successfully");
-			msg       = "game saved to the cloud successfully";
-			postEventLog(msg);
+			postEventLog(locObj.savedCloudSuccessfully);
 		}
 		if (this.readyState === 4 && this.status !== 200) {
-			msg       = "game didn't saved to the cloud. You should be logined to the game before you could save the game";
-			postEventLog(msg);
+			postEventLog(locObj.errNoCloudSave.txt,"bold,red");
 		}
 	};
 	dataToParse = session+delimiter;
